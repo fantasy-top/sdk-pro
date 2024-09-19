@@ -1,0 +1,19 @@
+{
+  "name": "@fantasy-top/sdk-pro",
+  "version": "1.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build --force"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.5.4",
+    "axios": "^1.6.2",
+    "install": "^0.13.0",
+    "typescript": "~5.4.5"
+  }
+}
