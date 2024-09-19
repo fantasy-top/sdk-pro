@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-top/sdk-pro",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -9,6 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantasy-top/sdk-pro.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "@repo/typescript-config": "*",
     "@types/node": "^22.5.4",
