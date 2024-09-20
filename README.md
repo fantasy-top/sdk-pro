@@ -40,37 +40,70 @@ const votingConfigs = await api.voting.getConfigs({
 
 The Fantasy SDK Pro provides access to various API endpoints through different API spaces. Here's an overview of the available API spaces and their methods:
 
+## API Reference
+
+The Fantasy SDK Pro provides access to various API endpoints through different API spaces. Here's an overview of the available API spaces and their methods:
+
 ### CardApi
 
 - `findAllCards(page?: number, limit?: number): Promise<PaginatedCardResult>`
+  - Retrieves a paginated list of all cards.
+
 - `getCardById(id: string): Promise<Card>`
+  - Fetches a specific card by its ID.
+
 - `getCardsByPlayerId(playerId: string): Promise<Array<Card>>`
+  - Retrieves all cards associated with a specific player.
+
 - `getHeroSupply(heroId: string): Promise<HeroSupply>`
+  - Gets the supply information for a specific hero.
 
 ### HeroApi
 
 - `getAllHeroes(): Promise<Array<Hero>>`
+  - Retrieves a list of all heroes.
+
 - `getHeroesByHandleOrName(handleOrName: string): Promise<Array<Hero>>`
+  - Searches for heroes by their handle or name.
+
 - `getHeroesByIds(ids: Array<string>): Promise<Array<Hero>>`
+  - Fetches multiple heroes by their IDs.
 
 ### PlayerApi
 
 - `findPlayersBySearch(search: string): Promise<Array<Player>>`
+  - Searches for players based on a search query.
+
 - `getAllPlayersWithPagination(page?: number, limit?: number): Promise<PaginatedPlayerResult>`
+  - Retrieves a paginated list of all players.
 
 ### TacticsApi
 
 - `countEntriesByPlayerId(playerId: string): Promise<number>`
+  - Counts the number of tactic entries for a specific player.
+
 - `countTicketsByPlayerId(playerId: string): Promise<number>`
+  - Counts the number of tickets for a specific player.
+
 - `get(query?: GetTacticsQueryDTO): Promise<PaginatedTacticsResult>`
+  - Retrieves a paginated list of tactics based on the provided query.
+
 - `getById(id: string, query?: GetTacticsQueryDTO): Promise<Tactics>`
+  - Fetches a specific tactic by its ID.
+
 - `getHeroScoresByTacticId(tacticId: string, query?: GetHeroScoreQueryDTO): Promise<PaginatedTacticsHeroScoreResult>`
+  - Retrieves hero scores for a specific tactic.
+
 - `getTotalGains(playerId: string): Promise<GetTotalTicketsGainsResponseDTO>`
+  - Calculates the total gains for a specific player.
 
 ### VotingApi
 
 - `getConfigs(query?: GetVoteConfigQueryDTO): Promise<PaginatedVoteConfigResult>`
+  - Retrieves a paginated list of voting configurations.
+
 - `getVotesByHero(voteConfigId: string): Promise<Array<HeroWithVotesCount>>`
+  - Fetches the vote counts for heroes in a specific voting configuration.
 
 
 **For more details, please refer to the [API Swagger](https://api-v2.fantasy.top).**
