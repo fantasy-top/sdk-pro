@@ -11,20 +11,13 @@ Install the package using npm:
 ```ts
 import { Client, Configuration } from '@fantasy-top/sdk-pro'
 
-const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:4000'
-    : process.env.NEXT_PUBLIC_API_URL
-
 const config = new Configuration({
-  basePath: API_URL,
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  basePath: process.env.NEXT_PUBLIC_API_URL, // 'https://api-v2.fantasy.top'
+  apiKey: process.env.NEXT_PUBLIC_API_KEY, // 'can be obtained from https://fantasy.top/developer'
 })
 
 export const api = Client.getInstance(config)
 ```
-
-### Example usage
 
 ```ts
 const votingConfigs = await api.voting.getConfigs({
@@ -35,10 +28,6 @@ const votingConfigs = await api.voting.getConfigs({
     }
 })
 ```
-
-## API Reference
-
-The Fantasy SDK Pro provides access to various API endpoints through different API spaces. Here's an overview of the available API spaces and their methods:
 
 ## API Reference
 
