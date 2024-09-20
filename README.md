@@ -73,7 +73,7 @@ The Fantasy SDK Pro provides access to various API endpoints through different A
 - `getVotesByHero(voteConfigId: string): Promise<Array<HeroWithVotesCount>>`
 
 
-** For more details, please refer to the [API Swagger](https://api-v2.fantasy.top). **
+**For more details, please refer to the [API Swagger](https://api-v2.fantasy.top).**
 
 *Feel free to explore the code and contribute to the SDK for any improvements or additional features.*
 
