@@ -4,6 +4,12 @@ Fantasy SDK Pro is a powerful TypeScript/JavaScript client for interacting with 
 
 ## Installation
 
+Create a .npmrc to setup the registry for npm:
+
+```
+@fantasy-top:registry=https://npm.pkg.github.com
+```
+
 Install the package using npm:
 `npm install @fantasy-top/sdk-pro`
 
