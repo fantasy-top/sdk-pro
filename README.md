@@ -2,6 +2,16 @@
 
 Fantasy SDK Pro is a powerful TypeScript/JavaScript client for interacting with the Fantasy API. It provides a simple and intuitive interface to access various endpoints and manage fantasy-related data.
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+  - [CardApi](#cardapi)
+  - [HeroApi](#heroapi)
+  - [PlayerApi](#playerapi)
+  - [TacticsApi](#tacticsapi)
+  - [VotingApi](#votingapi)
+- [Issue Requirements](#issue-requirements)
+
 ## Installation
 
 Create a .npmrc to setup the registry for npm:
