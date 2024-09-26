@@ -17,10 +17,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "@repo/typescript-config": "*",
     "@types/node": "^22.5.4",
     "axios": "^1.6.2",
-    "install": "^0.13.0",
     "typescript": "~5.4.5"
   }
 }
