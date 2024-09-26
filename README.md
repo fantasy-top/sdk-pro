@@ -34,8 +34,8 @@ Install the package using npm:
 import { Client, Configuration } from '@fantasy-top/sdk-pro'
 
 const config = new Configuration({
-  basePath: process.env.NEXT_PUBLIC_API_URL, // 'https://api-v2.fantasy.top'
-  apiKey: process.env.NEXT_PUBLIC_API_KEY, // 'can be obtained from https://fantasy.top/developer'
+  basePath: process.env.API_URL, // 'https://api-v2.fantasy.top'
+  apiKey: process.env.API_KEY, // 'can be obtained from https://fantasy.top/developer'
 })
 
 export const api = Client.getInstance(config)
