@@ -18,7 +18,11 @@ Create a .npmrc to setup the registry for npm:
 
 ```
 @fantasy-top:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
+
+Create a token to read packages on Github: 
+`Click Your Avatar > Settings > Developer Settings > Personal access tokens > Tokens (classic) > create a new one with "read:packages"`
 
 Install the package using npm:
 `npm install @fantasy-top/sdk-pro`
