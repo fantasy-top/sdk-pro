@@ -51,6 +51,8 @@ const votingConfigs = await api.voting.getConfigs({
 })
 ```
 
+**You can find an example with NextJS [here](https://github.com/fantasy-top/pro-example)**
+
 ## API Reference
 
 The Fantasy SDK Pro provides access to various API endpoints through different API spaces. Here's an overview of the available API spaces and their methods:
