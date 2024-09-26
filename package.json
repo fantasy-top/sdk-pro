@@ -3,7 +3,10 @@
   "version": "1.0.6",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
+    "prepublishOnly": "tsc --build --force",
     "build": "tsc --build --force"
   },
   "keywords": [],
