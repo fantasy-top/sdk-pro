@@ -14,9 +14,64 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Configuration = void 0;
-var Configuration = /** @class */ (function () {
-    function Configuration(param) {
-        if (param === void 0) { param = {}; }
+class Configuration {
+    /**
+     * parameter for apiKey security
+     * @param name security name
+     * @memberof Configuration
+     */
+    apiKey;
+    /**
+     * parameter for basic security
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    username;
+    /**
+     * parameter for basic security
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    password;
+    /**
+     * parameter for oauth2 security
+     * @param name security name
+     * @param scopes oauth2 scope
+     * @memberof Configuration
+     */
+    accessToken;
+    /**
+     * override base path
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    basePath;
+    /**
+     * override server index
+     *
+     * @type {number}
+     * @memberof Configuration
+     */
+    serverIndex;
+    /**
+     * base options for axios calls
+     *
+     * @type {any}
+     * @memberof Configuration
+     */
+    baseOptions;
+    /**
+     * The FormData constructor that will be used to create multipart form data
+     * requests. You can inject this here so that execution environments that
+     * do not support the FormData class can still run the generated client.
+     *
+     * @type {new () => FormData}
+     */
+    formDataCtor;
+    constructor(param = {}) {
         this.apiKey = param.apiKey;
         this.username = param.username;
         this.password = param.password;
@@ -36,11 +91,9 @@ var Configuration = /** @class */ (function () {
      * @param mime - MIME (Multipurpose Internet Mail Extensions)
      * @return True if the given MIME is JSON, false otherwise.
      */
-    Configuration.prototype.isJsonMime = function (mime) {
-        var jsonMime = new RegExp('^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$', 'i');
+    isJsonMime(mime) {
+        const jsonMime = new RegExp('^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$', 'i');
         return mime !== null && (jsonMime.test(mime) || mime.toLowerCase() === 'application/json-patch+json');
-    };
-    return Configuration;
-}());
+    }
+}
 exports.Configuration = Configuration;
-//# sourceMappingURL=configuration.js.map

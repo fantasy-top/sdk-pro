@@ -11,6 +11,7 @@
  */
 import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import globalAxios from 'axios';
 import type { RequestArgs } from './base';
 import { BaseAPI } from './base';
 /**
@@ -360,6 +361,121 @@ export interface CardHeroSwapping {
 /**
  *
  * @export
+ * @interface CardWithNumber
+ */
+export interface CardWithNumber {
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'id': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'owner': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'hero_id': string;
+    /**
+     *
+     * @type {Hero}
+     * @memberof CardWithNumber
+     */
+    'heroes': Hero;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'rarity': number;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'hero_rarity_index': string;
+    /**
+     *
+     * @type {object}
+     * @memberof CardWithNumber
+     */
+    'token_id': object;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'season': number;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'created_at': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'updated_at': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'picture': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'tx_hash'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'blocknumber': number;
+    /**
+     *
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'timestamp'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof CardWithNumber
+     */
+    'in_deck'?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'card_number': number;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'in_deck_number'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CardWithNumber
+     */
+    'listed_card_number': number;
+}
+/**
+ *
+ * @export
  * @interface ClaimDailyQuestResult
  */
 export interface ClaimDailyQuestResult {
@@ -653,6 +769,193 @@ export interface CredibilityAverage {
      * @memberof CredibilityAverage
      */
     'avg_certified_views': number;
+}
+/**
+ *
+ * @export
+ * @interface Current
+ */
+export interface Current {
+    /**
+     * The unique identifier of the hero
+     * @type {string}
+     * @memberof Current
+     */
+    'id': string;
+    /**
+     * The Twitter handle of the hero
+     * @type {string}
+     * @memberof Current
+     */
+    'handle': string;
+    /**
+     * The current rank of the hero
+     * @type {number}
+     * @memberof Current
+     */
+    'current_rank': number;
+    /**
+     * The fantasy score of the hero
+     * @type {object}
+     * @memberof Current
+     */
+    'fantasy_score': object;
+    /**
+     * The total number of views for the hero\'s tweets
+     * @type {number}
+     * @memberof Current
+     */
+    'views': number;
+    /**
+     * The total number of tweets by the hero
+     * @type {number}
+     * @memberof Current
+     */
+    'tweet_count': number;
+    /**
+     * The average number of views per tweet
+     * @type {object}
+     * @memberof Current
+     */
+    'avg_views': object;
+    /**
+     * The reach of the hero
+     * @type {object}
+     * @memberof Current
+     */
+    'reach': object;
+    /**
+     * The previous rank of the hero
+     * @type {number}
+     * @memberof Current
+     */
+    'previous_rank': number;
+    /**
+     * The total number of likes received
+     * @type {number}
+     * @memberof Current
+     */
+    'likes': number;
+    /**
+     * The total number of retweets received
+     * @type {number}
+     * @memberof Current
+     */
+    'retweets': number;
+    /**
+     * The total number of quotes received
+     * @type {number}
+     * @memberof Current
+     */
+    'quotes': number;
+    /**
+     * The total number of bookmarks received
+     * @type {number}
+     * @memberof Current
+     */
+    'bookmarks': number;
+    /**
+     * The total number of replies received
+     * @type {number}
+     * @memberof Current
+     */
+    'replies': number;
+    /**
+     * The last update timestamp
+     * @type {string}
+     * @memberof Current
+     */
+    'updated_at': string;
+    /**
+     * The creation timestamp
+     * @type {string}
+     * @memberof Current
+     */
+    'created_at': string;
+    /**
+     * The absolute reach of the hero
+     * @type {object}
+     * @memberof Current
+     */
+    'reach_absolute': object;
+    /**
+     * The number of followers
+     * @type {number}
+     * @memberof Current
+     */
+    'followers_count': number;
+    /**
+     * The street cred score for likes
+     * @type {number}
+     * @memberof Current
+     */
+    'street_cred_like': number;
+    /**
+     * The street cred score for quotes
+     * @type {number}
+     * @memberof Current
+     */
+    'street_cred_quote': number;
+    /**
+     * The street cred score for retweets
+     * @type {number}
+     * @memberof Current
+     */
+    'street_cred_retweet': number;
+    /**
+     * The number of stars
+     * @type {number}
+     * @memberof Current
+     */
+    'stars': number;
+    /**
+     * The quality like ratio
+     * @type {number}
+     * @memberof Current
+     */
+    'quality_like_ratio': number;
+    /**
+     * The quality retweet ratio
+     * @type {number}
+     * @memberof Current
+     */
+    'quality_retweet_ratio': number;
+    /**
+     * The fantasy score version 1
+     * @type {object}
+     * @memberof Current
+     */
+    'fantasy_score_v1': object;
+    /**
+     * The fantasy score version 2
+     * @type {object}
+     * @memberof Current
+     */
+    'fantasy_score_v2': object;
+    /**
+     * The total cred score
+     * @type {object}
+     * @memberof Current
+     */
+    'total_cred_score': object;
+    /**
+     * The average cred score
+     * @type {object}
+     * @memberof Current
+     */
+    'cred_avg_score': object;
+    /**
+     * The cred reach
+     * @type {object}
+     * @memberof Current
+     */
+    'cred_reach': object;
+    /**
+     * The absolute cred reach
+     * @type {object}
+     * @memberof Current
+     */
+    'cred_reach_absolute': object;
 }
 /**
  *
@@ -1577,6 +1880,102 @@ export interface GetMyTacticsEntriesResponse {
 /**
  *
  * @export
+ * @interface GetPlayerCardsDTO
+ */
+export interface GetPlayerCardsDTO {
+    /**
+     * Pagination arguments
+     * @type {PaginationDTO}
+     * @memberof GetPlayerCardsDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     *
+     * @type {GetPlayerCardsWhereDTO}
+     * @memberof GetPlayerCardsDTO
+     */
+    'where'?: GetPlayerCardsWhereDTO;
+    /**
+     *
+     * @type {string}
+     * @memberof GetPlayerCardsDTO
+     */
+    'orderBy'?: GetPlayerCardsDTOOrderByEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof GetPlayerCardsDTO
+     */
+    'groupCard'?: boolean;
+}
+export declare const GetPlayerCardsDTOOrderByEnum: {
+    readonly Score: "cards_score";
+    readonly Number: "cards_number";
+    readonly ScoreAsc: "cards_score_asc";
+};
+export type GetPlayerCardsDTOOrderByEnum = typeof GetPlayerCardsDTOOrderByEnum[keyof typeof GetPlayerCardsDTOOrderByEnum];
+/**
+ *
+ * @export
+ * @interface GetPlayerCardsWhereDTO
+ */
+export interface GetPlayerCardsWhereDTO {
+    /**
+     *
+     * @type {GetPlayersCardsHeroWhereDTO}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'heroes'?: GetPlayersCardsHeroWhereDTO;
+    /**
+     *
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'rarity'?: GetPlayerCardsWhereDTORarity | null;
+    /**
+     *
+     * @type {GetPlayerCardsWhereDTOInDeck}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'in_deck'?: GetPlayerCardsWhereDTOInDeck;
+}
+/**
+ * @type GetPlayerCardsWhereDTOInDeck
+ * @export
+ */
+export type GetPlayerCardsWhereDTOInDeck = BoolFilterDTO | boolean;
+/**
+ * @type GetPlayerCardsWhereDTORarity
+ * @export
+ */
+export type GetPlayerCardsWhereDTORarity = NumberFilterDTO | number;
+/**
+ *
+ * @export
+ * @interface GetPlayersCardsHeroWhereDTO
+ */
+export interface GetPlayersCardsHeroWhereDTO {
+    /**
+     *
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
+     * @memberof GetPlayersCardsHeroWhereDTO
+     */
+    'handle'?: GetPlayersCardsHeroWhereDTOHandle | null;
+    /**
+     *
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
+     * @memberof GetPlayersCardsHeroWhereDTO
+     */
+    'name'?: GetPlayersCardsHeroWhereDTOHandle | null;
+}
+/**
+ * @type GetPlayersCardsHeroWhereDTOHandle
+ * @export
+ */
+export type GetPlayersCardsHeroWhereDTOHandle = StringFilterDTO | string;
+/**
+ *
+ * @export
  * @interface GetTacticsChoicesByIdResponse
  */
 export interface GetTacticsChoicesByIdResponse {
@@ -1754,6 +2153,92 @@ export interface GetTacticsEntriesQueryDTO {
      * @memberof GetTacticsEntriesQueryDTO
      */
     'pagination'?: PaginationDTO;
+}
+/**
+ *
+ * @export
+ * @interface GetTacticsHeroesCurrent24hResponse
+ */
+export interface GetTacticsHeroesCurrent24hResponse {
+    /**
+     * Fantasy score of the hero
+     * @type {object}
+     * @memberof GetTacticsHeroesCurrent24hResponse
+     */
+    'fantasy_score': object;
+    /**
+     * Number of views for the hero
+     * @type {number}
+     * @memberof GetTacticsHeroesCurrent24hResponse
+     */
+    'views': number;
+    /**
+     * Number of tweets mentioning the hero
+     * @type {number}
+     * @memberof GetTacticsHeroesCurrent24hResponse
+     */
+    'tweet_count': number;
+}
+/**
+ *
+ * @export
+ * @interface GetTacticsHeroesResponse
+ */
+export interface GetTacticsHeroesResponse {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'name': string;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'followers_count': number;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'updated_at': string;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'stars': number;
+    /**
+     *
+     * @type {GetTacticsHeroesCurrent24hResponse}
+     * @memberof GetTacticsHeroesResponse
+     */
+    'current_24h': GetTacticsHeroesCurrent24hResponse;
 }
 /**
  *
@@ -2169,6 +2654,24 @@ export interface Hero {
      * @memberof Hero
      */
     'credibility_average': CredibilityAverage;
+    /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof Hero
+     */
+    'tactic_image_prefix': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof Hero
+     */
+    'metadata': object;
+    /**
+     * Current score of the hero
+     * @type {Current}
+     * @memberof Hero
+     */
+    'current'?: Current;
 }
 /**
  *
@@ -2219,6 +2722,25 @@ export interface HeroWithTacticScores {
      * @memberof HeroWithTacticScores
      */
     'tactic_scores': Array<TacticsHeroScoreResponse>;
+    /**
+     *
+     * @type {HeroWithTacticScoresHeroWithImagePrefix}
+     * @memberof HeroWithTacticScores
+     */
+    'hero': HeroWithTacticScoresHeroWithImagePrefix;
+}
+/**
+ *
+ * @export
+ * @interface HeroWithTacticScoresHeroWithImagePrefix
+ */
+export interface HeroWithTacticScoresHeroWithImagePrefix {
+    /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof HeroWithTacticScoresHeroWithImagePrefix
+     */
+    'tactic_image_prefix': string;
 }
 /**
  *
@@ -2431,6 +2953,24 @@ export interface HeroWithVotesCount {
      */
     'credibility_average': CredibilityAverage;
     /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof HeroWithVotesCount
+     */
+    'tactic_image_prefix': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof HeroWithVotesCount
+     */
+    'metadata': object;
+    /**
+     * Current score of the hero
+     * @type {Current}
+     * @memberof HeroWithVotesCount
+     */
+    'current'?: Current;
+    /**
      * Votes from voting module
      * @type {Array<VoteWithoutInclude>}
      * @memberof HeroWithVotesCount
@@ -2448,6 +2988,56 @@ export interface HeroWithVotesCount {
      * @memberof HeroWithVotesCount
      */
     'last_4_scores_avg': number;
+}
+/**
+ *
+ * @export
+ * @interface MaintenanceConfig
+ */
+export interface MaintenanceConfig {
+    /**
+     * If maintenance mode is activated
+     * @type {boolean}
+     * @memberof MaintenanceConfig
+     */
+    'maintenance_on': boolean;
+    /**
+     * Message to be displayed in maintenance mode
+     * @type {string}
+     * @memberof MaintenanceConfig
+     */
+    'maintenance_message'?: string;
+    /**
+     * Date until maintenance mode is activated
+     * @type {string}
+     * @memberof MaintenanceConfig
+     */
+    'maintenance_until'?: string | null;
+}
+/**
+ *
+ * @export
+ * @interface MaintenanceConfigRequest
+ */
+export interface MaintenanceConfigRequest {
+    /**
+     * If maintenance mode is activated
+     * @type {boolean}
+     * @memberof MaintenanceConfigRequest
+     */
+    'activated': boolean;
+    /**
+     * Message to be displayed in maintenance mode
+     * @type {string}
+     * @memberof MaintenanceConfigRequest
+     */
+    'message'?: string;
+    /**
+     * Date until maintenance mode is activated
+     * @type {string}
+     * @memberof MaintenanceConfigRequest
+     */
+    'until'?: string;
 }
 /**
  *
@@ -2617,6 +3207,19 @@ export interface OmitTypeClass {
 /**
  *
  * @export
+ * @interface OpenTacticRegistrationDTO
+ */
+export interface OpenTacticRegistrationDTO {
+    /**
+     * The ID of the tactic to open registration for
+     * @type {string}
+     * @memberof OpenTacticRegistrationDTO
+     */
+    'tactic_id': string;
+}
+/**
+ *
+ * @export
  * @interface PaginatedCardResult
  */
 export interface PaginatedCardResult {
@@ -2668,6 +3271,25 @@ export interface PaginatedGetLastActivityDtoResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedGetLastActivityDtoResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ *
+ * @export
+ * @interface PaginatedGetTacticsHeroesResponseResult
+ */
+export interface PaginatedGetTacticsHeroesResponseResult {
+    /**
+     * Data items
+     * @type {Array<GetTacticsHeroesResponse>}
+     * @memberof PaginatedGetTacticsHeroesResponseResult
+     */
+    'data': Array<GetTacticsHeroesResponse>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedGetTacticsHeroesResponseResult
      */
     'meta': MetaDTO;
 }
@@ -3585,6 +4207,12 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'updated_at': string;
+    /**
+     * Banner image for the tactic
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'banner_image': string;
 }
 /**
  *
@@ -4565,64 +5193,64 @@ export interface TacticsEntryWhereDTO {
     'NOT'?: Array<TacticsEntryWhereDTO>;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'id'?: TacticsEntryWhereDTOId | null;
+    'id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'tactic_id'?: TacticsEntryWhereDTOId | null;
+    'tactic_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'player_id'?: TacticsEntryWhereDTOId | null;
+    'player_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero1_id'?: TacticsEntryWhereDTOId | null;
+    'hero1_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero2_id'?: TacticsEntryWhereDTOId | null;
+    'hero2_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero3_id'?: TacticsEntryWhereDTOId | null;
+    'hero3_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero4_id'?: TacticsEntryWhereDTOId | null;
+    'hero4_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero5_id'?: TacticsEntryWhereDTOId | null;
+    'hero5_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'rank'?: TacticsEntryWhereDTORank | null;
+    'rank'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'score'?: TacticsEntryWhereDTORank | null;
+    'score'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
      * @type {TacticsEntryWhereDTOValidateDeckBefore}
@@ -4631,46 +5259,46 @@ export interface TacticsEntryWhereDTO {
     'validate_deck_before'?: TacticsEntryWhereDTOValidateDeckBefore;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero1_stars'?: TacticsEntryWhereDTORank | null;
+    'hero1_stars'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero2_stars'?: TacticsEntryWhereDTORank | null;
+    'hero2_stars'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero3_stars'?: TacticsEntryWhereDTORank | null;
+    'hero3_stars'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero4_stars'?: TacticsEntryWhereDTORank | null;
+    'hero4_stars'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'hero5_stars'?: TacticsEntryWhereDTORank | null;
+    'hero5_stars'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
-     * @type {TacticsEntryWhereDTOId}
+     * @type {GetPlayersCardsHeroWhereDTOHandle}
      * @memberof TacticsEntryWhereDTO
      */
-    'ticket_id'?: TacticsEntryWhereDTOId | null;
+    'ticket_id'?: GetPlayersCardsHeroWhereDTOHandle | null;
     /**
      *
-     * @type {TacticsEntryWhereDTORank}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof TacticsEntryWhereDTO
      */
-    'previous_rank'?: TacticsEntryWhereDTORank | null;
+    'previous_rank'?: GetPlayerCardsWhereDTORarity | null;
     /**
      *
      * @type {TacticsEntryWhereDTOAutocompleted}
@@ -4701,16 +5329,6 @@ export interface TacticsEntryWhereDTO {
  * @export
  */
 export type TacticsEntryWhereDTOAutocompleted = BoolFilterDTO | boolean;
-/**
- * @type TacticsEntryWhereDTOId
- * @export
- */
-export type TacticsEntryWhereDTOId = StringFilterDTO | string;
-/**
- * @type TacticsEntryWhereDTORank
- * @export
- */
-export type TacticsEntryWhereDTORank = NumberFilterDTO | number;
 /**
  * @type TacticsEntryWhereDTOUpdatedAt
  * @export
@@ -4750,7 +5368,7 @@ export interface TacticsHeroChoice {
      * @type {TacticsHeroScore}
      * @memberof TacticsHeroChoice
      */
-    'hero_scores': TacticsHeroScore;
+    'hero_score': TacticsHeroScore;
     /**
      * Hero info
      * @type {Hero}
@@ -4770,6 +5388,12 @@ export interface TacticsHeroChoiceResponse {
      * @memberof TacticsHeroChoiceResponse
      */
     'hero_id': string;
+    /**
+     * Hero score linked to hero choice
+     * @type {TacticsHeroScore}
+     * @memberof TacticsHeroChoiceResponse
+     */
+    'hero_score': TacticsHeroScore;
     /**
      *
      * @type {HeroWithTacticScores}
@@ -5241,10 +5865,10 @@ export interface TacticsWhereDTO {
     'end_date'?: TacticsWhereDTOStartDate;
     /**
      *
-     * @type {TacticsWhereDTOVisible}
+     * @type {GetPlayerCardsWhereDTOInDeck}
      * @memberof TacticsWhereDTO
      */
-    'visible'?: TacticsWhereDTOVisible;
+    'visible'?: GetPlayerCardsWhereDTOInDeck;
     /**
      *
      * @type {TacticsWhereDTOTacticConfigId}
@@ -5262,11 +5886,6 @@ export type TacticsWhereDTOStartDate = DateTimeFilterDTO | string;
  * @export
  */
 export type TacticsWhereDTOTacticConfigId = StringFilterDTO | string;
-/**
- * @type TacticsWhereDTOVisible
- * @export
- */
-export type TacticsWhereDTOVisible = BoolFilterDTO | boolean;
 /**
  *
  * @export
@@ -5967,10 +6586,11 @@ export declare const CardApiAxiosParamCreator: (configuration?: Configuration) =
     /**
      *
      * @param {string} playerId
+     * @param {GetPlayerCardsDTO} [query]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCardsByPlayerId: (playerId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCardsByPlayerId: (playerId: string, query?: GetPlayerCardsDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @param {string} heroId
@@ -6002,10 +6622,11 @@ export declare const CardApiFp: (configuration?: Configuration) => {
     /**
      *
      * @param {string} playerId
+     * @param {GetPlayerCardsDTO} [query]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCardsByPlayerId(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Card>>>;
+    getCardsByPlayerId(playerId: string, query?: GetPlayerCardsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CardWithNumber>>>;
     /**
      *
      * @param {string} heroId
@@ -6039,7 +6660,7 @@ export declare const CardApiFactory: (configuration?: Configuration, basePath?: 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Card>>;
+    getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<CardWithNumber>>;
     /**
      *
      * @param {CardApiGetHeroSupplyRequest} requestParameters Request parameters.
@@ -6092,6 +6713,12 @@ export interface CardApiGetCardsByPlayerIdRequest {
      * @memberof CardApiGetCardsByPlayerId
      */
     readonly playerId: string;
+    /**
+     *
+     * @type {GetPlayerCardsDTO}
+     * @memberof CardApiGetCardsByPlayerId
+     */
+    readonly query?: GetPlayerCardsDTO;
 }
 /**
  * Request parameters for getHeroSupply operation in CardApi.
@@ -6120,7 +6747,7 @@ export declare class CardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CardApi
      */
-    findAllCards(requestParameters?: CardApiFindAllCardsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedCardResult, any>>;
+    findAllCards(requestParameters?: CardApiFindAllCardsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedCardResult, any>>;
     /**
      *
      * @param {CardApiGetCardByIdRequest} requestParameters Request parameters.
@@ -6128,7 +6755,7 @@ export declare class CardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CardApi
      */
-    getCardById(requestParameters: CardApiGetCardByIdRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Card, any>>;
+    getCardById(requestParameters: CardApiGetCardByIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Card, any>>;
     /**
      *
      * @param {CardApiGetCardsByPlayerIdRequest} requestParameters Request parameters.
@@ -6136,7 +6763,7 @@ export declare class CardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CardApi
      */
-    getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Card[], any>>;
+    getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<CardWithNumber[], any>>;
     /**
      *
      * @param {CardApiGetHeroSupplyRequest} requestParameters Request parameters.
@@ -6144,7 +6771,7 @@ export declare class CardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CardApi
      */
-    getHeroSupply(requestParameters: CardApiGetHeroSupplyRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<HeroSupplyDto[], any>>;
+    getHeroSupply(requestParameters: CardApiGetHeroSupplyRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<HeroSupplyDto[], any>>;
 }
 /**
  * HeroApi - axios parameter creator
@@ -6298,7 +6925,7 @@ export declare class HeroApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HeroApi
      */
-    getAllHeroes(requestParameters?: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedHeroResult, any>>;
+    getAllHeroes(requestParameters?: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedHeroResult, any>>;
     /**
      *
      * @summary Get heroes by name or handle
@@ -6307,7 +6934,7 @@ export declare class HeroApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HeroApi
      */
-    getHeroesByHandleOrName(requestParameters: HeroApiGetHeroesByHandleOrNameRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Hero[], any>>;
+    getHeroesByHandleOrName(requestParameters: HeroApiGetHeroesByHandleOrNameRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Hero[], any>>;
     /**
      *
      * @summary Get heroes by IDs
@@ -6316,7 +6943,7 @@ export declare class HeroApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HeroApi
      */
-    getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Hero[], any>>;
+    getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Hero[], any>>;
 }
 /**
  * PlayerApi - axios parameter creator
@@ -6433,7 +7060,7 @@ export declare class PlayerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PlayerApi
      */
-    findPlayersBySearch(requestParameters: PlayerApiFindPlayersBySearchRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Player[], any>>;
+    findPlayersBySearch(requestParameters: PlayerApiFindPlayersBySearchRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Player[], any>>;
     /**
      *
      * @summary Get all paginated players
@@ -6442,6 +7069,454 @@ export declare class PlayerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PlayerApi
      */
-    getAllPlayersWithPagination(requestParameters?: PlayerApiGetAllPlayersWithPaginationRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaginatedPlayerResult, any>>;
+    getAllPlayersWithPagination(requestParameters?: PlayerApiGetAllPlayersWithPaginationRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedPlayerResult, any>>;
+}
+/**
+ * TacticsApi - axios parameter creator
+ * @export
+ */
+export declare const TacticsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get the total number of entries for a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countEntriesByPlayerId: (playerId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the total number of tickets for a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countTicketsByPlayerId: (playerId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get all tactics
+     * @param {GetTacticsQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    get: (query?: GetTacticsQueryDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get tactic by id
+     * @param {string} id
+     * @param {GetTacticsQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getById: (id: string, query?: GetTacticsQueryDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get heros scores for a given tactic
+     * @param {string} tacticId
+     * @param {GetHeroScoresQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroScoresByTacticId: (tacticId: string, query?: GetHeroScoresQueryDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get the total gains of a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTotalGains: (playerId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * TacticsApi - functional programming interface
+ * @export
+ */
+export declare const TacticsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get the total number of entries for a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countEntriesByPlayerId(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>>;
+    /**
+     *
+     * @summary Get the total number of tickets for a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countTicketsByPlayerId(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>>;
+    /**
+     *
+     * @summary Get all tactics
+     * @param {GetTacticsQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    get(query?: GetTacticsQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTacticsResult>>;
+    /**
+     *
+     * @summary Get tactic by id
+     * @param {string} id
+     * @param {GetTacticsQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getById(id: string, query?: GetTacticsQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tactics>>;
+    /**
+     *
+     * @summary Get heros scores for a given tactic
+     * @param {string} tacticId
+     * @param {GetHeroScoresQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroScoresByTacticId(tacticId: string, query?: GetHeroScoresQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTacticsHeroScoreResult>>;
+    /**
+     *
+     * @summary Get the total gains of a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTotalGains(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetTotalTicketsGainsResponseDTO>>;
+};
+/**
+ * TacticsApi - factory interface
+ * @export
+ */
+export declare const TacticsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get the total number of entries for a player
+     * @param {TacticsApiCountEntriesByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countEntriesByPlayerId(requestParameters: TacticsApiCountEntriesByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<number>;
+    /**
+     *
+     * @summary Get the total number of tickets for a player
+     * @param {TacticsApiCountTicketsByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    countTicketsByPlayerId(requestParameters: TacticsApiCountTicketsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<number>;
+    /**
+     *
+     * @summary Get all tactics
+     * @param {TacticsApiGetRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    get(requestParameters?: TacticsApiGetRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTacticsResult>;
+    /**
+     *
+     * @summary Get tactic by id
+     * @param {TacticsApiGetByIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getById(requestParameters: TacticsApiGetByIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Tactics>;
+    /**
+     *
+     * @summary Get heros scores for a given tactic
+     * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroScoresByTacticId(requestParameters: TacticsApiGetHeroScoresByTacticIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTacticsHeroScoreResult>;
+    /**
+     *
+     * @summary Get the total gains of a player
+     * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTotalGains(requestParameters: TacticsApiGetTotalGainsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetTotalTicketsGainsResponseDTO>;
+};
+/**
+ * Request parameters for countEntriesByPlayerId operation in TacticsApi.
+ * @export
+ * @interface TacticsApiCountEntriesByPlayerIdRequest
+ */
+export interface TacticsApiCountEntriesByPlayerIdRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof TacticsApiCountEntriesByPlayerId
+     */
+    readonly playerId: string;
+}
+/**
+ * Request parameters for countTicketsByPlayerId operation in TacticsApi.
+ * @export
+ * @interface TacticsApiCountTicketsByPlayerIdRequest
+ */
+export interface TacticsApiCountTicketsByPlayerIdRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof TacticsApiCountTicketsByPlayerId
+     */
+    readonly playerId: string;
+}
+/**
+ * Request parameters for get operation in TacticsApi.
+ * @export
+ * @interface TacticsApiGetRequest
+ */
+export interface TacticsApiGetRequest {
+    /**
+     *
+     * @type {GetTacticsQueryDTO}
+     * @memberof TacticsApiGet
+     */
+    readonly query?: GetTacticsQueryDTO;
+}
+/**
+ * Request parameters for getById operation in TacticsApi.
+ * @export
+ * @interface TacticsApiGetByIdRequest
+ */
+export interface TacticsApiGetByIdRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof TacticsApiGetById
+     */
+    readonly id: string;
+    /**
+     *
+     * @type {GetTacticsQueryDTO}
+     * @memberof TacticsApiGetById
+     */
+    readonly query?: GetTacticsQueryDTO;
+}
+/**
+ * Request parameters for getHeroScoresByTacticId operation in TacticsApi.
+ * @export
+ * @interface TacticsApiGetHeroScoresByTacticIdRequest
+ */
+export interface TacticsApiGetHeroScoresByTacticIdRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof TacticsApiGetHeroScoresByTacticId
+     */
+    readonly tacticId: string;
+    /**
+     *
+     * @type {GetHeroScoresQueryDTO}
+     * @memberof TacticsApiGetHeroScoresByTacticId
+     */
+    readonly query?: GetHeroScoresQueryDTO;
+}
+/**
+ * Request parameters for getTotalGains operation in TacticsApi.
+ * @export
+ * @interface TacticsApiGetTotalGainsRequest
+ */
+export interface TacticsApiGetTotalGainsRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof TacticsApiGetTotalGains
+     */
+    readonly playerId: string;
+}
+/**
+ * TacticsApi - object-oriented interface
+ * @export
+ * @class TacticsApi
+ * @extends {BaseAPI}
+ */
+export declare class TacticsApi extends BaseAPI {
+    /**
+     *
+     * @summary Get the total number of entries for a player
+     * @param {TacticsApiCountEntriesByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    countEntriesByPlayerId(requestParameters: TacticsApiCountEntriesByPlayerIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<number, any>>;
+    /**
+     *
+     * @summary Get the total number of tickets for a player
+     * @param {TacticsApiCountTicketsByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    countTicketsByPlayerId(requestParameters: TacticsApiCountTicketsByPlayerIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<number, any>>;
+    /**
+     *
+     * @summary Get all tactics
+     * @param {TacticsApiGetRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    get(requestParameters?: TacticsApiGetRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedTacticsResult, any>>;
+    /**
+     *
+     * @summary Get tactic by id
+     * @param {TacticsApiGetByIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    getById(requestParameters: TacticsApiGetByIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Tactics, any>>;
+    /**
+     *
+     * @summary Get heros scores for a given tactic
+     * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    getHeroScoresByTacticId(requestParameters: TacticsApiGetHeroScoresByTacticIdRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedTacticsHeroScoreResult, any>>;
+    /**
+     *
+     * @summary Get the total gains of a player
+     * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    getTotalGains(requestParameters: TacticsApiGetTotalGainsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<GetTotalTicketsGainsResponseDTO, any>>;
+}
+/**
+ * VotingApi - axios parameter creator
+ * @export
+ */
+export declare const VotingApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get all voting configurations
+     * @param {GetVoteConfigQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConfigs: (query?: GetVoteConfigQueryDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get all vote by hero
+     * @param {string} voteConfigId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getVotesByHero: (voteConfigId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * VotingApi - functional programming interface
+ * @export
+ */
+export declare const VotingApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get all voting configurations
+     * @param {GetVoteConfigQueryDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConfigs(query?: GetVoteConfigQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoteConfigResult>>;
+    /**
+     *
+     * @summary Get all vote by hero
+     * @param {string} voteConfigId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getVotesByHero(voteConfigId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<HeroWithVotesCount>>>;
+};
+/**
+ * VotingApi - factory interface
+ * @export
+ */
+export declare const VotingApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get all voting configurations
+     * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConfigs(requestParameters?: VotingApiGetConfigsRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedVoteConfigResult>;
+    /**
+     *
+     * @summary Get all vote by hero
+     * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getVotesByHero(requestParameters: VotingApiGetVotesByHeroRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<HeroWithVotesCount>>;
+};
+/**
+ * Request parameters for getConfigs operation in VotingApi.
+ * @export
+ * @interface VotingApiGetConfigsRequest
+ */
+export interface VotingApiGetConfigsRequest {
+    /**
+     *
+     * @type {GetVoteConfigQueryDTO}
+     * @memberof VotingApiGetConfigs
+     */
+    readonly query?: GetVoteConfigQueryDTO;
+}
+/**
+ * Request parameters for getVotesByHero operation in VotingApi.
+ * @export
+ * @interface VotingApiGetVotesByHeroRequest
+ */
+export interface VotingApiGetVotesByHeroRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof VotingApiGetVotesByHero
+     */
+    readonly voteConfigId: string;
+}
+/**
+ * VotingApi - object-oriented interface
+ * @export
+ * @class VotingApi
+ * @extends {BaseAPI}
+ */
+export declare class VotingApi extends BaseAPI {
+    /**
+     *
+     * @summary Get all voting configurations
+     * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VotingApi
+     */
+    getConfigs(requestParameters?: VotingApiGetConfigsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedVoteConfigResult, any>>;
+    /**
+     *
+     * @summary Get all vote by hero
+     * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VotingApi
+     */
+    getVotesByHero(requestParameters: VotingApiGetVotesByHeroRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<HeroWithVotesCount[], any>>;
+}
+export declare class Client extends BaseAPI {
+    readonly card: CardApi;
+    readonly hero: HeroApi;
+    readonly player: PlayerApi;
+    readonly tactics: TacticsApi;
+    readonly voting: VotingApi;
+    private readonly config;
+    private static instance;
+    private constructor();
+    static getInstance(config: Configuration): Client;
+    resetToken(): void;
 }
 //# sourceMappingURL=api.d.ts.map
