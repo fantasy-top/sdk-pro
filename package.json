@@ -4,9 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepublishOnly": "tsc --build --force",
     "build": "tsc --build --force"
@@ -19,7 +17,8 @@
     "url": "git+https://github.com/fantasy-top/sdk-pro.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "dependencies": {
     "@types/node": "^22.5.4",
