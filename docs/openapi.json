@@ -4996,7 +4996,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-01-29T12:13:03.098Z"
+            "example": "2025-01-29T12:18:28.311Z"
           }
         },
         "required": [
@@ -5161,7 +5161,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:13:03.099Z"
+                "created_at": "2025-01-29T12:18:28.312Z"
               }
             ],
             "type": "array",
@@ -5175,7 +5175,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:13:03.099Z"
+              "last_updated": "2025-01-29T12:18:28.312Z"
             },
             "allOf": [
               {
@@ -6883,7 +6883,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:13:03.099Z"
+                "created_at": "2025-01-29T12:18:28.312Z"
               }
             ],
             "type": "array",
@@ -6897,7 +6897,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:13:03.099Z"
+              "last_updated": "2025-01-29T12:18:28.312Z"
             },
             "allOf": [
               {
