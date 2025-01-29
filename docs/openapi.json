@@ -1318,6 +1318,11 @@
         "type": "apiKey",
         "in": "header",
         "name": "x-api-key"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     },
     "schemas": {
@@ -4991,7 +4996,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-01-29T12:10:15.960Z"
+            "example": "2025-01-29T12:13:03.098Z"
           }
         },
         "required": [
@@ -5156,7 +5161,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:10:15.961Z"
+                "created_at": "2025-01-29T12:13:03.099Z"
               }
             ],
             "type": "array",
@@ -5170,7 +5175,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:10:15.961Z"
+              "last_updated": "2025-01-29T12:13:03.099Z"
             },
             "allOf": [
               {
@@ -6878,7 +6883,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:10:15.961Z"
+                "created_at": "2025-01-29T12:13:03.099Z"
               }
             ],
             "type": "array",
@@ -6892,7 +6897,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:10:15.961Z"
+              "last_updated": "2025-01-29T12:13:03.099Z"
             },
             "allOf": [
               {
@@ -17484,5 +17489,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
 }

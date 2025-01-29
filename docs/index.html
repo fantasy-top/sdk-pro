@@ -6,6 +6,19 @@
     <link rel="stylesheet" type="text/css" href="./swagger-ui/swagger-ui.css" />
     <link rel="icon" type="image/png" href="./swagger-ui/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./swagger-ui/favicon-16x16.png" sizes="16x16" />
+    <style>
+        /* Custom styles for better readability */
+        body {
+            margin: 0;
+            background: #fafafa;
+        }
+        .swagger-ui .topbar {
+            background-color: #000;
+        }
+        .swagger-ui .info .title {
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <div id="swagger-ui"></div>
@@ -24,7 +37,22 @@
                 plugins: [
                     SwaggerUIBundle.plugins.DownloadUrl
                 ],
-                layout: "StandaloneLayout"
+                layout: "StandaloneLayout",
+                requestInterceptor: (req) => {
+                    // Add CORS headers
+                    req.headers['Access-Control-Allow-Origin'] = '*';
+                    req.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
+                    req.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, X-Api-Key';
+                    return req;
+                },
+                responseInterceptor: (res) => {
+                    // Handle response
+                    return res;
+                },
+                tryItOutEnabled: true,
+                displayRequestDuration: true,
+                filter: true,
+                withCredentials: true
             });
         };
     </script>
