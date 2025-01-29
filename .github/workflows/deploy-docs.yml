@@ -3,8 +3,10 @@ name: Deploy Documentation
 on:
   push:
     branches: ["main"]
-    paths:
-      - 'docs/**'  # Only trigger when docs directory changes
+    # Temporarily remove paths filter for testing
+    # paths:
+    #   - 'docs/**'
+  workflow_dispatch:
 
 jobs:
   deploy-docs:
