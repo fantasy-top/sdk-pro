@@ -2,8 +2,7 @@ name: Deploy Documentation
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
     paths:
       - 'docs/**'  # Only trigger when docs directory changes
 
