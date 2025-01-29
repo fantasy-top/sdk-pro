@@ -1,5 +1,8 @@
 # Fantasy SDK Pro
 
+## Documentation
+API documentation is available at: https://fantasy-top.github.io/sdk-pro/
+
 Fantasy SDK Pro is a powerful TypeScript/JavaScript client for interacting with the Fantasy API. It provides a simple and intuitive interface to access various endpoints and manage fantasy-related data.
 
 - [Installation](#installation)
