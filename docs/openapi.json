@@ -1310,16 +1310,15 @@
     {
       "url": "https://api-v2.fantasy.top",
       "description": "Production server"
+    },
+    {
+      "url": "https://staging-api-v2.fantasy.top",
+      "description": "Staging server"
     }
   ],
   "components": {
     "securitySchemes": {
       "apiKey": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "x-api-key"
-      },
-      "ApiKeyAuth": {
         "type": "apiKey",
         "in": "header",
         "name": "x-api-key"
@@ -4996,7 +4995,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-01-29T12:18:28.311Z"
+            "example": "2025-01-30T16:40:49.256Z"
           }
         },
         "required": [
@@ -5139,6 +5138,11 @@
             "description": "Quote database ratio for the tweet",
             "example": 0.3
           },
+          "quality_interaction": {
+            "type": "number",
+            "description": "Quality interaction score for the tweet, used for x game",
+            "example": 0.7
+          },
           "top_interacting_users": {
             "type": "object",
             "description": "Top interacting users for the tweet",
@@ -5161,7 +5165,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:18:28.312Z"
+                "created_at": "2025-01-30T16:40:49.256Z"
               }
             ],
             "type": "array",
@@ -5175,7 +5179,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:18:28.312Z"
+              "last_updated": "2025-01-30T16:40:49.256Z"
             },
             "allOf": [
               {
@@ -5230,6 +5234,7 @@
           "replies_db_ratio",
           "retweets_db_ratio",
           "quote_db_ratio",
+          "quality_interaction",
           "top_interacting_users",
           "interactions",
           "interaction_summaries",
@@ -6861,6 +6866,11 @@
             "description": "Quote database ratio for the tweet",
             "example": 0.3
           },
+          "quality_interaction": {
+            "type": "number",
+            "description": "Quality interaction score for the tweet, used for x game",
+            "example": 0.7
+          },
           "top_interacting_users": {
             "type": "object",
             "description": "Top interacting users for the tweet",
@@ -6883,7 +6893,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-29T12:18:28.312Z"
+                "created_at": "2025-01-30T16:40:49.256Z"
               }
             ],
             "type": "array",
@@ -6897,7 +6907,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-29T12:18:28.312Z"
+              "last_updated": "2025-01-30T16:40:49.256Z"
             },
             "allOf": [
               {
@@ -6944,6 +6954,7 @@
           "replies_db_ratio",
           "retweets_db_ratio",
           "quote_db_ratio",
+          "quality_interaction",
           "top_interacting_users",
           "interactions",
           "interaction_summaries",
@@ -15672,6 +15683,28 @@
           "message"
         ]
       },
+      "BuyBatchFragmentRouletteResultDTO": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "selectedPrizes": {
+            "description": "The selected prizes for the claimed batch roulette",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrizeFragmentRouletteDTO"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "message"
+        ]
+      },
       "FragmentClaimDTO": {
         "type": "object",
         "properties": {
@@ -15764,6 +15797,25 @@
         "required": [
           "message",
           "claimed"
+        ]
+      },
+      "GetQuoteItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "price_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "amount",
+          "price_usd"
         ]
       },
       "GetAndFilterSellOrdersQueryDTO": {
@@ -17489,10 +17541,5 @@
         }
       }
     }
-  },
-  "security": [
-    {
-      "ApiKeyAuth": []
-    }
-  ]
+  }
 }
