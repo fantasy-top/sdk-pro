@@ -1310,10 +1310,6 @@
     {
       "url": "https://api-v2.fantasy.top",
       "description": "Production server"
-    },
-    {
-      "url": "https://staging-api-v2.fantasy.top",
-      "description": "Staging server"
     }
   ],
   "components": {
@@ -4995,7 +4991,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-01-30T16:40:49.256Z"
+            "example": "2025-01-30T16:43:08.583Z"
           }
         },
         "required": [
@@ -5165,7 +5161,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-30T16:40:49.256Z"
+                "created_at": "2025-01-30T16:43:08.585Z"
               }
             ],
             "type": "array",
@@ -5179,7 +5175,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-30T16:40:49.256Z"
+              "last_updated": "2025-01-30T16:43:08.585Z"
             },
             "allOf": [
               {
@@ -6893,7 +6889,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-01-30T16:40:49.256Z"
+                "created_at": "2025-01-30T16:43:08.585Z"
               }
             ],
             "type": "array",
@@ -6907,7 +6903,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-01-30T16:40:49.256Z"
+              "last_updated": "2025-01-30T16:43:08.585Z"
             },
             "allOf": [
               {
