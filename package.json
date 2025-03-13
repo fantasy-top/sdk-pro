@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-top/sdk-pro",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,6 +24,6 @@
     "@types/node": "^22.5.4",
     "axios": "^1.6.2",
     "node-jq": "^6.0.1",
-    "typescript": "~5.4.5"
+    "typescript": "^5.6.3"
   }
 }
