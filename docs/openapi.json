@@ -5292,7 +5292,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-03-13T18:33:37.851Z"
+            "example": "2025-03-13T18:35:41.496Z"
           }
         },
         "required": [
@@ -5462,7 +5462,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-03-13T18:33:37.851Z"
+                "created_at": "2025-03-13T18:35:41.496Z"
               }
             ],
             "type": "array",
@@ -5476,7 +5476,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-03-13T18:33:37.851Z"
+              "last_updated": "2025-03-13T18:35:41.496Z"
             },
             "allOf": [
               {
@@ -7190,7 +7190,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-03-13T18:33:37.851Z"
+                "created_at": "2025-03-13T18:35:41.496Z"
               }
             ],
             "type": "array",
@@ -7204,7 +7204,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-03-13T18:33:37.851Z"
+              "last_updated": "2025-03-13T18:35:41.496Z"
             },
             "allOf": [
               {
