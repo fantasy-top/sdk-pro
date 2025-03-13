@@ -18136,6 +18136,14 @@ export declare const HeroApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     getHeroesByIds: (ids: Array<string>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get heroes with stats
+     * @param {GetHeroesWithStatsDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroesWithStats: (query?: GetHeroesWithStatsDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * HeroApi - functional programming interface
@@ -18176,6 +18184,14 @@ export declare const HeroApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getHeroesByIds(ids: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Hero>>>;
+    /**
+     *
+     * @summary Get heroes with stats
+     * @param {GetHeroesWithStatsDTO} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroesWithStats(query?: GetHeroesWithStatsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroWithStatsDTOResult>>;
 };
 /**
  * HeroApi - factory interface
@@ -18214,6 +18230,14 @@ export declare const HeroApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Hero>>;
+    /**
+     *
+     * @summary Get heroes with stats
+     * @param {HeroApiGetHeroesWithStatsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getHeroesWithStats(requestParameters?: HeroApiGetHeroesWithStatsRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHeroWithStatsDTOResult>;
 };
 /**
  * Request parameters for getAllHeroes operation in HeroApi.
@@ -18280,6 +18304,19 @@ export interface HeroApiGetHeroesByIdsRequest {
     readonly ids: Array<string>;
 }
 /**
+ * Request parameters for getHeroesWithStats operation in HeroApi.
+ * @export
+ * @interface HeroApiGetHeroesWithStatsRequest
+ */
+export interface HeroApiGetHeroesWithStatsRequest {
+    /**
+     *
+     * @type {GetHeroesWithStatsDTO}
+     * @memberof HeroApiGetHeroesWithStats
+     */
+    readonly query?: GetHeroesWithStatsDTO;
+}
+/**
  * HeroApi - object-oriented interface
  * @export
  * @class HeroApi
@@ -18322,6 +18359,15 @@ export declare class HeroApi extends BaseAPI {
      * @memberof HeroApi
      */
     getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Hero[], any>>;
+    /**
+     *
+     * @summary Get heroes with stats
+     * @param {HeroApiGetHeroesWithStatsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HeroApi
+     */
+    getHeroesWithStats(requestParameters?: HeroApiGetHeroesWithStatsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedHeroWithStatsDTOResult, any>>;
 }
 /**
  * MarketplaceApi - axios parameter creator

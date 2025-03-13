@@ -18703,6 +18703,51 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Get heroes with stats
+         * @param {GetHeroesWithStatsDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroesWithStats: async (query?: GetHeroesWithStatsDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/hero/stats`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -18767,6 +18812,19 @@ export const HeroApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['HeroApi.getHeroesByIds']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Get heroes with stats
+         * @param {GetHeroesWithStatsDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHeroesWithStats(query?: GetHeroesWithStatsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroWithStatsDTOResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroesWithStats(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['HeroApi.getHeroesWithStats']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -18816,6 +18874,16 @@ export const HeroApiFactory = function (configuration?: Configuration, basePath?
          */
         getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Hero>> {
             return localVarFp.getHeroesByIds(requestParameters.ids, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get heroes with stats
+         * @param {HeroApiGetHeroesWithStatsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroesWithStats(requestParameters: HeroApiGetHeroesWithStatsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHeroWithStatsDTOResult> {
+            return localVarFp.getHeroesWithStats(requestParameters.query, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18891,6 +18959,20 @@ export interface HeroApiGetHeroesByIdsRequest {
 }
 
 /**
+ * Request parameters for getHeroesWithStats operation in HeroApi.
+ * @export
+ * @interface HeroApiGetHeroesWithStatsRequest
+ */
+export interface HeroApiGetHeroesWithStatsRequest {
+    /**
+     * 
+     * @type {GetHeroesWithStatsDTO}
+     * @memberof HeroApiGetHeroesWithStats
+     */
+    readonly query?: GetHeroesWithStatsDTO
+}
+
+/**
  * HeroApi - object-oriented interface
  * @export
  * @class HeroApi
@@ -18943,6 +19025,18 @@ export class HeroApi extends BaseAPI {
      */
     public getHeroesByIds(requestParameters: HeroApiGetHeroesByIdsRequest, options?: RawAxiosRequestConfig) {
         return HeroApiFp(this.configuration).getHeroesByIds(requestParameters.ids, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get heroes with stats
+     * @param {HeroApiGetHeroesWithStatsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HeroApi
+     */
+    public getHeroesWithStats(requestParameters: HeroApiGetHeroesWithStatsRequest = {}, options?: RawAxiosRequestConfig) {
+        return HeroApiFp(this.configuration).getHeroesWithStats(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
