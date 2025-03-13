@@ -26,63 +26,33 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
 /**
  * 
  * @export
- * @interface ActiveQuestDto
+ * @interface AddCoinToHeroDTO
  */
-export interface ActiveQuestDto {
+export interface AddCoinToHeroDTO {
     /**
-     * 
+     * Hero ID
      * @type {string}
-     * @memberof ActiveQuestDto
+     * @memberof AddCoinToHeroDTO
      */
-    'id': string;
+    'heroId': string;
     /**
-     * 
+     * Contract address
      * @type {string}
-     * @memberof ActiveQuestDto
+     * @memberof AddCoinToHeroDTO
      */
-    'name': string;
+    'contract_address': string;
     /**
-     * 
+     * Network name (full or short)
      * @type {string}
-     * @memberof ActiveQuestDto
+     * @memberof AddCoinToHeroDTO
      */
-    'description': string;
+    'network_name': string;
     /**
-     * 
-     * @type {string}
-     * @memberof ActiveQuestDto
-     */
-    'quest_type': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActiveQuestDto
-     */
-    'period': string;
-    /**
-     * 
+     * Force overwrite existing coin
      * @type {boolean}
-     * @memberof ActiveQuestDto
+     * @memberof AddCoinToHeroDTO
      */
-    'has_multiple_thresholds': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActiveQuestDto
-     */
-    'start_date': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActiveQuestDto
-     */
-    'end_date'?: string | null;
-    /**
-     * 
-     * @type {Array<ThresholdDto>}
-     * @memberof ActiveQuestDto
-     */
-    'thresholds': Array<ThresholdDto>;
+    'force'?: boolean;
 }
 /**
  * 
@@ -102,6 +72,50 @@ export interface AddressPoolItem {
      * @memberof AddressPoolItem
      */
     'iteration': number;
+}
+/**
+ * 
+ * @export
+ * @interface AnswerQuestionDTO
+ */
+export interface AnswerQuestionDTO {
+    /**
+     * The id of the question
+     * @type {string}
+     * @memberof AnswerQuestionDTO
+     */
+    'question_id': string;
+    /**
+     * The id of the choice
+     * @type {string}
+     * @memberof AnswerQuestionDTO
+     */
+    'choice_id': string;
+    /**
+     * Flag ID
+     * @type {string}
+     * @memberof AnswerQuestionDTO
+     */
+    'flag_id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface AnswerQuestionResponseDTO
+ */
+export interface AnswerQuestionResponseDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AnswerQuestionResponseDTO
+     */
+    'is_correct': boolean;
+    /**
+     * 
+     * @type {GuessStreak}
+     * @memberof AnswerQuestionResponseDTO
+     */
+    'streak': GuessStreak;
 }
 /**
  * 
@@ -163,13 +177,7 @@ export interface Auth {
      * @type {string}
      * @memberof Auth
      */
-    'accessToken': string;
-    /**
-     * 
-     * @type {Player}
-     * @memberof Auth
-     */
-    'player': Player;
+    'token': string;
 }
 /**
  * 
@@ -183,6 +191,315 @@ export interface AuthRefresh {
      * @memberof AuthRefresh
      */
     'accessToken': string;
+}
+/**
+ * 
+ * @export
+ * @interface Banner
+ */
+export interface Banner {
+    /**
+     * ID of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'id': string;
+    /**
+     * Title of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'title': string;
+    /**
+     * Description of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'description': string;
+    /**
+     * Image of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'image': string;
+    /**
+     * Link of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'link': string;
+    /**
+     * CTA text of the banner
+     * @type {string}
+     * @memberof Banner
+     */
+    'cta_text': string;
+}
+/**
+ * 
+ * @export
+ * @interface BidOrder
+ */
+export interface BidOrder {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof BidOrder
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'signature': string;
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'id': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'token_id': string;
+    /**
+     * Token IDs
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'token_ids': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof BidOrder
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'hero_id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof BidOrder
+     */
+    'price': object;
+    /**
+     * Active
+     * @type {boolean}
+     * @memberof BidOrder
+     */
+    'active': boolean;
+    /**
+     * Order hash, optional
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'order_hash'?: string;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'created_at'?: string;
+    /**
+     * Update date, optional
+     * @type {string}
+     * @memberof BidOrder
+     */
+    'updated_at'?: string;
+    /**
+     * Hero
+     * @type {HeroWithoutBidOrders}
+     * @memberof BidOrder
+     */
+    'hero'?: HeroWithoutBidOrders;
+}
+/**
+ * 
+ * @export
+ * @interface BidOrderWithTopBidAndFloorPrice
+ */
+export interface BidOrderWithTopBidAndFloorPrice {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'signature': string;
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'id': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'token_id': string;
+    /**
+     * Token IDs
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'token_ids': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'hero_id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'price': object;
+    /**
+     * Active
+     * @type {boolean}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'active': boolean;
+    /**
+     * Order hash, optional
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'order_hash'?: string;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'created_at'?: string;
+    /**
+     * Update date, optional
+     * @type {string}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'updated_at'?: string;
+    /**
+     * Hero
+     * @type {HeroWithoutBidOrders}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'hero'?: HeroWithoutBidOrders;
+    /**
+     * Top bid price
+     * @type {object}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'topBidPrice'?: object;
+    /**
+     * Floor price
+     * @type {object}
+     * @memberof BidOrderWithTopBidAndFloorPrice
+     */
+    'floorPrice'?: object;
 }
 /**
  * 
@@ -202,6 +519,124 @@ export interface BoolFilterDTO {
      * @memberof BoolFilterDTO
      */
     'not'?: BoolFilterDTO;
+}
+/**
+ * 
+ * @export
+ * @interface BurnLeaderboardDto
+ */
+export interface BurnLeaderboardDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof BurnLeaderboardDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BurnLeaderboardDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BurnLeaderboardDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BurnLeaderboardDto
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BurnLeaderboardDto
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof BurnLeaderboardDto
+     */
+    'count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof BurnLeaderboardDto
+     */
+    'rank': number;
+}
+/**
+ * 
+ * @export
+ * @interface BurnLeaderboardResponseDto
+ */
+export interface BurnLeaderboardResponseDto {
+    /**
+     * 
+     * @type {Array<BurnLeaderboardDto>}
+     * @memberof BurnLeaderboardResponseDto
+     */
+    'data': Array<BurnLeaderboardDto>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof BurnLeaderboardResponseDto
+     */
+    'meta': MetaInfiniteQueryDto;
+}
+/**
+ * 
+ * @export
+ * @interface BuyBatchFragmentRouletteResultDTO
+ */
+export interface BuyBatchFragmentRouletteResultDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BuyBatchFragmentRouletteResultDTO
+     */
+    'success': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BuyBatchFragmentRouletteResultDTO
+     */
+    'message': string;
+    /**
+     * The selected prizes for the claimed batch roulette
+     * @type {Array<PrizeFragmentRouletteDTO>}
+     * @memberof BuyBatchFragmentRouletteResultDTO
+     */
+    'selectedPrizes'?: Array<PrizeFragmentRouletteDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface BuyFragmentRouletteResultDTO
+ */
+export interface BuyFragmentRouletteResultDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BuyFragmentRouletteResultDTO
+     */
+    'success': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BuyFragmentRouletteResultDTO
+     */
+    'message': string;
+    /**
+     * The selected prize for the claimed daily quest
+     * @type {PrizeFragmentRouletteDTO}
+     * @memberof BuyFragmentRouletteResultDTO
+     */
+    'selectedPrize'?: PrizeFragmentRouletteDTO;
 }
 /**
  * 
@@ -277,6 +712,12 @@ export interface Card {
     'picture': string;
     /**
      * 
+     * @type {boolean}
+     * @memberof Card
+     */
+    'is_in_deck': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof Card
      */
@@ -299,6 +740,18 @@ export interface Card {
      * @memberof Card
      */
     'in_deck'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Card
+     */
+    'picture_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Card
+     */
+    'edition'?: string;
 }
 /**
  * 
@@ -366,6 +819,12 @@ export interface CardHeroSwapping {
      * @memberof CardHeroSwapping
      */
     'new_hero': Hero;
+    /**
+     * Coin of the new hero
+     * @type {Coin}
+     * @memberof CardHeroSwapping
+     */
+    'coin': Coin;
 }
 /**
  * 
@@ -441,6 +900,12 @@ export interface CardWithNumber {
     'picture': string;
     /**
      * 
+     * @type {boolean}
+     * @memberof CardWithNumber
+     */
+    'is_in_deck': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof CardWithNumber
      */
@@ -465,6 +930,18 @@ export interface CardWithNumber {
     'in_deck'?: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'picture_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithNumber
+     */
+    'edition'?: string;
+    /**
+     * 
      * @type {number}
      * @memberof CardWithNumber
      */
@@ -481,6 +958,192 @@ export interface CardWithNumber {
      * @memberof CardWithNumber
      */
     'listed_card_number': number;
+}
+/**
+ * 
+ * @export
+ * @interface CardWithoutHeroes
+ */
+export interface CardWithoutHeroes {
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'owner': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CardWithoutHeroes
+     */
+    'rarity': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'hero_rarity_index': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CardWithoutHeroes
+     */
+    'token_id': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof CardWithoutHeroes
+     */
+    'season': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'picture': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CardWithoutHeroes
+     */
+    'is_in_deck': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'tx_hash'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CardWithoutHeroes
+     */
+    'blocknumber': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'timestamp'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CardWithoutHeroes
+     */
+    'in_deck'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'picture_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CardWithoutHeroes
+     */
+    'edition'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Choice
+ */
+export interface Choice {
+    /**
+     * 
+     * @type {string}
+     * @memberof Choice
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Choice
+     */
+    'typeRef'?: ChoiceTypeRefEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof Choice
+     */
+    'resourceId'?: string;
+    /**
+     * 
+     * @type {ChoiceMetadata}
+     * @memberof Choice
+     */
+    'metadata'?: ChoiceMetadata;
+    /**
+     * 
+     * @type {string}
+     * @memberof Choice
+     */
+    'updatedAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Choice
+     */
+    'createdAt': string;
+}
+
+export const ChoiceTypeRefEnum = {
+    Hero: 'hero',
+    Tweet: 'tweet',
+    Coin: 'coin'
+} as const;
+
+export type ChoiceTypeRefEnum = typeof ChoiceTypeRefEnum[keyof typeof ChoiceTypeRefEnum];
+
+/**
+ * 
+ * @export
+ * @interface ChoiceMetadata
+ */
+export interface ChoiceMetadata {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChoiceMetadata
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChoiceMetadata
+     */
+    'photo'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChoiceMetadata
+     */
+    'description'?: string;
 }
 /**
  * 
@@ -561,6 +1224,12 @@ export interface ClaimDailyQuestResultSelectedPrize {
      * @memberof ClaimDailyQuestResultSelectedPrize
      */
     'probability'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimDailyQuestResultSelectedPrize
+     */
+    'type'?: string;
 }
 /**
  * 
@@ -603,45 +1272,603 @@ export interface ClaimQuestResponse {
 /**
  * 
  * @export
- * @interface CreateAuthDto
+ * @interface ClaimRewardRank
  */
-export interface CreateAuthDto {
+export interface ClaimRewardRank {
     /**
-     * The Privy ID associated with the user
+     * The unique identifier of the ELO rank
      * @type {string}
-     * @memberof CreateAuthDto
+     * @memberof ClaimRewardRank
      */
-    'privy_id': string;
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface ClaimRewardRankResponse
+ */
+export interface ClaimRewardRankResponse {
     /**
-     * The wallet public key associated with the user
-     * @type {string}
-     * @memberof CreateAuthDto
+     * Updated ELO information for the player after claiming the reward
+     * @type {EloPlayerSeason}
+     * @memberof ClaimRewardRankResponse
      */
-    'wallet': string;
+    'playerElo': EloPlayerSeason;
     /**
-     * The name of the user
+     * Array of reward history entries that have been claimed
+     * @type {Array<RewardHistory>}
+     * @memberof ClaimRewardRankResponse
+     */
+    'rewardsHistory': Array<RewardHistory>;
+}
+/**
+ * 
+ * @export
+ * @interface ClaimRewardsDTO
+ */
+export interface ClaimRewardsDTO {
+    /**
+     * Message
      * @type {string}
-     * @memberof CreateAuthDto
+     * @memberof ClaimRewardsDTO
+     */
+    'message': string;
+    /**
+     * Card ID
+     * @type {string}
+     * @memberof ClaimRewardsDTO
+     */
+    'cardId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ClaimTournamentRewardsDTO
+ */
+export interface ClaimTournamentRewardsDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimTournamentRewardsDTO
+     */
+    'message': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ClaimTournamentRewardsDTO
+     */
+    'claimed': object;
+}
+/**
+ * 
+ * @export
+ * @interface CloutLeaderboardDTO
+ */
+export interface CloutLeaderboardDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof CloutLeaderboardDTO
+     */
+    'hero_id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof CloutLeaderboardDTO
      */
     'name': string;
     /**
-     * The handle or screen name of the user
+     * Hero handle
      * @type {string}
-     * @memberof CreateAuthDto
+     * @memberof CloutLeaderboardDTO
      */
     'handle': string;
     /**
-     * The URL of the user\'s profile picture
+     * Profile image URL
      * @type {string}
-     * @memberof CreateAuthDto
+     * @memberof CloutLeaderboardDTO
      */
-    'profile_picture': string;
+    'profile_image_url_https': string;
     /**
-     * The Twitter ID of the user
-     * @type {string}
-     * @memberof CreateAuthDto
+     * Total clout score
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
      */
-    'twitter_id': string;
+    'total_clout': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'total_posts': number;
+    /**
+     * Total views
+     * @type {string}
+     * @memberof CloutLeaderboardDTO
+     */
+    'total_views': string;
+    /**
+     * Smart follower count
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'smart_follower_count': number;
+    /**
+     * Season
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'season': number;
+    /**
+     * Last clout distribution
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'last_clout_distribution': number;
+    /**
+     * Previous rank
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'previous_rank': number;
+    /**
+     * Percentage of total clout (mindshare)
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'mindshare_percentage': number;
+}
+/**
+ * 
+ * @export
+ * @interface Coin
+ */
+export interface Coin {
+    /**
+     * Unique identifier: contract address and network id of codex.io
+     * @type {string}
+     * @memberof Coin
+     */
+    'contract_address_network': string;
+    /**
+     * Name of the token
+     * @type {string}
+     * @memberof Coin
+     */
+    'token_name': string;
+    /**
+     * Symbol of the token
+     * @type {string}
+     * @memberof Coin
+     */
+    'symbol': string;
+    /**
+     * Chain name of the token
+     * @type {string}
+     * @memberof Coin
+     */
+    'chain_name': string;
+    /**
+     * Short chain name of the token
+     * @type {string}
+     * @memberof Coin
+     */
+    'short_chain_name': string;
+    /**
+     * Large image url of the coin
+     * @type {string}
+     * @memberof Coin
+     */
+    'imageLargeUrl': string;
+    /**
+     * Circulating supply of the coin
+     * @type {string}
+     * @memberof Coin
+     */
+    'circulating_supply': string;
+    /**
+     * Total supply of the coin
+     * @type {string}
+     * @memberof Coin
+     */
+    'total_supply': string;
+    /**
+     * Coin price history
+     * @type {Array<CoinPriceHistory>}
+     * @memberof Coin
+     */
+    'coin_histories': Array<CoinPriceHistory>;
+}
+/**
+ * 
+ * @export
+ * @interface CoinPriceHistory
+ */
+export interface CoinPriceHistory {
+    /**
+     * Contract address and network
+     * @type {string}
+     * @memberof CoinPriceHistory
+     */
+    'contract_address_network': string;
+    /**
+     * Timestamp of the price data
+     * @type {string}
+     * @memberof CoinPriceHistory
+     */
+    'datetime': string;
+    /**
+     * Market capitalization of the token
+     * @type {string}
+     * @memberof CoinPriceHistory
+     */
+    'market_cap': string;
+    /**
+     * Current price in USD
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'price_usd': object;
+    /**
+     * Price in USD 24 hours ago
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'price_usd_24': object;
+    /**
+     * Price in USD 7 days ago
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'price_usd_7days': object;
+    /**
+     * Price in USD 30 days ago
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'price_usd_30days': object;
+    /**
+     * 24-hour price change percentage
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'change_24': object;
+    /**
+     * 7-day price change percentage
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'change_7days': object;
+    /**
+     * 30-day price change percentage
+     * @type {object}
+     * @memberof CoinPriceHistory
+     */
+    'change_30days': object;
+}
+/**
+ * 
+ * @export
+ * @interface CompleteOnboardingQuestResult
+ */
+export interface CompleteOnboardingQuestResult {
+    /**
+     * Indicates whether the onboarding quest was completed successfully
+     * @type {boolean}
+     * @memberof CompleteOnboardingQuestResult
+     */
+    'success': boolean;
+    /**
+     * A message describing the result of the operation
+     * @type {string}
+     * @memberof CompleteOnboardingQuestResult
+     */
+    'message': string;
+    /**
+     * The reward received for completing the quest, if any
+     * @type {object}
+     * @memberof CompleteOnboardingQuestResult
+     */
+    'reward'?: object;
+    /**
+     * The list of possible prizes for the roulette, if applicable
+     * @type {Array<string>}
+     * @memberof CompleteOnboardingQuestResult
+     */
+    'prizeList'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateApiKeyDto
+ */
+export interface CreateApiKeyDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApiKeyDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApiKeyDto
+     */
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateApiKeyDto
+     */
+    'telegram_handle': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateBidOrderDto
+ */
+export interface CreateBidOrderDto {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof CreateBidOrderDto
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'signature': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'token_id': string;
+    /**
+     * Token IDs
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'token_ids': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof CreateBidOrderDto
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'hero_id': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof CreateBidOrderDto
+     */
+    'price': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateBurnForFragmentsDto
+ */
+export interface CreateBurnForFragmentsDto {
+    /**
+     * The token ids to burn
+     * @type {Array<CreateBurnForFragmentsSellOrderDto>}
+     * @memberof CreateBurnForFragmentsDto
+     */
+    'sell_orders': Array<CreateBurnForFragmentsSellOrderDto>;
+    /**
+     * The signatures of the burn
+     * @type {Array<string>}
+     * @memberof CreateBurnForFragmentsDto
+     */
+    'signatures': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateBurnForFragmentsResponseDto
+ */
+export interface CreateBurnForFragmentsResponseDto {
+    /**
+     * Whether the burn for fragments was successful
+     * @type {boolean}
+     * @memberof CreateBurnForFragmentsResponseDto
+     */
+    'success': boolean;
+    /**
+     * The date of the burn for fragments
+     * @type {string}
+     * @memberof CreateBurnForFragmentsResponseDto
+     */
+    'processed_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateBurnForFragmentsSellOrderDto
+ */
+export interface CreateBurnForFragmentsSellOrderDto {
+    /**
+     * Trader address
+     * @type {string}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'side': number;
+    /**
+     * The token id
+     * @type {number}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'token_id': number;
+    /**
+     * The price
+     * @type {string}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'price': string;
+    /**
+     * The expiration time
+     * @type {string}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'expiration_time': string;
+    /**
+     * The merkle root
+     * @type {string}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'merkle_root': string;
+    /**
+     * The salt
+     * @type {number}
+     * @memberof CreateBurnForFragmentsSellOrderDto
+     */
+    'salt': number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateChoiceDTO
+ */
+export interface CreateChoiceDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateChoiceDTO
+     */
+    'typeRef'?: CreateChoiceDTOTypeRefEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateChoiceDTO
+     */
+    'resourceId'?: string;
+    /**
+     * 
+     * @type {ChoiceMetadata}
+     * @memberof CreateChoiceDTO
+     */
+    'metadata'?: ChoiceMetadata;
+    /**
+     * Flags that the choice is related to
+     * @type {Array<string>}
+     * @memberof CreateChoiceDTO
+     */
+    'flag'?: Array<string>;
+}
+
+export const CreateChoiceDTOTypeRefEnum = {
+    Hero: 'hero',
+    Tweet: 'tweet',
+    Coin: 'coin'
+} as const;
+
+export type CreateChoiceDTOTypeRefEnum = typeof CreateChoiceDTOTypeRefEnum[keyof typeof CreateChoiceDTOTypeRefEnum];
+
+/**
+ * 
+ * @export
+ * @interface CreateDeckResponseDTO
+ */
+export interface CreateDeckResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateDeckResponseDTO
+     */
+    'message': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateDeckResponseDTO
+     */
+    'ok': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface CreateFlagDTO
+ */
+export interface CreateFlagDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateFlagDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateFlagDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateFlagDTO
+     */
+    'description': string;
 }
 /**
  * 
@@ -703,6 +1930,202 @@ export interface CreateQuestConfigDto {
      * @memberof CreateQuestConfigDto
      */
     'thresholds': Array<CreateThresholdDto>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateQuestionDTO
+ */
+export interface CreateQuestionDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'choice_1_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'choice_2_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'flag_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'question'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateQuestionDTO
+     */
+    'subject_id'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateQuestionDTO
+     */
+    'weight'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateRelayDepositDto
+ */
+export interface CreateRelayDepositDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'request_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'origin_chain_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'origin_chain': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'origin_currency_symbol': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'origin_currency': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateRelayDepositDto
+     */
+    'tx_hash': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateRelayDepositDto
+     */
+    'value': object;
+}
+/**
+ * 
+ * @export
+ * @interface CreateSearchHistoryDTO
+ */
+export interface CreateSearchHistoryDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSearchHistoryDTO
+     */
+    'ressource_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSearchHistoryDTO
+     */
+    'ressource_type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSearchHistoryDTO
+     */
+    'ressource_name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateSellOrderDto
+ */
+export interface CreateSellOrderDto {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'trader': string;
+    /**
+     * Side 1 for sell, 0 for buy
+     * @type {number}
+     * @memberof CreateSellOrderDto
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'collection': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'token_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'salt': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'price': string;
+    /**
+     * Signature, unique
+     * @type {string}
+     * @memberof CreateSellOrderDto
+     */
+    'signature': string;
 }
 /**
  * 
@@ -969,6 +2392,136 @@ export interface Current {
 /**
  * 
  * @export
+ * @interface CurrentRunningRewardsDTO
+ */
+export interface CurrentRunningRewardsDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof CurrentRunningRewardsDTO
+     */
+    'reward_type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CurrentRunningRewardsDTO
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface CurrentSeasonDTO
+ */
+export interface CurrentSeasonDTO {
+    /**
+     * Season ID
+     * @type {number}
+     * @memberof CurrentSeasonDTO
+     */
+    'id': number;
+    /**
+     * Season start date
+     * @type {string}
+     * @memberof CurrentSeasonDTO
+     */
+    'start_date': string;
+    /**
+     * Season end date
+     * @type {string}
+     * @memberof CurrentSeasonDTO
+     */
+    'end_date': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface CurrentStatsDTO
+ */
+export interface CurrentStatsDTO {
+    /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the hero
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'fantasy_score': number;
+    /**
+     * Number of tweets
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'tweet_count': number;
+    /**
+     * Reach of the hero
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'reach': number;
+    /**
+     * Total views of tweets
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'totalViews': number;
+    /**
+     * Total certified views of tweets
+     * @type {number}
+     * @memberof CurrentStatsDTO
+     */
+    'totalCertifiedViews': number;
+}
+/**
+ * 
+ * @export
+ * @interface DailyCloutDistributionDTO
+ */
+export interface DailyCloutDistributionDTO {
+    /**
+     * Distribution date
+     * @type {string}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'date': string;
+    /**
+     * Clout points for the day
+     * @type {number}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'clout': number;
+    /**
+     * Rank for the day
+     * @type {number}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'rank': number;
+    /**
+     * Number of posts for the day
+     * @type {number}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'post_count': number;
+    /**
+     * Number of views for the day
+     * @type {number}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'view_count': number;
+    /**
+     * Smart follower count for the day
+     * @type {number}
+     * @memberof DailyCloutDistributionDTO
+     */
+    'smart_follower_count': number;
+}
+/**
+ * 
+ * @export
  * @interface DailyQuestProgress
  */
 export interface DailyQuestProgress {
@@ -1119,6 +2672,275 @@ export interface DateTimeFilterDTO {
      * @memberof DateTimeFilterDTO
      */
     'not'?: DateTimeFilterDTO;
+}
+/**
+ * 
+ * @export
+ * @interface DeleteOrderResponseDto
+ */
+export interface DeleteOrderResponseDto {
+    /**
+     * The ID of the bid order that was attempted to be deleted
+     * @type {number}
+     * @memberof DeleteOrderResponseDto
+     */
+    'id': number;
+    /**
+     * Number of records deleted
+     * @type {number}
+     * @memberof DeleteOrderResponseDto
+     */
+    'count': number;
+}
+/**
+ * 
+ * @export
+ * @interface EloLeaderboardDto
+ */
+export interface EloLeaderboardDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EloLeaderboardDto
+     */
+    'elo_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EloLeaderboardDto
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'image': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EloLeaderboardDto
+     */
+    'current_elo_rank_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EloLeaderboardDto
+     */
+    'season': number;
+}
+/**
+ * 
+ * @export
+ * @interface EloLeaderboardResponseDto
+ */
+export interface EloLeaderboardResponseDto {
+    /**
+     * 
+     * @type {Array<EloLeaderboardDto>}
+     * @memberof EloLeaderboardResponseDto
+     */
+    'data': Array<EloLeaderboardDto>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof EloLeaderboardResponseDto
+     */
+    'meta': MetaInfiniteQueryDto;
+}
+/**
+ * 
+ * @export
+ * @interface EloPlayerSeason
+ */
+export interface EloPlayerSeason {
+    /**
+     * The ID of the player
+     * @type {string}
+     * @memberof EloPlayerSeason
+     */
+    'player_id': string;
+    /**
+     * The current ELO score of the player
+     * @type {number}
+     * @memberof EloPlayerSeason
+     */
+    'elo_score': number;
+    /**
+     * The maximum ELO score achieved by the player
+     * @type {number}
+     * @memberof EloPlayerSeason
+     */
+    'max_elo_score': number;
+    /**
+     * The ID of the current ELO rank
+     * @type {string}
+     * @memberof EloPlayerSeason
+     */
+    'current_elo_rank_id': string;
+    /**
+     * The ID of the maximum ELO rank achieved
+     * @type {string}
+     * @memberof EloPlayerSeason
+     */
+    'max_elo_rank_id': string;
+    /**
+     * The season number
+     * @type {number}
+     * @memberof EloPlayerSeason
+     */
+    'season': number;
+    /**
+     * The unclaimed ranks of the player
+     * @type {Array<string>}
+     * @memberof EloPlayerSeason
+     */
+    'claimable_ranks': Array<string>;
+    /**
+     * The timestamp when the record was created
+     * @type {string}
+     * @memberof EloPlayerSeason
+     */
+    'created_at': string;
+    /**
+     * The timestamp when the record was last updated
+     * @type {string}
+     * @memberof EloPlayerSeason
+     */
+    'updated_at': string;
+    /**
+     * The current ELO rank of the player
+     * @type {EloRank}
+     * @memberof EloPlayerSeason
+     */
+    'current_elo_rank': EloRank;
+    /**
+     * The maximum ELO rank achieved by the player
+     * @type {EloRank}
+     * @memberof EloPlayerSeason
+     */
+    'max_elo_rank': EloRank;
+    /**
+     * The player associated with this ELO season record
+     * @type {Player}
+     * @memberof EloPlayerSeason
+     */
+    'player': Player;
+}
+/**
+ * 
+ * @export
+ * @interface EloRank
+ */
+export interface EloRank {
+    /**
+     * The unique identifier of the ELO rank
+     * @type {string}
+     * @memberof EloRank
+     */
+    'id': string;
+    /**
+     * The name of the ELO rank
+     * @type {string}
+     * @memberof EloRank
+     */
+    'name': string;
+    /**
+     * The image URL for the ELO rank
+     * @type {string}
+     * @memberof EloRank
+     */
+    'image': string;
+    /**
+     * The minimum ELO score for this rank
+     * @type {number}
+     * @memberof EloRank
+     */
+    'min_elo': number;
+    /**
+     * The maximum ELO score for this rank
+     * @type {number}
+     * @memberof EloRank
+     */
+    'max_elo': number;
+    /**
+     * The number of top players in this rank
+     * @type {number}
+     * @memberof EloRank
+     */
+    'top_player_count'?: number;
+    /**
+     * The threshold configuration for this rank
+     * @type {object}
+     * @memberof EloRank
+     */
+    'threshold': object;
+    /**
+     * The maximum ELO gain configuration for this rank
+     * @type {object}
+     * @memberof EloRank
+     */
+    'max_elo_gain': object;
+    /**
+     * The timestamp when the rank was created
+     * @type {string}
+     * @memberof EloRank
+     */
+    'created_at': string;
+    /**
+     * The timestamp when the rank was last updated
+     * @type {string}
+     * @memberof EloRank
+     */
+    'updated_at': string;
+    /**
+     * The reward details for this rank
+     * @type {object}
+     * @memberof EloRank
+     */
+    'reward_details': object;
+    /**
+     * Players currently in this rank
+     * @type {Array<EloPlayerSeason>}
+     * @memberof EloRank
+     */
+    'current_players': Array<EloPlayerSeason>;
+    /**
+     * Players who reached their max ELO in this rank
+     * @type {Array<EloPlayerSeason>}
+     * @memberof EloRank
+     */
+    'max_players': Array<EloPlayerSeason>;
 }
 /**
  * 
@@ -1277,6 +3099,12 @@ export interface EnrichedTweet {
      */
     'quote_db_ratio': number;
     /**
+     * Quality interaction score for the tweet, used for x game
+     * @type {number}
+     * @memberof EnrichedTweet
+     */
+    'quality_interaction': number;
+    /**
      * Top interacting users for the tweet
      * @type {object}
      * @memberof EnrichedTweet
@@ -1288,6 +3116,24 @@ export interface EnrichedTweet {
      * @memberof EnrichedTweet
      */
     'deleted_at'?: string;
+    /**
+     * Interaction history for the tweet
+     * @type {Array<Interaction>}
+     * @memberof EnrichedTweet
+     */
+    'interactions': Array<Interaction>;
+    /**
+     * Interaction summary for the tweet
+     * @type {InteractionSummary}
+     * @memberof EnrichedTweet
+     */
+    'interaction_summaries': InteractionSummary;
+    /**
+     * Conversation ID of the tweet
+     * @type {string}
+     * @memberof EnrichedTweet
+     */
+    'conversation_id': string;
     /**
      * Fire score for the tweet
      * @type {number}
@@ -1495,6 +3341,1106 @@ export interface EntryTicketsRewardsDTO {
 /**
  * 
  * @export
+ * @interface Flag
+ */
+export interface Flag {
+    /**
+     * Flag ID
+     * @type {string}
+     * @memberof Flag
+     */
+    'id': string;
+    /**
+     * Flag label
+     * @type {string}
+     * @memberof Flag
+     */
+    'label': string;
+    /**
+     * Flag description
+     * @type {string}
+     * @memberof Flag
+     */
+    'description': string;
+}
+/**
+ * 
+ * @export
+ * @interface FragmentClaimDTO
+ */
+export interface FragmentClaimDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentClaimDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentClaimDTO
+     */
+    'batchAmount': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentClaimDTO
+     */
+    'configPicture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentClaimDTO
+     */
+    'configName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentClaimDTO
+     */
+    'processDate': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentClaimDTO
+     */
+    'createdAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface FragmentPackInfo
+ */
+export interface FragmentPackInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackInfo
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackInfo
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackInfo
+     */
+    'pictureUrl': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentPackInfo
+     */
+    'fragmentsAmount': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentPackInfo
+     */
+    'nbCards': number;
+}
+/**
+ * 
+ * @export
+ * @interface FragmentPackReward
+ */
+export interface FragmentPackReward {
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'source'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'tournament_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'mint_config_id'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof FragmentPackReward
+     */
+    'amount'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof FragmentPackReward
+     */
+    'price'?: object;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentPackReward
+     */
+    'cards_per_pack'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FragmentPackReward
+     */
+    'is_activated': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentPackReward
+     */
+    'created_at': string;
+    /**
+     * Metadata of the reward
+     * @type {object}
+     * @memberof FragmentPackReward
+     */
+    'metadata'?: object;
+    /**
+     * 
+     * @type {FragmentPackInfo}
+     * @memberof FragmentPackReward
+     */
+    'fragmentPackInfo': FragmentPackInfo;
+}
+/**
+ * 
+ * @export
+ * @interface FragmentsCardsConfig
+ */
+export interface FragmentsCardsConfig {
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentsCardsConfig
+     */
+    'fragments': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentsCardsConfig
+     */
+    'nb_cards': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'picture_url': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof FragmentsCardsConfig
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FragmentsCardsConfig
+     */
+    'is_active': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface GameStatsDto
+ */
+export interface GameStatsDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof GameStatsDto
+     */
+    'totalBurns': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GameStatsDto
+     */
+    'totalLevelUps': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GameStatsDto
+     */
+    'totalTactics': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GameStatsDto
+     */
+    'totalDecks': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetAllPlayersDTO
+ */
+export interface GetAllPlayersDTO {
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof GetAllPlayersDTO
+     */
+    'pagination': PaginationDTO;
+    /**
+     * Filter by deck name
+     * @type {string}
+     * @memberof GetAllPlayersDTO
+     */
+    'search'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GetAndFilterSellOrdersQueryDTO
+ */
+export interface GetAndFilterSellOrdersQueryDTO {
+    /**
+     * 
+     * @type {object}
+     * @memberof GetAndFilterSellOrdersQueryDTO
+     */
+    'filters': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAndFilterSellOrdersQueryDTO
+     */
+    'search'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAndFilterSellOrdersQueryDTO
+     */
+    'rankCriteria': number;
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof GetAndFilterSellOrdersQueryDTO
+     */
+    'pagination'?: PaginationDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetBangerTweetsDTO
+ */
+export interface GetBangerTweetsDTO {
+    /**
+     * Banger tweets
+     * @type {Array<GetBangerTweetsTweetDTO>}
+     * @memberof GetBangerTweetsDTO
+     */
+    'tweets': Array<GetBangerTweetsTweetDTO>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof GetBangerTweetsDTO
+     */
+    'meta': MetaInfiniteQueryDto;
+}
+/**
+ * 
+ * @export
+ * @interface GetBangerTweetsHeroDTO
+ */
+export interface GetBangerTweetsHeroDTO {
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'name': string;
+    /**
+     * Description of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'description'?: string;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'followers_count': number;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Player address of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'player_address'?: string;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsHeroDTO
+     */
+    'status': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetBangerTweetsTweetDTO
+ */
+export interface GetBangerTweetsTweetDTO {
+    /**
+     * Unique identifier for the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'post_id': string;
+    /**
+     * ID of the hero who posted the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'hero_id': string;
+    /**
+     * Twitter handle of the hero
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'handle': string;
+    /**
+     * Text for the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'text': string;
+    /**
+     * Number of views for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'views': number;
+    /**
+     * Number of likes for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'likes': number;
+    /**
+     * Number of retweets for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'retweets': number;
+    /**
+     * Number of quotes for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'quotes': number;
+    /**
+     * Number of bookmarks for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'bookmarks': number;
+    /**
+     * Number of replies for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'replies': number;
+    /**
+     * Last update timestamp of the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'updated_at': string;
+    /**
+     * Creation timestamp of the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'created_at': string;
+    /**
+     * Type of the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'type': string;
+    /**
+     * Number of certified views for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'certified_views': number;
+    /**
+     * Number of certified likes for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'certified_likes': number;
+    /**
+     * Number of certified retweets for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'certified_retweets': number;
+    /**
+     * Caped ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'caped_ratio': number;
+    /**
+     * Cred score for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'cred_score': number;
+    /**
+     * Deep cred interaction ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'deep_cred_interaction_ratio': number;
+    /**
+     * High cred interaction ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'high_cred_interaction_ratio': number;
+    /**
+     * Likes database ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'likes_db_ratio': number;
+    /**
+     * Replies database ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'replies_db_ratio': number;
+    /**
+     * Retweets database ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'retweets_db_ratio': number;
+    /**
+     * Quote database ratio for the tweet
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'quote_db_ratio': number;
+    /**
+     * Quality interaction score for the tweet, used for x game
+     * @type {number}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'quality_interaction': number;
+    /**
+     * Top interacting users for the tweet
+     * @type {object}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'top_interacting_users': object;
+    /**
+     * Deletion timestamp of the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'deleted_at'?: string;
+    /**
+     * Interaction history for the tweet
+     * @type {Array<Interaction>}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'interactions': Array<Interaction>;
+    /**
+     * Interaction summary for the tweet
+     * @type {InteractionSummary}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'interaction_summaries': InteractionSummary;
+    /**
+     * Conversation ID of the tweet
+     * @type {string}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'conversation_id': string;
+    /**
+     * Hero of the tweet
+     * @type {GetBangerTweetsHeroDTO}
+     * @memberof GetBangerTweetsTweetDTO
+     */
+    'hero': GetBangerTweetsHeroDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetBidOrdersDTO
+ */
+export interface GetBidOrdersDTO {
+    /**
+     * 
+     * @type {Array<GetBidOrdersPersonalBidDTO>}
+     * @memberof GetBidOrdersDTO
+     */
+    'personal_bids': Array<GetBidOrdersPersonalBidDTO>;
+    /**
+     * 
+     * @type {Array<GetBidOrdersOrderbookBidDTO>}
+     * @memberof GetBidOrdersDTO
+     */
+    'orderbook_bids': Array<GetBidOrdersOrderbookBidDTO>;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBidOrdersDTO
+     */
+    'orderbook_bids_count': number;
+    /**
+     * 
+     * @type {Array<GetBidOrdersHighestFiveBidDTO>}
+     * @memberof GetBidOrdersDTO
+     */
+    'highest_five_bids': Array<GetBidOrdersHighestFiveBidDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetBidOrdersHighestFiveBidDTO
+ */
+export interface GetBidOrdersHighestFiveBidDTO {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'signature': string;
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'id': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'token_id': string;
+    /**
+     * Token IDs
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'token_ids': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'hero_id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetBidOrdersHighestFiveBidDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetBidOrdersOrderbookBidDTO
+ */
+export interface GetBidOrdersOrderbookBidDTO {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersOrderbookBidDTO
+     */
+    'id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetBidOrdersOrderbookBidDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetBidOrdersPersonalBidDTO
+ */
+export interface GetBidOrdersPersonalBidDTO {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'signature': string;
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'id': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'token_id': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'hero_id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetBidOrdersPersonalBidDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetBroadcastActiveNotificationDto
+ */
+export interface GetBroadcastActiveNotificationDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBroadcastActiveNotificationDto
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBroadcastActiveNotificationDto
+     */
+    'notification_type': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetBroadcastActiveNotificationDto
+     */
+    'notification_data': object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBroadcastActiveNotificationDto
+     */
+    'active': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardFromShardsBodyDTO
+ */
+export interface GetCardFromShardsBodyDTO {
+    /**
+     * Fragments cards config id
+     * @type {string}
+     * @memberof GetCardFromShardsBodyDTO
+     */
+    'fragments_cards_config_id': string;
+    /**
+     * Number of cards to get
+     * @type {number}
+     * @memberof GetCardFromShardsBodyDTO
+     */
+    'batch_amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardMarketBasicInfoDTO
+ */
+export interface GetCardMarketBasicInfoDTO {
+    /**
+     * 
+     * @type {GetCardMarketBasicInfoUniqueSellOrderDTO}
+     * @memberof GetCardMarketBasicInfoDTO
+     */
+    'unique_sell_order': GetCardMarketBasicInfoUniqueSellOrderDTO;
+    /**
+     * 
+     * @type {GetCardMarketBasicInfoLastTradeDTO}
+     * @memberof GetCardMarketBasicInfoDTO
+     */
+    'last_trade': GetCardMarketBasicInfoLastTradeDTO;
+    /**
+     * 
+     * @type {GetCardMarketBasicInfoHighestBidDTO}
+     * @memberof GetCardMarketBasicInfoDTO
+     */
+    'highest_bid': GetCardMarketBasicInfoHighestBidDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardMarketBasicInfoHighestBidDTO
+ */
+export interface GetCardMarketBasicInfoHighestBidDTO {
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetCardMarketBasicInfoHighestBidDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardMarketBasicInfoLastTradeDTO
+ */
+export interface GetCardMarketBasicInfoLastTradeDTO {
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetCardMarketBasicInfoLastTradeDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardMarketBasicInfoUniqueSellOrderDTO
+ */
+export interface GetCardMarketBasicInfoUniqueSellOrderDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardMarketBasicInfoUniqueSellOrderDTO
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCardMarketBasicInfoUniqueSellOrderDTO
+     */
+    'sell_order_id': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetCardMarketBasicInfoUniqueSellOrderDTO
+     */
+    'lowest_price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardsByHeroRarityIndexDTO
+ */
+export interface GetCardsByHeroRarityIndexDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsByHeroRarityIndexDTO
+     */
+    'owner': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetCardsByHeroRarityIndexDTO
+     */
+    'token_id': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardsByIdsForOpenPacksDTO
+ */
+export interface GetCardsByIdsForOpenPacksDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsByIdsForOpenPacksDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsByIdsForOpenPacksDTO
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsByIdsForOpenPacksDTO
+     */
+    'picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsByIdsForOpenPacksDTO
+     */
+    'picture_url'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCardsByIdsForOpenPacksDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetChoicesFormattedDTO
+ */
+export interface GetChoicesFormattedDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetChoicesFormattedDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetChoicesFormattedDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetChoicesFormattedDTO
+     */
+    'photo'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetChoicesFormattedDTO
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetChoicesFormattedDTO
+     */
+    'extra_data'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface GetCloutLeaderboardDTO
+ */
+export interface GetCloutLeaderboardDTO {
+    /**
+     * Pagination parameters
+     * @type {PaginationDTO}
+     * @memberof GetCloutLeaderboardDTO
+     */
+    'pagination': PaginationDTO;
+    /**
+     * Search by hero name or handle
+     * @type {string}
+     * @memberof GetCloutLeaderboardDTO
+     */
+    'search'?: string;
+    /**
+     * Season number
+     * @type {number}
+     * @memberof GetCloutLeaderboardDTO
+     */
+    'season'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface GetCumulativeFloorPriceDTO
+ */
+export interface GetCumulativeFloorPriceDTO {
+    /**
+     * Total price of the cumulated floor prices
+     * @type {string}
+     * @memberof GetCumulativeFloorPriceDTO
+     */
+    'total_price': string;
+    /**
+     * Array of sell orders with their prices
+     * @type {Array<SellOrderDTO>}
+     * @memberof GetCumulativeFloorPriceDTO
+     */
+    'sell_orders': Array<SellOrderDTO>;
+}
+/**
+ * 
+ * @export
  * @interface GetEntriesHistoryResponseDTO
  */
 export interface GetEntriesHistoryResponseDTO {
@@ -1546,6 +4492,289 @@ export interface GetEntriesHistoryResponseDTO {
      * @memberof GetEntriesHistoryResponseDTO
      */
     'tickets': EntryTicketsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroByHandleOrAddressDTO
+ */
+export interface GetHeroByHandleOrAddressDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'name': string;
+    /**
+     * Indicates if the hero is a player
+     * @type {boolean}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'is_player': boolean;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'followers_count': number;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'stars': number;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'status': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'metadata': object;
+    /**
+     * Distribution probability of the hero
+     * @type {HandleHeroDistributionProbabilityDTO}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'distribution_probability': HandleHeroDistributionProbabilityDTO;
+    /**
+     * Current score of the hero
+     * @type {HandleCurrentDTO}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'current': HandleCurrentDTO;
+    /**
+     * Cards of the hero
+     * @type {Array<HandleCardDTO>}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'cards': Array<HandleCardDTO>;
+    /**
+     * Number of cards of the hero
+     * @type {number}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'card_count': number;
+    /**
+     * Trades of the hero
+     * @type {Array<HandleTradeDTO>}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'trades': Array<HandleTradeDTO>;
+    /**
+     * Floor of the hero
+     * @type {Array<HandleUniqueSellOrdersDTO>}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'floor': Array<HandleUniqueSellOrdersDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroFeedDTO
+ */
+export interface GetHeroFeedDTO {
+    /**
+     * Pagination arguments
+     * @type {PaginationDTO}
+     * @memberof GetHeroFeedDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     * Number of top heroes to include
+     * @type {number}
+     * @memberof GetHeroFeedDTO
+     */
+    'topHeroes'?: number;
+    /**
+     * Start date for the feed
+     * @type {string}
+     * @memberof GetHeroFeedDTO
+     */
+    'date'?: string;
+    /**
+     * End date for the feed
+     * @type {string}
+     * @memberof GetHeroFeedDTO
+     */
+    'endDate'?: string;
+    /**
+     * Whether to return banger tweets
+     * @type {boolean}
+     * @memberof GetHeroFeedDTO
+     */
+    'banger'?: boolean;
+    /**
+     * Search for a specific hero
+     * @type {string}
+     * @memberof GetHeroFeedDTO
+     */
+    'handle'?: string;
+    /**
+     * Whether to hide viewed tweets
+     * @type {boolean}
+     * @memberof GetHeroFeedDTO
+     */
+    'hideViewed'?: boolean;
+    /**
+     * Whether to show only hero tweets
+     * @type {boolean}
+     * @memberof GetHeroFeedDTO
+     */
+    'heroesOnly'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroHoldersDTO
+ */
+export interface GetHeroHoldersDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroHoldersDTO
+     */
+    'heroHandle': string;
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof GetHeroHoldersDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetHeroHoldersDTO
+     */
+    'rarities'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroInnerCircleDTO
+ */
+export interface GetHeroInnerCircleDTO {
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof GetHeroInnerCircleDTO
+     */
+    'handle': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof GetHeroInnerCircleDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Inner circle of the hero
+     * @type {Array<HeroCircleDTO>}
+     * @memberof GetHeroInnerCircleDTO
+     */
+    'inner_circle': Array<HeroCircleDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroProgressOverTournamentDTO
+ */
+export interface GetHeroProgressOverTournamentDTO {
+    /**
+     * 
+     * @type {GetHeroProgressOverTournamentHeroDTO}
+     * @memberof GetHeroProgressOverTournamentDTO
+     */
+    'hero': GetHeroProgressOverTournamentHeroDTO;
+    /**
+     * 
+     * @type {Array<GetHeroProgressOverTournamentHistoryDTO>}
+     * @memberof GetHeroProgressOverTournamentDTO
+     */
+    'histories': Array<GetHeroProgressOverTournamentHistoryDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroProgressOverTournamentHeroDTO
+ */
+export interface GetHeroProgressOverTournamentHeroDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof GetHeroProgressOverTournamentHeroDTO
+     */
+    'id': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof GetHeroProgressOverTournamentHeroDTO
+     */
+    'name': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof GetHeroProgressOverTournamentHeroDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroProgressOverTournamentHeroDTO
+     */
+    'current_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroProgressOverTournamentHeroDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetHeroProgressOverTournamentHistoryDTO
+ */
+export interface GetHeroProgressOverTournamentHistoryDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroProgressOverTournamentHistoryDTO
+     */
+    'fantasy_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroProgressOverTournamentHistoryDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroProgressOverTournamentHistoryDTO
+     */
+    'datetime': string;
 }
 /**
  * 
@@ -1635,6 +4864,284 @@ export type GetHeroScoresQueryOrderByDTOTweetCountEnum = typeof GetHeroScoresQue
 /**
  * 
  * @export
+ * @interface GetHeroesWithStatsDTO
+ */
+export interface GetHeroesWithStatsDTO {
+    /**
+     * Pagination arguments
+     * @type {PaginationDTO}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     * 
+     * @type {Array<HeroWithStatsOrderByDTO>}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'order_by'?: Array<HeroWithStatsOrderByDTO>;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'tournament_number': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'search'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'tactic_only'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsCardDTO
+ */
+export interface GetHistoricalDecksAndWinningsCardDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsCardDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsCardDTO
+     */
+    'hero_rarity_index': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsCardDTO
+     */
+    'picture': string;
+    /**
+     * Hero of the card
+     * @type {GetHistoricalDecksAndWinningsHeroDTO}
+     * @memberof GetHistoricalDecksAndWinningsCardDTO
+     */
+    'heroes': GetHistoricalDecksAndWinningsHeroDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsDTO
+ */
+export interface GetHistoricalDecksAndWinningsDTO {
+    /**
+     * List of tournaments the player is registered in
+     * @type {Array<GetHistoricalDecksAndWinningsTournamentDTO>}
+     * @memberof GetHistoricalDecksAndWinningsDTO
+     */
+    'tournaments': Array<GetHistoricalDecksAndWinningsTournamentDTO>;
+    /**
+     * Total rewards across all registered tournaments
+     * @type {Array<CurrentRunningRewardsDTO>}
+     * @memberof GetHistoricalDecksAndWinningsDTO
+     */
+    'totalRewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsHeroDTO
+ */
+export interface GetHistoricalDecksAndWinningsHeroDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHeroDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHeroDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHeroDTO
+     */
+    'name': string;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsHeroDTO
+     */
+    'stars': number;
+    /**
+     * Tournament history
+     * @type {GetHistoricalDecksAndWinningsTournamentHistoryDTO}
+     * @memberof GetHistoricalDecksAndWinningsHeroDTO
+     */
+    'tournament_history': GetHistoricalDecksAndWinningsTournamentHistoryDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsHistoryDTO
+ */
+export interface GetHistoricalDecksAndWinningsHistoryDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'score': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'tournament_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'elo_change': number;
+    /**
+     * Tournament history
+     * @type {Array<GetHistoricalDecksAndWinningsCardDTO>}
+     * @memberof GetHistoricalDecksAndWinningsHistoryDTO
+     */
+    'cards': Array<GetHistoricalDecksAndWinningsCardDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsTournamentDTO
+ */
+export interface GetHistoricalDecksAndWinningsTournamentDTO {
+    /**
+     * Unique identifier for the tournament
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'id': string;
+    /**
+     * Start date of the tournament
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tournament
+     * @type {string}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'end_date': string;
+    /**
+     * League number of the tournament
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'league': number;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'tournament_number': number;
+    /**
+     * Rewards for the tournament
+     * @type {Array<TournamentRewards>}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'rewards': Array<TournamentRewards>;
+    /**
+     * Total number of registered players
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'registered_players_count': number;
+    /**
+     * List of players in the tournament
+     * @type {Array<GetHistoricalDecksAndWinningsHistoryDTO>}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'histories': Array<GetHistoricalDecksAndWinningsHistoryDTO>;
+    /**
+     * Total rewards across all registered tournaments
+     * @type {Array<CurrentRunningRewardsDTO>}
+     * @memberof GetHistoricalDecksAndWinningsTournamentDTO
+     */
+    'totalRewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetHistoricalDecksAndWinningsTournamentHistoryDTO
+ */
+export interface GetHistoricalDecksAndWinningsTournamentHistoryDTO {
+    /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentHistoryDTO
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the hero
+     * @type {object}
+     * @memberof GetHistoricalDecksAndWinningsTournamentHistoryDTO
+     */
+    'fantasy_score': object;
+    /**
+     * Number of views for the hero
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentHistoryDTO
+     */
+    'views': number;
+    /**
+     * Number of stars
+     * @type {number}
+     * @memberof GetHistoricalDecksAndWinningsTournamentHistoryDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetIsAlreadyReferredDTO
+ */
+export interface GetIsAlreadyReferredDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetIsAlreadyReferredDTO
+     */
+    'isAlreadyReferred': boolean;
+}
+/**
+ * 
+ * @export
  * @interface GetLastActivityCardDto
  */
 export interface GetLastActivityCardDto {
@@ -1692,6 +5199,12 @@ export interface GetLastActivityDto {
      * @type {string}
      * @memberof GetLastActivityDto
      */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastActivityDto
+     */
     'type': GetLastActivityDtoTypeEnum;
     /**
      * 
@@ -1735,10 +5248,30 @@ export interface GetLastActivityDto {
      * @memberof GetLastActivityDto
      */
     'burnt'?: Array<GetLastActivityCardDto>;
+    /**
+     * 
+     * @type {Array<GetLastActivityCardDto>}
+     * @memberof GetLastActivityDto
+     */
+    'packed'?: Array<GetLastActivityCardDto>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastActivityDto
+     */
+    'tournamentName'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLastActivityDto
+     */
+    'rarity_burned'?: number;
 }
 
 export const GetLastActivityDtoTypeEnum = {
+    All: 'ALL',
     MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
     BurnCard: 'BURN_CARD',
     LevelUp: 'LEVEL_UP',
     SaveDeck: 'SAVE_DECK',
@@ -1826,7 +5359,9 @@ export interface GetLastActivityQueryDTO {
 }
 
 export const GetLastActivityQueryDTOActivityTypeEnum = {
+    All: 'ALL',
     MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
     BurnCard: 'BURN_CARD',
     LevelUp: 'LEVEL_UP',
     SaveDeck: 'SAVE_DECK',
@@ -1855,6 +5390,204 @@ export interface GetLastEthPriceResponse {
      * @memberof GetLastEthPriceResponse
      */
     'timestamp': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetLastMintResponseDTOPlayer
+ */
+export interface GetLastMintResponseDTOPlayer {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintResponseDTOPlayer
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintResponseDTOPlayer
+     */
+    'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetLastMintsResponseDTO
+ */
+export interface GetLastMintsResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'buyer': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'timestamp': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'block_number': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'price': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {GetLastMintResponseDTOPlayer}
+     * @memberof GetLastMintsResponseDTO
+     */
+    'buyer_player': GetLastMintResponseDTOPlayer;
+}
+/**
+ * 
+ * @export
+ * @interface GetLeaderboardByWinningsDTO
+ */
+export interface GetLeaderboardByWinningsDTO {
+    /**
+     * 
+     * @type {Array<GetLeaderboardByWinningsPlayerDTO>}
+     * @memberof GetLeaderboardByWinningsDTO
+     */
+    'players': Array<GetLeaderboardByWinningsPlayerDTO>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof GetLeaderboardByWinningsDTO
+     */
+    'meta': MetaInfiniteQueryDto;
+}
+/**
+ * 
+ * @export
+ * @interface GetLeaderboardByWinningsPlayerDTO
+ */
+export interface GetLeaderboardByWinningsPlayerDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'elo_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'total_ETH': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'total_FRAGMENT': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'total_GOLD': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'total_FAN': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'total_elo_change': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardByWinningsPlayerDTO
+     */
+    'deck_count': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetLeaderboardForTopicDTO
+ */
+export interface GetLeaderboardForTopicDTO {
+    /**
+     * Pagination parameters
+     * @type {PaginationDTO}
+     * @memberof GetLeaderboardForTopicDTO
+     */
+    'pagination': PaginationDTO;
+    /**
+     * Search by hero name or handle
+     * @type {string}
+     * @memberof GetLeaderboardForTopicDTO
+     */
+    'search'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GetMerkleProofDTO
+ */
+export interface GetMerkleProofDTO {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetMerkleProofDTO
+     */
+    'proof': Array<string>;
 }
 /**
  * 
@@ -1902,6 +5635,164 @@ export interface GetMyTacticsEntriesResponse {
 /**
  * 
  * @export
+ * @interface GetNotValidatedEntriesResponse
+ */
+export interface GetNotValidatedEntriesResponse {
+    /**
+     * Unique identifier for the entry
+     * @type {string}
+     * @memberof GetNotValidatedEntriesResponse
+     */
+    'id': string;
+    /**
+     * Tactic ID
+     * @type {string}
+     * @memberof GetNotValidatedEntriesResponse
+     */
+    'tactic_id': string;
+    /**
+     * Validate deck before
+     * @type {string}
+     * @memberof GetNotValidatedEntriesResponse
+     */
+    'validate_deck_before': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetPendingBurnsResponseDTO
+ */
+export interface GetPendingBurnsResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPendingBurnsResponseDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPendingBurnsResponseDTO
+     */
+    'fragments_nb': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPendingBurnsResponseDTO
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerActivityDto
+ */
+export interface GetPlayerActivityDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerActivityDto
+     */
+    'activityType'?: GetPlayerActivityDtoActivityTypeEnum;
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof GetPlayerActivityDto
+     */
+    'pagination'?: PaginationDTO;
+}
+
+export const GetPlayerActivityDtoActivityTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+} as const;
+
+export type GetPlayerActivityDtoActivityTypeEnum = typeof GetPlayerActivityDtoActivityTypeEnum[keyof typeof GetPlayerActivityDtoActivityTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetPlayerBasicDataResponseDto
+ */
+export interface GetPlayerBasicDataResponseDto {
+    /**
+     * 
+     * @type {PlayerBasicData}
+     * @memberof GetPlayerBasicDataResponseDto
+     */
+    'players_by_pk': PlayerBasicData;
+    /**
+     * 
+     * @type {Array<Reward>}
+     * @memberof GetPlayerBasicDataResponseDto
+     */
+    'rewards': Array<Reward>;
+    /**
+     * 
+     * @type {Array<TwitterDataHero>}
+     * @memberof GetPlayerBasicDataResponseDto
+     */
+    'twitter_data_heroes': Array<TwitterDataHero>;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerByIdResponseDto
+ */
+export interface GetPlayerByIdResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'fantasy_points': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'fantasy_points_referrals': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerByIdResponseDto
+     */
+    'league': number;
+}
+/**
+ * 
+ * @export
  * @interface GetPlayerCardsDTO
  */
 export interface GetPlayerCardsDTO {
@@ -1929,6 +5820,24 @@ export interface GetPlayerCardsDTO {
      * @memberof GetPlayerCardsDTO
      */
     'groupCard'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsDTO
+     */
+    'isProfile'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsDTO
+     */
+    'isReverseScoreTournament'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsDTO
+     */
+    'isGalleryView'?: boolean;
 }
 
 export const GetPlayerCardsDTOOrderByEnum = {
@@ -1939,6 +5848,154 @@ export const GetPlayerCardsDTOOrderByEnum = {
 
 export type GetPlayerCardsDTOOrderByEnum = typeof GetPlayerCardsDTOOrderByEnum[keyof typeof GetPlayerCardsDTOOrderByEnum];
 
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsMarketDetailsDTO
+ */
+export interface GetPlayerCardsMarketDetailsDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'owner': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'token_id': object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'is_in_deck': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'in_which_tournament'?: string;
+    /**
+     * 
+     * @type {GetPlayerCardsMarketHistorySellOrderDTO}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'activeSellOrder'?: GetPlayerCardsMarketHistorySellOrderDTO;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetPlayerCardsMarketDetailsDTO
+     */
+    'acquisitionPrice'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsMarketHistorySellOrderDTO
+ */
+export interface GetPlayerCardsMarketHistorySellOrderDTO {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'id': string;
+    /**
+     * Trader
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'trader': string;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'collection': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'token_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'salt': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'price': string;
+    /**
+     * Price numeric as a Decimal value
+     * @type {string}
+     * @memberof GetPlayerCardsMarketHistorySellOrderDTO
+     */
+    'price_numeric': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsOfHeroDTO
+ */
+export interface GetPlayerCardsOfHeroDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsOfHeroDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {GetPlayerCardsOfHeroSellOrderDTO}
+     * @memberof GetPlayerCardsOfHeroDTO
+     */
+    'sell_orders'?: GetPlayerCardsOfHeroSellOrderDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsOfHeroSellOrderDTO
+ */
+export interface GetPlayerCardsOfHeroSellOrderDTO {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetPlayerCardsOfHeroSellOrderDTO
+     */
+    'id': string;
+}
 /**
  * 
  * @export
@@ -1959,16 +6016,16 @@ export interface GetPlayerCardsWhereDTO {
     'rarity'?: GetPlayerCardsWhereDTORarity | null;
     /**
      * 
-     * @type {GetPlayerCardsWhereDTOInDeck}
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
      * @memberof GetPlayerCardsWhereDTO
      */
-    'in_deck'?: GetPlayerCardsWhereDTOInDeck;
+    'is_in_deck'?: GetPlayerCardsWhereDTOIsInDeck;
 }
 /**
- * @type GetPlayerCardsWhereDTOInDeck
+ * @type GetPlayerCardsWhereDTOIsInDeck
  * @export
  */
-export type GetPlayerCardsWhereDTOInDeck = BoolFilterDTO | boolean;
+export type GetPlayerCardsWhereDTOIsInDeck = BoolFilterDTO | boolean;
 
 /**
  * @type GetPlayerCardsWhereDTORarity
@@ -2001,6 +6058,489 @@ export interface GetPlayersCardsHeroWhereDTO {
  */
 export type GetPlayersCardsHeroWhereDTOHandle = StringFilterDTO | string;
 
+/**
+ * 
+ * @export
+ * @interface GetQuestionResponseDTO
+ */
+export interface GetQuestionResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'choice_1_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'choice_2_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'flag_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'question'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuestionResponseDTO
+     */
+    'subject_id'?: string;
+    /**
+     * 
+     * @type {GetChoicesFormattedDTO}
+     * @memberof GetQuestionResponseDTO
+     */
+    'choice_1': GetChoicesFormattedDTO;
+    /**
+     * 
+     * @type {GetChoicesFormattedDTO}
+     * @memberof GetQuestionResponseDTO
+     */
+    'choice_2': GetChoicesFormattedDTO;
+    /**
+     * 
+     * @type {GetChoicesFormattedDTO}
+     * @memberof GetQuestionResponseDTO
+     */
+    'subject'?: GetChoicesFormattedDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetQuoteItem
+ */
+export interface GetQuoteItem {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetQuoteItem
+     */
+    'type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetQuoteItem
+     */
+    'amount': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetQuoteItem
+     */
+    'price_usd': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetReferredPlayersResponse
+ */
+export interface GetReferredPlayersResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'email': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'twitter_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'google_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'fantasy_points': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'fantasy_points_referrals': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'stars': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'league': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetReferredPlayersResponse
+     */
+    'is_hero': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetReferredPlayersResponse
+     */
+    'is_onboarding_done': boolean;
+    /**
+     * Gold as a Decimal value
+     * @type {object}
+     * @memberof GetReferredPlayersResponse
+     */
+    'gold': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReferredPlayersResponse
+     */
+    'tactics_referral_settings_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'following_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'post_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'like_count'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetReferredPlayersResponse
+     */
+    'is_x_verified'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'follower_count': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetReferredPlayersResponse
+     */
+    'can_play_free_tactics': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'fragments': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'total_volume': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'total_tactics': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'total_packs': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetReferredPlayersResponse
+     */
+    'is_direct_referral': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetSellOrdersDTO
+ */
+export interface GetSellOrdersDTO {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'id': string;
+    /**
+     * Hero rarity index
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'hero_rarity_index': string;
+    /**
+     * Trader
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'trader': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'token_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'salt': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'price': string;
+    /**
+     * Signature, unique
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'signature': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetStreakRewardsResponseDTO
+ */
+export interface GetStreakRewardsResponseDTO {
+    /**
+     * 
+     * @type {Array<GuessStreakReward>}
+     * @memberof GetStreakRewardsResponseDTO
+     */
+    'rewards': Array<GuessStreakReward>;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetStreakRewardsResponseDTO
+     */
+    'next_threshold': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetStreakRewardsResponseDTO
+     */
+    'last_threshold': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetTacticByIdQueryDTO
+ */
+export interface GetTacticByIdQueryDTO {
+    /**
+     * options for querying
+     * @type {GetTacticsOptionsDTO}
+     * @memberof GetTacticByIdQueryDTO
+     */
+    'options'?: GetTacticsOptionsDTO;
+    /**
+     * Query with total entry or not
+     * @type {boolean}
+     * @memberof GetTacticByIdQueryDTO
+     */
+    'count_entry'?: boolean;
+    /**
+     * Query with total personal entry or not
+     * @type {boolean}
+     * @memberof GetTacticByIdQueryDTO
+     */
+    'count_personal_entries'?: boolean;
+    /**
+     * Get currently gains for the player (if logged in)
+     * @type {boolean}
+     * @memberof GetTacticByIdQueryDTO
+     */
+    'include_gains'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetTacticCoinsHistoricalDataHistoryResponse
+ */
+export interface GetTacticCoinsHistoricalDataHistoryResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     */
+    'percent_change': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     */
+    'price_usd': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     */
+    'market_cap': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     */
+    'datetime': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetTacticCoinsHistoricalDataResponseDTO
+ */
+export interface GetTacticCoinsHistoricalDataResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticCoinsHistoricalDataResponseDTO
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {Hero}
+     * @memberof GetTacticCoinsHistoricalDataResponseDTO
+     */
+    'hero': Hero;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticCoinsHistoricalDataResponseDTO
+     */
+    'coin_id': string;
+    /**
+     * 
+     * @type {Array<GetTacticCoinsHistoricalDataHistoryResponse>}
+     * @memberof GetTacticCoinsHistoricalDataResponseDTO
+     */
+    'history': Array<GetTacticCoinsHistoricalDataHistoryResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface GetTacticHistoryResponseDTO
+ */
+export interface GetTacticHistoryResponseDTO {
+    /**
+     * 
+     * @type {Tactics}
+     * @memberof GetTacticHistoryResponseDTO
+     */
+    'tactic': Tactics;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticHistoryResponseDTO
+     */
+    'top_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticHistoryResponseDTO
+     */
+    'total_entries': number;
+    /**
+     * 
+     * @type {GetTotalTicketsGainsResponseDTO}
+     * @memberof GetTacticHistoryResponseDTO
+     */
+    'total_gains': GetTotalTicketsGainsResponseDTO;
+}
 /**
  * 
  * @export
@@ -2274,6 +6814,92 @@ export interface GetTacticsHeroesResponse {
 /**
  * 
  * @export
+ * @interface GetTacticsLeaderboardByWinningsDTO
+ */
+export interface GetTacticsLeaderboardByWinningsDTO {
+    /**
+     * 
+     * @type {Array<GetTacticsLeaderboardByWinningsPlayerDTO>}
+     * @memberof GetTacticsLeaderboardByWinningsDTO
+     */
+    'players': Array<GetTacticsLeaderboardByWinningsPlayerDTO>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof GetTacticsLeaderboardByWinningsDTO
+     */
+    'meta': MetaInfiniteQueryDto;
+}
+/**
+ * 
+ * @export
+ * @interface GetTacticsLeaderboardByWinningsPlayerDTO
+ */
+export interface GetTacticsLeaderboardByWinningsPlayerDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'total_usd': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'total_gold': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'total_cards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'total_tickets': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTacticsLeaderboardByWinningsPlayerDTO
+     */
+    'deck_count': number;
+}
+/**
+ * 
+ * @export
  * @interface GetTacticsOptionsDTO
  */
 export interface GetTacticsOptionsDTO {
@@ -2373,6 +6999,12 @@ export interface GetTicketsNewRewardsResponseDTO {
     'id': string;
     /**
      * 
+     * @type {Tactics}
+     * @memberof GetTicketsNewRewardsResponseDTO
+     */
+    'tactic': Tactics;
+    /**
+     * 
      * @type {TicketsNewRewardsEntryDTO}
      * @memberof GetTicketsNewRewardsResponseDTO
      */
@@ -2456,6 +7088,74 @@ export interface GetTotalTicketsGainsResponseDTO {
 /**
  * 
  * @export
+ * @interface GetTournamentHistoryOfPlayerIdDTO
+ */
+export interface GetTournamentHistoryOfPlayerIdDTO {
+    /**
+     * Unique identifier for the tournament
+     * @type {string}
+     * @memberof GetTournamentHistoryOfPlayerIdDTO
+     */
+    'id': string;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof GetTournamentHistoryOfPlayerIdDTO
+     */
+    'tournament_number': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTournamentHistoryOfPlayerIdDTO
+     */
+    'number_of_registered_decks': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof GetTournamentHistoryOfPlayerIdDTO
+     */
+    'total_rewards': object;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof GetTournamentHistoryOfPlayerIdDTO
+     */
+    'league_played': Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface GetTransactionDTO
+ */
+export interface GetTransactionDTO {
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof GetTransactionDTO
+     */
+    'handle': string;
+    /**
+     * Pagination arguments
+     * @type {PaginationDTO}
+     * @memberof GetTransactionDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof GetTransactionDTO
+     */
+    'rarity'?: number;
+    /**
+     * Timestamp
+     * @type {string}
+     * @memberof GetTransactionDTO
+     */
+    'timestamp'?: string;
+}
+/**
+ * 
+ * @export
  * @interface GetVoteConfigQueryDTO
  */
 export interface GetVoteConfigQueryDTO {
@@ -2471,6 +7171,292 @@ export interface GetVoteConfigQueryDTO {
      * @memberof GetVoteConfigQueryDTO
      */
     'pagination'?: PaginationDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GuessFlag
+ */
+export interface GuessFlag {
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessFlag
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessFlag
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessFlag
+     */
+    'description': string;
+}
+/**
+ * 
+ * @export
+ * @interface GuessStreak
+ */
+export interface GuessStreak {
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessStreak
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessStreak
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuessStreak
+     */
+    'current_streak': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuessStreak
+     */
+    'longest_streak': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuessStreak
+     */
+    'total_guesses': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuessStreak
+     */
+    'total_answers': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuessStreak
+     */
+    'play_since_reset': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessStreak
+     */
+    'last_reset': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessStreak
+     */
+    'unlock_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GuessStreak
+     */
+    'last_updated': string;
+}
+/**
+ * 
+ * @export
+ * @interface GuessStreakReward
+ */
+export interface GuessStreakReward {
+    /**
+     * The ID of the streak reward
+     * @type {string}
+     * @memberof GuessStreakReward
+     */
+    'id': string;
+    /**
+     * The threshold of the streak reward
+     * @type {number}
+     * @memberof GuessStreakReward
+     */
+    'threshold': number;
+    /**
+     * The type of the reward
+     * @type {string}
+     * @memberof GuessStreakReward
+     */
+    'reward_type': string;
+    /**
+     * The amount of the reward
+     * @type {number}
+     * @memberof GuessStreakReward
+     */
+    'reward_amount': number;
+    /**
+     * Whether the reward is for onboarding
+     * @type {boolean}
+     * @memberof GuessStreakReward
+     */
+    'is_onboarding': boolean;
+    /**
+     * The date the streak reward was created
+     * @type {string}
+     * @memberof GuessStreakReward
+     */
+    'created_at': string;
+    /**
+     * The date the streak reward was updated
+     * @type {string}
+     * @memberof GuessStreakReward
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface HandleCardDTO
+ */
+export interface HandleCardDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandleCardDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HandleCardDTO
+     */
+    'rarity': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof HandleCardDTO
+     */
+    'picture': string;
+    /**
+     * Picture URL of the card with the stars
+     * @type {string}
+     * @memberof HandleCardDTO
+     */
+    'picture_url': string;
+}
+/**
+ * 
+ * @export
+ * @interface HandleCurrentDTO
+ */
+export interface HandleCurrentDTO {
+    /**
+     * The current rank of the hero
+     * @type {number}
+     * @memberof HandleCurrentDTO
+     */
+    'current_rank': number;
+    /**
+     * The fantasy score of the hero
+     * @type {object}
+     * @memberof HandleCurrentDTO
+     */
+    'fantasy_score': object;
+    /**
+     * The total number of views for the hero\'s tweets
+     * @type {number}
+     * @memberof HandleCurrentDTO
+     */
+    'views': number;
+}
+/**
+ * 
+ * @export
+ * @interface HandleHeroDistributionProbabilityDTO
+ */
+export interface HandleHeroDistributionProbabilityDTO {
+    /**
+     * Inflation degree of the hero
+     * @type {number}
+     * @memberof HandleHeroDistributionProbabilityDTO
+     */
+    'inflation_degree': number;
+}
+/**
+ * 
+ * @export
+ * @interface HandleTradeDTO
+ */
+export interface HandleTradeDTO {
+    /**
+     * ID
+     * @type {string}
+     * @memberof HandleTradeDTO
+     */
+    'id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof HandleTradeDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface HandleUniqueSellOrdersDTO
+ */
+export interface HandleUniqueSellOrdersDTO {
+    /**
+     * 
+     * @type {object}
+     * @memberof HandleUniqueSellOrdersDTO
+     */
+    'lowest_price': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HandleUniqueSellOrdersDTO
+     */
+    'hero_rarity_index': string;
+}
+/**
+ * 
+ * @export
+ * @interface HasAirdropRewardDTO
+ */
+export interface HasAirdropRewardDTO {
+    /**
+     * Whether the player has an airdrop reward
+     * @type {boolean}
+     * @memberof HasAirdropRewardDTO
+     */
+    'has_reward': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface HasPendingRewardsFromFragmentDTO
+ */
+export interface HasPendingRewardsFromFragmentDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof HasPendingRewardsFromFragmentDTO
+     */
+    'hasPending': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof HasPendingRewardsFromFragmentDTO
+     */
+    'fragments': number;
+    /**
+     * 
+     * @type {Array<FragmentClaimDTO>}
+     * @memberof HasPendingRewardsFromFragmentDTO
+     */
+    'claims': Array<FragmentClaimDTO>;
 }
 /**
  * 
@@ -2653,6 +7639,12 @@ export interface Hero {
      */
     'tactic_scores': Array<OmitTypeClass>;
     /**
+     * List of card hero swapping
+     * @type {Array<Array<string>>}
+     * @memberof Hero
+     */
+    'tournament_histories': Array<Array<string>>;
+    /**
      * Volume of trade on hero (optional)
      * @type {number}
      * @memberof Hero
@@ -2701,11 +7693,698 @@ export interface Hero {
      */
     'metadata': object;
     /**
+     * coin_id: contract address and network id of codex.io
+     * @type {string}
+     * @memberof Hero
+     */
+    'coin_id': string;
+    /**
+     * Coin
+     * @type {Coin}
+     * @memberof Hero
+     */
+    'coin': Coin;
+    /**
      * Current score of the hero
      * @type {Current}
      * @memberof Hero
      */
     'current'?: Current;
+    /**
+     * Sell orders of the hero
+     * @type {Array<SellOrder>}
+     * @memberof Hero
+     */
+    'sell_orders': Array<SellOrder>;
+    /**
+     * Bid orders of the hero
+     * @type {Array<BidOrder>}
+     * @memberof Hero
+     */
+    'bid_orders': Array<BidOrder>;
+    /**
+     * Trades of the hero
+     * @type {Array<Trade>}
+     * @memberof Hero
+     */
+    'trades': Array<Trade>;
+    /**
+     * Floor price of the hero
+     * @type {number}
+     * @memberof Hero
+     */
+    'floor_price': number;
+    /**
+     * Highest bid of the hero
+     * @type {number}
+     * @memberof Hero
+     */
+    'highest_bid': number;
+    /**
+     * Expected score of the hero for tournament
+     * @type {object}
+     * @memberof Hero
+     */
+    'expected_score': object;
+    /**
+     * Flags of the hero
+     * @type {Array<HeroFlag>}
+     * @memberof Hero
+     */
+    'flags': Array<HeroFlag>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroAnalyticsPrevWeekLastWeekDTO
+ */
+export interface HeroAnalyticsPrevWeekLastWeekDTO {
+    /**
+     * Previous week
+     * @type {HeroAnalyticsPrevWeekLastWeekTweet}
+     * @memberof HeroAnalyticsPrevWeekLastWeekDTO
+     */
+    'prev_week': HeroAnalyticsPrevWeekLastWeekTweet;
+    /**
+     * Last week
+     * @type {HeroAnalyticsPrevWeekLastWeekTweet}
+     * @memberof HeroAnalyticsPrevWeekLastWeekDTO
+     */
+    'last_week': HeroAnalyticsPrevWeekLastWeekTweet;
+}
+/**
+ * 
+ * @export
+ * @interface HeroAnalyticsPrevWeekLastWeekTweet
+ */
+export interface HeroAnalyticsPrevWeekLastWeekTweet {
+    /**
+     * Number of views for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'views': number;
+    /**
+     * Number of likes for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'likes': number;
+    /**
+     * Number of retweets for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'retweets': number;
+    /**
+     * Number of quotes for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'quotes': number;
+    /**
+     * Number of bookmarks for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'bookmarks': number;
+    /**
+     * Number of replies for the tweet
+     * @type {number}
+     * @memberof HeroAnalyticsPrevWeekLastWeekTweet
+     */
+    'replies': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroCircleDTO
+ */
+export interface HeroCircleDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroCircleDTO
+     */
+    'hero_id': string;
+    /**
+     * Circle Layer
+     * @type {number}
+     * @memberof HeroCircleDTO
+     */
+    'circle_layer': number;
+    /**
+     * Username
+     * @type {string}
+     * @memberof HeroCircleDTO
+     */
+    'username': string;
+    /**
+     * Profile URL
+     * @type {string}
+     * @memberof HeroCircleDTO
+     */
+    'profile_url': string;
+    /**
+     * Is Hero
+     * @type {boolean}
+     * @memberof HeroCircleDTO
+     */
+    'is_hero': boolean;
+    /**
+     * Is Player
+     * @type {boolean}
+     * @memberof HeroCircleDTO
+     */
+    'is_player': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface HeroCloutDistributionDTO
+ */
+export interface HeroCloutDistributionDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroCloutDistributionDTO
+     */
+    'hero_id': string;
+    /**
+     * Season number
+     * @type {number}
+     * @memberof HeroCloutDistributionDTO
+     */
+    'season': number;
+    /**
+     * Daily clout distributions
+     * @type {Array<DailyCloutDistributionDTO>}
+     * @memberof HeroCloutDistributionDTO
+     */
+    'distributions': Array<DailyCloutDistributionDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroCoinHistoryResponse
+ */
+export interface HeroCoinHistoryResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroCoinHistoryResponse
+     */
+    'change_24'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroCoinHistoryResponse
+     */
+    'market_cap'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroCoinResponse
+ */
+export interface HeroCoinResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroCoinResponse
+     */
+    'imageLargeUrl': string;
+    /**
+     * 
+     * @type {Array<HeroCoinHistoryResponse>}
+     * @memberof HeroCoinResponse
+     */
+    'coin_histories'?: Array<HeroCoinHistoryResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroFlag
+ */
+export interface HeroFlag {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroFlag
+     */
+    'hero_id': string;
+    /**
+     * Flag ID
+     * @type {string}
+     * @memberof HeroFlag
+     */
+    'flag_id': string;
+    /**
+     * Flag
+     * @type {Flag}
+     * @memberof HeroFlag
+     */
+    'flags': Flag;
+}
+/**
+ * 
+ * @export
+ * @interface HeroHistoryDTO
+ */
+export interface HeroHistoryDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroHistoryDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroHistoryDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroHistoryDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {ScoreHistoryObject}
+     * @memberof HeroHistoryDTO
+     */
+    'score_history': ScoreHistoryObject;
+    /**
+     * 
+     * @type {Array<TournamentScoreHistory>}
+     * @memberof HeroHistoryDTO
+     */
+    'tournament_histories': Array<TournamentScoreHistory>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroHolderDTO
+ */
+export interface HeroHolderDTO {
+    /**
+     * 
+     * @type {Player}
+     * @memberof HeroHolderDTO
+     */
+    'player': Player;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroHolderDTO
+     */
+    'rarity1Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroHolderDTO
+     */
+    'rarity2Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroHolderDTO
+     */
+    'rarity3Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroHolderDTO
+     */
+    'rarity4Count': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroLeaderboardPositionItemDTO
+ */
+export interface HeroLeaderboardPositionItemDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'hero_id': string;
+    /**
+     * Topic flag
+     * @type {string}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'flag': string;
+    /**
+     * Total clout score
+     * @type {number}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'total_clout': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'total_posts': number;
+    /**
+     * Total views
+     * @type {string}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'total_views': string;
+    /**
+     * Previous rank
+     * @type {number}
+     * @memberof HeroLeaderboardPositionItemDTO
+     */
+    'previous_rank': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroLeaderboardPositionsResponseDTO
+ */
+export interface HeroLeaderboardPositionsResponseDTO {
+    /**
+     * List of hero leaderboard positions across topics
+     * @type {Array<HeroLeaderboardPositionItemDTO>}
+     * @memberof HeroLeaderboardPositionsResponseDTO
+     */
+    'data': Array<HeroLeaderboardPositionItemDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroQuickOverviewDTO
+ */
+export interface HeroQuickOverviewDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'hero_id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'handle': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Total clout score
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'total_clout': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'total_posts': number;
+    /**
+     * Total views
+     * @type {string}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'total_views': string;
+    /**
+     * Smart follower count
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'smart_follower_count': number;
+    /**
+     * Season
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'season': number;
+    /**
+     * Last clout distribution
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'last_clout_distribution': number;
+    /**
+     * Previous rank
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'previous_rank': number;
+    /**
+     * Average number of posts in last 7 days
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'avg_posts_7d': number;
+    /**
+     * Average views per post in last 7 days
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'avg_views_per_post_7d': number;
+    /**
+     * Average number of posts in last 30 days
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'avg_posts_30d': number;
+    /**
+     * Average views per post in last 30 days
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'avg_views_per_post_30d': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroRewards
+ */
+export interface HeroRewards {
+    /**
+     * Unique identifier for the hero reward
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'id': string;
+    /**
+     * ID of the hero
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'hero_id': string;
+    /**
+     * Whether a claim has been asked
+     * @type {boolean}
+     * @memberof HeroRewards
+     */
+    'claim_asked': boolean;
+    /**
+     * Fantasy points earned
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'fantasy_points': object;
+    /**
+     * Date when the reward was computed
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'date_computed': string;
+    /**
+     * Mint revenue
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'mint_revenue'?: object;
+    /**
+     * Fee revenue
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'fee_revenue': object;
+    /**
+     * Total revenue
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'total_revenue': object;
+    /**
+     * Gold earned
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'gold'?: object;
+    /**
+     * Shared percentage
+     * @type {number}
+     * @memberof HeroRewards
+     */
+    'shared_percentage'?: number;
+    /**
+     * Whether the reward is for in-deck holders only
+     * @type {boolean}
+     * @memberof HeroRewards
+     */
+    'in_deck_holders_only': boolean;
+    /**
+     * Claimed ETH
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'claim_eth': object;
+    /**
+     * Claimed gold
+     * @type {number}
+     * @memberof HeroRewards
+     */
+    'claim_gold': number;
+    /**
+     * Claimed fan points
+     * @type {number}
+     * @memberof HeroRewards
+     */
+    'claim_fan': number;
+    /**
+     * Player address
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'player_address'?: string;
+    /**
+     * Card reward
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'card_reward'?: object;
+    /**
+     * Distribution condition
+     * @type {object}
+     * @memberof HeroRewards
+     */
+    'distribution_condition'?: object;
+    /**
+     * Whether the reward is processed
+     * @type {boolean}
+     * @memberof HeroRewards
+     */
+    'is_processed': boolean;
+    /**
+     * Whether the payout is done
+     * @type {boolean}
+     * @memberof HeroRewards
+     */
+    'is_payout_done': boolean;
+    /**
+     * Whether the cards are distributed
+     * @type {boolean}
+     * @memberof HeroRewards
+     */
+    'are_cards_distributed': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof HeroRewards
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroStatsDTO
+ */
+export interface HeroStatsDTO {
+    /**
+     * Current stats of the hero
+     * @type {CurrentStatsDTO}
+     * @memberof HeroStatsDTO
+     */
+    'currentStats': CurrentStatsDTO;
+    /**
+     * Tournament stats of the hero
+     * @type {TournamentStatsDTO}
+     * @memberof HeroStatsDTO
+     */
+    'tournamentStats': TournamentStatsDTO;
+    /**
+     * Tactic stats of the hero
+     * @type {TacticStatsDTO}
+     * @memberof HeroStatsDTO
+     */
+    'tacticStats': TacticStatsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface HeroSummaryDTO
+ */
+export interface HeroSummaryDTO {
+    /**
+     * Hero summary data
+     * @type {object}
+     * @memberof HeroSummaryDTO
+     */
+    'summary': object;
+    /**
+     * Word cloud data
+     * @type {object}
+     * @memberof HeroSummaryDTO
+     */
+    'word_cloud': object;
+    /**
+     * Spider web data
+     * @type {object}
+     * @memberof HeroSummaryDTO
+     */
+    'spider_web': object;
+    /**
+     * Mood data
+     * @type {object}
+     * @memberof HeroSummaryDTO
+     */
+    'mood': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroSummaryDTO
+     */
+    'updated_at': string;
 }
 /**
  * 
@@ -2726,6 +8405,421 @@ export interface HeroSupplyDto {
      */
     'supply': number;
 }
+/**
+ * 
+ * @export
+ * @interface HeroTradeDTO
+ */
+export interface HeroTradeDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'tradeId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTradeDTO
+     */
+    'price': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'timestamp': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'buyerId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'buyerName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'sellerId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'sellerName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'pictureUrl': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'heroName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTradeDTO
+     */
+    'txHash': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroTweetDTO
+ */
+export interface HeroTweetDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTweetDTO
+     */
+    'post_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'bookmarks': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'likes': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'quotes': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'replies': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'retweets': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'views': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTweetDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroTweetDTO
+     */
+    'type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'fire_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'health_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'impact_score': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof HeroTweetDTO
+     */
+    'top_interacting_users': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'certified_views'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroTweetDTO
+     */
+    'cred_score'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroVolumeStatsDTO
+ */
+export interface HeroVolumeStatsDTO {
+    /**
+     * Earnings in the last 30 days
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'earnings30d': number;
+    /**
+     * Number of trades in the last 7 days
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'trades7d': number;
+    /**
+     * Number of trades in the previous last 7 days
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'previousTrades7d': number;
+    /**
+     * Number of trades in the last 30 days
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'trades30d': number;
+    /**
+     * Number of trades in the previous last 30 days
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'previousTrades30d': number;
+    /**
+     * Number of trades in all time
+     * @type {number}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'tradesAllTime': number;
+    /**
+     * Volume in the last 7 days
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'volume7d': string;
+    /**
+     * Volume in the previous last 7 days
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'previousVolume7d': string;
+    /**
+     * Volume in the last 30 days
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'volume30d': string;
+    /**
+     * Volume in the previous last 30 days
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'previousVolume30d': string;
+    /**
+     * Total volume of all time
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'volumeAllTime': string;
+    /**
+     * Floor price in the last 7 days
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'floorPrice7d': string;
+    /**
+     * Current floor price
+     * @type {string}
+     * @memberof HeroVolumeStatsDTO
+     */
+    'currentFloorPrice': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroWithStatsDTO
+ */
+export interface HeroWithStatsDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'current_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'previous_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'views': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'tweet_count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'fantasy_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'reach': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'avg_views': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'followers_count': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'volume': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'last_sale_price': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'floor_price': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroWithStatsOrderByDTO
+ */
+export interface HeroWithStatsOrderByDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsOrderByDTO
+     */
+    'current_rank'?: HeroWithStatsOrderByDTOCurrentRankEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsOrderByDTO
+     */
+    'previous_rank'?: HeroWithStatsOrderByDTOPreviousRankEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsOrderByDTO
+     */
+    'views'?: HeroWithStatsOrderByDTOViewsEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsOrderByDTO
+     */
+    'tweet_count'?: HeroWithStatsOrderByDTOTweetCountEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsOrderByDTO
+     */
+    'fantasy_score'?: HeroWithStatsOrderByDTOFantasyScoreEnum;
+}
+
+export const HeroWithStatsOrderByDTOCurrentRankEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type HeroWithStatsOrderByDTOCurrentRankEnum = typeof HeroWithStatsOrderByDTOCurrentRankEnum[keyof typeof HeroWithStatsOrderByDTOCurrentRankEnum];
+export const HeroWithStatsOrderByDTOPreviousRankEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type HeroWithStatsOrderByDTOPreviousRankEnum = typeof HeroWithStatsOrderByDTOPreviousRankEnum[keyof typeof HeroWithStatsOrderByDTOPreviousRankEnum];
+export const HeroWithStatsOrderByDTOViewsEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type HeroWithStatsOrderByDTOViewsEnum = typeof HeroWithStatsOrderByDTOViewsEnum[keyof typeof HeroWithStatsOrderByDTOViewsEnum];
+export const HeroWithStatsOrderByDTOTweetCountEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type HeroWithStatsOrderByDTOTweetCountEnum = typeof HeroWithStatsOrderByDTOTweetCountEnum[keyof typeof HeroWithStatsOrderByDTOTweetCountEnum];
+export const HeroWithStatsOrderByDTOFantasyScoreEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type HeroWithStatsOrderByDTOFantasyScoreEnum = typeof HeroWithStatsOrderByDTOFantasyScoreEnum[keyof typeof HeroWithStatsOrderByDTOFantasyScoreEnum];
+
 /**
  * 
  * @export
@@ -2775,6 +8869,12 @@ export interface HeroWithTacticScoresHeroWithImagePrefix {
      * @memberof HeroWithTacticScoresHeroWithImagePrefix
      */
     'tactic_image_prefix': string;
+    /**
+     * 
+     * @type {HeroCoinResponse}
+     * @memberof HeroWithTacticScoresHeroWithImagePrefix
+     */
+    'coin': HeroCoinResponse;
 }
 /**
  * 
@@ -2957,6 +9057,12 @@ export interface HeroWithVotesCount {
      */
     'tactic_scores': Array<OmitTypeClass>;
     /**
+     * List of card hero swapping
+     * @type {Array<Array<string>>}
+     * @memberof HeroWithVotesCount
+     */
+    'tournament_histories': Array<Array<string>>;
+    /**
      * Volume of trade on hero (optional)
      * @type {number}
      * @memberof HeroWithVotesCount
@@ -2999,11 +9105,65 @@ export interface HeroWithVotesCount {
      */
     'metadata': object;
     /**
+     * coin_id: contract address and network id of codex.io
+     * @type {string}
+     * @memberof HeroWithVotesCount
+     */
+    'coin_id': string;
+    /**
+     * Coin
+     * @type {Coin}
+     * @memberof HeroWithVotesCount
+     */
+    'coin': Coin;
+    /**
      * Current score of the hero
      * @type {Current}
      * @memberof HeroWithVotesCount
      */
     'current'?: Current;
+    /**
+     * Sell orders of the hero
+     * @type {Array<SellOrder>}
+     * @memberof HeroWithVotesCount
+     */
+    'sell_orders': Array<SellOrder>;
+    /**
+     * Bid orders of the hero
+     * @type {Array<BidOrder>}
+     * @memberof HeroWithVotesCount
+     */
+    'bid_orders': Array<BidOrder>;
+    /**
+     * Trades of the hero
+     * @type {Array<Trade>}
+     * @memberof HeroWithVotesCount
+     */
+    'trades': Array<Trade>;
+    /**
+     * Floor price of the hero
+     * @type {number}
+     * @memberof HeroWithVotesCount
+     */
+    'floor_price': number;
+    /**
+     * Highest bid of the hero
+     * @type {number}
+     * @memberof HeroWithVotesCount
+     */
+    'highest_bid': number;
+    /**
+     * Expected score of the hero for tournament
+     * @type {object}
+     * @memberof HeroWithVotesCount
+     */
+    'expected_score': object;
+    /**
+     * Flags of the hero
+     * @type {Array<HeroFlag>}
+     * @memberof HeroWithVotesCount
+     */
+    'flags': Array<HeroFlag>;
     /**
      * Votes from voting module
      * @type {Array<VoteWithoutInclude>}
@@ -3022,6 +9182,1011 @@ export interface HeroWithVotesCount {
      * @memberof HeroWithVotesCount
      */
     'last_4_scores_avg': number;
+}
+/**
+ * 
+ * @export
+ * @interface HeroWithoutBidOrders
+ */
+export interface HeroWithoutBidOrders {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'name': string;
+    /**
+     * Previous rank of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'previous_rank': number;
+    /**
+     * Indicates if the hero is a player
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'is_player': boolean;
+    /**
+     * Indicates if the hero is blue verified
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'is_blue_verified': boolean;
+    /**
+     * Indicates if the hero has a default profile image
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'default_profile_image': boolean;
+    /**
+     * Description of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'description'?: string;
+    /**
+     * Count of fast followers
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'fast_followers_count': number;
+    /**
+     * Count of favourites
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'favourites_count': number;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'followers_count': number;
+    /**
+     * Count of friends
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'friends_count': number;
+    /**
+     * Listed count
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'listed_count': number;
+    /**
+     * Location of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'location'?: string;
+    /**
+     * Media count
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'media_count': number;
+    /**
+     * Indicates if the hero is possibly sensitive
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'possibly_sensitive': boolean;
+    /**
+     * URL of the profile banner
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'profile_banner_url'?: string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Indicates if the hero has a banner
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'has_banner': boolean;
+    /**
+     * Indicates if the hero is verified
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'verified': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'updated_at': string;
+    /**
+     * Count of statuses
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'statuses_count': number;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'stars': number;
+    /**
+     * Player address of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'player_address'?: string;
+    /**
+     * Indicates if the hero can be packed
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrders
+     */
+    'can_be_packed': boolean;
+    /**
+     * Previous stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'previous_stars': number;
+    /**
+     * Star gain of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'star_gain'?: number;
+    /**
+     * List of hero_scores
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'tactic_scores': Array<OmitTypeClass>;
+    /**
+     * List of card hero swapping
+     * @type {Array<Array<string>>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'tournament_histories': Array<Array<string>>;
+    /**
+     * Volume of trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'volume'?: number;
+    /**
+     * Last trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'last_sale'?: number;
+    /**
+     * Floor price of hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'floor'?: number;
+    /**
+     * Votes from voting module
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'votes'?: Array<OmitTypeClass>;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'status': string;
+    /**
+     * Credibility score
+     * @type {CredibilityAverage}
+     * @memberof HeroWithoutBidOrders
+     */
+    'credibility_average': CredibilityAverage;
+    /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'tactic_image_prefix': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof HeroWithoutBidOrders
+     */
+    'metadata': object;
+    /**
+     * coin_id: contract address and network id of codex.io
+     * @type {string}
+     * @memberof HeroWithoutBidOrders
+     */
+    'coin_id': string;
+    /**
+     * Coin
+     * @type {Coin}
+     * @memberof HeroWithoutBidOrders
+     */
+    'coin': Coin;
+    /**
+     * Current score of the hero
+     * @type {Current}
+     * @memberof HeroWithoutBidOrders
+     */
+    'current'?: Current;
+    /**
+     * Sell orders of the hero
+     * @type {Array<SellOrder>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'sell_orders': Array<SellOrder>;
+    /**
+     * Trades of the hero
+     * @type {Array<Trade>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'trades': Array<Trade>;
+    /**
+     * Floor price of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'floor_price': number;
+    /**
+     * Highest bid of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrders
+     */
+    'highest_bid': number;
+    /**
+     * Expected score of the hero for tournament
+     * @type {object}
+     * @memberof HeroWithoutBidOrders
+     */
+    'expected_score': object;
+    /**
+     * Flags of the hero
+     * @type {Array<HeroFlag>}
+     * @memberof HeroWithoutBidOrders
+     */
+    'flags': Array<HeroFlag>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroWithoutSellOrders
+ */
+export interface HeroWithoutSellOrders {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'name': string;
+    /**
+     * Previous rank of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'previous_rank': number;
+    /**
+     * Indicates if the hero is a player
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'is_player': boolean;
+    /**
+     * Indicates if the hero is blue verified
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'is_blue_verified': boolean;
+    /**
+     * Indicates if the hero has a default profile image
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'default_profile_image': boolean;
+    /**
+     * Description of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'description'?: string;
+    /**
+     * Count of fast followers
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'fast_followers_count': number;
+    /**
+     * Count of favourites
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'favourites_count': number;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'followers_count': number;
+    /**
+     * Count of friends
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'friends_count': number;
+    /**
+     * Listed count
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'listed_count': number;
+    /**
+     * Location of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'location'?: string;
+    /**
+     * Media count
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'media_count': number;
+    /**
+     * Indicates if the hero is possibly sensitive
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'possibly_sensitive': boolean;
+    /**
+     * URL of the profile banner
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'profile_banner_url'?: string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Indicates if the hero has a banner
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'has_banner': boolean;
+    /**
+     * Indicates if the hero is verified
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'verified': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'updated_at': string;
+    /**
+     * Count of statuses
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'statuses_count': number;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'stars': number;
+    /**
+     * Player address of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'player_address'?: string;
+    /**
+     * Indicates if the hero can be packed
+     * @type {boolean}
+     * @memberof HeroWithoutSellOrders
+     */
+    'can_be_packed': boolean;
+    /**
+     * Previous stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'previous_stars': number;
+    /**
+     * Star gain of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'star_gain'?: number;
+    /**
+     * List of hero_scores
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'tactic_scores': Array<OmitTypeClass>;
+    /**
+     * List of card hero swapping
+     * @type {Array<Array<string>>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'tournament_histories': Array<Array<string>>;
+    /**
+     * Volume of trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'volume'?: number;
+    /**
+     * Last trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'last_sale'?: number;
+    /**
+     * Floor price of hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'floor'?: number;
+    /**
+     * Votes from voting module
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'votes'?: Array<OmitTypeClass>;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'status': string;
+    /**
+     * Credibility score
+     * @type {CredibilityAverage}
+     * @memberof HeroWithoutSellOrders
+     */
+    'credibility_average': CredibilityAverage;
+    /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'tactic_image_prefix': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof HeroWithoutSellOrders
+     */
+    'metadata': object;
+    /**
+     * coin_id: contract address and network id of codex.io
+     * @type {string}
+     * @memberof HeroWithoutSellOrders
+     */
+    'coin_id': string;
+    /**
+     * Coin
+     * @type {Coin}
+     * @memberof HeroWithoutSellOrders
+     */
+    'coin': Coin;
+    /**
+     * Current score of the hero
+     * @type {Current}
+     * @memberof HeroWithoutSellOrders
+     */
+    'current'?: Current;
+    /**
+     * Bid orders of the hero
+     * @type {Array<BidOrder>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'bid_orders': Array<BidOrder>;
+    /**
+     * Trades of the hero
+     * @type {Array<Trade>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'trades': Array<Trade>;
+    /**
+     * Floor price of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'floor_price': number;
+    /**
+     * Highest bid of the hero
+     * @type {number}
+     * @memberof HeroWithoutSellOrders
+     */
+    'highest_bid': number;
+    /**
+     * Expected score of the hero for tournament
+     * @type {object}
+     * @memberof HeroWithoutSellOrders
+     */
+    'expected_score': object;
+    /**
+     * Flags of the hero
+     * @type {Array<HeroFlag>}
+     * @memberof HeroWithoutSellOrders
+     */
+    'flags': Array<HeroFlag>;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotFeedResponse
+ */
+export interface HotOrNotFeedResponse {
+    /**
+     * Unique identifier for the tweet
+     * @type {string}
+     * @memberof HotOrNotFeedResponse
+     */
+    'post_id': string;
+    /**
+     * Hero
+     * @type {HotOrNotHero}
+     * @memberof HotOrNotFeedResponse
+     */
+    'hero': HotOrNotHero;
+    /**
+     * Twitter handle of the hero
+     * @type {string}
+     * @memberof HotOrNotFeedResponse
+     */
+    'handle': string;
+    /**
+     * Text for the tweet
+     * @type {string}
+     * @memberof HotOrNotFeedResponse
+     */
+    'text': string;
+    /**
+     * Creation timestamp of the tweet
+     * @type {string}
+     * @memberof HotOrNotFeedResponse
+     */
+    'created_at': string;
+    /**
+     * Tweet weighted score for ranking
+     * @type {number}
+     * @memberof HotOrNotFeedResponse
+     */
+    'weighted_score': number;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotHero
+ */
+export interface HotOrNotHero {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof HotOrNotHero
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof HotOrNotHero
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof HotOrNotHero
+     */
+    'name': string;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof HotOrNotHero
+     */
+    'followers_count': number;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof HotOrNotHero
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof HotOrNotHero
+     */
+    'status': string;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotInteractionBody
+ */
+export interface HotOrNotInteractionBody {
+    /**
+     * The post id
+     * @type {string}
+     * @memberof HotOrNotInteractionBody
+     */
+    'post_id': string;
+    /**
+     * The like status
+     * @type {boolean}
+     * @memberof HotOrNotInteractionBody
+     */
+    'is_like': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotInteractionResponse
+ */
+export interface HotOrNotInteractionResponse {
+    /**
+     * Whether the answer was correct
+     * @type {boolean}
+     * @memberof HotOrNotInteractionResponse
+     */
+    'is_correct': boolean;
+    /**
+     * Updated streak information
+     * @type {HotOrNotStreakResponse}
+     * @memberof HotOrNotInteractionResponse
+     */
+    'streak': HotOrNotStreakResponse;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotNextRewardResponse
+ */
+export interface HotOrNotNextRewardResponse {
+    /**
+     * Next threshold
+     * @type {number}
+     * @memberof HotOrNotNextRewardResponse
+     */
+    'next_threshold': number;
+    /**
+     * Last threshold
+     * @type {number}
+     * @memberof HotOrNotNextRewardResponse
+     */
+    'last_threshold': number;
+    /**
+     * Rewards
+     * @type {Array<StreakReward>}
+     * @memberof HotOrNotNextRewardResponse
+     */
+    'rewards': Array<StreakReward>;
+}
+/**
+ * 
+ * @export
+ * @interface HotOrNotStreakResponse
+ */
+export interface HotOrNotStreakResponse {
+    /**
+     * Streak ID
+     * @type {string}
+     * @memberof HotOrNotStreakResponse
+     */
+    'id': string;
+    /**
+     * Current streak count
+     * @type {number}
+     * @memberof HotOrNotStreakResponse
+     */
+    'current_streak': number;
+    /**
+     * Longest streak count
+     * @type {number}
+     * @memberof HotOrNotStreakResponse
+     */
+    'longest_streak': number;
+    /**
+     * Total guesses
+     * @type {number}
+     * @memberof HotOrNotStreakResponse
+     */
+    'total_guesses': number;
+    /**
+     * Total answers
+     * @type {number}
+     * @memberof HotOrNotStreakResponse
+     */
+    'total_answers': number;
+    /**
+     * Last time the streak was updated
+     * @type {string}
+     * @memberof HotOrNotStreakResponse
+     */
+    'last_updated': string;
+    /**
+     * Last time the streak was reset
+     * @type {string}
+     * @memberof HotOrNotStreakResponse
+     */
+    'last_reset': string;
+    /**
+     * Play since reset
+     * @type {number}
+     * @memberof HotOrNotStreakResponse
+     */
+    'play_since_reset': number;
+    /**
+     * Unlock at
+     * @type {string}
+     * @memberof HotOrNotStreakResponse
+     */
+    'unlock_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface InsertReferralBodyDTO
+ */
+export interface InsertReferralBodyDTO {
+    /**
+     * The referral code to insert
+     * @type {string}
+     * @memberof InsertReferralBodyDTO
+     */
+    'referralCode': string;
+}
+/**
+ * 
+ * @export
+ * @interface InsertReferralResponseDTO
+ */
+export interface InsertReferralResponseDTO {
+    /**
+     * Success of the operation
+     * @type {boolean}
+     * @memberof InsertReferralResponseDTO
+     */
+    'success': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface Interaction
+ */
+export interface Interaction {
+    /**
+     * Id of the interaction
+     * @type {string}
+     * @memberof Interaction
+     */
+    'id': string;
+    /**
+     * Id of the tweet
+     * @type {string}
+     * @memberof Interaction
+     */
+    'tweet_id': string;
+    /**
+     * Id of the player
+     * @type {string}
+     * @memberof Interaction
+     */
+    'player_id': string;
+    /**
+     * Is the interaction a like
+     * @type {boolean}
+     * @memberof Interaction
+     */
+    'is_like': boolean;
+    /**
+     * Created at timestamp
+     * @type {string}
+     * @memberof Interaction
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface InteractionSummary
+ */
+export interface InteractionSummary {
+    /**
+     * Tweet ID
+     * @type {string}
+     * @memberof InteractionSummary
+     */
+    'tweet_id': string;
+    /**
+     * Likes count
+     * @type {number}
+     * @memberof InteractionSummary
+     */
+    'likes_count': number;
+    /**
+     * Dislikes count
+     * @type {number}
+     * @memberof InteractionSummary
+     */
+    'dislikes_count': number;
+    /**
+     * Last updated
+     * @type {string}
+     * @memberof InteractionSummary
+     */
+    'last_updated': string;
+}
+/**
+ * 
+ * @export
+ * @interface LastRefreshDTO
+ */
+export interface LastRefreshDTO {
+    /**
+     * The last update timestamp
+     * @type {string}
+     * @memberof LastRefreshDTO
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface LeaderboardForTopicItemDTO
+ */
+export interface LeaderboardForTopicItemDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'hero_id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'handle': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Total clout score
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'total_clout': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'total_posts': number;
+    /**
+     * Total views
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'total_views': string;
+    /**
+     * Smart follower count
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'smart_follower_count': number;
+    /**
+     * Last clout distribution
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'last_clout_distribution': number;
+    /**
+     * Previous rank
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'previous_rank': number;
+    /**
+     * Percentage of total clout (mindshare)
+     * @type {number}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'mindshare_percentage': number;
+    /**
+     * Trend direction (up/down)
+     * @type {string}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'trend': string;
+    /**
+     * Historical clout data for trend visualization
+     * @type {Array<number>}
+     * @memberof LeaderboardForTopicItemDTO
+     */
+    'trendData': Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface LinkFlagsToChoicesDTO
+ */
+export interface LinkFlagsToChoicesDTO {
+    /**
+     * Choices that the flag is related to
+     * @type {Array<string>}
+     * @memberof LinkFlagsToChoicesDTO
+     */
+    'choice_ids': Array<string>;
+    /**
+     * Flags that the choice is related to
+     * @type {Array<string>}
+     * @memberof LinkFlagsToChoicesDTO
+     */
+    'flag_ids': Array<string>;
 }
 /**
  * 
@@ -3047,6 +10212,12 @@ export interface MaintenanceConfig {
      * @memberof MaintenanceConfig
      */
     'maintenance_until'?: string | null;
+    /**
+     * App version
+     * @type {string}
+     * @memberof MaintenanceConfig
+     */
+    'app_version': string;
 }
 /**
  * 
@@ -3072,6 +10243,12 @@ export interface MaintenanceConfigRequest {
      * @memberof MaintenanceConfigRequest
      */
     'until'?: string;
+    /**
+     * App version
+     * @type {string}
+     * @memberof MaintenanceConfigRequest
+     */
+    'app_version': string;
 }
 /**
  * 
@@ -3115,6 +10292,99 @@ export interface MetaDTO {
      * @memberof MetaDTO
      */
     'next': number | null;
+}
+/**
+ * 
+ * @export
+ * @interface MetaInfiniteQueryDto
+ */
+export interface MetaInfiniteQueryDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof MetaInfiniteQueryDto
+     */
+    'lastPage'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MetaInfiniteQueryDto
+     */
+    'hasNextPage': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof MetaInfiniteQueryDto
+     */
+    'limit': number;
+}
+/**
+ * 
+ * @export
+ * @interface MindshareLeaderboardDataPoint
+ */
+export interface MindshareLeaderboardDataPoint {
+    /**
+     * 
+     * @type {string}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'avatar'?: string;
+    /**
+     * Percentage of total clout
+     * @type {number}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'value': number;
+    /**
+     * Trend direction (up/down)
+     * @type {string}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'trend': string;
+    /**
+     * Current clout score from leaderboard
+     * @type {number}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'current_clout': number;
+    /**
+     * Color value for treemap
+     * @type {number}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'colorValue': number;
+    /**
+     * Historical clout data for trend visualization
+     * @type {Array<number>}
+     * @memberof MindshareLeaderboardDataPoint
+     */
+    'trendData': Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface MindshareLeaderboardResponseDTO
+ */
+export interface MindshareLeaderboardResponseDTO {
+    /**
+     * 
+     * @type {Array<MindshareLeaderboardDataPoint>}
+     * @memberof MindshareLeaderboardResponseDTO
+     */
+    'data': Array<MindshareLeaderboardDataPoint>;
 }
 /**
  * 
@@ -3241,6 +10511,38 @@ export interface OmitTypeClass {
 /**
  * 
  * @export
+ * @interface OnboardingQuestProgressDto
+ */
+export interface OnboardingQuestProgressDto {
+    /**
+     * A record of onboarding quest names, their IDs, and completion status
+     * @type {object}
+     * @memberof OnboardingQuestProgressDto
+     */
+    'quests': object;
+}
+/**
+ * 
+ * @export
+ * @interface OnboardingStatusDto
+ */
+export interface OnboardingStatusDto {
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof OnboardingStatusDto
+     */
+    'playerId': string;
+    /**
+     * Onboarding status
+     * @type {boolean}
+     * @memberof OnboardingStatusDto
+     */
+    'isOnboardingDone': boolean;
+}
+/**
+ * 
+ * @export
  * @interface OpenTacticRegistrationDTO
  */
 export interface OpenTacticRegistrationDTO {
@@ -3267,6 +10569,44 @@ export interface PaginatedCardResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedCardResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedCardWithNumberResult
+ */
+export interface PaginatedCardWithNumberResult {
+    /**
+     * Data items
+     * @type {Array<CardWithNumber>}
+     * @memberof PaginatedCardWithNumberResult
+     */
+    'data': Array<CardWithNumber>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedCardWithNumberResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedCloutLeaderboardDTOResult
+ */
+export interface PaginatedCloutLeaderboardDTOResult {
+    /**
+     * Data items
+     * @type {Array<CloutLeaderboardDTO>}
+     * @memberof PaginatedCloutLeaderboardDTOResult
+     */
+    'data': Array<CloutLeaderboardDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedCloutLeaderboardDTOResult
      */
     'meta': MetaDTO;
 }
@@ -3311,6 +10651,44 @@ export interface PaginatedGetLastActivityDtoResult {
 /**
  * 
  * @export
+ * @interface PaginatedGetReferredPlayersResponseResult
+ */
+export interface PaginatedGetReferredPlayersResponseResult {
+    /**
+     * Data items
+     * @type {Array<GetReferredPlayersResponse>}
+     * @memberof PaginatedGetReferredPlayersResponseResult
+     */
+    'data': Array<GetReferredPlayersResponse>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedGetReferredPlayersResponseResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedGetTacticHistoryResponseDTOResult
+ */
+export interface PaginatedGetTacticHistoryResponseDTOResult {
+    /**
+     * Data items
+     * @type {Array<GetTacticHistoryResponseDTO>}
+     * @memberof PaginatedGetTacticHistoryResponseDTOResult
+     */
+    'data': Array<GetTacticHistoryResponseDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedGetTacticHistoryResponseDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedGetTacticsHeroesResponseResult
  */
 export interface PaginatedGetTacticsHeroesResponseResult {
@@ -3324,6 +10702,25 @@ export interface PaginatedGetTacticsHeroesResponseResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedGetTacticsHeroesResponseResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedHeroHolderDTOResult
+ */
+export interface PaginatedHeroHolderDTOResult {
+    /**
+     * Data items
+     * @type {Array<HeroHolderDTO>}
+     * @memberof PaginatedHeroHolderDTOResult
+     */
+    'data': Array<HeroHolderDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedHeroHolderDTOResult
      */
     'meta': MetaDTO;
 }
@@ -3349,6 +10746,44 @@ export interface PaginatedHeroResult {
 /**
  * 
  * @export
+ * @interface PaginatedHeroWithStatsDTOResult
+ */
+export interface PaginatedHeroWithStatsDTOResult {
+    /**
+     * Data items
+     * @type {Array<HeroWithStatsDTO>}
+     * @memberof PaginatedHeroWithStatsDTOResult
+     */
+    'data': Array<HeroWithStatsDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedHeroWithStatsDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedLeaderboardForTopicItemDTOResult
+ */
+export interface PaginatedLeaderboardForTopicItemDTOResult {
+    /**
+     * Data items
+     * @type {Array<LeaderboardForTopicItemDTO>}
+     * @memberof PaginatedLeaderboardForTopicItemDTOResult
+     */
+    'data': Array<LeaderboardForTopicItemDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedLeaderboardForTopicItemDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedPlayerResult
  */
 export interface PaginatedPlayerResult {
@@ -3362,6 +10797,44 @@ export interface PaginatedPlayerResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedPlayerResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedReferralStatisticsResult
+ */
+export interface PaginatedReferralStatisticsResult {
+    /**
+     * Data items
+     * @type {Array<ReferralStatistics>}
+     * @memberof PaginatedReferralStatisticsResult
+     */
+    'data': Array<ReferralStatistics>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedReferralStatisticsResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedSellOrderWithHighestBidResult
+ */
+export interface PaginatedSellOrderWithHighestBidResult {
+    /**
+     * Data items
+     * @type {Array<SellOrderWithHighestBid>}
+     * @memberof PaginatedSellOrderWithHighestBidResult
+     */
+    'data': Array<SellOrderWithHighestBid>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedSellOrderWithHighestBidResult
      */
     'meta': MetaDTO;
 }
@@ -3438,6 +10911,44 @@ export interface PaginatedTacticsResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedTacticsResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedTournamentPlayerResult
+ */
+export interface PaginatedTournamentPlayerResult {
+    /**
+     * Data items
+     * @type {Array<TournamentPlayer>}
+     * @memberof PaginatedTournamentPlayerResult
+     */
+    'data': Array<TournamentPlayer>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedTournamentPlayerResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedTradesDTOResult
+ */
+export interface PaginatedTradesDTOResult {
+    /**
+     * Data items
+     * @type {Array<TradesDTO>}
+     * @memberof PaginatedTradesDTOResult
+     */
+    'data': Array<TradesDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedTradesDTOResult
      */
     'meta': MetaDTO;
 }
@@ -3650,6 +11161,12 @@ export interface Player {
      * @type {string}
      * @memberof Player
      */
+    'email': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Player
+     */
     'profile_picture': string;
     /**
      * 
@@ -3657,6 +11174,12 @@ export interface Player {
      * @memberof Player
      */
     'twitter_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Player
+     */
+    'google_id': string;
     /**
      * 
      * @type {number}
@@ -3717,6 +11240,350 @@ export interface Player {
      * @memberof Player
      */
     'tactics_referral_settings_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'following_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'post_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'like_count'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Player
+     */
+    'is_x_verified'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'follower_count': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Player
+     */
+    'can_play_free_tactics': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'fragments': number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerBankResponseDto
+ */
+export interface PlayerBankResponseDto {
+    /**
+     * Total value of player portfolio
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'playerPortfolioValue': number;
+    /**
+     * Total number of cards owned by player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'numberOfCards': number;
+    /**
+     * Number of fragments owned by player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'fragments': number;
+    /**
+     * Amount of gold owned by player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'gold': number;
+    /**
+     * Number of stars owned by player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'stars': number;
+    /**
+     * Number of fan points earned by player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'fanPoints': number;
+    /**
+     * Current ELO score of the player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'eloScore': number;
+    /**
+     * Maximum ELO score achieved by the player
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'maxEloScore': number;
+    /**
+     * Current ELO rank ID
+     * @type {string}
+     * @memberof PlayerBankResponseDto
+     */
+    'currentEloRankId': string;
+    /**
+     * Maximum ELO rank ID achieved
+     * @type {string}
+     * @memberof PlayerBankResponseDto
+     */
+    'maxEloRankId': string;
+    /**
+     * Current ELO season
+     * @type {number}
+     * @memberof PlayerBankResponseDto
+     */
+    'eloSeason': number;
+    /**
+     * Current ELO rank image
+     * @type {string}
+     * @memberof PlayerBankResponseDto
+     */
+    'currentEloRankImage': string;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerBasicData
+ */
+export interface PlayerBasicData {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'twitter_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'portfolio_value': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'number_of_cards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'total_gliding_score': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerBasicData
+     */
+    'can_play_free_tactics': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerHeroInteractionDTO
+ */
+export interface PlayerHeroInteractionDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'replies': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'retweets': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerHeroInteractionDTO
+     */
+    'total': number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerRewardsResponseDto
+ */
+export interface PlayerRewardsResponseDto {
+    /**
+     * 
+     * @type {Array<TournamentNumberRewardsDto>}
+     * @memberof PlayerRewardsResponseDto
+     */
+    'tournamentRewards': Array<TournamentNumberRewardsDto>;
+    /**
+     * 
+     * @type {Array<RewardWithTacticDto>}
+     * @memberof PlayerRewardsResponseDto
+     */
+    'tacticRewards': Array<RewardWithTacticDto>;
+    /**
+     * 
+     * @type {Array<FragmentPackReward>}
+     * @memberof PlayerRewardsResponseDto
+     */
+    'otherRewards': Array<FragmentPackReward>;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerSearchHistoryResponseDto
+ */
+export interface PlayerSearchHistoryResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerSearchHistoryResponseDto
+     */
+    'ressource_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerSearchHistoryResponseDto
+     */
+    'ressource_type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerSearchHistoryResponseDto
+     */
+    'ressource_name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PlayersOnesignalSubscriptions
+ */
+export interface PlayersOnesignalSubscriptions {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayersOnesignalSubscriptions
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayersOnesignalSubscriptions
+     */
+    'onesignal_subscription_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface PrizeFragmentRouletteDTO
+ */
+export interface PrizeFragmentRouletteDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof PrizeFragmentRouletteDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrizeFragmentRouletteDTO
+     */
+    'image': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PrizeFragmentRouletteDTO
+     */
+    'probability': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrizeFragmentRouletteDTO
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrizeFragmentRouletteDTO
+     */
+    'text': string;
+}
+/**
+ * 
+ * @export
+ * @interface QueryGetVrgdaHistoricalDataDTO
+ */
+export interface QueryGetVrgdaHistoricalDataDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof QueryGetVrgdaHistoricalDataDTO
+     */
+    'mint_id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryGetVrgdaHistoricalDataDTO
+     */
+    'minter_address': string;
 }
 /**
  * 
@@ -3796,6 +11663,91 @@ export interface QuestConfig {
      * @memberof QuestConfig
      */
     'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface QuestFantasyPlayerHistory
+ */
+export interface QuestFantasyPlayerHistory {
+    /**
+     * 
+     * @type {string}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'classic_competition': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'volume': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'card_burned': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'level_up': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'daily_quest': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'tactics': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'is_testnet': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'trades_count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'pack_bought': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof QuestFantasyPlayerHistory
+     */
+    'gold': object;
 }
 /**
  * 
@@ -3941,6 +11893,1071 @@ export interface QuestThreshold {
 /**
  * 
  * @export
+ * @interface ReferralStatistics
+ */
+export interface ReferralStatistics {
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralStatistics
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralStatistics
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {Player}
+     * @memberof ReferralStatistics
+     */
+    'players': Player;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralStatistics
+     */
+    'volume_referrals': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralStatistics
+     */
+    'tactics_referrals': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralStatistics
+     */
+    'cards_rewards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralStatistics
+     */
+    'tactics_rewards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralStatistics
+     */
+    'packs_referrals': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralStatistics
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralStatistics
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface ReferralsStatisticsDetailsResponse
+ */
+export interface ReferralsStatisticsDetailsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'value': number;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'progressRange': Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'progress': number;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'next_rewards': Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'has_reward_to_claim': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'rewardToClaimId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferralsStatisticsDetailsResponse
+     */
+    'rewardToClaimMintConfigId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ReferralsStatisticsResponse
+ */
+export interface ReferralsStatisticsResponse {
+    /**
+     * 
+     * @type {ReferralsStatisticsDetailsResponse}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'volume': ReferralsStatisticsDetailsResponse;
+    /**
+     * 
+     * @type {ReferralsStatisticsDetailsResponse}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'tactics': ReferralsStatisticsDetailsResponse;
+    /**
+     * 
+     * @type {ReferralsStatisticsDetailsResponse}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'packs': ReferralsStatisticsDetailsResponse;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'cards_rewards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'tactics_rewards': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'total_referred_players': number;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterDeckDTO
+ */
+export interface RegisterDeckDTO {
+    /**
+     * The ID of the card
+     * @type {Array<string>}
+     * @memberof RegisterDeckDTO
+     */
+    'cardIds': Array<string>;
+    /**
+     * The ID of the tournament
+     * @type {string}
+     * @memberof RegisterDeckDTO
+     */
+    'tournamentId': string;
+    /**
+     * The ID of the deck
+     * @type {string}
+     * @memberof RegisterDeckDTO
+     */
+    'deckId': string;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterTacticBodyDTO
+ */
+export interface RegisterTacticBodyDTO {
+    /**
+     * The ID of the tactic to register to
+     * @type {string}
+     * @memberof RegisterTacticBodyDTO
+     */
+    'tactic_id': string;
+    /**
+     * The ID of the captain to register to
+     * @type {string}
+     * @memberof RegisterTacticBodyDTO
+     */
+    'captain_id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterToTacticResponseDTO
+ */
+export interface RegisterToTacticResponseDTO {
+    /**
+     * The ID of the registered tactic
+     * @type {string}
+     * @memberof RegisterToTacticResponseDTO
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface RelayDeposit
+ */
+export interface RelayDeposit {
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'request_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'origin_chain_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'origin_chain': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'origin_currency_symbol': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'origin_currency': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'tx_hash'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof RelayDeposit
+     */
+    'value'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelayDeposit
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface Reward
+ */
+export interface Reward {
+    /**
+     * 
+     * @type {string}
+     * @memberof Reward
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Reward
+     */
+    'tournament_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface RewardHistory
+ */
+export interface RewardHistory {
+    /**
+     * The ID of the reward often a deterministic uuid
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'reward_id': string;
+    /**
+     * The ID of the player
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'player_id': string;
+    /**
+     * The type of the reward
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'type': RewardHistoryTypeEnum;
+    /**
+     * The source of the reward
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'source': string;
+    /**
+     * The ID of the tournament (if applicable)
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'tournament_id': string;
+    /**
+     * The ID of the mint configuration (if applicable)
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'mint_config_id': string;
+    /**
+     * The amount of the reward (if applicable)
+     * @type {object}
+     * @memberof RewardHistory
+     */
+    'amount': object;
+    /**
+     * The price of the reward (if applicable)
+     * @type {object}
+     * @memberof RewardHistory
+     */
+    'price': object;
+    /**
+     * The number of cards per pack (if applicable)
+     * @type {number}
+     * @memberof RewardHistory
+     */
+    'cards_per_pack': number;
+    /**
+     * The timestamp when the record was created
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'created_at': string;
+    /**
+     * The timestamp when the record was last updated
+     * @type {string}
+     * @memberof RewardHistory
+     */
+    'updated_at': string;
+    /**
+     * normaly true because it is the history rewards table
+     * @type {boolean}
+     * @memberof RewardHistory
+     */
+    'is_reward_distributed': boolean;
+}
+
+export const RewardHistoryTypeEnum = {
+    Star: 'STAR',
+    Fan: 'FAN',
+    Gold: 'GOLD',
+    Pack: 'PACK',
+    Fragment: 'FRAGMENT',
+    StarBanner: 'star_banner'
+} as const;
+
+export type RewardHistoryTypeEnum = typeof RewardHistoryTypeEnum[keyof typeof RewardHistoryTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface RewardTypeAmount
+ */
+export interface RewardTypeAmount {
+    /**
+     * 
+     * @type {string}
+     * @memberof RewardTypeAmount
+     */
+    'type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof RewardTypeAmount
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface RewardWithTacticDto
+ */
+export interface RewardWithTacticDto {
+    /**
+     * 
+     * @type {Array<RewardTypeAmount>}
+     * @memberof RewardWithTacticDto
+     */
+    'rewards': Array<RewardTypeAmount>;
+    /**
+     * 
+     * @type {Tactics}
+     * @memberof RewardWithTacticDto
+     */
+    'tactic': Tactics;
+}
+/**
+ * 
+ * @export
+ * @interface SaveDeckDTO
+ */
+export interface SaveDeckDTO {
+    /**
+     * The ID of the tactic player
+     * @type {string}
+     * @memberof SaveDeckDTO
+     */
+    'tacticPlayerId': string;
+    /**
+     * The hero choices
+     * @type {Array<object>}
+     * @memberof SaveDeckDTO
+     */
+    'heroChoices': Array<object>;
+}
+/**
+ * 
+ * @export
+ * @interface ScoreHistory
+ */
+export interface ScoreHistory {
+    /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof ScoreHistory
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the hero
+     * @type {object}
+     * @memberof ScoreHistory
+     */
+    'fantasy_score': object;
+    /**
+     * Timestamp when this record was created
+     * @type {string}
+     * @memberof ScoreHistory
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface ScoreHistoryObject
+ */
+export interface ScoreHistoryObject {
+    /**
+     * 
+     * @type {Array<ScoreHistory>}
+     * @memberof ScoreHistoryObject
+     */
+    'gliding_24h': Array<ScoreHistory>;
+    /**
+     * 
+     * @type {Array<ScoreHistory>}
+     * @memberof ScoreHistoryObject
+     */
+    'gliding_7d': Array<ScoreHistory>;
+}
+/**
+ * 
+ * @export
+ * @interface SearchHeroAndPlayerQueryParams
+ */
+export interface SearchHeroAndPlayerQueryParams {
+    /**
+     * Search query
+     * @type {string}
+     * @memberof SearchHeroAndPlayerQueryParams
+     */
+    'search': string;
+}
+/**
+ * 
+ * @export
+ * @interface SearchHeroAndPlayerResponseDto
+ */
+export interface SearchHeroAndPlayerResponseDto {
+    /**
+     * 
+     * @type {Array<SearchHeroAndPlayerResponseHeroResponseDto>}
+     * @memberof SearchHeroAndPlayerResponseDto
+     */
+    'heroes': Array<SearchHeroAndPlayerResponseHeroResponseDto>;
+    /**
+     * 
+     * @type {Array<SearchHeroAndPlayerResponsePlayerResponseDto>}
+     * @memberof SearchHeroAndPlayerResponseDto
+     */
+    'players': Array<SearchHeroAndPlayerResponsePlayerResponseDto>;
+}
+/**
+ * 
+ * @export
+ * @interface SearchHeroAndPlayerResponseHeroResponseDto
+ */
+export interface SearchHeroAndPlayerResponseHeroResponseDto {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponseHeroResponseDto
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponseHeroResponseDto
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponseHeroResponseDto
+     */
+    'name': string;
+    /**
+     * Indicates if the hero is a player
+     * @type {boolean}
+     * @memberof SearchHeroAndPlayerResponseHeroResponseDto
+     */
+    'is_player': boolean;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponseHeroResponseDto
+     */
+    'profile_image_url_https'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SearchHeroAndPlayerResponsePlayerResponseDto
+ */
+export interface SearchHeroAndPlayerResponsePlayerResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
+     */
+    'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface SellOrder
+ */
+export interface SellOrder {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'id': string;
+    /**
+     * Card ID composed of {tokenId}_{FantasyCollectionAddress}, unique
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'card_id': string;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'hero_id': string;
+    /**
+     * Hero rarity index
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'hero_rarity_index': string;
+    /**
+     * Trader
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'trader': string;
+    /**
+     * Side 1 for sell, 0 for buy
+     * @type {number}
+     * @memberof SellOrder
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'collection': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'token_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'salt': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'price': string;
+    /**
+     * Price numeric as a Decimal value
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'price_numeric': string;
+    /**
+     * Order hash, optional
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'order_hash'?: string;
+    /**
+     * Signature, unique
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'signature': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof SellOrder
+     */
+    'rarity': number;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'created_at'?: string;
+    /**
+     * Update date, optional
+     * @type {string}
+     * @memberof SellOrder
+     */
+    'updated_at'?: string;
+    /**
+     * Is locked
+     * @type {boolean}
+     * @memberof SellOrder
+     */
+    'is_locked'?: boolean;
+    /**
+     * Hero
+     * @type {HeroWithoutSellOrders}
+     * @memberof SellOrder
+     */
+    'heroes'?: HeroWithoutSellOrders;
+    /**
+     * Card
+     * @type {CardWithoutHeroes}
+     * @memberof SellOrder
+     */
+    'cards'?: CardWithoutHeroes;
+}
+/**
+ * 
+ * @export
+ * @interface SellOrderDTO
+ */
+export interface SellOrderDTO {
+    /**
+     * Sell order ID
+     * @type {string}
+     * @memberof SellOrderDTO
+     */
+    'id': string;
+    /**
+     * Price of the sell order
+     * @type {string}
+     * @memberof SellOrderDTO
+     */
+    'price': string;
+}
+/**
+ * 
+ * @export
+ * @interface SellOrderWithHighestBid
+ */
+export interface SellOrderWithHighestBid {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'id': string;
+    /**
+     * Card ID composed of {tokenId}_{FantasyCollectionAddress}, unique
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'card_id': string;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'hero_id': string;
+    /**
+     * Hero rarity index
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'hero_rarity_index': string;
+    /**
+     * Trader
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'trader': string;
+    /**
+     * Side 1 for sell, 0 for buy
+     * @type {number}
+     * @memberof SellOrderWithHighestBid
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'collection': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'token_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'salt': string;
+    /**
+     * Price
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'price': string;
+    /**
+     * Price numeric as a Decimal value
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'price_numeric': string;
+    /**
+     * Order hash, optional
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'order_hash'?: string;
+    /**
+     * Signature, unique
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'signature': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof SellOrderWithHighestBid
+     */
+    'rarity': number;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'created_at'?: string;
+    /**
+     * Update date, optional
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'updated_at'?: string;
+    /**
+     * Is locked
+     * @type {boolean}
+     * @memberof SellOrderWithHighestBid
+     */
+    'is_locked'?: boolean;
+    /**
+     * Card
+     * @type {CardWithoutHeroes}
+     * @memberof SellOrderWithHighestBid
+     */
+    'cards'?: CardWithoutHeroes;
+    /**
+     * Highest bid
+     * @type {string}
+     * @memberof SellOrderWithHighestBid
+     */
+    'highest_bid'?: string;
+    /**
+     * Listed count
+     * @type {number}
+     * @memberof SellOrderWithHighestBid
+     */
+    'listed_count'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SellOrdersResponseDTO
+ */
+export interface SellOrdersResponseDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof SellOrdersResponseDTO
+     */
+    'total': number;
+    /**
+     * 
+     * @type {Array<GetSellOrdersDTO>}
+     * @memberof SellOrdersResponseDTO
+     */
+    'orders': Array<GetSellOrdersDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SignInRequestBodyDTO
+ */
+export interface SignInRequestBodyDTO {
+    /**
+     * Wallet address
+     * @type {string}
+     * @memberof SignInRequestBodyDTO
+     */
+    'address': string;
+}
+/**
+ * 
+ * @export
+ * @interface SmartFollowerDTO
+ */
+export interface SmartFollowerDTO {
+    /**
+     * User ID of the follower
+     * @type {string}
+     * @memberof SmartFollowerDTO
+     */
+    'id': string;
+    /**
+     * Handle of the follower
+     * @type {string}
+     * @memberof SmartFollowerDTO
+     */
+    'handle': string;
+    /**
+     * Name of the follower
+     * @type {string}
+     * @memberof SmartFollowerDTO
+     */
+    'name': string;
+    /**
+     * Profile image URL of the follower
+     * @type {string}
+     * @memberof SmartFollowerDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Whether the follower is a player
+     * @type {boolean}
+     * @memberof SmartFollowerDTO
+     */
+    'is_player': boolean;
+    /**
+     * Number of followers the follower has
+     * @type {number}
+     * @memberof SmartFollowerDTO
+     */
+    'followers_count': number;
+}
+/**
+ * 
+ * @export
+ * @interface SmartFollowerResponseDTO
+ */
+export interface SmartFollowerResponseDTO {
+    /**
+     * List of smart followers
+     * @type {Array<SmartFollowerDTO>}
+     * @memberof SmartFollowerResponseDTO
+     */
+    'followers': Array<SmartFollowerDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface StreakLeaderboardDto
+ */
+export interface StreakLeaderboardDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof StreakLeaderboardDto
+     */
+    'longest_streak': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StreakLeaderboardDto
+     */
+    'total_answers': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StreakLeaderboardDto
+     */
+    'total_guesses': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StreakLeaderboardDto
+     */
+    'rank': number;
+}
+/**
+ * 
+ * @export
+ * @interface StreakReward
+ */
+export interface StreakReward {
+    /**
+     * Id of the streak reward
+     * @type {string}
+     * @memberof StreakReward
+     */
+    'id': string;
+    /**
+     * Threshold of the streak reward
+     * @type {number}
+     * @memberof StreakReward
+     */
+    'threshold': number;
+    /**
+     * Type of the reward
+     * @type {string}
+     * @memberof StreakReward
+     */
+    'reward_type': string;
+    /**
+     * Amount of the reward
+     * @type {number}
+     * @memberof StreakReward
+     */
+    'reward_amount': number;
+    /**
+     * Whether the reward is for onboarding
+     * @type {boolean}
+     * @memberof StreakReward
+     */
+    'is_onboarding': boolean;
+    /**
+     * Created at
+     * @type {string}
+     * @memberof StreakReward
+     */
+    'created_at': string;
+    /**
+     * Updated at
+     * @type {string}
+     * @memberof StreakReward
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
  * @interface StringFilterDTO
  */
 export interface StringFilterDTO {
@@ -4025,6 +13042,1342 @@ export const StringFilterDTOModeEnum = {
 
 export type StringFilterDTOModeEnum = typeof StringFilterDTOModeEnum[keyof typeof StringFilterDTOModeEnum];
 
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdDTO
+ */
+export interface SummaryOfTacticIdDTO {
+    /**
+     * 
+     * @type {SummaryOfTacticIdTacticDTO}
+     * @memberof SummaryOfTacticIdDTO
+     */
+    'tactic': SummaryOfTacticIdTacticDTO;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdTop5HeroesDTO>}
+     * @memberof SummaryOfTacticIdDTO
+     */
+    'top_5_heroes': Array<SummaryOfTacticIdTop5HeroesDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdWinnersOfEachTacticDTO>}
+     * @memberof SummaryOfTacticIdDTO
+     */
+    'winners_of_tactic': Array<SummaryOfTacticIdWinnersOfEachTacticDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdTop5XFactorsHeroesDTO>}
+     * @memberof SummaryOfTacticIdDTO
+     */
+    'top_5_x_factors_heroes': Array<SummaryOfTacticIdTop5XFactorsHeroesDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdEntryDTO
+ */
+export interface SummaryOfTacticIdEntryDTO {
+    /**
+     * Tactic ID
+     * @type {string}
+     * @memberof SummaryOfTacticIdEntryDTO
+     */
+    'tactic_id': string;
+    /**
+     * Rank
+     * @type {number}
+     * @memberof SummaryOfTacticIdEntryDTO
+     */
+    'rank': number | null;
+    /**
+     * Score
+     * @type {string}
+     * @memberof SummaryOfTacticIdEntryDTO
+     */
+    'score': string | null;
+    /**
+     * 
+     * @type {SummaryOfTacticIdEntryDTOTicketRewardDTO}
+     * @memberof SummaryOfTacticIdEntryDTO
+     */
+    'ticket_reward': SummaryOfTacticIdEntryDTOTicketRewardDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdEntryDTOTicketRewardDTO
+ */
+export interface SummaryOfTacticIdEntryDTOTicketRewardDTO {
+    /**
+     * Reward amount in ETH
+     * @type {object}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_eth': object;
+    /**
+     * Reward amount in gold
+     * @type {object}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_gold': object;
+    /**
+     * Reward amount in cards
+     * @type {number}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_cards': number;
+    /**
+     * Reward amount in tactic tickets
+     * @type {number}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_tickets': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdOfPlayerDTO
+ */
+export interface SummaryOfTacticIdOfPlayerDTO {
+    /**
+     * 
+     * @type {SummaryOfTacticIdTacticDTO}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'tactic': SummaryOfTacticIdTacticDTO;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdOfPlayerTacticEntryDTO>}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'tactic_player_info': Array<SummaryOfTacticIdOfPlayerTacticEntryDTO>;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'best_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'nb_of_deck_played': number;
+    /**
+     * 
+     * @type {SummaryOfTacticIdOfPlayerTicketRewardDTO}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'total_rewards': SummaryOfTacticIdOfPlayerTicketRewardDTO;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdTop5XFactorsHeroesDTO>}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'top_5_x_factors_heroes_of_user': Array<SummaryOfTacticIdTop5XFactorsHeroesDTO>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdOfPlayerDTO
+     */
+    'is_claimed': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdOfPlayerTacticEntryDTO
+ */
+export interface SummaryOfTacticIdOfPlayerTacticEntryDTO {
+    /**
+     * Tactic ID
+     * @type {string}
+     * @memberof SummaryOfTacticIdOfPlayerTacticEntryDTO
+     */
+    'tactic_id': string;
+    /**
+     * Rank
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerTacticEntryDTO
+     */
+    'rank': number | null;
+    /**
+     * Score
+     * @type {string}
+     * @memberof SummaryOfTacticIdOfPlayerTacticEntryDTO
+     */
+    'score': string | null;
+    /**
+     * 
+     * @type {Array<SummaryOfTacticIdTop5HeroesDTO>}
+     * @memberof SummaryOfTacticIdOfPlayerTacticEntryDTO
+     */
+    'heroes': Array<SummaryOfTacticIdTop5HeroesDTO>;
+    /**
+     * 
+     * @type {SummaryOfTacticIdOfPlayerTicketRewardDTO}
+     * @memberof SummaryOfTacticIdOfPlayerTacticEntryDTO
+     */
+    'ticket_rewards': SummaryOfTacticIdOfPlayerTicketRewardDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdOfPlayerTicketRewardDTO
+ */
+export interface SummaryOfTacticIdOfPlayerTicketRewardDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerTicketRewardDTO
+     */
+    'ETH': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerTicketRewardDTO
+     */
+    'GOLD': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerTicketRewardDTO
+     */
+    'PACK': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdOfPlayerTicketRewardDTO
+     */
+    'TICKETS': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdTacticDTO
+ */
+export interface SummaryOfTacticIdTacticDTO {
+    /**
+     * Unique identifier for the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'id': string;
+    /**
+     * Identifier for the tactic configuration
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'tactic_config_id': string;
+    /**
+     * Start date of the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'end_date': string;
+    /**
+     * Whether the tactic is processed
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'is_processed': boolean;
+    /**
+     * Cumulated WETH amount
+     * @type {object}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'cumulated_weth': object;
+    /**
+     * Wallet address
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'wallet_address': string;
+    /**
+     * ETH price
+     * @type {object}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'eth_price': object;
+    /**
+     * Whether the rewards are processed
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'is_rewards_processed': boolean;
+    /**
+     * Whether the registration is opened
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'registration_openned': boolean;
+    /**
+     * Whether the tactic is visible
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'visible': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'updated_at': string;
+    /**
+     * Tactic has been validated ?
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'has_been_validated': boolean;
+    /**
+     * 
+     * @type {SummaryOfTacticIdTacticDTOConfigDTO}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'config': SummaryOfTacticIdTacticDTOConfigDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdTacticDTOConfigDTO
+ */
+export interface SummaryOfTacticIdTacticDTOConfigDTO {
+    /**
+     * Unique identifier for the config
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'id': string;
+    /**
+     * Name of the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'name': string;
+    /**
+     * Emoji of the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'emoji': string;
+    /**
+     * Duration of the tactic in hours
+     * @type {number}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'duration': number;
+    /**
+     * Entry price as a Decimal value
+     * @type {object}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'entry_price': object;
+    /**
+     * Flat fee as a Decimal value
+     * @type {object}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'flat_fee': object;
+    /**
+     * Payout model for the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'payout_model': string;
+    /**
+     * Flags for additional configuration
+     * @type {object}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'flags': object;
+    /**
+     * Maximum stars for the tactic
+     * @type {number}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'max_stars': number;
+    /**
+     * Whether the tactic is activated
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'activated': boolean;
+    /**
+     * Identifier for the payout structure
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'payout_structure_id': string;
+    /**
+     * Start hour for the tactic
+     * @type {number}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'start_hour': number;
+    /**
+     * Whether to create a new tactic
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'create_new_tactic': boolean;
+    /**
+     * Payout structure details
+     * @type {PayoutStructure}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'payout_structure'?: PayoutStructure | null;
+    /**
+     * Created at
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'created_at': string;
+    /**
+     * Created at
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'updated_at': string;
+    /**
+     * Banner image for the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'banner_image': string;
+    /**
+     * wether or not the compute is made by the twitter indexer or the nest api, nest api handle only for the moment for the coin tactic
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'use_twitter_indexed_score': boolean;
+    /**
+     * Recurring dates for the tactic
+     * @type {Array<string>}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'recurring_dates': Array<string>;
+    /**
+     * Left captain id
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'left_captain_id': string;
+    /**
+     * Right captain id
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'right_captain_id': string;
+    /**
+     * Whether the tactic is left vs right
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'is_left_vs_right': boolean;
+    /**
+     * Whether the tactic is rolling
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'is_rolling': boolean;
+    /**
+     * Whether the tactic is solo rolling
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'is_solo_rolling': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdTop5HeroesDTO
+ */
+export interface SummaryOfTacticIdTop5HeroesDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5HeroesDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5HeroesDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5HeroesDTO
+     */
+    'name': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5HeroesDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * 
+     * @type {SummaryOfTacticIdTop5HeroesHeroScoreDTO}
+     * @memberof SummaryOfTacticIdTop5HeroesDTO
+     */
+    'hero_score': SummaryOfTacticIdTop5HeroesHeroScoreDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdTop5HeroesHeroScoreDTO
+ */
+export interface SummaryOfTacticIdTop5HeroesHeroScoreDTO {
+    /**
+     * Stars
+     * @type {number}
+     * @memberof SummaryOfTacticIdTop5HeroesHeroScoreDTO
+     */
+    'stars': number;
+    /**
+     * Fantasy score
+     * @type {object}
+     * @memberof SummaryOfTacticIdTop5HeroesHeroScoreDTO
+     */
+    'fantasy_score': object;
+    /**
+     * Current rank
+     * @type {number}
+     * @memberof SummaryOfTacticIdTop5HeroesHeroScoreDTO
+     */
+    'current_rank': number | null;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdTop5XFactorsHeroesDTO
+ */
+export interface SummaryOfTacticIdTop5XFactorsHeroesDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'name': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'current_rank': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'fantasy_score': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTacticIdTop5XFactorsHeroesDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTacticIdWinnersOfEachTacticDTO
+ */
+export interface SummaryOfTacticIdWinnersOfEachTacticDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTacticIdWinnersOfEachTacticDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTacticIdWinnersOfEachTacticDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTacticIdWinnersOfEachTacticDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTacticIdWinnersOfEachTacticDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {SummaryOfTacticIdEntryDTO}
+     * @memberof SummaryOfTacticIdWinnersOfEachTacticDTO
+     */
+    'entry': SummaryOfTacticIdEntryDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberCardDTOCardDTO
+ */
+export interface SummaryOfTournamentNumberCardDTOCardDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberCardDTOCardDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberCardDTOCardDTO
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberCardDTOCardDTO
+     */
+    'picture_url'?: string;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberHeroDTO}
+     * @memberof SummaryOfTournamentNumberCardDTOCardDTO
+     */
+    'heroes': SummaryOfTournamentNumberHeroDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberDTO
+ */
+export interface SummaryOfTournamentNumberDTO {
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTournamentDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'tournaments': Array<SummaryOfTournamentNumberTournamentDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberWinnersOfEachTournamentDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'winners_of_each_tournament': Array<SummaryOfTournamentNumberWinnersOfEachTournamentDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTop5HeroesDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'top_5_heroes': Array<SummaryOfTournamentNumberTop5HeroesDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTop5XFactorsHeroesDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'top_5_x_factors_heroes': Array<SummaryOfTournamentNumberTop5XFactorsHeroesDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTopOutrageousWinnersDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'top_outrageous_winners': Array<SummaryOfTournamentNumberTopOutrageousWinnersDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO>}
+     * @memberof SummaryOfTournamentNumberDTO
+     */
+    'top_players_elo_and_elo_change': Array<SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberDTOEloPlayerSeasonDTO
+ */
+export interface SummaryOfTournamentNumberDTOEloPlayerSeasonDTO {
+    /**
+     * The current ELO score of the player
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberDTOEloPlayerSeasonDTO
+     */
+    'elo_score': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberHeroDTO
+ */
+export interface SummaryOfTournamentNumberHeroDTO {
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberHeroDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberHeroDTO
+     */
+    'name': string;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberHeroDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberHistoryDTO
+ */
+export interface SummaryOfTournamentNumberHistoryDTO {
+    /**
+     * 
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberHistoryDTO
+     */
+    'score': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberHistoryDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberHistoryDTO
+     */
+    'rewards_details': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberHistoryDTO
+     */
+    'tournament_id': string;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberCardDTOCardDTO>}
+     * @memberof SummaryOfTournamentNumberHistoryDTO
+     */
+    'cards': Array<SummaryOfTournamentNumberCardDTOCardDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberOfPlayerDTO
+ */
+export interface SummaryOfTournamentNumberOfPlayerDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'already_claimed': boolean;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTournamentDTO>}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'tournaments': Array<SummaryOfTournamentNumberTournamentDTO>;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO>}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'tournament_player_info': Array<SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO>;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberOfPlayerTotalRewardsDTO}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'total_rewards': SummaryOfTournamentNumberOfPlayerTotalRewardsDTO;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberTop5XFactorsHeroesDTO>}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'top_5_x_factors_heroes_of_user': Array<SummaryOfTournamentNumberTop5XFactorsHeroesDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+ */
+export interface SummaryOfTournamentNumberOfPlayerTotalRewardsDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'ETH': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'FAN': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'GOLD': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'PACK': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'STAR': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'FRAGMENT': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
+     */
+    'ELO': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+ */
+export interface SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO {
+    /**
+     * 
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'rewards_details': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'tournament_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'total_elo_change': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'previous_elo': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'best_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'nb_of_deck_played': number;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberCardDTOCardDTO>}
+     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
+     */
+    'cards': Array<SummaryOfTournamentNumberCardDTOCardDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTop5HeroesDTO
+ */
+export interface SummaryOfTournamentNumberTop5HeroesDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'name': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'stars': number;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO}
+     * @memberof SummaryOfTournamentNumberTop5HeroesDTO
+     */
+    'history': SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO
+ */
+export interface SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO {
+    /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the hero
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberTop5HeroesTournamentHistoryDTO
+     */
+    'fantasy_score': object;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+ */
+export interface SummaryOfTournamentNumberTop5XFactorsHeroesDTO {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'name': string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'current_stars': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'previous_stars': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'current_rank': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberTop5XFactorsHeroesDTO
+     */
+    'fantasy_score': object;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTopOutrageousWinnersDTO
+ */
+export interface SummaryOfTournamentNumberTopOutrageousWinnersDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'reward_type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
+     */
+    'reward_value': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+ */
+export interface SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
+    /**
+     * 
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
+     */
+    'elo_change_total': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberTournamentDTO
+ */
+export interface SummaryOfTournamentNumberTournamentDTO {
+    /**
+     * Unique identifier for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'id': string;
+    /**
+     * Name of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'name': string;
+    /**
+     * Description of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'description': string;
+    /**
+     * Start date of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'end_date': string;
+    /**
+     * Flags for the tournament
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'flags': object;
+    /**
+     * Whether this is a main tournament
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_main': boolean;
+    /**
+     * League number of the tournament
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'league': number;
+    /**
+     * Image URL for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'image': string;
+    /**
+     * Whether the tournament is visible
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_visible': boolean;
+    /**
+     * Whether the tournament statistics have been processed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_stat_processed': boolean;
+    /**
+     * Whether the tournament elo has been processed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_elo_processed': boolean;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'tournament_number': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'updated_at': string;
+    /**
+     * Image URL for the tournament reward
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'reward_image': string;
+    /**
+     * Whether the tournament needs to be reprocessed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'need_to_be_reprocessed': boolean;
+    /**
+     * Whether the tournament has started
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'has_started': boolean;
+    /**
+     * Whether the tournament has been validated
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'has_been_validated': boolean;
+    /**
+     * Whether the rewards have been processed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_rewards_processed': boolean;
+    /**
+     * Histories for the tournament
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'histories': Array<TournamentPlayerHistories>;
+    /**
+     * Whether the current player is registered
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'is_player_registered': boolean;
+    /**
+     * Total number of registered players
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'totalRegistered': number;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+ */
+export interface SummaryOfTournamentNumberWinnersOfEachTournamentDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberHistoryDTO}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'history': SummaryOfTournamentNumberHistoryDTO;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
+     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     */
+    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
+}
+/**
+ * 
+ * @export
+ * @interface TacticStatsDTO
+ */
+export interface TacticStatsDTO {
+    /**
+     * ID of the tactic
+     * @type {string}
+     * @memberof TacticStatsDTO
+     */
+    'tactic_id': string;
+    /**
+     * Start date of the tactic
+     * @type {string}
+     * @memberof TacticStatsDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tactic
+     * @type {string}
+     * @memberof TacticStatsDTO
+     */
+    'end_date': string;
+    /**
+     * Tweet count of the tactic
+     * @type {number}
+     * @memberof TacticStatsDTO
+     */
+    'tweet_count': number;
+    /**
+     * Current rank of the tactic
+     * @type {number}
+     * @memberof TacticStatsDTO
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the tactic
+     * @type {number}
+     * @memberof TacticStatsDTO
+     */
+    'fantasy_score': number;
+    /**
+     * Views of the tactic
+     * @type {number}
+     * @memberof TacticStatsDTO
+     */
+    'views': number;
+}
 /**
  * 
  * @export
@@ -4134,14 +14487,14 @@ export interface Tactics {
      */
     'gains': GetTotalTicketsGainsResponseDTO;
     /**
-     * 
+     * Config for the tactic
      * @type {TacticsConfig}
      * @memberof Tactics
      */
     'config'?: TacticsConfig | null;
 }
 /**
- * Config for the tactic
+ * 
  * @export
  * @interface TacticsConfig
  */
@@ -4158,6 +14511,12 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'name': string;
+    /**
+     * Emoji of the tactic
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'emoji': string;
     /**
      * Duration of the tactic in hours
      * @type {number}
@@ -4225,11 +14584,11 @@ export interface TacticsConfig {
      */
     'create_new_tactic': boolean;
     /**
-     * 
-     * @type {TacticsConfigPayoutStructure}
+     * Payout structure details
+     * @type {PayoutStructure}
      * @memberof TacticsConfig
      */
-    'payout_structure'?: TacticsConfigPayoutStructure | null;
+    'payout_structure'?: PayoutStructure | null;
     /**
      * Created at
      * @type {string}
@@ -4248,6 +14607,48 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'banner_image': string;
+    /**
+     * wether or not the compute is made by the twitter indexer or the nest api, nest api handle only for the moment for the coin tactic
+     * @type {boolean}
+     * @memberof TacticsConfig
+     */
+    'use_twitter_indexed_score': boolean;
+    /**
+     * Recurring dates for the tactic
+     * @type {Array<string>}
+     * @memberof TacticsConfig
+     */
+    'recurring_dates': Array<string>;
+    /**
+     * Left captain id
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'left_captain_id': string;
+    /**
+     * Right captain id
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'right_captain_id': string;
+    /**
+     * Whether the tactic is left vs right
+     * @type {boolean}
+     * @memberof TacticsConfig
+     */
+    'is_left_vs_right': boolean;
+    /**
+     * Whether the tactic is rolling
+     * @type {boolean}
+     * @memberof TacticsConfig
+     */
+    'is_rolling': boolean;
+    /**
+     * Whether the tactic is solo rolling
+     * @type {boolean}
+     * @memberof TacticsConfig
+     */
+    'is_solo_rolling': boolean;
 }
 /**
  * 
@@ -4261,91 +14662,6 @@ export interface TacticsConfigIncludeDTO {
      * @memberof TacticsConfigIncludeDTO
      */
     'payout_structure'?: boolean;
-}
-/**
- * Payout structure details
- * @export
- * @interface TacticsConfigPayoutStructure
- */
-export interface TacticsConfigPayoutStructure {
-    /**
-     * ID of the payout structure
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'id': string;
-    /**
-     * Entry amount
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'entry_price_tickets': number;
-    /**
-     * Maximum tickets
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'max_tickets': number;
-    /**
-     * Price pool
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool': number;
-    /**
-     * Type of the payout structure
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'type': string;
-    /**
-     * Payout details
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout': Array<PayoutObject>;
-    /**
-     * Creation date
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'created_at': string;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_gold': number;
-    /**
-     * Payout details in gold
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_gold': Array<PayoutObject>;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_cards': number;
-    /**
-     * Payout details in cards
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_cards': Array<PayoutObject>;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_tickets': number;
-    /**
-     * Payout details in gold
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_tickets': Array<PayoutObject>;
 }
 /**
  * 
@@ -4572,17 +14888,17 @@ export interface TacticsEntry {
      */
     'updated_at': string;
     /**
-     * 
-     * @type {TacticsEntryPlayers}
+     * Players linked to entry
+     * @type {Player}
      * @memberof TacticsEntry
      */
-    'players'?: TacticsEntryPlayers | null;
+    'players'?: Player | null;
     /**
-     * 
-     * @type {TacticsEntryTickets}
+     * Tickets linked to entry
+     * @type {TacticsTicket}
      * @memberof TacticsEntry
      */
-    'tickets'?: TacticsEntryTickets | null;
+    'tickets'?: TacticsTicket | null;
     /**
      * Heroes concerned by heroX_id
      * @type {Array<Hero>}
@@ -4907,103 +15223,6 @@ export const TacticsEntryOrderByDTOUpdatedAtEnum = {
 export type TacticsEntryOrderByDTOUpdatedAtEnum = typeof TacticsEntryOrderByDTOUpdatedAtEnum[keyof typeof TacticsEntryOrderByDTOUpdatedAtEnum];
 
 /**
- * Players linked to entry
- * @export
- * @interface TacticsEntryPlayers
- */
-export interface TacticsEntryPlayers {
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'twitter_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'fantasy_points': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'created_at': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'updated_at': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'fantasy_points_referrals': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'stars': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'league': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'is_hero': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'is_onboarding_done': boolean;
-    /**
-     * Gold as a Decimal value
-     * @type {object}
-     * @memberof TacticsEntryPlayers
-     */
-    'gold': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'tactics_referral_settings_id': string;
-}
-/**
  * 
  * @export
  * @interface TacticsEntrySelectDTO
@@ -5147,85 +15366,6 @@ export interface TacticsEntrySelectDTO {
      * @memberof TacticsEntrySelectDTO
      */
     'updated_at'?: boolean;
-}
-/**
- * Tickets linked to entry
- * @export
- * @interface TacticsEntryTickets
- */
-export interface TacticsEntryTickets {
-    /**
-     * Unique identifier for the ticket
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'id': string;
-    /**
-     * Identifier for the player
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'player_id': string;
-    /**
-     * Array of tactic configuration IDs
-     * @type {Array<string>}
-     * @memberof TacticsEntryTickets
-     */
-    'tactic_config_ids': Array<string>;
-    /**
-     * Transaction hash
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'tx_hash': string;
-    /**
-     * Indicates if the ticket is used
-     * @type {boolean}
-     * @memberof TacticsEntryTickets
-     */
-    'used': boolean;
-    /**
-     * Identifier for the payout structure
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'payout_structure_id': string;
-    /**
-     * Creation timestamp
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'created_at': string;
-    /**
-     * Last update timestamp
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'updated_at': string;
-    /**
-     * List of tickets rewards
-     * @type {Array<TacticsTicketRewards>}
-     * @memberof TacticsEntryTickets
-     */
-    'rewards': Array<TacticsTicketRewards>;
-    /**
-     * Tactics entry associated with the ticket
-     * @type {TacticsEntry}
-     * @memberof TacticsEntryTickets
-     */
-    'entry': TacticsEntry;
-    /**
-     * Id of the referrer player
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'referred_by_id': string;
-    /**
-     * Referrer of the ticket
-     * @type {Player}
-     * @memberof TacticsEntryTickets
-     */
-    'referrer': Player;
 }
 /**
  * 
@@ -5944,16 +16084,22 @@ export interface TacticsWhereDTO {
     'end_date'?: TacticsWhereDTOStartDate;
     /**
      * 
-     * @type {GetPlayerCardsWhereDTOInDeck}
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
      * @memberof TacticsWhereDTO
      */
-    'visible'?: GetPlayerCardsWhereDTOInDeck;
+    'visible'?: GetPlayerCardsWhereDTOIsInDeck;
     /**
      * 
      * @type {TacticsWhereDTOTacticConfigId}
      * @memberof TacticsWhereDTO
      */
     'tactic_config_id'?: TacticsWhereDTOTacticConfigId;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
+     * @memberof TacticsWhereDTO
+     */
+    'is_rewards_processed'?: GetPlayerCardsWhereDTOIsInDeck;
 }
 /**
  * @type TacticsWhereDTOStartDate
@@ -6275,6 +16421,974 @@ export interface TicketsWithEntryTacticsConfigPayoutDTO {
 /**
  * 
  * @export
+ * @interface TopicsFlagsResponseDTO
+ */
+export interface TopicsFlagsResponseDTO {
+    /**
+     * List of topic flags
+     * @type {Array<string>}
+     * @memberof TopicsFlagsResponseDTO
+     */
+    'topicsFlags': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface Tournament
+ */
+export interface Tournament {
+    /**
+     * Unique identifier for the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'id': string;
+    /**
+     * Name of the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'name': string;
+    /**
+     * Description of the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'description': string;
+    /**
+     * Start date of the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'start_date': string;
+    /**
+     * End date of the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'end_date': string;
+    /**
+     * Flags for the tournament
+     * @type {object}
+     * @memberof Tournament
+     */
+    'flags': object;
+    /**
+     * Whether this is a main tournament
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_main': boolean;
+    /**
+     * League number of the tournament
+     * @type {number}
+     * @memberof Tournament
+     */
+    'league': number;
+    /**
+     * Image URL for the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'image': string;
+    /**
+     * Whether the tournament is visible
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_visible': boolean;
+    /**
+     * Whether the tournament statistics have been processed
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_stat_processed': boolean;
+    /**
+     * Whether the tournament elo has been processed
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_elo_processed': boolean;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof Tournament
+     */
+    'tournament_number': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof Tournament
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof Tournament
+     */
+    'updated_at': string;
+    /**
+     * Image URL for the tournament reward
+     * @type {string}
+     * @memberof Tournament
+     */
+    'reward_image': string;
+    /**
+     * Whether the tournament needs to be reprocessed
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'need_to_be_reprocessed': boolean;
+    /**
+     * Whether the tournament has started
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'has_started': boolean;
+    /**
+     * Whether the tournament has been validated
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'has_been_validated': boolean;
+    /**
+     * Whether the rewards have been processed
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_rewards_processed': boolean;
+    /**
+     * Rewards for the tournament
+     * @type {Array<TournamentRewards>}
+     * @memberof Tournament
+     */
+    'rewards': Array<TournamentRewards>;
+    /**
+     * Histories for the tournament
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof Tournament
+     */
+    'histories': Array<TournamentPlayerHistories>;
+    /**
+     * Players for the tournament
+     * @type {Array<TournamentPlayer>}
+     * @memberof Tournament
+     */
+    'current_players': Array<TournamentPlayer>;
+    /**
+     * Total number of registered players
+     * @type {number}
+     * @memberof Tournament
+     */
+    'registered_players_count': number;
+    /**
+     * Whether the current player is registered
+     * @type {boolean}
+     * @memberof Tournament
+     */
+    'is_player_registered': boolean;
+    /**
+     * Total number of registered players
+     * @type {number}
+     * @memberof Tournament
+     */
+    'totalRegistered': number;
+    /**
+     * Current rewards for the tournament
+     * @type {Array<CurrentRunningRewardsDTO>}
+     * @memberof Tournament
+     */
+    'current_rewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentFlags
+ */
+export interface TournamentFlags {
+    /**
+     * Flag id
+     * @type {string}
+     * @memberof TournamentFlags
+     */
+    'id': string;
+    /**
+     * Flag description
+     * @type {string}
+     * @memberof TournamentFlags
+     */
+    'description': string;
+    /**
+     * Flag label
+     * @type {string}
+     * @memberof TournamentFlags
+     */
+    'label': string;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentNumberRewardsDto
+ */
+export interface TournamentNumberRewardsDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof TournamentNumberRewardsDto
+     */
+    'tournament_number': number;
+    /**
+     * 
+     * @type {Array<RewardTypeAmount>}
+     * @memberof TournamentNumberRewardsDto
+     */
+    'rewards': Array<RewardTypeAmount>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentPlayer
+ */
+export interface TournamentPlayer {
+    /**
+     * Unique identifier for the tournament history
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'id': string;
+    /**
+     * Card 1 identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'card1': string;
+    /**
+     * Card 2 identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'card2': string;
+    /**
+     * Card 3 identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'card3': string;
+    /**
+     * Card 4 identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'card4': string;
+    /**
+     * Card 5 identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'card5': string;
+    /**
+     * Cards
+     * @type {Array<Array<string>>}
+     * @memberof TournamentPlayer
+     */
+    'cards': Array<Array<string>>;
+    /**
+     * Player identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'player_id': string;
+    /**
+     * player object
+     * @type {Player}
+     * @memberof TournamentPlayer
+     */
+    'players': Player;
+    /**
+     * Score in the tournament
+     * @type {object}
+     * @memberof TournamentPlayer
+     */
+    'score': object;
+    /**
+     * Rank in the tournament
+     * @type {number}
+     * @memberof TournamentPlayer
+     */
+    'rank': number;
+    /**
+     * Reward details
+     * @type {object}
+     * @memberof TournamentPlayer
+     */
+    'rewards_details': object;
+    /**
+     * Tournament identifier
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'tournament_id': string;
+    /**
+     * Hero rarity index for card 1
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'hero_rarity_index1': string;
+    /**
+     * Hero rarity index for card 2
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'hero_rarity_index2': string;
+    /**
+     * Hero rarity index for card 3
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'hero_rarity_index3': string;
+    /**
+     * Hero rarity index for card 4
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'hero_rarity_index4': string;
+    /**
+     * Hero rarity index for card 5
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'hero_rarity_index5': string;
+    /**
+     * Whether the reward is activated
+     * @type {boolean}
+     * @memberof TournamentPlayer
+     */
+    'is_reward_activated': boolean;
+    /**
+     * Elo change for the player
+     * @type {number}
+     * @memberof TournamentPlayer
+     */
+    'elo_change': number;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'updated_at': string;
+    /**
+     * Previous rank of the player
+     * @type {number}
+     * @memberof TournamentPlayer
+     */
+    'previous_rank': number;
+    /**
+     * Indicates if the player is registered
+     * @type {boolean}
+     * @memberof TournamentPlayer
+     */
+    'is_registered': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof TournamentPlayer
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentPlayerHistories
+ */
+export interface TournamentPlayerHistories {
+    /**
+     * Unique identifier for the tournament history
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'id': string;
+    /**
+     * Card 1 identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'card1': string;
+    /**
+     * Card 2 identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'card2': string;
+    /**
+     * Card 3 identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'card3': string;
+    /**
+     * Card 4 identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'card4': string;
+    /**
+     * Card 5 identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'card5': string;
+    /**
+     * Cards
+     * @type {Array<Array<string>>}
+     * @memberof TournamentPlayerHistories
+     */
+    'cards': Array<Array<string>>;
+    /**
+     * Player identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'player_id': string;
+    /**
+     * player object
+     * @type {Player}
+     * @memberof TournamentPlayerHistories
+     */
+    'players': Player;
+    /**
+     * Score in the tournament
+     * @type {object}
+     * @memberof TournamentPlayerHistories
+     */
+    'score': object;
+    /**
+     * Rank in the tournament
+     * @type {number}
+     * @memberof TournamentPlayerHistories
+     */
+    'rank': number;
+    /**
+     * Reward details
+     * @type {object}
+     * @memberof TournamentPlayerHistories
+     */
+    'rewards_details': object;
+    /**
+     * Tournament identifier
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'tournament_id': string;
+    /**
+     * Hero rarity index for card 1
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'hero_rarity_index1': string;
+    /**
+     * Hero rarity index for card 2
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'hero_rarity_index2': string;
+    /**
+     * Hero rarity index for card 3
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'hero_rarity_index3': string;
+    /**
+     * Hero rarity index for card 4
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'hero_rarity_index4': string;
+    /**
+     * Hero rarity index for card 5
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'hero_rarity_index5': string;
+    /**
+     * Whether the reward is activated
+     * @type {boolean}
+     * @memberof TournamentPlayerHistories
+     */
+    'is_reward_activated': boolean;
+    /**
+     * Elo change for the player
+     * @type {number}
+     * @memberof TournamentPlayerHistories
+     */
+    'elo_change': number;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'updated_at': string;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof TournamentPlayerHistories
+     */
+    'created_at': string;
+    /**
+     * Current rank of the player
+     * @type {number}
+     * @memberof TournamentPlayerHistories
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the player
+     * @type {number}
+     * @memberof TournamentPlayerHistories
+     */
+    'fantasy_score': number;
+    /**
+     * Number of views for the tournament
+     * @type {number}
+     * @memberof TournamentPlayerHistories
+     */
+    'views': number;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentRegisteredInResponse
+ */
+export interface TournamentRegisteredInResponse {
+    /**
+     * List of tournaments the player is registered in
+     * @type {Array<Tournament>}
+     * @memberof TournamentRegisteredInResponse
+     */
+    'tournaments': Array<Tournament>;
+    /**
+     * Total rewards across all registered tournaments
+     * @type {Array<CurrentRunningRewardsDTO>}
+     * @memberof TournamentRegisteredInResponse
+     */
+    'totalRewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentRewards
+ */
+export interface TournamentRewards {
+    /**
+     * Unique identifier for the reward
+     * @type {string}
+     * @memberof TournamentRewards
+     */
+    'id': string;
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof TournamentRewards
+     */
+    'type': string;
+    /**
+     * Total supply of the reward
+     * @type {object}
+     * @memberof TournamentRewards
+     */
+    'total_supply': object;
+    /**
+     * Tournament ID associated with this reward
+     * @type {string}
+     * @memberof TournamentRewards
+     */
+    'tournament_id': string;
+    /**
+     * Distribution details of the reward
+     * @type {Array<string>}
+     * @memberof TournamentRewards
+     */
+    'distribution': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentScoreHistory
+ */
+export interface TournamentScoreHistory {
+    /**
+     * Unique identifier for the tournament history entry
+     * @type {string}
+     * @memberof TournamentScoreHistory
+     */
+    'id': string;
+    /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof TournamentScoreHistory
+     */
+    'current_rank': number;
+    /**
+     * Number of views for the hero
+     * @type {number}
+     * @memberof TournamentScoreHistory
+     */
+    'views': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof TournamentScoreHistory
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentStatsDTO
+ */
+export interface TournamentStatsDTO {
+    /**
+     * ID of the tournament
+     * @type {string}
+     * @memberof TournamentStatsDTO
+     */
+    'tournament_id': string;
+    /**
+     * Start date of the tournament
+     * @type {string}
+     * @memberof TournamentStatsDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tournament
+     * @type {string}
+     * @memberof TournamentStatsDTO
+     */
+    'end_date': string;
+    /**
+     * Current rank in the tournament
+     * @type {number}
+     * @memberof TournamentStatsDTO
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score in the tournament
+     * @type {number}
+     * @memberof TournamentStatsDTO
+     */
+    'fantasy_score': number;
+    /**
+     * Number of views in the tournament
+     * @type {number}
+     * @memberof TournamentStatsDTO
+     */
+    'views': number;
+    /**
+     * Number of tweets in the tournament
+     * @type {number}
+     * @memberof TournamentStatsDTO
+     */
+    'tweet_count': number;
+    /**
+     * Reach in the tournament
+     * @type {number}
+     * @memberof TournamentStatsDTO
+     */
+    'reach': number;
+}
+/**
+ * 
+ * @export
+ * @interface Trade
+ */
+export interface Trade {
+    /**
+     * Price
+     * @type {object}
+     * @memberof Trade
+     */
+    'price': object;
+    /**
+     * Seller ID
+     * @type {string}
+     * @memberof Trade
+     */
+    'seller_id': string;
+    /**
+     * Buyer ID
+     * @type {string}
+     * @memberof Trade
+     */
+    'buyer_id': string;
+    /**
+     * Type
+     * @type {string}
+     * @memberof Trade
+     */
+    'type': string;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof Trade
+     */
+    'hero_id': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof Trade
+     */
+    'payment_token': string;
+    /**
+     * Order hash
+     * @type {string}
+     * @memberof Trade
+     */
+    'order_hash': string;
+    /**
+     * Timestamp
+     * @type {string}
+     * @memberof Trade
+     */
+    'timestamp': string;
+    /**
+     * Block number
+     * @type {number}
+     * @memberof Trade
+     */
+    'block_number': number;
+    /**
+     * Transaction hash
+     * @type {string}
+     * @memberof Trade
+     */
+    'tx_hash': string;
+    /**
+     * Contract
+     * @type {string}
+     * @memberof Trade
+     */
+    'contract': string;
+    /**
+     * Fantasy card ID
+     * @type {string}
+     * @memberof Trade
+     */
+    'fantasy_card_id': string;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof Trade
+     */
+    'created_at'?: string;
+    /**
+     * Update date, optional
+     * @type {string}
+     * @memberof Trade
+     */
+    'updated_at'?: string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof Trade
+     */
+    'id': string;
+    /**
+     * Hero rarity index
+     * @type {string}
+     * @memberof Trade
+     */
+    'hero_rarity_index': string;
+}
+/**
+ * 
+ * @export
+ * @interface TradesDTO
+ */
+export interface TradesDTO {
+    /**
+     * ID
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'id': string;
+    /**
+     * Price
+     * @type {object}
+     * @memberof TradesDTO
+     */
+    'price': object;
+    /**
+     * Seller ID
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'seller_id': string;
+    /**
+     * Buyer ID
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'buyer_id': string;
+    /**
+     * Type
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'type': string;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'hero_id': string;
+    /**
+     * Payment Token
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'payment_token': string;
+    /**
+     * Order Hash
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'order_hash': string;
+    /**
+     * Timestamp
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'timestamp': string;
+    /**
+     * Block Number
+     * @type {number}
+     * @memberof TradesDTO
+     */
+    'block_number': number;
+    /**
+     * Transaction Hash
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'tx_hash': string;
+    /**
+     * Contract
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'contract': string;
+    /**
+     * Fantasy Card ID
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'fantasy_card_id': string;
+    /**
+     * Created At
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'created_at': string;
+    /**
+     * Updated At
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'updated_at': string;
+    /**
+     * Hero Rarity Index
+     * @type {string}
+     * @memberof TradesDTO
+     */
+    'hero_rarity_index': string;
+    /**
+     * Card
+     * @type {Card}
+     * @memberof TradesDTO
+     */
+    'card': Card;
+    /**
+     * Buyer
+     * @type {Player}
+     * @memberof TradesDTO
+     */
+    'buyer': Player;
+    /**
+     * Seller
+     * @type {Player}
+     * @memberof TradesDTO
+     */
+    'seller': Player;
+}
+/**
+ * 
+ * @export
+ * @interface TreeMapDataPoint
+ */
+export interface TreeMapDataPoint {
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeMapDataPoint
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeMapDataPoint
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TreeMapDataPoint
+     */
+    'value': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TreeMapDataPoint
+     */
+    'colorValue': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeMapDataPoint
+     */
+    'trend': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TreeMapDataPoint
+     */
+    'avatar'?: string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof TreeMapDataPoint
+     */
+    'trendData': Array<number>;
+    /**
+     * Current clout score from leaderboard
+     * @type {number}
+     * @memberof TreeMapDataPoint
+     */
+    'current_clout': number;
+}
+/**
+ * 
+ * @export
+ * @interface TreeMapResponseDTO
+ */
+export interface TreeMapResponseDTO {
+    /**
+     * 
+     * @type {Array<TreeMapDataPoint>}
+     * @memberof TreeMapResponseDTO
+     */
+    'data': Array<TreeMapDataPoint>;
+}
+/**
+ * 
+ * @export
  * @interface TrendingHeroDTO
  */
 export interface TrendingHeroDTO {
@@ -6426,6 +17540,32 @@ export interface TweetHero {
      * @memberof TweetHero
      */
     'credibility_average': CredibilityAverage;
+}
+/**
+ * 
+ * @export
+ * @interface TwitterDataHero
+ */
+export interface TwitterDataHero {
+    /**
+     * 
+     * @type {string}
+     * @memberof TwitterDataHero
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface VerifySellOrdersDTO
+ */
+export interface VerifySellOrdersDTO {
+    /**
+     * Array of sell order IDs to verify
+     * @type {Array<SellOrderDTO>}
+     * @memberof VerifySellOrdersDTO
+     */
+    'sellOrders': Array<SellOrderDTO>;
 }
 /**
  * 
@@ -6647,6 +17787,117 @@ export interface VoteWithoutInclude {
      */
     'created_at': string;
 }
+/**
+ * 
+ * @export
+ * @interface VrgdaPriceChart
+ */
+export interface VrgdaPriceChart {
+    /**
+     * 
+     * @type {number}
+     * @memberof VrgdaPriceChart
+     */
+    'id': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VrgdaPriceChart
+     */
+    'mint_id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof VrgdaPriceChart
+     */
+    'minter_address': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof VrgdaPriceChart
+     */
+    'price': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof VrgdaPriceChart
+     */
+    'timestamp': string;
+}
+/**
+ * 
+ * @export
+ * @interface XGamesLeaderboardDto
+ */
+export interface XGamesLeaderboardDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof XGamesLeaderboardDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XGamesLeaderboardDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XGamesLeaderboardDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XGamesLeaderboardDto
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XGamesLeaderboardDto
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof XGamesLeaderboardDto
+     */
+    'overall_rank': number;
+    /**
+     * 
+     * @type {StreakLeaderboardDto}
+     * @memberof XGamesLeaderboardDto
+     */
+    'guess_favorite': StreakLeaderboardDto;
+    /**
+     * 
+     * @type {StreakLeaderboardDto}
+     * @memberof XGamesLeaderboardDto
+     */
+    'hot_or_not': StreakLeaderboardDto;
+}
+/**
+ * 
+ * @export
+ * @interface XGamesLeaderboardResponseDto
+ */
+export interface XGamesLeaderboardResponseDto {
+    /**
+     * 
+     * @type {Array<XGamesLeaderboardDto>}
+     * @memberof XGamesLeaderboardResponseDto
+     */
+    'data': Array<XGamesLeaderboardDto>;
+    /**
+     * 
+     * @type {MetaInfiniteQueryDto}
+     * @memberof XGamesLeaderboardResponseDto
+     */
+    'meta': MetaInfiniteQueryDto;
+}
 
 /**
  * CardApi - axios parameter creator
@@ -6670,7 +17921,12 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -6714,12 +17970,61 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Array<string>} ids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardsByIdsForOpenPacks: async (ids: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ids' is not null or undefined
+            assertParamExists('getCardsByIdsForOpenPacks', 'ids', ids)
+            const localVarPath = `/card/by-ids/for-open-packs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (ids) {
+                localVarQueryParameter['ids'] = ids;
+            }
 
 
     
@@ -6751,7 +18056,60 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} playerId 
+         * @param {GetPlayerCardsDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDeckBuilderCardsByPlayerId: async (playerId: string, query?: GetPlayerCardsDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getDeckBuilderCardsByPlayerId', 'playerId', playerId)
+            const localVarPath = `/card/deck-builder/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -6793,7 +18151,12 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -6848,15 +18211,40 @@ export const CardApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {Array<string>} ids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCardsByIdsForOpenPacks(ids: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetCardsByIdsForOpenPacksDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCardsByIdsForOpenPacks(ids, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CardApi.getCardsByIdsForOpenPacks']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {string} playerId 
          * @param {GetPlayerCardsDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCardsByPlayerId(playerId: string, query?: GetPlayerCardsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CardWithNumber>>> {
+        async getCardsByPlayerId(playerId: string, query?: GetPlayerCardsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedCardWithNumberResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCardsByPlayerId(playerId, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CardApi.getCardsByPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} playerId 
+         * @param {GetPlayerCardsDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDeckBuilderCardsByPlayerId(playerId: string, query?: GetPlayerCardsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedCardWithNumberResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDeckBuilderCardsByPlayerId(playerId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CardApi.getDeckBuilderCardsByPlayerId']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -6901,12 +18289,30 @@ export const CardApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {CardApiGetCardsByIdsForOpenPacksRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardsByIdsForOpenPacks(requestParameters: CardApiGetCardsByIdsForOpenPacksRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<GetCardsByIdsForOpenPacksDTO>> {
+            return localVarFp.getCardsByIdsForOpenPacks(requestParameters.ids, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CardApiGetCardsByPlayerIdRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<CardWithNumber>> {
+        getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedCardWithNumberResult> {
             return localVarFp.getCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {CardApiGetDeckBuilderCardsByPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDeckBuilderCardsByPlayerId(requestParameters: CardApiGetDeckBuilderCardsByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedCardWithNumberResult> {
+            return localVarFp.getDeckBuilderCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -6956,6 +18362,20 @@ export interface CardApiGetCardByIdRequest {
 }
 
 /**
+ * Request parameters for getCardsByIdsForOpenPacks operation in CardApi.
+ * @export
+ * @interface CardApiGetCardsByIdsForOpenPacksRequest
+ */
+export interface CardApiGetCardsByIdsForOpenPacksRequest {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CardApiGetCardsByIdsForOpenPacks
+     */
+    readonly ids: Array<string>
+}
+
+/**
  * Request parameters for getCardsByPlayerId operation in CardApi.
  * @export
  * @interface CardApiGetCardsByPlayerIdRequest
@@ -6972,6 +18392,27 @@ export interface CardApiGetCardsByPlayerIdRequest {
      * 
      * @type {GetPlayerCardsDTO}
      * @memberof CardApiGetCardsByPlayerId
+     */
+    readonly query?: GetPlayerCardsDTO
+}
+
+/**
+ * Request parameters for getDeckBuilderCardsByPlayerId operation in CardApi.
+ * @export
+ * @interface CardApiGetDeckBuilderCardsByPlayerIdRequest
+ */
+export interface CardApiGetDeckBuilderCardsByPlayerIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CardApiGetDeckBuilderCardsByPlayerId
+     */
+    readonly playerId: string
+
+    /**
+     * 
+     * @type {GetPlayerCardsDTO}
+     * @memberof CardApiGetDeckBuilderCardsByPlayerId
      */
     readonly query?: GetPlayerCardsDTO
 }
@@ -7021,6 +18462,17 @@ export class CardApi extends BaseAPI {
 
     /**
      * 
+     * @param {CardApiGetCardsByIdsForOpenPacksRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    public getCardsByIdsForOpenPacks(requestParameters: CardApiGetCardsByIdsForOpenPacksRequest, options?: RawAxiosRequestConfig) {
+        return CardApiFp(this.configuration).getCardsByIdsForOpenPacks(requestParameters.ids, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {CardApiGetCardsByPlayerIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7028,6 +18480,17 @@ export class CardApi extends BaseAPI {
      */
     public getCardsByPlayerId(requestParameters: CardApiGetCardsByPlayerIdRequest, options?: RawAxiosRequestConfig) {
         return CardApiFp(this.configuration).getCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CardApiGetDeckBuilderCardsByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    public getDeckBuilderCardsByPlayerId(requestParameters: CardApiGetDeckBuilderCardsByPlayerIdRequest, options?: RawAxiosRequestConfig) {
+        return CardApiFp(this.configuration).getDeckBuilderCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -7053,12 +18516,15 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @summary Get all heroes with pagination
+         * @param {boolean} orderByStarsChange 
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes: async (limit?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllHeroes: async (orderByStarsChange: boolean, limit?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'orderByStarsChange' is not null or undefined
+            assertParamExists('getAllHeroes', 'orderByStarsChange', orderByStarsChange)
             const localVarPath = `/hero/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7067,7 +18533,12 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7080,6 +18551,55 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
+            }
+
+            if (orderByStarsChange !== undefined) {
+                localVarQueryParameter['order_by_stars_change'] = orderByStarsChange;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get hero feed
+         * @param {GetHeroFeedDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroFeed: async (query?: GetHeroFeedDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/hero/feed`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
 
 
@@ -7111,7 +18631,12 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7151,7 +18676,12 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7186,15 +18716,29 @@ export const HeroApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all heroes with pagination
+         * @param {boolean} orderByStarsChange 
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllHeroes(limit?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(limit, page, options);
+        async getAllHeroes(orderByStarsChange: boolean, limit?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HeroApi.getAllHeroes']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get hero feed
+         * @param {GetHeroFeedDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHeroFeed(query?: GetHeroFeedDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedEnrichedTweetResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroFeed(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['HeroApi.getHeroFeed']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -7240,8 +18784,18 @@ export const HeroApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHeroResult> {
-            return localVarFp.getAllHeroes(requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+        getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHeroResult> {
+            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get hero feed
+         * @param {HeroApiGetHeroFeedRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroFeed(requestParameters: HeroApiGetHeroFeedRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedEnrichedTweetResult> {
+            return localVarFp.getHeroFeed(requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -7273,6 +18827,13 @@ export const HeroApiFactory = function (configuration?: Configuration, basePath?
  */
 export interface HeroApiGetAllHeroesRequest {
     /**
+     * 
+     * @type {boolean}
+     * @memberof HeroApiGetAllHeroes
+     */
+    readonly orderByStarsChange: boolean
+
+    /**
      * Limit the number of heroes returned
      * @type {number}
      * @memberof HeroApiGetAllHeroes
@@ -7285,6 +18846,20 @@ export interface HeroApiGetAllHeroesRequest {
      * @memberof HeroApiGetAllHeroes
      */
     readonly page?: number
+}
+
+/**
+ * Request parameters for getHeroFeed operation in HeroApi.
+ * @export
+ * @interface HeroApiGetHeroFeedRequest
+ */
+export interface HeroApiGetHeroFeedRequest {
+    /**
+     * 
+     * @type {GetHeroFeedDTO}
+     * @memberof HeroApiGetHeroFeed
+     */
+    readonly query?: GetHeroFeedDTO
 }
 
 /**
@@ -7330,8 +18905,20 @@ export class HeroApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HeroApi
      */
-    public getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest = {}, options?: RawAxiosRequestConfig) {
-        return HeroApiFp(this.configuration).getAllHeroes(requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    public getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig) {
+        return HeroApiFp(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get hero feed
+     * @param {HeroApiGetHeroFeedRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HeroApi
+     */
+    public getHeroFeed(requestParameters: HeroApiGetHeroFeedRequest = {}, options?: RawAxiosRequestConfig) {
+        return HeroApiFp(this.configuration).getHeroFeed(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -7362,6 +18949,573 @@ export class HeroApi extends BaseAPI {
 
 
 /**
+ * MarketplaceApi - axios parameter creator
+ * @export
+ */
+export const MarketplaceApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} heroId 
+         * @param {number} rarity 
+         * @param {boolean} includeOrderbook 
+         * @param {boolean} includePersonalBids 
+         * @param {boolean} includeHighestFiveBids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidOrders: async (heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'heroId' is not null or undefined
+            assertParamExists('getBidOrders', 'heroId', heroId)
+            // verify required parameter 'rarity' is not null or undefined
+            assertParamExists('getBidOrders', 'rarity', rarity)
+            // verify required parameter 'includeOrderbook' is not null or undefined
+            assertParamExists('getBidOrders', 'includeOrderbook', includeOrderbook)
+            // verify required parameter 'includePersonalBids' is not null or undefined
+            assertParamExists('getBidOrders', 'includePersonalBids', includePersonalBids)
+            // verify required parameter 'includeHighestFiveBids' is not null or undefined
+            assertParamExists('getBidOrders', 'includeHighestFiveBids', includeHighestFiveBids)
+            const localVarPath = `/marketplace/bid-orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (heroId !== undefined) {
+                localVarQueryParameter['heroId'] = heroId;
+            }
+
+            if (rarity !== undefined) {
+                localVarQueryParameter['rarity'] = rarity;
+            }
+
+            if (includeOrderbook !== undefined) {
+                localVarQueryParameter['includeOrderbook'] = includeOrderbook;
+            }
+
+            if (includePersonalBids !== undefined) {
+                localVarQueryParameter['includePersonalBids'] = includePersonalBids;
+            }
+
+            if (includeHighestFiveBids !== undefined) {
+                localVarQueryParameter['includeHighestFiveBids'] = includeHighestFiveBids;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} heroRarityIndex 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardMarketBasicInfo: async (heroRarityIndex: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            assertParamExists('getCardMarketBasicInfo', 'heroRarityIndex', heroRarityIndex)
+            const localVarPath = `/marketplace/get-card-market-basic-info/{hero_rarity_index}`
+                .replace(`{${"hero_rarity_index"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get lowest price for hero rarity
+         * @param {string} heroRarityIndex 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLowestPriceForHeroRarity: async (heroRarityIndex: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            assertParamExists('getLowestPriceForHeroRarity', 'heroRarityIndex', heroRarityIndex)
+            const localVarPath = `/marketplace/lowest-price-for-hero-rarity/{heroRarityIndex}`
+                .replace(`{${"heroRarityIndex"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get marketplace data
+         * @param {GetAndFilterSellOrdersQueryDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketplaceData: async (query?: GetAndFilterSellOrdersQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/marketplace/sell-orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get sell orders by hero rarity index
+         * @param {string} heroRarityIndex 
+         * @param {string} type 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellOrdersByHeroRarityIndex: async (heroRarityIndex: string, type: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            assertParamExists('getSellOrdersByHeroRarityIndex', 'heroRarityIndex', heroRarityIndex)
+            // verify required parameter 'type' is not null or undefined
+            assertParamExists('getSellOrdersByHeroRarityIndex', 'type', type)
+            const localVarPath = `/marketplace/sell-orders/{heroRarityIndex}`
+                .replace(`{${"heroRarityIndex"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * MarketplaceApi - functional programming interface
+ * @export
+ */
+export const MarketplaceApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MarketplaceApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {string} heroId 
+         * @param {number} rarity 
+         * @param {boolean} includeOrderbook 
+         * @param {boolean} includePersonalBids 
+         * @param {boolean} includeHighestFiveBids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBidOrders(heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBidOrdersDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getBidOrders']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} heroRarityIndex 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCardMarketBasicInfo(heroRarityIndex: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCardMarketBasicInfoDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCardMarketBasicInfo(heroRarityIndex, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getCardMarketBasicInfo']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get lowest price for hero rarity
+         * @param {string} heroRarityIndex 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLowestPriceForHeroRarity(heroRarityIndex: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLowestPriceForHeroRarity(heroRarityIndex, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getLowestPriceForHeroRarity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get marketplace data
+         * @param {GetAndFilterSellOrdersQueryDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarketplaceData(query?: GetAndFilterSellOrdersQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedSellOrderWithHighestBidResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarketplaceData(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getMarketplaceData']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get sell orders by hero rarity index
+         * @param {string} heroRarityIndex 
+         * @param {string} type 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSellOrdersByHeroRarityIndex(heroRarityIndex: string, type: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SellOrdersResponseDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellOrdersByHeroRarityIndex(heroRarityIndex, type, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getSellOrdersByHeroRarityIndex']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * MarketplaceApi - factory interface
+ * @export
+ */
+export const MarketplaceApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MarketplaceApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {MarketplaceApiGetBidOrdersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidOrders(requestParameters: MarketplaceApiGetBidOrdersRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetBidOrdersDTO> {
+            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {MarketplaceApiGetCardMarketBasicInfoRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardMarketBasicInfo(requestParameters: MarketplaceApiGetCardMarketBasicInfoRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetCardMarketBasicInfoDTO> {
+            return localVarFp.getCardMarketBasicInfo(requestParameters.heroRarityIndex, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get lowest price for hero rarity
+         * @param {MarketplaceApiGetLowestPriceForHeroRarityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLowestPriceForHeroRarity(requestParameters: MarketplaceApiGetLowestPriceForHeroRarityRequest, options?: RawAxiosRequestConfig): AxiosPromise<number> {
+            return localVarFp.getLowestPriceForHeroRarity(requestParameters.heroRarityIndex, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get marketplace data
+         * @param {MarketplaceApiGetMarketplaceDataRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketplaceData(requestParameters: MarketplaceApiGetMarketplaceDataRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedSellOrderWithHighestBidResult> {
+            return localVarFp.getMarketplaceData(requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get sell orders by hero rarity index
+         * @param {MarketplaceApiGetSellOrdersByHeroRarityIndexRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellOrdersByHeroRarityIndex(requestParameters: MarketplaceApiGetSellOrdersByHeroRarityIndexRequest, options?: RawAxiosRequestConfig): AxiosPromise<SellOrdersResponseDTO> {
+            return localVarFp.getSellOrdersByHeroRarityIndex(requestParameters.heroRarityIndex, requestParameters.type, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for getBidOrders operation in MarketplaceApi.
+ * @export
+ * @interface MarketplaceApiGetBidOrdersRequest
+ */
+export interface MarketplaceApiGetBidOrdersRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly heroId: string
+
+    /**
+     * 
+     * @type {number}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly rarity: number
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly includeOrderbook: boolean
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly includePersonalBids: boolean
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly includeHighestFiveBids: boolean
+}
+
+/**
+ * Request parameters for getCardMarketBasicInfo operation in MarketplaceApi.
+ * @export
+ * @interface MarketplaceApiGetCardMarketBasicInfoRequest
+ */
+export interface MarketplaceApiGetCardMarketBasicInfoRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MarketplaceApiGetCardMarketBasicInfo
+     */
+    readonly heroRarityIndex: string
+}
+
+/**
+ * Request parameters for getLowestPriceForHeroRarity operation in MarketplaceApi.
+ * @export
+ * @interface MarketplaceApiGetLowestPriceForHeroRarityRequest
+ */
+export interface MarketplaceApiGetLowestPriceForHeroRarityRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MarketplaceApiGetLowestPriceForHeroRarity
+     */
+    readonly heroRarityIndex: string
+}
+
+/**
+ * Request parameters for getMarketplaceData operation in MarketplaceApi.
+ * @export
+ * @interface MarketplaceApiGetMarketplaceDataRequest
+ */
+export interface MarketplaceApiGetMarketplaceDataRequest {
+    /**
+     * 
+     * @type {GetAndFilterSellOrdersQueryDTO}
+     * @memberof MarketplaceApiGetMarketplaceData
+     */
+    readonly query?: GetAndFilterSellOrdersQueryDTO
+}
+
+/**
+ * Request parameters for getSellOrdersByHeroRarityIndex operation in MarketplaceApi.
+ * @export
+ * @interface MarketplaceApiGetSellOrdersByHeroRarityIndexRequest
+ */
+export interface MarketplaceApiGetSellOrdersByHeroRarityIndexRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof MarketplaceApiGetSellOrdersByHeroRarityIndex
+     */
+    readonly heroRarityIndex: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof MarketplaceApiGetSellOrdersByHeroRarityIndex
+     */
+    readonly type: string
+}
+
+/**
+ * MarketplaceApi - object-oriented interface
+ * @export
+ * @class MarketplaceApi
+ * @extends {BaseAPI}
+ */
+export class MarketplaceApi extends BaseAPI {
+    /**
+     * 
+     * @param {MarketplaceApiGetBidOrdersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    public getBidOrders(requestParameters: MarketplaceApiGetBidOrdersRequest, options?: RawAxiosRequestConfig) {
+        return MarketplaceApiFp(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {MarketplaceApiGetCardMarketBasicInfoRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    public getCardMarketBasicInfo(requestParameters: MarketplaceApiGetCardMarketBasicInfoRequest, options?: RawAxiosRequestConfig) {
+        return MarketplaceApiFp(this.configuration).getCardMarketBasicInfo(requestParameters.heroRarityIndex, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get lowest price for hero rarity
+     * @param {MarketplaceApiGetLowestPriceForHeroRarityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    public getLowestPriceForHeroRarity(requestParameters: MarketplaceApiGetLowestPriceForHeroRarityRequest, options?: RawAxiosRequestConfig) {
+        return MarketplaceApiFp(this.configuration).getLowestPriceForHeroRarity(requestParameters.heroRarityIndex, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get marketplace data
+     * @param {MarketplaceApiGetMarketplaceDataRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    public getMarketplaceData(requestParameters: MarketplaceApiGetMarketplaceDataRequest = {}, options?: RawAxiosRequestConfig) {
+        return MarketplaceApiFp(this.configuration).getMarketplaceData(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get sell orders by hero rarity index
+     * @param {MarketplaceApiGetSellOrdersByHeroRarityIndexRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    public getSellOrdersByHeroRarityIndex(requestParameters: MarketplaceApiGetSellOrdersByHeroRarityIndexRequest, options?: RawAxiosRequestConfig) {
+        return MarketplaceApiFp(this.configuration).getSellOrdersByHeroRarityIndex(requestParameters.heroRarityIndex, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * PlayerApi - axios parameter creator
  * @export
  */
@@ -7385,7 +19539,12 @@ export const PlayerApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7394,6 +19553,55 @@ export const PlayerApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all activity for a player
+         * @param {string} playerId 
+         * @param {GetPlayerActivityDto} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivityForPlayer: async (playerId: string, query?: GetPlayerActivityDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getActivityForPlayer', 'playerId', playerId)
+            const localVarPath = `/player/activity/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
 
 
@@ -7424,7 +19632,12 @@ export const PlayerApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7438,6 +19651,174 @@ export const PlayerApiAxiosParamCreator = function (configuration?: Configuratio
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all bids for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidsForPlayerId: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getBidsForPlayerId', 'playerId', playerId)
+            const localVarPath = `/player/bids/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get game stats for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGameStatsForPlayer: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getGameStatsForPlayer', 'playerId', playerId)
+            const localVarPath = `/player/game-stats/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all listings for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListingsForPlayer: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getListingsForPlayer', 'playerId', playerId)
+            const localVarPath = `/player/listings/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get player basic data including portfolio and cards
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerBasicData: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getPlayerBasicData', 'playerId', playerId)
+            const localVarPath = `/player/basic-data/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
 
 
     
@@ -7475,6 +19856,20 @@ export const PlayerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all activity for a player
+         * @param {string} playerId 
+         * @param {GetPlayerActivityDto} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getActivityForPlayer(playerId: string, query?: GetPlayerActivityDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedGetLastActivityDtoResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getActivityForPlayer(playerId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getActivityForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get all paginated players
          * @param {number} [page] Page number
          * @param {number} [limit] Number of items per page
@@ -7485,6 +19880,58 @@ export const PlayerApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPlayersWithPagination(page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlayerApi.getAllPlayersWithPagination']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get all bids for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBidsForPlayerId(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BidOrderWithTopBidAndFloorPrice>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidsForPlayerId(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getBidsForPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get game stats for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getGameStatsForPlayer(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GameStatsDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGameStatsForPlayer(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getGameStatsForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get all listings for a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getListingsForPlayer(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SellOrder>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getListingsForPlayer(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getListingsForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get player basic data including portfolio and cards
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerBasicData(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPlayerBasicDataResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerBasicData(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getPlayerBasicData']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -7509,6 +19956,16 @@ export const PlayerApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
+         * @summary Get all activity for a player
+         * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivityForPlayer(requestParameters: PlayerApiGetActivityForPlayerRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedGetLastActivityDtoResult> {
+            return localVarFp.getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all paginated players
          * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -7516,6 +19973,46 @@ export const PlayerApiFactory = function (configuration?: Configuration, basePat
          */
         getAllPlayersWithPagination(requestParameters: PlayerApiGetAllPlayersWithPaginationRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedPlayerResult> {
             return localVarFp.getAllPlayersWithPagination(requestParameters.page, requestParameters.limit, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all bids for a player
+         * @param {PlayerApiGetBidsForPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidsForPlayerId(requestParameters: PlayerApiGetBidsForPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<BidOrderWithTopBidAndFloorPrice>> {
+            return localVarFp.getBidsForPlayerId(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get game stats for a player
+         * @param {PlayerApiGetGameStatsForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGameStatsForPlayer(requestParameters: PlayerApiGetGameStatsForPlayerRequest, options?: RawAxiosRequestConfig): AxiosPromise<GameStatsDto> {
+            return localVarFp.getGameStatsForPlayer(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all listings for a player
+         * @param {PlayerApiGetListingsForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListingsForPlayer(requestParameters: PlayerApiGetListingsForPlayerRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<SellOrder>> {
+            return localVarFp.getListingsForPlayer(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get player basic data including portfolio and cards
+         * @param {PlayerApiGetPlayerBasicDataRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerBasicData(requestParameters: PlayerApiGetPlayerBasicDataRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPlayerBasicDataResponseDto> {
+            return localVarFp.getPlayerBasicData(requestParameters.playerId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7532,6 +20029,27 @@ export interface PlayerApiFindPlayersBySearchRequest {
      * @memberof PlayerApiFindPlayersBySearch
      */
     readonly search: string
+}
+
+/**
+ * Request parameters for getActivityForPlayer operation in PlayerApi.
+ * @export
+ * @interface PlayerApiGetActivityForPlayerRequest
+ */
+export interface PlayerApiGetActivityForPlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerApiGetActivityForPlayer
+     */
+    readonly playerId: string
+
+    /**
+     * 
+     * @type {GetPlayerActivityDto}
+     * @memberof PlayerApiGetActivityForPlayer
+     */
+    readonly query?: GetPlayerActivityDto
 }
 
 /**
@@ -7556,6 +20074,62 @@ export interface PlayerApiGetAllPlayersWithPaginationRequest {
 }
 
 /**
+ * Request parameters for getBidsForPlayerId operation in PlayerApi.
+ * @export
+ * @interface PlayerApiGetBidsForPlayerIdRequest
+ */
+export interface PlayerApiGetBidsForPlayerIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerApiGetBidsForPlayerId
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getGameStatsForPlayer operation in PlayerApi.
+ * @export
+ * @interface PlayerApiGetGameStatsForPlayerRequest
+ */
+export interface PlayerApiGetGameStatsForPlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerApiGetGameStatsForPlayer
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getListingsForPlayer operation in PlayerApi.
+ * @export
+ * @interface PlayerApiGetListingsForPlayerRequest
+ */
+export interface PlayerApiGetListingsForPlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerApiGetListingsForPlayer
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getPlayerBasicData operation in PlayerApi.
+ * @export
+ * @interface PlayerApiGetPlayerBasicDataRequest
+ */
+export interface PlayerApiGetPlayerBasicDataRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerApiGetPlayerBasicData
+     */
+    readonly playerId: string
+}
+
+/**
  * PlayerApi - object-oriented interface
  * @export
  * @class PlayerApi
@@ -7576,6 +20150,18 @@ export class PlayerApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get all activity for a player
+     * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    public getActivityForPlayer(requestParameters: PlayerApiGetActivityForPlayerRequest, options?: RawAxiosRequestConfig) {
+        return PlayerApiFp(this.configuration).getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get all paginated players
      * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -7584,6 +20170,54 @@ export class PlayerApi extends BaseAPI {
      */
     public getAllPlayersWithPagination(requestParameters: PlayerApiGetAllPlayersWithPaginationRequest = {}, options?: RawAxiosRequestConfig) {
         return PlayerApiFp(this.configuration).getAllPlayersWithPagination(requestParameters.page, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all bids for a player
+     * @param {PlayerApiGetBidsForPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    public getBidsForPlayerId(requestParameters: PlayerApiGetBidsForPlayerIdRequest, options?: RawAxiosRequestConfig) {
+        return PlayerApiFp(this.configuration).getBidsForPlayerId(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get game stats for a player
+     * @param {PlayerApiGetGameStatsForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    public getGameStatsForPlayer(requestParameters: PlayerApiGetGameStatsForPlayerRequest, options?: RawAxiosRequestConfig) {
+        return PlayerApiFp(this.configuration).getGameStatsForPlayer(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all listings for a player
+     * @param {PlayerApiGetListingsForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    public getListingsForPlayer(requestParameters: PlayerApiGetListingsForPlayerRequest, options?: RawAxiosRequestConfig) {
+        return PlayerApiFp(this.configuration).getListingsForPlayer(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get player basic data including portfolio and cards
+     * @param {PlayerApiGetPlayerBasicDataRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    public getPlayerBasicData(requestParameters: PlayerApiGetPlayerBasicDataRequest, options?: RawAxiosRequestConfig) {
+        return PlayerApiFp(this.configuration).getPlayerBasicData(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -7614,7 +20248,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7651,7 +20290,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7685,7 +20329,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7713,11 +20362,11 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get tactic by id
          * @param {string} id 
-         * @param {GetTacticsQueryDTO} [query] 
+         * @param {GetTacticByIdQueryDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getById: async (id: string, query?: GetTacticsQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getById: async (id: string, query?: GetTacticByIdQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getById', 'id', id)
             const localVarPath = `/tactics/byId/{id}`
@@ -7729,7 +20378,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7773,7 +20427,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7816,7 +20475,12 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -7887,11 +20551,11 @@ export const TacticsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get tactic by id
          * @param {string} id 
-         * @param {GetTacticsQueryDTO} [query] 
+         * @param {GetTacticByIdQueryDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getById(id: string, query?: GetTacticsQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tactics>> {
+        async getById(id: string, query?: GetTacticByIdQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tactics>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getById(id, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TacticsApi.getById']?.[localVarOperationServerIndex]?.url;
@@ -8054,10 +20718,10 @@ export interface TacticsApiGetByIdRequest {
 
     /**
      * 
-     * @type {GetTacticsQueryDTO}
+     * @type {GetTacticByIdQueryDTO}
      * @memberof TacticsApiGetById
      */
-    readonly query?: GetTacticsQueryDTO
+    readonly query?: GetTacticByIdQueryDTO
 }
 
 /**
@@ -8178,6 +20842,712 @@ export class TacticsApi extends BaseAPI {
 
 
 /**
+ * TournamentsApi - axios parameter creator
+ * @export
+ */
+export const TournamentsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Count registered decks by player ID
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        countRegisteredDecksByPlayerId: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('countRegisteredDecksByPlayerId', 'playerId', playerId)
+            const localVarPath = `/tournaments/count-registered-decks/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentDecksAndWinnings: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getCurrentDecksAndWinnings', 'playerId', playerId)
+            const localVarPath = `/tournaments/currentDecksAndWinnings/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} tournamentNumber 
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHistoricalDecksAndWinnings: async (tournamentNumber: string, playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tournamentNumber' is not null or undefined
+            assertParamExists('getHistoricalDecksAndWinnings', 'tournamentNumber', tournamentNumber)
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getHistoricalDecksAndWinnings', 'playerId', playerId)
+            const localVarPath = `/tournaments/historicalDecksAndWinnings/{tournamentNumber}/{playerId}`
+                .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)))
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get next tournaments
+         * @param {PaginationDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNextTournaments: async (query?: PaginationDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/tournaments/next-tournaments`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get player decks
+         * @param {string} playerId 
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerDecksByTournamentIdAndPlayerId: async (playerId: string, tournamentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getPlayerDecksByTournamentIdAndPlayerId', 'playerId', playerId)
+            // verify required parameter 'tournamentId' is not null or undefined
+            assertParamExists('getPlayerDecksByTournamentIdAndPlayerId', 'tournamentId', tournamentId)
+            const localVarPath = `/tournaments/player-decks/{playerId}/{tournamentId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)))
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} tournamentId 
+         * @param {GetAllPlayersDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayersInTournament: async (tournamentId: string, query?: GetAllPlayersDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            assertParamExists('getPlayersInTournament', 'tournamentId', tournamentId)
+            const localVarPath = `/tournaments/players/{tournamentId}`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get tournament by ID
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTournamentById: async (tournamentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            assertParamExists('getTournamentById', 'tournamentId', tournamentId)
+            const localVarPath = `/tournaments/byId/{tournamentId}`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TournamentsApi - functional programming interface
+ * @export
+ */
+export const TournamentsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TournamentsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Count registered decks by player ID
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async countRegisteredDecksByPlayerId(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.countRegisteredDecksByPlayerId(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.countRegisteredDecksByPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCurrentDecksAndWinnings(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TournamentRegisteredInResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentDecksAndWinnings(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getCurrentDecksAndWinnings']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} tournamentNumber 
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHistoricalDecksAndWinnings(tournamentNumber: string, playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHistoricalDecksAndWinningsDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHistoricalDecksAndWinnings(tournamentNumber, playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getHistoricalDecksAndWinnings']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get next tournaments
+         * @param {PaginationDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNextTournaments(query?: PaginationDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tournament>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNextTournaments(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getNextTournaments']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get player decks
+         * @param {string} playerId 
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerDecksByTournamentIdAndPlayerId(playerId: string, tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TournamentPlayer>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getPlayerDecksByTournamentIdAndPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} tournamentId 
+         * @param {GetAllPlayersDTO} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayersInTournament(tournamentId: string, query?: GetAllPlayersDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTournamentPlayerResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayersInTournament(tournamentId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getPlayersInTournament']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get tournament by ID
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTournamentById(tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tournament>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTournamentById(tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getTournamentById']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * TournamentsApi - factory interface
+ * @export
+ */
+export const TournamentsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TournamentsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Count registered decks by player ID
+         * @param {TournamentsApiCountRegisteredDecksByPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        countRegisteredDecksByPlayerId(requestParameters: TournamentsApiCountRegisteredDecksByPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<number> {
+            return localVarFp.countRegisteredDecksByPlayerId(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {TournamentsApiGetCurrentDecksAndWinningsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentDecksAndWinnings(requestParameters: TournamentsApiGetCurrentDecksAndWinningsRequest, options?: RawAxiosRequestConfig): AxiosPromise<TournamentRegisteredInResponse> {
+            return localVarFp.getCurrentDecksAndWinnings(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHistoricalDecksAndWinnings(requestParameters: TournamentsApiGetHistoricalDecksAndWinningsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetHistoricalDecksAndWinningsDTO> {
+            return localVarFp.getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get next tournaments
+         * @param {TournamentsApiGetNextTournamentsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNextTournaments(requestParameters: TournamentsApiGetNextTournamentsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<Array<Tournament>> {
+            return localVarFp.getNextTournaments(requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get player decks
+         * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerDecksByTournamentIdAndPlayerId(requestParameters: TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TournamentPlayer>> {
+            return localVarFp.getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {TournamentsApiGetPlayersInTournamentRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayersInTournament(requestParameters: TournamentsApiGetPlayersInTournamentRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTournamentPlayerResult> {
+            return localVarFp.getPlayersInTournament(requestParameters.tournamentId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get tournament by ID
+         * @param {TournamentsApiGetTournamentByIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTournamentById(requestParameters: TournamentsApiGetTournamentByIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Tournament> {
+            return localVarFp.getTournamentById(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for countRegisteredDecksByPlayerId operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiCountRegisteredDecksByPlayerIdRequest
+ */
+export interface TournamentsApiCountRegisteredDecksByPlayerIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiCountRegisteredDecksByPlayerId
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getCurrentDecksAndWinnings operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetCurrentDecksAndWinningsRequest
+ */
+export interface TournamentsApiGetCurrentDecksAndWinningsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetCurrentDecksAndWinnings
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getHistoricalDecksAndWinnings operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetHistoricalDecksAndWinningsRequest
+ */
+export interface TournamentsApiGetHistoricalDecksAndWinningsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetHistoricalDecksAndWinnings
+     */
+    readonly tournamentNumber: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetHistoricalDecksAndWinnings
+     */
+    readonly playerId: string
+}
+
+/**
+ * Request parameters for getNextTournaments operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetNextTournamentsRequest
+ */
+export interface TournamentsApiGetNextTournamentsRequest {
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof TournamentsApiGetNextTournaments
+     */
+    readonly query?: PaginationDTO
+}
+
+/**
+ * Request parameters for getPlayerDecksByTournamentIdAndPlayerId operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest
+ */
+export interface TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetPlayerDecksByTournamentIdAndPlayerId
+     */
+    readonly playerId: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetPlayerDecksByTournamentIdAndPlayerId
+     */
+    readonly tournamentId: string
+}
+
+/**
+ * Request parameters for getPlayersInTournament operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetPlayersInTournamentRequest
+ */
+export interface TournamentsApiGetPlayersInTournamentRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetPlayersInTournament
+     */
+    readonly tournamentId: string
+
+    /**
+     * 
+     * @type {GetAllPlayersDTO}
+     * @memberof TournamentsApiGetPlayersInTournament
+     */
+    readonly query?: GetAllPlayersDTO
+}
+
+/**
+ * Request parameters for getTournamentById operation in TournamentsApi.
+ * @export
+ * @interface TournamentsApiGetTournamentByIdRequest
+ */
+export interface TournamentsApiGetTournamentByIdRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TournamentsApiGetTournamentById
+     */
+    readonly tournamentId: string
+}
+
+/**
+ * TournamentsApi - object-oriented interface
+ * @export
+ * @class TournamentsApi
+ * @extends {BaseAPI}
+ */
+export class TournamentsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Count registered decks by player ID
+     * @param {TournamentsApiCountRegisteredDecksByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public countRegisteredDecksByPlayerId(requestParameters: TournamentsApiCountRegisteredDecksByPlayerIdRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).countRegisteredDecksByPlayerId(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {TournamentsApiGetCurrentDecksAndWinningsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getCurrentDecksAndWinnings(requestParameters: TournamentsApiGetCurrentDecksAndWinningsRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getCurrentDecksAndWinnings(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getHistoricalDecksAndWinnings(requestParameters: TournamentsApiGetHistoricalDecksAndWinningsRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get next tournaments
+     * @param {TournamentsApiGetNextTournamentsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getNextTournaments(requestParameters: TournamentsApiGetNextTournamentsRequest = {}, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getNextTournaments(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get player decks
+     * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getPlayerDecksByTournamentIdAndPlayerId(requestParameters: TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {TournamentsApiGetPlayersInTournamentRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getPlayersInTournament(requestParameters: TournamentsApiGetPlayersInTournamentRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getPlayersInTournament(requestParameters.tournamentId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get tournament by ID
+     * @param {TournamentsApiGetTournamentByIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    public getTournamentById(requestParameters: TournamentsApiGetTournamentByIdRequest, options?: RawAxiosRequestConfig) {
+        return TournamentsApiFp(this.configuration).getTournamentById(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * VotingApi - axios parameter creator
  * @export
  */
@@ -8199,7 +21569,12 @@ export const VotingApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -8211,6 +21586,48 @@ export const VotingApiAxiosParamCreator = function (configuration?: Configuratio
                     localVarQueryParameter[key] = value;
                 }
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Query to get vote of the current user
+         * @param {string} voteConfigId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMyVote: async (voteConfigId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'voteConfigId' is not null or undefined
+            assertParamExists('getMyVote', 'voteConfigId', voteConfigId)
+            const localVarPath = `/vote/my-vote/{vote_config_id}`
+                .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
 
 
     
@@ -8242,7 +21659,12 @@ export const VotingApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -8285,6 +21707,19 @@ export const VotingApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Query to get vote of the current user
+         * @param {string} voteConfigId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMyVote(voteConfigId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Vote>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMyVote(voteConfigId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VotingApi.getMyVote']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get all vote by hero
          * @param {string} voteConfigId 
          * @param {*} [options] Override http request option.
@@ -8318,6 +21753,16 @@ export const VotingApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
+         * @summary Query to get vote of the current user
+         * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMyVote(requestParameters: VotingApiGetMyVoteRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Vote>> {
+            return localVarFp.getMyVote(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all vote by hero
          * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -8341,6 +21786,20 @@ export interface VotingApiGetConfigsRequest {
      * @memberof VotingApiGetConfigs
      */
     readonly query?: GetVoteConfigQueryDTO
+}
+
+/**
+ * Request parameters for getMyVote operation in VotingApi.
+ * @export
+ * @interface VotingApiGetMyVoteRequest
+ */
+export interface VotingApiGetMyVoteRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof VotingApiGetMyVote
+     */
+    readonly voteConfigId: string
 }
 
 /**
@@ -8378,6 +21837,18 @@ export class VotingApi extends BaseAPI {
 
     /**
      * 
+     * @summary Query to get vote of the current user
+     * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VotingApi
+     */
+    public getMyVote(requestParameters: VotingApiGetMyVoteRequest, options?: RawAxiosRequestConfig) {
+        return VotingApiFp(this.configuration).getMyVote(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get all vote by hero
      * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -8392,11 +21863,15 @@ export class VotingApi extends BaseAPI {
 
 
 
+export type Null = null
+
 export class Client extends BaseAPI {
   public readonly card: CardApi;
   public readonly hero: HeroApi;
+  public readonly marketplace: MarketplaceApi;
   public readonly player: PlayerApi;
   public readonly tactics: TacticsApi;
+  public readonly tournaments: TournamentsApi;
   public readonly voting: VotingApi;
   private readonly config: Configuration
   private static instance: Client | null = null
@@ -8406,8 +21881,10 @@ export class Client extends BaseAPI {
     this.config = config
     this.card = new CardApi(config);
     this.hero = new HeroApi(config);
+    this.marketplace = new MarketplaceApi(config);
     this.player = new PlayerApi(config);
     this.tactics = new TacticsApi(config);
+    this.tournaments = new TournamentsApi(config);
     this.voting = new VotingApi(config);
 
     return new Proxy(this, {
@@ -8428,13 +21905,22 @@ export class Client extends BaseAPI {
     return Client.instance;
   }
 
-  resetToken() {
-    const token = typeof this.config.accessToken === 'function' 
-      ? this.config.accessToken()
-      : this.config.accessToken;
+  resetToken(newToken?: string) {
+    let token: string | Promise<string> | undefined
+    if (newToken) {
+      // Use provided token
+      token = newToken
+      // Update the config's accessToken
+      this.config.accessToken = newToken
+    } else {
+      token =
+        typeof this.config.accessToken === 'function'
+          ? this.config.accessToken()
+          : this.config.accessToken
+    }
 
-    const newConfig = { ...this.config, accessToken: token };
-    Client.instance = new Client(newConfig as Configuration);
-    Object.assign(this, Client.instance);
+    const newConfig = { ...this.config, accessToken: token }
+    Client.instance = new Client(newConfig as Configuration)
+    Object.assign(this, Client.instance)
   }
 }

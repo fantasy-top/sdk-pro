@@ -16,14 +16,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.TrendingHeroDTOTrendingReasonEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsDTOOrderByEnum = exports.GetLastActivityQueryDTOActivityTypeEnum = exports.GetLastActivityDtoTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = void 0;
-exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = void 0;
+exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.RewardHistoryTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsDTOOrderByEnum = exports.GetPlayerActivityDtoActivityTypeEnum = exports.GetLastActivityQueryDTOActivityTypeEnum = exports.GetLastActivityDtoTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.CreateChoiceDTOTypeRefEnum = exports.ChoiceTypeRefEnum = void 0;
+exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.TrendingHeroDTOTrendingReasonEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
 const common_1 = require("./common");
 // @ts-ignore
 const base_1 = require("./base");
+exports.ChoiceTypeRefEnum = {
+    Hero: 'hero',
+    Tweet: 'tweet',
+    Coin: 'coin'
+};
+exports.CreateChoiceDTOTypeRefEnum = {
+    Hero: 'hero',
+    Tweet: 'tweet',
+    Coin: 'coin'
+};
 exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = {
     Asc: 'asc',
     Desc: 'desc'
@@ -37,7 +47,9 @@ exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = {
     Desc: 'desc'
 };
 exports.GetLastActivityDtoTypeEnum = {
+    All: 'ALL',
     MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
     BurnCard: 'BURN_CARD',
     LevelUp: 'LEVEL_UP',
     SaveDeck: 'SAVE_DECK',
@@ -46,7 +58,20 @@ exports.GetLastActivityDtoTypeEnum = {
     Bid: 'BID'
 };
 exports.GetLastActivityQueryDTOActivityTypeEnum = {
+    All: 'ALL',
     MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+};
+exports.GetPlayerActivityDtoActivityTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
     BurnCard: 'BURN_CARD',
     LevelUp: 'LEVEL_UP',
     SaveDeck: 'SAVE_DECK',
@@ -99,6 +124,34 @@ exports.GetTacticsOptionsDTODistinctEnum = {
     Visible: 'visible',
     CreatedAt: 'created_at',
     UpdatedAt: 'updated_at'
+};
+exports.HeroWithStatsOrderByDTOCurrentRankEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.HeroWithStatsOrderByDTOPreviousRankEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.HeroWithStatsOrderByDTOViewsEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.HeroWithStatsOrderByDTOTweetCountEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.HeroWithStatsOrderByDTOFantasyScoreEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.RewardHistoryTypeEnum = {
+    Star: 'STAR',
+    Fan: 'FAN',
+    Gold: 'GOLD',
+    Pack: 'PACK',
+    Fragment: 'FRAGMENT',
+    StarBanner: 'star_banner'
 };
 exports.StringFilterDTOModeEnum = {
     Default: 'default',
@@ -274,7 +327,12 @@ const CardApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -310,11 +368,53 @@ const CardApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {Array<string>} ids
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardsByIdsForOpenPacks: async (ids, options = {}) => {
+            // verify required parameter 'ids' is not null or undefined
+            (0, common_1.assertParamExists)('getCardsByIdsForOpenPacks', 'ids', ids);
+            const localVarPath = `/card/by-ids/for-open-packs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (ids) {
+                localVarQueryParameter['ids'] = ids;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -341,7 +441,53 @@ const CardApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} playerId
+         * @param {GetPlayerCardsDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDeckBuilderCardsByPlayerId: async (playerId, query, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getDeckBuilderCardsByPlayerId', 'playerId', playerId);
+            const localVarPath = `/card/deck-builder/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -376,7 +522,12 @@ const CardApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -426,6 +577,18 @@ const CardApiFp = function (configuration) {
         },
         /**
          *
+         * @param {Array<string>} ids
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCardsByIdsForOpenPacks(ids, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCardsByIdsForOpenPacks(ids, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['CardApi.getCardsByIdsForOpenPacks']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @param {string} playerId
          * @param {GetPlayerCardsDTO} [query]
          * @param {*} [options] Override http request option.
@@ -435,6 +598,19 @@ const CardApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCardsByPlayerId(playerId, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['CardApi.getCardsByPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} playerId
+         * @param {GetPlayerCardsDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDeckBuilderCardsByPlayerId(playerId, query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDeckBuilderCardsByPlayerId(playerId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['CardApi.getDeckBuilderCardsByPlayerId']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -479,12 +655,30 @@ const CardApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @param {CardApiGetCardsByIdsForOpenPacksRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardsByIdsForOpenPacks(requestParameters, options) {
+            return localVarFp.getCardsByIdsForOpenPacks(requestParameters.ids, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @param {CardApiGetCardsByPlayerIdRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getCardsByPlayerId(requestParameters, options) {
             return localVarFp.getCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {CardApiGetDeckBuilderCardsByPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDeckBuilderCardsByPlayerId(requestParameters, options) {
+            return localVarFp.getDeckBuilderCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -527,6 +721,16 @@ class CardApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @param {CardApiGetCardsByIdsForOpenPacksRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    getCardsByIdsForOpenPacks(requestParameters, options) {
+        return (0, exports.CardApiFp)(this.configuration).getCardsByIdsForOpenPacks(requestParameters.ids, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @param {CardApiGetCardsByPlayerIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -534,6 +738,16 @@ class CardApi extends base_1.BaseAPI {
      */
     getCardsByPlayerId(requestParameters, options) {
         return (0, exports.CardApiFp)(this.configuration).getCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @param {CardApiGetDeckBuilderCardsByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    getDeckBuilderCardsByPlayerId(requestParameters, options) {
+        return (0, exports.CardApiFp)(this.configuration).getDeckBuilderCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -556,12 +770,15 @@ const HeroApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get all heroes with pagination
+         * @param {boolean} orderByStarsChange
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes: async (limit, page, options = {}) => {
+        getAllHeroes: async (orderByStarsChange, limit, page, options = {}) => {
+            // verify required parameter 'orderByStarsChange' is not null or undefined
+            (0, common_1.assertParamExists)('getAllHeroes', 'orderByStarsChange', orderByStarsChange);
             const localVarPath = `/hero/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -569,7 +786,12 @@ const HeroApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -579,6 +801,47 @@ const HeroApiAxiosParamCreator = function (configuration) {
             }
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
+            }
+            if (orderByStarsChange !== undefined) {
+                localVarQueryParameter['order_by_stars_change'] = orderByStarsChange;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get hero feed
+         * @param {GetHeroFeedDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroFeed: async (query, options = {}) => {
+            const localVarPath = `/hero/feed`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -605,7 +868,12 @@ const HeroApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -638,7 +906,12 @@ const HeroApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -667,15 +940,29 @@ const HeroApiFp = function (configuration) {
         /**
          *
          * @summary Get all heroes with pagination
+         * @param {boolean} orderByStarsChange
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllHeroes(limit, page, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(limit, page, options);
+        async getAllHeroes(orderByStarsChange, limit, page, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['HeroApi.getAllHeroes']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get hero feed
+         * @param {GetHeroFeedDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHeroFeed(query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroFeed(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['HeroApi.getHeroFeed']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -721,8 +1008,18 @@ const HeroApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes(requestParameters = {}, options) {
-            return localVarFp.getAllHeroes(requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+        getAllHeroes(requestParameters, options) {
+            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get hero feed
+         * @param {HeroApiGetHeroFeedRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroFeed(requestParameters = {}, options) {
+            return localVarFp.getHeroFeed(requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -762,8 +1059,19 @@ class HeroApi extends base_1.BaseAPI {
      * @throws {RequiredError}
      * @memberof HeroApi
      */
-    getAllHeroes(requestParameters = {}, options) {
-        return (0, exports.HeroApiFp)(this.configuration).getAllHeroes(requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    getAllHeroes(requestParameters, options) {
+        return (0, exports.HeroApiFp)(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get hero feed
+     * @param {HeroApiGetHeroFeedRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HeroApi
+     */
+    getHeroFeed(requestParameters = {}, options) {
+        return (0, exports.HeroApiFp)(this.configuration).getHeroFeed(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -790,6 +1098,425 @@ class HeroApi extends base_1.BaseAPI {
 }
 exports.HeroApi = HeroApi;
 /**
+ * MarketplaceApi - axios parameter creator
+ * @export
+ */
+const MarketplaceApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @param {string} heroId
+         * @param {number} rarity
+         * @param {boolean} includeOrderbook
+         * @param {boolean} includePersonalBids
+         * @param {boolean} includeHighestFiveBids
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidOrders: async (heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options = {}) => {
+            // verify required parameter 'heroId' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'heroId', heroId);
+            // verify required parameter 'rarity' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'rarity', rarity);
+            // verify required parameter 'includeOrderbook' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'includeOrderbook', includeOrderbook);
+            // verify required parameter 'includePersonalBids' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'includePersonalBids', includePersonalBids);
+            // verify required parameter 'includeHighestFiveBids' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'includeHighestFiveBids', includeHighestFiveBids);
+            const localVarPath = `/marketplace/bid-orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (heroId !== undefined) {
+                localVarQueryParameter['heroId'] = heroId;
+            }
+            if (rarity !== undefined) {
+                localVarQueryParameter['rarity'] = rarity;
+            }
+            if (includeOrderbook !== undefined) {
+                localVarQueryParameter['includeOrderbook'] = includeOrderbook;
+            }
+            if (includePersonalBids !== undefined) {
+                localVarQueryParameter['includePersonalBids'] = includePersonalBids;
+            }
+            if (includeHighestFiveBids !== undefined) {
+                localVarQueryParameter['includeHighestFiveBids'] = includeHighestFiveBids;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} heroRarityIndex
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardMarketBasicInfo: async (heroRarityIndex, options = {}) => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            (0, common_1.assertParamExists)('getCardMarketBasicInfo', 'heroRarityIndex', heroRarityIndex);
+            const localVarPath = `/marketplace/get-card-market-basic-info/{hero_rarity_index}`
+                .replace(`{${"hero_rarity_index"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get lowest price for hero rarity
+         * @param {string} heroRarityIndex
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLowestPriceForHeroRarity: async (heroRarityIndex, options = {}) => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            (0, common_1.assertParamExists)('getLowestPriceForHeroRarity', 'heroRarityIndex', heroRarityIndex);
+            const localVarPath = `/marketplace/lowest-price-for-hero-rarity/{heroRarityIndex}`
+                .replace(`{${"heroRarityIndex"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get marketplace data
+         * @param {GetAndFilterSellOrdersQueryDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketplaceData: async (query, options = {}) => {
+            const localVarPath = `/marketplace/sell-orders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get sell orders by hero rarity index
+         * @param {string} heroRarityIndex
+         * @param {string} type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellOrdersByHeroRarityIndex: async (heroRarityIndex, type, options = {}) => {
+            // verify required parameter 'heroRarityIndex' is not null or undefined
+            (0, common_1.assertParamExists)('getSellOrdersByHeroRarityIndex', 'heroRarityIndex', heroRarityIndex);
+            // verify required parameter 'type' is not null or undefined
+            (0, common_1.assertParamExists)('getSellOrdersByHeroRarityIndex', 'type', type);
+            const localVarPath = `/marketplace/sell-orders/{heroRarityIndex}`
+                .replace(`{${"heroRarityIndex"}}`, encodeURIComponent(String(heroRarityIndex)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.MarketplaceApiAxiosParamCreator = MarketplaceApiAxiosParamCreator;
+/**
+ * MarketplaceApi - functional programming interface
+ * @export
+ */
+const MarketplaceApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.MarketplaceApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @param {string} heroId
+         * @param {number} rarity
+         * @param {boolean} includeOrderbook
+         * @param {boolean} includePersonalBids
+         * @param {boolean} includeHighestFiveBids
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getBidOrders']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} heroRarityIndex
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCardMarketBasicInfo(heroRarityIndex, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCardMarketBasicInfo(heroRarityIndex, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getCardMarketBasicInfo']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get lowest price for hero rarity
+         * @param {string} heroRarityIndex
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLowestPriceForHeroRarity(heroRarityIndex, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLowestPriceForHeroRarity(heroRarityIndex, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getLowestPriceForHeroRarity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get marketplace data
+         * @param {GetAndFilterSellOrdersQueryDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarketplaceData(query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarketplaceData(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getMarketplaceData']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get sell orders by hero rarity index
+         * @param {string} heroRarityIndex
+         * @param {string} type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSellOrdersByHeroRarityIndex(heroRarityIndex, type, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSellOrdersByHeroRarityIndex(heroRarityIndex, type, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getSellOrdersByHeroRarityIndex']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.MarketplaceApiFp = MarketplaceApiFp;
+/**
+ * MarketplaceApi - factory interface
+ * @export
+ */
+const MarketplaceApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.MarketplaceApiFp)(configuration);
+    return {
+        /**
+         *
+         * @param {MarketplaceApiGetBidOrdersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidOrders(requestParameters, options) {
+            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {MarketplaceApiGetCardMarketBasicInfoRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCardMarketBasicInfo(requestParameters, options) {
+            return localVarFp.getCardMarketBasicInfo(requestParameters.heroRarityIndex, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get lowest price for hero rarity
+         * @param {MarketplaceApiGetLowestPriceForHeroRarityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLowestPriceForHeroRarity(requestParameters, options) {
+            return localVarFp.getLowestPriceForHeroRarity(requestParameters.heroRarityIndex, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get marketplace data
+         * @param {MarketplaceApiGetMarketplaceDataRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketplaceData(requestParameters = {}, options) {
+            return localVarFp.getMarketplaceData(requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get sell orders by hero rarity index
+         * @param {MarketplaceApiGetSellOrdersByHeroRarityIndexRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSellOrdersByHeroRarityIndex(requestParameters, options) {
+            return localVarFp.getSellOrdersByHeroRarityIndex(requestParameters.heroRarityIndex, requestParameters.type, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.MarketplaceApiFactory = MarketplaceApiFactory;
+/**
+ * MarketplaceApi - object-oriented interface
+ * @export
+ * @class MarketplaceApi
+ * @extends {BaseAPI}
+ */
+class MarketplaceApi extends base_1.BaseAPI {
+    /**
+     *
+     * @param {MarketplaceApiGetBidOrdersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    getBidOrders(requestParameters, options) {
+        return (0, exports.MarketplaceApiFp)(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @param {MarketplaceApiGetCardMarketBasicInfoRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    getCardMarketBasicInfo(requestParameters, options) {
+        return (0, exports.MarketplaceApiFp)(this.configuration).getCardMarketBasicInfo(requestParameters.heroRarityIndex, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get lowest price for hero rarity
+     * @param {MarketplaceApiGetLowestPriceForHeroRarityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    getLowestPriceForHeroRarity(requestParameters, options) {
+        return (0, exports.MarketplaceApiFp)(this.configuration).getLowestPriceForHeroRarity(requestParameters.heroRarityIndex, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get marketplace data
+     * @param {MarketplaceApiGetMarketplaceDataRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    getMarketplaceData(requestParameters = {}, options) {
+        return (0, exports.MarketplaceApiFp)(this.configuration).getMarketplaceData(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get sell orders by hero rarity index
+     * @param {MarketplaceApiGetSellOrdersByHeroRarityIndexRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MarketplaceApi
+     */
+    getSellOrdersByHeroRarityIndex(requestParameters, options) {
+        return (0, exports.MarketplaceApiFp)(this.configuration).getSellOrdersByHeroRarityIndex(requestParameters.heroRarityIndex, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.MarketplaceApi = MarketplaceApi;
+/**
  * PlayerApi - axios parameter creator
  * @export
  */
@@ -812,13 +1539,60 @@ const PlayerApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get all activity for a player
+         * @param {string} playerId
+         * @param {GetPlayerActivityDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivityForPlayer: async (playerId, query, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getActivityForPlayer', 'playerId', playerId);
+            const localVarPath = `/player/activity/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -844,7 +1618,12 @@ const PlayerApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -855,6 +1634,150 @@ const PlayerApiAxiosParamCreator = function (configuration) {
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get all bids for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidsForPlayerId: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getBidsForPlayerId', 'playerId', playerId);
+            const localVarPath = `/player/bids/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get game stats for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGameStatsForPlayer: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getGameStatsForPlayer', 'playerId', playerId);
+            const localVarPath = `/player/game-stats/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get all listings for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListingsForPlayer: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getListingsForPlayer', 'playerId', playerId);
+            const localVarPath = `/player/listings/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player basic data including portfolio and cards
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerBasicData: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerBasicData', 'playerId', playerId);
+            const localVarPath = `/player/basic-data/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -888,6 +1811,20 @@ const PlayerApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get all activity for a player
+         * @param {string} playerId
+         * @param {GetPlayerActivityDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getActivityForPlayer(playerId, query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getActivityForPlayer(playerId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getActivityForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get all paginated players
          * @param {number} [page] Page number
          * @param {number} [limit] Number of items per page
@@ -898,6 +1835,58 @@ const PlayerApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPlayersWithPagination(page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getAllPlayersWithPagination']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get all bids for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBidsForPlayerId(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidsForPlayerId(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getBidsForPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get game stats for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getGameStatsForPlayer(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGameStatsForPlayer(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getGameStatsForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get all listings for a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getListingsForPlayer(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getListingsForPlayer(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getListingsForPlayer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player basic data including portfolio and cards
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerBasicData(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerBasicData(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getPlayerBasicData']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
@@ -922,6 +1911,16 @@ const PlayerApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get all activity for a player
+         * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivityForPlayer(requestParameters, options) {
+            return localVarFp.getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get all paginated players
          * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -929,6 +1928,46 @@ const PlayerApiFactory = function (configuration, basePath, axios) {
          */
         getAllPlayersWithPagination(requestParameters = {}, options) {
             return localVarFp.getAllPlayersWithPagination(requestParameters.page, requestParameters.limit, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get all bids for a player
+         * @param {PlayerApiGetBidsForPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBidsForPlayerId(requestParameters, options) {
+            return localVarFp.getBidsForPlayerId(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get game stats for a player
+         * @param {PlayerApiGetGameStatsForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGameStatsForPlayer(requestParameters, options) {
+            return localVarFp.getGameStatsForPlayer(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get all listings for a player
+         * @param {PlayerApiGetListingsForPlayerRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListingsForPlayer(requestParameters, options) {
+            return localVarFp.getListingsForPlayer(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player basic data including portfolio and cards
+         * @param {PlayerApiGetPlayerBasicDataRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerBasicData(requestParameters, options) {
+            return localVarFp.getPlayerBasicData(requestParameters.playerId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -953,6 +1992,17 @@ class PlayerApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Get all activity for a player
+     * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    getActivityForPlayer(requestParameters, options) {
+        return (0, exports.PlayerApiFp)(this.configuration).getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get all paginated players
      * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -961,6 +2011,50 @@ class PlayerApi extends base_1.BaseAPI {
      */
     getAllPlayersWithPagination(requestParameters = {}, options) {
         return (0, exports.PlayerApiFp)(this.configuration).getAllPlayersWithPagination(requestParameters.page, requestParameters.limit, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get all bids for a player
+     * @param {PlayerApiGetBidsForPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    getBidsForPlayerId(requestParameters, options) {
+        return (0, exports.PlayerApiFp)(this.configuration).getBidsForPlayerId(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get game stats for a player
+     * @param {PlayerApiGetGameStatsForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    getGameStatsForPlayer(requestParameters, options) {
+        return (0, exports.PlayerApiFp)(this.configuration).getGameStatsForPlayer(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get all listings for a player
+     * @param {PlayerApiGetListingsForPlayerRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    getListingsForPlayer(requestParameters, options) {
+        return (0, exports.PlayerApiFp)(this.configuration).getListingsForPlayer(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player basic data including portfolio and cards
+     * @param {PlayerApiGetPlayerBasicDataRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlayerApi
+     */
+    getPlayerBasicData(requestParameters, options) {
+        return (0, exports.PlayerApiFp)(this.configuration).getPlayerBasicData(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.PlayerApi = PlayerApi;
@@ -988,7 +2082,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1019,7 +2118,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1047,7 +2151,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1069,7 +2178,7 @@ const TacticsApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get tactic by id
          * @param {string} id
-         * @param {GetTacticsQueryDTO} [query]
+         * @param {GetTacticByIdQueryDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1084,7 +2193,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1121,7 +2235,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1157,7 +2276,12 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1223,7 +2347,7 @@ const TacticsApiFp = function (configuration) {
          *
          * @summary Get tactic by id
          * @param {string} id
-         * @param {GetTacticsQueryDTO} [query]
+         * @param {GetTacticByIdQueryDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1409,6 +2533,541 @@ class TacticsApi extends base_1.BaseAPI {
 }
 exports.TacticsApi = TacticsApi;
 /**
+ * TournamentsApi - axios parameter creator
+ * @export
+ */
+const TournamentsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Count registered decks by player ID
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        countRegisteredDecksByPlayerId: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('countRegisteredDecksByPlayerId', 'playerId', playerId);
+            const localVarPath = `/tournaments/count-registered-decks/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentDecksAndWinnings: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getCurrentDecksAndWinnings', 'playerId', playerId);
+            const localVarPath = `/tournaments/currentDecksAndWinnings/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} tournamentNumber
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHistoricalDecksAndWinnings: async (tournamentNumber, playerId, options = {}) => {
+            // verify required parameter 'tournamentNumber' is not null or undefined
+            (0, common_1.assertParamExists)('getHistoricalDecksAndWinnings', 'tournamentNumber', tournamentNumber);
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getHistoricalDecksAndWinnings', 'playerId', playerId);
+            const localVarPath = `/tournaments/historicalDecksAndWinnings/{tournamentNumber}/{playerId}`
+                .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)))
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get next tournaments
+         * @param {PaginationDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNextTournaments: async (query, options = {}) => {
+            const localVarPath = `/tournaments/next-tournaments`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player decks
+         * @param {string} playerId
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerDecksByTournamentIdAndPlayerId: async (playerId, tournamentId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerDecksByTournamentIdAndPlayerId', 'playerId', playerId);
+            // verify required parameter 'tournamentId' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerDecksByTournamentIdAndPlayerId', 'tournamentId', tournamentId);
+            const localVarPath = `/tournaments/player-decks/{playerId}/{tournamentId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)))
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} tournamentId
+         * @param {GetAllPlayersDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayersInTournament: async (tournamentId, query, options = {}) => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayersInTournament', 'tournamentId', tournamentId);
+            const localVarPath = `/tournaments/players/{tournamentId}`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get tournament by ID
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTournamentById: async (tournamentId, options = {}) => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            (0, common_1.assertParamExists)('getTournamentById', 'tournamentId', tournamentId);
+            const localVarPath = `/tournaments/byId/{tournamentId}`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.TournamentsApiAxiosParamCreator = TournamentsApiAxiosParamCreator;
+/**
+ * TournamentsApi - functional programming interface
+ * @export
+ */
+const TournamentsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.TournamentsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Count registered decks by player ID
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async countRegisteredDecksByPlayerId(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.countRegisteredDecksByPlayerId(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.countRegisteredDecksByPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCurrentDecksAndWinnings(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentDecksAndWinnings(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getCurrentDecksAndWinnings']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} tournamentNumber
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHistoricalDecksAndWinnings(tournamentNumber, playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHistoricalDecksAndWinnings(tournamentNumber, playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getHistoricalDecksAndWinnings']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get next tournaments
+         * @param {PaginationDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNextTournaments(query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNextTournaments(query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getNextTournaments']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player decks
+         * @param {string} playerId
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getPlayerDecksByTournamentIdAndPlayerId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} tournamentId
+         * @param {GetAllPlayersDTO} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayersInTournament(tournamentId, query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayersInTournament(tournamentId, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getPlayersInTournament']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get tournament by ID
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTournamentById(tournamentId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTournamentById(tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getTournamentById']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.TournamentsApiFp = TournamentsApiFp;
+/**
+ * TournamentsApi - factory interface
+ * @export
+ */
+const TournamentsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.TournamentsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Count registered decks by player ID
+         * @param {TournamentsApiCountRegisteredDecksByPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        countRegisteredDecksByPlayerId(requestParameters, options) {
+            return localVarFp.countRegisteredDecksByPlayerId(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {TournamentsApiGetCurrentDecksAndWinningsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentDecksAndWinnings(requestParameters, options) {
+            return localVarFp.getCurrentDecksAndWinnings(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHistoricalDecksAndWinnings(requestParameters, options) {
+            return localVarFp.getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get next tournaments
+         * @param {TournamentsApiGetNextTournamentsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNextTournaments(requestParameters = {}, options) {
+            return localVarFp.getNextTournaments(requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player decks
+         * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerDecksByTournamentIdAndPlayerId(requestParameters, options) {
+            return localVarFp.getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {TournamentsApiGetPlayersInTournamentRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayersInTournament(requestParameters, options) {
+            return localVarFp.getPlayersInTournament(requestParameters.tournamentId, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get tournament by ID
+         * @param {TournamentsApiGetTournamentByIdRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTournamentById(requestParameters, options) {
+            return localVarFp.getTournamentById(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.TournamentsApiFactory = TournamentsApiFactory;
+/**
+ * TournamentsApi - object-oriented interface
+ * @export
+ * @class TournamentsApi
+ * @extends {BaseAPI}
+ */
+class TournamentsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Count registered decks by player ID
+     * @param {TournamentsApiCountRegisteredDecksByPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    countRegisteredDecksByPlayerId(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).countRegisteredDecksByPlayerId(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @param {TournamentsApiGetCurrentDecksAndWinningsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getCurrentDecksAndWinnings(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getCurrentDecksAndWinnings(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getHistoricalDecksAndWinnings(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get next tournaments
+     * @param {TournamentsApiGetNextTournamentsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getNextTournaments(requestParameters = {}, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getNextTournaments(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player decks
+     * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getPlayerDecksByTournamentIdAndPlayerId(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @param {TournamentsApiGetPlayersInTournamentRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getPlayersInTournament(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getPlayersInTournament(requestParameters.tournamentId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get tournament by ID
+     * @param {TournamentsApiGetTournamentByIdRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TournamentsApi
+     */
+    getTournamentById(requestParameters, options) {
+        return (0, exports.TournamentsApiFp)(this.configuration).getTournamentById(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.TournamentsApi = TournamentsApi;
+/**
  * VotingApi - axios parameter creator
  * @export
  */
@@ -1429,7 +3088,12 @@ const VotingApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1439,6 +3103,42 @@ const VotingApiAxiosParamCreator = function (configuration) {
                     localVarQueryParameter[key] = value;
                 }
             }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Query to get vote of the current user
+         * @param {string} voteConfigId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMyVote: async (voteConfigId, options = {}) => {
+            // verify required parameter 'voteConfigId' is not null or undefined
+            (0, common_1.assertParamExists)('getMyVote', 'voteConfigId', voteConfigId);
+            const localVarPath = `/vote/my-vote/{vote_config_id}`
+                .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -1465,7 +3165,12 @@ const VotingApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -1503,6 +3208,19 @@ const VotingApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Query to get vote of the current user
+         * @param {string} voteConfigId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMyVote(voteConfigId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMyVote(voteConfigId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['VotingApi.getMyVote']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get all vote by hero
          * @param {string} voteConfigId
          * @param {*} [options] Override http request option.
@@ -1533,6 +3251,16 @@ const VotingApiFactory = function (configuration, basePath, axios) {
          */
         getConfigs(requestParameters = {}, options) {
             return localVarFp.getConfigs(requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Query to get vote of the current user
+         * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMyVote(requestParameters, options) {
+            return localVarFp.getMyVote(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1567,6 +3295,17 @@ class VotingApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Query to get vote of the current user
+     * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VotingApi
+     */
+    getMyVote(requestParameters, options) {
+        return (0, exports.VotingApiFp)(this.configuration).getMyVote(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get all vote by hero
      * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -1581,8 +3320,10 @@ exports.VotingApi = VotingApi;
 class Client extends base_1.BaseAPI {
     card;
     hero;
+    marketplace;
     player;
     tactics;
+    tournaments;
     voting;
     config;
     static instance = null;
@@ -1591,8 +3332,10 @@ class Client extends base_1.BaseAPI {
         this.config = config;
         this.card = new CardApi(config);
         this.hero = new HeroApi(config);
+        this.marketplace = new MarketplaceApi(config);
         this.player = new PlayerApi(config);
         this.tactics = new TacticsApi(config);
+        this.tournaments = new TournamentsApi(config);
         this.voting = new VotingApi(config);
         return new Proxy(this, {
             get(target, prop, receiver) {
@@ -1610,10 +3353,20 @@ class Client extends base_1.BaseAPI {
         }
         return Client.instance;
     }
-    resetToken() {
-        const token = typeof this.config.accessToken === 'function'
-            ? this.config.accessToken()
-            : this.config.accessToken;
+    resetToken(newToken) {
+        let token;
+        if (newToken) {
+            // Use provided token
+            token = newToken;
+            // Update the config's accessToken
+            this.config.accessToken = newToken;
+        }
+        else {
+            token =
+                typeof this.config.accessToken === 'function'
+                    ? this.config.accessToken()
+                    : this.config.accessToken;
+        }
         const newConfig = { ...this.config, accessToken: token };
         Client.instance = new Client(newConfig);
         Object.assign(this, Client.instance);

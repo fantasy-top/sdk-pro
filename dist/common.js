@@ -138,7 +138,11 @@ exports.toPathString = toPathString;
  */
 const createRequestFunction = function (axiosArgs, globalAxios, BASE_PATH, configuration) {
     return (axios = globalAxios, basePath = BASE_PATH) => {
-        const axiosRequestArgs = { ...axiosArgs.options, url: (axios.defaults.baseURL ? '' : configuration?.basePath ?? basePath) + axiosArgs.url };
+        const axiosRequestArgs = {
+            ...axiosArgs.options,
+            url: (axios.defaults.baseURL ? '' : configuration?.basePath ?? basePath) + axiosArgs.url,
+            withCredentials: configuration?.withCredentials
+        };
         return axios.request(axiosRequestArgs);
     };
 };

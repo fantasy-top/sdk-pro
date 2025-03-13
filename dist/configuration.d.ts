@@ -18,6 +18,7 @@ export interface ConfigurationParameters {
     serverIndex?: number;
     baseOptions?: any;
     formDataCtor?: new () => any;
+    withCredentials?: boolean;
 }
 export declare class Configuration {
     /**
@@ -76,6 +77,10 @@ export declare class Configuration {
      * @type {new () => FormData}
      */
     formDataCtor?: new () => any;
+    /**
+     * pass cookies to the server
+     */
+    withCredentials?: boolean;
     constructor(param?: ConfigurationParameters);
     /**
      * Check if the given MIME is a JSON MIME.

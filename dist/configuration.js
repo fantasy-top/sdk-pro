@@ -71,6 +71,10 @@ class Configuration {
      * @type {new () => FormData}
      */
     formDataCtor;
+    /**
+     * pass cookies to the server
+     */
+    withCredentials;
     constructor(param = {}) {
         this.apiKey = param.apiKey;
         this.username = param.username;
@@ -80,6 +84,7 @@ class Configuration {
         this.serverIndex = param.serverIndex;
         this.baseOptions = param.baseOptions;
         this.formDataCtor = param.formDataCtor;
+        this.withCredentials = param.withCredentials;
     }
     /**
      * Check if the given MIME is a JSON MIME.

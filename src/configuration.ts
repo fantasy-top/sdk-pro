@@ -22,6 +22,7 @@ export interface ConfigurationParameters {
     serverIndex?: number;
     baseOptions?: any;
     formDataCtor?: new () => any;
+    withCredentials?: boolean;
 }
 
 export class Configuration {
@@ -81,6 +82,10 @@ export class Configuration {
      * @type {new () => FormData}
      */
     formDataCtor?: new () => any;
+    /**
+     * pass cookies to the server
+     */
+    withCredentials?: boolean;
 
     constructor(param: ConfigurationParameters = {}) {
         this.apiKey = param.apiKey;
@@ -91,6 +96,7 @@ export class Configuration {
         this.serverIndex = param.serverIndex;
         this.baseOptions = param.baseOptions;
         this.formDataCtor = param.formDataCtor;
+        this.withCredentials = param.withCredentials;
     }
 
     /**

@@ -1,1 +1,2 @@
-$ tsc --build --force
+[?9001h[?1004h[?25l[2J[m[35m[2m[H$[m[1m[2m[1Ctsc --build --force
+]0;C:\Users\lgiff\.bun\bin\bun.exe[?25h[22m[?9001l[?1004l
