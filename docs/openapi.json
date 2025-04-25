@@ -83,7 +83,7 @@
         "parameters": [
           {
             "name": "page",
-            "required": false,
+            "required": true,
             "in": "query",
             "description": "Page number",
             "schema": {
@@ -95,12 +95,12 @@
           },
           {
             "name": "limit",
-            "required": false,
+            "required": true,
             "in": "query",
             "description": "Number of items per page",
             "schema": {
               "minimum": 1,
-              "maximum": 100,
+              "maximum": 1000,
               "default": 50,
               "type": "number"
             }
@@ -113,6 +113,49 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaginatedCardResult"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/card/player-all-cards/{playerId}": {
+      "get": {
+        "operationId": "getIndividualCardsByPlayerId",
+        "parameters": [
+          {
+            "name": "playerId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetPlayerAllCardsDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedCardWithNumberResult"
                 }
               }
             }
@@ -145,7 +188,7 @@
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/GetPlayerCardsDTO"
+              "$ref": "#/components/schemas/GetPlayerGroupedCardsDTO"
             }
           }
         ],
@@ -188,7 +231,7 @@
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/GetPlayerCardsDTO"
+              "$ref": "#/components/schemas/GetCardsForDeckBuilderDTO"
             }
           }
         ],
@@ -387,27 +430,27 @@
         ]
       }
     },
-    "/hero/feed": {
+    "/hero/transactions": {
       "get": {
-        "operationId": "getHeroFeed",
-        "summary": "Get hero feed",
+        "operationId": "getHeroTransactions",
+        "summary": "Get hero transactions",
         "parameters": [
           {
             "name": "query",
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/GetHeroFeedDTO"
+              "$ref": "#/components/schemas/GetTransactionDTO"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Hero feed",
+            "description": "Hero transactions",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedEnrichedTweetResult"
+                  "$ref": "#/components/schemas/PaginatedTradesDTOResult"
                 }
               }
             }
@@ -423,27 +466,102 @@
         ]
       }
     },
-    "/hero/stats": {
+    "/hero/history": {
       "get": {
-        "operationId": "getHeroesWithStats",
-        "summary": "Get heroes with stats",
+        "operationId": "getHeroHistory",
+        "summary": "Get hero score history and tournament scores",
+        "parameters": [
+          {
+            "name": "heroId",
+            "required": true,
+            "in": "query",
+            "description": "ID of the hero",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hero score history and tournament scores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeroHistoryDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Hero"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/hero/holders": {
+      "get": {
+        "operationId": "getHeroHolders",
+        "summary": "Get hero holders",
         "parameters": [
           {
             "name": "query",
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/GetHeroesWithStatsDTO"
+              "$ref": "#/components/schemas/GetHeroHoldersDTO"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Heroes with stats",
+            "description": "Hero holders",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedHeroWithStatsDTOResult"
+                  "$ref": "#/components/schemas/PaginatedHeroHolderDTOResult"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Hero"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/hero/get-hero-by-handle": {
+      "get": {
+        "operationId": "getHeroByHandle",
+        "summary": "Get hero by handle",
+        "parameters": [
+          {
+            "name": "handle",
+            "required": true,
+            "in": "query",
+            "description": "Handle of the hero",
+            "schema": {
+              "example": "greg16676935420",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hero",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetHeroByHandleOrAddressDTO"
                 }
               }
             }
@@ -505,7 +623,7 @@
         "parameters": [
           {
             "name": "page",
-            "required": false,
+            "required": true,
             "in": "query",
             "description": "Page number",
             "schema": {
@@ -517,12 +635,12 @@
           },
           {
             "name": "limit",
-            "required": false,
+            "required": true,
             "in": "query",
             "description": "Number of items per page",
             "schema": {
               "minimum": 1,
-              "maximum": 100,
+              "maximum": 1000,
               "default": 50,
               "type": "number"
             }
@@ -561,6 +679,61 @@
             "in": "path",
             "schema": {
               "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BidOrderWithTopBidAndFloorPrice"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Player"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/player/bids/{playerId}/{heroId}/{rarity}": {
+      "get": {
+        "operationId": "getBidsForPlayerIdAndHeroIdAndRarity",
+        "summary": "Get all bids for a player for a specific card",
+        "parameters": [
+          {
+            "name": "playerId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "heroId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rarity",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
             }
           }
         ],
@@ -1048,30 +1221,26 @@
         ]
       }
     },
-    "/tournaments/next-tournaments": {
+    "/tournaments/user-registered-tournaments/{playerId}": {
       "get": {
-        "operationId": "getNextTournaments",
-        "summary": "Get next tournaments",
+        "operationId": "getUserRegisteredTournaments",
         "parameters": [
           {
-            "name": "query",
-            "required": false,
-            "in": "query",
+            "name": "playerId",
+            "required": true,
+            "in": "path",
             "schema": {
-              "$ref": "#/components/schemas/PaginationDTO"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Get next tournaments",
+            "description": "Get user registered tournaments with decks",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tournament"
-                  }
+                  "$ref": "#/components/schemas/GetUserRegisteredTournamentsDTO"
                 }
               }
             }
@@ -1106,7 +1275,58 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TournamentRegisteredInResponse"
+                  "$ref": "#/components/schemas/GetUserRegisteredTournamentsAndWinningsDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tournaments"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/tournaments/hero-progress-over-tournament/{tournamentNumber}": {
+      "get": {
+        "operationId": "getHeroProgressOverTournament",
+        "parameters": [
+          {
+            "name": "tournamentNumber",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_rank",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_rank",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get hero progress over tournament",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetHeroProgressOverTournamentDTO"
                 }
               }
             }
@@ -1240,6 +1460,42 @@
                   "items": {
                     "$ref": "#/components/schemas/TournamentPlayer"
                   }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tournaments"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/tournaments/summary/{tournamentNumber}": {
+      "get": {
+        "operationId": "getSummaryOfTournamentNumber",
+        "summary": "Get all summary",
+        "parameters": [
+          {
+            "name": "tournamentNumber",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get deck history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryOfTournamentNumberDTO"
                 }
               }
             }
@@ -1586,6 +1842,57 @@
           }
         ]
       }
+    },
+    "/marketplace/card-market-info/{heroId}/{rarity}/{order}": {
+      "get": {
+        "operationId": "getCardMarketInfo",
+        "parameters": [
+          {
+            "name": "heroId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rarity",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "order",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCardMarketInfoDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Marketplace"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
     }
   },
   "info": {
@@ -1648,7 +1955,6 @@
             "description": "Message to be displayed in maintenance mode"
           },
           "maintenance_until": {
-            "format": "date-time",
             "type": "string",
             "description": "Date until maintenance mode is activated",
             "nullable": true
@@ -1689,6 +1995,18 @@
           "cta_text": {
             "type": "string",
             "description": "CTA text of the banner"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Active status of the banner"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Created at of the banner"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Updated at of the banner"
           }
         },
         "required": [
@@ -1697,7 +2015,10 @@
           "description",
           "image",
           "link",
-          "cta_text"
+          "cta_text",
+          "active",
+          "created_at",
+          "updated_at"
         ]
       },
       "SearchHeroAndPlayerQueryParams": {
@@ -1846,10 +2167,6 @@
           "minter_address"
         ]
       },
-      "DecimalNumber": {
-        "type": "object",
-        "properties": {}
-      },
       "VrgdaPriceChart": {
         "type": "object",
         "properties": {
@@ -1865,15 +2182,10 @@
             "example": "0x86b58ca576c24F79aD1e5459aee01d40BEA22828"
           },
           "price": {
-            "example": "0.5",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecimalNumber"
-              }
-            ]
+            "type": "string",
+            "example": "0.5"
           },
           "timestamp": {
-            "format": "date-time",
             "type": "string"
           }
         },
@@ -1910,20 +2222,18 @@
             "type": "string"
           },
           "timestamp": {
-            "format": "date-time",
             "type": "string"
           },
           "block_number": {
             "type": "number"
           },
           "price": {
-            "$ref": "#/components/schemas/DecimalNumber"
-          },
-          "created_at": {
-            "format": "date-time",
             "type": "string"
           },
-          "buyer_player": {
+          "created_at": {
+            "type": "string"
+          },
+          "player": {
             "$ref": "#/components/schemas/GetLastMintResponseDTO_Player"
           }
         },
@@ -1934,7 +2244,25 @@
           "block_number",
           "price",
           "created_at",
-          "buyer_player"
+          "player"
+        ]
+      },
+      "CacheInvalidatorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Status of the cache invalidator",
+            "example": "successful"
+          },
+          "message": {
+            "type": "string",
+            "description": "Details of the cache invalidator"
+          }
+        },
+        "required": [
+          "status",
+          "message"
         ]
       },
       "CreateApiKeyDto": {
@@ -2061,6 +2389,10 @@
         "required": [
           "success"
         ]
+      },
+      "DecimalNumber": {
+        "type": "object",
+        "properties": {}
       },
       "OmitTypeClass": {
         "type": "object",
@@ -4151,8 +4483,14 @@
           "token_id": {
             "$ref": "#/components/schemas/DecimalNumber"
           },
+          "picture": {
+            "type": "string"
+          },
           "is_in_deck": {
             "type": "boolean"
+          },
+          "edition": {
+            "type": "string"
           },
           "in_which_tournament": {
             "type": "string"
@@ -4168,6 +4506,7 @@
           "id",
           "owner",
           "token_id",
+          "picture",
           "is_in_deck"
         ]
       },
@@ -4264,7 +4603,62 @@
             "description": "Number of items per page",
             "default": 50,
             "minimum": 1,
-            "maximum": 100
+            "maximum": 1000
+          }
+        },
+        "required": [
+          "page",
+          "limit"
+        ]
+      },
+      "StringFilterDTO": {
+        "type": "object",
+        "properties": {
+          "equals": {
+            "type": "string"
+          },
+          "in": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notIn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lt": {
+            "type": "string"
+          },
+          "lte": {
+            "type": "string"
+          },
+          "gt": {
+            "type": "string"
+          },
+          "gte": {
+            "type": "string"
+          },
+          "contains": {
+            "type": "string"
+          },
+          "startsWith": {
+            "type": "string"
+          },
+          "endsWith": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "default",
+              "insensitive"
+            ]
+          },
+          "not": {
+            "$ref": "#/components/schemas/StringFilterDTO"
           }
         }
       },
@@ -4272,30 +4666,45 @@
         "type": "object",
         "properties": {
           "handle": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/StringFilterDTO"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "$ref": "#/components/schemas/StringFilterDTO"
           },
           "name": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/StringFilterDTO"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "$ref": "#/components/schemas/StringFilterDTO"
+          }
+        }
+      },
+      "NumberFilterDTO": {
+        "type": "object",
+        "properties": {
+          "equals": {
+            "type": "number"
+          },
+          "in": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "notIn": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "lt": {
+            "type": "number"
+          },
+          "lte": {
+            "type": "number"
+          },
+          "gt": {
+            "type": "number"
+          },
+          "gte": {
+            "type": "number"
+          },
+          "not": {
+            "$ref": "#/components/schemas/NumberFilterDTO"
           }
         }
       },
@@ -4306,31 +4715,14 @@
             "$ref": "#/components/schemas/GetPlayersCardsHeroWhereDTO"
           },
           "rarity": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/NumberFilterDTO"
-              },
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "$ref": "#/components/schemas/NumberFilterDTO"
           },
           "is_in_deck": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/BoolFilterDTO"
-              },
-              {
-                "type": "boolean"
-              }
-            ]
+            "type": "boolean"
           }
         }
       },
-      "GetPlayerCardsDTO": {
+      "GetPlayerAllCardsDTO": {
         "type": "object",
         "properties": {
           "pagination": {
@@ -4349,20 +4741,9 @@
             "enum": [
               "cards_score",
               "cards_number",
-              "cards_score_asc"
+              "cards_score_asc",
+              "cards_score_desc"
             ]
-          },
-          "groupCard": {
-            "type": "boolean"
-          },
-          "isProfile": {
-            "type": "boolean"
-          },
-          "isReverseScoreTournament": {
-            "type": "boolean"
-          },
-          "isGalleryView": {
-            "type": "boolean"
           }
         }
       },
@@ -4477,6 +4858,56 @@
           "data",
           "meta"
         ]
+      },
+      "GetPlayerGroupedCardsDTO": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "description": "Pagination arguments",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaginationDTO"
+              }
+            ]
+          },
+          "where": {
+            "$ref": "#/components/schemas/GetPlayerCardsWhereDTO"
+          },
+          "orderBy": {
+            "type": "string",
+            "enum": [
+              "cards_score",
+              "cards_number",
+              "cards_score_asc",
+              "cards_score_desc"
+            ]
+          },
+          "isReverseScoreTournament": {
+            "type": "boolean"
+          },
+          "isGalleryView": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GetCardsForDeckBuilderDTO": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "description": "Pagination arguments",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaginationDTO"
+              }
+            ]
+          },
+          "where": {
+            "$ref": "#/components/schemas/GetPlayerCardsWhereDTO"
+          },
+          "isReverseScoreTournament": {
+            "type": "boolean"
+          }
+        }
       },
       "HeroSupplyDto": {
         "type": "object",
@@ -4662,30 +5093,6 @@
           "player",
           "player_2",
           "date"
-        ]
-      },
-      "PaginatedGetLastActivityDtoResult": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "description": "Data items",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GetLastActivityDto"
-            }
-          },
-          "meta": {
-            "description": "Pagination metadata",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MetaDTO"
-              }
-            ]
-          }
-        },
-        "required": [
-          "data",
-          "meta"
         ]
       },
       "getMerkleProofDTO": {
@@ -5292,7 +5699,7 @@
             "format": "date-time",
             "type": "string",
             "description": "Last updated",
-            "example": "2025-03-13T18:35:41.496Z"
+            "example": "2025-04-25T19:55:30.309Z"
           }
         },
         "required": [
@@ -5462,7 +5869,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-03-13T18:35:41.496Z"
+                "created_at": "2025-04-25T19:55:30.309Z"
               }
             ],
             "type": "array",
@@ -5476,7 +5883,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-03-13T18:35:41.496Z"
+              "last_updated": "2025-04-25T19:55:30.309Z"
             },
             "allOf": [
               {
@@ -5745,6 +6152,20 @@
           },
           "fragments": {
             "type": "number"
+          },
+          "are_nft_approved": {
+            "type": "boolean"
+          },
+          "weth_allowance": {
+            "description": "WETH allowance as a Decimal value",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecimalNumber"
+              }
+            ]
+          },
+          "monad_address": {
+            "type": "string"
           }
         },
         "required": [
@@ -5767,7 +6188,10 @@
           "tactics_referral_settings_id",
           "follower_count",
           "can_play_free_tactics",
-          "fragments"
+          "fragments",
+          "are_nft_approved",
+          "weth_allowance",
+          "monad_address"
         ]
       },
       "TradesDTO": {
@@ -6916,75 +7340,6 @@
           "floor"
         ]
       },
-      "HeroCircleDTO": {
-        "type": "object",
-        "properties": {
-          "hero_id": {
-            "type": "string",
-            "description": "Hero ID",
-            "example": "123"
-          },
-          "circle_layer": {
-            "type": "number",
-            "description": "Circle Layer",
-            "example": 1
-          },
-          "username": {
-            "type": "string",
-            "description": "Username",
-            "example": "123"
-          },
-          "profile_url": {
-            "type": "string",
-            "description": "Profile URL",
-            "example": "https://example.com"
-          },
-          "is_hero": {
-            "type": "boolean",
-            "description": "Is Hero",
-            "example": true
-          },
-          "is_player": {
-            "type": "boolean",
-            "description": "Is Player",
-            "example": true
-          }
-        },
-        "required": [
-          "hero_id",
-          "circle_layer",
-          "username",
-          "profile_url",
-          "is_hero",
-          "is_player"
-        ]
-      },
-      "GetHeroInnerCircleDTO": {
-        "type": "object",
-        "properties": {
-          "handle": {
-            "type": "string",
-            "description": "Handle of the hero",
-            "example": "hero_handle"
-          },
-          "profile_image_url_https": {
-            "type": "string",
-            "description": "URL of the profile image in HTTPS",
-            "example": "http://profileimage.url"
-          },
-          "inner_circle": {
-            "description": "Inner circle of the hero",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HeroCircleDTO"
-            }
-          }
-        },
-        "required": [
-          "handle",
-          "inner_circle"
-        ]
-      },
       "GetBangerTweets_HeroDTO": {
         "type": "object",
         "properties": {
@@ -7190,7 +7545,7 @@
                 "tweet_id": "123",
                 "player_id": "123",
                 "is_like": true,
-                "created_at": "2025-03-13T18:35:41.496Z"
+                "created_at": "2025-04-25T19:55:30.309Z"
               }
             ],
             "type": "array",
@@ -7204,7 +7559,7 @@
               "tweet_id": "123",
               "likes_count": 10,
               "dislikes_count": 2,
-              "last_updated": "2025-03-13T18:35:41.496Z"
+              "last_updated": "2025-04-25T19:55:30.309Z"
             },
             "allOf": [
               {
@@ -7296,6 +7651,138 @@
           "meta"
         ]
       },
+      "GetIsPlayerWaitingForTrackingResponseDTO": {
+        "type": "object",
+        "properties": {
+          "is_waiting_for_tracking": {
+            "type": "boolean",
+            "description": "Whether the player is waiting for tracking",
+            "example": true
+          }
+        },
+        "required": [
+          "is_waiting_for_tracking"
+        ]
+      },
+      "GetIsPlayerTrackedResponseDTO": {
+        "type": "object",
+        "properties": {
+          "is_tracked": {
+            "type": "boolean",
+            "description": "Whether the player is tracked",
+            "example": true
+          }
+        },
+        "required": [
+          "is_tracked"
+        ]
+      },
+      "GetTrackingEstimatedTimeResponseDTO": {
+        "type": "object",
+        "properties": {
+          "people_in_queue": {
+            "type": "number",
+            "description": "Number of people in the queue",
+            "example": 10
+          },
+          "time_to_finish_queue_in_min": {
+            "type": "number",
+            "description": "Time to finish the queue in minutes",
+            "example": 10
+          },
+          "started_at": {
+            "type": "string",
+            "description": "When the tracking process started",
+            "example": "2024-03-20T10:00:00.000Z"
+          },
+          "estimated_completion_at": {
+            "type": "string",
+            "description": "Estimated completion time",
+            "example": "2024-03-20T11:00:00.000Z"
+          }
+        },
+        "required": [
+          "people_in_queue",
+          "time_to_finish_queue_in_min"
+        ]
+      },
+      "SearchCloutUsersQueryDTO": {
+        "type": "object",
+        "properties": {
+          "search": {
+            "type": "string",
+            "description": "The query to search for"
+          },
+          "pagination": {
+            "description": "Pagination parameters",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaginationDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "search",
+          "pagination"
+        ]
+      },
+      "SearchCloutUsersResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Twitter id of the player "
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the player"
+          },
+          "handle": {
+            "type": "string",
+            "description": "Handle of the player"
+          },
+          "profile_picture": {
+            "type": "string",
+            "description": "Profile image of the player"
+          },
+          "follower_count": {
+            "type": "number",
+            "description": "Follower count of the player"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "handle",
+          "profile_picture",
+          "follower_count"
+        ]
+      },
+      "PaginatedSearchCloutUsersResponseDTOResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Data items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchCloutUsersResponseDTO"
+            }
+          },
+          "meta": {
+            "description": "Pagination metadata",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MetaDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
       "GetCloutLeaderboardDTO": {
         "type": "object",
         "properties": {
@@ -7359,6 +7846,10 @@
             "type": "number",
             "description": "Smart follower count"
           },
+          "follower_count": {
+            "type": "number",
+            "description": "Follower count"
+          },
           "season": {
             "type": "number",
             "description": "Season"
@@ -7386,6 +7877,7 @@
           "total_posts",
           "total_views",
           "smart_follower_count",
+          "follower_count",
           "season",
           "last_clout_distribution",
           "previous_rank",
@@ -7416,7 +7908,7 @@
           "meta"
         ]
       },
-      "HeroQuickOverviewDTO": {
+      "IncomingHeroesCloutDTO": {
         "type": "object",
         "properties": {
           "hero_id": {
@@ -7455,6 +7947,10 @@
             "type": "number",
             "description": "Smart follower count"
           },
+          "follower_count": {
+            "type": "number",
+            "description": "Follower count"
+          },
           "season": {
             "type": "number",
             "description": "Season"
@@ -7467,21 +7963,17 @@
             "type": "number",
             "description": "Previous rank"
           },
-          "avg_posts_7d": {
+          "mindshare_percentage": {
             "type": "number",
-            "description": "Average number of posts in last 7 days"
+            "description": "Percentage of total clout (mindshare)"
           },
-          "avg_views_per_post_7d": {
-            "type": "number",
-            "description": "Average views per post in last 7 days"
+          "type": {
+            "type": "string",
+            "description": "Type of hero"
           },
-          "avg_posts_30d": {
-            "type": "number",
-            "description": "Average number of posts in last 30 days"
-          },
-          "avg_views_per_post_30d": {
-            "type": "number",
-            "description": "Average views per post in last 30 days"
+          "status": {
+            "type": "string",
+            "description": "Status of the hero"
           }
         },
         "required": [
@@ -7494,16 +7986,347 @@
           "total_posts",
           "total_views",
           "smart_follower_count",
+          "follower_count",
           "season",
           "last_clout_distribution",
           "previous_rank",
+          "mindshare_percentage",
+          "type",
+          "status"
+        ]
+      },
+      "HeroIsSybilDTO": {
+        "type": "object",
+        "properties": {
+          "hero_id": {
+            "type": "string",
+            "description": "The hero ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "is_sybil": {
+            "type": "boolean",
+            "description": "The hero is sybil or not"
+          }
+        },
+        "required": [
+          "hero_id",
+          "is_sybil"
+        ]
+      },
+      "CurrentSeasonHeroQuickOverviewDTO": {
+        "type": "object",
+        "properties": {
+          "season": {
+            "type": "number",
+            "description": "The season number",
+            "example": 1
+          },
+          "total_clout": {
+            "type": "number",
+            "description": "The total clout of the hero in the current season",
+            "example": 100
+          },
+          "final_rank": {
+            "type": "number",
+            "description": "The final rank of the hero in the current season",
+            "example": 1
+          },
+          "total_posts": {
+            "type": "number",
+            "description": "The total posts of the hero in the current season",
+            "example": 100
+          },
+          "total_views": {
+            "type": "number",
+            "description": "The total views of the hero in the current season",
+            "example": 100
+          },
+          "last_clout_distribution": {
+            "type": "number",
+            "description": "The last clout distribution of the hero in the current season",
+            "example": 100
+          }
+        },
+        "required": [
+          "season",
+          "total_clout",
+          "final_rank",
+          "total_posts",
+          "total_views",
+          "last_clout_distribution"
+        ]
+      },
+      "HeroQuickOverviewDTO": {
+        "type": "object",
+        "properties": {
+          "hero_id": {
+            "type": "string",
+            "description": "The ID of the hero",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the hero",
+            "example": "John Doe"
+          },
+          "handle": {
+            "type": "string",
+            "description": "The handle of the hero",
+            "example": "@johndoe"
+          },
+          "profile_image_url_https": {
+            "type": "string",
+            "description": "The profile image URL of the hero",
+            "example": "https://example.com/profile.jpg"
+          },
+          "profile_banner_url": {
+            "type": "string",
+            "description": "The profile banner URL of the hero",
+            "example": "https://example.com/profile.jpg"
+          },
+          "follower_count": {
+            "type": "number",
+            "description": "The follower count of the hero",
+            "example": 100
+          },
+          "is_sybil": {
+            "type": "boolean",
+            "description": "is the hero a sybil",
+            "example": true
+          },
+          "smart_follower_count": {
+            "type": "number",
+            "description": "The smart follower count of the hero",
+            "example": 100
+          },
+          "posts_count_7d": {
+            "type": "number",
+            "description": "The total posts in the last 7 days",
+            "example": 100
+          },
+          "posts_count_30d": {
+            "type": "number",
+            "description": "The total posts in the last 30 days",
+            "example": 100
+          },
+          "views_count_7d": {
+            "type": "number",
+            "description": "The total views in the last 7 days",
+            "example": 100
+          },
+          "views_count_30d": {
+            "type": "number",
+            "description": "The total views in the last 30 days",
+            "example": 100
+          },
+          "avg_posts_7d": {
+            "type": "number",
+            "description": "The average posts in the last 7 days",
+            "example": 10
+          },
+          "avg_views_per_post_7d": {
+            "type": "number",
+            "description": "The average views per post in the last 7 days",
+            "example": 10
+          },
+          "avg_posts_30d": {
+            "type": "number",
+            "description": "The average posts in the last 30 days",
+            "example": 10
+          },
+          "avg_views_per_post_30d": {
+            "type": "number",
+            "description": "The average views per post in the last 30 days",
+            "example": 10
+          },
+          "joined_ct": {
+            "type": "string",
+            "description": "The joined CT of the hero",
+            "example": "JAN 2024"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the hero",
+            "example": "HERO"
+          },
+          "current_season": {
+            "description": "The current season",
+            "example": {
+              "season": 1,
+              "total_clout": 100,
+              "final_rank": 1,
+              "total_posts": 100
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrentSeasonHeroQuickOverviewDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "hero_id",
+          "name",
+          "handle",
+          "profile_image_url_https",
+          "profile_banner_url",
+          "follower_count",
+          "is_sybil",
+          "smart_follower_count",
+          "posts_count_7d",
+          "posts_count_30d",
+          "views_count_7d",
+          "views_count_30d",
           "avg_posts_7d",
           "avg_views_per_post_7d",
           "avg_posts_30d",
-          "avg_views_per_post_30d"
+          "avg_views_per_post_30d",
+          "joined_ct",
+          "status",
+          "current_season"
         ]
       },
-      "CurrentSeasonDTO": {
+      "HeroQuickOverviewEmblemDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The ID of the emblem",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the emblem",
+            "example": "Emblem 1"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the emblem",
+            "example": "Emblem 1"
+          },
+          "picture": {
+            "type": "string",
+            "description": "The picture of the emblem",
+            "example": "Emblem 1"
+          },
+          "category": {
+            "type": "string",
+            "description": "The category of the emblem",
+            "example": "Emblem 1"
+          },
+          "threshold": {
+            "type": "number",
+            "description": "The threshold needed to get the emblem",
+            "example": 1
+          },
+          "awarded_at": {
+            "type": "string",
+            "description": "The date the emblem was awarded",
+            "example": "2021-01-01T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "picture",
+          "category",
+          "threshold",
+          "awarded_at"
+        ]
+      },
+      "HeroQuickOverviewEmblemSeasonUserProgressDTO": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The user id of the user",
+            "example": "1"
+          },
+          "category": {
+            "type": "string",
+            "description": "The category of the emblem",
+            "example": "1"
+          },
+          "last_check": {
+            "type": "string",
+            "description": "Emblem awarded at",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "progress": {
+            "type": "number",
+            "description": "The progress of the user",
+            "example": 1
+          },
+          "current_emblem_id": {
+            "type": "number",
+            "description": "The current emblem id of the user",
+            "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The created at of the emblem user progress",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "emblems": {
+            "description": "The emblems the hero has",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeroQuickOverviewEmblemDTO"
+            }
+          }
+        },
+        "required": [
+          "user_id",
+          "category",
+          "last_check",
+          "progress",
+          "current_emblem_id",
+          "created_at",
+          "emblems"
+        ]
+      },
+      "HeroEmblemsDTO": {
+        "type": "object",
+        "properties": {
+          "hero_id": {
+            "type": "string",
+            "description": "The hero ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "user_progress": {
+            "description": "The emblems the hero has",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeroQuickOverviewEmblemSeasonUserProgressDTO"
+            }
+          }
+        },
+        "required": [
+          "hero_id",
+          "user_progress"
+        ]
+      },
+      "GetHasEnoughCloutActivityResponseDTO": {
+        "type": "object",
+        "properties": {
+          "has_enough_clout_activity": {
+            "type": "boolean",
+            "description": "Whether the player has enough clout activity",
+            "example": true
+          },
+          "nb_tweets_last_30days": {
+            "type": "number",
+            "description": "Number of tweets the player has made in the last 30 days",
+            "example": 10
+          }
+        },
+        "required": [
+          "has_enough_clout_activity",
+          "nb_tweets_last_30days"
+        ]
+      },
+      "CurrentSeasonDTO_serialized": {
         "type": "object",
         "properties": {
           "id": {
@@ -7511,12 +8334,10 @@
             "description": "Season ID"
           },
           "start_date": {
-            "format": "date-time",
             "type": "string",
             "description": "Season start date"
           },
           "end_date": {
-            "format": "date-time",
             "type": "string",
             "description": "Season end date",
             "nullable": true
@@ -7604,7 +8425,6 @@
             "description": "Mood data"
           },
           "updated_at": {
-            "format": "date-time",
             "type": "string"
           }
         },
@@ -7614,6 +8434,19 @@
           "spider_web",
           "mood",
           "updated_at"
+        ]
+      },
+      "GetLastComputedDateForCloutDistributionResponseDTO": {
+        "type": "object",
+        "properties": {
+          "last_computed_date": {
+            "type": "string",
+            "description": "The last date when clout distribution was computed",
+            "example": "2024-04-11T12:00:00Z"
+          }
+        },
+        "required": [
+          "last_computed_date"
         ]
       },
       "DailyCloutDistributionDTO": {
@@ -7791,10 +8624,36 @@
             "items": {
               "$ref": "#/components/schemas/SmartFollowerDTO"
             }
+          },
+          "total_followers": {
+            "type": "number",
+            "description": "Total number of followers",
+            "example": 1000
           }
         },
         "required": [
-          "followers"
+          "followers",
+          "total_followers"
+        ]
+      },
+      "GetTopicsFlagsDTO": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "description": "Pagination parameters",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaginationDTO"
+              }
+            ]
+          },
+          "search": {
+            "type": "string",
+            "description": "Search by topic name"
+          }
+        },
+        "required": [
+          "pagination"
         ]
       },
       "TopicsFlagsResponseDTO": {
@@ -7811,10 +8670,15 @@
             "items": {
               "type": "string"
             }
+          },
+          "meta": {
+            "type": "object",
+            "description": "Pagination metadata"
           }
         },
         "required": [
-          "topicsFlags"
+          "topicsFlags",
+          "meta"
         ]
       },
       "GetLeaderboardForTopicDTO": {
@@ -7970,6 +8834,10 @@
           "previous_rank": {
             "type": "number",
             "description": "Previous rank"
+          },
+          "mindshare_percentage": {
+            "type": "number",
+            "description": "Percentage of total mindshare for this topic"
           }
         },
         "required": [
@@ -7979,7 +8847,8 @@
           "final_rank",
           "total_posts",
           "total_views",
-          "previous_rank"
+          "previous_rank",
+          "mindshare_percentage"
         ]
       },
       "HeroLeaderboardPositionsResponseDTO": {
@@ -7990,6 +8859,417 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/HeroLeaderboardPositionItemDTO"
+            }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "UserInfoDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id",
+            "example": "1234567890"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name",
+            "example": "John Doe"
+          },
+          "handle": {
+            "type": "string",
+            "description": "The handle",
+            "example": "@john_doe"
+          },
+          "profile_image_url_https": {
+            "type": "string",
+            "description": "The profile image url",
+            "example": "https://example.com/profile.jpg"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "handle",
+          "profile_image_url_https"
+        ]
+      },
+      "UserTweetPerTopicDTO": {
+        "type": "object",
+        "properties": {
+          "post_id": {
+            "type": "string",
+            "description": "The post id",
+            "example": "1234567890"
+          },
+          "views": {
+            "type": "number",
+            "description": "The number of views",
+            "example": 100
+          },
+          "likes": {
+            "type": "number",
+            "description": "The number of likes",
+            "example": 100
+          },
+          "retweets": {
+            "type": "number",
+            "description": "The number of retweets",
+            "example": 100
+          },
+          "quotes": {
+            "type": "number",
+            "description": "The number of quotes",
+            "example": 100
+          },
+          "replies": {
+            "type": "number",
+            "description": "The number of replies",
+            "example": 100
+          },
+          "bookmarks": {
+            "type": "number",
+            "description": "The number of bookmarks",
+            "example": 100
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string",
+            "description": "The creation date",
+            "example": "2025-04-25T19:55:30.138Z"
+          },
+          "cred_score": {
+            "type": "number",
+            "description": "The cred score",
+            "example": 100
+          },
+          "text": {
+            "type": "string",
+            "description": "The text",
+            "example": "Hello, world!"
+          }
+        },
+        "required": [
+          "post_id",
+          "views",
+          "likes",
+          "retweets",
+          "quotes",
+          "replies",
+          "bookmarks",
+          "created_at",
+          "cred_score",
+          "text"
+        ]
+      },
+      "GetUserTweetPerTopicResponseDTO": {
+        "type": "object",
+        "properties": {
+          "userInfo": {
+            "description": "The user info",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserInfoDTO"
+              }
+            ]
+          },
+          "userTweets": {
+            "description": "The user tweets",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserTweetPerTopicDTO"
+            }
+          }
+        },
+        "required": [
+          "userInfo",
+          "userTweets"
+        ]
+      },
+      "HeroCircleDTO": {
+        "type": "object",
+        "properties": {
+          "hero_id": {
+            "type": "string",
+            "description": "Hero ID",
+            "example": "123"
+          },
+          "circle_layer": {
+            "type": "number",
+            "description": "Circle Layer",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "Username",
+            "example": "123"
+          },
+          "profile_url": {
+            "type": "string",
+            "description": "Profile URL",
+            "example": "https://example.com"
+          },
+          "is_hero": {
+            "type": "boolean",
+            "description": "Is Hero",
+            "example": true
+          },
+          "is_player": {
+            "type": "boolean",
+            "description": "Is Player",
+            "example": true
+          }
+        },
+        "required": [
+          "hero_id",
+          "circle_layer",
+          "username",
+          "profile_url",
+          "is_hero",
+          "is_player"
+        ]
+      },
+      "GetUserInnerCircleDTO": {
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": "string",
+            "description": "Handle of the hero",
+            "example": "hero_handle"
+          },
+          "profile_image_url_https": {
+            "type": "string",
+            "description": "URL of the profile image in HTTPS",
+            "example": "http://profileimage.url"
+          },
+          "inner_circle": {
+            "description": "Inner circle of the hero",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeroCircleDTO"
+            }
+          }
+        },
+        "required": [
+          "handle",
+          "inner_circle"
+        ]
+      },
+      "EmblemModelDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The ID of the emblem",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the emblem",
+            "example": "Emblem 1"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the emblem",
+            "example": "Emblem 1"
+          },
+          "picture": {
+            "type": "string",
+            "description": "The picture of the emblem",
+            "example": "Emblem 1"
+          },
+          "category": {
+            "type": "string",
+            "description": "The category of the emblem",
+            "example": "Emblem 1"
+          },
+          "threshold": {
+            "type": "number",
+            "description": "The threshold needed to get the emblem",
+            "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The created at of the emblem",
+            "example": "2021-01-01T00:00:00.000Z"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "picture",
+          "category",
+          "threshold",
+          "created_at"
+        ]
+      },
+      "GetOgTweetOfHeroPosts_DTO": {
+        "type": "object",
+        "properties": {
+          "rest_id": {
+            "type": "string",
+            "description": "The rest id of the post",
+            "example": "1234567890"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The user id of the post",
+            "example": "1234567890"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the post",
+            "example": "tweet"
+          },
+          "parent_id": {
+            "type": "string",
+            "description": "The parent id of the post",
+            "example": "1234567890"
+          },
+          "conversation_id": {
+            "type": "string",
+            "description": "The conversation id of the post",
+            "example": "1234567890"
+          },
+          "text": {
+            "type": "string",
+            "description": "The text of the post",
+            "example": "Hello, world!"
+          },
+          "is_quoted": {
+            "type": "boolean",
+            "description": "Whether the post is quoted",
+            "example": true
+          },
+          "favorite_count": {
+            "type": "number",
+            "description": "The favorite count of the post",
+            "example": 100
+          },
+          "bookmark_count": {
+            "type": "number",
+            "description": "The bookmark count of the post",
+            "example": 100
+          },
+          "quote_count": {
+            "type": "number",
+            "description": "The quote count of the post",
+            "example": 100
+          },
+          "reply_count": {
+            "type": "number",
+            "description": "The reply count of the post",
+            "example": 100
+          },
+          "retweet_count": {
+            "type": "number",
+            "description": "The retweet count of the post",
+            "example": 100
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The created at of the post",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "handle": {
+            "type": "string",
+            "description": "The handle of the post",
+            "example": "1234567890"
+          },
+          "certified_views": {
+            "type": "number",
+            "description": "The certified views of the post",
+            "example": 100
+          },
+          "top_interacting_users": {
+            "type": "object",
+            "description": "The top interacting users of the post",
+            "example": {
+              "user1": 10,
+              "user2": 5
+            }
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The updated at of the post",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "quote_id": {
+            "type": "string",
+            "description": "The quote id of the post",
+            "example": "1234567890"
+          }
+        },
+        "required": [
+          "rest_id",
+          "user_id",
+          "type",
+          "parent_id",
+          "conversation_id",
+          "text",
+          "is_quoted",
+          "favorite_count",
+          "bookmark_count",
+          "quote_count",
+          "reply_count",
+          "retweet_count",
+          "created_at",
+          "handle",
+          "certified_views",
+          "top_interacting_users",
+          "updated_at",
+          "quote_id"
+        ]
+      },
+      "GetOgTweetOfHeroDTO": {
+        "type": "object",
+        "properties": {
+          "posts": {
+            "description": "The posts of the hero",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GetOgTweetOfHeroPosts_DTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "posts"
+        ]
+      },
+      "GroupedEmblemsDTO": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Category name",
+            "example": "ENGAGEMENT"
+          },
+          "emblems": {
+            "description": "List of emblems in this category",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmblemModelDTO"
+            }
+          }
+        },
+        "required": [
+          "category",
+          "emblems"
+        ]
+      },
+      "GetGroupedEmblemsResponseDTO": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "List of emblem categories with their emblems",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupedEmblemsDTO"
             }
           }
         },
@@ -8051,6 +9331,9 @@
           "profile_picture": {
             "type": "string"
           },
+          "twitter_id": {
+            "type": "string"
+          },
           "fantasy_points": {
             "type": "number"
           },
@@ -8066,6 +9349,7 @@
           "name",
           "handle",
           "profile_picture",
+          "twitter_id",
           "fantasy_points",
           "fantasy_points_referrals",
           "league"
@@ -8304,6 +9588,50 @@
           "count"
         ]
       },
+      "BatchDeleteOrderRequestDTO": {
+        "type": "object",
+        "properties": {
+          "orderIds": {
+            "description": "The IDs of the orders that were attempted to be deleted",
+            "example": [
+              "123456789",
+              "123456790"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "orderIds"
+        ]
+      },
+      "BatchDeleteOrderResponseDTO": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "description": "The IDs of the orders that were attempted to be deleted",
+            "example": [
+              "123456789",
+              "123456790"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "count": {
+            "type": "number",
+            "description": "Number of records deleted",
+            "example": 0
+          }
+        },
+        "required": [
+          "ids",
+          "count"
+        ]
+      },
       "GetPlayerActivityDto": {
         "type": "object",
         "properties": {
@@ -8325,6 +9653,30 @@
             "$ref": "#/components/schemas/PaginationDTO"
           }
         }
+      },
+      "PaginatedGetLastActivityDtoResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Data items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetLastActivityDto"
+            }
+          },
+          "meta": {
+            "description": "Pagination metadata",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MetaDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ]
       },
       "GameStatsDto": {
         "type": "object",
@@ -8672,7 +10024,7 @@
           "banner_image": {
             "type": "string",
             "description": "Banner image for the tactic",
-            "example": "https://fantasy-top-cards.s3.eu-north-1.amazonaws.com/assets/tactics-background.png"
+            "example": "https://r2.fantasy.top/assets/tactics-background.png"
           },
           "use_twitter_indexed_score": {
             "type": "boolean",
@@ -10430,14 +11782,7 @@
             ]
           },
           "visible": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/BoolFilterDTO"
-              },
-              {
-                "type": "boolean"
-              }
-            ]
+            "type": "boolean"
           },
           "tactic_config_id": {
             "oneOf": [
@@ -12950,7 +14295,7 @@
           "banner_image": {
             "type": "string",
             "description": "Banner image for the tactic",
-            "example": "https://fantasy-top-cards.s3.eu-north-1.amazonaws.com/assets/tactics-background.png"
+            "example": "https://r2.fantasy.top/assets/tactics-background.png"
           },
           "use_twitter_indexed_score": {
             "type": "boolean",
@@ -14190,7 +15535,22 @@
           "current_rewards"
         ]
       },
-      "TournamentRegisteredInResponse": {
+      "GetUserRegisteredTournamentsDTO": {
+        "type": "object",
+        "properties": {
+          "tournaments": {
+            "description": "List of tournaments the player is registered in",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            }
+          }
+        },
+        "required": [
+          "tournaments"
+        ]
+      },
+      "GetUserRegisteredTournamentsAndWinningsDTO": {
         "type": "object",
         "properties": {
           "tournaments": {
@@ -17350,6 +18710,21 @@
           "highest_five_bids"
         ]
       },
+      "GetPersonalOrderCountDTO": {
+        "type": "object",
+        "properties": {
+          "bid_count": {
+            "type": "number"
+          },
+          "sell_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "bid_count",
+          "sell_count"
+        ]
+      },
       "CreateSellOrderDto": {
         "type": "object",
         "properties": {
@@ -17608,6 +18983,25 @@
           "created_at"
         ]
       },
+      "GetCardMarketInfoDTO": {
+        "type": "object",
+        "properties": {
+          "limit_price": {
+            "type": "number"
+          },
+          "best_offer": {
+            "type": "number"
+          },
+          "last_sale": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "limit_price",
+          "best_offer",
+          "last_sale"
+        ]
+      },
       "ReferralStatistics": {
         "type": "object",
         "properties": {
@@ -17701,6 +19095,9 @@
       "ReferralsStatisticsResponse": {
         "type": "object",
         "properties": {
+          "referralCode": {
+            "type": "string"
+          },
           "volume": {
             "$ref": "#/components/schemas/ReferralsStatisticsDetailsResponse"
           },
@@ -17721,6 +19118,7 @@
           }
         },
         "required": [
+          "referralCode",
           "volume",
           "tactics",
           "packs",
@@ -17811,6 +19209,20 @@
           "fragments": {
             "type": "number"
           },
+          "are_nft_approved": {
+            "type": "boolean"
+          },
+          "weth_allowance": {
+            "description": "WETH allowance as a Decimal value",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecimalNumber"
+              }
+            ]
+          },
+          "monad_address": {
+            "type": "string"
+          },
           "total_volume": {
             "type": "number"
           },
@@ -17845,6 +19257,9 @@
           "follower_count",
           "can_play_free_tactics",
           "fragments",
+          "are_nft_approved",
+          "weth_allowance",
+          "monad_address",
           "total_volume",
           "total_tactics",
           "total_packs",
@@ -18401,6 +19816,158 @@
           "last_threshold"
         ]
       },
+      "CreateSubscriptionDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "subscriptionId"
+        ]
+      },
+      "SendNotificationDto": {
+        "type": "object",
+        "properties": {
+          "userIds": {
+            "description": "Array of OneSignal player IDs to send the notification to",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the notification"
+          },
+          "body": {
+            "type": "string",
+            "description": "Body content of the notification"
+          },
+          "link": {
+            "type": "string",
+            "description": "URL to redirect to when clicking the notification"
+          }
+        },
+        "required": [
+          "userIds",
+          "title",
+          "body",
+          "link"
+        ]
+      },
+      "TradeCreatedDataNew": {
+        "type": "object",
+        "properties": {
+          "seller_id": {
+            "type": "string",
+            "description": "ID of the seller"
+          },
+          "buyer_id": {
+            "type": "string",
+            "description": "ID of the buyer"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price of the trade"
+          },
+          "is_sell": {
+            "type": "boolean",
+            "description": "Whether this is a sell trade"
+          }
+        },
+        "required": [
+          "seller_id",
+          "buyer_id",
+          "price",
+          "is_sell"
+        ]
+      },
+      "TradeCreatedData": {
+        "type": "object",
+        "properties": {
+          "new": {
+            "$ref": "#/components/schemas/TradeCreatedDataNew"
+          }
+        },
+        "required": [
+          "new"
+        ]
+      },
+      "RewardsAvailableData": {
+        "type": "object",
+        "properties": {
+          "player_ids": {
+            "description": "Array of player IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "player_ids"
+        ]
+      },
+      "TacticRewardsAvailableDataNew": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Tactic ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "TacticRewardsAvailableData": {
+        "type": "object",
+        "properties": {
+          "new": {
+            "$ref": "#/components/schemas/TacticRewardsAvailableDataNew"
+          }
+        },
+        "required": [
+          "new"
+        ]
+      },
+      "HandlePushNotificationDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "TRADE_CREATED",
+              "REWARDS_AVAILABLE",
+              "TACTIC_OPENED",
+              "TACTIC_REWARDS_AVAILABLE",
+              "TOURNAMENT_REWARDS_AVAILABLE",
+              "TOURNAMENT_REGISTRATION_AVAILABLE"
+            ],
+            "description": "Type of the event"
+          },
+          "data": {
+            "description": "Event data object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TradeCreatedData"
+              },
+              {
+                "$ref": "#/components/schemas/RewardsAvailableData"
+              },
+              {
+                "$ref": "#/components/schemas/TacticRewardsAvailableData"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "data"
+        ]
+      },
       "DateTimeFilterDTO": {
         "type": "object",
         "properties": {
@@ -18438,92 +20005,6 @@
           },
           "not": {
             "$ref": "#/components/schemas/DateTimeFilterDTO"
-          }
-        }
-      },
-      "StringFilterDTO": {
-        "type": "object",
-        "properties": {
-          "equals": {
-            "type": "string"
-          },
-          "in": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "notIn": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "lt": {
-            "type": "string"
-          },
-          "lte": {
-            "type": "string"
-          },
-          "gt": {
-            "type": "string"
-          },
-          "gte": {
-            "type": "string"
-          },
-          "contains": {
-            "type": "string"
-          },
-          "startsWith": {
-            "type": "string"
-          },
-          "endsWith": {
-            "type": "string"
-          },
-          "mode": {
-            "type": "string",
-            "enum": [
-              "default",
-              "insensitive"
-            ]
-          },
-          "not": {
-            "$ref": "#/components/schemas/StringFilterDTO"
-          }
-        }
-      },
-      "NumberFilterDTO": {
-        "type": "object",
-        "properties": {
-          "equals": {
-            "type": "number"
-          },
-          "in": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "notIn": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "lt": {
-            "type": "number"
-          },
-          "lte": {
-            "type": "number"
-          },
-          "gt": {
-            "type": "number"
-          },
-          "gte": {
-            "type": "number"
-          },
-          "not": {
-            "$ref": "#/components/schemas/NumberFilterDTO"
           }
         }
       },
