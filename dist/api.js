@@ -16,14 +16,124 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.RewardHistoryTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerGroupedCardsDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetPlayerActivityDtoActivityTypeEnum = exports.GetLastActivityQueryDTOActivityTypeEnum = exports.GetLastActivityDtoTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.CreateChoiceDTOTypeRefEnum = exports.ChoiceTypeRefEnum = void 0;
-exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.TrendingHeroDTOTrendingReasonEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = void 0;
+exports.MarketPnlDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HeroStatusDTOFuturStatusEnum = exports.HeroStatusDTOHeroStatusEnum = exports.HeroStatusDTOPlayerStatusEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTweetsWithFlagsDTOSortingEnum = exports.GetTweetsQueryDtoSortingEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCloutLeaderboardDTOOrderByEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateProjectUserModerationDTOStatusEnum = exports.CreateEntityDtoTypeEnum = exports.CreateChoiceDTOTypeRefEnum = exports.ChoiceTypeRefEnum = exports.ChestPrizeDTORewardTypeEnum = exports.BetDTOPayoutModelEnum = exports.AvailableDailyCloutDTOStatusEnum = exports.AddUserToProjectDTOPermissionEnum = exports.AddRemoveWhitelistResponseDTOMessageEnum = exports.AddRemoveWhitelistDTOActionEnum = exports.AccountDtoSourceEnum = void 0;
+exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.StreakRewardRewardTypeEnum = exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RemoveShouterDTOReasonEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.ModerationRecordDTOStatusEnum = void 0;
+exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetMarketsStatusEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CommonApi = exports.CommonApiFactory = exports.CommonApiFp = exports.CommonApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UsersFlagEnum = exports.UpdateProjectUserModerationDTOStatusEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TrendingHeroDTOTrendingReasonEnum = exports.TradeActivityDtoActionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = void 0;
+exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
 const common_1 = require("./common");
 // @ts-ignore
 const base_1 = require("./base");
+exports.AccountDtoSourceEnum = {
+    Database: 'database',
+    XSearch: 'x_search'
+};
+exports.AddRemoveWhitelistDTOActionEnum = {
+    Add: 'ADD',
+    Remove: 'REMOVE'
+};
+exports.AddRemoveWhitelistResponseDTOMessageEnum = {
+    SomeUserIdsHaveNotBeenFound: 'Some user_ids have not been found',
+    WhitelistUpdatedSuccessfully: 'Whitelist updated successfully'
+};
+exports.AddUserToProjectDTOPermissionEnum = {
+    Admin: 'admin',
+    Member: 'member'
+};
+exports.AvailableDailyCloutDTOStatusEnum = {
+    Available: 'AVAILABLE',
+    Claimed: 'CLAIMED',
+    NoTweet: 'NO_TWEET'
+};
+exports.BetDTOPayoutModelEnum = {
+    WinnerTakesAllPayout: 'winner_takes_all_payout',
+    TopThreePayout: 'top_three_payout',
+    TopFivePayout: 'top_five_payout'
+};
+exports.ChestPrizeDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
 exports.ChoiceTypeRefEnum = {
     Hero: 'hero',
     Tweet: 'tweet',
@@ -34,6 +144,68 @@ exports.CreateChoiceDTOTypeRefEnum = {
     Tweet: 'tweet',
     Coin: 'coin'
 };
+exports.CreateEntityDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+};
+exports.CreateProjectUserModerationDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+};
+exports.EntityDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+};
+exports.EntityResponseDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+};
+exports.GetActivityDtoTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+};
+exports.GetAllPlayersDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+};
+exports.GetAndFilterActivityQueryDTOActivityTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+};
+exports.GetCardsForDeckBuilderDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+};
+exports.GetCloutLeaderboardDTOOrderByEnum = {
+    FinalRank: 'final_rank',
+    TotalCloutReferral: 'total_clout_referral',
+    TotalCloutDailyClaim: 'total_clout_daily_claim'
+};
 exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = {
     Asc: 'asc',
     Desc: 'desc'
@@ -42,54 +214,44 @@ exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = {
     Asc: 'asc',
     Desc: 'desc'
 };
+exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+exports.GetHeroScoresQueryOrderByDTOStarsEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
 exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = {
     Asc: 'asc',
     Desc: 'desc'
 };
-exports.GetLastActivityDtoTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
-};
-exports.GetLastActivityQueryDTOActivityTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
-};
-exports.GetPlayerActivityDtoActivityTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
+exports.GetLMSRHistoryResponseDtoMarketTypeEnum = {
+    Single: 'single',
+    ParentWithSubmarkets: 'parent_with_submarkets'
 };
 exports.GetPlayerAllCardsDTOOrderByEnum = {
-    Score: 'cards_score',
-    Number: 'cards_number',
-    ScoreAsc: 'cards_score_asc',
-    ScoreDesc: 'cards_score_desc'
+    CardsScore: 'cards_score',
+    CardsNumberAsc: 'cards_number_asc',
+    CardsNumberDesc: 'cards_number_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    CardsScoreDesc: 'cards_score_desc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc',
+    AvailableFirst: 'available_first'
 };
-exports.GetPlayerGroupedCardsDTOOrderByEnum = {
-    Score: 'cards_score',
-    Number: 'cards_number',
-    ScoreAsc: 'cards_score_asc',
-    ScoreDesc: 'cards_score_desc'
+exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = {
+    CardsScore: 'cards_score',
+    CardsNumberAsc: 'cards_number_asc',
+    CardsNumberDesc: 'cards_number_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    CardsScoreDesc: 'cards_score_desc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc'
 };
 exports.GetTacticsEntriesOptionsDTODistinctEnum = {
     TacticId: 'tactic_id',
@@ -109,6 +271,11 @@ exports.GetTacticsEntriesOptionsDTODistinctEnum = {
     Hero3Stars: 'hero3_stars',
     Hero4Stars: 'hero4_stars',
     Hero5Stars: 'hero5_stars',
+    Hero1SalaryCap: 'hero1_salary_cap',
+    Hero2SalaryCap: 'hero2_salary_cap',
+    Hero3SalaryCap: 'hero3_salary_cap',
+    Hero4SalaryCap: 'hero4_salary_cap',
+    Hero5SalaryCap: 'hero5_salary_cap',
     TicketId: 'ticket_id',
     PreviousRank: 'previous_rank',
     Autocompleted: 'autocompleted',
@@ -132,13 +299,44 @@ exports.GetTacticsOptionsDTODistinctEnum = {
     CreatedAt: 'created_at',
     UpdatedAt: 'updated_at'
 };
+exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = {
+    In: 'IN',
+    Out: 'OUT'
+};
+exports.GetTweetsQueryDtoSortingEnum = {
+    Banger: 'banger',
+    Latest: 'latest'
+};
+exports.GetTweetsWithFlagsDTOSortingEnum = {
+    Latest: 'latest',
+    Banger: 'banger'
+};
 exports.HandlePushNotificationDtoTypeEnum = {
     TradeCreated: 'TRADE_CREATED',
+    BidAccepted: 'BID_ACCEPTED',
     RewardsAvailable: 'REWARDS_AVAILABLE',
     TacticOpened: 'TACTIC_OPENED',
     TacticRewardsAvailable: 'TACTIC_REWARDS_AVAILABLE',
     TournamentRewardsAvailable: 'TOURNAMENT_REWARDS_AVAILABLE',
-    TournamentRegistrationAvailable: 'TOURNAMENT_REGISTRATION_AVAILABLE'
+    TournamentRegistrationAvailable: 'TOURNAMENT_REGISTRATION_AVAILABLE',
+    TournamentStarting: 'TOURNAMENT_STARTING',
+    TournamentEnded: 'TOURNAMENT_ENDED',
+    TacticsCreated: 'TACTICS_CREATED',
+    TacticsStarting: 'TACTICS_STARTING'
+};
+exports.HeroStatusDTOPlayerStatusEnum = {
+    Registered: 'REGISTERED',
+    NotRegistered: 'NOT_REGISTERED'
+};
+exports.HeroStatusDTOHeroStatusEnum = {
+    None: 'NONE',
+    Hero: 'HERO',
+    Tactic: 'TACTIC'
+};
+exports.HeroStatusDTOFuturStatusEnum = {
+    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
+    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
+    None: 'NONE'
 };
 exports.HeroWithStatsOrderByDTOCurrentRankEnum = {
     Asc: 'asc',
@@ -160,7 +358,481 @@ exports.HeroWithStatsOrderByDTOFantasyScoreEnum = {
     Asc: 'asc',
     Desc: 'desc'
 };
-exports.RewardHistoryTypeEnum = {
+exports.HistoryItemDtoTypeEnum = {
+    Trade: 'TRADE',
+    Settlement: 'SETTLEMENT'
+};
+exports.HistoryItemDtoActionEnum = {
+    Buy: 'BUY',
+    Sell: 'SELL',
+    Win: 'WIN',
+    Loss: 'LOSS',
+    Void: 'VOID'
+};
+exports.JackpotStatsDtoStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Completed: 'COMPLETED',
+    Cancelled: 'CANCELLED'
+};
+exports.LeaderboardEntryDtoStatusEnum = {
+    Winner: 'winner',
+    AlmostThere: 'almost_there',
+    Attempt: 'attempt'
+};
+exports.LotteryStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Resolved: 'RESOLVED'
+};
+exports.LotteryEntryEntryTypeEnum = {
+    Free: 'FREE',
+    Paid: 'PAID'
+};
+exports.LotteryResponseDtoStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Resolved: 'RESOLVED'
+};
+exports.MarketChildDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed'
+};
+exports.MarketDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed'
+};
+exports.MarketPnlDtoPhaseEnum = {
+    Open: 'open',
+    Running: 'running',
+    Resolved: 'resolved'
+};
+exports.ModerationRecordDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+};
+exports.PlayerHistoryFilterDtoActionEnum = {
+    Buy: 'BUY',
+    Sell: 'SELL',
+    Win: 'WIN',
+    Loss: 'LOSS',
+    Void: 'VOID'
+};
+exports.PlayerRewardDTORewardOriginEnum = {
+    Progression: 'progression',
+    Chest: 'chest',
+    Deck: 'deck',
+    Gift: 'gift',
+    Quest: 'quest',
+    Roulette: 'roulette',
+    TrainingCamp: 'training_camp'
+};
+exports.PlayerRewardDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
+exports.PlayerRewardDTOQuestTypeEnum = {
+    Tournaments: 'tournaments',
+    Roulettes: 'roulettes',
+    Burns: 'burns',
+    LevelUps: 'level_ups',
+    Referrals: 'referrals',
+    CreateDeckOnboarding: 'create_deck_onboarding',
+    DeckDetailsOnboarding: 'deck_details_onboarding',
+    TournamentOnboarding: 'tournament_onboarding',
+    InitialOnboarding: 'initial_onboarding',
+    InventoryOnboarding: 'inventory_onboarding',
+    FreeDeckOnboarding: 'free_deck_onboarding'
+};
+exports.PlayerWeeklyQuestDTOPeriodEnum = {
+    Daily: 'daily',
+    Weekly: 'weekly',
+    Monthly: 'monthly'
+};
+exports.PlayerWeeklyQuestDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
+exports.PlayerWeeklyQuestDTOQuestTypeEnum = {
+    Tournaments: 'tournaments',
+    Roulettes: 'roulettes',
+    Burns: 'burns',
+    LevelUps: 'level_ups',
+    Referrals: 'referrals',
+    CreateDeckOnboarding: 'create_deck_onboarding',
+    DeckDetailsOnboarding: 'deck_details_onboarding',
+    TournamentOnboarding: 'tournament_onboarding',
+    InitialOnboarding: 'initial_onboarding',
+    InventoryOnboarding: 'inventory_onboarding',
+    FreeDeckOnboarding: 'free_deck_onboarding'
+};
+exports.ProgressionDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
+exports.RegisterDeckDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+};
+exports.RemoveShouterDTOReasonEnum = {
+    BusinessAccount: 'businessAccount',
+    BotAccount: 'botAccount',
+    AutomatedAccount: 'automatedAccount'
+};
+/**
+ * All possible reward types
+ * @export
+ * @enum {string}
+ */
+exports.RewardTypeEnum = {
+    Star: 'STAR',
+    Fan: 'FAN',
+    Gold: 'GOLD',
+    Pack: 'PACK',
+    Fragment: 'FRAGMENT',
+    StarBanner: 'star_banner'
+};
+exports.RouletteRewardDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
+exports.SellOrdersFiltersDTOOrderByEnum = {
+    BestValue: 'best_value',
+    CardsScoreDesc: 'cards_score_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc'
+};
+exports.StreakRewardRewardTypeEnum = {
     Star: 'STAR',
     Fan: 'FAN',
     Gold: 'GOLD',
@@ -316,10 +988,157 @@ exports.TacticsOrderByDTOUpdatedAtEnum = {
     Asc: 'asc',
     Desc: 'desc'
 };
+exports.TierDtoTierEnum = {
+    Diamond: 'diamond',
+    Platinum: 'platinum',
+    Gold: 'gold',
+    Silver: 'silver',
+    Bronze: 'bronze'
+};
+exports.TopHoldersResponseDtoTypeEnum = {
+    Outcome: 'outcome',
+    ChildMarket: 'child_market'
+};
+exports.TournamentLeagueThresholdDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+};
+exports.TradeActivityDtoActionEnum = {
+    Buy: 'Buy',
+    Sell: 'Sell'
+};
 exports.TrendingHeroDTOTrendingReasonEnum = {
     FloorPrice: 'floor_price',
     Views: 'views',
     None: 'none'
+};
+exports.UpdateMarketStatusAdminDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Closed: 'closed',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided'
+};
+exports.UpdateProjectUserModerationDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+};
+/**
+ * All possible user flags
+ * @export
+ * @enum {string}
+ */
+exports.UsersFlagEnum = {
+    HeroCircleExtended: 'HERO_CIRCLE_EXTENDED',
+    HeroCircle: 'HERO_CIRCLE',
+    SmartFollow: 'SMART_FOLLOW',
+    Clout: 'CLOUT',
+    Gattaca: 'GATTACA',
+    SuspiciousLow: 'SUSPICIOUS_LOW',
+    SuspiciousHigh: 'SUSPICIOUS_HIGH',
+    MonadHero: 'MONAD_HERO',
+    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
+    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
+    DisableFromHeroSelection: 'DISABLE_FROM_HERO_SELECTION',
+    FeedTemporary: 'FEED_TEMPORARY',
+    FeedOnly: 'FEED_ONLY',
+    TacticOnly: 'TACTIC_ONLY',
+    Hero: 'HERO',
+    Tactic: 'TACTIC',
+    None: 'NONE',
+    Registered: 'REGISTERED',
+    NotRegistered: 'NOT_REGISTERED'
+};
+exports.VoteConfigTypeEnum = {
+    InTrending: 'HERO_IN_TRENDING',
+    InMain: 'HERO_IN_MAIN',
+    Out: 'HERO_OUT',
+    InRising: 'HERO_IN_RISING'
 };
 /**
  * CardApi - axios parameter creator
@@ -445,7 +1264,7 @@ const CardApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {string} playerId
-         * @param {GetPlayerGroupedCardsDTO} [query]
+         * @param {GetPlayerCardsFiltersWhereDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -534,6 +1353,41 @@ const CardApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'heroId' is not null or undefined
             (0, common_1.assertParamExists)('getHeroSupply', 'heroId', heroId);
             const localVarPath = `/card/supply/{heroId}`
+                .replace(`{${"heroId"}}`, encodeURIComponent(String(heroId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {string} heroId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroSupplyByRarity: async (heroId, options = {}) => {
+            // verify required parameter 'heroId' is not null or undefined
+            (0, common_1.assertParamExists)('getHeroSupplyByRarity', 'heroId', heroId);
+            const localVarPath = `/card/hero-supply-by-rarity/{heroId}`
                 .replace(`{${"heroId"}}`, encodeURIComponent(String(heroId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -650,7 +1504,7 @@ const CardApiFp = function (configuration) {
         /**
          *
          * @param {string} playerId
-         * @param {GetPlayerGroupedCardsDTO} [query]
+         * @param {GetPlayerCardsFiltersWhereDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -683,6 +1537,18 @@ const CardApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroSupply(heroId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['CardApi.getHeroSupply']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {string} heroId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHeroSupplyByRarity(heroId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroSupplyByRarity(heroId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['CardApi.getHeroSupplyByRarity']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -761,6 +1627,15 @@ const CardApiFactory = function (configuration, basePath, axios) {
          */
         getHeroSupply(requestParameters, options) {
             return localVarFp.getHeroSupply(requestParameters.heroId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {CardApiGetHeroSupplyByRarityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroSupplyByRarity(requestParameters, options) {
+            return localVarFp.getHeroSupplyByRarity(requestParameters.heroId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -843,6 +1718,16 @@ class CardApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @param {CardApiGetHeroSupplyByRarityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    getHeroSupplyByRarity(requestParameters, options) {
+        return (0, exports.CardApiFp)(this.configuration).getHeroSupplyByRarity(requestParameters.heroId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @param {CardApiGetIndividualCardsByPlayerIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -853,6 +1738,103 @@ class CardApi extends base_1.BaseAPI {
     }
 }
 exports.CardApi = CardApi;
+/**
+ * CommonApi - axios parameter creator
+ * @export
+ */
+const CommonApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBacklogs: async (options = {}) => {
+            const localVarPath = `/common/backlogs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.CommonApiAxiosParamCreator = CommonApiAxiosParamCreator;
+/**
+ * CommonApi - functional programming interface
+ * @export
+ */
+const CommonApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.CommonApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBacklogs(options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBacklogs(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['CommonApi.getBacklogs']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.CommonApiFp = CommonApiFp;
+/**
+ * CommonApi - factory interface
+ * @export
+ */
+const CommonApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.CommonApiFp)(configuration);
+    return {
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBacklogs(options) {
+            return localVarFp.getBacklogs(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.CommonApiFactory = CommonApiFactory;
+/**
+ * CommonApi - object-oriented interface
+ * @export
+ * @class CommonApi
+ * @extends {BaseAPI}
+ */
+class CommonApi extends base_1.BaseAPI {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CommonApi
+     */
+    getBacklogs(options) {
+        return (0, exports.CommonApiFp)(this.configuration).getBacklogs(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.CommonApi = CommonApi;
 /**
  * HeroApi - axios parameter creator
  * @export
@@ -1406,6 +2388,124 @@ class HeroApi extends base_1.BaseAPI {
 }
 exports.HeroApi = HeroApi;
 /**
+ * KothKingOfTheHillApi - axios parameter creator
+ * @export
+ */
+const KothKingOfTheHillApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get top participants for a KOTH
+         * @param {string} kothId
+         * @param {number} [limit]
+         * @param {number} [offset]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants: async (kothId, limit, offset, options = {}) => {
+            // verify required parameter 'kothId' is not null or undefined
+            (0, common_1.assertParamExists)('getTopParticipants', 'kothId', kothId);
+            const localVarPath = `/koth/{kothId}/top-participants`
+                .replace(`{${"kothId"}}`, encodeURIComponent(String(kothId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.KothKingOfTheHillApiAxiosParamCreator = KothKingOfTheHillApiAxiosParamCreator;
+/**
+ * KothKingOfTheHillApi - functional programming interface
+ * @export
+ */
+const KothKingOfTheHillApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.KothKingOfTheHillApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get top participants for a KOTH
+         * @param {string} kothId
+         * @param {number} [limit]
+         * @param {number} [offset]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopParticipants(kothId, limit, offset, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(kothId, limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['KothKingOfTheHillApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.KothKingOfTheHillApiFp = KothKingOfTheHillApiFp;
+/**
+ * KothKingOfTheHillApi - factory interface
+ * @export
+ */
+const KothKingOfTheHillApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.KothKingOfTheHillApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get top participants for a KOTH
+         * @param {KothKingOfTheHillApiGetTopParticipantsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants(requestParameters, options) {
+            return localVarFp.getTopParticipants(requestParameters.kothId, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.KothKingOfTheHillApiFactory = KothKingOfTheHillApiFactory;
+/**
+ * KothKingOfTheHillApi - object-oriented interface
+ * @export
+ * @class KothKingOfTheHillApi
+ * @extends {BaseAPI}
+ */
+class KothKingOfTheHillApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get top participants for a KOTH
+     * @param {KothKingOfTheHillApiGetTopParticipantsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KothKingOfTheHillApi
+     */
+    getTopParticipants(requestParameters, options) {
+        return (0, exports.KothKingOfTheHillApiFp)(this.configuration).getTopParticipants(requestParameters.kothId, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.KothKingOfTheHillApi = KothKingOfTheHillApi;
+/**
  * MarketplaceApi - axios parameter creator
  * @export
  */
@@ -1418,10 +2518,12 @@ const MarketplaceApiAxiosParamCreator = function (configuration) {
          * @param {boolean} includeOrderbook
          * @param {boolean} includePersonalBids
          * @param {boolean} includeHighestFiveBids
+         * @param {boolean} includeRarityBids
+         * @param {Array<string>} tokenIds
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBidOrders: async (heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options = {}) => {
+        getBidOrders: async (heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, includeRarityBids, tokenIds, options = {}) => {
             // verify required parameter 'heroId' is not null or undefined
             (0, common_1.assertParamExists)('getBidOrders', 'heroId', heroId);
             // verify required parameter 'rarity' is not null or undefined
@@ -1432,6 +2534,10 @@ const MarketplaceApiAxiosParamCreator = function (configuration) {
             (0, common_1.assertParamExists)('getBidOrders', 'includePersonalBids', includePersonalBids);
             // verify required parameter 'includeHighestFiveBids' is not null or undefined
             (0, common_1.assertParamExists)('getBidOrders', 'includeHighestFiveBids', includeHighestFiveBids);
+            // verify required parameter 'includeRarityBids' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'includeRarityBids', includeRarityBids);
+            // verify required parameter 'tokenIds' is not null or undefined
+            (0, common_1.assertParamExists)('getBidOrders', 'tokenIds', tokenIds);
             const localVarPath = `/marketplace/bid-orders`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1463,6 +2569,12 @@ const MarketplaceApiAxiosParamCreator = function (configuration) {
             }
             if (includeHighestFiveBids !== undefined) {
                 localVarQueryParameter['includeHighestFiveBids'] = includeHighestFiveBids;
+            }
+            if (includeRarityBids !== undefined) {
+                localVarQueryParameter['includeRarityBids'] = includeRarityBids;
+            }
+            if (tokenIds) {
+                localVarQueryParameter['tokenIds'] = tokenIds;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1589,7 +2701,7 @@ const MarketplaceApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get marketplace data
-         * @param {GetAndFilterSellOrdersQueryDTO} [query]
+         * @param {SellOrdersFiltersDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1683,11 +2795,13 @@ const MarketplaceApiFp = function (configuration) {
          * @param {boolean} includeOrderbook
          * @param {boolean} includePersonalBids
          * @param {boolean} includeHighestFiveBids
+         * @param {boolean} includeRarityBids
+         * @param {Array<string>} tokenIds
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options);
+        async getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, includeRarityBids, tokenIds, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, includeRarityBids, tokenIds, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['MarketplaceApi.getBidOrders']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -1734,7 +2848,7 @@ const MarketplaceApiFp = function (configuration) {
         /**
          *
          * @summary Get marketplace data
-         * @param {GetAndFilterSellOrdersQueryDTO} [query]
+         * @param {SellOrdersFiltersDTO} [query]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1775,7 +2889,7 @@ const MarketplaceApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         getBidOrders(requestParameters, options) {
-            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(axios, basePath));
+            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, requestParameters.includeRarityBids, requestParameters.tokenIds, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -1843,7 +2957,7 @@ class MarketplaceApi extends base_1.BaseAPI {
      * @memberof MarketplaceApi
      */
     getBidOrders(requestParameters, options) {
-        return (0, exports.MarketplaceApiFp)(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.MarketplaceApiFp)(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, requestParameters.includeRarityBids, requestParameters.tokenIds, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -1935,48 +3049,6 @@ const PlayerApiAxiosParamCreator = function (configuration) {
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Get all activity for a player
-         * @param {string} playerId
-         * @param {GetPlayerActivityDto} [query]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getActivityForPlayer: async (playerId, query, options = {}) => {
-            // verify required parameter 'playerId' is not null or undefined
-            (0, common_1.assertParamExists)('getActivityForPlayer', 'playerId', playerId);
-            const localVarPath = `/player/activity/{playerId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -2243,20 +3315,6 @@ const PlayerApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get all activity for a player
-         * @param {string} playerId
-         * @param {GetPlayerActivityDto} [query]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getActivityForPlayer(playerId, query, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getActivityForPlayer(playerId, query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['PlayerApi.getActivityForPlayer']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Get all paginated players
          * @param {number} page Page number
          * @param {number} limit Number of items per page
@@ -2358,16 +3416,6 @@ const PlayerApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get all activity for a player
-         * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getActivityForPlayer(requestParameters, options) {
-            return localVarFp.getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Get all paginated players
          * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -2449,17 +3497,6 @@ class PlayerApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get all activity for a player
-     * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlayerApi
-     */
-    getActivityForPlayer(requestParameters, options) {
-        return (0, exports.PlayerApiFp)(this.configuration).getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Get all paginated players
      * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2526,6 +3563,781 @@ class PlayerApi extends base_1.BaseAPI {
     }
 }
 exports.PlayerApi = PlayerApi;
+/**
+ * PredictionMarketApi - axios parameter creator
+ * @export
+ */
+const PredictionMarketApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {string} slug
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLMSRHistory: async (slug, options = {}) => {
+            // verify required parameter 'slug' is not null or undefined
+            (0, common_1.assertParamExists)('getLMSRHistory', 'slug', slug);
+            const localVarPath = `/prediction-market/market/{slug}/lmsr-history`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get prediction market leaderboard
+         * @param {GetLeaderboardTimeframeEnum} [timeframe] Timeframe filter for leaderboard
+         * @param {number} [limit] Number of entries to return (max 1000)
+         * @param {GetLeaderboardSortByEnum} [sortBy] Field to sort by
+         * @param {GetLeaderboardOrderEnum} [order] Sort order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLeaderboard: async (timeframe, limit, sortBy, order, options = {}) => {
+            const localVarPath = `/prediction-market/leaderboard`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (timeframe !== undefined) {
+                localVarQueryParameter['timeframe'] = timeframe;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (sortBy !== undefined) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get latest 10 trades for a market
+         * @param {string} slug
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketActivity: async (slug, options = {}) => {
+            // verify required parameter 'slug' is not null or undefined
+            (0, common_1.assertParamExists)('getMarketActivity', 'slug', slug);
+            const localVarPath = `/prediction-market/market/{slug}/activity`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get a list of prediction markets
+         * @param {GetMarketsStatusEnum} [status] Filter by market status
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarkets: async (status, options = {}) => {
+            const localVarPath = `/prediction-market/markets`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (status !== undefined) {
+                localVarQueryParameter['status'] = status;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player history
+         * @param {string} id
+         * @param {PlayerHistoryFilterDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerHistory: async (id, query, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerHistory', 'id', id);
+            const localVarPath = `/prediction-market/player/{id}/history`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player positions
+         * @param {string} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerPositions: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerPositions', 'id', id);
+            const localVarPath = `/prediction-market/player/{id}/positions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player statistics
+         * @param {string} id
+         * @param {GetPlayerStatsTimeframeEnum} [timeframe] Timeframe filter for player stats
+         * @param {string} [dateStart] Start date for custom date range (ISO 8601 format)
+         * @param {string} [dateEnd] End date for custom date range (ISO 8601 format)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerStats: async (id, timeframe, dateStart, dateEnd, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerStats', 'id', id);
+            const localVarPath = `/prediction-market/player/{id}/stats`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (timeframe !== undefined) {
+                localVarQueryParameter['timeframe'] = timeframe;
+            }
+            if (dateStart !== undefined) {
+                localVarQueryParameter['dateStart'] = dateStart;
+            }
+            if (dateEnd !== undefined) {
+                localVarQueryParameter['dateEnd'] = dateEnd;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {GetTopHoldersTypeEnum} type Either outcome or cild market
+         * @param {string} id ID of the type to get
+         * @param {boolean} isSettled Whether the market is settled
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopHolders: async (type, id, isSettled, options = {}) => {
+            // verify required parameter 'type' is not null or undefined
+            (0, common_1.assertParamExists)('getTopHolders', 'type', type);
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getTopHolders', 'id', id);
+            // verify required parameter 'isSettled' is not null or undefined
+            (0, common_1.assertParamExists)('getTopHolders', 'isSettled', isSettled);
+            const localVarPath = `/prediction-market/top-holders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
+            }
+            if (isSettled !== undefined) {
+                localVarQueryParameter['isSettled'] = isSettled;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {string} marketId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopPayouts: async (marketId, options = {}) => {
+            // verify required parameter 'marketId' is not null or undefined
+            (0, common_1.assertParamExists)('getTopPayouts', 'marketId', marketId);
+            const localVarPath = `/prediction-market/market/{marketId}/top-payouts`
+                .replace(`{${"marketId"}}`, encodeURIComponent(String(marketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.PredictionMarketApiAxiosParamCreator = PredictionMarketApiAxiosParamCreator;
+/**
+ * PredictionMarketApi - functional programming interface
+ * @export
+ */
+const PredictionMarketApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.PredictionMarketApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {string} slug
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLMSRHistory(slug, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLMSRHistory(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getLMSRHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get prediction market leaderboard
+         * @param {GetLeaderboardTimeframeEnum} [timeframe] Timeframe filter for leaderboard
+         * @param {number} [limit] Number of entries to return (max 1000)
+         * @param {GetLeaderboardSortByEnum} [sortBy] Field to sort by
+         * @param {GetLeaderboardOrderEnum} [order] Sort order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLeaderboard(timeframe, limit, sortBy, order, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLeaderboard(timeframe, limit, sortBy, order, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getLeaderboard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get latest 10 trades for a market
+         * @param {string} slug
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarketActivity(slug, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarketActivity(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getMarketActivity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get a list of prediction markets
+         * @param {GetMarketsStatusEnum} [status] Filter by market status
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarkets(status, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarkets(status, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getMarkets']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player history
+         * @param {string} id
+         * @param {PlayerHistoryFilterDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerHistory(id, query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerHistory(id, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player positions
+         * @param {string} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerPositions(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerPositions(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerPositions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player statistics
+         * @param {string} id
+         * @param {GetPlayerStatsTimeframeEnum} [timeframe] Timeframe filter for player stats
+         * @param {string} [dateStart] Start date for custom date range (ISO 8601 format)
+         * @param {string} [dateEnd] End date for custom date range (ISO 8601 format)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerStats(id, timeframe, dateStart, dateEnd, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerStats(id, timeframe, dateStart, dateEnd, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerStats']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {GetTopHoldersTypeEnum} type Either outcome or cild market
+         * @param {string} id ID of the type to get
+         * @param {boolean} isSettled Whether the market is settled
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopHolders(type, id, isSettled, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopHolders(type, id, isSettled, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getTopHolders']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {string} marketId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopPayouts(marketId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopPayouts(marketId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getTopPayouts']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.PredictionMarketApiFp = PredictionMarketApiFp;
+/**
+ * PredictionMarketApi - factory interface
+ * @export
+ */
+const PredictionMarketApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.PredictionMarketApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {PredictionMarketApiGetLMSRHistoryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLMSRHistory(requestParameters, options) {
+            return localVarFp.getLMSRHistory(requestParameters.slug, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get prediction market leaderboard
+         * @param {PredictionMarketApiGetLeaderboardRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLeaderboard(requestParameters = {}, options) {
+            return localVarFp.getLeaderboard(requestParameters.timeframe, requestParameters.limit, requestParameters.sortBy, requestParameters.order, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get latest 10 trades for a market
+         * @param {PredictionMarketApiGetMarketActivityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketActivity(requestParameters, options) {
+            return localVarFp.getMarketActivity(requestParameters.slug, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get a list of prediction markets
+         * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarkets(requestParameters = {}, options) {
+            return localVarFp.getMarkets(requestParameters.status, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player history
+         * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerHistory(requestParameters, options) {
+            return localVarFp.getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player positions
+         * @param {PredictionMarketApiGetPlayerPositionsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerPositions(requestParameters, options) {
+            return localVarFp.getPlayerPositions(requestParameters.id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player statistics
+         * @param {PredictionMarketApiGetPlayerStatsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerStats(requestParameters, options) {
+            return localVarFp.getPlayerStats(requestParameters.id, requestParameters.timeframe, requestParameters.dateStart, requestParameters.dateEnd, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {PredictionMarketApiGetTopHoldersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopHolders(requestParameters, options) {
+            return localVarFp.getTopHolders(requestParameters.type, requestParameters.id, requestParameters.isSettled, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {PredictionMarketApiGetTopPayoutsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopPayouts(requestParameters, options) {
+            return localVarFp.getTopPayouts(requestParameters.marketId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.PredictionMarketApiFactory = PredictionMarketApiFactory;
+/**
+ * PredictionMarketApi - object-oriented interface
+ * @export
+ * @class PredictionMarketApi
+ * @extends {BaseAPI}
+ */
+class PredictionMarketApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+     * @param {PredictionMarketApiGetLMSRHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getLMSRHistory(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getLMSRHistory(requestParameters.slug, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get prediction market leaderboard
+     * @param {PredictionMarketApiGetLeaderboardRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getLeaderboard(requestParameters = {}, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getLeaderboard(requestParameters.timeframe, requestParameters.limit, requestParameters.sortBy, requestParameters.order, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get latest 10 trades for a market
+     * @param {PredictionMarketApiGetMarketActivityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getMarketActivity(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getMarketActivity(requestParameters.slug, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get a list of prediction markets
+     * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getMarkets(requestParameters = {}, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getMarkets(requestParameters.status, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player history
+     * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerHistory(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player positions
+     * @param {PredictionMarketApiGetPlayerPositionsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerPositions(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerPositions(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player statistics
+     * @param {PredictionMarketApiGetPlayerStatsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerStats(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerStats(requestParameters.id, requestParameters.timeframe, requestParameters.dateStart, requestParameters.dateEnd, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get top 15 holders for an outcome or child market
+     * @param {PredictionMarketApiGetTopHoldersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getTopHolders(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getTopHolders(requestParameters.type, requestParameters.id, requestParameters.isSettled, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get top 5 outcomes by total payout for a market
+     * @param {PredictionMarketApiGetTopPayoutsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getTopPayouts(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getTopPayouts(requestParameters.marketId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.PredictionMarketApi = PredictionMarketApi;
+/**
+ * @export
+ */
+exports.GetLeaderboardTimeframeEnum = {
+    All: 'all',
+    _30d: '30d',
+    _7d: '7d',
+    Competition: 'competition'
+};
+/**
+ * @export
+ */
+exports.GetLeaderboardSortByEnum = {
+    TotalPnL: 'totalPnL',
+    TotalVolume: 'totalVolume',
+    Roi: 'roi',
+    Bets: 'bets'
+};
+/**
+ * @export
+ */
+exports.GetLeaderboardOrderEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+};
+/**
+ * @export
+ */
+exports.GetMarketsStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed',
+    All: 'all'
+};
+/**
+ * @export
+ */
+exports.GetPlayerStatsTimeframeEnum = {
+    All: 'all',
+    _30d: '30d',
+    _7d: '7d',
+    Competition: 'competition'
+};
+/**
+ * @export
+ */
+exports.GetTopHoldersTypeEnum = {
+    Outcome: 'outcome',
+    ChildMarket: 'child_market'
+};
 /**
  * TacticsApi - axios parameter creator
  * @export
@@ -2686,17 +4498,16 @@ const TacticsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get heros scores for a given tactic
-         * @param {string} tacticId
-         * @param {GetHeroScoresQueryDTO} [query]
+         * @summary Get the total gains of a player
+         * @param {string} playerId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getHeroScoresByTacticId: async (tacticId, query, options = {}) => {
-            // verify required parameter 'tacticId' is not null or undefined
-            (0, common_1.assertParamExists)('getHeroScoresByTacticId', 'tacticId', tacticId);
-            const localVarPath = `/tactics/hero-scores/{tacticId}`
-                .replace(`{${"tacticId"}}`, encodeURIComponent(String(tacticId)));
+        getTotalGains: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getTotalGains', 'playerId', playerId);
+            const localVarPath = `/tactics/tickets/total-gains/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -2713,11 +4524,6 @@ const TacticsApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication apiKey required
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
-            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -2728,16 +4534,16 @@ const TacticsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get the total gains of a player
-         * @param {string} playerId
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {string} tacticId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTotalGains: async (playerId, options = {}) => {
-            // verify required parameter 'playerId' is not null or undefined
-            (0, common_1.assertParamExists)('getTotalGains', 'playerId', playerId);
-            const localVarPath = `/tactics/tickets/total-gains/{playerId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+        simulateHeroScoresCsv: async (tacticId, options = {}) => {
+            // verify required parameter 'tacticId' is not null or undefined
+            (0, common_1.assertParamExists)('simulateHeroScoresCsv', 'tacticId', tacticId);
+            const localVarPath = `/tactics/simulate-hero-scores-csv/{tacticId}`
+                .replace(`{${"tacticId"}}`, encodeURIComponent(String(tacticId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -2827,20 +4633,6 @@ const TacticsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get heros scores for a given tactic
-         * @param {string} tacticId
-         * @param {GetHeroScoresQueryDTO} [query]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getHeroScoresByTacticId(tacticId, query, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroScoresByTacticId(tacticId, query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['TacticsApi.getHeroScoresByTacticId']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Get the total gains of a player
          * @param {string} playerId
          * @param {*} [options] Override http request option.
@@ -2850,6 +4642,19 @@ const TacticsApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTotalGains(playerId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['TacticsApi.getTotalGains']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {string} tacticId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async simulateHeroScoresCsv(tacticId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.simulateHeroScoresCsv(tacticId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['TacticsApi.simulateHeroScoresCsv']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
@@ -2904,16 +4709,6 @@ const TacticsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get heros scores for a given tactic
-         * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroScoresByTacticId(requestParameters, options) {
-            return localVarFp.getHeroScoresByTacticId(requestParameters.tacticId, requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Get the total gains of a player
          * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -2921,6 +4716,16 @@ const TacticsApiFactory = function (configuration, basePath, axios) {
          */
         getTotalGains(requestParameters, options) {
             return localVarFp.getTotalGains(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {TacticsApiSimulateHeroScoresCsvRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        simulateHeroScoresCsv(requestParameters, options) {
+            return localVarFp.simulateHeroScoresCsv(requestParameters.tacticId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2978,17 +4783,6 @@ class TacticsApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get heros scores for a given tactic
-     * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TacticsApi
-     */
-    getHeroScoresByTacticId(requestParameters, options) {
-        return (0, exports.TacticsApiFp)(this.configuration).getHeroScoresByTacticId(requestParameters.tacticId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Get the total gains of a player
      * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2997,6 +4791,17 @@ class TacticsApi extends base_1.BaseAPI {
      */
     getTotalGains(requestParameters, options) {
         return (0, exports.TacticsApiFp)(this.configuration).getTotalGains(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Simulate hero scores and return CSV for a tactic
+     * @param {TacticsApiSimulateHeroScoresCsvRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    simulateHeroScoresCsv(requestParameters, options) {
+        return (0, exports.TacticsApiFp)(this.configuration).simulateHeroScoresCsv(requestParameters.tacticId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.TacticsApi = TacticsApi;
@@ -3080,49 +4885,6 @@ const TournamentsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @param {string} tournamentNumber
-         * @param {string} [startRank]
-         * @param {string} [endRank]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroProgressOverTournament: async (tournamentNumber, startRank, endRank, options = {}) => {
-            // verify required parameter 'tournamentNumber' is not null or undefined
-            (0, common_1.assertParamExists)('getHeroProgressOverTournament', 'tournamentNumber', tournamentNumber);
-            const localVarPath = `/tournaments/hero-progress-over-tournament/{tournamentNumber}`
-                .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (startRank !== undefined) {
-                localVarQueryParameter['start_rank'] = startRank;
-            }
-            if (endRank !== undefined) {
-                localVarQueryParameter['end_rank'] = endRank;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @param {string} tournamentNumber
          * @param {string} playerId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3135,46 +4897,6 @@ const TournamentsApiAxiosParamCreator = function (configuration) {
             const localVarPath = `/tournaments/historicalDecksAndWinnings/{tournamentNumber}/{playerId}`
                 .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)))
                 .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Get player decks
-         * @param {string} playerId
-         * @param {string} tournamentId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPlayerDecksByTournamentIdAndPlayerId: async (playerId, tournamentId, options = {}) => {
-            // verify required parameter 'playerId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayerDecksByTournamentIdAndPlayerId', 'playerId', playerId);
-            // verify required parameter 'tournamentId' is not null or undefined
-            (0, common_1.assertParamExists)('getPlayerDecksByTournamentIdAndPlayerId', 'tournamentId', tournamentId);
-            const localVarPath = `/tournaments/player-decks/{playerId}/{tournamentId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)))
-                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
             let baseOptions;
@@ -3385,20 +5107,6 @@ const TournamentsApiFp = function (configuration) {
         /**
          *
          * @param {string} tournamentNumber
-         * @param {string} [startRank]
-         * @param {string} [endRank]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getHeroProgressOverTournament(tournamentNumber, startRank, endRank, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroProgressOverTournament(tournamentNumber, startRank, endRank, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getHeroProgressOverTournament']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @param {string} tournamentNumber
          * @param {string} playerId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3407,20 +5115,6 @@ const TournamentsApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getHistoricalDecksAndWinnings(tournamentNumber, playerId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getHistoricalDecksAndWinnings']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Get player decks
-         * @param {string} playerId
-         * @param {string} tournamentId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['TournamentsApi.getPlayerDecksByTournamentIdAndPlayerId']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -3505,31 +5199,12 @@ const TournamentsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @param {TournamentsApiGetHeroProgressOverTournamentRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroProgressOverTournament(requestParameters, options) {
-            return localVarFp.getHeroProgressOverTournament(requestParameters.tournamentNumber, requestParameters.startRank, requestParameters.endRank, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getHistoricalDecksAndWinnings(requestParameters, options) {
             return localVarFp.getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get player decks
-         * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPlayerDecksByTournamentIdAndPlayerId(requestParameters, options) {
-            return localVarFp.getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -3602,16 +5277,6 @@ class TournamentsApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @param {TournamentsApiGetHeroProgressOverTournamentRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TournamentsApi
-     */
-    getHeroProgressOverTournament(requestParameters, options) {
-        return (0, exports.TournamentsApiFp)(this.configuration).getHeroProgressOverTournament(requestParameters.tournamentNumber, requestParameters.startRank, requestParameters.endRank, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3619,17 +5284,6 @@ class TournamentsApi extends base_1.BaseAPI {
      */
     getHistoricalDecksAndWinnings(requestParameters, options) {
         return (0, exports.TournamentsApiFp)(this.configuration).getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get player decks
-     * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TournamentsApi
-     */
-    getPlayerDecksByTournamentIdAndPlayerId(requestParameters, options) {
-        return (0, exports.TournamentsApiFp)(this.configuration).getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -3683,44 +5337,6 @@ const VotingApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Get all voting configurations
-         * @param {GetVoteConfigQueryDTO} [query]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConfigs: async (query, options = {}) => {
-            const localVarPath = `/vote/configs`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Query to get vote of the current user
          * @param {string} voteConfigId
          * @param {*} [options] Override http request option.
@@ -3730,42 +5346,6 @@ const VotingApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'voteConfigId' is not null or undefined
             (0, common_1.assertParamExists)('getMyVote', 'voteConfigId', voteConfigId);
             const localVarPath = `/vote/my-vote/{vote_config_id}`
-                .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
-         * @summary Get all vote by hero
-         * @param {string} voteConfigId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVotesByHero: async (voteConfigId, options = {}) => {
-            // verify required parameter 'voteConfigId' is not null or undefined
-            (0, common_1.assertParamExists)('getVotesByHero', 'voteConfigId', voteConfigId);
-            const localVarPath = `/vote/heros/{vote_config_id}`
                 .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3803,19 +5383,6 @@ const VotingApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Get all voting configurations
-         * @param {GetVoteConfigQueryDTO} [query]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getConfigs(query, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConfigs(query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['VotingApi.getConfigs']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Query to get vote of the current user
          * @param {string} voteConfigId
          * @param {*} [options] Override http request option.
@@ -3825,19 +5392,6 @@ const VotingApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMyVote(voteConfigId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['VotingApi.getMyVote']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
-         * @summary Get all vote by hero
-         * @param {string} voteConfigId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getVotesByHero(voteConfigId, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getVotesByHero(voteConfigId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['VotingApi.getVotesByHero']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     };
@@ -3852,16 +5406,6 @@ const VotingApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Get all voting configurations
-         * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConfigs(requestParameters = {}, options) {
-            return localVarFp.getConfigs(requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Query to get vote of the current user
          * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -3869,16 +5413,6 @@ const VotingApiFactory = function (configuration, basePath, axios) {
          */
         getMyVote(requestParameters, options) {
             return localVarFp.getMyVote(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get all vote by hero
-         * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVotesByHero(requestParameters, options) {
-            return localVarFp.getVotesByHero(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3892,17 +5426,6 @@ exports.VotingApiFactory = VotingApiFactory;
 class VotingApi extends base_1.BaseAPI {
     /**
      *
-     * @summary Get all voting configurations
-     * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VotingApi
-     */
-    getConfigs(requestParameters = {}, options) {
-        return (0, exports.VotingApiFp)(this.configuration).getConfigs(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Query to get vote of the current user
      * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -3912,24 +5435,16 @@ class VotingApi extends base_1.BaseAPI {
     getMyVote(requestParameters, options) {
         return (0, exports.VotingApiFp)(this.configuration).getMyVote(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
     }
-    /**
-     *
-     * @summary Get all vote by hero
-     * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VotingApi
-     */
-    getVotesByHero(requestParameters, options) {
-        return (0, exports.VotingApiFp)(this.configuration).getVotesByHero(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
-    }
 }
 exports.VotingApi = VotingApi;
 class Client extends base_1.BaseAPI {
     card;
+    common;
     hero;
+    kothKingOfTheHill;
     marketplace;
     player;
+    predictionMarket;
     tactics;
     tournaments;
     voting;
@@ -3939,9 +5454,12 @@ class Client extends base_1.BaseAPI {
         super(config);
         this.config = config;
         this.card = new CardApi(config);
+        this.common = new CommonApi(config);
         this.hero = new HeroApi(config);
+        this.kothKingOfTheHill = new KothKingOfTheHillApi(config);
         this.marketplace = new MarketplaceApi(config);
         this.player = new PlayerApi(config);
+        this.predictionMarket = new PredictionMarketApi(config);
         this.tactics = new TacticsApi(config);
         this.tournaments = new TournamentsApi(config);
         this.voting = new VotingApi(config);
@@ -3977,6 +5495,18 @@ class Client extends base_1.BaseAPI {
         }
         const newConfig = { ...this.config, accessToken: token };
         Client.instance = new Client(newConfig);
+        Object.assign(this, Client.instance);
+    }
+    setAuthorizationHeader(authHeader) {
+        if (!this.config.baseOptions) {
+            this.config.baseOptions = {};
+        }
+        this.config.baseOptions.headers = {
+            ...this.config.baseOptions.headers,
+            Authorization: authHeader
+        };
+        // Recreate instance with new config to ensure all API instances are updated
+        Client.instance = new Client(this.config);
         Object.assign(this, Client.instance);
     }
 }

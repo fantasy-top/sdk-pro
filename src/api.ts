@@ -26,6 +26,155 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
 /**
  * 
  * @export
+ * @interface AccountDto
+ */
+export interface AccountDto {
+    /**
+     * Twitter user ID (only if from database)
+     * @type {string}
+     * @memberof AccountDto
+     */
+    'user_id'?: string;
+    /**
+     * Twitter handle (without @)
+     * @type {string}
+     * @memberof AccountDto
+     */
+    'handle': string;
+    /**
+     * Display name of the account
+     * @type {string}
+     * @memberof AccountDto
+     */
+    'name'?: string | null;
+    /**
+     * Number of followers
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'followers_count'?: number;
+    /**
+     * Credibility score (only if from database)
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'credibility_score'?: number | null;
+    /**
+     * Number of matching tweets found (only if from database)
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'matching_tweets_count'?: number;
+    /**
+     * Total views across all matching tweets (only if from database)
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'total_views'?: number;
+    /**
+     * Average views per tweet (only if from database)
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'avg_views_per_tweet'?: number;
+    /**
+     * Relevance score (only if from database)
+     * @type {number}
+     * @memberof AccountDto
+     */
+    'relevance_score'?: number;
+    /**
+     * Sample tweets from this account
+     * @type {Array<SampleTweetDto>}
+     * @memberof AccountDto
+     */
+    'sample_tweets'?: Array<SampleTweetDto>;
+    /**
+     * Keywords that matched for this account (only if from database)
+     * @type {Array<string>}
+     * @memberof AccountDto
+     */
+    'matching_keywords'?: Array<string>;
+    /**
+     * Source of the account data
+     * @type {string}
+     * @memberof AccountDto
+     */
+    'source': AccountDtoSourceEnum;
+}
+
+export const AccountDtoSourceEnum = {
+    Database: 'database',
+    XSearch: 'x_search'
+} as const;
+
+export type AccountDtoSourceEnum = typeof AccountDtoSourceEnum[keyof typeof AccountDtoSourceEnum];
+
+/**
+ * 
+ * @export
+ * @interface ActionCountsDto
+ */
+export interface ActionCountsDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionCountsDto
+     */
+    'all': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionCountsDto
+     */
+    'BUY': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionCountsDto
+     */
+    'SELL': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionCountsDto
+     */
+    'WIN': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActionCountsDto
+     */
+    'LOSS': number;
+}
+/**
+ * 
+ * @export
+ * @interface ActivityMetaDTO
+ */
+export interface ActivityMetaDTO {
+    /**
+     * Start date of the page
+     * @type {string}
+     * @memberof ActivityMetaDTO
+     */
+    'startDate': string;
+    /**
+     * End date of the page
+     * @type {string}
+     * @memberof ActivityMetaDTO
+     */
+    'endDate': string;
+    /**
+     * Next page timestamp
+     * @type {string}
+     * @memberof ActivityMetaDTO
+     */
+    'nextPageTimestamp'?: string;
+}
+/**
+ * 
+ * @export
  * @interface AddCoinToHeroDTO
  */
 export interface AddCoinToHeroDTO {
@@ -57,6 +206,199 @@ export interface AddCoinToHeroDTO {
 /**
  * 
  * @export
+ * @interface AddRemoveWhitelistDTO
+ */
+export interface AddRemoveWhitelistDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof AddRemoveWhitelistDTO
+     */
+    'project_id': string;
+    /**
+     * Twitter IDs
+     * @type {Array<string>}
+     * @memberof AddRemoveWhitelistDTO
+     */
+    'twitter_ids': Array<string>;
+    /**
+     * Action
+     * @type {string}
+     * @memberof AddRemoveWhitelistDTO
+     */
+    'action': AddRemoveWhitelistDTOActionEnum;
+}
+
+export const AddRemoveWhitelistDTOActionEnum = {
+    Add: 'ADD',
+    Remove: 'REMOVE'
+} as const;
+
+export type AddRemoveWhitelistDTOActionEnum = typeof AddRemoveWhitelistDTOActionEnum[keyof typeof AddRemoveWhitelistDTOActionEnum];
+
+/**
+ * 
+ * @export
+ * @interface AddRemoveWhitelistResponseDTO
+ */
+export interface AddRemoveWhitelistResponseDTO {
+    /**
+     * Success message
+     * @type {string}
+     * @memberof AddRemoveWhitelistResponseDTO
+     */
+    'message': AddRemoveWhitelistResponseDTOMessageEnum;
+    /**
+     * User IDs that have not been found
+     * @type {Array<string>}
+     * @memberof AddRemoveWhitelistResponseDTO
+     */
+    'user_ids_not_exist_or_ban'?: Array<string>;
+}
+
+export const AddRemoveWhitelistResponseDTOMessageEnum = {
+    SomeUserIdsHaveNotBeenFound: 'Some user_ids have not been found',
+    WhitelistUpdatedSuccessfully: 'Whitelist updated successfully'
+} as const;
+
+export type AddRemoveWhitelistResponseDTOMessageEnum = typeof AddRemoveWhitelistResponseDTOMessageEnum[keyof typeof AddRemoveWhitelistResponseDTOMessageEnum];
+
+/**
+ * 
+ * @export
+ * @interface AddSuperUserDTO
+ */
+export interface AddSuperUserDTO {
+    /**
+     * The twitter id of the super user
+     * @type {string}
+     * @memberof AddSuperUserDTO
+     */
+    'twitter_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface AddTickerDTO
+ */
+export interface AddTickerDTO {
+    /**
+     * Twitter ID
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'twitter_id'?: string;
+    /**
+     * Twitter handle
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'twitter_handle'?: string;
+    /**
+     * Alternative user IDs
+     * @type {Array<string>}
+     * @memberof AddTickerDTO
+     */
+    'alt_user_ids'?: Array<string>;
+    /**
+     * Links related to the ticker
+     * @type {object}
+     * @memberof AddTickerDTO
+     */
+    'links'?: object;
+    /**
+     * Media URLs
+     * @type {Array<string>}
+     * @memberof AddTickerDTO
+     */
+    'media'?: Array<string>;
+    /**
+     * Ticker symbol
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'contract_address': string;
+    /**
+     * Name of the project
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'name': string;
+    /**
+     * Summary for the project
+     * @type {string}
+     * @memberof AddTickerDTO
+     */
+    'summary'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface AddTrackedUsersDto
+ */
+export interface AddTrackedUsersDto {
+    /**
+     * Array of user flags to add
+     * @type {Array<UserFlagDto>}
+     * @memberof AddTrackedUsersDto
+     */
+    'users': Array<UserFlagDto>;
+}
+/**
+ * 
+ * @export
+ * @interface AddUserToCloutDTO
+ */
+export interface AddUserToCloutDTO {
+    /**
+     * Twitter ID of the user to add to clout
+     * @type {string}
+     * @memberof AddUserToCloutDTO
+     */
+    'twitter_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface AddUserToProjectDTO
+ */
+export interface AddUserToProjectDTO {
+    /**
+     * Project ID to add the user to
+     * @type {string}
+     * @memberof AddUserToProjectDTO
+     */
+    'project_id': string;
+    /**
+     * Player ID of the user to add
+     * @type {string}
+     * @memberof AddUserToProjectDTO
+     */
+    'player_id': string;
+    /**
+     * Permission level for the user
+     * @type {string}
+     * @memberof AddUserToProjectDTO
+     */
+    'permission': AddUserToProjectDTOPermissionEnum;
+}
+
+export const AddUserToProjectDTOPermissionEnum = {
+    Admin: 'admin',
+    Member: 'member'
+} as const;
+
+export type AddUserToProjectDTOPermissionEnum = typeof AddUserToProjectDTOPermissionEnum[keyof typeof AddUserToProjectDTOPermissionEnum];
+
+/**
+ * 
+ * @export
  * @interface AddressPoolItem
  */
 export interface AddressPoolItem {
@@ -72,6 +414,100 @@ export interface AddressPoolItem {
      * @memberof AddressPoolItem
      */
     'iteration': number;
+}
+/**
+ * 
+ * @export
+ * @interface AdminChestConfigDTO
+ */
+export interface AdminChestConfigDTO {
+    /**
+     * Array of chest configurations
+     * @type {Array<ChestConfigDTO>}
+     * @memberof AdminChestConfigDTO
+     */
+    'chests': Array<ChestConfigDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface AdminForProjectsResponceDTO
+ */
+export interface AdminForProjectsResponceDTO {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AdminForProjectsResponceDTO
+     */
+    'isSuperUser': boolean;
+    /**
+     * 
+     * @type {Array<AdminProjectItemDTO>}
+     * @memberof AdminForProjectsResponceDTO
+     */
+    'projects': Array<AdminProjectItemDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface AdminProgressionConfigDTO
+ */
+export interface AdminProgressionConfigDTO {
+    /**
+     * 
+     * @type {Array<ProgressionConfigDTO>}
+     * @memberof AdminProgressionConfigDTO
+     */
+    'progressions': Array<ProgressionConfigDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface AdminProjectItemDTO
+ */
+export interface AdminProjectItemDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminProjectItemDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminProjectItemDTO
+     */
+    'slug'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminProjectItemDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminProjectItemDTO
+     */
+    'ticker'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminProjectItemDTO
+     */
+    'contract_address'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AdminProjectItemDTO
+     */
+    'is_admin': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AdminProjectItemDTO
+     */
+    'is_member': boolean;
 }
 /**
  * 
@@ -116,6 +552,73 @@ export interface AnswerQuestionResponseDTO {
      * @memberof AnswerQuestionResponseDTO
      */
     'streak': GuessStreak;
+}
+/**
+ * 
+ * @export
+ * @interface AntibottingTrackingRecordDTO
+ */
+export interface AntibottingTrackingRecordDTO {
+    /**
+     * Tracking record ID
+     * @type {number}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'id': number;
+    /**
+     * Source system that created this record
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'source': string;
+    /**
+     * Action description
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'action': string;
+    /**
+     * Full tracking details JSON
+     * @type {object}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'details': object;
+    /**
+     * Admin user who triggered action
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'admin_user': string | null;
+    /**
+     * When this action was recorded
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'created_at': string;
+    /**
+     * Status before the action
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'status_from': string | null;
+    /**
+     * Status after the action
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'status_to': string | null;
+    /**
+     * Reason for the action
+     * @type {string}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'reason': string | null;
+    /**
+     * Number of views reduced (if applicable)
+     * @type {number}
+     * @memberof AntibottingTrackingRecordDTO
+     */
+    'views_reduced': number | null;
 }
 /**
  * 
@@ -191,6 +694,152 @@ export interface AuthRefresh {
      * @memberof AuthRefresh
      */
     'accessToken': string;
+}
+/**
+ * 
+ * @export
+ * @interface AvailableDailyCloutDTO
+ */
+export interface AvailableDailyCloutDTO {
+    /**
+     * The points to earn
+     * @type {number}
+     * @memberof AvailableDailyCloutDTO
+     */
+    'pointsToEarn': number;
+    /**
+     * The status of the daily quest
+     * @type {string}
+     * @memberof AvailableDailyCloutDTO
+     */
+    'status': AvailableDailyCloutDTOStatusEnum;
+    /**
+     * The date the daily quest was completed last time
+     * @type {string}
+     * @memberof AvailableDailyCloutDTO
+     */
+    'lastClaimed': string;
+}
+
+export const AvailableDailyCloutDTOStatusEnum = {
+    Available: 'AVAILABLE',
+    Claimed: 'CLAIMED',
+    NoTweet: 'NO_TWEET'
+} as const;
+
+export type AvailableDailyCloutDTOStatusEnum = typeof AvailableDailyCloutDTOStatusEnum[keyof typeof AvailableDailyCloutDTOStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface BacklogItemDto
+ */
+export interface BacklogItemDto {
+    /**
+     * Unique identifier for the backlog item
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'id': string;
+    /**
+     * Title of the backlog item
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'title': string;
+    /**
+     * Icon name for the backlog item
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'icon_name'?: string | null;
+    /**
+     * Description of the backlog item
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'description'?: string | null;
+    /**
+     * Images related to the backlog item
+     * @type {object}
+     * @memberof BacklogItemDto
+     */
+    'images'?: object | null;
+    /**
+     * URL to redirect to for more information
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'redirect_url'?: string | null;
+    /**
+     * Label for the redirect link
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'redirect_label'?: string | null;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof BacklogItemDto
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface BacklogResponseDTO
+ */
+export interface BacklogResponseDTO {
+    /**
+     * List of backlog items
+     * @type {Array<BacklogItemDto>}
+     * @memberof BacklogResponseDTO
+     */
+    'backlogs': Array<BacklogItemDto>;
+}
+/**
+ * 
+ * @export
+ * @interface BangerWordDiscoveryDto
+ */
+export interface BangerWordDiscoveryDto {
+    /**
+     * List of Twitter handles (with or without @) or entity IDs. If entity ID is provided, the twitter_id from the entity will be used.
+     * @type {Array<string>}
+     * @memberof BangerWordDiscoveryDto
+     */
+    'handles': Array<string>;
+    /**
+     * Number of days to look back for historical tweets
+     * @type {number}
+     * @memberof BangerWordDiscoveryDto
+     */
+    'days'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface BangerWordDiscoveryResponseDto
+ */
+export interface BangerWordDiscoveryResponseDto {
+    /**
+     * List of recommended words with thresholds
+     * @type {Array<WordRecommendation>}
+     * @memberof BangerWordDiscoveryResponseDto
+     */
+    'recommendations': Array<WordRecommendation>;
+    /**
+     * Summary of analysis
+     * @type {string}
+     * @memberof BangerWordDiscoveryResponseDto
+     */
+    'summary': string;
 }
 /**
  * 
@@ -284,6 +933,72 @@ export interface BatchDeleteOrderResponseDTO {
      * @memberof BatchDeleteOrderResponseDTO
      */
     'count': number;
+}
+/**
+ * 
+ * @export
+ * @interface BetDTO
+ */
+export interface BetDTO {
+    /**
+     * Tournament bet type
+     * @type {string}
+     * @memberof BetDTO
+     */
+    'type': string;
+    /**
+     * Tournament bet amount
+     * @type {number}
+     * @memberof BetDTO
+     */
+    'amount': number;
+    /**
+     * Tournament bet payout model
+     * @type {string}
+     * @memberof BetDTO
+     */
+    'payoutModel': BetDTOPayoutModelEnum;
+}
+
+export const BetDTOPayoutModelEnum = {
+    WinnerTakesAllPayout: 'winner_takes_all_payout',
+    TopThreePayout: 'top_three_payout',
+    TopFivePayout: 'top_five_payout'
+} as const;
+
+export type BetDTOPayoutModelEnum = typeof BetDTOPayoutModelEnum[keyof typeof BetDTOPayoutModelEnum];
+
+/**
+ * 
+ * @export
+ * @interface BidAcceptedData
+ */
+export interface BidAcceptedData {
+    /**
+     * 
+     * @type {BidAcceptedDataNew}
+     * @memberof BidAcceptedData
+     */
+    'new': BidAcceptedDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface BidAcceptedDataNew
+ */
+export interface BidAcceptedDataNew {
+    /**
+     * Price of the accepted bid
+     * @type {string}
+     * @memberof BidAcceptedDataNew
+     */
+    'price': string;
+    /**
+     * Image URL of the item
+     * @type {string}
+     * @memberof BidAcceptedDataNew
+     */
+    'image_url': string;
 }
 /**
  * 
@@ -504,10 +1219,10 @@ export interface BidOrderWithTopBidAndFloorPrice {
     'hero_id': string;
     /**
      * Price
-     * @type {object}
+     * @type {string}
      * @memberof BidOrderWithTopBidAndFloorPrice
      */
-    'price': object;
+    'price': string;
     /**
      * Active
      * @type {boolean}
@@ -534,10 +1249,10 @@ export interface BidOrderWithTopBidAndFloorPrice {
     'updated_at'?: string;
     /**
      * Hero
-     * @type {HeroWithoutBidOrders}
+     * @type {HeroWithoutBidOrdersDrizzle}
      * @memberof BidOrderWithTopBidAndFloorPrice
      */
-    'hero'?: HeroWithoutBidOrders;
+    'hero'?: HeroWithoutBidOrdersDrizzle;
     /**
      * Top bid price
      * @type {object}
@@ -569,6 +1284,177 @@ export interface BoolFilterDTO {
      * @memberof BoolFilterDTO
      */
     'not'?: BoolFilterDTO;
+}
+/**
+ * 
+ * @export
+ * @interface BoostUserPostsDTO
+ */
+export interface BoostUserPostsDTO {
+    /**
+     * Twitter ID of the user
+     * @type {string}
+     * @memberof BoostUserPostsDTO
+     */
+    'user_id': string;
+    /**
+     * Project ID (UUID)
+     * @type {string}
+     * @memberof BoostUserPostsDTO
+     */
+    'project_id': string;
+    /**
+     * Start date for the boost period (ISO format)
+     * @type {string}
+     * @memberof BoostUserPostsDTO
+     */
+    'start_date': string;
+    /**
+     * End date for the boost period (ISO format)
+     * @type {string}
+     * @memberof BoostUserPostsDTO
+     */
+    'end_date': string;
+    /**
+     * Boost multiplier (0.1 to 3.0)
+     * @type {number}
+     * @memberof BoostUserPostsDTO
+     */
+    'boost_multiplier': number;
+}
+/**
+ * 
+ * @export
+ * @interface BottedPostBySivDTO
+ */
+export interface BottedPostBySivDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'post_id': string;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'user_id': string;
+    /**
+     * User handle
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'user_handle': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'user_name': string;
+    /**
+     * User profile image URL
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'user_profile_image': string;
+    /**
+     * Total views count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'views_count': number;
+    /**
+     * Certified (legitimate) views count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'certified_views': number;
+    /**
+     * Botted (reduced) views count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'botted_views': number;
+    /**
+     * Certified likes count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'certified_likes': number;
+    /**
+     * Certified retweets count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'certified_retweets': number;
+    /**
+     * Reply count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'reply_count': number;
+    /**
+     * Quote count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'quote_count': number;
+    /**
+     * Retweet count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'retweet_count': number;
+    /**
+     * Favorite count
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'favorite_count': number;
+    /**
+     * Engagement score
+     * @type {number}
+     * @memberof BottedPostBySivDTO
+     */
+    'engagement_score': number | null;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'text': string;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof BottedPostBySivDTO
+     */
+    'created_at': string;
+    /**
+     * Complete chronological tracking history for this post
+     * @type {Array<AntibottingTrackingRecordDTO>}
+     * @memberof BottedPostBySivDTO
+     */
+    'tracking_history': Array<AntibottingTrackingRecordDTO>;
+    /**
+     * Detailed SIV calculation information if available
+     * @type {SivCalculationDetailsDTO}
+     * @memberof BottedPostBySivDTO
+     */
+    'siv_calculation_details'?: SivCalculationDetailsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface BurnCardsDTO
+ */
+export interface BurnCardsDTO {
+    /**
+     * Array of card IDs to burn
+     * @type {Array<string>}
+     * @memberof BurnCardsDTO
+     */
+    'cardIds': Array<string>;
 }
 /**
  * 
@@ -641,6 +1527,50 @@ export interface BurnLeaderboardResponseDto {
 /**
  * 
  * @export
+ * @interface BurnWarsDistributionDTO
+ */
+export interface BurnWarsDistributionDTO {
+    /**
+     * Distribution rank end
+     * @type {number}
+     * @memberof BurnWarsDistributionDTO
+     */
+    'end': number;
+    /**
+     * Distribution rank start
+     * @type {number}
+     * @memberof BurnWarsDistributionDTO
+     */
+    'start': number;
+    /**
+     * Distribution reward
+     * @type {number}
+     * @memberof BurnWarsDistributionDTO
+     */
+    'reward': number;
+}
+/**
+ * 
+ * @export
+ * @interface BurnWarsRewardDTO
+ */
+export interface BurnWarsRewardDTO {
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof BurnWarsRewardDTO
+     */
+    'type': string;
+    /**
+     * Distribution details
+     * @type {Array<BurnWarsDistributionDTO>}
+     * @memberof BurnWarsRewardDTO
+     */
+    'distribution': Array<BurnWarsDistributionDTO>;
+}
+/**
+ * 
+ * @export
  * @interface BuyBatchFragmentRouletteResultDTO
  */
 export interface BuyBatchFragmentRouletteResultDTO {
@@ -706,6 +1636,56 @@ export interface CacheInvalidatorResponse {
      * @memberof CacheInvalidatorResponse
      */
     'message': string;
+}
+/**
+ * 
+ * @export
+ * @interface CancelMarketAdminDto
+ */
+export interface CancelMarketAdminDto {
+    /**
+     * Slug of the market to cancel
+     * @type {string}
+     * @memberof CancelMarketAdminDto
+     */
+    'market_slug': string;
+}
+/**
+ * 
+ * @export
+ * @interface CancelMarketResponseDto
+ */
+export interface CancelMarketResponseDto {
+    /**
+     * Whether the cancellation was successful
+     * @type {boolean}
+     * @memberof CancelMarketResponseDto
+     */
+    'success': boolean;
+    /**
+     * Number of positions refunded
+     * @type {number}
+     * @memberof CancelMarketResponseDto
+     */
+    'refundedCount': number;
+    /**
+     * Slug of the market that was cancelled
+     * @type {string}
+     * @memberof CancelMarketResponseDto
+     */
+    'marketSlug': string;
+    /**
+     * Number of markets deleted (including child markets)
+     * @type {number}
+     * @memberof CancelMarketResponseDto
+     */
+    'deletedMarkets': number;
+    /**
+     * Total fragments refunded
+     * @type {number}
+     * @memberof CancelMarketResponseDto
+     */
+    'totalRefunded': number;
 }
 /**
  * 
@@ -894,6 +1874,43 @@ export interface CardHeroSwapping {
      * @memberof CardHeroSwapping
      */
     'coin': Coin;
+    /**
+     * Stars of the old hero at the time of swap
+     * @type {number}
+     * @memberof CardHeroSwapping
+     */
+    'old_hero_stars': number;
+    /**
+     * Stars of the new hero at the time of swap
+     * @type {number}
+     * @memberof CardHeroSwapping
+     */
+    'new_hero_stars': number;
+    /**
+     * Rarity of the card
+     * @type {string}
+     * @memberof CardHeroSwapping
+     */
+    'rarity': string;
+}
+/**
+ * 
+ * @export
+ * @interface CardOperationResponseDTO
+ */
+export interface CardOperationResponseDTO {
+    /**
+     * Cards that were minted/created from the operation
+     * @type {Array<PlayerFreeToPlayCardDTO>}
+     * @memberof CardOperationResponseDTO
+     */
+    'mintedCards': Array<PlayerFreeToPlayCardDTO>;
+    /**
+     * XP earned from the operation
+     * @type {number}
+     * @memberof CardOperationResponseDTO
+     */
+    'xpEarned': number;
 }
 /**
  * 
@@ -920,7 +1937,7 @@ export interface CardWithNumber {
      */
     'hero_id': string;
     /**
-     * 
+     * Hero details with marketplace data
      * @type {Hero}
      * @memberof CardWithNumber
      */
@@ -1010,23 +2027,29 @@ export interface CardWithNumber {
      */
     'edition'?: string;
     /**
-     * 
+     * Total number of cards owned for this hero/rarity combination
      * @type {number}
      * @memberof CardWithNumber
      */
     'card_number': number;
     /**
-     * 
+     * Number of cards currently in decks
      * @type {number}
      * @memberof CardWithNumber
      */
     'in_deck_number'?: number;
     /**
-     * 
+     * Number of cards currently listed for sale
      * @type {number}
      * @memberof CardWithNumber
      */
-    'listed_card_number': number;
+    'listed_card_number'?: number;
+    /**
+     * Whether this card is currently listed for sale
+     * @type {boolean}
+     * @memberof CardWithNumber
+     */
+    'is_card_listed'?: boolean;
 }
 /**
  * 
@@ -1136,6 +2159,387 @@ export interface CardWithoutHeroes {
      * @memberof CardWithoutHeroes
      */
     'edition'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CheckMonadUserResponseDto
+ */
+export interface CheckMonadUserResponseDto {
+    /**
+     * Whether the user exists in the Monad database
+     * @type {boolean}
+     * @memberof CheckMonadUserResponseDto
+     */
+    'exists': boolean;
+    /**
+     * Player address if found in Monad database
+     * @type {string}
+     * @memberof CheckMonadUserResponseDto
+     */
+    'monadAddress'?: string;
+    /**
+     * Status of Monad rewards: not-eligible, claimed, error
+     * @type {string}
+     * @memberof CheckMonadUserResponseDto
+     */
+    'rewardStatus'?: string;
+    /**
+     * Rewards given to the Monad user
+     * @type {Array<MonadReward>}
+     * @memberof CheckMonadUserResponseDto
+     */
+    'rewards'?: Array<MonadReward>;
+    /**
+     * Error message if rewards could not be claimed
+     * @type {string}
+     * @memberof CheckMonadUserResponseDto
+     */
+    'errorMessage'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ChestConfigDTO
+ */
+export interface ChestConfigDTO {
+    /**
+     * The chest ID (e.g., bronze_1, bronze_2)
+     * @type {string}
+     * @memberof ChestConfigDTO
+     */
+    'id': string;
+    /**
+     * The score threshold for this chest
+     * @type {number}
+     * @memberof ChestConfigDTO
+     */
+    'score_threshold': number;
+    /**
+     * The chest level
+     * @type {number}
+     * @memberof ChestConfigDTO
+     */
+    'chest_level': number;
+    /**
+     * The rewards configuration for this chest
+     * @type {ChestRewardsDTO}
+     * @memberof ChestConfigDTO
+     */
+    'rewards': ChestRewardsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface ChestDataDTO
+ */
+export interface ChestDataDTO {
+    /**
+     * Unique identifier for the chest reward
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'id': string;
+    /**
+     * The ID of the reward configuration
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'reward_config_id': string;
+    /**
+     * The type of chest (e.g., bronze_1_chest, silver_2_chest)
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'chest_type': string;
+    /**
+     * The league of the chest (e.g., bronze, silver, gold, elite)
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'chest_league': string;
+    /**
+     * The number/level of the chest
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'chest_number': string;
+    /**
+     * Whether the chest has been claimed by the player
+     * @type {boolean}
+     * @memberof ChestDataDTO
+     */
+    'is_claimed': boolean;
+    /**
+     * Whether the chest is activated and ready to be opened
+     * @type {boolean}
+     * @memberof ChestDataDTO
+     */
+    'is_activated': boolean;
+    /**
+     * The ID of the player who owns the chest
+     * @type {string}
+     * @memberof ChestDataDTO
+     */
+    'player_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface ChestPrizeDTO
+ */
+export interface ChestPrizeDTO {
+    /**
+     * The ID of the reward configuration
+     * @type {string}
+     * @memberof ChestPrizeDTO
+     */
+    'reward_config_id': string;
+    /**
+     * The amount of the reward
+     * @type {number}
+     * @memberof ChestPrizeDTO
+     */
+    'reward_amount': number;
+    /**
+     * The type of reward
+     * @type {string}
+     * @memberof ChestPrizeDTO
+     */
+    'reward_type': ChestPrizeDTORewardTypeEnum;
+}
+
+export const ChestPrizeDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type ChestPrizeDTORewardTypeEnum = typeof ChestPrizeDTORewardTypeEnum[keyof typeof ChestPrizeDTORewardTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface ChestRewardsDTO
+ */
+export interface ChestRewardsDTO {
+    /**
+     * XP reward amount
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'xp'?: number;
+    /**
+     * Common card reward amount
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'common_card'?: number;
+    /**
+     * Rare card reward amount
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'rare_card'?: number;
+    /**
+     * Epic card reward amount
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'epic_card'?: number;
+    /**
+     * Legendary card reward amount
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'legendary_card'?: number;
+    /**
+     * Instant level up from common to rare
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'instant_level_up_common_to_rare'?: number;
+    /**
+     * Instant level up from rare to epic
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'instant_level_up_rare_to_epic'?: number;
+    /**
+     * Instant level up from epic to legendary
+     * @type {number}
+     * @memberof ChestRewardsDTO
+     */
+    'instant_level_up_epic_to_legendary'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ChildMarketPnlDto
+ */
+export interface ChildMarketPnlDto {
+    /**
+     * Child market ID
+     * @type {string}
+     * @memberof ChildMarketPnlDto
+     */
+    'marketId': string;
+    /**
+     * Child market title
+     * @type {string}
+     * @memberof ChildMarketPnlDto
+     */
+    'marketTitle': string;
+    /**
+     * Number of outcomes in this child market
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'outcomesCount': number;
+    /**
+     * Total volume traded in this child market
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'volume': number;
+    /**
+     * Fees collected from this child market
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'feeCollected': number;
+    /**
+     * Child market PNL with fees - includes all trading activity from all players
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'pnlWithFees': number;
+    /**
+     * Child market PNL without fees - includes all trading activity from all players
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'pnlWithoutFees': number;
+    /**
+     * Market seeder PNL for this child market
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'seederPnl': number;
+    /**
+     * Total PNL without fees (pnlWithoutFees + seederPnl)
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'totalPnlWithoutFees': number;
+    /**
+     * Total PNL with fees (totalPnlWithoutFees + feeCollected)
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'totalPnlWithFees': number;
+    /**
+     * Theoretical maximum loss for this child market
+     * @type {number}
+     * @memberof ChildMarketPnlDto
+     */
+    'theoreticalMaxLoss': number;
+}
+/**
+ * 
+ * @export
+ * @interface ChildMarketResolutionDto
+ */
+export interface ChildMarketResolutionDto {
+    /**
+     * Slug of the child market
+     * @type {string}
+     * @memberof ChildMarketResolutionDto
+     */
+    'market_slug': string;
+    /**
+     * ID of the winning outcome for this child market
+     * @type {string}
+     * @memberof ChildMarketResolutionDto
+     */
+    'winning_outcome_id': string;
 }
 /**
  * 
@@ -1303,6 +2707,49 @@ export interface ClaimDailyQuestResultSelectedPrize {
 /**
  * 
  * @export
+ * @interface ClaimEloFarewellRewardsDTO
+ */
+export interface ClaimEloFarewellRewardsDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'reward_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'type': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'amount': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'canClaim': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClaimEloFarewellRewardsDTO
+     */
+    'source': string;
+}
+/**
+ * 
+ * @export
  * @interface ClaimQuest
  */
 export interface ClaimQuest {
@@ -1337,38 +2784,6 @@ export interface ClaimQuestResponse {
      * @memberof ClaimQuestResponse
      */
     'message': string;
-}
-/**
- * 
- * @export
- * @interface ClaimRewardRank
- */
-export interface ClaimRewardRank {
-    /**
-     * The unique identifier of the ELO rank
-     * @type {string}
-     * @memberof ClaimRewardRank
-     */
-    'id': string;
-}
-/**
- * 
- * @export
- * @interface ClaimRewardRankResponse
- */
-export interface ClaimRewardRankResponse {
-    /**
-     * Updated ELO information for the player after claiming the reward
-     * @type {EloPlayerSeason}
-     * @memberof ClaimRewardRankResponse
-     */
-    'playerElo': EloPlayerSeason;
-    /**
-     * Array of reward history entries that have been claimed
-     * @type {Array<RewardHistory>}
-     * @memberof ClaimRewardRankResponse
-     */
-    'rewardsHistory': Array<RewardHistory>;
 }
 /**
  * 
@@ -1498,6 +2913,24 @@ export interface CloutLeaderboardDTO {
      * @memberof CloutLeaderboardDTO
      */
     'mindshare_percentage': number;
+    /**
+     * Total clout referral
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'total_clout_referral': number;
+    /**
+     * Total clout daily claim
+     * @type {number}
+     * @memberof CloutLeaderboardDTO
+     */
+    'total_clout_daily_claim': number;
+    /**
+     * If the user is a player on core
+     * @type {boolean}
+     * @memberof CloutLeaderboardDTO
+     */
+    'is_player': boolean;
 }
 /**
  * 
@@ -1661,6 +3094,49 @@ export interface CompleteOnboardingQuestResult {
 /**
  * 
  * @export
+ * @interface CoreSeasonDTO
+ */
+export interface CoreSeasonDTO {
+    /**
+     * Season ID
+     * @type {number}
+     * @memberof CoreSeasonDTO
+     */
+    'id': number;
+    /**
+     * Season start date
+     * @type {string}
+     * @memberof CoreSeasonDTO
+     */
+    'start_date': string;
+    /**
+     * Season end date
+     * @type {string}
+     * @memberof CoreSeasonDTO
+     */
+    'end_date': string;
+    /**
+     * Heroes out
+     * @type {Array<string>}
+     * @memberof CoreSeasonDTO
+     */
+    'heroes_out': Array<string>;
+    /**
+     * Heroes in
+     * @type {Array<string>}
+     * @memberof CoreSeasonDTO
+     */
+    'heroes_in': Array<string>;
+    /**
+     * Distribution of burn wars
+     * @type {Array<BurnWarsRewardDTO>}
+     * @memberof CoreSeasonDTO
+     */
+    'burn_wars_distribution': Array<BurnWarsRewardDTO>;
+}
+/**
+ * 
+ * @export
  * @interface CreateApiKeyDto
  */
 export interface CreateApiKeyDto {
@@ -1686,91 +3162,159 @@ export interface CreateApiKeyDto {
 /**
  * 
  * @export
+ * @interface CreateBannerDto
+ */
+export interface CreateBannerDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBannerDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBannerDto
+     */
+    'subtitle'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBannerDto
+     */
+    'image_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBannerDto
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateBannerDto
+     */
+    'filters'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateBannerDto
+     */
+    'data'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBannerDto
+     */
+    'banner_until_date'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateBannerDto
+     */
+    'active'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateBannerDto
+     */
+    'is_fixed_banner'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface CreateBidOrderDto
  */
 export interface CreateBidOrderDto {
     /**
+     * 
+     * @type {Array<CreateBidOrderOrderDto>}
+     * @memberof CreateBidOrderDto
+     */
+    'bidOrders': Array<CreateBidOrderOrderDto>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateBidOrderOrderDto
+ */
+export interface CreateBidOrderOrderDto {
+    /**
      * Trader
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'trader': string;
     /**
      * Side
      * @type {number}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'side': number;
     /**
      * Collection
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'collection': string;
     /**
      * Payment token
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'payment_token': string;
     /**
      * Expiration time as a BigInt value
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'expiration_time': string;
     /**
      * Merkle root
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'merkle_root': string;
     /**
      * Salt as a BigInt value
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'salt': string;
     /**
      * Signature
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'signature': string;
     /**
      * Token ID as a BigInt value
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'token_id': string;
     /**
-     * Token IDs
-     * @type {string}
-     * @memberof CreateBidOrderDto
-     */
-    'token_ids': string;
-    /**
      * Bidder handle
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'bidder_handle': string;
     /**
      * Rarity
      * @type {number}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'rarity': number;
     /**
      * Hero ID
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'hero_id': string;
     /**
      * Price
      * @type {string}
-     * @memberof CreateBidOrderDto
+     * @memberof CreateBidOrderOrderDto
      */
     'price': string;
 }
@@ -1923,6 +3467,72 @@ export interface CreateDeckResponseDTO {
 /**
  * 
  * @export
+ * @interface CreateEntityDto
+ */
+export interface CreateEntityDto {
+    /**
+     * URL-friendly slug for the entity (must be unique)
+     * @type {string}
+     * @memberof CreateEntityDto
+     */
+    'slug': string;
+    /**
+     * Type of entity
+     * @type {string}
+     * @memberof CreateEntityDto
+     */
+    'type': CreateEntityDtoTypeEnum;
+    /**
+     * Display name of the entity
+     * @type {string}
+     * @memberof CreateEntityDto
+     */
+    'display_name': string;
+    /**
+     * Picture URL for the entity
+     * @type {string}
+     * @memberof CreateEntityDto
+     */
+    'picture'?: string | null;
+    /**
+     * Additional metadata for the entity
+     * @type {object}
+     * @memberof CreateEntityDto
+     */
+    'metadata': object;
+}
+
+export const CreateEntityDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+} as const;
+
+export type CreateEntityDtoTypeEnum = typeof CreateEntityDtoTypeEnum[keyof typeof CreateEntityDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface CreateEntityEdgeDto
+ */
+export interface CreateEntityEdgeDto {
+    /**
+     * ID of the parent entity
+     * @type {string}
+     * @memberof CreateEntityEdgeDto
+     */
+    'parent_id': string;
+    /**
+     * ID of the child entity
+     * @type {string}
+     * @memberof CreateEntityEdgeDto
+     */
+    'child_id': string;
+}
+/**
+ * 
+ * @export
  * @interface CreateFlagDTO
  */
 export interface CreateFlagDTO {
@@ -1945,6 +3555,473 @@ export interface CreateFlagDTO {
      */
     'description': string;
 }
+/**
+ * 
+ * @export
+ * @interface CreateKothConfigDTO
+ */
+export interface CreateKothConfigDTO {
+    /**
+     * Name of the KOTH config
+     * @type {string}
+     * @memberof CreateKothConfigDTO
+     */
+    'name': string;
+    /**
+     * Entry fragment price
+     * @type {number}
+     * @memberof CreateKothConfigDTO
+     */
+    'entry_fragment_price': number;
+    /**
+     * Payout structure
+     * @type {Array<PayoutObject>}
+     * @memberof CreateKothConfigDTO
+     */
+    'payout': Array<PayoutObject>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateLotteryConfigDto
+ */
+export interface CreateLotteryConfigDto {
+    /**
+     * Base prize pool amount for new lotteries
+     * @type {number}
+     * @memberof CreateLotteryConfigDto
+     */
+    'base_prize_pool': number;
+    /**
+     * Amount to increment prize pool by
+     * @type {number}
+     * @memberof CreateLotteryConfigDto
+     */
+    'prize_increment': number;
+    /**
+     * Maximum prize pool amount
+     * @type {number}
+     * @memberof CreateLotteryConfigDto
+     */
+    'max_prize_pool': number;
+    /**
+     * Maximum number of free entries allowed per user
+     * @type {number}
+     * @memberof CreateLotteryConfigDto
+     */
+    'max_free_entries': number;
+    /**
+     * Whether this configuration is currently active
+     * @type {boolean}
+     * @memberof CreateLotteryConfigDto
+     */
+    'is_active'?: boolean;
+    /**
+     * Tiered pricing structure for paid entries
+     * @type {object}
+     * @memberof CreateLotteryConfigDto
+     */
+    'paid_entries_price'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface CreateMarketDto
+ */
+export interface CreateMarketDto {
+    /**
+     * The title of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'title': string;
+    /**
+     * The description of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'description': string;
+    /**
+     * The preset ID of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'preset_id': string;
+    /**
+     * The status of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'status': string;
+    /**
+     * The start date of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'start_date': string;
+    /**
+     * The end date of the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'end_date': string;
+    /**
+     * The resolve date of the market (when it will be resolved)
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'resolve_at'?: string;
+    /**
+     * The metadata of the market
+     * @type {object}
+     * @memberof CreateMarketDto
+     */
+    'metadata': object;
+    /**
+     * The outcomes of the market
+     * @type {Array<CreateMarketOutcomeDto>}
+     * @memberof CreateMarketDto
+     */
+    'outcomes': Array<CreateMarketOutcomeDto>;
+    /**
+     * Market type from market-metadata (e.g., custom, core_hero_top_5)
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'market_type': string;
+    /**
+     * Entity IDs to link to the market
+     * @type {Array<string>}
+     * @memberof CreateMarketDto
+     */
+    'entity_ids'?: Array<string>;
+    /**
+     * Initial shares to seed for LMSR markets (outcomeId -> shares to buy)
+     * @type {object}
+     * @memberof CreateMarketDto
+     */
+    'initial_quantities'?: object;
+    /**
+     * Star requirement for core_hero_king_of_hill markets (1-8)
+     * @type {number}
+     * @memberof CreateMarketDto
+     */
+    'stars'?: number;
+    /**
+     * Tournament ID to link to the market
+     * @type {string}
+     * @memberof CreateMarketDto
+     */
+    'tournament_id'?: string;
+    /**
+     * Hero IDs to include in CORE_HERO_TOP_5 markets (overrides auto-selection)
+     * @type {Array<string>}
+     * @memberof CreateMarketDto
+     */
+    'hero_ids'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateMarketOutcomeDto
+ */
+export interface CreateMarketOutcomeDto {
+    /**
+     * The name of the outcome
+     * @type {string}
+     * @memberof CreateMarketOutcomeDto
+     */
+    'name': string;
+    /**
+     * The order of the outcome
+     * @type {number}
+     * @memberof CreateMarketOutcomeDto
+     */
+    'order': number;
+    /**
+     * The hero ID of the outcome
+     * @type {string}
+     * @memberof CreateMarketOutcomeDto
+     */
+    'hero_id': string;
+    /**
+     * The metadata of the outcome
+     * @type {object}
+     * @memberof CreateMarketOutcomeDto
+     */
+    'metadata': object;
+    /**
+     * Target odds for this outcome (e.g., 1.5 for 1.5x). Used for LMSR market seeding.
+     * @type {number}
+     * @memberof CreateMarketOutcomeDto
+     */
+    'target_odds'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateMultipleEntriesDTO
+ */
+export interface CreateMultipleEntriesDTO {
+    /**
+     * KOTH ID
+     * @type {string}
+     * @memberof CreateMultipleEntriesDTO
+     */
+    'kothId': string;
+    /**
+     * Heroes
+     * @type {Array<string>}
+     * @memberof CreateMultipleEntriesDTO
+     */
+    'heroesIds': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateOnboardingDeckDTO
+ */
+export interface CreateOnboardingDeckDTO {
+    /**
+     * Array of 8 card IDs for the onboarding deck
+     * @type {Array<string>}
+     * @memberof CreateOnboardingDeckDTO
+     */
+    'cardIds': Array<string>;
+    /**
+     * Referral code
+     * @type {string}
+     * @memberof CreateOnboardingDeckDTO
+     */
+    'referralCode'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreatePrivateTournamentDTO
+ */
+export interface CreatePrivateTournamentDTO {
+    /**
+     * Tournament bet requirements
+     * @type {BetDTO}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'bet': BetDTO;
+    /**
+     * Tournament name
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'name': string;
+    /**
+     * Tournament start date
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'startDate': string;
+    /**
+     * Tournament end date
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'endDate': string;
+    /**
+     * 
+     * @type {CreatePrivateTournamentDTOFlagsRaw}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'flagsRaw': CreatePrivateTournamentDTOFlagsRaw;
+}
+/**
+ * Tournament flags configuration
+ * @export
+ * @interface CreatePrivateTournamentDTOFlagsRaw
+ */
+export interface CreatePrivateTournamentDTOFlagsRaw {
+    /**
+     * Maximum common cards
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxCommon'?: number;
+    /**
+     * Maximum rare cards
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxRare'?: number;
+    /**
+     * Maximum epic cards
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxEpic'?: number;
+    /**
+     * Maximum legendary cards
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxLegendary'?: number;
+    /**
+     * Maximum stars
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxStars'?: number;
+    /**
+     * Maximum players
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'maxPlayers'?: number;
+    /**
+     * Payout model
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTOFlagsRaw
+     */
+    'payoutModel'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateProjectDTO
+ */
+export interface CreateProjectDTO {
+    /**
+     * Owner twitter_id
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'user_id': string;
+    /**
+     * Alternative user IDs
+     * @type {Array<string>}
+     * @memberof CreateProjectDTO
+     */
+    'alt_user_ids'?: Array<string>;
+    /**
+     * Links
+     * @type {object}
+     * @memberof CreateProjectDTO
+     */
+    'links': object;
+    /**
+     * Media
+     * @type {Array<string>}
+     * @memberof CreateProjectDTO
+     */
+    'media': Array<string>;
+    /**
+     * Ticker
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'contract_address': string;
+    /**
+     * Slug
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'slug': string;
+    /**
+     * Prompt
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'prompt'?: string;
+    /**
+     * Is disabled
+     * @type {boolean}
+     * @memberof CreateProjectDTO
+     */
+    'is_disabled'?: boolean;
+    /**
+     * Name
+     * @type {string}
+     * @memberof CreateProjectDTO
+     */
+    'name': string;
+    /**
+     * Rules
+     * @type {ProjectRulesDTO}
+     * @memberof CreateProjectDTO
+     */
+    'rules'?: ProjectRulesDTO;
+    /**
+     * Flag names to search for
+     * @type {Array<string>}
+     * @memberof CreateProjectDTO
+     */
+    'flags': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface CreateProjectUserModerationDTO
+ */
+export interface CreateProjectUserModerationDTO {
+    /**
+     * Project ID (UUID)
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'project_id': string;
+    /**
+     * Twitter ID of the user
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'user_id': string;
+    /**
+     * Moderation status to apply
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'status': CreateProjectUserModerationDTOStatusEnum;
+    /**
+     * Multiplier or count depending on status (optional)
+     * @type {number}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'value'?: number;
+    /**
+     * Reason for the moderation action
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'reason'?: string;
+    /**
+     * Start date for the moderation
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'start_date'?: string;
+    /**
+     * End date for the moderation
+     * @type {string}
+     * @memberof CreateProjectUserModerationDTO
+     */
+    'end_date'?: string | null;
+}
+
+export const CreateProjectUserModerationDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+} as const;
+
+export type CreateProjectUserModerationDTOStatusEnum = typeof CreateProjectUserModerationDTOStatusEnum[keyof typeof CreateProjectUserModerationDTOStatusEnum];
+
 /**
  * 
  * @export
@@ -2218,6 +4295,67 @@ export interface CreateSubscriptionDto {
 /**
  * 
  * @export
+ * @interface CreateTemplateDto
+ */
+export interface CreateTemplateDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTemplateDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTemplateDto
+     */
+    'subtitle'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTemplateDto
+     */
+    'image_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTemplateDto
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateTemplateDto
+     */
+    'filters'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateTemplateDto
+     */
+    'data_template'?: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateTemplateDto
+     */
+    'global'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateTemplateDto
+     */
+    'is_banner'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTemplateDto
+     */
+    'banner_until_date'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CreateThresholdDto
  */
 export interface CreateThresholdDto {
@@ -2239,6 +4377,105 @@ export interface CreateThresholdDto {
      * @memberof CreateThresholdDto
      */
     'reward_amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateTradeDto
+ */
+export interface CreateTradeDto {
+    /**
+     * The ID of the market
+     * @type {string}
+     * @memberof CreateTradeDto
+     */
+    'market_id': string;
+    /**
+     * The ID of the outcome
+     * @type {string}
+     * @memberof CreateTradeDto
+     */
+    'outcome_id': string;
+    /**
+     * Investment in fragments (for buying)
+     * @type {number}
+     * @memberof CreateTradeDto
+     */
+    'investment': number;
+    /**
+     * The minimum shares expected to buy
+     * @type {number}
+     * @memberof CreateTradeDto
+     */
+    'min_shares_expected': number;
+    /**
+     * The odd at execution
+     * @type {number}
+     * @memberof CreateTradeDto
+     */
+    'odd_at_execution': number;
+    /**
+     * Number of shares to sell (for LMSR selling). If provided, this is a sell order.
+     * @type {number}
+     * @memberof CreateTradeDto
+     */
+    'shares_to_sell'?: number;
+    /**
+     * Minimum payout expected when selling (for LMSR)
+     * @type {number}
+     * @memberof CreateTradeDto
+     */
+    'min_payout_expected'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface CreateTradeResponse
+ */
+export interface CreateTradeResponse {
+    /**
+     * The number of shares bought/sold
+     * @type {number}
+     * @memberof CreateTradeResponse
+     */
+    'shares': number;
+    /**
+     * The price per share in fragments
+     * @type {number}
+     * @memberof CreateTradeResponse
+     */
+    'price': number;
+    /**
+     * The total cost in fragments
+     * @type {number}
+     * @memberof CreateTradeResponse
+     */
+    'total_cost': number;
+    /**
+     * The fee in fragments
+     * @type {number}
+     * @memberof CreateTradeResponse
+     */
+    'fee': number;
+    /**
+     * The creation date of the trade
+     * @type {string}
+     * @memberof CreateTradeResponse
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateTwitterQuestDto
+ */
+export interface CreateTwitterQuestDto {
+    /**
+     * Twitter URL
+     * @type {string}
+     * @memberof CreateTwitterQuestDto
+     */
+    'twitter_url': string;
 }
 /**
  * 
@@ -2546,6 +4783,12 @@ export interface CurrentSeasonHeroQuickOverviewDTO {
      */
     'final_rank': number;
     /**
+     * The previous rank of the hero in the current season
+     * @type {number}
+     * @memberof CurrentSeasonHeroQuickOverviewDTO
+     */
+    'previous_rank': number;
+    /**
      * The total posts of the hero in the current season
      * @type {number}
      * @memberof CurrentSeasonHeroQuickOverviewDTO
@@ -2557,6 +4800,18 @@ export interface CurrentSeasonHeroQuickOverviewDTO {
      * @memberof CurrentSeasonHeroQuickOverviewDTO
      */
     'total_views': number;
+    /**
+     * The total clout referral of the hero in the current season
+     * @type {number}
+     * @memberof CurrentSeasonHeroQuickOverviewDTO
+     */
+    'total_clout_referral': number;
+    /**
+     * The total clout daily claim of the hero in the current season
+     * @type {number}
+     * @memberof CurrentSeasonHeroQuickOverviewDTO
+     */
+    'total_clout_daily_claim': number;
     /**
      * The last clout distribution of the hero in the current season
      * @type {number}
@@ -2606,6 +4861,25 @@ export interface CurrentStatsDTO {
      * @memberof CurrentStatsDTO
      */
     'totalCertifiedViews': number;
+}
+/**
+ * 
+ * @export
+ * @interface CursorDTO
+ */
+export interface CursorDTO {
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof CursorDTO
+     */
+    'created_at': string;
+    /**
+     * ID
+     * @type {string}
+     * @memberof CursorDTO
+     */
+    'id': string;
 }
 /**
  * 
@@ -2807,6 +5081,79 @@ export interface DateTimeFilterDTO {
 /**
  * 
  * @export
+ * @interface DeckHistoryDTO
+ */
+export interface DeckHistoryDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeckHistoryDTO
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {Array<SummaryOfTournamentNumberCardDTOCardDTO>}
+     * @memberof DeckHistoryDTO
+     */
+    'cards': Array<SummaryOfTournamentNumberCardDTOCardDTO>;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeckHistoryDTO
+     */
+    'score': number;
+    /**
+     * 
+     * @type {SummaryOfTournamentNumberOfPlayerTotalRewardsDTO}
+     * @memberof DeckHistoryDTO
+     */
+    'winnings': SummaryOfTournamentNumberOfPlayerTotalRewardsDTO;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'league_name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeckHistoryDTO
+     */
+    'league_number': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'league_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeckHistoryDTO
+     */
+    'picture': string;
+}
+/**
+ * 
+ * @export
  * @interface DeleteOrderResponseDto
  */
 export interface DeleteOrderResponseDto {
@@ -2826,252 +5173,240 @@ export interface DeleteOrderResponseDto {
 /**
  * 
  * @export
- * @interface EloLeaderboardDto
+ * @interface DisabledPostDTO
  */
-export interface EloLeaderboardDto {
+export interface DisabledPostDTO {
     /**
-     * 
+     * Post ID
      * @type {string}
-     * @memberof EloLeaderboardDto
+     * @memberof DisabledPostDTO
+     */
+    'post_id': string;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'user_id': string;
+    /**
+     * User handle
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'user_handle': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'user_name': string;
+    /**
+     * User profile image URL
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'user_profile_image': string;
+    /**
+     * Total views count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'views_count': number;
+    /**
+     * Number of views
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'views': number;
+    /**
+     * Number of likes
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'likes': number;
+    /**
+     * Number of retweets
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'retweets': number;
+    /**
+     * Number of replies
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'replies': number;
+    /**
+     * Number of quotes
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'quotes': number;
+    /**
+     * Number of bookmarks
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'bookmarks': number;
+    /**
+     * Quote count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'quote_count': number;
+    /**
+     * Favorite count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'favorite_count': number;
+    /**
+     * Certified likes count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'certified_likes': number;
+    /**
+     * Certified views count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'certified_views': number;
+    /**
+     * Botted views count
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'botted_views': number;
+    /**
+     * Engagement score
+     * @type {number}
+     * @memberof DisabledPostDTO
+     */
+    'engagement_score': number | null;
+    /**
+     * Post type (Tweet, Quote, Reply)
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'type': string;
+    /**
+     * Conversation ID
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'conversation_id': string;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'text': string;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'created_at': string;
+    /**
+     * Antibotting interaction status
+     * @type {string}
+     * @memberof DisabledPostDTO
+     */
+    'antibotting_interaction_status': string;
+    /**
+     * Associated flags/tickers with sentiment and weight
+     * @type {object}
+     * @memberof DisabledPostDTO
+     */
+    'flags'?: object | null;
+}
+/**
+ * 
+ * @export
+ * @interface DraftEntryDTO
+ */
+export interface DraftEntryDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof DraftEntryDTO
      */
     'id': string;
     /**
-     * 
+     * KOTH ID
      * @type {string}
-     * @memberof EloLeaderboardDto
+     * @memberof DraftEntryDTO
+     */
+    'kothId': string;
+    /**
+     * Array of heroes in the deck
+     * @type {Array<DraftHeroDTO>}
+     * @memberof DraftEntryDTO
+     */
+    'heroes': Array<DraftHeroDTO>;
+    /**
+     * Array of heroes in the multiple deck
+     * @type {Array<DraftHeroDTO>}
+     * @memberof DraftEntryDTO
+     */
+    'heroesMultiple': Array<DraftHeroDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface DraftHeroDTO
+ */
+export interface DraftHeroDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof DraftHeroDTO
+     */
+    'id': string;
+    /**
+     * Hero star rating
+     * @type {number}
+     * @memberof DraftHeroDTO
+     */
+    'stars': number;
+    /**
+     * Step/position in deck (1-8)
+     * @type {number}
+     * @memberof DraftHeroDTO
+     */
+    'step': number;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof DraftHeroDTO
      */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EloLeaderboardDto
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EloLeaderboardDto
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EloLeaderboardDto
-     */
-    'player_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EloLeaderboardDto
-     */
-    'elo_score': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof EloLeaderboardDto
-     */
-    'rank': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EloLeaderboardDto
-     */
-    'image': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EloLeaderboardDto
-     */
-    'current_elo_rank_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EloLeaderboardDto
-     */
-    'season': number;
 }
 /**
  * 
  * @export
- * @interface EloLeaderboardResponseDto
+ * @interface EditDFSTacticEntryBodyDTO
  */
-export interface EloLeaderboardResponseDto {
+export interface EditDFSTacticEntryBodyDTO {
     /**
-     * 
-     * @type {Array<EloLeaderboardDto>}
-     * @memberof EloLeaderboardResponseDto
-     */
-    'data': Array<EloLeaderboardDto>;
-    /**
-     * 
-     * @type {MetaInfiniteQueryDto}
-     * @memberof EloLeaderboardResponseDto
-     */
-    'meta': MetaInfiniteQueryDto;
-}
-/**
- * 
- * @export
- * @interface EloPlayerSeason
- */
-export interface EloPlayerSeason {
-    /**
-     * The ID of the player
+     * The id of the tactic
      * @type {string}
-     * @memberof EloPlayerSeason
+     * @memberof EditDFSTacticEntryBodyDTO
      */
-    'player_id': string;
+    'tactic_id': string;
     /**
-     * The current ELO score of the player
-     * @type {number}
-     * @memberof EloPlayerSeason
-     */
-    'elo_score': number;
-    /**
-     * The maximum ELO score achieved by the player
-     * @type {number}
-     * @memberof EloPlayerSeason
-     */
-    'max_elo_score': number;
-    /**
-     * The ID of the current ELO rank
+     * The id of the entry
      * @type {string}
-     * @memberof EloPlayerSeason
+     * @memberof EditDFSTacticEntryBodyDTO
      */
-    'current_elo_rank_id': string;
+    'entry_id': string;
     /**
-     * The ID of the maximum ELO rank achieved
-     * @type {string}
-     * @memberof EloPlayerSeason
-     */
-    'max_elo_rank_id': string;
-    /**
-     * The season number
-     * @type {number}
-     * @memberof EloPlayerSeason
-     */
-    'season': number;
-    /**
-     * The unclaimed ranks of the player
+     * The ids of the hero scores
      * @type {Array<string>}
-     * @memberof EloPlayerSeason
+     * @memberof EditDFSTacticEntryBodyDTO
      */
-    'claimable_ranks': Array<string>;
-    /**
-     * The timestamp when the record was created
-     * @type {string}
-     * @memberof EloPlayerSeason
-     */
-    'created_at': string;
-    /**
-     * The timestamp when the record was last updated
-     * @type {string}
-     * @memberof EloPlayerSeason
-     */
-    'updated_at': string;
-    /**
-     * The current ELO rank of the player
-     * @type {EloRank}
-     * @memberof EloPlayerSeason
-     */
-    'current_elo_rank': EloRank;
-    /**
-     * The maximum ELO rank achieved by the player
-     * @type {EloRank}
-     * @memberof EloPlayerSeason
-     */
-    'max_elo_rank': EloRank;
-    /**
-     * The player associated with this ELO season record
-     * @type {Player}
-     * @memberof EloPlayerSeason
-     */
-    'player': Player;
-}
-/**
- * 
- * @export
- * @interface EloRank
- */
-export interface EloRank {
-    /**
-     * The unique identifier of the ELO rank
-     * @type {string}
-     * @memberof EloRank
-     */
-    'id': string;
-    /**
-     * The name of the ELO rank
-     * @type {string}
-     * @memberof EloRank
-     */
-    'name': string;
-    /**
-     * The image URL for the ELO rank
-     * @type {string}
-     * @memberof EloRank
-     */
-    'image': string;
-    /**
-     * The minimum ELO score for this rank
-     * @type {number}
-     * @memberof EloRank
-     */
-    'min_elo': number;
-    /**
-     * The maximum ELO score for this rank
-     * @type {number}
-     * @memberof EloRank
-     */
-    'max_elo': number;
-    /**
-     * The number of top players in this rank
-     * @type {number}
-     * @memberof EloRank
-     */
-    'top_player_count'?: number;
-    /**
-     * The threshold configuration for this rank
-     * @type {object}
-     * @memberof EloRank
-     */
-    'threshold': object;
-    /**
-     * The maximum ELO gain configuration for this rank
-     * @type {object}
-     * @memberof EloRank
-     */
-    'max_elo_gain': object;
-    /**
-     * The timestamp when the rank was created
-     * @type {string}
-     * @memberof EloRank
-     */
-    'created_at': string;
-    /**
-     * The timestamp when the rank was last updated
-     * @type {string}
-     * @memberof EloRank
-     */
-    'updated_at': string;
-    /**
-     * The reward details for this rank
-     * @type {object}
-     * @memberof EloRank
-     */
-    'reward_details': object;
-    /**
-     * Players currently in this rank
-     * @type {Array<EloPlayerSeason>}
-     * @memberof EloRank
-     */
-    'current_players': Array<EloPlayerSeason>;
-    /**
-     * Players who reached their max ELO in this rank
-     * @type {Array<EloPlayerSeason>}
-     * @memberof EloRank
-     */
-    'max_players': Array<EloPlayerSeason>;
+    'hero_scores_ids': Array<string>;
 }
 /**
  * 
@@ -3121,6 +5456,12 @@ export interface EmblemModelDTO {
      * @memberof EmblemModelDTO
      */
     'created_at': string;
+    /**
+     * The updated at of the emblem
+     * @type {string}
+     * @memberof EmblemModelDTO
+     */
+    'updated_at': string;
 }
 /**
  * 
@@ -3231,53 +5572,11 @@ export interface EnrichedTweet {
      */
     'certified_retweets': number;
     /**
-     * Caped ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'caped_ratio': number;
-    /**
      * Cred score for the tweet
      * @type {number}
      * @memberof EnrichedTweet
      */
     'cred_score': number;
-    /**
-     * Deep cred interaction ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'deep_cred_interaction_ratio': number;
-    /**
-     * High cred interaction ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'high_cred_interaction_ratio': number;
-    /**
-     * Likes database ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'likes_db_ratio': number;
-    /**
-     * Replies database ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'replies_db_ratio': number;
-    /**
-     * Retweets database ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'retweets_db_ratio': number;
-    /**
-     * Quote database ratio for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'quote_db_ratio': number;
     /**
      * Quality interaction score for the tweet, used for x game
      * @type {number}
@@ -3285,29 +5584,11 @@ export interface EnrichedTweet {
      */
     'quality_interaction': number;
     /**
-     * Top interacting users for the tweet
-     * @type {object}
-     * @memberof EnrichedTweet
-     */
-    'top_interacting_users': object;
-    /**
      * Deletion timestamp of the tweet
      * @type {string}
      * @memberof EnrichedTweet
      */
     'deleted_at'?: string;
-    /**
-     * Interaction history for the tweet
-     * @type {Array<Interaction>}
-     * @memberof EnrichedTweet
-     */
-    'interactions': Array<Interaction>;
-    /**
-     * Interaction summary for the tweet
-     * @type {InteractionSummary}
-     * @memberof EnrichedTweet
-     */
-    'interaction_summaries': InteractionSummary;
     /**
      * Conversation ID of the tweet
      * @type {string}
@@ -3333,6 +5614,136 @@ export interface EnrichedTweet {
      */
     'impact_score': number;
 }
+/**
+ * 
+ * @export
+ * @interface EntityDto
+ */
+export interface EntityDto {
+    /**
+     * Unique identifier for the entity
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'id': string;
+    /**
+     * URL-friendly slug for the entity
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'slug': string;
+    /**
+     * Type of entity
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'type': EntityDtoTypeEnum;
+    /**
+     * Display name of the entity
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'display_name': string;
+    /**
+     * Picture URL for the entity
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'picture': string | null;
+    /**
+     * Additional metadata for the entity
+     * @type {object}
+     * @memberof EntityDto
+     */
+    'metadata': object;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof EntityDto
+     */
+    'updated_at': string;
+}
+
+export const EntityDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+} as const;
+
+export type EntityDtoTypeEnum = typeof EntityDtoTypeEnum[keyof typeof EntityDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface EntityResponseDto
+ */
+export interface EntityResponseDto {
+    /**
+     * Unique identifier for the entity
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'id': string;
+    /**
+     * URL-friendly slug for the entity
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'slug': string;
+    /**
+     * Type of entity
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'type': EntityResponseDtoTypeEnum;
+    /**
+     * Display name of the entity
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'display_name': string;
+    /**
+     * Picture URL for the entity
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'picture': string | null;
+    /**
+     * Additional metadata for the entity
+     * @type {object}
+     * @memberof EntityResponseDto
+     */
+    'metadata': object;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof EntityResponseDto
+     */
+    'updated_at': string;
+}
+
+export const EntityResponseDtoTypeEnum = {
+    Twitter: 'twitter',
+    Event: 'event',
+    League: 'league',
+    Other: 'other'
+} as const;
+
+export type EntityResponseDtoTypeEnum = typeof EntityResponseDtoTypeEnum[keyof typeof EntityResponseDtoTypeEnum];
+
 /**
  * 
  * @export
@@ -3371,41 +5782,59 @@ export interface EntryTacticsConfigPayoutDTO {
      */
     'payout': Array<PayoutObject>;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof EntryTacticsConfigPayoutDTO
-     */
-    'price_pool_gold': number;
-    /**
-     * Payout details in gold
+     * Payout details in fragments
      * @type {Array<PayoutObject>}
      * @memberof EntryTacticsConfigPayoutDTO
      */
-    'payout_gold': Array<PayoutObject>;
+    'payout_fragments': Array<PayoutObject>;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof EntryTacticsConfigPayoutDTO
-     */
-    'price_pool_cards': number;
-    /**
-     * Payout details in cards
+     * Payout details in tickets
      * @type {Array<PayoutObject>}
      * @memberof EntryTacticsConfigPayoutDTO
      */
-    'payout_cards': Array<PayoutObject>;
+    'payout_tickets': Array<PayoutObject>;
     /**
-     * Price pool in gold
+     * Payout details in fan points
+     * @type {Array<PayoutObject>}
+     * @memberof EntryTacticsConfigPayoutDTO
+     */
+    'payout_fan': Array<PayoutObject>;
+    /**
+     * Price pool in fragments
+     * @type {number}
+     * @memberof EntryTacticsConfigPayoutDTO
+     */
+    'price_pool_fragments': number;
+    /**
+     * Price pool in tickets
      * @type {number}
      * @memberof EntryTacticsConfigPayoutDTO
      */
     'price_pool_tickets': number;
     /**
-     * Payout details in gold
+     * Price pool in fan points
+     * @type {number}
+     * @memberof EntryTacticsConfigPayoutDTO
+     */
+    'price_pool_fan': number;
+    /**
+     * Extra payouts for featured tactics
      * @type {Array<PayoutObject>}
      * @memberof EntryTacticsConfigPayoutDTO
      */
-    'payout_tickets': Array<PayoutObject>;
+    'extra_payouts': Array<PayoutObject>;
+    /**
+     * Extra price pools for featured tactics
+     * @type {Array<PricePoolTypeObject>}
+     * @memberof EntryTacticsConfigPayoutDTO
+     */
+    'extra_price_pools': Array<PricePoolTypeObject>;
+    /**
+     * Payout details per hero
+     * @type {Array<HeroPayouts>}
+     * @memberof EntryTacticsConfigPayoutDTO
+     */
+    'hero_payouts': Array<HeroPayouts>;
 }
 /**
  * 
@@ -3494,29 +5923,158 @@ export interface EntryTicketsDTO {
  */
 export interface EntryTicketsRewardsDTO {
     /**
-     * Reward amount in ETH
+     * Reward amount in USDC
      * @type {object}
      * @memberof EntryTicketsRewardsDTO
      */
-    'reward_eth': object;
+    'reward_usdc': object;
     /**
-     * Reward amount in gold
-     * @type {object}
-     * @memberof EntryTicketsRewardsDTO
-     */
-    'reward_gold': object;
-    /**
-     * Reward amount in cards
+     * Reward amount in fragments
      * @type {number}
      * @memberof EntryTicketsRewardsDTO
      */
-    'reward_cards': number;
+    'reward_fragments': number;
     /**
      * Reward amount in tactic tickets
      * @type {number}
      * @memberof EntryTicketsRewardsDTO
      */
     'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof EntryTicketsRewardsDTO
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards in JSON format
+     * @type {Array<string>}
+     * @memberof EntryTicketsRewardsDTO
+     */
+    'reward_extra': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface EventDto
+ */
+export interface EventDto {
+    /**
+     * Name of the trending event
+     * @type {string}
+     * @memberof EventDto
+     */
+    'name': string;
+    /**
+     * Description of the event
+     * @type {string}
+     * @memberof EventDto
+     */
+    'description': string;
+    /**
+     * Keywords associated with this event
+     * @type {Array<string>}
+     * @memberof EventDto
+     */
+    'keywords': Array<string>;
+    /**
+     * Accounts found for this event
+     * @type {Array<AccountDto>}
+     * @memberof EventDto
+     */
+    'accounts'?: Array<AccountDto>;
+}
+/**
+ * 
+ * @export
+ * @interface ExtraRewardDTO
+ */
+export interface ExtraRewardDTO {
+    /**
+     * Type of the extra reward
+     * @type {string}
+     * @memberof ExtraRewardDTO
+     */
+    'type': string;
+}
+/**
+ * 
+ * @export
+ * @interface FantasyPointsLeaderboardDto
+ */
+export interface FantasyPointsLeaderboardDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'fantasy_points': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'burns': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'burn_wars': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'level_ups': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'total_season_burns': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'burn_wars_fragment': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FantasyPointsLeaderboardDto
+     */
+    'burn_wars_fan': number;
 }
 /**
  * 
@@ -3546,6 +6104,44 @@ export interface Flag {
 /**
  * 
  * @export
+ * @interface FlagDTO
+ */
+export interface FlagDTO {
+    /**
+     * The flag name
+     * @type {string}
+     * @memberof FlagDTO
+     */
+    'flagName': string;
+    /**
+     * The admin user
+     * @type {string}
+     * @memberof FlagDTO
+     */
+    'admin_user': string;
+}
+/**
+ * 
+ * @export
+ * @interface FlagsDTO
+ */
+export interface FlagsDTO {
+    /**
+     * Tournament flags
+     * @type {Array<string>}
+     * @memberof FlagsDTO
+     */
+    'and': Array<string>;
+    /**
+     * Tournament flags
+     * @type {Array<string>}
+     * @memberof FlagsDTO
+     */
+    'or': Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface FragmentClaimDTO
  */
 export interface FragmentClaimDTO {
@@ -3561,6 +6157,12 @@ export interface FragmentClaimDTO {
      * @memberof FragmentClaimDTO
      */
     'batchAmount': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentClaimDTO
+     */
+    'configFragments': number;
     /**
      * 
      * @type {string}
@@ -3731,6 +6333,36 @@ export interface FragmentsCardsConfig {
      * @type {number}
      * @memberof FragmentsCardsConfig
      */
+    'max_supply': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'starting_price': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentsCardsConfig
+     */
+    'per_time_unit': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FragmentsCardsConfig
+     */
+    'price_decay': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentsCardsConfig
+     */
+    'packs_sold': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FragmentsCardsConfig
+     */
     'nb_cards': number;
     /**
      * 
@@ -3778,6 +6410,104 @@ export interface FragmentsCardsConfig {
 /**
  * 
  * @export
+ * @interface FreeToPlayPlayersRankDTO
+ */
+export interface FreeToPlayPlayersRankDTO {
+    /**
+     * The unique ID of the player
+     * @type {string}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'player_id': string;
+    /**
+     * The player handle
+     * @type {string}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'handle': string;
+    /**
+     * The player name or truncated address
+     * @type {string}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'name': string;
+    /**
+     * The profile picture URL of the player
+     * @type {string}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'profile_picture': string;
+    /**
+     * The XP (experience points) of the player
+     * @type {number}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'xp': number;
+    /**
+     * The rank of the player in the leaderboard
+     * @type {number}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'rank': number;
+    /**
+     * The number of cards owned by the player
+     * @type {number}
+     * @memberof FreeToPlayPlayersRankDTO
+     */
+    'cards_count': number;
+}
+/**
+ * 
+ * @export
+ * @interface FreeToPlayTournamentRankDTO
+ */
+export interface FreeToPlayTournamentRankDTO {
+    /**
+     * The unique ID of the hero
+     * @type {string}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'id': string;
+    /**
+     * The score of the hero
+     * @type {number}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'score': number;
+    /**
+     * The rank of the hero in the tournament
+     * @type {number}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'rank': number;
+    /**
+     * The handle of the hero
+     * @type {string}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'handle': string;
+    /**
+     * The number of stars the hero has
+     * @type {number}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'stars': number;
+    /**
+     * The profile image URL of the hero
+     * @type {string}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'profile_image': string;
+    /**
+     * The creation timestamp of the score
+     * @type {string}
+     * @memberof FreeToPlayTournamentRankDTO
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
  * @interface GameStatsDto
  */
 export interface GameStatsDto {
@@ -3809,6 +6539,255 @@ export interface GameStatsDto {
 /**
  * 
  * @export
+ * @interface GetActivityCardDto
+ */
+export interface GetActivityCardDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityCardDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {GetActivityHeroDto}
+     * @memberof GetActivityCardDto
+     */
+    'hero': GetActivityHeroDto;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityCardDto
+     */
+    'hero_rarity_index': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetActivityCardDto
+     */
+    'rarity': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityCardDto
+     */
+    'picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityCardDto
+     */
+    'token_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetActivityCardDto
+     */
+    'season': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetActivityDataResponseDTO
+ */
+export interface GetActivityDataResponseDTO {
+    /**
+     * 
+     * @type {Array<GetActivityDto>}
+     * @memberof GetActivityDataResponseDTO
+     */
+    'data': Array<GetActivityDto>;
+    /**
+     * 
+     * @type {ActivityMetaDTO}
+     * @memberof GetActivityDataResponseDTO
+     */
+    'meta': ActivityMetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetActivityDto
+ */
+export interface GetActivityDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityDto
+     */
+    'type': GetActivityDtoTypeEnum;
+    /**
+     * 
+     * @type {GetActivityPlayerDto}
+     * @memberof GetActivityDto
+     */
+    'player': GetActivityPlayerDto;
+    /**
+     * 
+     * @type {GetActivityPlayerDto}
+     * @memberof GetActivityDto
+     */
+    'player_2': GetActivityPlayerDto;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityDto
+     */
+    'date': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityDto
+     */
+    'price'?: string;
+    /**
+     * 
+     * @type {GetActivityHeroDto}
+     * @memberof GetActivityDto
+     */
+    'hero'?: GetActivityHeroDto;
+    /**
+     * 
+     * @type {GetActivityCardDto}
+     * @memberof GetActivityDto
+     */
+    'card'?: GetActivityCardDto;
+    /**
+     * 
+     * @type {Array<GetActivityCardDto>}
+     * @memberof GetActivityDto
+     */
+    'burnt'?: Array<GetActivityCardDto>;
+    /**
+     * 
+     * @type {Array<GetActivityCardDto>}
+     * @memberof GetActivityDto
+     */
+    'packed'?: Array<GetActivityCardDto>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityDto
+     */
+    'tournamentName'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetActivityDto
+     */
+    'rarity_burned'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetActivityDto
+     */
+    'rarity_minted'?: number;
+}
+
+export const GetActivityDtoTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+} as const;
+
+export type GetActivityDtoTypeEnum = typeof GetActivityDtoTypeEnum[keyof typeof GetActivityDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetActivityHeroDto
+ */
+export interface GetActivityHeroDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityHeroDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityHeroDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityHeroDto
+     */
+    'handle': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetActivityPlayerDto
+ */
+export interface GetActivityPlayerDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityPlayerDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityPlayerDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityPlayerDto
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetActivityPlayerDto
+     */
+    'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetAdminFlagClassificationsDTO
+ */
+export interface GetAdminFlagClassificationsDTO {
+    /**
+     * Number of classified flags
+     * @type {number}
+     * @memberof GetAdminFlagClassificationsDTO
+     */
+    'classified_flags': number;
+    /**
+     * Number of classified posts
+     * @type {number}
+     * @memberof GetAdminFlagClassificationsDTO
+     */
+    'classified_posts'?: number;
+    /**
+     * User info
+     * @type {UserInfoDTO}
+     * @memberof GetAdminFlagClassificationsDTO
+     */
+    'user': UserInfoDTO;
+}
+/**
+ * 
+ * @export
  * @interface GetAllPlayersDTO
  */
 export interface GetAllPlayersDTO {
@@ -3824,38 +6803,74 @@ export interface GetAllPlayersDTO {
      * @memberof GetAllPlayersDTO
      */
     'search'?: string;
+    /**
+     * The mode of the tournament
+     * @type {string}
+     * @memberof GetAllPlayersDTO
+     */
+    'tournamentMode'?: GetAllPlayersDTOTournamentModeEnum;
+}
+
+export const GetAllPlayersDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+} as const;
+
+export type GetAllPlayersDTOTournamentModeEnum = typeof GetAllPlayersDTOTournamentModeEnum[keyof typeof GetAllPlayersDTOTournamentModeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetAllProjectsResponseDTO
+ */
+export interface GetAllProjectsResponseDTO {
+    /**
+     * List of all enabled projects
+     * @type {Array<ProjectItemDTO>}
+     * @memberof GetAllProjectsResponseDTO
+     */
+    'projects': Array<ProjectItemDTO>;
 }
 /**
  * 
  * @export
- * @interface GetAndFilterSellOrdersQueryDTO
+ * @interface GetAndFilterActivityQueryDTO
  */
-export interface GetAndFilterSellOrdersQueryDTO {
+export interface GetAndFilterActivityQueryDTO {
     /**
-     * 
-     * @type {object}
-     * @memberof GetAndFilterSellOrdersQueryDTO
-     */
-    'filters': object;
-    /**
-     * 
+     * Filter by activity type
      * @type {string}
-     * @memberof GetAndFilterSellOrdersQueryDTO
+     * @memberof GetAndFilterActivityQueryDTO
      */
-    'search'?: string;
+    'activityType'?: GetAndFilterActivityQueryDTOActivityTypeEnum;
     /**
-     * 
-     * @type {number}
-     * @memberof GetAndFilterSellOrdersQueryDTO
+     * Player ID to filter
+     * @type {string}
+     * @memberof GetAndFilterActivityQueryDTO
      */
-    'rankCriteria': number;
+    'playerId'?: string;
     /**
-     * 
-     * @type {PaginationDTO}
-     * @memberof GetAndFilterSellOrdersQueryDTO
+     * Start date to activities
+     * @type {string}
+     * @memberof GetAndFilterActivityQueryDTO
      */
-    'pagination'?: PaginationDTO;
+    'startDate'?: string;
 }
+
+export const GetAndFilterActivityQueryDTOActivityTypeEnum = {
+    All: 'ALL',
+    MintPack: 'MINT_PACK',
+    WinCard: 'WIN_CARD',
+    BurnCard: 'BURN_CARD',
+    LevelUp: 'LEVEL_UP',
+    SaveDeck: 'SAVE_DECK',
+    Trade: 'TRADE',
+    Listing: 'LISTING',
+    Bid: 'BID'
+} as const;
+
+export type GetAndFilterActivityQueryDTOActivityTypeEnum = typeof GetAndFilterActivityQueryDTOActivityTypeEnum[keyof typeof GetAndFilterActivityQueryDTOActivityTypeEnum];
+
 /**
  * 
  * @export
@@ -4027,53 +7042,11 @@ export interface GetBangerTweetsTweetDTO {
      */
     'certified_retweets': number;
     /**
-     * Caped ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'caped_ratio': number;
-    /**
      * Cred score for the tweet
      * @type {number}
      * @memberof GetBangerTweetsTweetDTO
      */
     'cred_score': number;
-    /**
-     * Deep cred interaction ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'deep_cred_interaction_ratio': number;
-    /**
-     * High cred interaction ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'high_cred_interaction_ratio': number;
-    /**
-     * Likes database ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'likes_db_ratio': number;
-    /**
-     * Replies database ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'replies_db_ratio': number;
-    /**
-     * Retweets database ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'retweets_db_ratio': number;
-    /**
-     * Quote database ratio for the tweet
-     * @type {number}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'quote_db_ratio': number;
     /**
      * Quality interaction score for the tweet, used for x game
      * @type {number}
@@ -4081,29 +7054,11 @@ export interface GetBangerTweetsTweetDTO {
      */
     'quality_interaction': number;
     /**
-     * Top interacting users for the tweet
-     * @type {object}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'top_interacting_users': object;
-    /**
      * Deletion timestamp of the tweet
      * @type {string}
      * @memberof GetBangerTweetsTweetDTO
      */
     'deleted_at'?: string;
-    /**
-     * Interaction history for the tweet
-     * @type {Array<Interaction>}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'interactions': Array<Interaction>;
-    /**
-     * Interaction summary for the tweet
-     * @type {InteractionSummary}
-     * @memberof GetBangerTweetsTweetDTO
-     */
-    'interaction_summaries': InteractionSummary;
     /**
      * Conversation ID of the tweet
      * @type {string}
@@ -4147,6 +7102,12 @@ export interface GetBidOrdersDTO {
      * @memberof GetBidOrdersDTO
      */
     'highest_five_bids': Array<GetBidOrdersHighestFiveBidDTO>;
+    /**
+     * 
+     * @type {Array<GetBidOrdersRarityBidDTO>}
+     * @memberof GetBidOrdersDTO
+     */
+    'rarity_bids': Array<GetBidOrdersRarityBidDTO>;
 }
 /**
  * 
@@ -4214,12 +7175,6 @@ export interface GetBidOrdersHighestFiveBidDTO {
      * @memberof GetBidOrdersHighestFiveBidDTO
      */
     'token_id': string;
-    /**
-     * Token IDs
-     * @type {string}
-     * @memberof GetBidOrdersHighestFiveBidDTO
-     */
-    'token_ids': string;
     /**
      * Bidder handle
      * @type {string}
@@ -4358,6 +7313,225 @@ export interface GetBidOrdersPersonalBidDTO {
 /**
  * 
  * @export
+ * @interface GetBidOrdersRarityBidDTO
+ */
+export interface GetBidOrdersRarityBidDTO {
+    /**
+     * Trader
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'trader': string;
+    /**
+     * Side
+     * @type {number}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'side': number;
+    /**
+     * Collection
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'collection': string;
+    /**
+     * Payment token
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'payment_token': string;
+    /**
+     * Expiration time as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'expiration_time': string;
+    /**
+     * Merkle root
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'merkle_root': string;
+    /**
+     * Salt as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'salt': string;
+    /**
+     * Signature
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'signature': string;
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'id': string;
+    /**
+     * Token ID as a BigInt value
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'token_id': string;
+    /**
+     * Bidder handle
+     * @type {string}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'bidder_handle': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'rarity': number;
+    /**
+     * Price
+     * @type {object}
+     * @memberof GetBidOrdersRarityBidDTO
+     */
+    'price': object;
+}
+/**
+ * 
+ * @export
+ * @interface GetBottedPostByIdResponseDTO
+ */
+export interface GetBottedPostByIdResponseDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'post_id': string;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'user_id': string;
+    /**
+     * User handle
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'user_handle': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'user_name': string;
+    /**
+     * User profile image URL
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'user_profile_image': string;
+    /**
+     * Total views count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'views_count': number;
+    /**
+     * Certified (legitimate) views count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'certified_views': number;
+    /**
+     * Botted (reduced) views count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'botted_views': number;
+    /**
+     * Certified likes count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'certified_likes': number;
+    /**
+     * Certified retweets count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'certified_retweets': number;
+    /**
+     * Reply count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'reply_count': number;
+    /**
+     * Quote count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'quote_count': number;
+    /**
+     * Retweet count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'retweet_count': number;
+    /**
+     * Favorite count
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'favorite_count': number;
+    /**
+     * Engagement score
+     * @type {number}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'engagement_score': number | null;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'text': string;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'created_at': string;
+    /**
+     * Complete chronological tracking history for this post
+     * @type {Array<AntibottingTrackingRecordDTO>}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'tracking_history': Array<AntibottingTrackingRecordDTO>;
+    /**
+     * Detailed SIV calculation information if available
+     * @type {SivCalculationDetailsDTO}
+     * @memberof GetBottedPostByIdResponseDTO
+     */
+    'siv_calculation_details'?: SivCalculationDetailsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetBridgeDetailsResponseDTO
+ */
+export interface GetBridgeDetailsResponseDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBridgeDetailsResponseDTO
+     */
+    'cards_nb': number;
+}
+/**
+ * 
+ * @export
  * @interface GetBroadcastActiveNotificationDto
  */
 export interface GetBroadcastActiveNotificationDto {
@@ -4389,6 +7563,19 @@ export interface GetBroadcastActiveNotificationDto {
 /**
  * 
  * @export
+ * @interface GetCancellableMarketsResponseDto
+ */
+export interface GetCancellableMarketsResponseDto {
+    /**
+     * List of markets that can be cancelled
+     * @type {Array<MarketDto>}
+     * @memberof GetCancellableMarketsResponseDto
+     */
+    'markets': Array<MarketDto>;
+}
+/**
+ * 
+ * @export
  * @interface GetCardFromShardsBodyDTO
  */
 export interface GetCardFromShardsBodyDTO {
@@ -4404,6 +7591,25 @@ export interface GetCardFromShardsBodyDTO {
      * @memberof GetCardFromShardsBodyDTO
      */
     'batch_amount': number;
+    /**
+     * Expected price for VRGDA configs (for slippage protection)
+     * @type {number}
+     * @memberof GetCardFromShardsBodyDTO
+     */
+    'expected_price'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardFromShardsResultDTO
+ */
+export interface GetCardFromShardsResultDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardFromShardsResultDTO
+     */
+    'fragmentsClaimId': string;
 }
 /**
  * 
@@ -4517,13 +7723,13 @@ export interface GetCardsByHeroRarityIndexDTO {
      * @type {string}
      * @memberof GetCardsByHeroRarityIndexDTO
      */
-    'owner': string;
+    'token_id': string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof GetCardsByHeroRarityIndexDTO
      */
-    'token_id': object;
+    'owner': string;
 }
 /**
  * 
@@ -4576,16 +7782,61 @@ export interface GetCardsForDeckBuilderDTO {
     'pagination'?: PaginationDTO;
     /**
      * 
-     * @type {GetPlayerCardsWhereDTO}
+     * @type {GetCardsForDeckBuilderFiltersDTO}
      * @memberof GetCardsForDeckBuilderDTO
      */
-    'where'?: GetPlayerCardsWhereDTO;
+    'where'?: GetCardsForDeckBuilderFiltersDTO;
     /**
      * 
      * @type {boolean}
      * @memberof GetCardsForDeckBuilderDTO
      */
     'isReverseScoreTournament'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCardsForDeckBuilderDTO
+     */
+    'tournamentMode'?: GetCardsForDeckBuilderDTOTournamentModeEnum;
+}
+
+export const GetCardsForDeckBuilderDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+} as const;
+
+export type GetCardsForDeckBuilderDTOTournamentModeEnum = typeof GetCardsForDeckBuilderDTOTournamentModeEnum[keyof typeof GetCardsForDeckBuilderDTOTournamentModeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetCardsForDeckBuilderFiltersDTO
+ */
+export interface GetCardsForDeckBuilderFiltersDTO {
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'name': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'handle': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'rarity': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'stars': GetPlayerCardsWhereDTORarity;
 }
 /**
  * 
@@ -4627,6 +7878,61 @@ export interface GetChoicesFormattedDTO {
 /**
  * 
  * @export
+ * @interface GetCloutHeroInteractionResponse
+ */
+export interface GetCloutHeroInteractionResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'quotes': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'retweets': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCloutHeroInteractionResponse
+     */
+    'total_clout': number;
+}
+/**
+ * 
+ * @export
  * @interface GetCloutLeaderboardDTO
  */
 export interface GetCloutLeaderboardDTO {
@@ -4648,6 +7954,52 @@ export interface GetCloutLeaderboardDTO {
      * @memberof GetCloutLeaderboardDTO
      */
     'season'?: number;
+    /**
+     * Order by
+     * @type {string}
+     * @memberof GetCloutLeaderboardDTO
+     */
+    'orderBy'?: GetCloutLeaderboardDTOOrderByEnum;
+}
+
+export const GetCloutLeaderboardDTOOrderByEnum = {
+    FinalRank: 'final_rank',
+    TotalCloutReferral: 'total_clout_referral',
+    TotalCloutDailyClaim: 'total_clout_daily_claim'
+} as const;
+
+export type GetCloutLeaderboardDTOOrderByEnum = typeof GetCloutLeaderboardDTOOrderByEnum[keyof typeof GetCloutLeaderboardDTOOrderByEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetCloutReferredPlayersResponse
+ */
+export interface GetCloutReferredPlayersResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutReferredPlayersResponse
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutReferredPlayersResponse
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCloutReferredPlayersResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetCloutReferredPlayersResponse
+     */
+    'last_distribution': number;
 }
 /**
  * 
@@ -4667,6 +8019,32 @@ export interface GetCumulativeFloorPriceDTO {
      * @memberof GetCumulativeFloorPriceDTO
      */
     'sell_orders': Array<SellOrderDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetDraftMarketsResponseDto
+ */
+export interface GetDraftMarketsResponseDto {
+    /**
+     * List of draft markets
+     * @type {Array<MarketDto>}
+     * @memberof GetDraftMarketsResponseDto
+     */
+    'markets': Array<MarketDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetEntitiesResponseDto
+ */
+export interface GetEntitiesResponseDto {
+    /**
+     * List of entities
+     * @type {Array<EntityDto>}
+     * @memberof GetEntitiesResponseDto
+     */
+    'entities': Array<EntityDto>;
 }
 /**
  * 
@@ -4722,6 +8100,61 @@ export interface GetEntriesHistoryResponseDTO {
      * @memberof GetEntriesHistoryResponseDTO
      */
     'tickets': EntryTicketsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetFantasyPlayerFromTwitterIdResponseDTO
+ */
+export interface GetFantasyPlayerFromTwitterIdResponseDTO {
+    /**
+     * Player address (wallet ID)
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'player_address': string;
+    /**
+     * Twitter name
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'twitter_name': string;
+    /**
+     * Twitter handle/username
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'twitter_handle': string;
+    /**
+     * Twitter ID
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'twitter_id': string;
+    /**
+     * Profile picture URL
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'profile_picture': string | null;
+    /**
+     * Total fantasy points (base + referrals)
+     * @type {number}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'fantasy_points': number;
+    /**
+     * Account creation date
+     * @type {string}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'created_at': string;
+    /**
+     * Player portfolio value
+     * @type {number}
+     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
+     */
+    'portfolio_value': number;
 }
 /**
  * 
@@ -4816,6 +8249,12 @@ export interface GetHeroByHandleOrAddressDTO {
      */
     'metadata': object;
     /**
+     * Expected score of the hero
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'expected_score': string;
+    /**
      * Distribution probability of the hero
      * @type {HandleHeroDistributionProbabilityDTO}
      * @memberof GetHeroByHandleOrAddressDTO
@@ -4851,6 +8290,12 @@ export interface GetHeroByHandleOrAddressDTO {
      * @memberof GetHeroByHandleOrAddressDTO
      */
     'floor': Array<HandleUniqueSellOrdersDTO>;
+    /**
+     * Clout 7 days summary
+     * @type {string}
+     * @memberof GetHeroByHandleOrAddressDTO
+     */
+    'clout_7_days_summary': string;
 }
 /**
  * 
@@ -4865,17 +8310,17 @@ export interface GetHeroFeedDTO {
      */
     'pagination'?: PaginationDTO;
     /**
-     * Number of top heroes to include
-     * @type {number}
+     * Heroes IDs to include
+     * @type {Array<string>}
      * @memberof GetHeroFeedDTO
      */
-    'topHeroes'?: number;
+    'heroesIds'?: Array<string>;
     /**
      * Start date for the feed
      * @type {string}
      * @memberof GetHeroFeedDTO
      */
-    'date'?: string;
+    'startDate'?: string;
     /**
      * End date for the feed
      * @type {string}
@@ -4888,18 +8333,6 @@ export interface GetHeroFeedDTO {
      * @memberof GetHeroFeedDTO
      */
     'banger'?: boolean;
-    /**
-     * Search for a specific hero
-     * @type {string}
-     * @memberof GetHeroFeedDTO
-     */
-    'handle'?: string;
-    /**
-     * Whether to hide viewed tweets
-     * @type {boolean}
-     * @memberof GetHeroFeedDTO
-     */
-    'hideViewed'?: boolean;
     /**
      * Whether to show only hero tweets
      * @type {boolean}
@@ -5016,6 +8449,79 @@ export interface GetHeroProgressOverTournamentHistoryDTO {
 /**
  * 
  * @export
+ * @interface GetHeroRewardResponseDto
+ */
+export interface GetHeroRewardResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'reward_type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'start_time': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'end_time': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'hero_score': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'hero_rank': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'hero_earnings': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'tournament_number': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'tournament_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'config_name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHeroRewardResponseDto
+     */
+    'image'?: string;
+}
+/**
+ * 
+ * @export
  * @interface GetHeroScoresQueryDTO
  */
 export interface GetHeroScoresQueryDTO {
@@ -5037,6 +8543,24 @@ export interface GetHeroScoresQueryDTO {
      * @memberof GetHeroScoresQueryDTO
      */
     'pagination'?: PaginationDTO;
+    /**
+     * Stars
+     * @type {Array<string>}
+     * @memberof GetHeroScoresQueryDTO
+     */
+    'stars'?: Array<string>;
+    /**
+     * Hero ids to include
+     * @type {Array<string>}
+     * @memberof GetHeroScoresQueryDTO
+     */
+    'heroIds'?: Array<string>;
+    /**
+     * Disable cache (default: false)
+     * @type {boolean}
+     * @memberof GetHeroScoresQueryDTO
+     */
+    'disableCache'?: boolean;
 }
 /**
  * 
@@ -5078,6 +8602,18 @@ export interface GetHeroScoresQueryOrderByDTO {
      */
     'fantasy_score'?: GetHeroScoresQueryOrderByDTOFantasyScoreEnum;
     /**
+     * Order by mindshare boost
+     * @type {string}
+     * @memberof GetHeroScoresQueryOrderByDTO
+     */
+    'mindshare_boost'?: GetHeroScoresQueryOrderByDTOMindshareBoostEnum;
+    /**
+     * Order by stars
+     * @type {string}
+     * @memberof GetHeroScoresQueryOrderByDTO
+     */
+    'stars'?: GetHeroScoresQueryOrderByDTOStarsEnum;
+    /**
      * Order by current rank
      * @type {string}
      * @memberof GetHeroScoresQueryOrderByDTO
@@ -5091,6 +8627,18 @@ export const GetHeroScoresQueryOrderByDTOFantasyScoreEnum = {
 } as const;
 
 export type GetHeroScoresQueryOrderByDTOFantasyScoreEnum = typeof GetHeroScoresQueryOrderByDTOFantasyScoreEnum[keyof typeof GetHeroScoresQueryOrderByDTOFantasyScoreEnum];
+export const GetHeroScoresQueryOrderByDTOMindshareBoostEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type GetHeroScoresQueryOrderByDTOMindshareBoostEnum = typeof GetHeroScoresQueryOrderByDTOMindshareBoostEnum[keyof typeof GetHeroScoresQueryOrderByDTOMindshareBoostEnum];
+export const GetHeroScoresQueryOrderByDTOStarsEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type GetHeroScoresQueryOrderByDTOStarsEnum = typeof GetHeroScoresQueryOrderByDTOStarsEnum[keyof typeof GetHeroScoresQueryOrderByDTOStarsEnum];
 export const GetHeroScoresQueryOrderByDTOTweetCountEnum = {
     Asc: 'asc',
     Desc: 'desc'
@@ -5104,6 +8652,12 @@ export type GetHeroScoresQueryOrderByDTOTweetCountEnum = typeof GetHeroScoresQue
  * @interface GetHeroesWithStatsDTO
  */
 export interface GetHeroesWithStatsDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof GetHeroesWithStatsDTO
+     */
+    'stars'?: number;
     /**
      * Pagination arguments
      * @type {PaginationDTO}
@@ -5121,7 +8675,7 @@ export interface GetHeroesWithStatsDTO {
      * @type {number}
      * @memberof GetHeroesWithStatsDTO
      */
-    'tournament_number': number;
+    'tournament_number'?: number;
     /**
      * 
      * @type {string}
@@ -5134,6 +8688,37 @@ export interface GetHeroesWithStatsDTO {
      * @memberof GetHeroesWithStatsDTO
      */
     'tactic_only'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetHighestBidsByRarityDTO
+ */
+export interface GetHighestBidsByRarityDTO {
+    /**
+     * ID as a BigInt value
+     * @type {string}
+     * @memberof GetHighestBidsByRarityDTO
+     */
+    'id': string;
+    /**
+     * Rarity
+     * @type {number}
+     * @memberof GetHighestBidsByRarityDTO
+     */
+    'rarity': number;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof GetHighestBidsByRarityDTO
+     */
+    'hero_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetHighestBidsByRarityDTO
+     */
+    'price': string;
 }
 /**
  * 
@@ -5366,6 +8951,49 @@ export interface GetHistoricalDecksAndWinningsTournamentHistoryDTO {
 /**
  * 
  * @export
+ * @interface GetHistoryOfTacticsWithPNLResponseDTO
+ */
+export interface GetHistoryOfTacticsWithPNLResponseDTO {
+    /**
+     * Tactic
+     * @type {Tactics}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'tactic': Tactics;
+    /**
+     * PNL
+     * @type {number}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'pnl': number;
+    /**
+     * PNL percentage
+     * @type {number}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'pnl_percentage': number;
+    /**
+     * Number of entries
+     * @type {number}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'nb_entries': number;
+    /**
+     * Rewards USDC amount
+     * @type {number}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'rewards_usdc_amount': number;
+    /**
+     * Rewards tickets amount
+     * @type {number}
+     * @memberof GetHistoryOfTacticsWithPNLResponseDTO
+     */
+    'rewards_tickets_amount': number;
+}
+/**
+ * 
+ * @export
  * @interface GetIsAlreadyReferredDTO
  */
 export interface GetIsAlreadyReferredDTO {
@@ -5405,236 +9033,55 @@ export interface GetIsPlayerWaitingForTrackingResponseDTO {
 /**
  * 
  * @export
- * @interface GetLastActivityCardDto
+ * @interface GetLMSRHistoryResponseDto
  */
-export interface GetLastActivityCardDto {
+export interface GetLMSRHistoryResponseDto {
     /**
-     * 
+     * The market ID
      * @type {string}
-     * @memberof GetLastActivityCardDto
+     * @memberof GetLMSRHistoryResponseDto
      */
-    'id': string;
+    'market_id': string;
     /**
-     * 
-     * @type {GetLastActivityHeroDto}
-     * @memberof GetLastActivityCardDto
-     */
-    'hero': GetLastActivityHeroDto;
-    /**
-     * 
+     * Market type: single market or parent with submarkets
      * @type {string}
-     * @memberof GetLastActivityCardDto
+     * @memberof GetLMSRHistoryResponseDto
      */
-    'hero_rarity_index': string;
+    'market_type': GetLMSRHistoryResponseDtoMarketTypeEnum;
     /**
-     * 
-     * @type {number}
-     * @memberof GetLastActivityCardDto
+     * Metadata about each outcome being tracked
+     * @type {Array<OutcomeInfoDto>}
+     * @memberof GetLMSRHistoryResponseDto
      */
-    'rarity': number;
+    'outcomes': Array<OutcomeInfoDto>;
     /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityCardDto
+     * Time series data points
+     * @type {Array<TimeSeriesPointDto>}
+     * @memberof GetLMSRHistoryResponseDto
      */
-    'picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityCardDto
-     */
-    'token_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetLastActivityCardDto
-     */
-    'season': number;
-}
-/**
- * 
- * @export
- * @interface GetLastActivityDto
- */
-export interface GetLastActivityDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityDto
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityDto
-     */
-    'type': GetLastActivityDtoTypeEnum;
-    /**
-     * 
-     * @type {GetLastActivityPlayerDto}
-     * @memberof GetLastActivityDto
-     */
-    'player': GetLastActivityPlayerDto;
-    /**
-     * 
-     * @type {GetLastActivityPlayerDto}
-     * @memberof GetLastActivityDto
-     */
-    'player_2': GetLastActivityPlayerDto;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityDto
-     */
-    'date': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityDto
-     */
-    'price'?: string;
-    /**
-     * 
-     * @type {GetLastActivityHeroDto}
-     * @memberof GetLastActivityDto
-     */
-    'hero'?: GetLastActivityHeroDto;
-    /**
-     * 
-     * @type {GetLastActivityCardDto}
-     * @memberof GetLastActivityDto
-     */
-    'card'?: GetLastActivityCardDto;
-    /**
-     * 
-     * @type {Array<GetLastActivityCardDto>}
-     * @memberof GetLastActivityDto
-     */
-    'burnt'?: Array<GetLastActivityCardDto>;
-    /**
-     * 
-     * @type {Array<GetLastActivityCardDto>}
-     * @memberof GetLastActivityDto
-     */
-    'packed'?: Array<GetLastActivityCardDto>;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityDto
-     */
-    'tournamentName'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetLastActivityDto
-     */
-    'rarity_burned'?: number;
+    'data': Array<TimeSeriesPointDto>;
 }
 
-export const GetLastActivityDtoTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
+export const GetLMSRHistoryResponseDtoMarketTypeEnum = {
+    Single: 'single',
+    ParentWithSubmarkets: 'parent_with_submarkets'
 } as const;
 
-export type GetLastActivityDtoTypeEnum = typeof GetLastActivityDtoTypeEnum[keyof typeof GetLastActivityDtoTypeEnum];
+export type GetLMSRHistoryResponseDtoMarketTypeEnum = typeof GetLMSRHistoryResponseDtoMarketTypeEnum[keyof typeof GetLMSRHistoryResponseDtoMarketTypeEnum];
 
 /**
  * 
  * @export
- * @interface GetLastActivityHeroDto
+ * @interface GetLastBottedPostsBySivResponseDTO
  */
-export interface GetLastActivityHeroDto {
+export interface GetLastBottedPostsBySivResponseDTO {
     /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityHeroDto
+     * Posts that had views reduced by SIV with their complete tracking history
+     * @type {Array<BottedPostBySivDTO>}
+     * @memberof GetLastBottedPostsBySivResponseDTO
      */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityHeroDto
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityHeroDto
-     */
-    'handle': string;
+    'posts': Array<BottedPostBySivDTO>;
 }
-/**
- * 
- * @export
- * @interface GetLastActivityPlayerDto
- */
-export interface GetLastActivityPlayerDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityPlayerDto
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityPlayerDto
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityPlayerDto
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetLastActivityPlayerDto
-     */
-    'profile_picture': string;
-}
-/**
- * 
- * @export
- * @interface GetLastActivityQueryDTO
- */
-export interface GetLastActivityQueryDTO {
-    /**
-     * Filter by activity type
-     * @type {string}
-     * @memberof GetLastActivityQueryDTO
-     */
-    'activityType'?: GetLastActivityQueryDTOActivityTypeEnum;
-    /**
-     * Pagination arguments
-     * @type {PaginationDTO}
-     * @memberof GetLastActivityQueryDTO
-     */
-    'pagination'?: PaginationDTO;
-}
-
-export const GetLastActivityQueryDTOActivityTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
-} as const;
-
-export type GetLastActivityQueryDTOActivityTypeEnum = typeof GetLastActivityQueryDTOActivityTypeEnum[keyof typeof GetLastActivityQueryDTOActivityTypeEnum];
-
 /**
  * 
  * @export
@@ -5795,12 +9242,6 @@ export interface GetLeaderboardByWinningsPlayerDTO {
      * @type {number}
      * @memberof GetLeaderboardByWinningsPlayerDTO
      */
-    'elo_score': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetLeaderboardByWinningsPlayerDTO
-     */
     'total_ETH': number;
     /**
      * 
@@ -5825,32 +9266,52 @@ export interface GetLeaderboardByWinningsPlayerDTO {
      * @type {number}
      * @memberof GetLeaderboardByWinningsPlayerDTO
      */
-    'total_elo_change': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetLeaderboardByWinningsPlayerDTO
-     */
     'deck_count': number;
 }
 /**
  * 
  * @export
- * @interface GetLeaderboardForTopicDTO
+ * @interface GetLeaderboardResponseDto
  */
-export interface GetLeaderboardForTopicDTO {
+export interface GetLeaderboardResponseDto {
     /**
-     * Pagination parameters
-     * @type {PaginationDTO}
-     * @memberof GetLeaderboardForTopicDTO
+     * Leaderboard entries
+     * @type {Array<PredictionLeaderboardEntryDto>}
+     * @memberof GetLeaderboardResponseDto
      */
-    'pagination': PaginationDTO;
+    'entries': Array<PredictionLeaderboardEntryDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetMarketPositionResponseDto
+ */
+export interface GetMarketPositionResponseDto {
     /**
-     * Search by hero name or handle
-     * @type {string}
-     * @memberof GetLeaderboardForTopicDTO
+     * List of positions
+     * @type {Array<MarketPositionDto>}
+     * @memberof GetMarketPositionResponseDto
      */
-    'search'?: string;
+    'positions': Array<MarketPositionDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetMarketsResponse
+ */
+export interface GetMarketsResponse {
+    /**
+     * List of markets
+     * @type {Array<MarketDto>}
+     * @memberof GetMarketsResponse
+     */
+    'markets': Array<MarketDto>;
+    /**
+     * Total number of markets
+     * @type {number}
+     * @memberof GetMarketsResponse
+     */
+    'total': number;
 }
 /**
  * 
@@ -5868,45 +9329,83 @@ export interface GetMerkleProofDTO {
 /**
  * 
  * @export
- * @interface GetMyTacticsEntriesResponse
+ * @interface GetMerkleRootResponseDto
  */
-export interface GetMyTacticsEntriesResponse {
+export interface GetMerkleRootResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMerkleRootResponseDto
+     */
+    'merkleRoot': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetMyPositionsResponseDto
+ */
+export interface GetMyPositionsResponseDto {
+    /**
+     * List of market position groups (grouped by parent market)
+     * @type {Array<MarketPositionGroupDto>}
+     * @memberof GetMyPositionsResponseDto
+     */
+    'marketGroups': Array<MarketPositionGroupDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetNonFinishedTacticsEntriesResponseDTO
+ */
+export interface GetNonFinishedTacticsEntriesResponseDTO {
     /**
      * Unique identifier for the tactic
      * @type {string}
-     * @memberof GetMyTacticsEntriesResponse
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
      */
     'id': string;
     /**
-     * Start date of the tactic
-     * @type {string}
-     * @memberof GetMyTacticsEntriesResponse
-     */
-    'start_date': string;
-    /**
      * End date of the tactic
      * @type {string}
-     * @memberof GetMyTacticsEntriesResponse
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
      */
     'end_date': string;
     /**
-     * Top 3 entries for the given tactics
-     * @type {Array<TacticsTopEntries>}
-     * @memberof GetMyTacticsEntriesResponse
+     * Start date of the tactic
+     * @type {string}
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
      */
-    'top_entries': Array<TacticsTopEntries>;
+    'start_date': string;
     /**
-     * Entries for the current player
+     * Whether the tactic is visible
+     * @type {boolean}
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
+     */
+    'visible': boolean;
+    /**
+     * Whether the registration is open
+     * @type {boolean}
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
+     */
+    'registration_openned': boolean;
+    /**
+     * ETH price at the time of tactic creation
+     * @type {string}
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
+     */
+    'eth_price': string;
+    /**
+     * The configuration of the tactic
+     * @type {TacticsConfig}
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
+     */
+    'config': TacticsConfig;
+    /**
+     * The entries for this tactic
      * @type {Array<TacticsEntry>}
-     * @memberof GetMyTacticsEntriesResponse
+     * @memberof GetNonFinishedTacticsEntriesResponseDTO
      */
-    'entries': Array<TacticsEntry>;
-    /**
-     * Configuration for the given tactics
-     * @type {TacticsEntriesConfig}
-     * @memberof GetMyTacticsEntriesResponse
-     */
-    'config': TacticsEntriesConfig;
+    'tactics_entries': Array<TacticsEntry>;
 }
 /**
  * 
@@ -6043,12 +9542,6 @@ export interface GetOgTweetOfHeroPostsDTO {
      */
     'certified_views': number;
     /**
-     * The top interacting users of the post
-     * @type {object}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'top_interacting_users': object;
-    /**
      * The updated at of the post
      * @type {string}
      * @memberof GetOgTweetOfHeroPostsDTO
@@ -6089,6 +9582,32 @@ export interface GetPendingBurnsResponseDTO {
 /**
  * 
  * @export
+ * @interface GetPendingResolutionMarketsResponseDto
+ */
+export interface GetPendingResolutionMarketsResponseDto {
+    /**
+     * List of markets pending resolution
+     * @type {Array<MarketDto>}
+     * @memberof GetPendingResolutionMarketsResponseDto
+     */
+    'markets': Array<MarketDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetPendingSettlementMarketsResponseDto
+ */
+export interface GetPendingSettlementMarketsResponseDto {
+    /**
+     * List of markets pending settlement
+     * @type {Array<MarketDto>}
+     * @memberof GetPendingSettlementMarketsResponseDto
+     */
+    'markets': Array<MarketDto>;
+}
+/**
+ * 
+ * @export
  * @interface GetPersonalOrderCountDTO
  */
 export interface GetPersonalOrderCountDTO {
@@ -6105,40 +9624,6 @@ export interface GetPersonalOrderCountDTO {
      */
     'sell_count': number;
 }
-/**
- * 
- * @export
- * @interface GetPlayerActivityDto
- */
-export interface GetPlayerActivityDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetPlayerActivityDto
-     */
-    'activityType'?: GetPlayerActivityDtoActivityTypeEnum;
-    /**
-     * 
-     * @type {PaginationDTO}
-     * @memberof GetPlayerActivityDto
-     */
-    'pagination'?: PaginationDTO;
-}
-
-export const GetPlayerActivityDtoActivityTypeEnum = {
-    All: 'ALL',
-    MintPack: 'MINT_PACK',
-    WinCard: 'WIN_CARD',
-    BurnCard: 'BURN_CARD',
-    LevelUp: 'LEVEL_UP',
-    SaveDeck: 'SAVE_DECK',
-    Trade: 'TRADE',
-    Listing: 'LISTING',
-    Bid: 'BID'
-} as const;
-
-export type GetPlayerActivityDtoActivityTypeEnum = typeof GetPlayerActivityDtoActivityTypeEnum[keyof typeof GetPlayerActivityDtoActivityTypeEnum];
-
 /**
  * 
  * @export
@@ -6166,10 +9651,16 @@ export interface GetPlayerAllCardsDTO {
 }
 
 export const GetPlayerAllCardsDTOOrderByEnum = {
-    Score: 'cards_score',
-    Number: 'cards_number',
-    ScoreAsc: 'cards_score_asc',
-    ScoreDesc: 'cards_score_desc'
+    CardsScore: 'cards_score',
+    CardsNumberAsc: 'cards_number_asc',
+    CardsNumberDesc: 'cards_number_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    CardsScoreDesc: 'cards_score_desc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc',
+    AvailableFirst: 'available_first'
 } as const;
 
 export type GetPlayerAllCardsDTOOrderByEnum = typeof GetPlayerAllCardsDTOOrderByEnum[keyof typeof GetPlayerAllCardsDTOOrderByEnum];
@@ -6254,6 +9745,46 @@ export interface GetPlayerByIdResponseDto {
      */
     'league': number;
 }
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsFiltersWhereDTO
+ */
+export interface GetPlayerCardsFiltersWhereDTO {
+    /**
+     * Pagination arguments
+     * @type {PaginationDTO}
+     * @memberof GetPlayerCardsFiltersWhereDTO
+     */
+    'pagination'?: PaginationDTO;
+    /**
+     * 
+     * @type {PlayerCardFiltersDTO}
+     * @memberof GetPlayerCardsFiltersWhereDTO
+     */
+    'where'?: PlayerCardFiltersDTO;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsFiltersWhereDTO
+     */
+    'orderBy'?: GetPlayerCardsFiltersWhereDTOOrderByEnum;
+}
+
+export const GetPlayerCardsFiltersWhereDTOOrderByEnum = {
+    CardsScore: 'cards_score',
+    CardsNumberAsc: 'cards_number_asc',
+    CardsNumberDesc: 'cards_number_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    CardsScoreDesc: 'cards_score_desc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc'
+} as const;
+
+export type GetPlayerCardsFiltersWhereDTOOrderByEnum = typeof GetPlayerCardsFiltersWhereDTOOrderByEnum[keyof typeof GetPlayerCardsFiltersWhereDTOOrderByEnum];
+
 /**
  * 
  * @export
@@ -6422,88 +9953,437 @@ export interface GetPlayerCardsOfHeroSellOrderDTO {
 export interface GetPlayerCardsWhereDTO {
     /**
      * 
-     * @type {GetPlayersCardsHeroWhereDTO}
+     * @type {GetPlayerCardsWhereDTOName}
      * @memberof GetPlayerCardsWhereDTO
      */
-    'heroes'?: GetPlayersCardsHeroWhereDTO;
+    'name': GetPlayerCardsWhereDTOName;
     /**
      * 
-     * @type {NumberFilterDTO}
+     * @type {GetPlayerCardsWhereDTOName}
      * @memberof GetPlayerCardsWhereDTO
      */
-    'rarity'?: NumberFilterDTO;
+    'handle': GetPlayerCardsWhereDTOName;
     /**
      * 
-     * @type {boolean}
+     * @type {GetPlayerCardsWhereDTORarity}
      * @memberof GetPlayerCardsWhereDTO
      */
-    'is_in_deck'?: boolean;
+    'rarity': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'edition': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'stars': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'is_in_deck': GetPlayerCardsWhereDTOIsInDeck;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'is_card_listed': GetPlayerCardsWhereDTOIsInDeck;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof GetPlayerCardsWhereDTO
+     */
+    'hero_rarity_index': GetPlayerCardsWhereDTOName;
 }
 /**
  * 
  * @export
- * @interface GetPlayerGroupedCardsDTO
+ * @interface GetPlayerCardsWhereDTOIsInDeck
  */
-export interface GetPlayerGroupedCardsDTO {
-    /**
-     * Pagination arguments
-     * @type {PaginationDTO}
-     * @memberof GetPlayerGroupedCardsDTO
-     */
-    'pagination'?: PaginationDTO;
+export interface GetPlayerCardsWhereDTOIsInDeck {
     /**
      * 
-     * @type {GetPlayerCardsWhereDTO}
-     * @memberof GetPlayerGroupedCardsDTO
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTOIsInDeck
      */
-    'where'?: GetPlayerCardsWhereDTO;
+    'equals'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTOIsInDeck
+     */
+    'not'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTOIsInDeck
+     */
+    'isNull'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTOIsInDeck
+     */
+    'isNotNull'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerCardsWhereDTOName
+ */
+export interface GetPlayerCardsWhereDTOName {
     /**
      * 
      * @type {string}
-     * @memberof GetPlayerGroupedCardsDTO
+     * @memberof GetPlayerCardsWhereDTOName
      */
-    'orderBy'?: GetPlayerGroupedCardsDTOOrderByEnum;
+    'equals'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'not'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'in'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'notIn'?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'contains'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'startsWith'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetPlayerCardsWhereDTOName
+     */
+    'endsWith'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof GetPlayerGroupedCardsDTO
+     * @memberof GetPlayerCardsWhereDTOName
      */
-    'isReverseScoreTournament'?: boolean;
+    'isNull'?: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof GetPlayerGroupedCardsDTO
+     * @memberof GetPlayerCardsWhereDTOName
      */
-    'isGalleryView'?: boolean;
+    'isNotNull'?: boolean;
 }
-
-export const GetPlayerGroupedCardsDTOOrderByEnum = {
-    Score: 'cards_score',
-    Number: 'cards_number',
-    ScoreAsc: 'cards_score_asc',
-    ScoreDesc: 'cards_score_desc'
-} as const;
-
-export type GetPlayerGroupedCardsDTOOrderByEnum = typeof GetPlayerGroupedCardsDTOOrderByEnum[keyof typeof GetPlayerGroupedCardsDTOOrderByEnum];
-
 /**
  * 
  * @export
- * @interface GetPlayersCardsHeroWhereDTO
+ * @interface GetPlayerCardsWhereDTORarity
  */
-export interface GetPlayersCardsHeroWhereDTO {
+export interface GetPlayerCardsWhereDTORarity {
     /**
      * 
-     * @type {StringFilterDTO}
-     * @memberof GetPlayersCardsHeroWhereDTO
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
      */
-    'handle'?: StringFilterDTO;
+    'equals'?: number;
     /**
      * 
-     * @type {StringFilterDTO}
-     * @memberof GetPlayersCardsHeroWhereDTO
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
      */
-    'name'?: StringFilterDTO;
+    'not'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'lt'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'lte'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'gt'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'gte'?: number;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'in'?: Array<number>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'notIn'?: Array<number>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'isNull'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetPlayerCardsWhereDTORarity
+     */
+    'isNotNull'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerHistoryResponseDto
+ */
+export interface GetPlayerHistoryResponseDto {
+    /**
+     * 
+     * @type {Array<HistoryItemDto>}
+     * @memberof GetPlayerHistoryResponseDto
+     */
+    'history': Array<HistoryItemDto>;
+    /**
+     * 
+     * @type {PaginationMetaDto}
+     * @memberof GetPlayerHistoryResponseDto
+     */
+    'meta': PaginationMetaDto;
+    /**
+     * 
+     * @type {ActionCountsDto}
+     * @memberof GetPlayerHistoryResponseDto
+     */
+    'counts': ActionCountsDto;
+}
+/**
+ * 
+ * @export
+ * @interface GetPlayerStatsResponseDto
+ */
+export interface GetPlayerStatsResponseDto {
+    /**
+     * Player statistics
+     * @type {PlayerStatsDto}
+     * @memberof GetPlayerStatsResponseDto
+     */
+    'stats': PlayerStatsDto;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof GetPlayerStatsResponseDto
+     */
+    'handle': string;
+    /**
+     * Player profile picture URL
+     * @type {string}
+     * @memberof GetPlayerStatsResponseDto
+     */
+    'profilePicture': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface GetPostTrackingDetailsResponseDTO
+ */
+export interface GetPostTrackingDetailsResponseDTO {
+    /**
+     * Tracking history for the post
+     * @type {Array<object>}
+     * @memberof GetPostTrackingDetailsResponseDTO
+     */
+    'tracking_history': Array<object>;
+    /**
+     * SIV calculation details
+     * @type {object}
+     * @memberof GetPostTrackingDetailsResponseDTO
+     */
+    'siv_calculation_details': object | null;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectDisabledPostsResponseDTO
+ */
+export interface GetProjectDisabledPostsResponseDTO {
+    /**
+     * Posts marked as DISABLED_FOR_BOTTING for this project
+     * @type {Array<DisabledPostDTO>}
+     * @memberof GetProjectDisabledPostsResponseDTO
+     */
+    'posts': Array<DisabledPostDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectModerationUsersResponseDTO
+ */
+export interface GetProjectModerationUsersResponseDTO {
+    /**
+     * 
+     * @type {Array<ProjectModerationUserDTO>}
+     * @memberof GetProjectModerationUsersResponseDTO
+     */
+    'users': Array<ProjectModerationUserDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectProfileBySlugResponseDTO
+ */
+export interface GetProjectProfileBySlugResponseDTO {
+    /**
+     * Project by slug
+     * @type {ProjectProfileItemDTO}
+     * @memberof GetProjectProfileBySlugResponseDTO
+     */
+    'project': ProjectProfileItemDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectSettingsResponseDTO
+ */
+export interface GetProjectSettingsResponseDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof GetProjectSettingsResponseDTO
+     */
+    'project_id': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof GetProjectSettingsResponseDTO
+     */
+    'name': string;
+    /**
+     * Project rules configuration
+     * @type {ProjectRulesDTO}
+     * @memberof GetProjectSettingsResponseDTO
+     */
+    'rules': ProjectRulesDTO;
+    /**
+     * Timestamp when project was last updated
+     * @type {string}
+     * @memberof GetProjectSettingsResponseDTO
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectShoutFeedResponseDTO
+ */
+export interface GetProjectShoutFeedResponseDTO {
+    /**
+     * Project tweets
+     * @type {Array<ProjectTweetResponseDTO>}
+     * @memberof GetProjectShoutFeedResponseDTO
+     */
+    'tweets': Array<ProjectTweetResponseDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectStatsPrevPeriodDTO
+ */
+export interface GetProjectStatsPrevPeriodDTO {
+    /**
+     * Number of posts in the previous period
+     * @type {number}
+     * @memberof GetProjectStatsPrevPeriodDTO
+     */
+    'posts': number;
+    /**
+     * Number of unique users in the previous period
+     * @type {number}
+     * @memberof GetProjectStatsPrevPeriodDTO
+     */
+    'users': number;
+    /**
+     * Total views in the previous period
+     * @type {number}
+     * @memberof GetProjectStatsPrevPeriodDTO
+     */
+    'views': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetProjectStatsResponseDTO
+ */
+export interface GetProjectStatsResponseDTO {
+    /**
+     * Number of posts in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'number_posts_7d': number;
+    /**
+     * Variation percentage of posts in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'posts_variation_percentage_7d': number;
+    /**
+     * Number of unique users in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'unique_users_7d': number;
+    /**
+     * Variation percentage of unique users in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'users_variation_percentage_7d': number;
+    /**
+     * Total views in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'total_views_7d': number;
+    /**
+     * Variation percentage of total views in the last 7 days
+     * @type {number}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'views_variation_percentage_7d': number;
+    /**
+     * Previous period stats
+     * @type {GetProjectStatsPrevPeriodDTO}
+     * @memberof GetProjectStatsResponseDTO
+     */
+    'prev_period': GetProjectStatsPrevPeriodDTO;
 }
 /**
  * 
@@ -6571,6 +10451,85 @@ export interface GetQuestionResponseDTO {
      * @memberof GetQuestionResponseDTO
      */
     'subject'?: GetChoicesFormattedDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetQuestionsResponse
+ */
+export interface GetQuestionsResponse {
+    /**
+     * The id of the question
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'id': string;
+    /**
+     * The id of the question
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'question_id': string;
+    /**
+     * The type of the question
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'type': string;
+    /**
+     * The subject of the question (for talk_more_about type)
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'subject'?: string;
+    /**
+     * The id of the first hero
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'hero1_id': string;
+    /**
+     * The first hero object
+     * @type {QuestionHero}
+     * @memberof GetQuestionsResponse
+     */
+    'hero1': QuestionHero;
+    /**
+     * The id of the second hero
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'hero2_id': string;
+    /**
+     * The second hero object
+     * @type {QuestionHero}
+     * @memberof GetQuestionsResponse
+     */
+    'hero2': QuestionHero;
+    /**
+     * The id of the tweet
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'tweet_id'?: string;
+    /**
+     * The tweet object
+     * @type {QuestionTweet}
+     * @memberof GetQuestionsResponse
+     */
+    'tweet'?: QuestionTweet;
+    /**
+     * The id of the answer
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'answer': string;
+    /**
+     * The date and time the question was created
+     * @type {string}
+     * @memberof GetQuestionsResponse
+     */
+    'created_at': string;
 }
 /**
  * 
@@ -6770,6 +10729,18 @@ export interface GetReferredPlayersResponse {
      * @type {number}
      * @memberof GetReferredPlayersResponse
      */
+    'xp'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
+    'xp_referrals'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetReferredPlayersResponse
+     */
     'total_volume': number;
     /**
      * 
@@ -6789,6 +10760,86 @@ export interface GetReferredPlayersResponse {
      * @memberof GetReferredPlayersResponse
      */
     'is_direct_referral': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GetSeasonSummaryDTO
+ */
+export interface GetSeasonSummaryDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'hero_id': string;
+    /**
+     * Season
+     * @type {number}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'season': number;
+    /**
+     * Eth amount
+     * @type {number}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'eth_amount': number;
+    /**
+     * Fan points amount
+     * @type {number}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'fan_points_amount': number;
+    /**
+     * Fragment amount
+     * @type {number}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'fragment_amount': number;
+    /**
+     * Eth payement status
+     * @type {string}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'eth_payement_status': string;
+    /**
+     * Fragment payement status
+     * @type {string}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'fragment_payement_status': string;
+    /**
+     * Transaction hash for ETH payment
+     * @type {string}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'tx_hash': string | null;
+    /**
+     * Created at timestamp
+     * @type {string}
+     * @memberof GetSeasonSummaryDTO
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetSeasonSummaryWithRewardsDTO
+ */
+export interface GetSeasonSummaryWithRewardsDTO {
+    /**
+     * Season payouts
+     * @type {Array<GetSeasonSummaryDTO>}
+     * @memberof GetSeasonSummaryWithRewardsDTO
+     */
+    'season_payouts': Array<GetSeasonSummaryDTO>;
+    /**
+     * Hero rewards
+     * @type {Array<HeroRewardsDTO>}
+     * @memberof GetSeasonSummaryWithRewardsDTO
+     */
+    'hero_rewards': Array<HeroRewardsDTO>;
 }
 /**
  * 
@@ -6856,6 +10907,73 @@ export interface GetSellOrdersDTO {
      * @memberof GetSellOrdersDTO
      */
     'signature': string;
+    /**
+     * Creation date, optional
+     * @type {string}
+     * @memberof GetSellOrdersDTO
+     */
+    'created_at'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GetShoutHeroInteractionResponse
+ */
+export interface GetShoutHeroInteractionResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'quotes': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'retweets': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'replies': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetShoutHeroInteractionResponse
+     */
+    'total_clout': number;
 }
 /**
  * 
@@ -6912,68 +11030,18 @@ export interface GetTacticByIdQueryDTO {
      * @memberof GetTacticByIdQueryDTO
      */
     'include_gains'?: boolean;
-}
-/**
- * 
- * @export
- * @interface GetTacticCoinsHistoricalDataHistoryResponse
- */
-export interface GetTacticCoinsHistoricalDataHistoryResponse {
     /**
-     * 
-     * @type {number}
-     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     * Include 5 first profile pictures of players who have an entry
+     * @type {boolean}
+     * @memberof GetTacticByIdQueryDTO
      */
-    'percent_change': number;
+    'include_profile_pictures'?: boolean;
     /**
-     * 
-     * @type {number}
-     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
+     * Include the roster (flags) of the tactic
+     * @type {boolean}
+     * @memberof GetTacticByIdQueryDTO
      */
-    'price_usd': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
-     */
-    'market_cap': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetTacticCoinsHistoricalDataHistoryResponse
-     */
-    'datetime': string;
-}
-/**
- * 
- * @export
- * @interface GetTacticCoinsHistoricalDataResponseDTO
- */
-export interface GetTacticCoinsHistoricalDataResponseDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetTacticCoinsHistoricalDataResponseDTO
-     */
-    'hero_id': string;
-    /**
-     * 
-     * @type {Hero}
-     * @memberof GetTacticCoinsHistoricalDataResponseDTO
-     */
-    'hero': Hero;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetTacticCoinsHistoricalDataResponseDTO
-     */
-    'coin_id': string;
-    /**
-     * 
-     * @type {Array<GetTacticCoinsHistoricalDataHistoryResponse>}
-     * @memberof GetTacticCoinsHistoricalDataResponseDTO
-     */
-    'history': Array<GetTacticCoinsHistoricalDataHistoryResponse>;
+    'include_roster'?: boolean;
 }
 /**
  * 
@@ -7060,6 +11128,12 @@ export interface GetTacticsChoicesByIdResponse {
      * @memberof GetTacticsChoicesByIdResponse
      */
     'validate_deck_before': string;
+    /**
+     * Created at
+     * @type {string}
+     * @memberof GetTacticsChoicesByIdResponse
+     */
+    'created_at': string;
     /**
      * 
      * @type {Array<TacticsHeroChoiceResponse>}
@@ -7155,6 +11229,11 @@ export const GetTacticsEntriesOptionsDTODistinctEnum = {
     Hero3Stars: 'hero3_stars',
     Hero4Stars: 'hero4_stars',
     Hero5Stars: 'hero5_stars',
+    Hero1SalaryCap: 'hero1_salary_cap',
+    Hero2SalaryCap: 'hero2_salary_cap',
+    Hero3SalaryCap: 'hero3_salary_cap',
+    Hero4SalaryCap: 'hero4_salary_cap',
+    Hero5SalaryCap: 'hero5_salary_cap',
     TicketId: 'ticket_id',
     PreviousRank: 'previous_rank',
     Autocompleted: 'autocompleted',
@@ -7444,12 +11523,69 @@ export interface GetTacticsQueryDTO {
      */
     'include_gains'?: boolean;
     /**
+     * Include 5 first profile pictures of players who have an entry
+     * @type {boolean}
+     * @memberof GetTacticsQueryDTO
+     */
+    'include_profile_pictures'?: boolean;
+    /**
+     * Include the roster (flags) of the tactic
+     * @type {boolean}
+     * @memberof GetTacticsQueryDTO
+     */
+    'include_roster'?: boolean;
+    /**
      * Pagination arguments
      * @type {PaginationDTO}
      * @memberof GetTacticsQueryDTO
      */
     'pagination'?: PaginationDTO;
 }
+/**
+ * 
+ * @export
+ * @interface GetTacticsTxsHistoriesResponseDTO
+ */
+export interface GetTacticsTxsHistoriesResponseDTO {
+    /**
+     * Type of the transaction
+     * @type {string}
+     * @memberof GetTacticsTxsHistoriesResponseDTO
+     */
+    'type': GetTacticsTxsHistoriesResponseDTOTypeEnum;
+    /**
+     * Amount of the transaction
+     * @type {number}
+     * @memberof GetTacticsTxsHistoriesResponseDTO
+     */
+    'usdc_amount': number;
+    /**
+     * Amount of tickets
+     * @type {number}
+     * @memberof GetTacticsTxsHistoriesResponseDTO
+     */
+    'tickets_amount': number;
+    /**
+     * Date of the transaction
+     * @type {string}
+     * @memberof GetTacticsTxsHistoriesResponseDTO
+     */
+    'created_at': string;
+    /**
+     * Tactic ID related to the transaction (null for OUT)
+     * @type {string}
+     * @memberof GetTacticsTxsHistoriesResponseDTO
+     */
+    'tactic_id'?: string | null;
+}
+
+export const GetTacticsTxsHistoriesResponseDTOTypeEnum = {
+    In: 'IN',
+    Out: 'OUT'
+} as const;
+
+export type GetTacticsTxsHistoriesResponseDTOTypeEnum = typeof GetTacticsTxsHistoriesResponseDTOTypeEnum[keyof typeof GetTacticsTxsHistoriesResponseDTOTypeEnum];
+
 /**
  * 
  * @export
@@ -7509,6 +11645,69 @@ export interface GetTicketsWithEntryResponseDTO {
 /**
  * 
  * @export
+ * @interface GetTopEntrantDTO
+ */
+export interface GetTopEntrantDTO {
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof GetTopEntrantDTO
+     */
+    'player_id': string;
+    /**
+     * Number of entries for this player
+     * @type {number}
+     * @memberof GetTopEntrantDTO
+     */
+    'count': number;
+    /**
+     * Player name
+     * @type {string}
+     * @memberof GetTopEntrantDTO
+     */
+    'name': string;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof GetTopEntrantDTO
+     */
+    'handle': string;
+    /**
+     * Profile picture URL
+     * @type {string}
+     * @memberof GetTopEntrantDTO
+     */
+    'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetTopEntrantsResponseDTO
+ */
+export interface GetTopEntrantsResponseDTO {
+    /**
+     * 
+     * @type {Array<GetTopEntrantDTO>}
+     * @memberof GetTopEntrantsResponseDTO
+     */
+    'entrants': Array<GetTopEntrantDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetTopPayoutsResponseDto
+ */
+export interface GetTopPayoutsResponseDto {
+    /**
+     * Top 5 positions by payout
+     * @type {Array<TopPayoutPositionDto>}
+     * @memberof GetTopPayoutsResponseDto
+     */
+    'positions': Array<TopPayoutPositionDto>;
+}
+/**
+ * 
+ * @export
  * @interface GetTopicsFlagsDTO
  */
 export interface GetTopicsFlagsDTO {
@@ -7549,25 +11748,31 @@ export interface GetTotalTicketsGainsResponseDTO {
      * @type {number}
      * @memberof GetTotalTicketsGainsResponseDTO
      */
-    'reward_eth': number;
+    'reward_usdc': number;
     /**
-     * Total gold rewards
+     * Total fragments rewards
      * @type {number}
      * @memberof GetTotalTicketsGainsResponseDTO
      */
-    'reward_gold': number;
+    'reward_fragments': number;
     /**
-     * Total cards rewards
-     * @type {number}
+     * Total extra rewards
+     * @type {Array<ExtraRewardDTO>}
      * @memberof GetTotalTicketsGainsResponseDTO
      */
-    'reward_cards': number;
+    'reward_extra': Array<ExtraRewardDTO>;
     /**
      * Total tactic tickets rewards
      * @type {number}
      * @memberof GetTotalTicketsGainsResponseDTO
      */
     'reward_tickets': number;
+    /**
+     * Total fan points rewards
+     * @type {number}
+     * @memberof GetTotalTicketsGainsResponseDTO
+     */
+    'reward_fan': number;
 }
 /**
  * 
@@ -7605,6 +11810,38 @@ export interface GetTournamentHistoryOfPlayerIdDTO {
      * @memberof GetTournamentHistoryOfPlayerIdDTO
      */
     'league_played': Array<number>;
+}
+/**
+ * 
+ * @export
+ * @interface GetTournamentsQueryDTO
+ */
+export interface GetTournamentsQueryDTO {
+    /**
+     * Number of tournaments to return
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'limit': number;
+    /**
+     * Cursor for pagination
+     * @type {CursorDTO}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'cursor': CursorDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetTrackedUsersResponseDto
+ */
+export interface GetTrackedUsersResponseDto {
+    /**
+     * List of tracked users
+     * @type {Array<TrackedUserDto>}
+     * @memberof GetTrackedUsersResponseDto
+     */
+    'users': Array<TrackedUserDto>;
 }
 /**
  * 
@@ -7671,6 +11908,175 @@ export interface GetTransactionDTO {
 /**
  * 
  * @export
+ * @interface GetTweetWithUserInfoResponseDTO
+ */
+export interface GetTweetWithUserInfoResponseDTO {
+    /**
+     * The post id
+     * @type {string}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'post_id': string;
+    /**
+     * The number of views
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'views': number;
+    /**
+     * The number of likes
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'likes': number;
+    /**
+     * The number of retweets
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'retweets': number;
+    /**
+     * The number of quotes
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'quotes': number;
+    /**
+     * The number of replies
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'replies': number;
+    /**
+     * The number of bookmarks
+     * @type {number}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'bookmarks': number;
+    /**
+     * The creation date
+     * @type {string}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'created_at': string;
+    /**
+     * The text
+     * @type {string}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'text': string;
+    /**
+     * The flags
+     * @type {Array<FlagDTO>}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'flags'?: Array<FlagDTO>;
+    /**
+     * The quoted tweet, if the post is a quote
+     * @type {UserTweetPerTopicDTO}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'quoted'?: UserTweetPerTopicDTO;
+    /**
+     * The user info
+     * @type {UserInfoDTO}
+     * @memberof GetTweetWithUserInfoResponseDTO
+     */
+    'hero': UserInfoDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetTweetsQueryDto
+ */
+export interface GetTweetsQueryDto {
+    /**
+     * Sort tweets by popularity (banger) or recency (latest)
+     * @type {string}
+     * @memberof GetTweetsQueryDto
+     */
+    'sorting'?: GetTweetsQueryDtoSortingEnum;
+    /**
+     * Topic to filter tweets by
+     * @type {string}
+     * @memberof GetTweetsQueryDto
+     */
+    'topic': string;
+    /**
+     * Limit the number of tweets returned
+     * @type {number}
+     * @memberof GetTweetsQueryDto
+     */
+    'limit'?: number;
+}
+
+export const GetTweetsQueryDtoSortingEnum = {
+    Banger: 'banger',
+    Latest: 'latest'
+} as const;
+
+export type GetTweetsQueryDtoSortingEnum = typeof GetTweetsQueryDtoSortingEnum[keyof typeof GetTweetsQueryDtoSortingEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetTweetsWithFlagsDTO
+ */
+export interface GetTweetsWithFlagsDTO {
+    /**
+     * Whether the tweets has been classified
+     * @type {boolean}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'classified'?: boolean;
+    /**
+     * The flags the tweet has
+     * @type {Array<string>}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'flags'?: Array<string>;
+    /**
+     * The flags the tweet does not have
+     * @type {Array<string>}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'flags_not'?: Array<string>;
+    /**
+     * The sorting of the tweets
+     * @type {string}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'sorting'?: GetTweetsWithFlagsDTOSortingEnum;
+    /**
+     * The admin user id
+     * @type {string}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'admin_user_id'?: string;
+    /**
+     * Filter by flags with weight zero
+     * @type {boolean}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'weightZero'?: boolean;
+    /**
+     * Pagination
+     * @type {PaginationDTO}
+     * @memberof GetTweetsWithFlagsDTO
+     */
+    'pagination': PaginationDTO;
+}
+
+export const GetTweetsWithFlagsDTOSortingEnum = {
+    Latest: 'latest',
+    Banger: 'banger'
+} as const;
+
+export type GetTweetsWithFlagsDTOSortingEnum = typeof GetTweetsWithFlagsDTOSortingEnum[keyof typeof GetTweetsWithFlagsDTOSortingEnum];
+
+/**
+ * 
+ * @export
  * @interface GetUserInnerCircleDTO
  */
 export interface GetUserInnerCircleDTO {
@@ -7692,6 +12098,113 @@ export interface GetUserInnerCircleDTO {
      * @memberof GetUserInnerCircleDTO
      */
     'inner_circle': Array<HeroCircleDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserMedianStatsResponseDTO
+ */
+export interface GetUserMedianStatsResponseDTO {
+    /**
+     * Median certified views
+     * @type {number}
+     * @memberof GetUserMedianStatsResponseDTO
+     */
+    'median_certified_views': number | null;
+    /**
+     * Average certified views
+     * @type {number}
+     * @memberof GetUserMedianStatsResponseDTO
+     */
+    'avg_certified_views': number | null;
+    /**
+     * Average certified likes (not median)
+     * @type {number}
+     * @memberof GetUserMedianStatsResponseDTO
+     */
+    'avg_certified_likes': number | null;
+    /**
+     * Average certified retweets (not median)
+     * @type {number}
+     * @memberof GetUserMedianStatsResponseDTO
+     */
+    'avg_certified_retweets': number | null;
+    /**
+     * When the stats were computed
+     * @type {string}
+     * @memberof GetUserMedianStatsResponseDTO
+     */
+    'computed_at': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserProjectFeedResponseDTO
+ */
+export interface GetUserProjectFeedResponseDTO {
+    /**
+     * User tweets for the specific project
+     * @type {Array<UserProjectFeedItemDTO>}
+     * @memberof GetUserProjectFeedResponseDTO
+     */
+    'tweets': Array<UserProjectFeedItemDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserRankingResponseDTO
+ */
+export interface GetUserRankingResponseDTO {
+    /**
+     * User info
+     * @type {UserFullInfoDTO}
+     * @memberof GetUserRankingResponseDTO
+     */
+    'user_info': UserFullInfoDTO;
+    /**
+     * User ranking
+     * @type {UserRankingItemDTO}
+     * @memberof GetUserRankingResponseDTO
+     */
+    'user_ranking'?: UserRankingItemDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserRankingsByDateRangeByProjectResponseDTO
+ */
+export interface GetUserRankingsByDateRangeByProjectResponseDTO {
+    /**
+     * User info
+     * @type {UserFullInfoDTO}
+     * @memberof GetUserRankingsByDateRangeByProjectResponseDTO
+     */
+    'user_info': UserFullInfoDTO;
+    /**
+     * User rankings
+     * @type {UserRankingDateRangeItemDTO}
+     * @memberof GetUserRankingsByDateRangeByProjectResponseDTO
+     */
+    'user_ranking'?: UserRankingDateRangeItemDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserRankingsByDateRangeResponseDTO
+ */
+export interface GetUserRankingsByDateRangeResponseDTO {
+    /**
+     * User info
+     * @type {UserFullInfoDTO}
+     * @memberof GetUserRankingsByDateRangeResponseDTO
+     */
+    'user_info': UserFullInfoDTO;
+    /**
+     * User rankings
+     * @type {Array<UserRankingDateRangeItemDTO>}
+     * @memberof GetUserRankingsByDateRangeResponseDTO
+     */
+    'user_rankings': Array<UserRankingDateRangeItemDTO>;
 }
 /**
  * 
@@ -7728,6 +12241,25 @@ export interface GetUserRegisteredTournamentsDTO {
 /**
  * 
  * @export
+ * @interface GetUserShoutFeedResponseDTO
+ */
+export interface GetUserShoutFeedResponseDTO {
+    /**
+     * User information
+     * @type {UserInfoDTO}
+     * @memberof GetUserShoutFeedResponseDTO
+     */
+    'userInfo': UserInfoDTO;
+    /**
+     * User tweets/posts
+     * @type {Array<UserTweetResponseDTO>}
+     * @memberof GetUserShoutFeedResponseDTO
+     */
+    'userTweets': Array<UserTweetResponseDTO>;
+}
+/**
+ * 
+ * @export
  * @interface GetUserTweetPerTopicResponseDTO
  */
 export interface GetUserTweetPerTopicResponseDTO {
@@ -7747,6 +12279,44 @@ export interface GetUserTweetPerTopicResponseDTO {
 /**
  * 
  * @export
+ * @interface GetUserWhitelistsResponseDTO
+ */
+export interface GetUserWhitelistsResponseDTO {
+    /**
+     * Twitter ID
+     * @type {string}
+     * @memberof GetUserWhitelistsResponseDTO
+     */
+    'twitter_id': string;
+    /**
+     * List of projects the user is whitelisted for
+     * @type {Array<UserWhitelistProjectDTO>}
+     * @memberof GetUserWhitelistsResponseDTO
+     */
+    'whitelisted_projects': Array<UserWhitelistProjectDTO>;
+    /**
+     * Total count of whitelisted projects
+     * @type {number}
+     * @memberof GetUserWhitelistsResponseDTO
+     */
+    'total_count': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetUsersFullInfoBatchResponseDTO
+ */
+export interface GetUsersFullInfoBatchResponseDTO {
+    /**
+     * Array of user full information including clout scores
+     * @type {Array<UserFullInfoDTO>}
+     * @memberof GetUsersFullInfoBatchResponseDTO
+     */
+    'users': Array<UserFullInfoDTO>;
+}
+/**
+ * 
+ * @export
  * @interface GetVoteConfigQueryDTO
  */
 export interface GetVoteConfigQueryDTO {
@@ -7762,6 +12332,141 @@ export interface GetVoteConfigQueryDTO {
      * @memberof GetVoteConfigQueryDTO
      */
     'pagination'?: PaginationDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetWhitelistQueryDTO
+ */
+export interface GetWhitelistQueryDTO {
+    /**
+     * The project id
+     * @type {string}
+     * @memberof GetWhitelistQueryDTO
+     */
+    'project_id': string;
+    /**
+     * Pagination parameters
+     * @type {PaginationDTO}
+     * @memberof GetWhitelistQueryDTO
+     */
+    'pagination': PaginationDTO;
+}
+/**
+ * 
+ * @export
+ * @interface GetWhitelistResponseDTO
+ */
+export interface GetWhitelistResponseDTO {
+    /**
+     * The user handle
+     * @type {string}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'handle': string;
+    /**
+     * The user name
+     * @type {string}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'name': string;
+    /**
+     * The user followers count
+     * @type {number}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'followers_count': number;
+    /**
+     * The user profile image url
+     * @type {string}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * The user smart follow count
+     * @type {number}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'smart_follow_count': number;
+    /**
+     * The user id
+     * @type {string}
+     * @memberof GetWhitelistResponseDTO
+     */
+    'user_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetZedUserDataResponseDTO
+ */
+export interface GetZedUserDataResponseDTO {
+    /**
+     * User twitterID
+     * @type {string}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'user_id': string;
+    /**
+     * User clout score
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'clout_score': number;
+    /**
+     * User Zed holdings
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'zed_holdings': number;
+    /**
+     * User Zed holdings in USD
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'zed_holdings_usd': number;
+    /**
+     * User race pool balance
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'race_pool_balance': number;
+    /**
+     * User race pool balance in USD
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'race_pool_balance_usd': number;
+    /**
+     * User referral count
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'referral_count': number;
+    /**
+     * If the user is the whitelist
+     * @type {boolean}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'is_whitelisted': boolean;
+    /**
+     * User status
+     * @type {string}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'status': string;
+    /**
+     * User fourteen day average
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'fourteen_day_avg': number;
+    /**
+     * User fourteen day average in USD
+     * @type {number}
+     * @memberof GetZedUserDataResponseDTO
+     */
+    'fourteen_day_avg_usd': number;
 }
 /**
  * 
@@ -8014,11 +12719,16 @@ export interface HandlePushNotificationDto {
 
 export const HandlePushNotificationDtoTypeEnum = {
     TradeCreated: 'TRADE_CREATED',
+    BidAccepted: 'BID_ACCEPTED',
     RewardsAvailable: 'REWARDS_AVAILABLE',
     TacticOpened: 'TACTIC_OPENED',
     TacticRewardsAvailable: 'TACTIC_REWARDS_AVAILABLE',
     TournamentRewardsAvailable: 'TOURNAMENT_REWARDS_AVAILABLE',
-    TournamentRegistrationAvailable: 'TOURNAMENT_REGISTRATION_AVAILABLE'
+    TournamentRegistrationAvailable: 'TOURNAMENT_REGISTRATION_AVAILABLE',
+    TournamentStarting: 'TOURNAMENT_STARTING',
+    TournamentEnded: 'TOURNAMENT_ENDED',
+    TacticsCreated: 'TACTICS_CREATED',
+    TacticsStarting: 'TACTICS_STARTING'
 } as const;
 
 export type HandlePushNotificationDtoTypeEnum = typeof HandlePushNotificationDtoTypeEnum[keyof typeof HandlePushNotificationDtoTypeEnum];
@@ -8028,7 +12738,7 @@ export type HandlePushNotificationDtoTypeEnum = typeof HandlePushNotificationDto
  * Event data object
  * @export
  */
-export type HandlePushNotificationDtoData = RewardsAvailableData | TacticRewardsAvailableData | TradeCreatedData;
+export type HandlePushNotificationDtoData = BidAcceptedData | RewardsAvailableData | TacticRewardsAvailableData | TacticsCreatedData | TacticsStartingData | TournamentEndedData | TournamentStartingData | TradeCreatedData;
 
 /**
  * 
@@ -8282,16 +12992,16 @@ export interface Hero {
     'star_gain'?: number;
     /**
      * List of hero_scores
-     * @type {Array<OmitTypeClass>}
-     * @memberof Hero
-     */
-    'tactic_scores': Array<OmitTypeClass>;
-    /**
-     * List of card hero swapping
      * @type {Array<Array<string>>}
      * @memberof Hero
      */
-    'tournament_histories': Array<Array<string>>;
+    'tactic_scores': Array<Array<string>>;
+    /**
+     * List of card hero swapping
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof Hero
+     */
+    'tournament_histories': Array<TournamentPlayerHistories>;
     /**
      * Volume of trade on hero (optional)
      * @type {number}
@@ -8505,6 +13215,12 @@ export interface HeroCircleDTO {
      * @memberof HeroCircleDTO
      */
     'is_player': boolean;
+    /**
+     * Twitter ID
+     * @type {string}
+     * @memberof HeroCircleDTO
+     */
+    'twitter_id': string;
 }
 /**
  * 
@@ -8568,6 +13284,67 @@ export interface HeroCoinResponse {
      * @memberof HeroCoinResponse
      */
     'coin_histories'?: Array<HeroCoinHistoryResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroDetailsDTO
+ */
+export interface HeroDetailsDTO {
+    /**
+     * Hero profile image URL
+     * @type {string}
+     * @memberof HeroDetailsDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Hero summary data
+     * @type {object}
+     * @memberof HeroDetailsDTO
+     */
+    'summary': object;
+    /**
+     * Word cloud data
+     * @type {object}
+     * @memberof HeroDetailsDTO
+     */
+    'word_cloud': object;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof HeroDetailsDTO
+     */
+    'handle': string;
+    /**
+     * Hero creation date
+     * @type {string}
+     * @memberof HeroDetailsDTO
+     */
+    'created_at': string;
+    /**
+     * Average posts per day in the last 7 days
+     * @type {number}
+     * @memberof HeroDetailsDTO
+     */
+    'avg_posts_7d': number;
+    /**
+     * Total views count in the last 7 days
+     * @type {number}
+     * @memberof HeroDetailsDTO
+     */
+    'views_count_7d': number;
+    /**
+     * Hero followers count
+     * @type {number}
+     * @memberof HeroDetailsDTO
+     */
+    'followers_count': number;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof HeroDetailsDTO
+     */
+    'name': string;
 }
 /**
  * 
@@ -8690,6 +13467,25 @@ export interface HeroHolderDTO {
 /**
  * 
  * @export
+ * @interface HeroInOutDTO
+ */
+export interface HeroInOutDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroInOutDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroInOutDTO
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
  * @interface HeroIsSybilDTO
  */
 export interface HeroIsSybilDTO {
@@ -8709,70 +13505,222 @@ export interface HeroIsSybilDTO {
 /**
  * 
  * @export
- * @interface HeroLeaderboardPositionItemDTO
+ * @interface HeroLeaderboardDTO
  */
-export interface HeroLeaderboardPositionItemDTO {
+export interface HeroLeaderboardDTO {
     /**
      * Hero ID
      * @type {string}
-     * @memberof HeroLeaderboardPositionItemDTO
+     * @memberof HeroLeaderboardDTO
      */
     'hero_id': string;
     /**
-     * Topic flag
+     * Score
+     * @type {number}
+     * @memberof HeroLeaderboardDTO
+     */
+    'score': number;
+    /**
+     * ETH amount
+     * @type {number}
+     * @memberof HeroLeaderboardDTO
+     */
+    'eth_amount': number;
+    /**
+     * Hero name
      * @type {string}
-     * @memberof HeroLeaderboardPositionItemDTO
+     * @memberof HeroLeaderboardDTO
      */
-    'flag': string;
+    'name': string;
     /**
-     * Total clout score
-     * @type {number}
-     * @memberof HeroLeaderboardPositionItemDTO
-     */
-    'total_clout': number;
-    /**
-     * Final rank
-     * @type {number}
-     * @memberof HeroLeaderboardPositionItemDTO
-     */
-    'final_rank': number;
-    /**
-     * Total posts
-     * @type {number}
-     * @memberof HeroLeaderboardPositionItemDTO
-     */
-    'total_posts': number;
-    /**
-     * Total views
+     * Hero handle
      * @type {string}
-     * @memberof HeroLeaderboardPositionItemDTO
+     * @memberof HeroLeaderboardDTO
      */
-    'total_views': string;
+    'handle': string;
     /**
-     * Previous rank
-     * @type {number}
-     * @memberof HeroLeaderboardPositionItemDTO
+     * Hero profile image URL
+     * @type {string}
+     * @memberof HeroLeaderboardDTO
      */
-    'previous_rank': number;
-    /**
-     * Percentage of total mindshare for this topic
-     * @type {number}
-     * @memberof HeroLeaderboardPositionItemDTO
-     */
-    'mindshare_percentage': number;
+    'profile_image_url_https': string;
 }
 /**
  * 
  * @export
- * @interface HeroLeaderboardPositionsResponseDTO
+ * @interface HeroPayouts
  */
-export interface HeroLeaderboardPositionsResponseDTO {
+export interface HeroPayouts {
     /**
-     * List of hero leaderboard positions across topics
-     * @type {Array<HeroLeaderboardPositionItemDTO>}
-     * @memberof HeroLeaderboardPositionsResponseDTO
+     * The type of the payout
+     * @type {string}
+     * @memberof HeroPayouts
      */
-    'data': Array<HeroLeaderboardPositionItemDTO>;
+    'type': string;
+    /**
+     * The payout details
+     * @type {Array<PayoutObject>}
+     * @memberof HeroPayouts
+     */
+    'payout': Array<PayoutObject>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroPerformanceDto
+ */
+export interface HeroPerformanceDto {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroPerformanceDto
+     */
+    'id': string;
+    /**
+     * Twitter handle
+     * @type {string}
+     * @memberof HeroPerformanceDto
+     */
+    'handle': string;
+    /**
+     * Display name
+     * @type {string}
+     * @memberof HeroPerformanceDto
+     */
+    'name': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof HeroPerformanceDto
+     */
+    'profile_image_url_https': string | null;
+    /**
+     * Top 5 rate in tournaments (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_5_rate_tourney': number | null;
+    /**
+     * Top 10 rate in tournaments (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_10_rate_tourney': number | null;
+    /**
+     * Top 5 rate in last 7 days (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_5_rate_7d': number | null;
+    /**
+     * Top 10 rate in last 7 days (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_10_rate_7d': number | null;
+    /**
+     * Top 5 rate in last 24 hours (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_5_rate_24hr': number | null;
+    /**
+     * Top 10 rate in last 24 hours (percentage)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'top_10_rate_24hr': number | null;
+    /**
+     * Momentum score (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'score_momentum': number | null;
+    /**
+     * Ceiling score (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'score_ceiling': number | null;
+    /**
+     * Consistency score (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'score_consistency': number | null;
+    /**
+     * Tournament confidence percentage (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'confidence_tourney_pct': number | null;
+    /**
+     * 7-day confidence percentage (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'confidence_7d_pct': number | null;
+    /**
+     * 24-hour confidence percentage (0-100)
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'confidence_24hr_pct': number | null;
+    /**
+     * Overall composite score for ranking
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'composite_score': number;
+    /**
+     * Average rank in tournaments
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'avg_rank_tourney': number | null;
+    /**
+     * Average rank in last 7 days
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'avg_rank_7d': number | null;
+    /**
+     * Recency weighted rank in last 24 hours
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'recency_wtd_rank_24hr': number | null;
+    /**
+     * Best rank in tournaments
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'best_rank_tourney': number | null;
+    /**
+     * Best rank in last 7 days
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'best_rank_7d': number | null;
+    /**
+     * Best rank in last 24 hours
+     * @type {number}
+     * @memberof HeroPerformanceDto
+     */
+    'best_rank_24hr': number | null;
+}
+/**
+ * 
+ * @export
+ * @interface HeroPerformanceResponseDto
+ */
+export interface HeroPerformanceResponseDto {
+    /**
+     * List of hero performance data
+     * @type {Array<HeroPerformanceDto>}
+     * @memberof HeroPerformanceResponseDto
+     */
+    'heroes': Array<HeroPerformanceDto>;
 }
 /**
  * 
@@ -8884,16 +13832,28 @@ export interface HeroQuickOverviewDTO {
     'joined_ct': string;
     /**
      * The status of the hero
+     * @type {HeroStatusDTO}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'status': HeroStatusDTO;
+    /**
+     * The last pull 48h of the hero
      * @type {string}
      * @memberof HeroQuickOverviewDTO
      */
-    'status': string;
+    'last_pull_48h': string;
     /**
      * The current season
      * @type {CurrentSeasonHeroQuickOverviewDTO}
      * @memberof HeroQuickOverviewDTO
      */
     'current_season': CurrentSeasonHeroQuickOverviewDTO;
+    /**
+     * The referral bonus of the hero
+     * @type {number}
+     * @memberof HeroQuickOverviewDTO
+     */
+    'referral_bonus': number;
 }
 /**
  * 
@@ -9135,6 +14095,176 @@ export interface HeroRewards {
 /**
  * 
  * @export
+ * @interface HeroRewardsDTO
+ */
+export interface HeroRewardsDTO {
+    /**
+     * Reward ID
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'id': string;
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'hero_id': string;
+    /**
+     * Whether claim was asked
+     * @type {boolean}
+     * @memberof HeroRewardsDTO
+     */
+    'claim_asked': boolean;
+    /**
+     * Fantasy points
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'fantasy_points': number;
+    /**
+     * Date computed
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'date_computed': string;
+    /**
+     * Mint revenue
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'mint_revenue': number | null;
+    /**
+     * Fee revenue
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'fee_revenue': number;
+    /**
+     * Total revenue
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'total_revenue': number;
+    /**
+     * Gold
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'gold': number | null;
+    /**
+     * Shared percentage
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'shared_percentage': number | null;
+    /**
+     * In deck holders only
+     * @type {boolean}
+     * @memberof HeroRewardsDTO
+     */
+    'in_deck_holders_only': boolean;
+    /**
+     * Claim ETH amount
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'claim_eth': number;
+    /**
+     * Claim gold amount
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'claim_gold': number;
+    /**
+     * Claim fan amount
+     * @type {number}
+     * @memberof HeroRewardsDTO
+     */
+    'claim_fan': number;
+    /**
+     * Player address
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'player_address': string | null;
+    /**
+     * Card reward
+     * @type {object}
+     * @memberof HeroRewardsDTO
+     */
+    'card_reward': object | null;
+    /**
+     * Distribution condition
+     * @type {object}
+     * @memberof HeroRewardsDTO
+     */
+    'distribution_condition': object | null;
+    /**
+     * Whether is processed
+     * @type {boolean}
+     * @memberof HeroRewardsDTO
+     */
+    'is_processed': boolean;
+    /**
+     * Whether payout is done
+     * @type {boolean}
+     * @memberof HeroRewardsDTO
+     */
+    'is_payout_done': boolean;
+    /**
+     * Whether cards are distributed
+     * @type {boolean}
+     * @memberof HeroRewardsDTO
+     */
+    'are_cards_distributed': boolean;
+    /**
+     * Created at timestamp
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'created_at': string;
+    /**
+     * Updated at timestamp
+     * @type {string}
+     * @memberof HeroRewardsDTO
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroScoreDTO
+ */
+export interface HeroScoreDTO {
+    /**
+     * The unique ID of the hero
+     * @type {string}
+     * @memberof HeroScoreDTO
+     */
+    'hero_id': string;
+    /**
+     * The score of the hero
+     * @type {number}
+     * @memberof HeroScoreDTO
+     */
+    'score': number;
+    /**
+     * The date of the score
+     * @type {string}
+     * @memberof HeroScoreDTO
+     */
+    'created_at': string;
+    /**
+     * The rank of the hero
+     * @type {number}
+     * @memberof HeroScoreDTO
+     */
+    'rank': number;
+}
+/**
+ * 
+ * @export
  * @interface HeroStatsDTO
  */
 export interface HeroStatsDTO {
@@ -9157,6 +14287,66 @@ export interface HeroStatsDTO {
      */
     'tacticStats': TacticStatsDTO;
 }
+/**
+ * 
+ * @export
+ * @interface HeroStatsLastUpdateDTO
+ */
+export interface HeroStatsLastUpdateDTO {
+    /**
+     * Last update timestamp of heroes stats
+     * @type {string}
+     * @memberof HeroStatsLastUpdateDTO
+     */
+    'lastUpdate': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroStatusDTO
+ */
+export interface HeroStatusDTO {
+    /**
+     * The status of the hero
+     * @type {string}
+     * @memberof HeroStatusDTO
+     */
+    'player_status': HeroStatusDTOPlayerStatusEnum;
+    /**
+     * The status of the hero
+     * @type {string}
+     * @memberof HeroStatusDTO
+     */
+    'hero_status': HeroStatusDTOHeroStatusEnum;
+    /**
+     * The status of the hero
+     * @type {string}
+     * @memberof HeroStatusDTO
+     */
+    'futur_status': HeroStatusDTOFuturStatusEnum;
+}
+
+export const HeroStatusDTOPlayerStatusEnum = {
+    Registered: 'REGISTERED',
+    NotRegistered: 'NOT_REGISTERED'
+} as const;
+
+export type HeroStatusDTOPlayerStatusEnum = typeof HeroStatusDTOPlayerStatusEnum[keyof typeof HeroStatusDTOPlayerStatusEnum];
+export const HeroStatusDTOHeroStatusEnum = {
+    None: 'NONE',
+    Hero: 'HERO',
+    Tactic: 'TACTIC'
+} as const;
+
+export type HeroStatusDTOHeroStatusEnum = typeof HeroStatusDTOHeroStatusEnum[keyof typeof HeroStatusDTOHeroStatusEnum];
+export const HeroStatusDTOFuturStatusEnum = {
+    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
+    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
+    None: 'NONE'
+} as const;
+
+export type HeroStatusDTOFuturStatusEnum = typeof HeroStatusDTOFuturStatusEnum[keyof typeof HeroStatusDTOFuturStatusEnum];
+
 /**
  * 
  * @export
@@ -9193,6 +14383,43 @@ export interface HeroSummaryDTO {
      * @memberof HeroSummaryDTO
      */
     'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface HeroSupplyByRarityDto
+ */
+export interface HeroSupplyByRarityDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroSupplyByRarityDto
+     */
+    'rarity1Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroSupplyByRarityDto
+     */
+    'rarity2Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroSupplyByRarityDto
+     */
+    'rarity3Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroSupplyByRarityDto
+     */
+    'rarity4Count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroSupplyByRarityDto
+     */
+    'utilityCount': number;
 }
 /**
  * 
@@ -9360,12 +14587,6 @@ export interface HeroTweetDTO {
     'impact_score': number;
     /**
      * 
-     * @type {object}
-     * @memberof HeroTweetDTO
-     */
-    'top_interacting_users': object;
-    /**
-     * 
      * @type {number}
      * @memberof HeroTweetDTO
      */
@@ -9465,9 +14686,76 @@ export interface HeroVolumeStatsDTO {
 /**
  * 
  * @export
+ * @interface HeroVoting
+ */
+export interface HeroVoting {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof HeroVoting
+     */
+    'id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof HeroVoting
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof HeroVoting
+     */
+    'handle': string;
+    /**
+     * Hero profile image URL
+     * @type {string}
+     * @memberof HeroVoting
+     */
+    'profile_image_url_https': string;
+    /**
+     * Number of followers
+     * @type {number}
+     * @memberof HeroVoting
+     */
+    'followers_count'?: number;
+    /**
+     * Expected score for the hero
+     * @type {number}
+     * @memberof HeroVoting
+     */
+    'expected_score'?: number;
+    /**
+     * Expected rank for the hero
+     * @type {number}
+     * @memberof HeroVoting
+     */
+    'expected_rank'?: number;
+    /**
+     * Average of the last 4 scores for the hero
+     * @type {number}
+     * @memberof HeroVoting
+     */
+    'last_4_scores_avg': number;
+    /**
+     * Indicates if the hero is in selection
+     * @type {boolean}
+     * @memberof HeroVoting
+     */
+    'in_selection': boolean;
+}
+/**
+ * 
+ * @export
  * @interface HeroWithStatsDTO
  */
 export interface HeroWithStatsDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'hero_id': string;
     /**
      * 
      * @type {number}
@@ -9518,6 +14806,24 @@ export interface HeroWithStatsDTO {
     'followers_count': number;
     /**
      * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'total_supply': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'total_burns_7d': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithStatsDTO
+     */
+    'total_supply_7d': number;
+    /**
+     * 
      * @type {string}
      * @memberof HeroWithStatsDTO
      */
@@ -9558,6 +14864,12 @@ export interface HeroWithStatsDTO {
      * @memberof HeroWithStatsDTO
      */
     'stars': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeroWithStatsDTO
+     */
+    'updated_at': string;
 }
 /**
  * 
@@ -9641,6 +14953,18 @@ export interface HeroWithTacticScores {
      */
     'handle': string;
     /**
+     * Current rank of the hero
+     * @type {number}
+     * @memberof HeroWithTacticScores
+     */
+    'current_rank': number;
+    /**
+     * Fantasy score of the hero
+     * @type {object}
+     * @memberof HeroWithTacticScores
+     */
+    'fantasy_score': object;
+    /**
      * Number of followers the hero has
      * @type {number}
      * @memberof HeroWithTacticScores
@@ -9654,10 +14978,28 @@ export interface HeroWithTacticScores {
     'stars': number;
     /**
      * 
-     * @type {Array<TacticsHeroScoreResponse>}
+     * @type {object}
      * @memberof HeroWithTacticScores
      */
-    'tactic_scores': Array<TacticsHeroScoreResponse>;
+    'oneDayScore': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeroWithTacticScores
+     */
+    'oneDayRank': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof HeroWithTacticScores
+     */
+    'sevenDaysAverageScore': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof HeroWithTacticScores
+     */
+    'thirtyDaysAverageScore': object;
     /**
      * 
      * @type {HeroWithTacticScoresHeroWithImagePrefix}
@@ -9683,6 +15025,12 @@ export interface HeroWithTacticScoresHeroWithImagePrefix {
      * @memberof HeroWithTacticScoresHeroWithImagePrefix
      */
     'coin': HeroCoinResponse;
+    /**
+     * 
+     * @type {Array<HeroFlag>}
+     * @memberof HeroWithTacticScoresHeroWithImagePrefix
+     */
+    'flags': Array<HeroFlag>;
 }
 /**
  * 
@@ -9860,16 +15208,16 @@ export interface HeroWithVotesCount {
     'star_gain'?: number;
     /**
      * List of hero_scores
-     * @type {Array<OmitTypeClass>}
-     * @memberof HeroWithVotesCount
-     */
-    'tactic_scores': Array<OmitTypeClass>;
-    /**
-     * List of card hero swapping
      * @type {Array<Array<string>>}
      * @memberof HeroWithVotesCount
      */
-    'tournament_histories': Array<Array<string>>;
+    'tactic_scores': Array<Array<string>>;
+    /**
+     * List of card hero swapping
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof HeroWithVotesCount
+     */
+    'tournament_histories': Array<TournamentPlayerHistories>;
     /**
      * Volume of trade on hero (optional)
      * @type {number}
@@ -9990,6 +15338,24 @@ export interface HeroWithVotesCount {
      * @memberof HeroWithVotesCount
      */
     'last_4_scores_avg': number;
+    /**
+     * Last season clout score for the hero
+     * @type {number}
+     * @memberof HeroWithVotesCount
+     */
+    'last_season_clout_score': number;
+    /**
+     * Projected score for the hero
+     * @type {number}
+     * @memberof HeroWithVotesCount
+     */
+    'projected_score': number;
+    /**
+     * Projected rank for the hero
+     * @type {number}
+     * @memberof HeroWithVotesCount
+     */
+    'projected_rank': number;
 }
 /**
  * 
@@ -10173,10 +15539,10 @@ export interface HeroWithoutBidOrders {
     'tactic_scores': Array<OmitTypeClass>;
     /**
      * List of card hero swapping
-     * @type {Array<Array<string>>}
+     * @type {Array<TournamentPlayerHistories>}
      * @memberof HeroWithoutBidOrders
      */
-    'tournament_histories': Array<Array<string>>;
+    'tournament_histories': Array<TournamentPlayerHistories>;
     /**
      * Volume of trade on hero (optional)
      * @type {number}
@@ -10244,18 +15610,6 @@ export interface HeroWithoutBidOrders {
      */
     'current'?: Current;
     /**
-     * Sell orders of the hero
-     * @type {Array<SellOrder>}
-     * @memberof HeroWithoutBidOrders
-     */
-    'sell_orders': Array<SellOrder>;
-    /**
-     * Trades of the hero
-     * @type {Array<Trade>}
-     * @memberof HeroWithoutBidOrders
-     */
-    'trades': Array<Trade>;
-    /**
      * Floor price of the hero
      * @type {number}
      * @memberof HeroWithoutBidOrders
@@ -10277,6 +15631,283 @@ export interface HeroWithoutBidOrders {
      * Flags of the hero
      * @type {Array<HeroFlag>}
      * @memberof HeroWithoutBidOrders
+     */
+    'flags': Array<HeroFlag>;
+}
+/**
+ * 
+ * @export
+ * @interface HeroWithoutBidOrdersDrizzle
+ */
+export interface HeroWithoutBidOrdersDrizzle {
+    /**
+     * Unique identifier for the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'id': string;
+    /**
+     * Handle of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'handle': string;
+    /**
+     * Name of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'name': string;
+    /**
+     * Previous rank of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'previous_rank': number;
+    /**
+     * Indicates if the hero is a player
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'is_player': boolean;
+    /**
+     * Indicates if the hero is blue verified
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'is_blue_verified': boolean;
+    /**
+     * Indicates if the hero has a default profile image
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'default_profile_image': boolean;
+    /**
+     * Description of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'description'?: string;
+    /**
+     * Count of fast followers
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'fast_followers_count': number;
+    /**
+     * Count of favourites
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'favourites_count': number;
+    /**
+     * Count of followers
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'followers_count': number;
+    /**
+     * Count of friends
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'friends_count': number;
+    /**
+     * Listed count
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'listed_count': number;
+    /**
+     * Location of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'location'?: string;
+    /**
+     * Media count
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'media_count': number;
+    /**
+     * Indicates if the hero is possibly sensitive
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'possibly_sensitive': boolean;
+    /**
+     * URL of the profile banner
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'profile_banner_url'?: string;
+    /**
+     * URL of the profile image in HTTPS
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Indicates if the hero has a banner
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'has_banner': boolean;
+    /**
+     * Indicates if the hero is verified
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'verified': boolean;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'updated_at': string;
+    /**
+     * Count of statuses
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'statuses_count': number;
+    /**
+     * Stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'stars': number;
+    /**
+     * Player address of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'player_address'?: string;
+    /**
+     * Indicates if the hero can be packed
+     * @type {boolean}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'can_be_packed': boolean;
+    /**
+     * Previous stars of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'previous_stars': number;
+    /**
+     * Star gain of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'star_gain'?: number;
+    /**
+     * List of hero_scores
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'tactic_scores': Array<OmitTypeClass>;
+    /**
+     * List of card hero swapping
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'tournament_histories': Array<TournamentPlayerHistories>;
+    /**
+     * Volume of trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'volume'?: number;
+    /**
+     * Last trade on hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'last_sale'?: number;
+    /**
+     * Floor price of hero (optional)
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'floor'?: number;
+    /**
+     * Votes from voting module
+     * @type {Array<OmitTypeClass>}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'votes'?: Array<OmitTypeClass>;
+    /**
+     * Status of the hero
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'status': string;
+    /**
+     * Credibility score
+     * @type {CredibilityAverage}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'credibility_average': CredibilityAverage;
+    /**
+     * Tactic image prefix
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'tactic_image_prefix': string;
+    /**
+     * Metadata of the hero
+     * @type {object}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'metadata': object;
+    /**
+     * coin_id: contract address and network id of codex.io
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'coin_id': string;
+    /**
+     * Coin
+     * @type {Coin}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'coin': Coin;
+    /**
+     * Current score of the hero
+     * @type {Current}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'current'?: Current;
+    /**
+     * Floor price of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'floor_price': number;
+    /**
+     * Highest bid of the hero
+     * @type {number}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'highest_bid': number;
+    /**
+     * Expected score of the hero for tournament
+     * @type {string}
+     * @memberof HeroWithoutBidOrdersDrizzle
+     */
+    'expected_score': string;
+    /**
+     * Flags of the hero
+     * @type {Array<HeroFlag>}
+     * @memberof HeroWithoutBidOrdersDrizzle
      */
     'flags': Array<HeroFlag>;
 }
@@ -10462,10 +16093,10 @@ export interface HeroWithoutSellOrders {
     'tactic_scores': Array<OmitTypeClass>;
     /**
      * List of card hero swapping
-     * @type {Array<Array<string>>}
+     * @type {Array<TournamentPlayerHistories>}
      * @memberof HeroWithoutSellOrders
      */
-    'tournament_histories': Array<Array<string>>;
+    'tournament_histories': Array<TournamentPlayerHistories>;
     /**
      * Volume of trade on hero (optional)
      * @type {number}
@@ -10533,18 +16164,6 @@ export interface HeroWithoutSellOrders {
      */
     'current'?: Current;
     /**
-     * Bid orders of the hero
-     * @type {Array<BidOrder>}
-     * @memberof HeroWithoutSellOrders
-     */
-    'bid_orders': Array<BidOrder>;
-    /**
-     * Trades of the hero
-     * @type {Array<Trade>}
-     * @memberof HeroWithoutSellOrders
-     */
-    'trades': Array<Trade>;
-    /**
      * Floor price of the hero
      * @type {number}
      * @memberof HeroWithoutSellOrders
@@ -10572,88 +16191,314 @@ export interface HeroWithoutSellOrders {
 /**
  * 
  * @export
- * @interface HotOrNotFeedResponse
+ * @interface HeroesByStarDTO
  */
-export interface HotOrNotFeedResponse {
+export interface HeroesByStarDTO {
     /**
-     * Unique identifier for the tweet
+     * Hero ID
      * @type {string}
-     * @memberof HotOrNotFeedResponse
+     * @memberof HeroesByStarDTO
      */
-    'post_id': string;
+    'id': string;
     /**
-     * Hero
-     * @type {HotOrNotHero}
-     * @memberof HotOrNotFeedResponse
-     */
-    'hero': HotOrNotHero;
-    /**
-     * Twitter handle of the hero
+     * Hero display name
      * @type {string}
-     * @memberof HotOrNotFeedResponse
+     * @memberof HeroesByStarDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof HeroesByStarDTO
      */
     'handle': string;
     /**
-     * Text for the tweet
-     * @type {string}
-     * @memberof HotOrNotFeedResponse
-     */
-    'text': string;
-    /**
-     * Creation timestamp of the tweet
-     * @type {string}
-     * @memberof HotOrNotFeedResponse
-     */
-    'created_at': string;
-    /**
-     * Tweet weighted score for ranking
+     * Hero star rating
      * @type {number}
-     * @memberof HotOrNotFeedResponse
+     * @memberof HeroesByStarDTO
      */
-    'weighted_score': number;
+    'stars': number;
+    /**
+     * Hero rank in the tournament
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'tournamentRank': number;
+    /**
+     * Hero fantasy score
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'expectedScore': number;
+    /**
+     * Hero rank
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'rank7Days': number;
+    /**
+     * Hero score
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'score7Days': number;
+    /**
+     * Hero views
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'views7Days': number;
+    /**
+     * Hero rank
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'rank24h': number;
+    /**
+     * Hero score
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'score24h': number;
+    /**
+     * Hero followers count
+     * @type {number}
+     * @memberof HeroesByStarDTO
+     */
+    'followersCount': number;
 }
 /**
  * 
  * @export
- * @interface HotOrNotHero
+ * @interface HistoryEntityDto
  */
-export interface HotOrNotHero {
+export interface HistoryEntityDto {
     /**
-     * Unique identifier for the hero
+     * 
      * @type {string}
-     * @memberof HotOrNotHero
+     * @memberof HistoryEntityDto
      */
     'id': string;
     /**
-     * Handle of the hero
+     * 
      * @type {string}
-     * @memberof HotOrNotHero
-     */
-    'handle': string;
-    /**
-     * Name of the hero
-     * @type {string}
-     * @memberof HotOrNotHero
+     * @memberof HistoryEntityDto
      */
     'name': string;
     /**
-     * Count of followers
+     * 
+     * @type {string}
+     * @memberof HistoryEntityDto
+     */
+    'picture': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryEntityDto
+     */
+    'slug': string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryEntityDto
+     */
+    'type': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface HistoryItemDto
+ */
+export interface HistoryItemDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'type': HistoryItemDtoTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'action': HistoryItemDtoActionEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'createdAt': string;
+    /**
+     * 
      * @type {number}
-     * @memberof HotOrNotHero
+     * @memberof HistoryItemDto
      */
-    'followers_count': number;
+    'amount': number;
     /**
-     * URL of the profile image in HTTPS
-     * @type {string}
-     * @memberof HotOrNotHero
+     * 
+     * @type {number}
+     * @memberof HistoryItemDto
      */
-    'profile_image_url_https'?: string;
+    'investedAmount': number;
     /**
-     * Status of the hero
-     * @type {string}
-     * @memberof HotOrNotHero
+     * 
+     * @type {number}
+     * @memberof HistoryItemDto
      */
-    'status': string;
+    'pnl': number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'marketSlug': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryItemDto
+     */
+    'parentMarketSlug': string | null;
+    /**
+     * 
+     * @type {HistoryMarketDisplayDto}
+     * @memberof HistoryItemDto
+     */
+    'marketDisplay': HistoryMarketDisplayDto;
+}
+
+export const HistoryItemDtoTypeEnum = {
+    Trade: 'TRADE',
+    Settlement: 'SETTLEMENT'
+} as const;
+
+export type HistoryItemDtoTypeEnum = typeof HistoryItemDtoTypeEnum[keyof typeof HistoryItemDtoTypeEnum];
+export const HistoryItemDtoActionEnum = {
+    Buy: 'BUY',
+    Sell: 'SELL',
+    Win: 'WIN',
+    Loss: 'LOSS',
+    Void: 'VOID'
+} as const;
+
+export type HistoryItemDtoActionEnum = typeof HistoryItemDtoActionEnum[keyof typeof HistoryItemDtoActionEnum];
+
+/**
+ * 
+ * @export
+ * @interface HistoryMarketContextDto
+ */
+export interface HistoryMarketContextDto {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof HistoryMarketContextDto
+     */
+    'hasChildMarkets': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof HistoryMarketContextDto
+     */
+    'marketHasEntity': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof HistoryMarketContextDto
+     */
+    'outcomesHaveEntity': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface HistoryMarketDisplayDto
+ */
+export interface HistoryMarketDisplayDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryMarketDisplayDto
+     */
+    'marketId': string;
+    /**
+     * 
+     * @type {HistoryMarketContextDto}
+     * @memberof HistoryMarketDisplayDto
+     */
+    'context': HistoryMarketContextDto;
+    /**
+     * 
+     * @type {HistoryMarketHeaderDto}
+     * @memberof HistoryMarketDisplayDto
+     */
+    'header': HistoryMarketHeaderDto;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryMarketDisplayDto
+     */
+    'childMarketTitle': string | null;
+    /**
+     * 
+     * @type {Array<HistoryOutcomeDto>}
+     * @memberof HistoryMarketDisplayDto
+     */
+    'outcomes': Array<HistoryOutcomeDto>;
+}
+/**
+ * 
+ * @export
+ * @interface HistoryMarketHeaderDto
+ */
+export interface HistoryMarketHeaderDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryMarketHeaderDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {HistoryEntityDto}
+     * @memberof HistoryMarketHeaderDto
+     */
+    'entity': HistoryEntityDto | null;
+}
+/**
+ * 
+ * @export
+ * @interface HistoryOutcomeDto
+ */
+export interface HistoryOutcomeDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryOutcomeDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryOutcomeDto
+     */
+    'title': string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof HistoryOutcomeDto
+     */
+    'odd': number | null;
+    /**
+     * 
+     * @type {HistoryEntityDto}
+     * @memberof HistoryOutcomeDto
+     */
+    'entity': HistoryEntityDto | null;
 }
 /**
  * 
@@ -10662,17 +16507,17 @@ export interface HotOrNotHero {
  */
 export interface HotOrNotInteractionBody {
     /**
-     * The post id
+     * The question id
      * @type {string}
      * @memberof HotOrNotInteractionBody
      */
-    'post_id': string;
+    'question_id': string;
     /**
-     * The like status
-     * @type {boolean}
+     * The answer
+     * @type {string}
      * @memberof HotOrNotInteractionBody
      */
-    'is_like': boolean;
+    'answer': string;
 }
 /**
  * 
@@ -10692,6 +16537,12 @@ export interface HotOrNotInteractionResponse {
      * @memberof HotOrNotInteractionResponse
      */
     'streak': HotOrNotStreakResponse;
+    /**
+     * Whether the player has a reward
+     * @type {boolean}
+     * @memberof HotOrNotInteractionResponse
+     */
+    'has_reward': boolean;
 }
 /**
  * 
@@ -10782,105 +16633,184 @@ export interface HotOrNotStreakResponse {
 /**
  * 
  * @export
- * @interface IncomingHeroesCloutDTO
+ * @interface HouseOverallPnlDto
  */
-export interface IncomingHeroesCloutDTO {
+export interface HouseOverallPnlDto {
     /**
-     * Hero ID
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
-     */
-    'hero_id': string;
-    /**
-     * Hero name
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
-     */
-    'name': string;
-    /**
-     * Hero handle
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
-     */
-    'handle': string;
-    /**
-     * Profile image URL
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Total clout score
+     * Total number of markets (resolved + unresolved)
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'total_clout': number;
+    'totalMarkets': number;
     /**
-     * Final rank
+     * Number of resolved markets
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'final_rank': number;
+    'resolvedMarketsCount': number;
     /**
-     * Total posts
+     * Number of unresolved markets
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'total_posts': number;
+    'unresolvedMarketsCount': number;
     /**
-     * Total views
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
-     */
-    'total_views': string;
-    /**
-     * Smart follower count
+     * Total fragments collected from all outcomes
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'smart_follower_count': number;
+    'totalCollected': number;
     /**
-     * Follower count
+     * Total fragments paid out to winners (total shares of winning outcomes)
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'follower_count': number;
+    'totalPayout': number;
     /**
-     * Season
+     * House PNL without fees (totalCollected - totalPayout) - includes all trading activity from all players
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'season': number;
+    'pnlWithoutFees': number;
     /**
-     * Last clout distribution
+     * Market seeder PNL from position_settlements
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'last_clout_distribution': number;
+    'seederPnl': number;
     /**
-     * Previous rank
+     * Total PNL without fees (pnlWithoutFees + seederPnl)
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'previous_rank': number;
+    'totalPnlWithoutFees': number;
     /**
-     * Percentage of total clout (mindshare)
+     * Total volume traded
      * @type {number}
-     * @memberof IncomingHeroesCloutDTO
+     * @memberof HouseOverallPnlDto
      */
-    'mindshare_percentage': number;
+    'totalVolume': number;
     /**
-     * Type of hero
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
+     * Fees collected (5% of total volume)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
      */
-    'type': string;
+    'feeCollected': number;
     /**
-     * Status of the hero
-     * @type {string}
-     * @memberof IncomingHeroesCloutDTO
+     * House PNL with fees (pnlWithoutFees + feeCollected) - includes all trading activity from all players
+     * @type {number}
+     * @memberof HouseOverallPnlDto
      */
-    'status': string;
+    'pnlWithFees': number;
+    /**
+     * Total PNL with fees (totalPnlWithoutFees + feeCollected)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'totalPnlWithFees': number;
+    /**
+     * Theoretical maximum loss (b · ln(N)) summed across all markets
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'theoreticalMaxLoss': number;
+    /**
+     * Total unique players across all time
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'totalUniquePlayers': number;
+}
+/**
+ * 
+ * @export
+ * @interface HousePnlDto
+ */
+export interface HousePnlDto {
+    /**
+     * Total number of markets in date range (resolved + unresolved)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'marketsCount': number;
+    /**
+     * Number of resolved markets
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'resolvedMarketsCount': number;
+    /**
+     * Number of unresolved markets
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'unresolvedMarketsCount': number;
+    /**
+     * Total volume across resolved markets
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'volume': number;
+    /**
+     * Total fees collected from resolved markets (5% of volume)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'feeCollected': number;
+    /**
+     * Combined PNL with fees (LMSR, resolved markets only) - includes all trading activity from all players
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'pnlWithFees': number;
+    /**
+     * Combined PNL without fees (LMSR only, resolved markets only) - includes all trading activity from all players
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'pnlWithoutFees': number;
+    /**
+     * Market seeder PNL from position_settlements for resolved markets in date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'seederPnl': number;
+    /**
+     * Total PNL without fees (pnlWithoutFees + seederPnl)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'totalPnlWithoutFees': number;
+    /**
+     * Total PNL with fees (totalPnlWithoutFees + feeCollected)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'totalPnlWithFees': number;
+    /**
+     * Theoretical maximum loss (LMSR only, resolved markets only)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'theoreticalMaxLoss': number;
+    /**
+     * Total unique players for the week
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'uniquePlayers': number;
+    /**
+     * Number of players contributing 50% of total volume
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'playersContributing50Percent': number;
+    /**
+     * Number of players contributing 80% of total volume
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'playersContributing80Percent': number;
 }
 /**
  * 
@@ -10911,70 +16841,183 @@ export interface InsertReferralResponseDTO {
 /**
  * 
  * @export
- * @interface Interaction
+ * @interface JackpotStatsDto
  */
-export interface Interaction {
+export interface JackpotStatsDto {
     /**
-     * Id of the interaction
+     * Total prize pool for the lottery
+     * @type {number}
+     * @memberof JackpotStatsDto
+     */
+    'prize_pool': number;
+    /**
+     * Number of unique participants in the lottery
+     * @type {number}
+     * @memberof JackpotStatsDto
+     */
+    'participant_count': number;
+    /**
+     * Whether the lottery is open for registration
+     * @type {boolean}
+     * @memberof JackpotStatsDto
+     */
+    'is_registration_open': boolean;
+    /**
+     * Start date of the main tournament (ISO 8601 format)
      * @type {string}
-     * @memberof Interaction
+     * @memberof JackpotStatsDto
+     */
+    'tournament_start_date': string | null;
+    /**
+     * Current status of the lottery
+     * @type {string}
+     * @memberof JackpotStatsDto
+     */
+    'status': JackpotStatsDtoStatusEnum;
+}
+
+export const JackpotStatsDtoStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Completed: 'COMPLETED',
+    Cancelled: 'CANCELLED'
+} as const;
+
+export type JackpotStatsDtoStatusEnum = typeof JackpotStatsDtoStatusEnum[keyof typeof JackpotStatsDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface KothDTO
+ */
+export interface KothDTO {
+    /**
+     * KOTH ID
+     * @type {string}
+     * @memberof KothDTO
      */
     'id': string;
     /**
-     * Id of the tweet
+     * KOTH name
      * @type {string}
-     * @memberof Interaction
+     * @memberof KothDTO
      */
-    'tweet_id': string;
+    'name': string;
     /**
-     * Id of the player
+     * KOTH start date
      * @type {string}
-     * @memberof Interaction
+     * @memberof KothDTO
      */
-    'player_id': string;
+    'startDate': string;
     /**
-     * Is the interaction a like
-     * @type {boolean}
-     * @memberof Interaction
-     */
-    'is_like': boolean;
-    /**
-     * Created at timestamp
+     * KOTH end date
      * @type {string}
-     * @memberof Interaction
+     * @memberof KothDTO
      */
-    'created_at': string;
+    'endDate': string;
+    /**
+     * Entry fragment price
+     * @type {number}
+     * @memberof KothDTO
+     */
+    'entry_fragment_price': number;
+    /**
+     * Payout structure
+     * @type {Array<PayoutObject>}
+     * @memberof KothDTO
+     */
+    'payout': Array<PayoutObject>;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof KothDTO
+     */
+    'tournamentNumber': number;
+    /**
+     * Config ID
+     * @type {string}
+     * @memberof KothDTO
+     */
+    'config_id': string;
+    /**
+     * Banner URL
+     * @type {string}
+     * @memberof KothDTO
+     */
+    'banner_url': string;
 }
 /**
  * 
  * @export
- * @interface InteractionSummary
+ * @interface KothEntryDTO
  */
-export interface InteractionSummary {
+export interface KothEntryDTO {
     /**
-     * Tweet ID
+     * Entry identifier
      * @type {string}
-     * @memberof InteractionSummary
+     * @memberof KothEntryDTO
      */
-    'tweet_id': string;
+    'id': string;
     /**
-     * Likes count
-     * @type {number}
-     * @memberof InteractionSummary
-     */
-    'likes_count': number;
-    /**
-     * Dislikes count
-     * @type {number}
-     * @memberof InteractionSummary
-     */
-    'dislikes_count': number;
-    /**
-     * Last updated
+     * KOTH identifier
      * @type {string}
-     * @memberof InteractionSummary
+     * @memberof KothEntryDTO
      */
-    'last_updated': string;
+    'kothId': string;
+    /**
+     * Player identifier
+     * @type {string}
+     * @memberof KothEntryDTO
+     */
+    'playerId': string;
+    /**
+     * Player name
+     * @type {string}
+     * @memberof KothEntryDTO
+     */
+    'playerName': string;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof KothEntryDTO
+     */
+    'playerHandle': string;
+    /**
+     * Player profile picture
+     * @type {string}
+     * @memberof KothEntryDTO
+     */
+    'playerProfilePicture': string;
+    /**
+     * Entry score
+     * @type {number}
+     * @memberof KothEntryDTO
+     */
+    'score': number;
+    /**
+     * Entry rank
+     * @type {number}
+     * @memberof KothEntryDTO
+     */
+    'rank': number;
+    /**
+     * Entry is filled
+     * @type {boolean}
+     * @memberof KothEntryDTO
+     */
+    'isFilled': boolean;
+    /**
+     * Heroes used for this entry (one per star 1-8)
+     * @type {Array<HeroesByStarDTO>}
+     * @memberof KothEntryDTO
+     */
+    'heroes': Array<HeroesByStarDTO>;
+    /**
+     * Entry rewards
+     * @type {number}
+     * @memberof KothEntryDTO
+     */
+    'rewards': number;
 }
 /**
  * 
@@ -10992,93 +17035,197 @@ export interface LastRefreshDTO {
 /**
  * 
  * @export
- * @interface LeaderboardForTopicItemDTO
+ * @interface LeaderboardAccessRuleDTO
  */
-export interface LeaderboardForTopicItemDTO {
+export interface LeaderboardAccessRuleDTO {
     /**
-     * Hero ID
-     * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * Leaderboard access rules
+     * @type {boolean}
+     * @memberof LeaderboardAccessRuleDTO
      */
-    'hero_id': string;
+    'whitelist': boolean;
     /**
-     * Hero name
+     * Minimum clout score for leaderboard access
+     * @type {number}
+     * @memberof LeaderboardAccessRuleDTO
+     */
+    'min_clout_score'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface LeaderboardEntryDto
+ */
+export interface LeaderboardEntryDto {
+    /**
+     * Rank position in the leaderboard
+     * @type {number}
+     * @memberof LeaderboardEntryDto
+     */
+    'rank': number;
+    /**
+     * User ID
      * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * @memberof LeaderboardEntryDto
+     */
+    'userId': string;
+    /**
+     * Username
+     * @type {string}
+     * @memberof LeaderboardEntryDto
+     */
+    'username': string;
+    /**
+     * Avatar URL
+     * @type {string}
+     * @memberof LeaderboardEntryDto
+     */
+    'avatarUrl': string | null;
+    /**
+     * Score achieved
+     * @type {number}
+     * @memberof LeaderboardEntryDto
+     */
+    'score': number;
+    /**
+     * Status of the attempt
+     * @type {string}
+     * @memberof LeaderboardEntryDto
+     */
+    'status': LeaderboardEntryDtoStatusEnum;
+    /**
+     * Cards selected by the user
+     * @type {Array<SelectedCardDto>}
+     * @memberof LeaderboardEntryDto
+     */
+    'selectedCards': Array<SelectedCardDto>;
+    /**
+     * Number of cards that match the optimal lineup
+     * @type {number}
+     * @memberof LeaderboardEntryDto
+     */
+    'matchedOptimalCards': number;
+}
+
+export const LeaderboardEntryDtoStatusEnum = {
+    Winner: 'winner',
+    AlmostThere: 'almost_there',
+    Attempt: 'attempt'
+} as const;
+
+export type LeaderboardEntryDtoStatusEnum = typeof LeaderboardEntryDtoStatusEnum[keyof typeof LeaderboardEntryDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface LeagueDTO
+ */
+export interface LeagueDTO {
+    /**
+     * League ID
+     * @type {number}
+     * @memberof LeagueDTO
+     */
+    'id': number;
+    /**
+     * League name
+     * @type {string}
+     * @memberof LeagueDTO
      */
     'name': string;
     /**
-     * Hero handle
+     * Maximum stars allowed in deck
+     * @type {number}
+     * @memberof LeagueDTO
+     */
+    'maxStars': number;
+    /**
+     * Authorized rarities with their maximum limits
+     * @type {object}
+     * @memberof LeagueDTO
+     */
+    'maxRarities': object;
+}
+/**
+ * 
+ * @export
+ * @interface LeagueUnlockThresholdDTO
+ */
+export interface LeagueUnlockThresholdDTO {
+    /**
+     * XP threshold to unlock league
+     * @type {number}
+     * @memberof LeagueUnlockThresholdDTO
+     */
+    'xp_threshold': number;
+    /**
+     * ID of the progression
      * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * @memberof LeagueUnlockThresholdDTO
      */
-    'handle': string;
+    'id': string;
     /**
-     * Profile image URL
+     * Reward type
      * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * @memberof LeagueUnlockThresholdDTO
      */
-    'profile_image_url_https'?: string;
+    'reward_type': string;
+}
+/**
+ * 
+ * @export
+ * @interface LeagueUnlockThresholdsDTO
+ */
+export interface LeagueUnlockThresholdsDTO {
     /**
-     * Total clout score
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
+     * XP threshold, id and reward type to unlock Elite league
+     * @type {LeagueUnlockThresholdDTO}
+     * @memberof LeagueUnlockThresholdsDTO
      */
-    'total_clout': number;
+    '1': LeagueUnlockThresholdDTO;
     /**
-     * Final rank
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
+     * XP threshold, id and reward type to unlock Gold league
+     * @type {LeagueUnlockThresholdDTO}
+     * @memberof LeagueUnlockThresholdsDTO
      */
-    'final_rank': number;
+    '2': LeagueUnlockThresholdDTO;
     /**
-     * Total posts
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
+     * XP threshold, id and reward type to unlock Silver league
+     * @type {LeagueUnlockThresholdDTO}
+     * @memberof LeagueUnlockThresholdsDTO
      */
-    'total_posts': number;
+    '3': LeagueUnlockThresholdDTO;
+}
+/**
+ * 
+ * @export
+ * @interface LevelUpCardsDTO
+ */
+export interface LevelUpCardsDTO {
     /**
-     * Total views
+     * Hero ID for cards to level up
      * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * @memberof LevelUpCardsDTO
      */
-    'total_views': string;
+    'heroId': string;
     /**
-     * Smart follower count
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
-     */
-    'smart_follower_count': number;
-    /**
-     * Last clout distribution
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
-     */
-    'last_clout_distribution': number;
-    /**
-     * Previous rank
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
-     */
-    'previous_rank': number;
-    /**
-     * Percentage of total clout (mindshare)
-     * @type {number}
-     * @memberof LeaderboardForTopicItemDTO
-     */
-    'mindshare_percentage': number;
-    /**
-     * Trend direction (up/down)
+     * Edition of the cards to level up
      * @type {string}
-     * @memberof LeaderboardForTopicItemDTO
+     * @memberof LevelUpCardsDTO
      */
-    'trend': string;
+    'edition': string;
     /**
-     * Historical clout data for trend visualization
-     * @type {Array<number>}
-     * @memberof LeaderboardForTopicItemDTO
+     * Rarity of the cards to level up
+     * @type {number}
+     * @memberof LevelUpCardsDTO
      */
-    'trendData': Array<number>;
+    'rarity': number;
+    /**
+     * Reward ID for the level up
+     * @type {string}
+     * @memberof LevelUpCardsDTO
+     */
+    'rewardId': string;
 }
 /**
  * 
@@ -11098,6 +17245,435 @@ export interface LinkFlagsToChoicesDTO {
      * @memberof LinkFlagsToChoicesDTO
      */
     'flag_ids': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface LinkMarketEntityDto
+ */
+export interface LinkMarketEntityDto {
+    /**
+     * Slug of the market
+     * @type {string}
+     * @memberof LinkMarketEntityDto
+     */
+    'market_slug': string;
+    /**
+     * ID of the entity to link
+     * @type {string}
+     * @memberof LinkMarketEntityDto
+     */
+    'entity_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface Lottery
+ */
+export interface Lottery {
+    /**
+     * Unique identifier for the lottery
+     * @type {string}
+     * @memberof Lottery
+     */
+    'id': string;
+    /**
+     * Lottery configuration ID
+     * @type {string}
+     * @memberof Lottery
+     */
+    'lottery_config_id': string;
+    /**
+     * Total prize pool amount
+     * @type {number}
+     * @memberof Lottery
+     */
+    'prize_pool': number;
+    /**
+     * Current status of the lottery
+     * @type {string}
+     * @memberof Lottery
+     */
+    'status': LotteryStatusEnum;
+    /**
+     * Tournament number associated with this lottery
+     * @type {number}
+     * @memberof Lottery
+     */
+    'tournament_number': number;
+    /**
+     * Timestamp when the lottery was created
+     * @type {string}
+     * @memberof Lottery
+     */
+    'created_at': string;
+    /**
+     * Timestamp when the lottery was closed
+     * @type {string}
+     * @memberof Lottery
+     */
+    'closed_at': string | null;
+    /**
+     * Timestamp when the lottery was resolved
+     * @type {string}
+     * @memberof Lottery
+     */
+    'resolved_at': string | null;
+    /**
+     * Maximum number of free entries allowed
+     * @type {number}
+     * @memberof Lottery
+     */
+    'max_free_entries': number;
+    /**
+     * Base prize pool amount
+     * @type {number}
+     * @memberof Lottery
+     */
+    'base_prize_pool': number;
+    /**
+     * Prize pool increment amount
+     * @type {number}
+     * @memberof Lottery
+     */
+    'prize_increment': number;
+    /**
+     * Maximum prize pool amount
+     * @type {number}
+     * @memberof Lottery
+     */
+    'max_prize_pool': number;
+    /**
+     * Tiered pricing for paid entries
+     * @type {object}
+     * @memberof Lottery
+     */
+    'paid_entries_price': object | null;
+}
+
+export const LotteryStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Resolved: 'RESOLVED'
+} as const;
+
+export type LotteryStatusEnum = typeof LotteryStatusEnum[keyof typeof LotteryStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface LotteryEntry
+ */
+export interface LotteryEntry {
+    /**
+     * Unique identifier for the lottery entry
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'id': string;
+    /**
+     * ID of the associated lottery
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'lottery_id': string;
+    /**
+     * ID of the associated tournament
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'tournament_id': string;
+    /**
+     * ID of the player who made the entry
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'player_id': string;
+    /**
+     * ID of the deck used for the entry. Null for paid entries that have been unassigned but preserved.
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'deck_id': string | null;
+    /**
+     * Type of lottery entry
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'entry_type': LotteryEntryEntryTypeEnum;
+    /**
+     * Price paid for this entry in FRAG. Only set for PAID entries.
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'price': string | null;
+    /**
+     * Timestamp when the entry was created
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'created_at': string;
+    /**
+     * Timestamp when the entry was last updated
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'updated_at': string;
+    /**
+     * Array of cards in the deck
+     * @type {Array<LotteryEntryCard>}
+     * @memberof LotteryEntry
+     */
+    'cards'?: Array<LotteryEntryCard>;
+    /**
+     * Deck score
+     * @type {string}
+     * @memberof LotteryEntry
+     */
+    'score'?: string;
+    /**
+     * Deck rank
+     * @type {number}
+     * @memberof LotteryEntry
+     */
+    'rank'?: number;
+}
+
+export const LotteryEntryEntryTypeEnum = {
+    Free: 'FREE',
+    Paid: 'PAID'
+} as const;
+
+export type LotteryEntryEntryTypeEnum = typeof LotteryEntryEntryTypeEnum[keyof typeof LotteryEntryEntryTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface LotteryEntryCard
+ */
+export interface LotteryEntryCard {
+    /**
+     * Hero rarity index (format: heroId_rarity)
+     * @type {string}
+     * @memberof LotteryEntryCard
+     */
+    'hero_rarity_index': string;
+    /**
+     * Stars for the hero (only available for finished tournaments)
+     * @type {number}
+     * @memberof LotteryEntryCard
+     */
+    'stars'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface LotteryOptimalValue
+ */
+export interface LotteryOptimalValue {
+    /**
+     * League of the associated tournament
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'league': number;
+    /**
+     * ID of the associated tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'tournament_id': string;
+    /**
+     * The optimal score for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_score': string;
+    /**
+     * The optimal hero rarity index 1 for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_hero_rarity_index1': string | null;
+    /**
+     * The optimal hero rarity index 2 for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_hero_rarity_index2': string | null;
+    /**
+     * The optimal hero rarity index 3 for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_hero_rarity_index3': string | null;
+    /**
+     * The optimal hero rarity index 4 for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_hero_rarity_index4': string | null;
+    /**
+     * The optimal hero rarity index 5 for this tournament
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'optimal_hero_rarity_index5': string | null;
+    /**
+     * Timestamp when the optimal value was created
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'created_at': string;
+    /**
+     * Timestamp when the optimal value was last updated
+     * @type {string}
+     * @memberof LotteryOptimalValue
+     */
+    'updated_at': string;
+    /**
+     * Stars for the hero in optimal hero rarity index 1
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'hero_stars_1': number | null;
+    /**
+     * Stars for the hero in optimal hero rarity index 2
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'hero_stars_2': number | null;
+    /**
+     * Stars for the hero in optimal hero rarity index 3
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'hero_stars_3': number | null;
+    /**
+     * Stars for the hero in optimal hero rarity index 4
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'hero_stars_4': number | null;
+    /**
+     * Stars for the hero in optimal hero rarity index 5
+     * @type {number}
+     * @memberof LotteryOptimalValue
+     */
+    'hero_stars_5': number | null;
+}
+/**
+ * 
+ * @export
+ * @interface LotteryResponseDto
+ */
+export interface LotteryResponseDto {
+    /**
+     * Unique identifier for the lottery
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'id': string;
+    /**
+     * Lottery configuration ID
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'lottery_config_id': string;
+    /**
+     * Total prize pool amount
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'prize_pool': number;
+    /**
+     * Current status of the lottery
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'status': LotteryResponseDtoStatusEnum;
+    /**
+     * Tournament number associated with this lottery
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'tournament_number': number;
+    /**
+     * Timestamp when the lottery was created
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'created_at': string;
+    /**
+     * Timestamp when the lottery was closed
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'closed_at': string | null;
+    /**
+     * Timestamp when the lottery was resolved
+     * @type {string}
+     * @memberof LotteryResponseDto
+     */
+    'resolved_at': string | null;
+    /**
+     * Maximum number of free entries allowed
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'max_free_entries': number;
+    /**
+     * Base prize pool amount
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'base_prize_pool': number;
+    /**
+     * Prize pool increment amount
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'prize_increment': number;
+    /**
+     * Maximum prize pool amount
+     * @type {number}
+     * @memberof LotteryResponseDto
+     */
+    'max_prize_pool': number;
+    /**
+     * Tiered pricing for paid entries
+     * @type {object}
+     * @memberof LotteryResponseDto
+     */
+    'paid_entries_price': object | null;
+    /**
+     * Tournament associated with this lottery
+     * @type {Array<Tournament>}
+     * @memberof LotteryResponseDto
+     */
+    'tournaments': Array<Tournament>;
+}
+
+export const LotteryResponseDtoStatusEnum = {
+    Open: 'OPEN',
+    Closed: 'CLOSED',
+    Resolved: 'RESOLVED'
+} as const;
+
+export type LotteryResponseDtoStatusEnum = typeof LotteryResponseDtoStatusEnum[keyof typeof LotteryResponseDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface LotterySummaryDto
+ */
+export interface LotterySummaryDto {
+    /**
+     * 
+     * @type {Array<TierDto>}
+     * @memberof LotterySummaryDto
+     */
+    'tiers': Array<TierDto>;
 }
 /**
  * 
@@ -11160,6 +17736,1085 @@ export interface MaintenanceConfigRequest {
      * @memberof MaintenanceConfigRequest
      */
     'app_version': string;
+}
+/**
+ * 
+ * @export
+ * @interface MarketChildDto
+ */
+export interface MarketChildDto {
+    /**
+     * Unique identifier for the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'id': string;
+    /**
+     * URL-friendly slug for the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'slug': string;
+    /**
+     * Title of the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'title': string;
+    /**
+     * Description of the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'description': string | null;
+    /**
+     * ID of the player who created the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'creator_id': string;
+    /**
+     * ID of the preset configuration used for this market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'preset_id': string | null;
+    /**
+     * Platform fee in basis points (e.g., 1000 = 10%)
+     * @type {number}
+     * @memberof MarketChildDto
+     */
+    'fee_bps': number;
+    /**
+     * Current status of the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'status': MarketChildDtoStatusEnum;
+    /**
+     * Whether initial liquidity has been seeded
+     * @type {boolean}
+     * @memberof MarketChildDto
+     */
+    'is_seeded': boolean;
+    /**
+     * Market trading start timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'trading_start_at': string;
+    /**
+     * Market trading end timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'trading_end_at': string | null;
+    /**
+     * Event start timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'event_start_at': string | null;
+    /**
+     * Market resolution timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'resolve_at': string | null;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'updated_at': string;
+    /**
+     * Resolution timestamp
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'resolved_at': string | null;
+    /**
+     * ID of the player who resolved the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'resolver_id': string | null;
+    /**
+     * ID of the winning outcome
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'winning_outcome_id': string | null;
+    /**
+     * Additional metadata
+     * @type {object}
+     * @memberof MarketChildDto
+     */
+    'metadata': object;
+    /**
+     * Total volume (sum of all outcome investments). For markets with children, includes children volumes.
+     * @type {number}
+     * @memberof MarketChildDto
+     */
+    'volume': number;
+    /**
+     * List of outcomes for this market
+     * @type {Array<OutcomeDto>}
+     * @memberof MarketChildDto
+     */
+    'outcomes': Array<OutcomeDto>;
+    /**
+     * List of entities associated with this market, ordered by parent-child relationships (parents first)
+     * @type {Array<EntityDto>}
+     * @memberof MarketChildDto
+     */
+    'entities'?: Array<EntityDto>;
+    /**
+     * 
+     * @type {MarketChildDtoPreset}
+     * @memberof MarketChildDto
+     */
+    'preset': MarketChildDtoPreset | null;
+    /**
+     * ID of the parent market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'parent_id': string | null;
+    /**
+     * 
+     * @type {MarketChildDtoWinningOutcome}
+     * @memberof MarketChildDto
+     */
+    'winning_outcome': MarketChildDtoWinningOutcome | null;
+    /**
+     * The 2 outcomes with the smallest odds (including from child markets)
+     * @type {Array<OutcomeDto>}
+     * @memberof MarketChildDto
+     */
+    'twoSmallestOddsOutcomes'?: Array<OutcomeDto>;
+    /**
+     * Whether this market has child markets
+     * @type {boolean}
+     * @memberof MarketChildDto
+     */
+    'hasChildMarkets'?: boolean;
+    /**
+     * Total number of outcomes (including outcomes from child markets)
+     * @type {number}
+     * @memberof MarketChildDto
+     */
+    'totalOutcomes'?: number;
+    /**
+     * PNL statistics for this market
+     * @type {object}
+     * @memberof MarketChildDto
+     */
+    'pnl'?: object;
+    /**
+     * URL of the share card for the market
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'share_card_url': string | null;
+}
+
+export const MarketChildDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed'
+} as const;
+
+export type MarketChildDtoStatusEnum = typeof MarketChildDtoStatusEnum[keyof typeof MarketChildDtoStatusEnum];
+
+/**
+ * Preset configuration for this market
+ * @export
+ * @interface MarketChildDtoPreset
+ */
+export interface MarketChildDtoPreset {
+    /**
+     * Unique identifier for the preset
+     * @type {string}
+     * @memberof MarketChildDtoPreset
+     */
+    'id': string;
+    /**
+     * Label for the preset
+     * @type {string}
+     * @memberof MarketChildDtoPreset
+     */
+    'label': string;
+    /**
+     * Type of market
+     * @type {string}
+     * @memberof MarketChildDtoPreset
+     */
+    'curve_type': string;
+    /**
+     * Constant K value for the LMSR market
+     * @type {string}
+     * @memberof MarketChildDtoPreset
+     */
+    'k': string;
+    /**
+     * Additional curve parameters
+     * @type {object}
+     * @memberof MarketChildDtoPreset
+     */
+    'parameters': object;
+}
+/**
+ * ID of the winning outcome
+ * @export
+ * @interface MarketChildDtoWinningOutcome
+ */
+export interface MarketChildDtoWinningOutcome {
+    /**
+     * Unique identifier for the outcome
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'id': string;
+    /**
+     * The market ID this outcome belongs to
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'market_id': string;
+    /**
+     * Name of the outcome
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'name': string;
+    /**
+     * Display order of the outcome
+     * @type {number}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'order': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'updated_at': string;
+    /**
+     * Additional metadata
+     * @type {object}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'metadata': object;
+    /**
+     * Current state of the outcome (shares and investment)
+     * @type {OutcomeStateDto}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'outcome_state': OutcomeStateDto;
+    /**
+     * Odds multiplier for $1 investment in this outcome
+     * @type {number}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'odds': number;
+    /**
+     * Name of the child market
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'childMarketName': string | null;
+    /**
+     * Whether this outcome is from a child market
+     * @type {boolean}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'isFromChildMarket'?: boolean;
+    /**
+     * Title of the child market this outcome belongs to
+     * @type {string}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'childMarketTitle'?: string;
+    /**
+     * Entities directly linked to this outcome
+     * @type {Array<EntityDto>}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'entities'?: Array<EntityDto>;
+    /**
+     * Entity linked to the child market this outcome belongs to
+     * @type {EntityDto}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'childMarketEntity'?: EntityDto;
+    /**
+     * Entity linked to the parent market
+     * @type {EntityDto}
+     * @memberof MarketChildDtoWinningOutcome
+     */
+    'marketEntity'?: EntityDto;
+}
+/**
+ * 
+ * @export
+ * @interface MarketDto
+ */
+export interface MarketDto {
+    /**
+     * Unique identifier for the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'id': string;
+    /**
+     * URL-friendly slug for the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'slug': string;
+    /**
+     * Title of the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'title': string;
+    /**
+     * Description of the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'description': string | null;
+    /**
+     * ID of the player who created the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'creator_id': string;
+    /**
+     * ID of the preset configuration used for this market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'preset_id': string | null;
+    /**
+     * Platform fee in basis points (e.g., 1000 = 10%)
+     * @type {number}
+     * @memberof MarketDto
+     */
+    'fee_bps': number;
+    /**
+     * Current status of the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'status': MarketDtoStatusEnum;
+    /**
+     * Whether initial liquidity has been seeded
+     * @type {boolean}
+     * @memberof MarketDto
+     */
+    'is_seeded': boolean;
+    /**
+     * Market trading start timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'trading_start_at': string;
+    /**
+     * Market trading end timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'trading_end_at': string | null;
+    /**
+     * Event start timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'event_start_at': string | null;
+    /**
+     * Market resolution timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'resolve_at': string | null;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'updated_at': string;
+    /**
+     * Resolution timestamp
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'resolved_at': string | null;
+    /**
+     * ID of the player who resolved the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'resolver_id': string | null;
+    /**
+     * ID of the winning outcome
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'winning_outcome_id': string | null;
+    /**
+     * Additional metadata
+     * @type {object}
+     * @memberof MarketDto
+     */
+    'metadata': object;
+    /**
+     * Total volume (sum of all outcome investments). For markets with children, includes children volumes.
+     * @type {number}
+     * @memberof MarketDto
+     */
+    'volume': number;
+    /**
+     * List of outcomes for this market
+     * @type {Array<OutcomeDto>}
+     * @memberof MarketDto
+     */
+    'outcomes': Array<OutcomeDto>;
+    /**
+     * List of entities associated with this market, ordered by parent-child relationships (parents first)
+     * @type {Array<EntityDto>}
+     * @memberof MarketDto
+     */
+    'entities'?: Array<EntityDto>;
+    /**
+     * 
+     * @type {MarketChildDtoPreset}
+     * @memberof MarketDto
+     */
+    'preset': MarketChildDtoPreset | null;
+    /**
+     * ID of the parent market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'parent_id': string | null;
+    /**
+     * 
+     * @type {MarketChildDtoWinningOutcome}
+     * @memberof MarketDto
+     */
+    'winning_outcome': MarketChildDtoWinningOutcome | null;
+    /**
+     * The 2 outcomes with the smallest odds (including from child markets)
+     * @type {Array<OutcomeDto>}
+     * @memberof MarketDto
+     */
+    'twoSmallestOddsOutcomes'?: Array<OutcomeDto>;
+    /**
+     * Whether this market has child markets
+     * @type {boolean}
+     * @memberof MarketDto
+     */
+    'hasChildMarkets'?: boolean;
+    /**
+     * Total number of outcomes (including outcomes from child markets)
+     * @type {number}
+     * @memberof MarketDto
+     */
+    'totalOutcomes'?: number;
+    /**
+     * PNL statistics for this market
+     * @type {object}
+     * @memberof MarketDto
+     */
+    'pnl'?: object;
+    /**
+     * URL of the share card for the market
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'share_card_url': string | null;
+    /**
+     * List of children markets (if this market has children)
+     * @type {Array<MarketChildDto>}
+     * @memberof MarketDto
+     */
+    'children'?: Array<MarketChildDto>;
+}
+
+export const MarketDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed'
+} as const;
+
+export type MarketDtoStatusEnum = typeof MarketDtoStatusEnum[keyof typeof MarketDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface MarketMetadataDto
+ */
+export interface MarketMetadataDto {
+    /**
+     * Market title
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'title': string;
+    /**
+     * Market description
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'description': string;
+    /**
+     * Market share card URL
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'share_card_url': string;
+    /**
+     * Market slug
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'slug': string;
+    /**
+     * Market parent ID
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'parent_id': string | null;
+    /**
+     * Market parent slug
+     * @type {string}
+     * @memberof MarketMetadataDto
+     */
+    'parent_slug': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface MarketPnlDto
+ */
+export interface MarketPnlDto {
+    /**
+     * Market ID
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'marketId': string;
+    /**
+     * Market title
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'marketTitle': string;
+    /**
+     * Market slug
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'slug': string;
+    /**
+     * Market status
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'status': string;
+    /**
+     * Trading start time
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'trading_start_at': string;
+    /**
+     * Trading end time
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'trading_end_at': string | null;
+    /**
+     * Event start time
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'event_start_at': string | null;
+    /**
+     * Resolution time
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'resolve_at': string | null;
+    /**
+     * Resolved timestamp
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'resolved_at': string | null;
+    /**
+     * Entities linked to market
+     * @type {Array<object>}
+     * @memberof MarketPnlDto
+     */
+    'entities': Array<object>;
+    /**
+     * Number of child markets (0 for standalone markets)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'childMarketsCount': number;
+    /**
+     * Number of outcomes (only for standalone markets with no children)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'outcomesCount': number;
+    /**
+     * Current market phase based on timestamps
+     * @type {string}
+     * @memberof MarketPnlDto
+     */
+    'phase': MarketPnlDtoPhaseEnum;
+    /**
+     * Total volume traded in this market (aggregated from children)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'volume': number;
+    /**
+     * Fees collected from this market (5% of volume)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'feeCollected': number;
+    /**
+     * Market PNL with fees - includes all trading activity from all players
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'pnlWithFees': number;
+    /**
+     * Market PNL without fees - includes all trading activity from all players
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'pnlWithoutFees': number;
+    /**
+     * Market seeder PNL for this market (aggregated from children if parent)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'seederPnl': number;
+    /**
+     * Total PNL without fees (pnlWithoutFees + seederPnl)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'totalPnlWithoutFees': number;
+    /**
+     * Total PNL with fees (totalPnlWithoutFees + feeCollected)
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'totalPnlWithFees': number;
+    /**
+     * Theoretical maximum loss for this market
+     * @type {number}
+     * @memberof MarketPnlDto
+     */
+    'theoreticalMaxLoss': number;
+    /**
+     * Breakdown of child markets (empty array for standalone markets)
+     * @type {Array<ChildMarketPnlDto>}
+     * @memberof MarketPnlDto
+     */
+    'childMarkets': Array<ChildMarketPnlDto>;
+    /**
+     * List of outcomes (only for standalone markets with no children)
+     * @type {Array<OutcomePnlDto>}
+     * @memberof MarketPnlDto
+     */
+    'outcomes': Array<OutcomePnlDto>;
+}
+
+export const MarketPnlDtoPhaseEnum = {
+    Open: 'open',
+    Running: 'running',
+    Resolved: 'resolved'
+} as const;
+
+export type MarketPnlDtoPhaseEnum = typeof MarketPnlDtoPhaseEnum[keyof typeof MarketPnlDtoPhaseEnum];
+
+/**
+ * 
+ * @export
+ * @interface MarketPositionDto
+ */
+export interface MarketPositionDto {
+    /**
+     * The position ID
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'id': string;
+    /**
+     * The market ID
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'marketId': string;
+    /**
+     * The market slug
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'marketSlug': string;
+    /**
+     * The market title
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'marketTitle': string;
+    /**
+     * The market metadata
+     * @type {object}
+     * @memberof MarketPositionDto
+     */
+    'marketMetadata'?: object;
+    /**
+     * The outcome ID
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'outcomeId': string;
+    /**
+     * The outcome name
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'outcomeName': string;
+    /**
+     * The outcome image URL
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'outcomeImage'?: string | null;
+    /**
+     * Number of shares held
+     * @type {number}
+     * @memberof MarketPositionDto
+     */
+    'shares': number;
+    /**
+     * Total amount invested in fragments (before fees)
+     * @type {number}
+     * @memberof MarketPositionDto
+     */
+    'totalInvested': number;
+    /**
+     * Total amount invested in fragments (after fees)
+     * @type {number}
+     * @memberof MarketPositionDto
+     */
+    'totalInvestedAfterFee': number;
+    /**
+     * Position creation timestamp
+     * @type {string}
+     * @memberof MarketPositionDto
+     */
+    'createdAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface MarketPositionGroupDto
+ */
+export interface MarketPositionGroupDto {
+    /**
+     * The market ID (parent market if positions are from child markets)
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketId': string;
+    /**
+     * The market slug
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketSlug': string;
+    /**
+     * The market title
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketTitle': string;
+    /**
+     * The market status
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketStatus': string;
+    /**
+     * The market end date
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketEndAt'?: string | null;
+    /**
+     * The market start date
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketStartAt'?: string | null;
+    /**
+     * The event start date
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketEventStartAt'?: string | null;
+    /**
+     * The market resolve date
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketResolveAt'?: string | null;
+    /**
+     * The winning outcome ID (if market is resolved)
+     * @type {string}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketWinningOutcomeId'?: string | null;
+    /**
+     * The market metadata
+     * @type {object}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketMetadata'?: object;
+    /**
+     * Entities associated with the market
+     * @type {Array<string>}
+     * @memberof MarketPositionGroupDto
+     */
+    'marketEntities'?: Array<string>;
+    /**
+     * 
+     * @type {MarketPositionGroupDtoPreset}
+     * @memberof MarketPositionGroupDto
+     */
+    'preset'?: MarketPositionGroupDtoPreset | null;
+    /**
+     * The market fee in basis points (e.g., 500 = 5%)
+     * @type {number}
+     * @memberof MarketPositionGroupDto
+     */
+    'feeBps'?: number;
+    /**
+     * List of positions for this market
+     * @type {Array<PositionDto>}
+     * @memberof MarketPositionGroupDto
+     */
+    'positions': Array<PositionDto>;
+    /**
+     * List of outcomes for this market (including child market outcomes)
+     * @type {Array<OutcomeDto>}
+     * @memberof MarketPositionGroupDto
+     */
+    'outcomes'?: Array<OutcomeDto>;
+}
+/**
+ * The market preset (bonding curve configuration)
+ * @export
+ * @interface MarketPositionGroupDtoPreset
+ */
+export interface MarketPositionGroupDtoPreset {
+    /**
+     * Unique identifier for the preset
+     * @type {string}
+     * @memberof MarketPositionGroupDtoPreset
+     */
+    'id': string;
+    /**
+     * Label for the preset
+     * @type {string}
+     * @memberof MarketPositionGroupDtoPreset
+     */
+    'label': string;
+    /**
+     * Type of market
+     * @type {string}
+     * @memberof MarketPositionGroupDtoPreset
+     */
+    'curve_type': string;
+    /**
+     * Constant K value for the LMSR market
+     * @type {string}
+     * @memberof MarketPositionGroupDtoPreset
+     */
+    'k': string;
+    /**
+     * Additional curve parameters
+     * @type {object}
+     * @memberof MarketPositionGroupDtoPreset
+     */
+    'parameters': object;
+}
+/**
+ * 
+ * @export
+ * @interface MarketplaceFiltersDTO
+ */
+export interface MarketplaceFiltersDTO {
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'name': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'handle': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'edition': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'rarity': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'stars': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof MarketplaceFiltersDTO
+     */
+    'price': GetPlayerCardsWhereDTORarity;
+}
+/**
+ * 
+ * @export
+ * @interface MaxRaritiesDTO
+ */
+export interface MaxRaritiesDTO {
+    /**
+     * Tournament max legendary
+     * @type {number}
+     * @memberof MaxRaritiesDTO
+     */
+    '1': number;
+    /**
+     * Tournament max epic
+     * @type {number}
+     * @memberof MaxRaritiesDTO
+     */
+    '2': number;
+    /**
+     * Tournament max rare
+     * @type {number}
+     * @memberof MaxRaritiesDTO
+     */
+    '3': number;
+    /**
+     * Tournament max common
+     * @type {number}
+     * @memberof MaxRaritiesDTO
+     */
+    '4': number;
+}
+/**
+ * 
+ * @export
+ * @interface MeStatsDTO
+ */
+export interface MeStatsDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof MeStatsDTO
+     */
+    'hero_id': string;
+    /**
+     * Handle
+     * @type {string}
+     * @memberof MeStatsDTO
+     */
+    'handle': string;
+    /**
+     * Total earnings in eth
+     * @type {number}
+     * @memberof MeStatsDTO
+     */
+    'total_earnings_eth': number;
+    /**
+     * Total earnings
+     * @type {number}
+     * @memberof MeStatsDTO
+     */
+    'total_earnings': number;
+    /**
+     * Trade volume last 30 days in eth
+     * @type {number}
+     * @memberof MeStatsDTO
+     */
+    'total_trade_volume_eth': number;
+    /**
+     * Trade volume last 30 days
+     * @type {number}
+     * @memberof MeStatsDTO
+     */
+    'total_trade_volume': number;
+    /**
+     * Total trades last 30 days
+     * @type {number}
+     * @memberof MeStatsDTO
+     */
+    'total_trades_last_30_days': number;
+    /**
+     * Profile image url
+     * @type {string}
+     * @memberof MeStatsDTO
+     */
+    'image_url': string;
 }
 /**
  * 
@@ -11300,6 +18955,178 @@ export interface MindshareLeaderboardResponseDTO {
 /**
  * 
  * @export
+ * @interface ModerationRecordDTO
+ */
+export interface ModerationRecordDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'status': ModerationRecordDTOStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof ModerationRecordDTO
+     */
+    'value'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'reason'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'start_date': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'end_date'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'admin_user': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModerationRecordDTO
+     */
+    'updated_at': string;
+}
+
+export const ModerationRecordDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+} as const;
+
+export type ModerationRecordDTOStatusEnum = typeof ModerationRecordDTOStatusEnum[keyof typeof ModerationRecordDTOStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface MonadReward
+ */
+export interface MonadReward {
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof MonadReward
+     */
+    'type': string;
+    /**
+     * Amount of reward
+     * @type {number}
+     * @memberof MonadReward
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface NotificationTemplateResponseDTO
+ */
+export interface NotificationTemplateResponseDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'title': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'global': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'is_banner'?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'banner_until_date'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'subtitle'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'image_url'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'redirect_url'?: string | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'filters'?: object | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'data_template'?: object | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationTemplateResponseDTO
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
  * @interface NumberFilterDTO
  */
 export interface NumberFilterDTO {
@@ -11359,65 +19186,108 @@ export interface NumberFilterDTO {
  */
 export interface OmitTypeClass {
     /**
-     * Tactic ID
-     * @type {string}
-     * @memberof OmitTypeClass
-     */
-    'tactic_id': string;
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof OmitTypeClass
-     */
-    'hero_id': string;
-    /**
-     * Stars
-     * @type {number}
-     * @memberof OmitTypeClass
-     */
-    'stars': number;
-    /**
-     * Fantasy score
-     * @type {object}
-     * @memberof OmitTypeClass
-     */
-    'fantasy_score': object;
-    /**
-     * Hero score ID
+     * The unique identifier of the vote
      * @type {string}
      * @memberof OmitTypeClass
      */
     'id': string;
     /**
-     * Tweet count
-     * @type {number}
-     * @memberof OmitTypeClass
-     */
-    'tweet_count': number | null;
-    /**
-     * Current rank
-     * @type {number}
-     * @memberof OmitTypeClass
-     */
-    'current_rank': number | null;
-    /**
-     * Previous rank
-     * @type {number}
-     * @memberof OmitTypeClass
-     */
-    'previous_rank': number | null;
-    /**
-     * Views
-     * @type {number}
-     * @memberof OmitTypeClass
-     */
-    'views': number | null;
-    /**
-     * Updated at
+     * The ID of the player who cast the vote
      * @type {string}
      * @memberof OmitTypeClass
      */
-    'updated_at': string;
+    'player_id': string;
+    /**
+     * The ID of the vote configuration
+     * @type {string}
+     * @memberof OmitTypeClass
+     */
+    'vote_config_id': string;
+    /**
+     * The ID of the hero voted for
+     * @type {string}
+     * @memberof OmitTypeClass
+     */
+    'hero_id': string;
+    /**
+     * The number of fan pts use in vote
+     * @type {number}
+     * @memberof OmitTypeClass
+     */
+    'fan_count': number;
+    /**
+     * The timestamp when the vote was created
+     * @type {string}
+     * @memberof OmitTypeClass
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {Player}
+     * @memberof OmitTypeClass
+     */
+    'player': Player;
+    /**
+     * 
+     * @type {VoteConfig}
+     * @memberof OmitTypeClass
+     */
+    'vote_config': VoteConfig;
+}
+/**
+ * 
+ * @export
+ * @interface OnboardingDeckResponseDTO
+ */
+export interface OnboardingDeckResponseDTO {
+    /**
+     * Array of 4 card IDs for position 1
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '1': Array<string>;
+    /**
+     * Array of 4 card IDs for position 2
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '2': Array<string>;
+    /**
+     * Array of 4 card IDs for position 3
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '3': Array<string>;
+    /**
+     * Array of 4 card IDs for position 4
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '4': Array<string>;
+    /**
+     * Array of 4 card IDs for position 5
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '5': Array<string>;
+    /**
+     * Array of 4 card IDs for position 6
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '6': Array<string>;
+    /**
+     * Array of 4 card IDs for position 7
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '7': Array<string>;
+    /**
+     * Array of 4 card IDs for position 8
+     * @type {Array<string>}
+     * @memberof OnboardingDeckResponseDTO
+     */
+    '8': Array<string>;
 }
 /**
  * 
@@ -11463,6 +19333,233 @@ export interface OpenTacticRegistrationDTO {
      * @memberof OpenTacticRegistrationDTO
      */
     'tactic_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface OptimalCardDto
+ */
+export interface OptimalCardDto {
+    /**
+     * Card ID (hero_rarity_index)
+     * @type {string}
+     * @memberof OptimalCardDto
+     */
+    'cardId': string;
+    /**
+     * Number of stars for this card
+     * @type {number}
+     * @memberof OptimalCardDto
+     */
+    'stars': number;
+}
+/**
+ * 
+ * @export
+ * @interface OutcomeDto
+ */
+export interface OutcomeDto {
+    /**
+     * Unique identifier for the outcome
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'id': string;
+    /**
+     * The market ID this outcome belongs to
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'market_id': string;
+    /**
+     * Name of the outcome
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'name': string;
+    /**
+     * Display order of the outcome
+     * @type {number}
+     * @memberof OutcomeDto
+     */
+    'order': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'updated_at': string;
+    /**
+     * Additional metadata
+     * @type {object}
+     * @memberof OutcomeDto
+     */
+    'metadata': object;
+    /**
+     * Current state of the outcome (shares and investment)
+     * @type {OutcomeStateDto}
+     * @memberof OutcomeDto
+     */
+    'outcome_state': OutcomeStateDto;
+    /**
+     * Odds multiplier for $1 investment in this outcome
+     * @type {number}
+     * @memberof OutcomeDto
+     */
+    'odds': number;
+    /**
+     * Name of the child market
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'childMarketName': string | null;
+    /**
+     * Whether this outcome is from a child market
+     * @type {boolean}
+     * @memberof OutcomeDto
+     */
+    'isFromChildMarket'?: boolean;
+    /**
+     * Title of the child market this outcome belongs to
+     * @type {string}
+     * @memberof OutcomeDto
+     */
+    'childMarketTitle'?: string;
+    /**
+     * Entities directly linked to this outcome
+     * @type {Array<EntityDto>}
+     * @memberof OutcomeDto
+     */
+    'entities'?: Array<EntityDto>;
+    /**
+     * Entity linked to the child market this outcome belongs to
+     * @type {EntityDto}
+     * @memberof OutcomeDto
+     */
+    'childMarketEntity'?: EntityDto;
+    /**
+     * Entity linked to the parent market
+     * @type {EntityDto}
+     * @memberof OutcomeDto
+     */
+    'marketEntity'?: EntityDto;
+}
+/**
+ * 
+ * @export
+ * @interface OutcomeInfoDto
+ */
+export interface OutcomeInfoDto {
+    /**
+     * The outcome ID
+     * @type {string}
+     * @memberof OutcomeInfoDto
+     */
+    'outcome_id': string;
+    /**
+     * The outcome name
+     * @type {string}
+     * @memberof OutcomeInfoDto
+     */
+    'outcome_name': string;
+    /**
+     * The market ID this outcome belongs to
+     * @type {string}
+     * @memberof OutcomeInfoDto
+     */
+    'market_id': string;
+    /**
+     * The market name (for submarkets)
+     * @type {string}
+     * @memberof OutcomeInfoDto
+     */
+    'market_name'?: string;
+    /**
+     * The outcome entity metadata
+     * @type {object}
+     * @memberof OutcomeInfoDto
+     */
+    'entity'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface OutcomePnlDto
+ */
+export interface OutcomePnlDto {
+    /**
+     * Outcome ID
+     * @type {string}
+     * @memberof OutcomePnlDto
+     */
+    'outcomeId': string;
+    /**
+     * Outcome name/title
+     * @type {string}
+     * @memberof OutcomePnlDto
+     */
+    'outcomeTitle': string;
+    /**
+     * Total volume traded for this outcome
+     * @type {number}
+     * @memberof OutcomePnlDto
+     */
+    'volume': number;
+    /**
+     * Total shares for this outcome
+     * @type {number}
+     * @memberof OutcomePnlDto
+     */
+    'totalShares': number;
+}
+/**
+ * 
+ * @export
+ * @interface OutcomeStateDto
+ */
+export interface OutcomeStateDto {
+    /**
+     * Unique identifier for the outcome state
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'id': string;
+    /**
+     * Total shares in circulation for this outcome
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'total_shares': string;
+    /**
+     * Total fragments invested in this outcome
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'total_invested': string;
+    /**
+     * Total volume traded for this outcome
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'total_volume': string;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof OutcomeStateDto
+     */
+    'updated_at': string;
 }
 /**
  * 
@@ -11543,25 +19640,6 @@ export interface PaginatedEnrichedTweetResult {
 /**
  * 
  * @export
- * @interface PaginatedGetLastActivityDtoResult
- */
-export interface PaginatedGetLastActivityDtoResult {
-    /**
-     * Data items
-     * @type {Array<GetLastActivityDto>}
-     * @memberof PaginatedGetLastActivityDtoResult
-     */
-    'data': Array<GetLastActivityDto>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedGetLastActivityDtoResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
  * @interface PaginatedGetReferredPlayersResponseResult
  */
 export interface PaginatedGetReferredPlayersResponseResult {
@@ -11619,6 +19697,44 @@ export interface PaginatedGetTacticsHeroesResponseResult {
 /**
  * 
  * @export
+ * @interface PaginatedGetTweetWithUserInfoResponseDTOResult
+ */
+export interface PaginatedGetTweetWithUserInfoResponseDTOResult {
+    /**
+     * Data items
+     * @type {Array<GetTweetWithUserInfoResponseDTO>}
+     * @memberof PaginatedGetTweetWithUserInfoResponseDTOResult
+     */
+    'data': Array<GetTweetWithUserInfoResponseDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedGetTweetWithUserInfoResponseDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
+ * @interface PaginatedGetWhitelistResponseDTOResult
+ */
+export interface PaginatedGetWhitelistResponseDTOResult {
+    /**
+     * Data items
+     * @type {Array<GetWhitelistResponseDTO>}
+     * @memberof PaginatedGetWhitelistResponseDTOResult
+     */
+    'data': Array<GetWhitelistResponseDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedGetWhitelistResponseDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedHeroHolderDTOResult
  */
 export interface PaginatedHeroHolderDTOResult {
@@ -11670,25 +19786,6 @@ export interface PaginatedHeroWithStatsDTOResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedHeroWithStatsDTOResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
- * @interface PaginatedLeaderboardForTopicItemDTOResult
- */
-export interface PaginatedLeaderboardForTopicItemDTOResult {
-    /**
-     * Data items
-     * @type {Array<LeaderboardForTopicItemDTO>}
-     * @memberof PaginatedLeaderboardForTopicItemDTOResult
-     */
-    'data': Array<LeaderboardForTopicItemDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedLeaderboardForTopicItemDTOResult
      */
     'meta': MetaDTO;
 }
@@ -11771,6 +19868,25 @@ export interface PaginatedSellOrderWithHighestBidResult {
 /**
  * 
  * @export
+ * @interface PaginatedShoutLeaderboardItemDTOResult
+ */
+export interface PaginatedShoutLeaderboardItemDTOResult {
+    /**
+     * Data items
+     * @type {Array<ShoutLeaderboardItemDTO>}
+     * @memberof PaginatedShoutLeaderboardItemDTOResult
+     */
+    'data': Array<ShoutLeaderboardItemDTO>;
+    /**
+     * Pagination metadata
+     * @type {MetaDTO}
+     * @memberof PaginatedShoutLeaderboardItemDTOResult
+     */
+    'meta': MetaDTO;
+}
+/**
+ * 
+ * @export
  * @interface PaginatedTacticsConfigResult
  */
 export interface PaginatedTacticsConfigResult {
@@ -11847,25 +19963,6 @@ export interface PaginatedTacticsResult {
 /**
  * 
  * @export
- * @interface PaginatedTournamentPlayerResult
- */
-export interface PaginatedTournamentPlayerResult {
-    /**
-     * Data items
-     * @type {Array<TournamentPlayer>}
-     * @memberof PaginatedTournamentPlayerResult
-     */
-    'data': Array<TournamentPlayer>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedTournamentPlayerResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
  * @interface PaginatedTradesDTOResult
  */
 export interface PaginatedTradesDTOResult {
@@ -11904,25 +20001,6 @@ export interface PaginatedTrendingHeroDTOResult {
 /**
  * 
  * @export
- * @interface PaginatedVoteConfigResult
- */
-export interface PaginatedVoteConfigResult {
-    /**
-     * Data items
-     * @type {Array<VoteConfig>}
-     * @memberof PaginatedVoteConfigResult
-     */
-    'data': Array<VoteConfig>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedVoteConfigResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
  * @interface PaginationDTO
  */
 export interface PaginationDTO {
@@ -11938,6 +20016,49 @@ export interface PaginationDTO {
      * @memberof PaginationDTO
      */
     'limit': number;
+}
+/**
+ * 
+ * @export
+ * @interface PaginationMetaDto
+ */
+export interface PaginationMetaDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'lastPage': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'currentPage': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'perPage': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'prev': number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginationMetaDto
+     */
+    'next': number | null;
 }
 /**
  * 
@@ -12013,54 +20134,59 @@ export interface PayoutStructure {
      */
     'created_at': string;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof PayoutStructure
-     */
-    'price_pool_gold': number;
-    /**
-     * Payout details in gold
+     * Payout details in fragments
      * @type {Array<PayoutObject>}
      * @memberof PayoutStructure
      */
-    'payout_gold': Array<PayoutObject>;
+    'payout_fragments': Array<PayoutObject>;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof PayoutStructure
-     */
-    'price_pool_cards': number;
-    /**
-     * Payout details in cards
+     * Payout details in tickets
      * @type {Array<PayoutObject>}
      * @memberof PayoutStructure
      */
-    'payout_cards': Array<PayoutObject>;
+    'payout_tickets': Array<PayoutObject>;
     /**
-     * Price pool in gold
+     * Payout details in fan points
+     * @type {Array<PayoutObject>}
+     * @memberof PayoutStructure
+     */
+    'payout_fan': Array<PayoutObject>;
+    /**
+     * Price pool in fragments
+     * @type {number}
+     * @memberof PayoutStructure
+     */
+    'price_pool_fragments': number;
+    /**
+     * Price pool in tickets
      * @type {number}
      * @memberof PayoutStructure
      */
     'price_pool_tickets': number;
     /**
-     * Payout details in gold
+     * Price pool in fan points
+     * @type {number}
+     * @memberof PayoutStructure
+     */
+    'price_pool_fan': number;
+    /**
+     * Extra payouts for featured tactics
      * @type {Array<PayoutObject>}
      * @memberof PayoutStructure
      */
-    'payout_tickets': Array<PayoutObject>;
-}
-/**
- * 
- * @export
- * @interface PickTypeClass
- */
-export interface PickTypeClass {
+    'extra_payouts': Array<PayoutObject>;
     /**
-     * 
-     * @type {string}
-     * @memberof PickTypeClass
+     * Extra price pools for featured tactics
+     * @type {Array<PricePoolTypeObject>}
+     * @memberof PayoutStructure
      */
-    'handle': string;
+    'extra_price_pools': Array<PricePoolTypeObject>;
+    /**
+     * Payout details per hero
+     * @type {Array<HeroPayouts>}
+     * @memberof PayoutStructure
+     */
+    'hero_payouts': Array<HeroPayouts>;
 }
 /**
  * 
@@ -12230,6 +20356,121 @@ export interface Player {
      * @memberof Player
      */
     'monad_address': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'xp'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Player
+     */
+    'xp_referrals'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerAnalyticsDto
+ */
+export interface PlayerAnalyticsDto {
+    /**
+     * Count of new players in the last 7 days who have at least one trade
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'newPlayersLast7Days': number;
+    /**
+     * Count of new players in the last 30 days who have at least one trade
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'newPlayersLast30Days': number;
+    /**
+     * Average bet size (total_cost before fee) from prediction_trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'averageBetSize30d': number;
+    /**
+     * Median bet size (total_cost before fee) from prediction_trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'medianBetSize30d': number;
+    /**
+     * Average number of bets per player (total trades / unique players) in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'averageBetsPerPlayer30d': number;
+    /**
+     * Average bet size (total_cost before fee) from prediction_trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'averageBetSize7d': number;
+    /**
+     * Median bet size (total_cost before fee) from prediction_trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'medianBetSize7d': number;
+    /**
+     * Average number of bets per player (total trades / unique players) in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'averageBetsPerPlayer7d': number;
+    /**
+     * Percentage of sell orders out of all trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'sellOrdersPercentage30d': number;
+    /**
+     * Percentage of sell orders out of all trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'sellOrdersPercentage7d': number;
+    /**
+     * Percentage of buy orders out of all trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'buyOrdersPercentage30d': number;
+    /**
+     * Percentage of buy orders out of all trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'buyOrdersPercentage7d': number;
+    /**
+     * Count of unique players who made buy trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'uniquePlayersBuying30d': number;
+    /**
+     * Count of unique players who made buy trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'uniquePlayersBuying7d': number;
+    /**
+     * Count of unique players who made sell trades in last 30 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'uniquePlayersSelling30d': number;
+    /**
+     * Count of unique players who made sell trades in last 7 days
+     * @type {number}
+     * @memberof PlayerAnalyticsDto
+     */
+    'uniquePlayersSelling7d': number;
 }
 /**
  * 
@@ -12273,42 +20514,6 @@ export interface PlayerBankResponseDto {
      * @memberof PlayerBankResponseDto
      */
     'fanPoints': number;
-    /**
-     * Current ELO score of the player
-     * @type {number}
-     * @memberof PlayerBankResponseDto
-     */
-    'eloScore': number;
-    /**
-     * Maximum ELO score achieved by the player
-     * @type {number}
-     * @memberof PlayerBankResponseDto
-     */
-    'maxEloScore': number;
-    /**
-     * Current ELO rank ID
-     * @type {string}
-     * @memberof PlayerBankResponseDto
-     */
-    'currentEloRankId': string;
-    /**
-     * Maximum ELO rank ID achieved
-     * @type {string}
-     * @memberof PlayerBankResponseDto
-     */
-    'maxEloRankId': string;
-    /**
-     * Current ELO season
-     * @type {number}
-     * @memberof PlayerBankResponseDto
-     */
-    'eloSeason': number;
-    /**
-     * Current ELO rank image
-     * @type {string}
-     * @memberof PlayerBankResponseDto
-     */
-    'currentEloRankImage': string;
 }
 /**
  * 
@@ -12324,10 +20529,28 @@ export interface PlayerBasicData {
     'id': string;
     /**
      * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'xp': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'name': string;
+    /**
+     * 
      * @type {string}
      * @memberof PlayerBasicData
      */
     'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'monad_address': string;
     /**
      * 
      * @type {string}
@@ -12339,7 +20562,67 @@ export interface PlayerBasicData {
      * @type {string}
      * @memberof PlayerBasicData
      */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'fantasy_points': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'fantasy_points_referrals': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'fragments': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'gold': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerBasicData
+     */
+    'stars': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerBasicData
+     */
+    'is_onboarding_done': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerBasicData
+     */
     'portfolio_value': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerBasicData
+     */
+    'can_play_free_tactics': boolean;
     /**
      * 
      * @type {number}
@@ -12352,62 +20635,692 @@ export interface PlayerBasicData {
      * @memberof PlayerBasicData
      */
     'total_gliding_score': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PlayerBasicData
-     */
-    'can_play_free_tactics': boolean;
 }
 /**
  * 
  * @export
- * @interface PlayerHeroInteractionDTO
+ * @interface PlayerCardFiltersDTO
  */
-export interface PlayerHeroInteractionDTO {
+export interface PlayerCardFiltersDTO {
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'name': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'handle': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'rarity': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOName}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'edition': GetPlayerCardsWhereDTOName;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTORarity}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'stars': GetPlayerCardsWhereDTORarity;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'hide_in_deck': GetPlayerCardsWhereDTOIsInDeck;
+    /**
+     * 
+     * @type {GetPlayerCardsWhereDTOIsInDeck}
+     * @memberof PlayerCardFiltersDTO
+     */
+    'hide_listed': GetPlayerCardsWhereDTOIsInDeck;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerCardWithPriceDTO
+ */
+export interface PlayerCardWithPriceDTO {
+    /**
+     * The unique ID of the card
+     * @type {string}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'id': string;
+    /**
+     * The rarity level of the card
+     * @type {number}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'rarity': number;
+    /**
+     * The ID of the hero this card represents
+     * @type {string}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'hero_id': string;
+    /**
+     * The number of stars the hero has
+     * @type {number}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'stars': number;
+    /**
+     * The edition of the card
+     * @type {string}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'edition': string;
+    /**
+     * Price of the card
+     * @type {number}
+     * @memberof PlayerCardWithPriceDTO
+     */
+    'price': number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerFreeToPlayCardDTO
+ */
+export interface PlayerFreeToPlayCardDTO {
+    /**
+     * The unique ID of the card
+     * @type {string}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'id': string;
+    /**
+     * The rarity level of the card
+     * @type {number}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'rarity': number;
+    /**
+     * The ID of the hero this card represents
+     * @type {string}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'hero_id': string;
+    /**
+     * The number of stars the hero has
+     * @type {number}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'stars': number;
+    /**
+     * The edition of the card
+     * @type {string}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'edition': string;
+    /**
+     * Whether the card is currently in a deck
+     * @type {boolean}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'isInDeck': boolean;
+    /**
+     * The score of the card
+     * @type {Array<HeroScoreDTO>}
+     * @memberof PlayerFreeToPlayCardDTO
+     */
+    'scores': Array<HeroScoreDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerFreeToPlayDeckDTO
+ */
+export interface PlayerFreeToPlayDeckDTO {
+    /**
+     * The unique identifier of the deck
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'id': string;
+    /**
+     * The player ID of the deck
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'player_id': string;
+    /**
+     * The league number this deck belongs to
+     * @type {number}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'league': number;
+    /**
+     * The calculated score for this deck based on its cards
+     * @type {number}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'score': number;
+    /**
+     * The start date of the tournament
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'tournamentStartDate': string;
+    /**
+     * The end date of the tournament
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'tournamentEndDate': string;
+    /**
+     * Whether the tournament rewards are processed
+     * @type {boolean}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'tournament_is_rewards_processed': boolean;
+    /**
+     * The tournament ID
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'tournament_id': string;
+    /**
+     * Whether the deck is over
+     * @type {boolean}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'is_over': boolean;
+    /**
+     * The date the deck was created
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'created_at': string;
+    /**
+     * The first card in the deck
+     * @type {PlayerFreeToPlayCardDTO}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'card1': PlayerFreeToPlayCardDTO;
+    /**
+     * The second card in the deck
+     * @type {PlayerFreeToPlayCardDTO}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'card2': PlayerFreeToPlayCardDTO;
+    /**
+     * The third card in the deck
+     * @type {PlayerFreeToPlayCardDTO}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'card3': PlayerFreeToPlayCardDTO;
+    /**
+     * The fourth card in the deck
+     * @type {PlayerFreeToPlayCardDTO}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'card4': PlayerFreeToPlayCardDTO;
+    /**
+     * The fifth card in the deck
+     * @type {PlayerFreeToPlayCardDTO}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'card5': PlayerFreeToPlayCardDTO;
+    /**
+     * The type of the reward
+     * @type {string}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'reward_type': string | null;
+    /**
+     * Whether the deck reward is claimed
+     * @type {boolean}
+     * @memberof PlayerFreeToPlayDeckDTO
+     */
+    'is_claimed': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerHistoryFilterDto
+ */
+export interface PlayerHistoryFilterDto {
+    /**
+     * Page number
+     * @type {number}
+     * @memberof PlayerHistoryFilterDto
+     */
+    'page'?: number;
+    /**
+     * Number of items per page
+     * @type {number}
+     * @memberof PlayerHistoryFilterDto
+     */
+    'limit'?: number;
+    /**
+     * Filter by action type
+     * @type {string}
+     * @memberof PlayerHistoryFilterDto
+     */
+    'action'?: PlayerHistoryFilterDtoActionEnum;
+    /**
+     * 
+     * @type {PlayerHistoryFilterDtoDate}
+     * @memberof PlayerHistoryFilterDto
+     */
+    'date': PlayerHistoryFilterDtoDate;
+}
+
+export const PlayerHistoryFilterDtoActionEnum = {
+    Buy: 'BUY',
+    Sell: 'SELL',
+    Win: 'WIN',
+    Loss: 'LOSS',
+    Void: 'VOID'
+} as const;
+
+export type PlayerHistoryFilterDtoActionEnum = typeof PlayerHistoryFilterDtoActionEnum[keyof typeof PlayerHistoryFilterDtoActionEnum];
+
+/**
+ * 
+ * @export
+ * @interface PlayerHistoryFilterDtoDate
+ */
+export interface PlayerHistoryFilterDtoDate {
     /**
      * 
      * @type {string}
-     * @memberof PlayerHeroInteractionDTO
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'equals'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'not'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'lt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'lte'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'gt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'gte'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'in'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'notIn'?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'isNull'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerHistoryFilterDtoDate
+     */
+    'isNotNull'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerInventoryDTO
+ */
+export interface PlayerInventoryDTO {
+    /**
+     * The IDs of the cards
+     * @type {Array<string>}
+     * @memberof PlayerInventoryDTO
+     */
+    'ids': Array<string>;
+    /**
+     * The ID of the hero
+     * @type {string}
+     * @memberof PlayerInventoryDTO
+     */
+    'hero_id': string;
+    /**
+     * The edition of the card
+     * @type {string}
+     * @memberof PlayerInventoryDTO
+     */
+    'edition': string;
+    /**
+     * The rarity level of the card
+     * @type {number}
+     * @memberof PlayerInventoryDTO
+     */
+    'rarity': number;
+    /**
+     * The number of cards owned of this type
+     * @type {number}
+     * @memberof PlayerInventoryDTO
+     */
+    'count': number;
+    /**
+     * The stars of the hero
+     * @type {number}
+     * @memberof PlayerInventoryDTO
+     */
+    'stars': number;
+    /**
+     * The number of cards currently in deck
+     * @type {number}
+     * @memberof PlayerInventoryDTO
+     */
+    'isInDeckCount': number;
+    /**
+     * The IDs of the cards currently in deck
+     * @type {Array<string>}
+     * @memberof PlayerInventoryDTO
+     */
+    'isInDeckIds': Array<string>;
+    /**
+     * The expected score of the hero
+     * @type {Array<HeroScoreDTO>}
+     * @memberof PlayerInventoryDTO
+     */
+    'scores': Array<HeroScoreDTO>;
+    /**
+     * The expected score of the hero
+     * @type {number}
+     * @memberof PlayerInventoryDTO
+     */
+    'expected_score'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerInventoryResponseDTO
+ */
+export interface PlayerInventoryResponseDTO {
+    /**
+     * Array of player inventory items
+     * @type {Array<PlayerInventoryDTO>}
+     * @memberof PlayerInventoryResponseDTO
+     */
+    'data': Array<PlayerInventoryDTO>;
+    /**
+     * Total number of inventory items
+     * @type {number}
+     * @memberof PlayerInventoryResponseDTO
+     */
+    'total': number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerNotification
+ */
+export interface PlayerNotification {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlayerNotification
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof PlayerHeroInteractionDTO
+     * @memberof PlayerNotification
      */
-    'name': string;
+    'player_id': string;
     /**
      * 
      * @type {string}
-     * @memberof PlayerHeroInteractionDTO
+     * @memberof PlayerNotification
      */
-    'handle': string;
+    'template_id': string;
+    /**
+     * 
+     * @type {TemplateNotification}
+     * @memberof PlayerNotification
+     */
+    'template': TemplateNotification;
+    /**
+     * 
+     * @type {object}
+     * @memberof PlayerNotification
+     */
+    'data': object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PlayerNotification
+     */
+    'seen': boolean;
     /**
      * 
      * @type {string}
-     * @memberof PlayerHeroInteractionDTO
+     * @memberof PlayerNotification
      */
-    'profile_picture': string;
+    'created_at': string;
     /**
      * 
-     * @type {number}
-     * @memberof PlayerHeroInteractionDTO
+     * @type {string}
+     * @memberof PlayerNotification
      */
-    'replies': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PlayerHeroInteractionDTO
-     */
-    'retweets': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PlayerHeroInteractionDTO
-     */
-    'total': number;
+    'updated_at': string;
 }
+/**
+ * 
+ * @export
+ * @interface PlayerRewardDTO
+ */
+export interface PlayerRewardDTO {
+    /**
+     * Unique identifier for the reward
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'id': string;
+    /**
+     * Player ID who owns the reward
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'player_id': string;
+    /**
+     * Origin of the reward (e.g., deck, progression)
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'reward_origin': PlayerRewardDTORewardOriginEnum;
+    /**
+     * Whether the reward has been claimed by the player
+     * @type {boolean}
+     * @memberof PlayerRewardDTO
+     */
+    'is_claimed': boolean;
+    /**
+     * Whether the reward is activated
+     * @type {boolean}
+     * @memberof PlayerRewardDTO
+     */
+    'is_activated': boolean;
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'reward_type': PlayerRewardDTORewardTypeEnum;
+    /**
+     * Quest type
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'quest_type': PlayerRewardDTOQuestTypeEnum;
+    /**
+     * Amount of the reward
+     * @type {number}
+     * @memberof PlayerRewardDTO
+     */
+    'reward_amount': number;
+    /**
+     * When the reward was created
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'created_at': string;
+    /**
+     * When the reward was last updated
+     * @type {string}
+     * @memberof PlayerRewardDTO
+     */
+    'updated_at': string;
+    /**
+     * Array of card ids won from the reward
+     * @type {Array<string>}
+     * @memberof PlayerRewardDTO
+     */
+    'card_ids': Array<string>;
+}
+
+export const PlayerRewardDTORewardOriginEnum = {
+    Progression: 'progression',
+    Chest: 'chest',
+    Deck: 'deck',
+    Gift: 'gift',
+    Quest: 'quest',
+    Roulette: 'roulette',
+    TrainingCamp: 'training_camp'
+} as const;
+
+export type PlayerRewardDTORewardOriginEnum = typeof PlayerRewardDTORewardOriginEnum[keyof typeof PlayerRewardDTORewardOriginEnum];
+export const PlayerRewardDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type PlayerRewardDTORewardTypeEnum = typeof PlayerRewardDTORewardTypeEnum[keyof typeof PlayerRewardDTORewardTypeEnum];
+export const PlayerRewardDTOQuestTypeEnum = {
+    Tournaments: 'tournaments',
+    Roulettes: 'roulettes',
+    Burns: 'burns',
+    LevelUps: 'level_ups',
+    Referrals: 'referrals',
+    CreateDeckOnboarding: 'create_deck_onboarding',
+    DeckDetailsOnboarding: 'deck_details_onboarding',
+    TournamentOnboarding: 'tournament_onboarding',
+    InitialOnboarding: 'initial_onboarding',
+    InventoryOnboarding: 'inventory_onboarding',
+    FreeDeckOnboarding: 'free_deck_onboarding'
+} as const;
+
+export type PlayerRewardDTOQuestTypeEnum = typeof PlayerRewardDTOQuestTypeEnum[keyof typeof PlayerRewardDTOQuestTypeEnum];
+
 /**
  * 
  * @export
@@ -12461,6 +21374,267 @@ export interface PlayerSearchHistoryResponseDto {
 /**
  * 
  * @export
+ * @interface PlayerStatsDto
+ */
+export interface PlayerStatsDto {
+    /**
+     * Total amount invested in all positions (open + settled) (fragments)
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'totalInvested': number;
+    /**
+     * Total amount currently invested in open positions (fragments)
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'currentlyInvested': number;
+    /**
+     * Total realized PnL from settled positions (fragments)
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'totalPnL': number;
+    /**
+     * Pending/unrealized PnL from open positions (fragments)
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'pendingPnL': number;
+    /**
+     * Number of positions won
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'winCount': number;
+    /**
+     * Number of positions lost
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'lossCount': number;
+    /**
+     * Total number of trades/bets
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'totalBetCount': number;
+    /**
+     * Total trading volume (sum of absolute values of all trade total_cost)
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'totalVolume': number;
+    /**
+     * Return on Investment (ROI) percentage
+     * @type {number}
+     * @memberof PlayerStatsDto
+     */
+    'roi': number;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerWeeklyQuestDTO
+ */
+export interface PlayerWeeklyQuestDTO {
+    /**
+     * The value threshold for the quest
+     * @type {number}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'valueThreshold': number;
+    /**
+     * Whether the quest has been claimed this week
+     * @type {boolean}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'isClaimed': boolean;
+    /**
+     * The amount of progress made on the quest
+     * @type {string}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'period': PlayerWeeklyQuestDTOPeriodEnum;
+    /**
+     * The unique identifier of the quest
+     * @type {string}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'questId': string;
+    /**
+     * The type of reward for completing the quest
+     * @type {string}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'rewardType': PlayerWeeklyQuestDTORewardTypeEnum;
+    /**
+     * The config id of the reward
+     * @type {string}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'rewardConfigId': string;
+    /**
+     * The amount of reward to be given
+     * @type {number}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'rewardAmount': number;
+    /**
+     * The type of quest
+     * @type {string}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'questType': PlayerWeeklyQuestDTOQuestTypeEnum;
+    /**
+     * The XP threshold required to unlock this quest reward
+     * @type {number}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'xpThreshold': number;
+    /**
+     * The current XP of the player
+     * @type {number}
+     * @memberof PlayerWeeklyQuestDTO
+     */
+    'playerXp': number;
+}
+
+export const PlayerWeeklyQuestDTOPeriodEnum = {
+    Daily: 'daily',
+    Weekly: 'weekly',
+    Monthly: 'monthly'
+} as const;
+
+export type PlayerWeeklyQuestDTOPeriodEnum = typeof PlayerWeeklyQuestDTOPeriodEnum[keyof typeof PlayerWeeklyQuestDTOPeriodEnum];
+export const PlayerWeeklyQuestDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type PlayerWeeklyQuestDTORewardTypeEnum = typeof PlayerWeeklyQuestDTORewardTypeEnum[keyof typeof PlayerWeeklyQuestDTORewardTypeEnum];
+export const PlayerWeeklyQuestDTOQuestTypeEnum = {
+    Tournaments: 'tournaments',
+    Roulettes: 'roulettes',
+    Burns: 'burns',
+    LevelUps: 'level_ups',
+    Referrals: 'referrals',
+    CreateDeckOnboarding: 'create_deck_onboarding',
+    DeckDetailsOnboarding: 'deck_details_onboarding',
+    TournamentOnboarding: 'tournament_onboarding',
+    InitialOnboarding: 'initial_onboarding',
+    InventoryOnboarding: 'inventory_onboarding',
+    FreeDeckOnboarding: 'free_deck_onboarding'
+} as const;
+
+export type PlayerWeeklyQuestDTOQuestTypeEnum = typeof PlayerWeeklyQuestDTOQuestTypeEnum[keyof typeof PlayerWeeklyQuestDTOQuestTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface PlayerWeeklyQuestProgressDTO
+ */
+export interface PlayerWeeklyQuestProgressDTO {
+    /**
+     * Number of tournaments completed
+     * @type {number}
+     * @memberof PlayerWeeklyQuestProgressDTO
+     */
+    'tournaments': number;
+    /**
+     * Number of cards burned
+     * @type {number}
+     * @memberof PlayerWeeklyQuestProgressDTO
+     */
+    'burns': number;
+    /**
+     * Number of level ups completed
+     * @type {number}
+     * @memberof PlayerWeeklyQuestProgressDTO
+     */
+    'level_ups': number;
+}
+/**
+ * 
+ * @export
  * @interface PlayersOnesignalSubscriptions
  */
 export interface PlayersOnesignalSubscriptions {
@@ -12476,6 +21650,311 @@ export interface PlayersOnesignalSubscriptions {
      * @memberof PlayersOnesignalSubscriptions
      */
     'onesignal_subscription_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface PositionDto
+ */
+export interface PositionDto {
+    /**
+     * The position ID
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'id': string;
+    /**
+     * The child market ID (if this is a child market position)
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'childMarketId'?: string;
+    /**
+     * The outcome ID
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'outcomeId': string;
+    /**
+     * The outcome name (hidden/undefined when viewing others and market is still trading)
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'outcomeName'?: string;
+    /**
+     * The subject of the outcome (e.g. Hero Name for submarkets)
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'outcomeSubject'?: string;
+    /**
+     * The outcome image URL
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'outcomeImage'?: string;
+    /**
+     * The entity linked to this outcome (for VS markets)
+     * @type {object}
+     * @memberof PositionDto
+     */
+    'outcomeEntity'?: object;
+    /**
+     * Number of shares held
+     * @type {number}
+     * @memberof PositionDto
+     */
+    'shares': number;
+    /**
+     * Total amount invested in fragments (before fees)
+     * @type {number}
+     * @memberof PositionDto
+     */
+    'totalInvested': number;
+    /**
+     * Total amount invested in fragments (after fees)
+     * @type {number}
+     * @memberof PositionDto
+     */
+    'totalInvestedAfterFee': number;
+    /**
+     * Current odds for the outcome (0 when hidden for others)
+     * @type {number}
+     * @memberof PositionDto
+     */
+    'currentOdds': number;
+    /**
+     * The winning outcome ID for the child market (if this is a child market position and market is resolved)
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'childMarketWinningOutcomeId'?: string;
+    /**
+     * Position creation timestamp
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'createdAt': string;
+    /**
+     * The market title (child market title for child market positions)
+     * @type {string}
+     * @memberof PositionDto
+     */
+    'marketTitle'?: string;
+    /**
+     * The market metadata (child market metadata for child market positions)
+     * @type {object}
+     * @memberof PositionDto
+     */
+    'marketMetadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface PredictionLeaderboardEntryDto
+ */
+export interface PredictionLeaderboardEntryDto {
+    /**
+     * Rank based on active sorting
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'rank': number;
+    /**
+     * Player ID (address)
+     * @type {string}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'playerId': string;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'handle': string;
+    /**
+     * Player profile picture URL
+     * @type {string}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'profilePicture': string | null;
+    /**
+     * Total amount invested (sum of total_invested)
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'totalInvested': number;
+    /**
+     * Total trading volume (sum of absolute values of all trade total_cost)
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'totalVolume': number;
+    /**
+     * Total PnL (sum of pnl_amount)
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'totalPnL': number;
+    /**
+     * Return on Investment (ROI) percentage
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'roi': number;
+    /**
+     * Number of bets (count of settlements)
+     * @type {number}
+     * @memberof PredictionLeaderboardEntryDto
+     */
+    'bets': number;
+}
+/**
+ * 
+ * @export
+ * @interface PresetDto
+ */
+export interface PresetDto {
+    /**
+     * Unique identifier for the preset
+     * @type {string}
+     * @memberof PresetDto
+     */
+    'id': string;
+    /**
+     * Label for the preset
+     * @type {string}
+     * @memberof PresetDto
+     */
+    'label': string;
+    /**
+     * Type of market
+     * @type {string}
+     * @memberof PresetDto
+     */
+    'curve_type': string;
+    /**
+     * Constant K value for the LMSR market
+     * @type {string}
+     * @memberof PresetDto
+     */
+    'k': string;
+    /**
+     * Additional curve parameters
+     * @type {object}
+     * @memberof PresetDto
+     */
+    'parameters': object;
+}
+/**
+ * 
+ * @export
+ * @interface PricePoolTypeObject
+ */
+export interface PricePoolTypeObject {
+    /**
+     * The type of the price pool
+     * @type {string}
+     * @memberof PricePoolTypeObject
+     */
+    'type': string;
+    /**
+     * The price pool
+     * @type {number}
+     * @memberof PricePoolTypeObject
+     */
+    'price_pool': number;
+}
+/**
+ * 
+ * @export
+ * @interface PrivateTournamentDTO
+ */
+export interface PrivateTournamentDTO {
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'id': string;
+    /**
+     * Tournament start date
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'start_date': string;
+    /**
+     * Tournament end date
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'end_date': string;
+    /**
+     * Tournament name
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'name': string;
+    /**
+     * Tournament max stars
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'maxStars': number;
+    /**
+     * Tournament max players
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'maxPlayers': number;
+    /**
+     * Tournament max rarities
+     * @type {MaxRaritiesDTO}
+     * @memberof PrivateTournamentDTO
+     */
+    'maxRarities': MaxRaritiesDTO;
+    /**
+     * Tournament bet
+     * @type {BetDTO}
+     * @memberof PrivateTournamentDTO
+     */
+    'bet': BetDTO;
+    /**
+     * Tournament banner URL
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'bannerUrl'?: string;
+    /**
+     * ID of the player who created the tournament
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'createdBy': string;
+    /**
+     * Tournament creation timestamp
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'createdAt': string;
+    /**
+     * Number of decks in the tournament
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'deckCount': number;
+    /**
+     * Tournament flags
+     * @type {FlagsDTO}
+     * @memberof PrivateTournamentDTO
+     */
+    'flags': FlagsDTO;
+    /**
+     * Rewards for the tournament
+     * @type {Array<TournamentRewards>}
+     * @memberof PrivateTournamentDTO
+     */
+    'rewards': Array<TournamentRewards>;
 }
 /**
  * 
@@ -12513,6 +21992,790 @@ export interface PrizeFragmentRouletteDTO {
      * @memberof PrizeFragmentRouletteDTO
      */
     'text': string;
+}
+/**
+ * 
+ * @export
+ * @interface ProgressionConfigDTO
+ */
+export interface ProgressionConfigDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionConfigDTO
+     */
+    'xp_progresses': number;
+    /**
+     * 
+     * @type {ProgressionRewardsDTO}
+     * @memberof ProgressionConfigDTO
+     */
+    'rewards': ProgressionRewardsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface ProgressionDTO
+ */
+export interface ProgressionDTO {
+    /**
+     * Unique identifier for the progression step
+     * @type {string}
+     * @memberof ProgressionDTO
+     */
+    'id': string;
+    /**
+     * XP threshold required to reach this progression step
+     * @type {number}
+     * @memberof ProgressionDTO
+     */
+    'xp_threshold': number;
+    /**
+     * Reward type
+     * @type {string}
+     * @memberof ProgressionDTO
+     */
+    'reward_type': ProgressionDTORewardTypeEnum;
+    /**
+     * ID of the reward configuration for this progression step
+     * @type {string}
+     * @memberof ProgressionDTO
+     */
+    'reward_config_id': string;
+    /**
+     * Amount of the reward for this progression step
+     * @type {number}
+     * @memberof ProgressionDTO
+     */
+    'reward_amount': number;
+    /**
+     * When the progression step was created
+     * @type {string}
+     * @memberof ProgressionDTO
+     */
+    'created_at': string;
+    /**
+     * When the progression step was last updated
+     * @type {string}
+     * @memberof ProgressionDTO
+     */
+    'updated_at': string;
+    /**
+     * Whether the progression step has been claimed
+     * @type {boolean}
+     * @memberof ProgressionDTO
+     */
+    'is_claimed': boolean | null;
+    /**
+     * Whether the progression step can be claimed
+     * @type {boolean}
+     * @memberof ProgressionDTO
+     */
+    'can_claim': boolean;
+}
+
+export const ProgressionDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type ProgressionDTORewardTypeEnum = typeof ProgressionDTORewardTypeEnum[keyof typeof ProgressionDTORewardTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface ProgressionRewardsDTO
+ */
+export interface ProgressionRewardsDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'xp'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'random_card'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'random_cards'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'common_card'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'rare_card'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'epic_card'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'legendary_card'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'level_up_common_to_rare'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'level_up_rare_to_epic'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'level_up_epic_to_legendary'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'deck_slot'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'silver_league_unlock'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'gold_league_unlock'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProgressionRewardsDTO
+     */
+    'elite_league_unlock'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectAccessRightsResponseDTO
+ */
+export interface ProjectAccessRightsResponseDTO {
+    /**
+     * Whether the user is a member of the project
+     * @type {boolean}
+     * @memberof ProjectAccessRightsResponseDTO
+     */
+    'is_member': boolean;
+    /**
+     * Whether the user is an admin of the project
+     * @type {boolean}
+     * @memberof ProjectAccessRightsResponseDTO
+     */
+    'is_admin': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectInfoDTO
+ */
+export interface ProjectInfoDTO {
+    /**
+     * Project UUID
+     * @type {string}
+     * @memberof ProjectInfoDTO
+     */
+    'id': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof ProjectInfoDTO
+     */
+    'name': string;
+    /**
+     * Project ticker
+     * @type {string}
+     * @memberof ProjectInfoDTO
+     */
+    'ticker': string | null;
+    /**
+     * Project contract address
+     * @type {string}
+     * @memberof ProjectInfoDTO
+     */
+    'contract_address': string;
+    /**
+     * Whether project is disabled
+     * @type {boolean}
+     * @memberof ProjectInfoDTO
+     */
+    'is_disabled': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectItemDTO
+ */
+export interface ProjectItemDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof ProjectItemDTO
+     */
+    'id': string;
+    /**
+     * Project ticker
+     * @type {string}
+     * @memberof ProjectItemDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address of the project
+     * @type {string}
+     * @memberof ProjectItemDTO
+     */
+    'contract_address': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof ProjectItemDTO
+     */
+    'name': string;
+    /**
+     * User Twitter ID associated with the project
+     * @type {string}
+     * @memberof ProjectItemDTO
+     */
+    'user_id'?: string;
+    /**
+     * Project media/image URLs
+     * @type {Array<string>}
+     * @memberof ProjectItemDTO
+     */
+    'media'?: Array<string>;
+    /**
+     * Project relations (parent projects)
+     * @type {Array<ProjectRelationDTO>}
+     * @memberof ProjectItemDTO
+     */
+    'relations'?: Array<ProjectRelationDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectMemberDTO
+ */
+export interface ProjectMemberDTO {
+    /**
+     * The wallet address of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'wallet_address': string;
+    /**
+     * The ID of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'user_id': string;
+    /**
+     * The name of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'name': string;
+    /**
+     * The handle of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'handle': string;
+    /**
+     * The profile image URL of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * The project ID of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'project_id': string;
+    /**
+     * The permission of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'permission': string;
+    /**
+     * The created at timestamp of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'created_at': string;
+    /**
+     * The updated at timestamp of the member
+     * @type {string}
+     * @memberof ProjectMemberDTO
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectMembersResponseDTO
+ */
+export interface ProjectMembersResponseDTO {
+    /**
+     * The list of members in the project
+     * @type {Array<ProjectMemberDTO>}
+     * @memberof ProjectMembersResponseDTO
+     */
+    'members': Array<ProjectMemberDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectModerationUserDTO
+ */
+export interface ProjectModerationUserDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectModerationUserDTO
+     */
+    'user_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectModerationUserDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectModerationUserDTO
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectModerationUserDTO
+     */
+    'profile_image_url_https'?: string | null;
+    /**
+     * 
+     * @type {ModerationRecordDTO}
+     * @memberof ProjectModerationUserDTO
+     */
+    'current_moderation'?: ModerationRecordDTO | null;
+    /**
+     * 
+     * @type {Array<ModerationRecordDTO>}
+     * @memberof ProjectModerationUserDTO
+     */
+    'moderation_history': Array<ModerationRecordDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectProfileItemDTO
+ */
+export interface ProjectProfileItemDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'id': string;
+    /**
+     * Project ticker
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address of the project
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'contract_address': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'name': string;
+    /**
+     * Project prompt
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'prompt': string;
+    /**
+     * Project media/image URLs
+     * @type {Array<string>}
+     * @memberof ProjectProfileItemDTO
+     */
+    'media'?: Array<string>;
+    /**
+     * Project links
+     * @type {object}
+     * @memberof ProjectProfileItemDTO
+     */
+    'links': object;
+    /**
+     * User Twitter ID associated with the project
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'user_id'?: string;
+    /**
+     * Project handle
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'handle': string;
+    /**
+     * Project profile image url
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Project profile banner url
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'profile_banner_url': string;
+    /**
+     * Project\'s smart follower count
+     * @type {number}
+     * @memberof ProjectProfileItemDTO
+     */
+    'smart_follower_count': number;
+    /**
+     * Project follower count
+     * @type {number}
+     * @memberof ProjectProfileItemDTO
+     */
+    'follower_count': number;
+    /**
+     * X verified badge
+     * @type {string}
+     * @memberof ProjectProfileItemDTO
+     */
+    'badge': string;
+    /**
+     * Project total rewards current in the pool
+     * @type {number}
+     * @memberof ProjectProfileItemDTO
+     */
+    'total_rewards': number;
+    /**
+     * Project total distribution done
+     * @type {number}
+     * @memberof ProjectProfileItemDTO
+     */
+    'total_distrib': number;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectRelationDTO
+ */
+export interface ProjectRelationDTO {
+    /**
+     * Parent project ID
+     * @type {string}
+     * @memberof ProjectRelationDTO
+     */
+    'parent_id': string;
+    /**
+     * Whether this is a deep link relation
+     * @type {boolean}
+     * @memberof ProjectRelationDTO
+     */
+    'is_deep_link': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectRelationshipResponseDTO
+ */
+export interface ProjectRelationshipResponseDTO {
+    /**
+     * Whether the child project is a child of the parent project
+     * @type {boolean}
+     * @memberof ProjectRelationshipResponseDTO
+     */
+    'isChild': boolean;
+    /**
+     * Parent project information
+     * @type {ProjectInfoDTO}
+     * @memberof ProjectRelationshipResponseDTO
+     */
+    'parentProject': ProjectInfoDTO;
+    /**
+     * Child project information
+     * @type {ProjectInfoDTO}
+     * @memberof ProjectRelationshipResponseDTO
+     */
+    'childProject': ProjectInfoDTO;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectRulesDTO
+ */
+export interface ProjectRulesDTO {
+    /**
+     * Sentiment rules for the project
+     * @type {SentimentRuleDTO}
+     * @memberof ProjectRulesDTO
+     */
+    'sentiment': SentimentRuleDTO;
+    /**
+     * Leaderboard access rules
+     * @type {LeaderboardAccessRuleDTO}
+     * @memberof ProjectRulesDTO
+     */
+    'leaderboard_access'?: LeaderboardAccessRuleDTO;
+    /**
+     * Maximum daily posts included in calculations
+     * @type {number}
+     * @memberof ProjectRulesDTO
+     */
+    'max_daily_post_included'?: number;
+    /**
+     * Points multiplier for the project
+     * @type {number}
+     * @memberof ProjectRulesDTO
+     */
+    'points_multiplier'?: number;
+    /**
+     * Exclude team members from the project
+     * @type {boolean}
+     * @memberof ProjectRulesDTO
+     */
+    'exclude_team_members'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ProjectTweetResponseDTO
+ */
+export interface ProjectTweetResponseDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'post_id': string;
+    /**
+     * Number of views
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'views': number;
+    /**
+     * Number of likes
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'likes': number;
+    /**
+     * Number of retweets
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'retweets': number;
+    /**
+     * Number of quotes
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'quotes': number;
+    /**
+     * Number of replies
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'replies': number;
+    /**
+     * Number of bookmarks
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'bookmarks': number;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'created_at': string;
+    /**
+     * Post type (Tweet, Quote, etc.)
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'type': string;
+    /**
+     * Certified view count
+     * @type {number}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'certified_views': number;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'text': string;
+    /**
+     * Conversation ID
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'conversation_id': string;
+    /**
+     * Quoted tweet data
+     * @type {ProjectTweetResponseDTO}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'quoted'?: ProjectTweetResponseDTO;
+    /**
+     * Associated flags/tickers
+     * @type {Array<object>}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'flag': Array<object>;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'user_id': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'user_name': string;
+    /**
+     * User handle
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'user_handle': string;
+    /**
+     * User profile image URL
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'user_profile_image': string | null;
+    /**
+     * Sentiment of the post
+     * @type {string}
+     * @memberof ProjectTweetResponseDTO
+     */
+    'sentiment'?: string;
 }
 /**
  * 
@@ -12841,6 +23104,104 @@ export interface QuestThreshold {
 /**
  * 
  * @export
+ * @interface QuestionHero
+ */
+export interface QuestionHero {
+    /**
+     * The id of the hero
+     * @type {string}
+     * @memberof QuestionHero
+     */
+    'id': string;
+    /**
+     * The name of the hero
+     * @type {string}
+     * @memberof QuestionHero
+     */
+    'name': string;
+    /**
+     * The handle of the hero
+     * @type {string}
+     * @memberof QuestionHero
+     */
+    'handle': string;
+    /**
+     * The profile image URL of the hero
+     * @type {string}
+     * @memberof QuestionHero
+     */
+    'profile_image_url_https': string;
+    /**
+     * The followers count of the hero
+     * @type {number}
+     * @memberof QuestionHero
+     */
+    'followers_count': number;
+    /**
+     * The fantasy score of the hero
+     * @type {number}
+     * @memberof QuestionHero
+     */
+    'fantasy_score': number;
+    /**
+     * The current rank of the hero
+     * @type {number}
+     * @memberof QuestionHero
+     */
+    'current_rank': number;
+}
+/**
+ * 
+ * @export
+ * @interface QuestionTweet
+ */
+export interface QuestionTweet {
+    /**
+     * The rest ID of the tweet
+     * @type {string}
+     * @memberof QuestionTweet
+     */
+    'rest_id': string;
+    /**
+     * The text content of the tweet
+     * @type {string}
+     * @memberof QuestionTweet
+     */
+    'text': string;
+    /**
+     * The reply count of the tweet
+     * @type {number}
+     * @memberof QuestionTweet
+     */
+    'reply_count': number;
+    /**
+     * The views count of the tweet
+     * @type {number}
+     * @memberof QuestionTweet
+     */
+    'views_count': number;
+    /**
+     * The like count of the tweet
+     * @type {number}
+     * @memberof QuestionTweet
+     */
+    'like_count': number;
+    /**
+     * The retweet count of the tweet
+     * @type {number}
+     * @memberof QuestionTweet
+     */
+    'retweet_count': number;
+    /**
+     * The creation date of the tweet
+     * @type {string}
+     * @memberof QuestionTweet
+     */
+    'created_at': string;
+}
+/**
+ * 
+ * @export
  * @interface ReferralStatistics
  */
 export interface ReferralStatistics {
@@ -13002,6 +23363,68 @@ export interface ReferralsStatisticsResponse {
      * @memberof ReferralsStatisticsResponse
      */
     'total_referred_players': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReferralsStatisticsResponse
+     */
+    'fantasy_points_referrals': number;
+}
+/**
+ * 
+ * @export
+ * @interface ReferredPlayerDTO
+ */
+export interface ReferredPlayerDTO {
+    /**
+     * Unique identifier for the player
+     * @type {string}
+     * @memberof ReferredPlayerDTO
+     */
+    'id': string;
+    /**
+     * Player handle/username
+     * @type {string}
+     * @memberof ReferredPlayerDTO
+     */
+    'handle': string | null;
+    /**
+     * Player display name
+     * @type {string}
+     * @memberof ReferredPlayerDTO
+     */
+    'name': string;
+    /**
+     * URL to player profile picture
+     * @type {string}
+     * @memberof ReferredPlayerDTO
+     */
+    'profile_picture': string;
+    /**
+     * Player XP
+     * @type {number}
+     * @memberof ReferredPlayerDTO
+     */
+    'xp': number;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterDFSTacticBodyDTO
+ */
+export interface RegisterDFSTacticBodyDTO {
+    /**
+     * The id of the tactic
+     * @type {string}
+     * @memberof RegisterDFSTacticBodyDTO
+     */
+    'tactic_id': string;
+    /**
+     * The ids of the hero scores
+     * @type {Array<string>}
+     * @memberof RegisterDFSTacticBodyDTO
+     */
+    'hero_scores_ids': Array<string>;
 }
 /**
  * 
@@ -13027,6 +23450,39 @@ export interface RegisterDeckDTO {
      * @memberof RegisterDeckDTO
      */
     'deckId': string;
+    /**
+     * The mode of the tournament
+     * @type {string}
+     * @memberof RegisterDeckDTO
+     */
+    'tournamentMode'?: RegisterDeckDTOTournamentModeEnum;
+}
+
+export const RegisterDeckDTOTournamentModeEnum = {
+    Main: 'main',
+    Private: 'private'
+} as const;
+
+export type RegisterDeckDTOTournamentModeEnum = typeof RegisterDeckDTOTournamentModeEnum[keyof typeof RegisterDeckDTOTournamentModeEnum];
+
+/**
+ * 
+ * @export
+ * @interface RegisterDeckF2pDTO
+ */
+export interface RegisterDeckF2pDTO {
+    /**
+     * Array of card IDs to register in the deck
+     * @type {Array<string>}
+     * @memberof RegisterDeckF2pDTO
+     */
+    'cardIds': Array<string>;
+    /**
+     * League number
+     * @type {number}
+     * @memberof RegisterDeckF2pDTO
+     */
+    'league': number;
 }
 /**
  * 
@@ -13046,6 +23502,19 @@ export interface RegisterTacticBodyDTO {
      * @memberof RegisterTacticBodyDTO
      */
     'captain_id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterToDFSTacticResponseDTO
+ */
+export interface RegisterToDFSTacticResponseDTO {
+    /**
+     * The id of the entry
+     * @type {string}
+     * @memberof RegisterToDFSTacticResponseDTO
+     */
+    'id': string;
 }
 /**
  * 
@@ -13130,6 +23599,178 @@ export interface RelayDeposit {
 /**
  * 
  * @export
+ * @interface RemainingEntriesDto
+ */
+export interface RemainingEntriesDto {
+    /**
+     * Number of remaining free entries available for the player
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'remaining_free_entries': number;
+    /**
+     * Number of paid entries available for reuse (previously purchased but deck removed)
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'available_paid_entries': number;
+    /**
+     * Maximum number of free entries allowed for this lottery
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'max_free_entries': number;
+    /**
+     * Total number of entries registered by the player
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'total_entries_registered': number;
+    /**
+     * Number of free entries currently used by the player
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'free_entries_used': number;
+    /**
+     * Number of paid entries currently active (with decks assigned)
+     * @type {number}
+     * @memberof RemainingEntriesDto
+     */
+    'paid_entries_active': number;
+}
+/**
+ * 
+ * @export
+ * @interface RemoveShouterDTO
+ */
+export interface RemoveShouterDTO {
+    /**
+     * Twitter ID
+     * @type {string}
+     * @memberof RemoveShouterDTO
+     */
+    'twitter_id': string;
+    /**
+     * Reason for removal
+     * @type {string}
+     * @memberof RemoveShouterDTO
+     */
+    'reason': RemoveShouterDTOReasonEnum;
+}
+
+export const RemoveShouterDTOReasonEnum = {
+    BusinessAccount: 'businessAccount',
+    BotAccount: 'botAccount',
+    AutomatedAccount: 'automatedAccount'
+} as const;
+
+export type RemoveShouterDTOReasonEnum = typeof RemoveShouterDTOReasonEnum[keyof typeof RemoveShouterDTOReasonEnum];
+
+/**
+ * 
+ * @export
+ * @interface RemoveSuperUserDTO
+ */
+export interface RemoveSuperUserDTO {
+    /**
+     * The twitter id of the super user to remove
+     * @type {string}
+     * @memberof RemoveSuperUserDTO
+     */
+    'twitter_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface RemoveTrackedUsersDto
+ */
+export interface RemoveTrackedUsersDto {
+    /**
+     * Array of user flags to remove
+     * @type {Array<UserFlagDto>}
+     * @memberof RemoveTrackedUsersDto
+     */
+    'users': Array<UserFlagDto>;
+}
+/**
+ * 
+ * @export
+ * @interface RemoveUserFromProjectDTO
+ */
+export interface RemoveUserFromProjectDTO {
+    /**
+     * Project ID to remove the user from
+     * @type {string}
+     * @memberof RemoveUserFromProjectDTO
+     */
+    'project_id': string;
+    /**
+     * Player ID of the user to remove
+     * @type {string}
+     * @memberof RemoveUserFromProjectDTO
+     */
+    'player_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface ResolveMarketAdminDto
+ */
+export interface ResolveMarketAdminDto {
+    /**
+     * Slug of the market to resolve
+     * @type {string}
+     * @memberof ResolveMarketAdminDto
+     */
+    'market_slug': string;
+    /**
+     * ID of the winning outcome (required for standalone markets, ignored for parent markets)
+     * @type {string}
+     * @memberof ResolveMarketAdminDto
+     */
+    'winning_outcome_id'?: string;
+    /**
+     * Child market resolutions (required for parent markets)
+     * @type {Array<ChildMarketResolutionDto>}
+     * @memberof ResolveMarketAdminDto
+     */
+    'child_resolutions'?: Array<ChildMarketResolutionDto>;
+}
+/**
+ * 
+ * @export
+ * @interface ResolveMarketResponseDto
+ */
+export interface ResolveMarketResponseDto {
+    /**
+     * Whether the resolution was successful
+     * @type {boolean}
+     * @memberof ResolveMarketResponseDto
+     */
+    'success': boolean;
+    /**
+     * The resolved market
+     * @type {MarketDto}
+     * @memberof ResolveMarketResponseDto
+     */
+    'market': MarketDto;
+    /**
+     * Number of positions settled
+     * @type {number}
+     * @memberof ResolveMarketResponseDto
+     */
+    'settledCount': number;
+    /**
+     * Settlement counts for child markets
+     * @type {object}
+     * @memberof ResolveMarketResponseDto
+     */
+    'childSettledCounts': object;
+}
+/**
+ * 
+ * @export
  * @interface Reward
  */
 export interface Reward {
@@ -13149,97 +23790,6 @@ export interface Reward {
 /**
  * 
  * @export
- * @interface RewardHistory
- */
-export interface RewardHistory {
-    /**
-     * The ID of the reward often a deterministic uuid
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'reward_id': string;
-    /**
-     * The ID of the player
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'player_id': string;
-    /**
-     * The type of the reward
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'type': RewardHistoryTypeEnum;
-    /**
-     * The source of the reward
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'source': string;
-    /**
-     * The ID of the tournament (if applicable)
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'tournament_id': string;
-    /**
-     * The ID of the mint configuration (if applicable)
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'mint_config_id': string;
-    /**
-     * The amount of the reward (if applicable)
-     * @type {object}
-     * @memberof RewardHistory
-     */
-    'amount': object;
-    /**
-     * The price of the reward (if applicable)
-     * @type {object}
-     * @memberof RewardHistory
-     */
-    'price': object;
-    /**
-     * The number of cards per pack (if applicable)
-     * @type {number}
-     * @memberof RewardHistory
-     */
-    'cards_per_pack': number;
-    /**
-     * The timestamp when the record was created
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'created_at': string;
-    /**
-     * The timestamp when the record was last updated
-     * @type {string}
-     * @memberof RewardHistory
-     */
-    'updated_at': string;
-    /**
-     * normaly true because it is the history rewards table
-     * @type {boolean}
-     * @memberof RewardHistory
-     */
-    'is_reward_distributed': boolean;
-}
-
-export const RewardHistoryTypeEnum = {
-    Star: 'STAR',
-    Fan: 'FAN',
-    Gold: 'GOLD',
-    Pack: 'PACK',
-    Fragment: 'FRAGMENT',
-    StarBanner: 'star_banner'
-} as const;
-
-export type RewardHistoryTypeEnum = typeof RewardHistoryTypeEnum[keyof typeof RewardHistoryTypeEnum];
-
-/**
- * 
- * @export
  * @interface RewardTypeAmount
  */
 export interface RewardTypeAmount {
@@ -13255,6 +23805,76 @@ export interface RewardTypeAmount {
      * @memberof RewardTypeAmount
      */
     'amount': number;
+}
+/**
+ * All possible reward types
+ * @export
+ * @enum {string}
+ */
+
+export const RewardTypeEnum = {
+    Star: 'STAR',
+    Fan: 'FAN',
+    Gold: 'GOLD',
+    Pack: 'PACK',
+    Fragment: 'FRAGMENT',
+    StarBanner: 'star_banner'
+} as const;
+
+export type RewardTypeEnum = typeof RewardTypeEnum[keyof typeof RewardTypeEnum];
+
+
+/**
+ * 
+ * @export
+ * @interface RewardTypeEnumSchema
+ */
+export interface RewardTypeEnumSchema {
+    /**
+     * 
+     * @type {RewardTypeEnum}
+     * @memberof RewardTypeEnumSchema
+     */
+    'value': RewardTypeEnum;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface RewardWinningsDTO
+ */
+export interface RewardWinningsDTO {
+    /**
+     * Array of cards won from the reward with their prices
+     * @type {Array<PlayerCardWithPriceDTO>}
+     * @memberof RewardWinningsDTO
+     */
+    'cards': Array<PlayerCardWithPriceDTO>;
+    /**
+     * Number of xp points won from the reward
+     * @type {number}
+     * @memberof RewardWinningsDTO
+     */
+    'xp': number;
+    /**
+     * Number of level ups won from the reward
+     * @type {number}
+     * @memberof RewardWinningsDTO
+     */
+    'totalLevelUps': number;
+    /**
+     * Whether the reward has a deck slot
+     * @type {boolean}
+     * @memberof RewardWinningsDTO
+     */
+    'hasDeckSlot': boolean;
+    /**
+     * Array of reward ids
+     * @type {Array<string>}
+     * @memberof RewardWinningsDTO
+     */
+    'rewardIds': Array<string>;
 }
 /**
  * 
@@ -13291,6 +23911,204 @@ export interface RewardsAvailableData {
 /**
  * 
  * @export
+ * @interface RouletteRewardDTO
+ */
+export interface RouletteRewardDTO {
+    /**
+     * Unique identifier for the threshold
+     * @type {string}
+     * @memberof RouletteRewardDTO
+     */
+    'threshold_id': string;
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof RouletteRewardDTO
+     */
+    'reward_type': RouletteRewardDTORewardTypeEnum;
+    /**
+     * Amount of the reward
+     * @type {number}
+     * @memberof RouletteRewardDTO
+     */
+    'reward_amount': number;
+    /**
+     * Reward config id
+     * @type {string}
+     * @memberof RouletteRewardDTO
+     */
+    'reward_config_id': string;
+    /**
+     * Quest id
+     * @type {string}
+     * @memberof RouletteRewardDTO
+     */
+    'quest_id': string;
+}
+
+export const RouletteRewardDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type RouletteRewardDTORewardTypeEnum = typeof RouletteRewardDTORewardTypeEnum[keyof typeof RouletteRewardDTORewardTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface RouletteSpinResponseDTO
+ */
+export interface RouletteSpinResponseDTO {
+    /**
+     * The threshold ID of the reward that was won
+     * @type {string}
+     * @memberof RouletteSpinResponseDTO
+     */
+    'threshold_id': string;
+    /**
+     * The winnings from the roulette spin
+     * @type {RewardWinningsDTO}
+     * @memberof RouletteSpinResponseDTO
+     */
+    'winnings': RewardWinningsDTO;
+}
+/**
+ * 
+ * @export
+ * @interface RouletteSpinStatusDTO
+ */
+export interface RouletteSpinStatusDTO {
+    /**
+     * The timestamp of the last spin, or null if never spun
+     * @type {string}
+     * @memberof RouletteSpinStatusDTO
+     */
+    'lastSpin': string | null;
+    /**
+     * Array of available roulette rewards
+     * @type {Array<PlayerRewardDTO>}
+     * @memberof RouletteSpinStatusDTO
+     */
+    'spinRewards': Array<PlayerRewardDTO>;
+    /**
+     * Whether the player can spin the roulette
+     * @type {boolean}
+     * @memberof RouletteSpinStatusDTO
+     */
+    'canSpin': boolean;
+    /**
+     * Whether the player has already spun today
+     * @type {boolean}
+     * @memberof RouletteSpinStatusDTO
+     */
+    'hasSpinToday': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SampleTweetDto
+ */
+export interface SampleTweetDto {
+    /**
+     * Tweet text content
+     * @type {string}
+     * @memberof SampleTweetDto
+     */
+    'text': string;
+    /**
+     * Number of views for this tweet
+     * @type {number}
+     * @memberof SampleTweetDto
+     */
+    'views_count'?: number;
+    /**
+     * Creation date of the tweet
+     * @type {string}
+     * @memberof SampleTweetDto
+     */
+    'created_at'?: string;
+}
+/**
+ * 
+ * @export
  * @interface SaveDeckDTO
  */
 export interface SaveDeckDTO {
@@ -13306,6 +24124,31 @@ export interface SaveDeckDTO {
      * @memberof SaveDeckDTO
      */
     'heroChoices': Array<object>;
+}
+/**
+ * 
+ * @export
+ * @interface SaveDraftEntryDTO
+ */
+export interface SaveDraftEntryDTO {
+    /**
+     * Array of heroes in the entry
+     * @type {Array<DraftHeroDTO>}
+     * @memberof SaveDraftEntryDTO
+     */
+    'heroes': Array<DraftHeroDTO>;
+    /**
+     * KOTH ID
+     * @type {string}
+     * @memberof SaveDraftEntryDTO
+     */
+    'kothId': string;
+    /**
+     * Array of heroes in the multiple deck
+     * @type {Array<DraftHeroDTO>}
+     * @memberof SaveDraftEntryDTO
+     */
+    'heroesMultiple': Array<DraftHeroDTO>;
 }
 /**
  * 
@@ -13506,6 +24349,320 @@ export interface SearchHeroAndPlayerResponsePlayerResponseDto {
      * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
      */
     'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface SearchProjectItemDTO
+ */
+export interface SearchProjectItemDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'id': string;
+    /**
+     * Project slug
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'slug': string;
+    /**
+     * Project ticker
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address of the project
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'contract_address': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'name': string;
+    /**
+     * Project media/image URLs
+     * @type {Array<string>}
+     * @memberof SearchProjectItemDTO
+     */
+    'media'?: Array<string>;
+    /**
+     * Project user ID
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'user_id': string;
+    /**
+     * Project handle
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'handle': string;
+    /**
+     * Project profile image URL
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Project profile banner URL
+     * @type {string}
+     * @memberof SearchProjectItemDTO
+     */
+    'profile_banner_url': string;
+}
+/**
+ * 
+ * @export
+ * @interface SearchProjectsResponseDTO
+ */
+export interface SearchProjectsResponseDTO {
+    /**
+     * 
+     * @type {Array<SearchProjectItemDTO>}
+     * @memberof SearchProjectsResponseDTO
+     */
+    'projects': Array<SearchProjectItemDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SearchUserDTO
+ */
+export interface SearchUserDTO {
+    /**
+     * Twitter user ID
+     * @type {string}
+     * @memberof SearchUserDTO
+     */
+    'id': string;
+    /**
+     * Twitter user ID
+     * @type {string}
+     * @memberof SearchUserDTO
+     */
+    'twitter_id': string;
+    /**
+     * Display name
+     * @type {string}
+     * @memberof SearchUserDTO
+     */
+    'name': string | null;
+    /**
+     * Handle (username)
+     * @type {string}
+     * @memberof SearchUserDTO
+     */
+    'handle': string | null;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof SearchUserDTO
+     */
+    'profile_image_url_https': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface SearchUsersResponseDTO
+ */
+export interface SearchUsersResponseDTO {
+    /**
+     * Matched users from users table
+     * @type {Array<SearchUserDTO>}
+     * @memberof SearchUsersResponseDTO
+     */
+    'users': Array<SearchUserDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface SearchUsersResponseDto
+ */
+export interface SearchUsersResponseDto {
+    /**
+     * List of users matching the search query
+     * @type {Array<TrackedUserDto>}
+     * @memberof SearchUsersResponseDto
+     */
+    'users': Array<TrackedUserDto>;
+}
+/**
+ * 
+ * @export
+ * @interface SeasonWrapDTO
+ */
+export interface SeasonWrapDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapDTO
+     */
+    'id': number;
+    /**
+     * 
+     * @type {Array<HeroInOutDTO>}
+     * @memberof SeasonWrapDTO
+     */
+    'hero_out': Array<HeroInOutDTO>;
+    /**
+     * 
+     * @type {Array<HeroInOutDTO>}
+     * @memberof SeasonWrapDTO
+     */
+    'hero_in': Array<HeroInOutDTO>;
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapDTO
+     */
+    'deck_registered': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapDTO
+     */
+    'total_rewards': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapDTO
+     */
+    'start_date': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapDTO
+     */
+    'end_date': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapDTO
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {Array<BurnWarsRewardDTO>}
+     * @memberof SeasonWrapDTO
+     */
+    'burn_wars_distribution': Array<BurnWarsRewardDTO>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SeasonWrapDTO
+     */
+    'burn_wars_rewards_processed': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SeasonWrapPlayerDTO
+ */
+export interface SeasonWrapPlayerDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'player_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'season': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'deck_played': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'best_rank': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'winnings': object;
+    /**
+     * 
+     * @type {number}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'reward_value': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SeasonWrapPlayerDTO
+     */
+    'profile_picture': string;
+}
+/**
+ * 
+ * @export
+ * @interface SelectedCardDto
+ */
+export interface SelectedCardDto {
+    /**
+     * Card ID (hero_rarity_index)
+     * @type {string}
+     * @memberof SelectedCardDto
+     */
+    'cardId': string;
+    /**
+     * Number of stars for this card
+     * @type {number}
+     * @memberof SelectedCardDto
+     */
+    'stars': number;
+    /**
+     * Whether this card is in the optimal lineup
+     * @type {boolean}
+     * @memberof SelectedCardDto
+     */
+    'isOptimal': boolean;
 }
 /**
  * 
@@ -13813,6 +24970,44 @@ export interface SellOrderWithHighestBid {
 /**
  * 
  * @export
+ * @interface SellOrdersFiltersDTO
+ */
+export interface SellOrdersFiltersDTO {
+    /**
+     * 
+     * @type {MarketplaceFiltersDTO}
+     * @memberof SellOrdersFiltersDTO
+     */
+    'filters'?: MarketplaceFiltersDTO;
+    /**
+     * Order by criteria for marketplace results
+     * @type {string}
+     * @memberof SellOrdersFiltersDTO
+     */
+    'orderBy'?: SellOrdersFiltersDTOOrderByEnum;
+    /**
+     * 
+     * @type {PaginationDTO}
+     * @memberof SellOrdersFiltersDTO
+     */
+    'pagination'?: PaginationDTO;
+}
+
+export const SellOrdersFiltersDTOOrderByEnum = {
+    BestValue: 'best_value',
+    CardsScoreDesc: 'cards_score_desc',
+    CardsScoreAsc: 'cards_score_asc',
+    PriceAsc: 'price_asc',
+    PriceDesc: 'price_desc',
+    RankAsc: 'rank_asc',
+    RankDesc: 'rank_desc'
+} as const;
+
+export type SellOrdersFiltersDTOOrderByEnum = typeof SellOrdersFiltersDTOOrderByEnum[keyof typeof SellOrdersFiltersDTOOrderByEnum];
+
+/**
+ * 
+ * @export
  * @interface SellOrdersResponseDTO
  */
 export interface SellOrdersResponseDTO {
@@ -13859,19 +25054,311 @@ export interface SendNotificationDto {
      * @memberof SendNotificationDto
      */
     'link': string;
+    /**
+     * Is for all users or only specific users
+     * @type {boolean}
+     * @memberof SendNotificationDto
+     */
+    'all': boolean;
+    /**
+     * Image URL
+     * @type {string}
+     * @memberof SendNotificationDto
+     */
+    'image_url': string;
 }
 /**
  * 
  * @export
- * @interface SignInRequestBodyDTO
+ * @interface SendTemplateNotificationDto
  */
-export interface SignInRequestBodyDTO {
+export interface SendTemplateNotificationDto {
     /**
-     * Wallet address
+     * 
      * @type {string}
-     * @memberof SignInRequestBodyDTO
+     * @memberof SendTemplateNotificationDto
      */
-    'address': string;
+    'template_id': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SendTemplateNotificationDto
+     */
+    'player_ids'?: Array<string>;
+    /**
+     * 
+     * @type {object}
+     * @memberof SendTemplateNotificationDto
+     */
+    'data'?: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SendTemplateNotificationDto
+     */
+    'send_push'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SendTemplateNotificationDto
+     */
+    'push_title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SendTemplateNotificationDto
+     */
+    'push_body'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SendTemplateNotificationDto
+     */
+    'push_link'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SendTemplateResponseDTO
+ */
+export interface SendTemplateResponseDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof SendTemplateResponseDTO
+     */
+    'inserted': number;
+}
+/**
+ * 
+ * @export
+ * @interface SentimentRuleDTO
+ */
+export interface SentimentRuleDTO {
+    /**
+     * Sentiment rules for the project
+     * @type {Array<string>}
+     * @memberof SentimentRuleDTO
+     */
+    'included': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface ShoutLeaderboardItemDTO
+ */
+export interface ShoutLeaderboardItemDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'twitter_id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'handle': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'profile_image_url_https'?: string;
+    /**
+     * Total points score
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'total_point': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'total_posts': number;
+    /**
+     * Total views
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'total_views'?: string;
+    /**
+     * Followers count
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'followers_count': number;
+    /**
+     * Smart follower count
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'smart_follower_count'?: number;
+    /**
+     * Percentage of total points (mindshare)
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'mindshare_percentage': number;
+    /**
+     * Total clout score
+     * @type {number}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'total_clout_score'?: number;
+    /**
+     * Calculated at
+     * @type {string}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'calculated_at': string;
+    /**
+     * Is hero
+     * @type {boolean}
+     * @memberof ShoutLeaderboardItemDTO
+     */
+    'isHero': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SivCalculationDetailsDTO
+ */
+export interface SivCalculationDetailsDTO {
+    /**
+     * User median certified views used as baseline
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'user_median_views': number;
+    /**
+     * Bonus views calculated from interactions
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'interaction_bonus': number;
+    /**
+     * Calculated legitimate views (median + bonus)
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'calculated_legit_views': number;
+    /**
+     * Final allowed views after processing
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'final_allowed_views': number;
+    /**
+     * Views before SIV processing
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'previous_certified_views': number;
+    /**
+     * Views after SIV processing
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'new_certified_views': number;
+    /**
+     * Botted views before SIV processing
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'previous_botted_views': number;
+    /**
+     * Botted views after SIV processing
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'new_botted_views': number;
+    /**
+     * Actual number of views reduced by SIV
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'actual_views_reduced': number;
+    /**
+     * Theoretical views that could have been subtracted
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'theoretical_views_to_subtract': number;
+    /**
+     * Whether the post was already within calculated limits
+     * @type {boolean}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'was_already_within_limits': boolean;
+    /**
+     * Whether the post was completely nuked (views set to 0)
+     * @type {boolean}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'was_nuked': boolean;
+    /**
+     * Reason for nuking the post if applicable
+     * @type {string}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'nuke_reason'?: string;
+    /**
+     * Percentage of original views that were deemed botted
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'botting_percentage': number;
+    /**
+     * View multipliers used for different interaction types
+     * @type {object}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'view_multipliers': object;
+    /**
+     * Number of interactions that contributed to bonus views
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'total_interactions_processed': number;
+    /**
+     * Number of unique interactors whose averages were used
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'unique_interactors_count': number;
+    /**
+     * Timestamp when the calculation was performed
+     * @type {string}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'processing_timestamp': string;
+    /**
+     * Certified interactions count used for nuke decision (if nuked)
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'certified_interactions_for_nuke'?: number;
+    /**
+     * Certified interaction percentage used for nuke decision (if nuked)
+     * @type {number}
+     * @memberof SivCalculationDetailsDTO
+     */
+    'certified_interaction_percentage'?: number;
 }
 /**
  * 
@@ -13938,6 +25425,86 @@ export interface SmartFollowerResponseDTO {
 /**
  * 
  * @export
+ * @interface SponsoredTournamentCloutBoostResponseDTO
+ */
+export interface SponsoredTournamentCloutBoostResponseDTO {
+    /**
+     * Whether the user has Twitter connected
+     * @type {boolean}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'has_twitter_connected': boolean;
+    /**
+     * Twitter ID if connected
+     * @type {string}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'twitter_id'?: string;
+    /**
+     * Whether user is in project whitelist (signed up users)
+     * @type {boolean}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'is_project_user': boolean;
+    /**
+     * User rank in project leaderboard during tournament period
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'leaderboard_rank'?: number;
+    /**
+     * Total boost multiplier applied
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'boost_multiplier': number;
+    /**
+     * 
+     * @type {SponsoredTournamentCloutBoostResponseDTOBoostBreakdown}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'boost_breakdown': SponsoredTournamentCloutBoostResponseDTOBoostBreakdown;
+    /**
+     * Human readable description of boost eligibility
+     * @type {string}
+     * @memberof SponsoredTournamentCloutBoostResponseDTO
+     */
+    'boost_description': string;
+}
+/**
+ * Breakdown of boost sources
+ * @export
+ * @interface SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
+ */
+export interface SponsoredTournamentCloutBoostResponseDTOBoostBreakdown {
+    /**
+     * Base multiplier
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
+     */
+    'base'?: number;
+    /**
+     * Project user bonus
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
+     */
+    'project_user'?: number;
+    /**
+     * Top 300 bonus
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
+     */
+    'leaderboard_top_300'?: number;
+    /**
+     * Top 50 bonus
+     * @type {number}
+     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
+     */
+    'leaderboard_top_50'?: number;
+}
+/**
+ * 
+ * @export
  * @interface StreakLeaderboardDto
  */
 export interface StreakLeaderboardDto {
@@ -13989,7 +25556,7 @@ export interface StreakReward {
      * @type {string}
      * @memberof StreakReward
      */
-    'reward_type': string;
+    'reward_type': StreakRewardRewardTypeEnum;
     /**
      * Amount of the reward
      * @type {number}
@@ -14015,6 +25582,18 @@ export interface StreakReward {
      */
     'updated_at': string;
 }
+
+export const StreakRewardRewardTypeEnum = {
+    Star: 'STAR',
+    Fan: 'FAN',
+    Gold: 'GOLD',
+    Pack: 'PACK',
+    Fragment: 'FRAGMENT',
+    StarBanner: 'star_banner'
+} as const;
+
+export type StreakRewardRewardTypeEnum = typeof StreakRewardRewardTypeEnum[keyof typeof StreakRewardRewardTypeEnum];
+
 /**
  * 
  * @export
@@ -14171,29 +25750,35 @@ export interface SummaryOfTacticIdEntryDTO {
  */
 export interface SummaryOfTacticIdEntryDTOTicketRewardDTO {
     /**
-     * Reward amount in ETH
+     * Reward amount in USDC
      * @type {object}
      * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
      */
-    'reward_eth': object;
+    'reward_usdc': object;
     /**
-     * Reward amount in gold
-     * @type {object}
-     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
-     */
-    'reward_gold': object;
-    /**
-     * Reward amount in cards
+     * Reward amount in fragments
      * @type {number}
      * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
      */
-    'reward_cards': number;
+    'reward_fragments': number;
     /**
      * Reward amount in tactic tickets
      * @type {number}
      * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
      */
     'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards in JSON format
+     * @type {Array<string>}
+     * @memberof SummaryOfTacticIdEntryDTOTicketRewardDTO
+     */
+    'reward_extra': Array<string>;
 }
 /**
  * 
@@ -14403,6 +25988,18 @@ export interface SummaryOfTacticIdTacticDTO {
      */
     'has_been_validated': boolean;
     /**
+     * Profile pictures of players who have an entry
+     * @type {Array<string>}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'profile_pictures': Array<string>;
+    /**
+     * Roster of the tactic
+     * @type {Array<TournamentFlags>}
+     * @memberof SummaryOfTacticIdTacticDTO
+     */
+    'roster': Array<TournamentFlags>;
+    /**
      * 
      * @type {SummaryOfTacticIdTacticDTOConfigDTO}
      * @memberof SummaryOfTacticIdTacticDTO
@@ -14440,35 +26037,17 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      */
     'duration': number;
     /**
-     * Entry price as a Decimal value
-     * @type {object}
-     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
-     */
-    'entry_price': object;
-    /**
-     * Flat fee as a Decimal value
-     * @type {object}
-     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
-     */
-    'flat_fee': object;
-    /**
-     * Payout model for the tactic
-     * @type {string}
-     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
-     */
-    'payout_model': string;
-    /**
      * Flags for additional configuration
      * @type {object}
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
     'flags': object;
     /**
-     * Maximum stars for the tactic
-     * @type {number}
+     * Salary cap for the tactic
+     * @type {object}
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
-    'max_stars': number;
+    'salary_cap': object;
     /**
      * Whether the tactic is activated
      * @type {boolean}
@@ -14494,11 +26073,11 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      */
     'create_new_tactic': boolean;
     /**
-     * Payout structure details
-     * @type {PayoutStructure}
+     * 
+     * @type {TacticsConfigPayoutStructure}
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
-    'payout_structure'?: PayoutStructure | null;
+    'payout_structure'?: TacticsConfigPayoutStructure | null;
     /**
      * Created at
      * @type {string}
@@ -14517,6 +26096,12 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
     'banner_image': string;
+    /**
+     * Sponsored image for the tactic
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'sponsored_image': string;
     /**
      * wether or not the compute is made by the twitter indexer or the nest api, nest api handle only for the moment for the coin tactic
      * @type {boolean}
@@ -14559,6 +26144,18 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
     'is_solo_rolling': boolean;
+    /**
+     * Whether the tactic is DFS
+     * @type {boolean}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'is_dfs': boolean;
+    /**
+     * Clout project id
+     * @type {string}
+     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
+     */
+    'clout_project_id': string;
 }
 /**
  * 
@@ -14734,6 +26331,12 @@ export interface SummaryOfTournamentNumberCardDTOCardDTO {
     'picture_url'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberCardDTOCardDTO
+     */
+    'hero_rarity_index'?: string;
+    /**
+     * 
      * @type {SummaryOfTournamentNumberHeroDTO}
      * @memberof SummaryOfTournamentNumberCardDTOCardDTO
      */
@@ -14747,10 +26350,10 @@ export interface SummaryOfTournamentNumberCardDTOCardDTO {
 export interface SummaryOfTournamentNumberDTO {
     /**
      * 
-     * @type {Array<SummaryOfTournamentNumberTournamentDTO>}
+     * @type {Array<SummaryOfTournamentNumberWithRewardsTournamentDTO>}
      * @memberof SummaryOfTournamentNumberDTO
      */
-    'tournaments': Array<SummaryOfTournamentNumberTournamentDTO>;
+    'tournaments': Array<SummaryOfTournamentNumberWithRewardsTournamentDTO>;
     /**
      * 
      * @type {Array<SummaryOfTournamentNumberWinnersOfEachTournamentDTO>}
@@ -14775,25 +26378,6 @@ export interface SummaryOfTournamentNumberDTO {
      * @memberof SummaryOfTournamentNumberDTO
      */
     'top_outrageous_winners': Array<SummaryOfTournamentNumberTopOutrageousWinnersDTO>;
-    /**
-     * 
-     * @type {Array<SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO>}
-     * @memberof SummaryOfTournamentNumberDTO
-     */
-    'top_players_elo_and_elo_change': Array<SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO>;
-}
-/**
- * 
- * @export
- * @interface SummaryOfTournamentNumberDTOEloPlayerSeasonDTO
- */
-export interface SummaryOfTournamentNumberDTOEloPlayerSeasonDTO {
-    /**
-     * The current ELO score of the player
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberDTOEloPlayerSeasonDTO
-     */
-    'elo_score': number;
 }
 /**
  * 
@@ -14893,6 +26477,12 @@ export interface SummaryOfTournamentNumberOfPlayerDTO {
      * @memberof SummaryOfTournamentNumberOfPlayerDTO
      */
     'top_5_x_factors_heroes_of_user': Array<SummaryOfTournamentNumberTop5XFactorsHeroesDTO>;
+    /**
+     * 
+     * @type {Array<DeckHistoryDTO>}
+     * @memberof SummaryOfTournamentNumberOfPlayerDTO
+     */
+    'decks': Array<DeckHistoryDTO>;
 }
 /**
  * 
@@ -14917,31 +26507,7 @@ export interface SummaryOfTournamentNumberOfPlayerTotalRewardsDTO {
      * @type {number}
      * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
      */
-    'GOLD': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
-     */
-    'PACK': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
-     */
-    'STAR': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
-     */
     'FRAGMENT': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTotalRewardsDTO
-     */
-    'ELO': number;
 }
 /**
  * 
@@ -14961,18 +26527,6 @@ export interface SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO {
      * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
      */
     'tournament_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
-     */
-    'total_elo_change': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberOfPlayerTournamentPlayerInfoDTO
-     */
-    'previous_elo': number;
     /**
      * 
      * @type {number}
@@ -15141,12 +26695,6 @@ export interface SummaryOfTournamentNumberTopOutrageousWinnersDTO {
     'profile_picture': string;
     /**
      * 
-     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
-     * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
-     */
-    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
-    /**
-     * 
      * @type {string}
      * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
      */
@@ -15157,49 +26705,6 @@ export interface SummaryOfTournamentNumberTopOutrageousWinnersDTO {
      * @memberof SummaryOfTournamentNumberTopOutrageousWinnersDTO
      */
     'reward_value': number;
-}
-/**
- * 
- * @export
- * @interface SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
- */
-export interface SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
-    /**
-     * 
-     * @type {number}
-     * @memberof SummaryOfTournamentNumberTopPlayersEloAndEloChangeDTO
-     */
-    'elo_change_total': number;
 }
 /**
  * 
@@ -15274,12 +26779,6 @@ export interface SummaryOfTournamentNumberTournamentDTO {
      */
     'is_stat_processed': boolean;
     /**
-     * Whether the tournament elo has been processed
-     * @type {boolean}
-     * @memberof SummaryOfTournamentNumberTournamentDTO
-     */
-    'is_elo_processed': boolean;
-    /**
      * Tournament number
      * @type {number}
      * @memberof SummaryOfTournamentNumberTournamentDTO
@@ -15345,6 +26844,18 @@ export interface SummaryOfTournamentNumberTournamentDTO {
      * @memberof SummaryOfTournamentNumberTournamentDTO
      */
     'totalRegistered': number;
+    /**
+     * Season number of the tournament
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'season'?: number | null;
+    /**
+     * Banner URL for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberTournamentDTO
+     */
+    'banner_url'?: string | null;
 }
 /**
  * 
@@ -15382,12 +26893,226 @@ export interface SummaryOfTournamentNumberWinnersOfEachTournamentDTO {
      * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
      */
     'history': SummaryOfTournamentNumberHistoryDTO;
+}
+/**
+ * 
+ * @export
+ * @interface SummaryOfTournamentNumberWithRewardsTournamentDTO
+ */
+export interface SummaryOfTournamentNumberWithRewardsTournamentDTO {
     /**
-     * 
-     * @type {SummaryOfTournamentNumberDTOEloPlayerSeasonDTO}
-     * @memberof SummaryOfTournamentNumberWinnersOfEachTournamentDTO
+     * Unique identifier for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
      */
-    'elo_player_season': SummaryOfTournamentNumberDTOEloPlayerSeasonDTO;
+    'id': string;
+    /**
+     * Name of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'name': string;
+    /**
+     * Description of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'description': string;
+    /**
+     * Start date of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'start_date': string;
+    /**
+     * End date of the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'end_date': string;
+    /**
+     * Flags for the tournament
+     * @type {object}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'flags': object;
+    /**
+     * Whether this is a main tournament
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'is_main': boolean;
+    /**
+     * League number of the tournament
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'league': number;
+    /**
+     * Image URL for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'image': string;
+    /**
+     * Whether the tournament is visible
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'is_visible': boolean;
+    /**
+     * Whether the tournament statistics have been processed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'is_stat_processed': boolean;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'tournament_number': number;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'updated_at': string;
+    /**
+     * Image URL for the tournament reward
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'reward_image': string;
+    /**
+     * Whether the tournament needs to be reprocessed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'need_to_be_reprocessed': boolean;
+    /**
+     * Whether the tournament has started
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'has_started': boolean;
+    /**
+     * Whether the tournament has been validated
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'has_been_validated': boolean;
+    /**
+     * Whether the rewards have been processed
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'is_rewards_processed': boolean;
+    /**
+     * Rewards for the tournament
+     * @type {Array<TournamentRewards>}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'rewards': Array<TournamentRewards>;
+    /**
+     * Histories for the tournament
+     * @type {Array<TournamentPlayerHistories>}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'histories': Array<TournamentPlayerHistories>;
+    /**
+     * Whether the current player is registered
+     * @type {boolean}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'is_player_registered': boolean;
+    /**
+     * Total number of registered players
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'totalRegistered': number;
+    /**
+     * Season number of the tournament
+     * @type {number}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'season'?: number | null;
+    /**
+     * Banner URL for the tournament
+     * @type {string}
+     * @memberof SummaryOfTournamentNumberWithRewardsTournamentDTO
+     */
+    'banner_url'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface SyncEntriesDto
+ */
+export interface SyncEntriesDto {
+    /**
+     * Array of entries to create/keep. The backend will compare with existing entries: add new ones and delete those not in this array. Entry type (FREE/PAID) is determined automatically based on order.
+     * @type {Array<SyncEntryItemDto>}
+     * @memberof SyncEntriesDto
+     */
+    'entries': Array<SyncEntryItemDto>;
+}
+/**
+ * 
+ * @export
+ * @interface SyncEntriesResponseDto
+ */
+export interface SyncEntriesResponseDto {
+    /**
+     * Number of entries added
+     * @type {number}
+     * @memberof SyncEntriesResponseDto
+     */
+    'added': number;
+    /**
+     * Number of entries deleted
+     * @type {number}
+     * @memberof SyncEntriesResponseDto
+     */
+    'deleted': number;
+    /**
+     * IDs of entries that were added
+     * @type {Array<string>}
+     * @memberof SyncEntriesResponseDto
+     */
+    'addedIds': Array<string>;
+    /**
+     * IDs of entries that were deleted
+     * @type {Array<string>}
+     * @memberof SyncEntriesResponseDto
+     */
+    'deletedIds': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface SyncEntryItemDto
+ */
+export interface SyncEntryItemDto {
+    /**
+     * UUID of the tournament
+     * @type {string}
+     * @memberof SyncEntryItemDto
+     */
+    'tournament_id': string;
+    /**
+     * UUID of the deck
+     * @type {string}
+     * @memberof SyncEntryItemDto
+     */
+    'deck_id': string;
 }
 /**
  * 
@@ -15573,14 +27298,26 @@ export interface Tactics {
      */
     'gains': GetTotalTicketsGainsResponseDTO;
     /**
-     * Config for the tactic
+     * Profile pictures of players who have an entry
+     * @type {Array<string>}
+     * @memberof Tactics
+     */
+    'profile_pictures': Array<string>;
+    /**
+     * Roster of the tactic
+     * @type {Array<TournamentFlags>}
+     * @memberof Tactics
+     */
+    'roster': Array<TournamentFlags>;
+    /**
+     * 
      * @type {TacticsConfig}
      * @memberof Tactics
      */
     'config'?: TacticsConfig | null;
 }
 /**
- * 
+ * Config for the tactic
  * @export
  * @interface TacticsConfig
  */
@@ -15610,35 +27347,17 @@ export interface TacticsConfig {
      */
     'duration': number;
     /**
-     * Entry price as a Decimal value
-     * @type {object}
-     * @memberof TacticsConfig
-     */
-    'entry_price': object;
-    /**
-     * Flat fee as a Decimal value
-     * @type {object}
-     * @memberof TacticsConfig
-     */
-    'flat_fee': object;
-    /**
-     * Payout model for the tactic
-     * @type {string}
-     * @memberof TacticsConfig
-     */
-    'payout_model': string;
-    /**
      * Flags for additional configuration
      * @type {object}
      * @memberof TacticsConfig
      */
     'flags': object;
     /**
-     * Maximum stars for the tactic
-     * @type {number}
+     * Salary cap for the tactic
+     * @type {object}
      * @memberof TacticsConfig
      */
-    'max_stars': number;
+    'salary_cap': object;
     /**
      * Whether the tactic is activated
      * @type {boolean}
@@ -15670,11 +27389,11 @@ export interface TacticsConfig {
      */
     'create_new_tactic': boolean;
     /**
-     * Payout structure details
-     * @type {PayoutStructure}
+     * 
+     * @type {TacticsConfigPayoutStructure}
      * @memberof TacticsConfig
      */
-    'payout_structure'?: PayoutStructure | null;
+    'payout_structure'?: TacticsConfigPayoutStructure | null;
     /**
      * Created at
      * @type {string}
@@ -15693,6 +27412,12 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'banner_image': string;
+    /**
+     * Sponsored image for the tactic
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'sponsored_image': string;
     /**
      * wether or not the compute is made by the twitter indexer or the nest api, nest api handle only for the moment for the coin tactic
      * @type {boolean}
@@ -15735,6 +27460,18 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'is_solo_rolling': boolean;
+    /**
+     * Whether the tactic is DFS
+     * @type {boolean}
+     * @memberof TacticsConfig
+     */
+    'is_dfs': boolean;
+    /**
+     * Clout project id
+     * @type {string}
+     * @memberof TacticsConfig
+     */
+    'clout_project_id': string;
 }
 /**
  * 
@@ -15750,84 +27487,133 @@ export interface TacticsConfigIncludeDTO {
     'payout_structure'?: boolean;
 }
 /**
- * 
+ * Payout structure details
  * @export
- * @interface TacticsEntriesConfig
+ * @interface TacticsConfigPayoutStructure
  */
-export interface TacticsEntriesConfig {
+export interface TacticsConfigPayoutStructure {
     /**
-     * Name of the tactic
+     * ID of the payout structure
      * @type {string}
-     * @memberof TacticsEntriesConfig
+     * @memberof TacticsConfigPayoutStructure
      */
-    'name': string;
+    'id': string;
     /**
-     * Payout Structure
-     * @type {TacticsEntriesConfigPayoutStructure}
-     * @memberof TacticsEntriesConfig
+     * Entry amount
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
      */
-    'payout_structure': TacticsEntriesConfigPayoutStructure;
+    'entry_price_tickets': number;
+    /**
+     * Maximum tickets
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'max_tickets': number;
+    /**
+     * Price pool
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'price_pool': number;
+    /**
+     * Type of the payout structure
+     * @type {string}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'type': string;
+    /**
+     * Payout details
+     * @type {Array<PayoutObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'payout': Array<PayoutObject>;
+    /**
+     * Creation date
+     * @type {string}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'created_at': string;
+    /**
+     * Payout details in fragments
+     * @type {Array<PayoutObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'payout_fragments': Array<PayoutObject>;
+    /**
+     * Payout details in tickets
+     * @type {Array<PayoutObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'payout_tickets': Array<PayoutObject>;
+    /**
+     * Payout details in fan points
+     * @type {Array<PayoutObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'payout_fan': Array<PayoutObject>;
+    /**
+     * Price pool in fragments
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'price_pool_fragments': number;
+    /**
+     * Price pool in tickets
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'price_pool_tickets': number;
+    /**
+     * Price pool in fan points
+     * @type {number}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'price_pool_fan': number;
+    /**
+     * Extra payouts for featured tactics
+     * @type {Array<PayoutObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'extra_payouts': Array<PayoutObject>;
+    /**
+     * Extra price pools for featured tactics
+     * @type {Array<PricePoolTypeObject>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'extra_price_pools': Array<PricePoolTypeObject>;
+    /**
+     * Payout details per hero
+     * @type {Array<HeroPayouts>}
+     * @memberof TacticsConfigPayoutStructure
+     */
+    'hero_payouts': Array<HeroPayouts>;
 }
 /**
  * 
  * @export
- * @interface TacticsEntriesConfigPayoutStructure
+ * @interface TacticsCreatedData
  */
-export interface TacticsEntriesConfigPayoutStructure {
+export interface TacticsCreatedData {
     /**
-     * Entry amount
-     * @type {number}
-     * @memberof TacticsEntriesConfigPayoutStructure
+     * 
+     * @type {TacticsCreatedDataNew}
+     * @memberof TacticsCreatedData
      */
-    'entry_price_tickets': number;
+    'new': TacticsCreatedDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface TacticsCreatedDataNew
+ */
+export interface TacticsCreatedDataNew {
     /**
-     * Price pool
-     * @type {number}
-     * @memberof TacticsEntriesConfigPayoutStructure
+     * Number of tactics created
+     * @type {string}
+     * @memberof TacticsCreatedDataNew
      */
-    'price_pool': number;
-    /**
-     * Payout details
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'payout': Array<PayoutObject>;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'price_pool_gold': number;
-    /**
-     * Payout details in gold
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'payout_gold': Array<PayoutObject>;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'price_pool_cards': number;
-    /**
-     * Payout details in cards
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'payout_cards': Array<PayoutObject>;
-    /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'price_pool_tickets': number;
-    /**
-     * Payout details in gold
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsEntriesConfigPayoutStructure
-     */
-    'payout_tickets': Array<PayoutObject>;
+    'tactics_count': string;
 }
 /**
  * 
@@ -15938,6 +27724,36 @@ export interface TacticsEntry {
      */
     'hero5_stars': number | null;
     /**
+     * Hero 1 salary cap
+     * @type {object}
+     * @memberof TacticsEntry
+     */
+    'hero1_salary_cap': object | null;
+    /**
+     * Hero 2 salary cap
+     * @type {object}
+     * @memberof TacticsEntry
+     */
+    'hero2_salary_cap': object | null;
+    /**
+     * Hero 3 salary cap
+     * @type {object}
+     * @memberof TacticsEntry
+     */
+    'hero3_salary_cap': object | null;
+    /**
+     * Hero 4 salary cap
+     * @type {object}
+     * @memberof TacticsEntry
+     */
+    'hero4_salary_cap': object | null;
+    /**
+     * Hero 5 salary cap
+     * @type {object}
+     * @memberof TacticsEntry
+     */
+    'hero5_salary_cap': object | null;
+    /**
      * Ticket ID
      * @type {string}
      * @memberof TacticsEntry
@@ -15974,17 +27790,17 @@ export interface TacticsEntry {
      */
     'updated_at': string;
     /**
-     * Players linked to entry
-     * @type {Player}
+     * 
+     * @type {TacticsEntryPlayers}
      * @memberof TacticsEntry
      */
-    'players'?: Player | null;
+    'players'?: TacticsEntryPlayers | null;
     /**
-     * Tickets linked to entry
-     * @type {TacticsTicket}
+     * 
+     * @type {TacticsEntryTickets}
      * @memberof TacticsEntry
      */
-    'tickets'?: TacticsTicket | null;
+    'tickets'?: TacticsEntryTickets | null;
     /**
      * Heroes concerned by heroX_id
      * @type {Array<Hero>}
@@ -16309,6 +28125,187 @@ export const TacticsEntryOrderByDTOUpdatedAtEnum = {
 export type TacticsEntryOrderByDTOUpdatedAtEnum = typeof TacticsEntryOrderByDTOUpdatedAtEnum[keyof typeof TacticsEntryOrderByDTOUpdatedAtEnum];
 
 /**
+ * Players linked to entry
+ * @export
+ * @interface TacticsEntryPlayers
+ */
+export interface TacticsEntryPlayers {
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'handle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'email': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'profile_picture': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'twitter_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'google_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'fantasy_points': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'fantasy_points_referrals': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'stars': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'league': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TacticsEntryPlayers
+     */
+    'is_hero': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TacticsEntryPlayers
+     */
+    'is_onboarding_done': boolean;
+    /**
+     * Gold as a Decimal value
+     * @type {object}
+     * @memberof TacticsEntryPlayers
+     */
+    'gold': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'tactics_referral_settings_id': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'following_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'post_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'like_count'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TacticsEntryPlayers
+     */
+    'is_x_verified'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'follower_count': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TacticsEntryPlayers
+     */
+    'can_play_free_tactics': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'fragments': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TacticsEntryPlayers
+     */
+    'are_nft_approved': boolean;
+    /**
+     * WETH allowance as a Decimal value
+     * @type {object}
+     * @memberof TacticsEntryPlayers
+     */
+    'weth_allowance': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsEntryPlayers
+     */
+    'monad_address': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'xp'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TacticsEntryPlayers
+     */
+    'xp_referrals'?: number;
+}
+/**
  * 
  * @export
  * @interface TacticsEntrySelectDTO
@@ -16452,6 +28449,85 @@ export interface TacticsEntrySelectDTO {
      * @memberof TacticsEntrySelectDTO
      */
     'updated_at'?: boolean;
+}
+/**
+ * Tickets linked to entry
+ * @export
+ * @interface TacticsEntryTickets
+ */
+export interface TacticsEntryTickets {
+    /**
+     * Unique identifier for the ticket
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'id': string;
+    /**
+     * Identifier for the player
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'player_id': string;
+    /**
+     * Array of tactic configuration IDs
+     * @type {Array<string>}
+     * @memberof TacticsEntryTickets
+     */
+    'tactic_config_ids': Array<string>;
+    /**
+     * Transaction hash
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'tx_hash': string;
+    /**
+     * Indicates if the ticket is used
+     * @type {boolean}
+     * @memberof TacticsEntryTickets
+     */
+    'used': boolean;
+    /**
+     * Identifier for the payout structure
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'payout_structure_id': string;
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'created_at': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'updated_at': string;
+    /**
+     * List of tickets rewards
+     * @type {Array<TacticsTicketRewards>}
+     * @memberof TacticsEntryTickets
+     */
+    'rewards': Array<TacticsTicketRewards>;
+    /**
+     * Tactics entry associated with the ticket
+     * @type {TacticsEntry}
+     * @memberof TacticsEntryTickets
+     */
+    'entry': TacticsEntry;
+    /**
+     * Id of the referrer player
+     * @type {string}
+     * @memberof TacticsEntryTickets
+     */
+    'referred_by_id': string;
+    /**
+     * Referrer of the ticket
+     * @type {Player}
+     * @memberof TacticsEntryTickets
+     */
+    'referrer': Player;
 }
 /**
  * 
@@ -16727,6 +28803,18 @@ export interface TacticsHeroScore {
      */
     'stars': number;
     /**
+     * Salary cap
+     * @type {object}
+     * @memberof TacticsHeroScore
+     */
+    'salary_cap': object;
+    /**
+     * Mindshare boost
+     * @type {object}
+     * @memberof TacticsHeroScore
+     */
+    'mindshare_boost': object;
+    /**
      * Fantasy score
      * @type {object}
      * @memberof TacticsHeroScore
@@ -16780,37 +28868,12 @@ export interface TacticsHeroScore {
      * @memberof TacticsHeroScore
      */
     'heroes': Hero;
-}
-/**
- * 
- * @export
- * @interface TacticsHeroScoreResponse
- */
-export interface TacticsHeroScoreResponse {
     /**
-     * Current rank of the hero
-     * @type {number}
-     * @memberof TacticsHeroScoreResponse
+     * Calculated at
+     * @type {string}
+     * @memberof TacticsHeroScore
      */
-    'current_rank': number;
-    /**
-     * Fantasy score of the hero
-     * @type {object}
-     * @memberof TacticsHeroScoreResponse
-     */
-    'fantasy_score': object;
-    /**
-     * Number of views for the hero
-     * @type {number}
-     * @memberof TacticsHeroScoreResponse
-     */
-    'views': number;
-    /**
-     * Number of tweets mentioning the hero
-     * @type {number}
-     * @memberof TacticsHeroScoreResponse
-     */
-    'tweet_count': number;
+    'calculated_at': string;
 }
 /**
  * 
@@ -17000,6 +29063,38 @@ export type TacticsOrderByDTOUpdatedAtEnum = typeof TacticsOrderByDTOUpdatedAtEn
 /**
  * 
  * @export
+ * @interface TacticsStartingData
+ */
+export interface TacticsStartingData {
+    /**
+     * 
+     * @type {TacticsStartingDataNew}
+     * @memberof TacticsStartingData
+     */
+    'new': TacticsStartingDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface TacticsStartingDataNew
+ */
+export interface TacticsStartingDataNew {
+    /**
+     * Hours until tactics start
+     * @type {string}
+     * @memberof TacticsStartingDataNew
+     */
+    'hours_until_start': string;
+    /**
+     * Number of tactics starting
+     * @type {string}
+     * @memberof TacticsStartingDataNew
+     */
+    'tactics_count': string;
+}
+/**
+ * 
+ * @export
  * @interface TacticsTicket
  */
 export interface TacticsTicket {
@@ -17089,29 +29184,11 @@ export interface TacticsTicketRewards {
      */
     'ticket_id': string;
     /**
-     * Reward amount in ETH
+     * Reward amount in USDC
      * @type {object}
      * @memberof TacticsTicketRewards
      */
-    'reward_eth': object;
-    /**
-     * Reward amount in gold
-     * @type {object}
-     * @memberof TacticsTicketRewards
-     */
-    'reward_gold': object;
-    /**
-     * Reward amount in cards
-     * @type {number}
-     * @memberof TacticsTicketRewards
-     */
-    'reward_cards': number;
-    /**
-     * Reward amount in tactic tickets
-     * @type {number}
-     * @memberof TacticsTicketRewards
-     */
-    'reward_tickets': number;
+    'reward_usdc': object;
     /**
      * Unique identifier for the tactic
      * @type {string}
@@ -17136,31 +29213,30 @@ export interface TacticsTicketRewards {
      * @memberof TacticsTicketRewards
      */
     'is_sent': boolean;
-}
-/**
- * 
- * @export
- * @interface TacticsTopEntries
- */
-export interface TacticsTopEntries {
     /**
-     * Entry
-     * @type {PickTypeClass}
-     * @memberof TacticsTopEntries
-     */
-    'players': PickTypeClass;
-    /**
-     * Rank of the entry
+     * Reward amount in fragments
      * @type {number}
-     * @memberof TacticsTopEntries
+     * @memberof TacticsTicketRewards
      */
-    'rank': number;
+    'reward_fragments': number;
     /**
-     * Score of the entry
-     * @type {object}
-     * @memberof TacticsTopEntries
+     * Reward amount in tactic tickets
+     * @type {number}
+     * @memberof TacticsTicketRewards
      */
-    'score': object;
+    'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof TacticsTicketRewards
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards in JSON format
+     * @type {Array<string>}
+     * @memberof TacticsTicketRewards
+     */
+    'reward_extra': Array<string>;
 }
 /**
  * 
@@ -17220,6 +29296,91 @@ export type TacticsWhereDTOTacticConfigId = StringFilterDTO | string;
 /**
  * 
  * @export
+ * @interface TemplateNotification
+ */
+export interface TemplateNotification {
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'title': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TemplateNotification
+     */
+    'global': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TemplateNotification
+     */
+    'is_banner': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TemplateNotification
+     */
+    'is_fixed_banner': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'banner_until_date': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'subtitle': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'image_url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'redirect_url': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof TemplateNotification
+     */
+    'filters': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof TemplateNotification
+     */
+    'data_template': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TemplateNotification
+     */
+    'updated_at': string;
+}
+/**
+ * 
+ * @export
  * @interface ThresholdDto
  */
 export interface ThresholdDto {
@@ -17274,29 +29435,35 @@ export interface TicketsNewRewardsEntryDTO {
  */
 export interface TicketsNewRewardsRewardsDTO {
     /**
-     * Reward amount in ETH
+     * Reward amount in USDC
      * @type {object}
      * @memberof TicketsNewRewardsRewardsDTO
      */
-    'reward_eth': object;
+    'reward_usdc': object;
     /**
-     * Reward amount in gold
-     * @type {object}
-     * @memberof TicketsNewRewardsRewardsDTO
-     */
-    'reward_gold': object;
-    /**
-     * Reward amount in cards
+     * Reward amount in fragments
      * @type {number}
      * @memberof TicketsNewRewardsRewardsDTO
      */
-    'reward_cards': number;
+    'reward_fragments': number;
     /**
      * Reward amount in tactic tickets
      * @type {number}
      * @memberof TicketsNewRewardsRewardsDTO
      */
     'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof TicketsNewRewardsRewardsDTO
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards in JSON format
+     * @type {Array<string>}
+     * @memberof TicketsNewRewardsRewardsDTO
+     */
+    'reward_extra': Array<string>;
     /**
      * 
      * @type {TicketsNewRewardsTacticsDTO}
@@ -17381,29 +29548,35 @@ export interface TicketsWithEntryDTO {
  */
 export interface TicketsWithEntryRewardsDTO {
     /**
-     * Reward amount in ETH
+     * Reward amount in USDC
      * @type {object}
      * @memberof TicketsWithEntryRewardsDTO
      */
-    'reward_eth': object;
+    'reward_usdc': object;
     /**
-     * Reward amount in gold
-     * @type {object}
-     * @memberof TicketsWithEntryRewardsDTO
-     */
-    'reward_gold': object;
-    /**
-     * Reward amount in cards
+     * Reward amount in fragments
      * @type {number}
      * @memberof TicketsWithEntryRewardsDTO
      */
-    'reward_cards': number;
+    'reward_fragments': number;
     /**
      * Reward amount in tactic tickets
      * @type {number}
      * @memberof TicketsWithEntryRewardsDTO
      */
     'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof TicketsWithEntryRewardsDTO
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards in JSON format
+     * @type {Array<string>}
+     * @memberof TicketsWithEntryRewardsDTO
+     */
+    'reward_extra': Array<string>;
 }
 /**
  * 
@@ -17486,41 +29659,441 @@ export interface TicketsWithEntryTacticsConfigPayoutDTO {
      */
     'payout': Array<PayoutObject>;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
-     */
-    'price_pool_gold': number;
-    /**
-     * Payout details in gold
+     * Payout details in fragments
      * @type {Array<PayoutObject>}
      * @memberof TicketsWithEntryTacticsConfigPayoutDTO
      */
-    'payout_gold': Array<PayoutObject>;
+    'payout_fragments': Array<PayoutObject>;
     /**
-     * Price pool in gold
-     * @type {number}
-     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
-     */
-    'price_pool_cards': number;
-    /**
-     * Payout details in cards
+     * Payout details in tickets
      * @type {Array<PayoutObject>}
      * @memberof TicketsWithEntryTacticsConfigPayoutDTO
      */
-    'payout_cards': Array<PayoutObject>;
+    'payout_tickets': Array<PayoutObject>;
     /**
-     * Price pool in gold
+     * Payout details in fan points
+     * @type {Array<PayoutObject>}
+     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
+     */
+    'payout_fan': Array<PayoutObject>;
+    /**
+     * Price pool in fragments
+     * @type {number}
+     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
+     */
+    'price_pool_fragments': number;
+    /**
+     * Price pool in tickets
      * @type {number}
      * @memberof TicketsWithEntryTacticsConfigPayoutDTO
      */
     'price_pool_tickets': number;
     /**
-     * Payout details in gold
+     * Price pool in fan points
+     * @type {number}
+     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
+     */
+    'price_pool_fan': number;
+    /**
+     * Extra payouts for featured tactics
      * @type {Array<PayoutObject>}
      * @memberof TicketsWithEntryTacticsConfigPayoutDTO
      */
-    'payout_tickets': Array<PayoutObject>;
+    'extra_payouts': Array<PayoutObject>;
+    /**
+     * Extra price pools for featured tactics
+     * @type {Array<PricePoolTypeObject>}
+     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
+     */
+    'extra_price_pools': Array<PricePoolTypeObject>;
+    /**
+     * Payout details per hero
+     * @type {Array<HeroPayouts>}
+     * @memberof TicketsWithEntryTacticsConfigPayoutDTO
+     */
+    'hero_payouts': Array<HeroPayouts>;
+}
+/**
+ * 
+ * @export
+ * @interface TierDto
+ */
+export interface TierDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof TierDto
+     */
+    'tier': TierDtoTierEnum;
+    /**
+     * Optimal score for this tier
+     * @type {number}
+     * @memberof TierDto
+     */
+    'optimalScore': number;
+    /**
+     * Optimal cards for this tier
+     * @type {Array<OptimalCardDto>}
+     * @memberof TierDto
+     */
+    'optimalCards': Array<OptimalCardDto>;
+    /**
+     * Leaderboard entries for this tier
+     * @type {Array<LeaderboardEntryDto>}
+     * @memberof TierDto
+     */
+    'leaderboard': Array<LeaderboardEntryDto>;
+}
+
+export const TierDtoTierEnum = {
+    Diamond: 'diamond',
+    Platinum: 'platinum',
+    Gold: 'gold',
+    Silver: 'silver',
+    Bronze: 'bronze'
+} as const;
+
+export type TierDtoTierEnum = typeof TierDtoTierEnum[keyof typeof TierDtoTierEnum];
+
+/**
+ * 
+ * @export
+ * @interface TimeSeriesPointDto
+ */
+export interface TimeSeriesPointDto {
+    /**
+     * Timestamp of this data point
+     * @type {string}
+     * @memberof TimeSeriesPointDto
+     */
+    'timestamp': string;
+    /**
+     * Trade ID that caused this state change (null for initial state)
+     * @type {string}
+     * @memberof TimeSeriesPointDto
+     */
+    'trade_id': string | null;
+    /**
+     * Probabilities for each outcome (keyed by outcome_id)
+     * @type {object}
+     * @memberof TimeSeriesPointDto
+     */
+    'probabilities': object;
+}
+/**
+ * 
+ * @export
+ * @interface TopHolderDto
+ */
+export interface TopHolderDto {
+    /**
+     * Player ID (address)
+     * @type {string}
+     * @memberof TopHolderDto
+     */
+    'playerId': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof TopHolderDto
+     */
+    'profileimg': string | null;
+    /**
+     * Holder name
+     * @type {string}
+     * @memberof TopHolderDto
+     */
+    'name': string;
+    /**
+     * Number of shares held
+     * @type {number}
+     * @memberof TopHolderDto
+     */
+    'shares': number;
+}
+/**
+ * 
+ * @export
+ * @interface TopHoldersOutcomeDto
+ */
+export interface TopHoldersOutcomeDto {
+    /**
+     * Outcome ID
+     * @type {string}
+     * @memberof TopHoldersOutcomeDto
+     */
+    'id': string;
+    /**
+     * Outcome name
+     * @type {string}
+     * @memberof TopHoldersOutcomeDto
+     */
+    'name': string;
+    /**
+     * Top holders for this outcome
+     * @type {Array<TopHolderDto>}
+     * @memberof TopHoldersOutcomeDto
+     */
+    'topHolders': Array<TopHolderDto>;
+}
+/**
+ * 
+ * @export
+ * @interface TopHoldersResponseDto
+ */
+export interface TopHoldersResponseDto {
+    /**
+     * Type of the top holders
+     * @type {string}
+     * @memberof TopHoldersResponseDto
+     */
+    'type': TopHoldersResponseDtoTypeEnum;
+    /**
+     * Outcomes
+     * @type {Array<TopHoldersOutcomeDto>}
+     * @memberof TopHoldersResponseDto
+     */
+    'outcomes': Array<TopHoldersOutcomeDto>;
+}
+
+export const TopHoldersResponseDtoTypeEnum = {
+    Outcome: 'outcome',
+    ChildMarket: 'child_market'
+} as const;
+
+export type TopHoldersResponseDtoTypeEnum = typeof TopHoldersResponseDtoTypeEnum[keyof typeof TopHoldersResponseDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface TopKothHeroes
+ */
+export interface TopKothHeroes {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof TopKothHeroes
+     */
+    'hero_id': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof TopKothHeroes
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof TopKothHeroes
+     */
+    'handle': string;
+    /**
+     * Hero star
+     * @type {number}
+     * @memberof TopKothHeroes
+     */
+    'stars': number;
+    /**
+     * Hero score in the tournament
+     * @type {number}
+     * @memberof TopKothHeroes
+     */
+    'score': number;
+    /**
+     * Hero profile picture
+     * @type {string}
+     * @memberof TopKothHeroes
+     */
+    'profilePicture': string;
+}
+/**
+ * 
+ * @export
+ * @interface TopKothParticipantDTO
+ */
+export interface TopKothParticipantDTO {
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof TopKothParticipantDTO
+     */
+    'playerId': string;
+    /**
+     * Player name
+     * @type {string}
+     * @memberof TopKothParticipantDTO
+     */
+    'name': string;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof TopKothParticipantDTO
+     */
+    'handle': string | null;
+    /**
+     * Player profile picture URL
+     * @type {string}
+     * @memberof TopKothParticipantDTO
+     */
+    'profilePicture': string;
+    /**
+     * Total number of entries for this player
+     * @type {number}
+     * @memberof TopKothParticipantDTO
+     */
+    'totalEntries': number;
+}
+/**
+ * 
+ * @export
+ * @interface TopPayoutPositionDto
+ */
+export interface TopPayoutPositionDto {
+    /**
+     * Rank of the position (1-5)
+     * @type {number}
+     * @memberof TopPayoutPositionDto
+     */
+    'rank': number;
+    /**
+     * The position ID
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'positionId': string;
+    /**
+     * The player ID
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'playerId': string;
+    /**
+     * The player name
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'playerName'?: string | null;
+    /**
+     * The player handle
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'playerHandle'?: string | null;
+    /**
+     * The player profile picture URL
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'playerProfilePicture'?: string | null;
+    /**
+     * The outcome ID
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'outcomeId': string;
+    /**
+     * The outcome name
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'outcomeName': string;
+    /**
+     * The outcome image URL
+     * @type {string}
+     * @memberof TopPayoutPositionDto
+     */
+    'outcomeImage'?: string | null;
+    /**
+     * Payout for this position. For settled markets, this is the settled payout_amount; otherwise it\'s the current potential payout.
+     * @type {number}
+     * @memberof TopPayoutPositionDto
+     */
+    'payout': number;
+    /**
+     * Shares held in this position
+     * @type {number}
+     * @memberof TopPayoutPositionDto
+     */
+    'shares': number;
+    /**
+     * Total invested in this position
+     * @type {number}
+     * @memberof TopPayoutPositionDto
+     */
+    'totalInvested': number;
+}
+/**
+ * 
+ * @export
+ * @interface TopTweetDTO
+ */
+export interface TopTweetDTO {
+    /**
+     * Tweet ID
+     * @type {string}
+     * @memberof TopTweetDTO
+     */
+    'rest_id': string;
+    /**
+     * Tweet text
+     * @type {string}
+     * @memberof TopTweetDTO
+     */
+    'text': string;
+    /**
+     * Tweet type
+     * @type {string}
+     * @memberof TopTweetDTO
+     */
+    'type': string;
+    /**
+     * Views count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'views_count': number;
+    /**
+     * Certified views
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'certified_views': number;
+    /**
+     * Favorite/like count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'favorite_count': number;
+    /**
+     * Retweet count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'retweet_count': number;
+    /**
+     * Quote count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'quote_count': number;
+    /**
+     * Reply count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'reply_count': number;
+    /**
+     * Bookmark count
+     * @type {number}
+     * @memberof TopTweetDTO
+     */
+    'bookmark_count': number;
+    /**
+     * Tweet creation date
+     * @type {string}
+     * @memberof TopTweetDTO
+     */
+    'created_at': string;
 }
 /**
  * 
@@ -17614,12 +30187,6 @@ export interface Tournament {
      */
     'is_stat_processed': boolean;
     /**
-     * Whether the tournament elo has been processed
-     * @type {boolean}
-     * @memberof Tournament
-     */
-    'is_elo_processed': boolean;
-    /**
      * Tournament number
      * @type {number}
      * @memberof Tournament
@@ -17704,11 +30271,49 @@ export interface Tournament {
      */
     'totalRegistered': number;
     /**
+     * Season number of the tournament
+     * @type {number}
+     * @memberof Tournament
+     */
+    'season'?: number | null;
+    /**
+     * Banner URL for the tournament
+     * @type {string}
+     * @memberof Tournament
+     */
+    'banner_url'?: string | null;
+    /**
      * Current rewards for the tournament
      * @type {Array<CurrentRunningRewardsDTO>}
      * @memberof Tournament
      */
     'current_rewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentEndedData
+ */
+export interface TournamentEndedData {
+    /**
+     * 
+     * @type {TournamentEndedDataNew}
+     * @memberof TournamentEndedData
+     */
+    'new': TournamentEndedDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentEndedDataNew
+ */
+export interface TournamentEndedDataNew {
+    /**
+     * Number of tournaments that ended
+     * @type {string}
+     * @memberof TournamentEndedDataNew
+     */
+    'tournament_count': string;
 }
 /**
  * 
@@ -17735,6 +30340,117 @@ export interface TournamentFlags {
      */
     'label': string;
 }
+/**
+ * 
+ * @export
+ * @interface TournamentLeagueThresholdDTO
+ */
+export interface TournamentLeagueThresholdDTO {
+    /**
+     * XP threshold required to reach this reward
+     * @type {number}
+     * @memberof TournamentLeagueThresholdDTO
+     */
+    'threshold': number;
+    /**
+     * Type of the reward for this threshold
+     * @type {string}
+     * @memberof TournamentLeagueThresholdDTO
+     */
+    'reward_type': TournamentLeagueThresholdDTORewardTypeEnum;
+    /**
+     * The chest ID for this threshold
+     * @type {string}
+     * @memberof TournamentLeagueThresholdDTO
+     */
+    'chest_id': string;
+}
+
+export const TournamentLeagueThresholdDTORewardTypeEnum = {
+    CommonCard: 'common_card',
+    RareCard: 'rare_card',
+    EpicCard: 'epic_card',
+    LegendaryCard: 'legendary_card',
+    RandomCard: 'random_card',
+    Xp: 'xp',
+    DeckSlot: 'deck_slot',
+    LevelUpCommonToRare: 'level_up_common_to_rare',
+    LevelUpRareToEpic: 'level_up_rare_to_epic',
+    LevelUpEpicToLegendary: 'level_up_epic_to_legendary',
+    LevelUpCommonToEpic: 'level_up_common_to_epic',
+    LevelUpRareToLegendary: 'level_up_rare_to_legendary',
+    RouletteSpin: 'roulette_spin',
+    SilverLeagueUnlock: 'silver_league_unlock',
+    GoldLeagueUnlock: 'gold_league_unlock',
+    EliteLeagueUnlock: 'elite_league_unlock',
+    BronzeChest0: 'bronze_chest_0',
+    BronzeChest1: 'bronze_chest_1',
+    BronzeChest2: 'bronze_chest_2',
+    BronzeChest3: 'bronze_chest_3',
+    BronzeChest4: 'bronze_chest_4',
+    BronzeChest5: 'bronze_chest_5',
+    BronzeChest6: 'bronze_chest_6',
+    BronzeChest7: 'bronze_chest_7',
+    BronzeChest8: 'bronze_chest_8',
+    BronzeChest9: 'bronze_chest_9',
+    BronzeChest10: 'bronze_chest_10',
+    BronzeChest11: 'bronze_chest_11',
+    BronzeChest12: 'bronze_chest_12',
+    BronzeChest13: 'bronze_chest_13',
+    BronzeChest14: 'bronze_chest_14',
+    BronzeChest15: 'bronze_chest_15',
+    SilverChest0: 'silver_chest_0',
+    SilverChest1: 'silver_chest_1',
+    SilverChest2: 'silver_chest_2',
+    SilverChest3: 'silver_chest_3',
+    SilverChest4: 'silver_chest_4',
+    SilverChest5: 'silver_chest_5',
+    SilverChest6: 'silver_chest_6',
+    SilverChest7: 'silver_chest_7',
+    SilverChest8: 'silver_chest_8',
+    SilverChest9: 'silver_chest_9',
+    SilverChest10: 'silver_chest_10',
+    SilverChest11: 'silver_chest_11',
+    SilverChest12: 'silver_chest_12',
+    SilverChest13: 'silver_chest_13',
+    SilverChest14: 'silver_chest_14',
+    SilverChest15: 'silver_chest_15',
+    GoldChest0: 'gold_chest_0',
+    GoldChest1: 'gold_chest_1',
+    GoldChest2: 'gold_chest_2',
+    GoldChest3: 'gold_chest_3',
+    GoldChest4: 'gold_chest_4',
+    GoldChest5: 'gold_chest_5',
+    GoldChest6: 'gold_chest_6',
+    GoldChest7: 'gold_chest_7',
+    GoldChest8: 'gold_chest_8',
+    GoldChest9: 'gold_chest_9',
+    GoldChest10: 'gold_chest_10',
+    GoldChest11: 'gold_chest_11',
+    GoldChest12: 'gold_chest_12',
+    GoldChest13: 'gold_chest_13',
+    GoldChest14: 'gold_chest_14',
+    GoldChest15: 'gold_chest_15',
+    EliteChest0: 'elite_chest_0',
+    EliteChest1: 'elite_chest_1',
+    EliteChest2: 'elite_chest_2',
+    EliteChest3: 'elite_chest_3',
+    EliteChest4: 'elite_chest_4',
+    EliteChest5: 'elite_chest_5',
+    EliteChest6: 'elite_chest_6',
+    EliteChest7: 'elite_chest_7',
+    EliteChest8: 'elite_chest_8',
+    EliteChest9: 'elite_chest_9',
+    EliteChest10: 'elite_chest_10',
+    EliteChest11: 'elite_chest_11',
+    EliteChest12: 'elite_chest_12',
+    EliteChest13: 'elite_chest_13',
+    EliteChest14: 'elite_chest_14',
+    EliteChest15: 'elite_chest_15'
+} as const;
+
+export type TournamentLeagueThresholdDTORewardTypeEnum = typeof TournamentLeagueThresholdDTORewardTypeEnum[keyof typeof TournamentLeagueThresholdDTORewardTypeEnum];
+
 /**
  * 
  * @export
@@ -17798,10 +30514,10 @@ export interface TournamentPlayer {
     'card5': string;
     /**
      * Cards
-     * @type {Array<Array<string>>}
+     * @type {Array<CardWithNumber>}
      * @memberof TournamentPlayer
      */
-    'cards': Array<Array<string>>;
+    'cards': Array<CardWithNumber>;
     /**
      * Player identifier
      * @type {string}
@@ -17874,12 +30590,6 @@ export interface TournamentPlayer {
      * @memberof TournamentPlayer
      */
     'is_reward_activated': boolean;
-    /**
-     * Elo change for the player
-     * @type {number}
-     * @memberof TournamentPlayer
-     */
-    'elo_change': number;
     /**
      * Last update timestamp
      * @type {string}
@@ -17949,10 +30659,10 @@ export interface TournamentPlayerHistories {
     'card5': string;
     /**
      * Cards
-     * @type {Array<Array<string>>}
+     * @type {Array<CardWithNumber>}
      * @memberof TournamentPlayerHistories
      */
-    'cards': Array<Array<string>>;
+    'cards': Array<CardWithNumber>;
     /**
      * Player identifier
      * @type {string}
@@ -18026,12 +30736,6 @@ export interface TournamentPlayerHistories {
      */
     'is_reward_activated': boolean;
     /**
-     * Elo change for the player
-     * @type {number}
-     * @memberof TournamentPlayerHistories
-     */
-    'elo_change': number;
-    /**
      * Last update timestamp
      * @type {string}
      * @memberof TournamentPlayerHistories
@@ -18056,11 +30760,11 @@ export interface TournamentPlayerHistories {
      */
     'fantasy_score': number;
     /**
-     * Number of views for the tournament
+     * Number of reach for the tournament
      * @type {number}
      * @memberof TournamentPlayerHistories
      */
-    'views': number;
+    'stars': number;
 }
 /**
  * 
@@ -18068,12 +30772,6 @@ export interface TournamentPlayerHistories {
  * @interface TournamentRewards
  */
 export interface TournamentRewards {
-    /**
-     * Unique identifier for the reward
-     * @type {string}
-     * @memberof TournamentRewards
-     */
-    'id': string;
     /**
      * Type of reward
      * @type {string}
@@ -18133,6 +30831,38 @@ export interface TournamentScoreHistory {
 /**
  * 
  * @export
+ * @interface TournamentStartingData
+ */
+export interface TournamentStartingData {
+    /**
+     * 
+     * @type {TournamentStartingDataNew}
+     * @memberof TournamentStartingData
+     */
+    'new': TournamentStartingDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentStartingDataNew
+ */
+export interface TournamentStartingDataNew {
+    /**
+     * Hours until tournament starts
+     * @type {string}
+     * @memberof TournamentStartingDataNew
+     */
+    'hours_until_start': string;
+    /**
+     * Number of tournaments starting
+     * @type {string}
+     * @memberof TournamentStartingDataNew
+     */
+    'tournament_count': string;
+}
+/**
+ * 
+ * @export
  * @interface TournamentStatsDTO
  */
 export interface TournamentStatsDTO {
@@ -18184,6 +30914,43 @@ export interface TournamentStatsDTO {
      * @memberof TournamentStatsDTO
      */
     'reach': number;
+}
+/**
+ * 
+ * @export
+ * @interface TrackedUserDto
+ */
+export interface TrackedUserDto {
+    /**
+     * User ID
+     * @type {string}
+     * @memberof TrackedUserDto
+     */
+    'id': string;
+    /**
+     * Twitter handle
+     * @type {string}
+     * @memberof TrackedUserDto
+     */
+    'handle': string;
+    /**
+     * Display name
+     * @type {string}
+     * @memberof TrackedUserDto
+     */
+    'name': string;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof TrackedUserDto
+     */
+    'profile_image_url_https': string | null;
+    /**
+     * Number of followers
+     * @type {number}
+     * @memberof TrackedUserDto
+     */
+    'followers_count': number;
 }
 /**
  * 
@@ -18287,6 +31054,100 @@ export interface Trade {
      * @memberof Trade
      */
     'hero_rarity_index': string;
+}
+/**
+ * 
+ * @export
+ * @interface TradeActivityDto
+ */
+export interface TradeActivityDto {
+    /**
+     * The trade ID
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'id': string;
+    /**
+     * The user/player name or address
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'user': string;
+    /**
+     * The player ID (address)
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'playerId': string;
+    /**
+     * The avatar (first letter of user)
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'avatar': string;
+    /**
+     * The action type
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'action': TradeActivityDtoActionEnum;
+    /**
+     * The trade amount
+     * @type {number}
+     * @memberof TradeActivityDto
+     */
+    'amount': number;
+    /**
+     * The outcome name
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'outcome': string;
+    /**
+     * The market title
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'marketTitle'?: string;
+    /**
+     * The market metadata
+     * @type {object}
+     * @memberof TradeActivityDto
+     */
+    'marketMetadata'?: object;
+    /**
+     * Formatted time string
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'time': string;
+    /**
+     * The creation timestamp
+     * @type {string}
+     * @memberof TradeActivityDto
+     */
+    'created_at': string;
+}
+
+export const TradeActivityDtoActionEnum = {
+    Buy: 'Buy',
+    Sell: 'Sell'
+} as const;
+
+export type TradeActivityDtoActionEnum = typeof TradeActivityDtoActionEnum[keyof typeof TradeActivityDtoActionEnum];
+
+/**
+ * 
+ * @export
+ * @interface TradeActivityResponseDto
+ */
+export interface TradeActivityResponseDto {
+    /**
+     * List of recent trades
+     * @type {Array<TradeActivityDto>}
+     * @memberof TradeActivityResponseDto
+     */
+    'trades': Array<TradeActivityDto>;
 }
 /**
  * 
@@ -18479,6 +31340,12 @@ export interface TreeMapDataPoint {
     'value': number;
     /**
      * 
+     * @type {string}
+     * @memberof TreeMapDataPoint
+     */
+    'handle': string;
+    /**
+     * 
      * @type {number}
      * @memberof TreeMapDataPoint
      */
@@ -18520,6 +31387,25 @@ export interface TreeMapResponseDTO {
      * @memberof TreeMapResponseDTO
      */
     'data': Array<TreeMapDataPoint>;
+}
+/**
+ * 
+ * @export
+ * @interface TrendDiscoveryResponseDto
+ */
+export interface TrendDiscoveryResponseDto {
+    /**
+     * List of discovered trending events with their associated accounts
+     * @type {Array<EventDto>}
+     * @memberof TrendDiscoveryResponseDto
+     */
+    'events': Array<EventDto>;
+    /**
+     * Brief summary of the discovered trends
+     * @type {string}
+     * @memberof TrendDiscoveryResponseDto
+     */
+    'summary': string;
 }
 /**
  * 
@@ -18648,6 +31534,61 @@ export type TrendingHeroDTOTrendingReasonEnum = typeof TrendingHeroDTOTrendingRe
 /**
  * 
  * @export
+ * @interface TweetCountResponseDTO
+ */
+export interface TweetCountResponseDTO {
+    /**
+     * Twitter ID of the user
+     * @type {string}
+     * @memberof TweetCountResponseDTO
+     */
+    'twitter_id': string;
+    /**
+     * Twitter handle of the user (if found)
+     * @type {string}
+     * @memberof TweetCountResponseDTO
+     */
+    'twitter_handle'?: string | null;
+    /**
+     * Total number of tweets in the period
+     * @type {number}
+     * @memberof TweetCountResponseDTO
+     */
+    'tweet_count': number;
+    /**
+     * Total number of tweets excluding retweets and replies
+     * @type {number}
+     * @memberof TweetCountResponseDTO
+     */
+    'tweet_count_without_retweets_replies': number;
+    /**
+     * Total number of views across tweets and quotes only (excluding retweets and replies)
+     * @type {number}
+     * @memberof TweetCountResponseDTO
+     */
+    'total_views': number;
+    /**
+     * Start date of the search period
+     * @type {string}
+     * @memberof TweetCountResponseDTO
+     */
+    'period_start': string;
+    /**
+     * End date of the search period
+     * @type {string}
+     * @memberof TweetCountResponseDTO
+     */
+    'period_end': string;
+    /**
+     * Top 5 tweets by views (excluding retweets and replies)
+     * @type {Array<TopTweetDTO>}
+     * @memberof TweetCountResponseDTO
+     */
+    'top_tweets': Array<TopTweetDTO>;
+}
+/**
+ * 
+ * @export
  * @interface TweetHero
  */
 export interface TweetHero {
@@ -18669,12 +31610,6 @@ export interface TweetHero {
      * @memberof TweetHero
      */
     'profile_image_url_https'?: string;
-    /**
-     * Credibility score
-     * @type {CredibilityAverage}
-     * @memberof TweetHero
-     */
-    'credibility_average': CredibilityAverage;
 }
 /**
  * 
@@ -18688,6 +31623,626 @@ export interface TwitterDataHero {
      * @memberof TwitterDataHero
      */
     'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface TwitterQuestResponseDTO
+ */
+export interface TwitterQuestResponseDTO {
+    /**
+     * The id of the Twitter Quest
+     * @type {string}
+     * @memberof TwitterQuestResponseDTO
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface UnclaimedExtraRewardDTO
+ */
+export interface UnclaimedExtraRewardDTO {
+    /**
+     * Type of the extra reward
+     * @type {string}
+     * @memberof UnclaimedExtraRewardDTO
+     */
+    'type': string;
+    /**
+     * Amount of the extra reward
+     * @type {number}
+     * @memberof UnclaimedExtraRewardDTO
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface UnclaimedKothRewardDTO
+ */
+export interface UnclaimedKothRewardDTO {
+    /**
+     * Reward identifier
+     * @type {string}
+     * @memberof UnclaimedKothRewardDTO
+     */
+    'id': string;
+    /**
+     * Tournament number
+     * @type {number}
+     * @memberof UnclaimedKothRewardDTO
+     */
+    'tournamentNumber': number;
+    /**
+     * Reward amount
+     * @type {number}
+     * @memberof UnclaimedKothRewardDTO
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface UnclaimedRewardDTO
+ */
+export interface UnclaimedRewardDTO {
+    /**
+     * Unique identifier for the ticket
+     * @type {string}
+     * @memberof UnclaimedRewardDTO
+     */
+    'ticket_id': string;
+    /**
+     * Reward amount in USDC
+     * @type {string}
+     * @memberof UnclaimedRewardDTO
+     */
+    'reward_usdc': string;
+    /**
+     * Reward amount in fragments
+     * @type {number}
+     * @memberof UnclaimedRewardDTO
+     */
+    'reward_fragments': number;
+    /**
+     * Reward amount in tactic tickets
+     * @type {number}
+     * @memberof UnclaimedRewardDTO
+     */
+    'reward_tickets': number;
+    /**
+     * Reward amount in fan points
+     * @type {number}
+     * @memberof UnclaimedRewardDTO
+     */
+    'reward_fan': number;
+    /**
+     * Extra rewards
+     * @type {Array<UnclaimedExtraRewardDTO>}
+     * @memberof UnclaimedRewardDTO
+     */
+    'reward_extra': Array<UnclaimedExtraRewardDTO>;
+    /**
+     * Whether the reward has been claimed
+     * @type {boolean}
+     * @memberof UnclaimedRewardDTO
+     */
+    'claimed': boolean;
+    /**
+     * Unique identifier for the tactic
+     * @type {string}
+     * @memberof UnclaimedRewardDTO
+     */
+    'tactic_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateBannerDto
+ */
+export interface UpdateBannerDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBannerDto
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBannerDto
+     */
+    'subtitle'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBannerDto
+     */
+    'image_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBannerDto
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBannerDto
+     */
+    'banner_until_date'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateBannerDto
+     */
+    'filters'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateBannerDto
+     */
+    'data'?: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateBannerDto
+     */
+    'is_fixed_banner'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateHeroPackingDTO
+ */
+export interface UpdateHeroPackingDTO {
+    /**
+     * Whether the hero can be packed
+     * @type {boolean}
+     * @memberof UpdateHeroPackingDTO
+     */
+    'can_be_packed': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateKothConfigDTO
+ */
+export interface UpdateKothConfigDTO {
+    /**
+     * Name of the KOTH config
+     * @type {string}
+     * @memberof UpdateKothConfigDTO
+     */
+    'name'?: string;
+    /**
+     * Entry fragment price
+     * @type {number}
+     * @memberof UpdateKothConfigDTO
+     */
+    'entry_fragment_price'?: number;
+    /**
+     * Payout structure
+     * @type {Array<PayoutObject>}
+     * @memberof UpdateKothConfigDTO
+     */
+    'payout'?: Array<PayoutObject>;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateLotteryConfigDto
+ */
+export interface UpdateLotteryConfigDto {
+    /**
+     * Base prize pool amount for new lotteries
+     * @type {number}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'base_prize_pool'?: number;
+    /**
+     * Amount to increment prize pool by
+     * @type {number}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'prize_increment'?: number;
+    /**
+     * Maximum prize pool amount
+     * @type {number}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'max_prize_pool'?: number;
+    /**
+     * Maximum number of free entries allowed per user
+     * @type {number}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'max_free_entries'?: number;
+    /**
+     * Whether this configuration is currently active
+     * @type {boolean}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'is_active'?: boolean;
+    /**
+     * Tiered pricing structure for paid entries
+     * @type {object}
+     * @memberof UpdateLotteryConfigDto
+     */
+    'paid_entries_price'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateMarketDto
+ */
+export interface UpdateMarketDto {
+    /**
+     * The slug of the market to update
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'market_slug': string;
+    /**
+     * New title for the market
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'title'?: string;
+    /**
+     * New description for the market
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'description'?: string;
+    /**
+     * Trading start date (ISO string)
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'trading_start_at'?: string;
+    /**
+     * Trading end date (ISO string)
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'trading_end_at'?: string;
+    /**
+     * Event start date (ISO string)
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'event_start_at'?: string;
+    /**
+     * Resolve date (ISO string)
+     * @type {string}
+     * @memberof UpdateMarketDto
+     */
+    'resolve_at'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateMarketResponseDto
+ */
+export interface UpdateMarketResponseDto {
+    /**
+     * Whether the update was successful
+     * @type {boolean}
+     * @memberof UpdateMarketResponseDto
+     */
+    'success': boolean;
+    /**
+     * The updated market
+     * @type {MarketDto}
+     * @memberof UpdateMarketResponseDto
+     */
+    'market': MarketDto;
+    /**
+     * Number of child markets updated
+     * @type {number}
+     * @memberof UpdateMarketResponseDto
+     */
+    'updatedChildCount': number;
+    /**
+     * New slug if it was changed
+     * @type {string}
+     * @memberof UpdateMarketResponseDto
+     */
+    'newSlug'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateMarketStatusAdminDto
+ */
+export interface UpdateMarketStatusAdminDto {
+    /**
+     * Slug of the market to update
+     * @type {string}
+     * @memberof UpdateMarketStatusAdminDto
+     */
+    'market_slug': string;
+    /**
+     * New status for the market
+     * @type {string}
+     * @memberof UpdateMarketStatusAdminDto
+     */
+    'status': UpdateMarketStatusAdminDtoStatusEnum;
+}
+
+export const UpdateMarketStatusAdminDtoStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Closed: 'closed',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided'
+} as const;
+
+export type UpdateMarketStatusAdminDtoStatusEnum = typeof UpdateMarketStatusAdminDtoStatusEnum[keyof typeof UpdateMarketStatusAdminDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface UpdateMarketStatusResponseDto
+ */
+export interface UpdateMarketStatusResponseDto {
+    /**
+     * Whether the update was successful
+     * @type {boolean}
+     * @memberof UpdateMarketStatusResponseDto
+     */
+    'success': boolean;
+    /**
+     * Slug of the market that was updated
+     * @type {string}
+     * @memberof UpdateMarketStatusResponseDto
+     */
+    'marketSlug': string;
+    /**
+     * Number of markets updated (including child markets)
+     * @type {number}
+     * @memberof UpdateMarketStatusResponseDto
+     */
+    'updatedMarkets': number;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateProjectUserModerationDTO
+ */
+export interface UpdateProjectUserModerationDTO {
+    /**
+     * Moderation status to apply
+     * @type {string}
+     * @memberof UpdateProjectUserModerationDTO
+     */
+    'status'?: UpdateProjectUserModerationDTOStatusEnum;
+    /**
+     * Multiplier or count depending on status (optional)
+     * @type {number}
+     * @memberof UpdateProjectUserModerationDTO
+     */
+    'value'?: number;
+    /**
+     * Reason for the moderation action
+     * @type {string}
+     * @memberof UpdateProjectUserModerationDTO
+     */
+    'reason'?: string;
+    /**
+     * Start date for the moderation
+     * @type {string}
+     * @memberof UpdateProjectUserModerationDTO
+     */
+    'start_date'?: string;
+    /**
+     * End date for the moderation
+     * @type {string}
+     * @memberof UpdateProjectUserModerationDTO
+     */
+    'end_date'?: string | null;
+}
+
+export const UpdateProjectUserModerationDTOStatusEnum = {
+    Suspicious: 'SUSPICIOUS',
+    Nerfed: 'NERFED',
+    Boosted: 'BOOSTED',
+    Jailed: 'JAILED',
+    Banned: 'BANNED',
+    Excluded: 'EXCLUDED',
+    TeamMember: 'TEAM_MEMBER'
+} as const;
+
+export type UpdateProjectUserModerationDTOStatusEnum = typeof UpdateProjectUserModerationDTOStatusEnum[keyof typeof UpdateProjectUserModerationDTOStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface UpdateRelayDepositDto
+ */
+export interface UpdateRelayDepositDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRelayDepositDto
+     */
+    'txHash': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRelayDepositDto
+     */
+    'value': number;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateTemplateDto
+ */
+export interface UpdateTemplateDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTemplateDto
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTemplateDto
+     */
+    'subtitle'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTemplateDto
+     */
+    'image_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateTemplateDto
+     */
+    'redirect_url'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateTemplateDto
+     */
+    'filters'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateTemplateDto
+     */
+    'data_template'?: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateTemplateDto
+     */
+    'global'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateTweetFlagsDTO
+ */
+export interface UpdateTweetFlagsDTO {
+    /**
+     * The project ID to update flags for
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'project_id': string;
+    /**
+     * The post id to update flags for
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'post_id': string;
+    /**
+     * The player handle to update flags for
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'handle': string;
+    /**
+     * The player twitter id to update flags for
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'twitter_id': string;
+    /**
+     * The weight to set for the post
+     * @type {number}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'weight': number;
+    /**
+     * The admin user who updated the flag
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'admin_user': string;
+    /**
+     * The created_at_of_post for partition efficiency
+     * @type {string}
+     * @memberof UpdateTweetFlagsDTO
+     */
+    'created_at_of_post': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserFlagDto
+ */
+export interface UserFlagDto {
+    /**
+     * User ID
+     * @type {string}
+     * @memberof UserFlagDto
+     */
+    'user_id': string;
+    /**
+     * Flag type
+     * @type {string}
+     * @memberof UserFlagDto
+     */
+    'flag': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserFullInfoDTO
+ */
+export interface UserFullInfoDTO {
+    /**
+     * Twitter user ID
+     * @type {string}
+     * @memberof UserFullInfoDTO
+     */
+    'twitter_id': string;
+    /**
+     * Twitter handle (username)
+     * @type {string}
+     * @memberof UserFullInfoDTO
+     */
+    'handle': string;
+    /**
+     * Display name
+     * @type {string}
+     * @memberof UserFullInfoDTO
+     */
+    'name': string;
+    /**
+     * Number of followers
+     * @type {number}
+     * @memberof UserFullInfoDTO
+     */
+    'followers_count': number;
+    /**
+     * Profile image URL
+     * @type {string}
+     * @memberof UserFullInfoDTO
+     */
+    'profile_image_url_https': string;
+    /**
+     * Smart follower count.
+     * @type {number}
+     * @memberof UserFullInfoDTO
+     */
+    'smart_follower_count': number | null;
+    /**
+     * Total clout score across all seasons
+     * @type {number}
+     * @memberof UserFullInfoDTO
+     */
+    'total_clout_score': number;
 }
 /**
  * 
@@ -18719,6 +32274,279 @@ export interface UserInfoDTO {
      * @memberof UserInfoDTO
      */
     'profile_image_url_https': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserProjectFeedItemDTO
+ */
+export interface UserProjectFeedItemDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'post_id': string;
+    /**
+     * Number of views
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'views': number;
+    /**
+     * Number of likes
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'likes': number;
+    /**
+     * Number of retweets
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'retweets': number;
+    /**
+     * Number of quotes
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'quotes': number;
+    /**
+     * Number of replies
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'replies': number;
+    /**
+     * Number of bookmarks
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'bookmarks': number;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'created_at': string;
+    /**
+     * Post type (Tweet, Quote, Reply)
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'type': string;
+    /**
+     * Certified views count
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'certified_views': number;
+    /**
+     * Botted views count
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'botted_views': number;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'text': string;
+    /**
+     * Conversation ID
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'conversation_id': string;
+    /**
+     * Admin user
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'admin_user': string;
+    /**
+     * Quoted post data
+     * @type {object}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'quoted'?: object | null;
+    /**
+     * Associated flags/tickers with IDs for efficient updates
+     * @type {Array<object>}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'flags': Array<object>;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'user_id': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'user_name': string;
+    /**
+     * User handle
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'user_handle': string;
+    /**
+     * User profile image URL
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'user_profile_image': string | null;
+    /**
+     * Sentiment of the post
+     * @type {string}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'sentiment'?: string;
+    /**
+     * Engagement score from posts table
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'engagement_score'?: number | null;
+    /**
+     * Score/points from post flag distribution
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'score'?: number | null;
+    /**
+     * Weight of the post
+     * @type {number}
+     * @memberof UserProjectFeedItemDTO
+     */
+    'weight'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface UserRankingDateRangeItemDTO
+ */
+export interface UserRankingDateRangeItemDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'project_id': string;
+    /**
+     * Contract address
+     * @type {string}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'contract_address': string;
+    /**
+     * Slug
+     * @type {string}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'slug': string;
+    /**
+     * Name
+     * @type {string}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'name': string;
+    /**
+     * Total points score
+     * @type {number}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'total_point': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'total_posts': number;
+    /**
+     * Percentage of total points (mindshare)
+     * @type {number}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'mindshare_percentage': number;
+    /**
+     * Total participants
+     * @type {number}
+     * @memberof UserRankingDateRangeItemDTO
+     */
+    'total_participants': number;
+}
+/**
+ * 
+ * @export
+ * @interface UserRankingItemDTO
+ */
+export interface UserRankingItemDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof UserRankingItemDTO
+     */
+    'project_id': string;
+    /**
+     * Contract address
+     * @type {string}
+     * @memberof UserRankingItemDTO
+     */
+    'contract_address': string;
+    /**
+     * Slug
+     * @type {string}
+     * @memberof UserRankingItemDTO
+     */
+    'slug': string;
+    /**
+     * Name
+     * @type {string}
+     * @memberof UserRankingItemDTO
+     */
+    'name': string;
+    /**
+     * Total points score
+     * @type {number}
+     * @memberof UserRankingItemDTO
+     */
+    'total_point': number;
+    /**
+     * Final rank
+     * @type {number}
+     * @memberof UserRankingItemDTO
+     */
+    'final_rank': number;
+    /**
+     * Total posts
+     * @type {number}
+     * @memberof UserRankingItemDTO
+     */
+    'total_posts': number;
+    /**
+     * Percentage of total points (mindshare)
+     * @type {number}
+     * @memberof UserRankingItemDTO
+     */
+    'mindshare_percentage': number;
+    /**
+     * Total participants
+     * @type {number}
+     * @memberof UserRankingItemDTO
+     */
+    'total_participants': number;
 }
 /**
  * 
@@ -18775,17 +32603,321 @@ export interface UserTweetPerTopicDTO {
      */
     'created_at': string;
     /**
-     * The cred score
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'cred_score': number;
-    /**
      * The text
      * @type {string}
      * @memberof UserTweetPerTopicDTO
      */
     'text': string;
+    /**
+     * The flags
+     * @type {Array<FlagDTO>}
+     * @memberof UserTweetPerTopicDTO
+     */
+    'flags'?: Array<FlagDTO>;
+    /**
+     * The quoted tweet, if the post is a quote
+     * @type {UserTweetPerTopicDTO}
+     * @memberof UserTweetPerTopicDTO
+     */
+    'quoted'?: UserTweetPerTopicDTO;
+}
+/**
+ * 
+ * @export
+ * @interface UserTweetResponseDTO
+ */
+export interface UserTweetResponseDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'post_id': string;
+    /**
+     * Number of views
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'views': number;
+    /**
+     * Number of likes
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'likes': number;
+    /**
+     * Number of retweets
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'retweets': number;
+    /**
+     * Number of quotes
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'quotes': number;
+    /**
+     * Number of replies
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'replies': number;
+    /**
+     * Number of bookmarks
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'bookmarks': number;
+    /**
+     * Post creation date
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'created_at': string;
+    /**
+     * Post type (Tweet, Quote, etc.)
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'type': string;
+    /**
+     * Certified view count
+     * @type {number}
+     * @memberof UserTweetResponseDTO
+     */
+    'certified_views': number;
+    /**
+     * Post text content
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'text': string;
+    /**
+     * Conversation ID
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'conversation_id': string;
+    /**
+     * Quoted tweet data
+     * @type {ProjectTweetResponseDTO}
+     * @memberof UserTweetResponseDTO
+     */
+    'quoted'?: ProjectTweetResponseDTO;
+    /**
+     * Sentiment
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'sentiment'?: string;
+    /**
+     * User ID
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'user_id': string;
+    /**
+     * User name
+     * @type {string}
+     * @memberof UserTweetResponseDTO
+     */
+    'user_name': string;
+}
+/**
+ * 
+ * @export
+ * @interface UserWhitelistProjectDTO
+ */
+export interface UserWhitelistProjectDTO {
+    /**
+     * Project ID
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'project_id': string;
+    /**
+     * Project name
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'name': string;
+    /**
+     * Project slug
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'slug': string;
+    /**
+     * Project ticker symbol
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'ticker': string;
+    /**
+     * Contract address
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'contract_address': string;
+    /**
+     * Whitelist status
+     * @type {string}
+     * @memberof UserWhitelistProjectDTO
+     */
+    'status': string;
+}
+/**
+ * All possible user flags
+ * @export
+ * @enum {string}
+ */
+
+export const UsersFlagEnum = {
+    HeroCircleExtended: 'HERO_CIRCLE_EXTENDED',
+    HeroCircle: 'HERO_CIRCLE',
+    SmartFollow: 'SMART_FOLLOW',
+    Clout: 'CLOUT',
+    Gattaca: 'GATTACA',
+    SuspiciousLow: 'SUSPICIOUS_LOW',
+    SuspiciousHigh: 'SUSPICIOUS_HIGH',
+    MonadHero: 'MONAD_HERO',
+    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
+    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
+    DisableFromHeroSelection: 'DISABLE_FROM_HERO_SELECTION',
+    FeedTemporary: 'FEED_TEMPORARY',
+    FeedOnly: 'FEED_ONLY',
+    TacticOnly: 'TACTIC_ONLY',
+    Hero: 'HERO',
+    Tactic: 'TACTIC',
+    None: 'NONE',
+    Registered: 'REGISTERED',
+    NotRegistered: 'NOT_REGISTERED'
+} as const;
+
+export type UsersFlagEnum = typeof UsersFlagEnum[keyof typeof UsersFlagEnum];
+
+
+/**
+ * 
+ * @export
+ * @interface UsersFlagEnumSchema
+ */
+export interface UsersFlagEnumSchema {
+    /**
+     * 
+     * @type {UsersFlagEnum}
+     * @memberof UsersFlagEnumSchema
+     */
+    'value': UsersFlagEnum;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface VRGDAPriceAndPacksLeftDTO
+ */
+export interface VRGDAPriceAndPacksLeftDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof VRGDAPriceAndPacksLeftDTO
+     */
+    'price': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VRGDAPriceAndPacksLeftDTO
+     */
+    'packsLeft': number;
+}
+/**
+ * 
+ * @export
+ * @interface VerifyBidOrderBidOrderDto
+ */
+export interface VerifyBidOrderBidOrderDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderBidOrderDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderBidOrderDto
+     */
+    'price': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderBidOrderDto
+     */
+    'trader': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderBidOrderDto
+     */
+    'payment_token': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof VerifyBidOrderBidOrderDto
+     */
+    'proof': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface VerifyBidOrderDto
+ */
+export interface VerifyBidOrderDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderDto
+     */
+    'bid_order_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderDto
+     */
+    'token_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderDto
+     */
+    'card_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface VerifyBidOrderResponseDto
+ */
+export interface VerifyBidOrderResponseDto {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VerifyBidOrderResponseDto
+     */
+    'valid': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof VerifyBidOrderResponseDto
+     */
+    'message': string;
+    /**
+     * 
+     * @type {VerifyBidOrderBidOrderDto}
+     * @memberof VerifyBidOrderResponseDto
+     */
+    'bidOrder': VerifyBidOrderBidOrderDto;
 }
 /**
  * 
@@ -18933,7 +33065,29 @@ export interface VoteConfig {
      * @memberof VoteConfig
      */
     'totalFanPoints'?: number | null;
+    /**
+     * Type of the vote
+     * @type {string}
+     * @memberof VoteConfig
+     */
+    'type': VoteConfigTypeEnum;
+    /**
+     * Threshold of the vote
+     * @type {number}
+     * @memberof VoteConfig
+     */
+    'threshold': number;
 }
+
+export const VoteConfigTypeEnum = {
+    InTrending: 'HERO_IN_TRENDING',
+    InMain: 'HERO_IN_MAIN',
+    Out: 'HERO_OUT',
+    InRising: 'HERO_IN_RISING'
+} as const;
+
+export type VoteConfigTypeEnum = typeof VoteConfigTypeEnum[keyof typeof VoteConfigTypeEnum];
+
 /**
  * 
  * @export
@@ -18958,6 +33112,24 @@ export interface VoteHeroSelection {
      * @memberof VoteHeroSelection
      */
     'last_4_scores_avg': number;
+    /**
+     * Last season clout score
+     * @type {number}
+     * @memberof VoteHeroSelection
+     */
+    'last_season_clout_score': number;
+    /**
+     * Projected score
+     * @type {number}
+     * @memberof VoteHeroSelection
+     */
+    'projected_score': number;
+    /**
+     * Projected rank
+     * @type {number}
+     * @memberof VoteHeroSelection
+     */
+    'projected_rank': number;
     /**
      * The ID of the vote configuration
      * @type {string}
@@ -19056,6 +33228,142 @@ export interface VrgdaPriceChart {
      * @memberof VrgdaPriceChart
      */
     'timestamp': string;
+}
+/**
+ * 
+ * @export
+ * @interface WeeklyMarketsPnlDto
+ */
+export interface WeeklyMarketsPnlDto {
+    /**
+     * Array of markets with their PNL data
+     * @type {Array<MarketPnlDto>}
+     * @memberof WeeklyMarketsPnlDto
+     */
+    'markets': Array<MarketPnlDto>;
+    /**
+     * Total number of markets
+     * @type {number}
+     * @memberof WeeklyMarketsPnlDto
+     */
+    'totalCount': number;
+    /**
+     * Number of open markets
+     * @type {number}
+     * @memberof WeeklyMarketsPnlDto
+     */
+    'openCount': number;
+    /**
+     * Number of running markets
+     * @type {number}
+     * @memberof WeeklyMarketsPnlDto
+     */
+    'runningCount': number;
+    /**
+     * Number of resolved markets
+     * @type {number}
+     * @memberof WeeklyMarketsPnlDto
+     */
+    'resolvedCount': number;
+}
+/**
+ * 
+ * @export
+ * @interface WordOccurrenceItemDTO
+ */
+export interface WordOccurrenceItemDTO {
+    /**
+     * The word that was searched
+     * @type {string}
+     * @memberof WordOccurrenceItemDTO
+     */
+    'word': string;
+    /**
+     * Number of tweets containing this word
+     * @type {number}
+     * @memberof WordOccurrenceItemDTO
+     */
+    'count': number;
+    /**
+     * List of tweet IDs containing this word (only included if include_tweet_ids=true)
+     * @type {Array<string>}
+     * @memberof WordOccurrenceItemDTO
+     */
+    'tweet_ids'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface WordOccurrenceResponseDTO
+ */
+export interface WordOccurrenceResponseDTO {
+    /**
+     * Twitter ID of the user
+     * @type {string}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'twitter_id': string;
+    /**
+     * Twitter handle of the user (if found)
+     * @type {string}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'twitter_handle': string | null;
+    /**
+     * Number of days searched
+     * @type {number}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'days_searched': number;
+    /**
+     * Total number of tweets analyzed
+     * @type {number}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'total_tweets_analyzed': number;
+    /**
+     * Word occurrence results
+     * @type {Array<WordOccurrenceItemDTO>}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'occurrences': Array<WordOccurrenceItemDTO>;
+    /**
+     * Start date of the search period
+     * @type {string}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'period_start': string;
+    /**
+     * End date of the search period
+     * @type {string}
+     * @memberof WordOccurrenceResponseDTO
+     */
+    'period_end': string;
+}
+/**
+ * 
+ * @export
+ * @interface WordRecommendation
+ */
+export interface WordRecommendation {
+    /**
+     * Recommended word or phrase
+     * @type {string}
+     * @memberof WordRecommendation
+     */
+    'word': string;
+    /**
+     * Suggested threshold (number of mentions)
+     * @type {number}
+     * @memberof WordRecommendation
+     */
+    'threshold': number;
+    /**
+     * Reasoning for this recommendation
+     * @type {string}
+     * @memberof WordRecommendation
+     */
+    'reasoning': string;
 }
 /**
  * 
@@ -19277,11 +33585,11 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @param {string} playerId 
-         * @param {GetPlayerGroupedCardsDTO} [query] 
+         * @param {GetPlayerCardsFiltersWhereDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCardsByPlayerId: async (playerId: string, query?: GetPlayerGroupedCardsDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getCardsByPlayerId: async (playerId: string, query?: GetPlayerCardsFiltersWhereDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'playerId' is not null or undefined
             assertParamExists('getCardsByPlayerId', 'playerId', playerId)
             const localVarPath = `/card/player/{playerId}`
@@ -19413,6 +33721,47 @@ export const CardApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {string} heroId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroSupplyByRarity: async (heroId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'heroId' is not null or undefined
+            assertParamExists('getHeroSupplyByRarity', 'heroId', heroId)
+            const localVarPath = `/card/hero-supply-by-rarity/{heroId}`
+                .replace(`{${"heroId"}}`, encodeURIComponent(String(heroId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} playerId 
          * @param {GetPlayerAllCardsDTO} [query] 
          * @param {*} [options] Override http request option.
@@ -19509,11 +33858,11 @@ export const CardApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} playerId 
-         * @param {GetPlayerGroupedCardsDTO} [query] 
+         * @param {GetPlayerCardsFiltersWhereDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCardsByPlayerId(playerId: string, query?: GetPlayerGroupedCardsDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedCardWithNumberResult>> {
+        async getCardsByPlayerId(playerId: string, query?: GetPlayerCardsFiltersWhereDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedCardWithNumberResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCardsByPlayerId(playerId, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CardApi.getCardsByPlayerId']?.[localVarOperationServerIndex]?.url;
@@ -19542,6 +33891,18 @@ export const CardApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroSupply(heroId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CardApi.getHeroSupply']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} heroId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getHeroSupplyByRarity(heroId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HeroSupplyByRarityDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroSupplyByRarity(heroId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CardApi.getHeroSupplyByRarity']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19623,6 +33984,15 @@ export const CardApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {CardApiGetHeroSupplyByRarityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getHeroSupplyByRarity(requestParameters: CardApiGetHeroSupplyByRarityRequest, options?: RawAxiosRequestConfig): AxiosPromise<HeroSupplyByRarityDto> {
+            return localVarFp.getHeroSupplyByRarity(requestParameters.heroId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CardApiGetIndividualCardsByPlayerIdRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19697,10 +34067,10 @@ export interface CardApiGetCardsByPlayerIdRequest {
 
     /**
      * 
-     * @type {GetPlayerGroupedCardsDTO}
+     * @type {GetPlayerCardsFiltersWhereDTO}
      * @memberof CardApiGetCardsByPlayerId
      */
-    readonly query?: GetPlayerGroupedCardsDTO
+    readonly query?: GetPlayerCardsFiltersWhereDTO
 }
 
 /**
@@ -19734,6 +34104,20 @@ export interface CardApiGetHeroSupplyRequest {
      * 
      * @type {string}
      * @memberof CardApiGetHeroSupply
+     */
+    readonly heroId: string
+}
+
+/**
+ * Request parameters for getHeroSupplyByRarity operation in CardApi.
+ * @export
+ * @interface CardApiGetHeroSupplyByRarityRequest
+ */
+export interface CardApiGetHeroSupplyByRarityRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CardApiGetHeroSupplyByRarity
      */
     readonly heroId: string
 }
@@ -19834,6 +34218,17 @@ export class CardApi extends BaseAPI {
 
     /**
      * 
+     * @param {CardApiGetHeroSupplyByRarityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardApi
+     */
+    public getHeroSupplyByRarity(requestParameters: CardApiGetHeroSupplyByRarityRequest, options?: RawAxiosRequestConfig) {
+        return CardApiFp(this.configuration).getHeroSupplyByRarity(requestParameters.heroId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {CardApiGetIndividualCardsByPlayerIdRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -19841,6 +34236,111 @@ export class CardApi extends BaseAPI {
      */
     public getIndividualCardsByPlayerId(requestParameters: CardApiGetIndividualCardsByPlayerIdRequest, options?: RawAxiosRequestConfig) {
         return CardApiFp(this.configuration).getIndividualCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * CommonApi - axios parameter creator
+ * @export
+ */
+export const CommonApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBacklogs: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/common/backlogs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CommonApi - functional programming interface
+ * @export
+ */
+export const CommonApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CommonApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBacklogs(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BacklogResponseDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBacklogs(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CommonApi.getBacklogs']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * CommonApi - factory interface
+ * @export
+ */
+export const CommonApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CommonApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBacklogs(options?: RawAxiosRequestConfig): AxiosPromise<BacklogResponseDTO> {
+            return localVarFp.getBacklogs(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CommonApi - object-oriented interface
+ * @export
+ * @class CommonApi
+ * @extends {BaseAPI}
+ */
+export class CommonApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CommonApi
+     */
+    public getBacklogs(options?: RawAxiosRequestConfig) {
+        return CommonApiFp(this.configuration).getBacklogs(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -20570,6 +35070,162 @@ export class HeroApi extends BaseAPI {
 
 
 /**
+ * KothKingOfTheHillApi - axios parameter creator
+ * @export
+ */
+export const KothKingOfTheHillApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get top participants for a KOTH
+         * @param {string} kothId 
+         * @param {number} [limit] 
+         * @param {number} [offset] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants: async (kothId: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'kothId' is not null or undefined
+            assertParamExists('getTopParticipants', 'kothId', kothId)
+            const localVarPath = `/koth/{kothId}/top-participants`
+                .replace(`{${"kothId"}}`, encodeURIComponent(String(kothId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * KothKingOfTheHillApi - functional programming interface
+ * @export
+ */
+export const KothKingOfTheHillApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = KothKingOfTheHillApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get top participants for a KOTH
+         * @param {string} kothId 
+         * @param {number} [limit] 
+         * @param {number} [offset] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopParticipants(kothId: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(kothId, limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['KothKingOfTheHillApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * KothKingOfTheHillApi - factory interface
+ * @export
+ */
+export const KothKingOfTheHillApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = KothKingOfTheHillApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get top participants for a KOTH
+         * @param {KothKingOfTheHillApiGetTopParticipantsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants(requestParameters: KothKingOfTheHillApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TopKothParticipantDTO>> {
+            return localVarFp.getTopParticipants(requestParameters.kothId, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for getTopParticipants operation in KothKingOfTheHillApi.
+ * @export
+ * @interface KothKingOfTheHillApiGetTopParticipantsRequest
+ */
+export interface KothKingOfTheHillApiGetTopParticipantsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof KothKingOfTheHillApiGetTopParticipants
+     */
+    readonly kothId: string
+
+    /**
+     * 
+     * @type {number}
+     * @memberof KothKingOfTheHillApiGetTopParticipants
+     */
+    readonly limit?: number
+
+    /**
+     * 
+     * @type {number}
+     * @memberof KothKingOfTheHillApiGetTopParticipants
+     */
+    readonly offset?: number
+}
+
+/**
+ * KothKingOfTheHillApi - object-oriented interface
+ * @export
+ * @class KothKingOfTheHillApi
+ * @extends {BaseAPI}
+ */
+export class KothKingOfTheHillApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get top participants for a KOTH
+     * @param {KothKingOfTheHillApiGetTopParticipantsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KothKingOfTheHillApi
+     */
+    public getTopParticipants(requestParameters: KothKingOfTheHillApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig) {
+        return KothKingOfTheHillApiFp(this.configuration).getTopParticipants(requestParameters.kothId, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * MarketplaceApi - axios parameter creator
  * @export
  */
@@ -20582,10 +35238,12 @@ export const MarketplaceApiAxiosParamCreator = function (configuration?: Configu
          * @param {boolean} includeOrderbook 
          * @param {boolean} includePersonalBids 
          * @param {boolean} includeHighestFiveBids 
+         * @param {boolean} includeRarityBids 
+         * @param {Array<string>} tokenIds 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBidOrders: async (heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBidOrders: async (heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, includeRarityBids: boolean, tokenIds: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'heroId' is not null or undefined
             assertParamExists('getBidOrders', 'heroId', heroId)
             // verify required parameter 'rarity' is not null or undefined
@@ -20596,6 +35254,10 @@ export const MarketplaceApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('getBidOrders', 'includePersonalBids', includePersonalBids)
             // verify required parameter 'includeHighestFiveBids' is not null or undefined
             assertParamExists('getBidOrders', 'includeHighestFiveBids', includeHighestFiveBids)
+            // verify required parameter 'includeRarityBids' is not null or undefined
+            assertParamExists('getBidOrders', 'includeRarityBids', includeRarityBids)
+            // verify required parameter 'tokenIds' is not null or undefined
+            assertParamExists('getBidOrders', 'tokenIds', tokenIds)
             const localVarPath = `/marketplace/bid-orders`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20634,6 +35296,14 @@ export const MarketplaceApiAxiosParamCreator = function (configuration?: Configu
 
             if (includeHighestFiveBids !== undefined) {
                 localVarQueryParameter['includeHighestFiveBids'] = includeHighestFiveBids;
+            }
+
+            if (includeRarityBids !== undefined) {
+                localVarQueryParameter['includeRarityBids'] = includeRarityBids;
+            }
+
+            if (tokenIds) {
+                localVarQueryParameter['tokenIds'] = tokenIds;
             }
 
 
@@ -20782,11 +35452,11 @@ export const MarketplaceApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 
          * @summary Get marketplace data
-         * @param {GetAndFilterSellOrdersQueryDTO} [query] 
+         * @param {SellOrdersFiltersDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMarketplaceData: async (query?: GetAndFilterSellOrdersQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getMarketplaceData: async (query?: SellOrdersFiltersDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/marketplace/sell-orders`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20890,11 +35560,13 @@ export const MarketplaceApiFp = function(configuration?: Configuration) {
          * @param {boolean} includeOrderbook 
          * @param {boolean} includePersonalBids 
          * @param {boolean} includeHighestFiveBids 
+         * @param {boolean} includeRarityBids 
+         * @param {Array<string>} tokenIds 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBidOrders(heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBidOrdersDTO>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, options);
+        async getBidOrders(heroId: string, rarity: number, includeOrderbook: boolean, includePersonalBids: boolean, includeHighestFiveBids: boolean, includeRarityBids: boolean, tokenIds: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetBidOrdersDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBidOrders(heroId, rarity, includeOrderbook, includePersonalBids, includeHighestFiveBids, includeRarityBids, tokenIds, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getBidOrders']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -20932,7 +35604,7 @@ export const MarketplaceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLowestPriceForHeroRarity(heroRarityIndex: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+        async getLowestPriceForHeroRarity(heroRarityIndex: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLowestPriceForHeroRarity(heroRarityIndex, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getLowestPriceForHeroRarity']?.[localVarOperationServerIndex]?.url;
@@ -20941,11 +35613,11 @@ export const MarketplaceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get marketplace data
-         * @param {GetAndFilterSellOrdersQueryDTO} [query] 
+         * @param {SellOrdersFiltersDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMarketplaceData(query?: GetAndFilterSellOrdersQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedSellOrderWithHighestBidResult>> {
+        async getMarketplaceData(query?: SellOrdersFiltersDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedSellOrderWithHighestBidResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMarketplaceData(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MarketplaceApi.getMarketplaceData']?.[localVarOperationServerIndex]?.url;
@@ -20982,7 +35654,7 @@ export const MarketplaceApiFactory = function (configuration?: Configuration, ba
          * @throws {RequiredError}
          */
         getBidOrders(requestParameters: MarketplaceApiGetBidOrdersRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetBidOrdersDTO> {
-            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(axios, basePath));
+            return localVarFp.getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, requestParameters.includeRarityBids, requestParameters.tokenIds, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -21009,7 +35681,7 @@ export const MarketplaceApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLowestPriceForHeroRarity(requestParameters: MarketplaceApiGetLowestPriceForHeroRarityRequest, options?: RawAxiosRequestConfig): AxiosPromise<number> {
+        getLowestPriceForHeroRarity(requestParameters: MarketplaceApiGetLowestPriceForHeroRarityRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.getLowestPriceForHeroRarity(requestParameters.heroRarityIndex, options).then((request) => request(axios, basePath));
         },
         /**
@@ -21075,6 +35747,20 @@ export interface MarketplaceApiGetBidOrdersRequest {
      * @memberof MarketplaceApiGetBidOrders
      */
     readonly includeHighestFiveBids: boolean
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly includeRarityBids: boolean
+
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof MarketplaceApiGetBidOrders
+     */
+    readonly tokenIds: Array<string>
 }
 
 /**
@@ -21141,10 +35827,10 @@ export interface MarketplaceApiGetLowestPriceForHeroRarityRequest {
 export interface MarketplaceApiGetMarketplaceDataRequest {
     /**
      * 
-     * @type {GetAndFilterSellOrdersQueryDTO}
+     * @type {SellOrdersFiltersDTO}
      * @memberof MarketplaceApiGetMarketplaceData
      */
-    readonly query?: GetAndFilterSellOrdersQueryDTO
+    readonly query?: SellOrdersFiltersDTO
 }
 
 /**
@@ -21183,7 +35869,7 @@ export class MarketplaceApi extends BaseAPI {
      * @memberof MarketplaceApi
      */
     public getBidOrders(requestParameters: MarketplaceApiGetBidOrdersRequest, options?: RawAxiosRequestConfig) {
-        return MarketplaceApiFp(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, options).then((request) => request(this.axios, this.basePath));
+        return MarketplaceApiFp(this.configuration).getBidOrders(requestParameters.heroId, requestParameters.rarity, requestParameters.includeOrderbook, requestParameters.includePersonalBids, requestParameters.includeHighestFiveBids, requestParameters.includeRarityBids, requestParameters.tokenIds, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -21285,55 +35971,6 @@ export const PlayerApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get all activity for a player
-         * @param {string} playerId 
-         * @param {GetPlayerActivityDto} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getActivityForPlayer: async (playerId: string, query?: GetPlayerActivityDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'playerId' is not null or undefined
-            assertParamExists('getActivityForPlayer', 'playerId', playerId)
-            const localVarPath = `/player/activity/{playerId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
             }
 
 
@@ -21642,20 +36279,6 @@ export const PlayerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get all activity for a player
-         * @param {string} playerId 
-         * @param {GetPlayerActivityDto} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getActivityForPlayer(playerId: string, query?: GetPlayerActivityDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedGetLastActivityDtoResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getActivityForPlayer(playerId, query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PlayerApi.getActivityForPlayer']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Get all paginated players
          * @param {number} page Page number
          * @param {number} limit Number of items per page
@@ -21757,16 +36380,6 @@ export const PlayerApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
-         * @summary Get all activity for a player
-         * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getActivityForPlayer(requestParameters: PlayerApiGetActivityForPlayerRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedGetLastActivityDtoResult> {
-            return localVarFp.getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Get all paginated players
          * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -21840,27 +36453,6 @@ export interface PlayerApiFindPlayersBySearchRequest {
      * @memberof PlayerApiFindPlayersBySearch
      */
     readonly search: string
-}
-
-/**
- * Request parameters for getActivityForPlayer operation in PlayerApi.
- * @export
- * @interface PlayerApiGetActivityForPlayerRequest
- */
-export interface PlayerApiGetActivityForPlayerRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlayerApiGetActivityForPlayer
-     */
-    readonly playerId: string
-
-    /**
-     * 
-     * @type {GetPlayerActivityDto}
-     * @memberof PlayerApiGetActivityForPlayer
-     */
-    readonly query?: GetPlayerActivityDto
 }
 
 /**
@@ -21989,18 +36581,6 @@ export class PlayerApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get all activity for a player
-     * @param {PlayerApiGetActivityForPlayerRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlayerApi
-     */
-    public getActivityForPlayer(requestParameters: PlayerApiGetActivityForPlayerRequest, options?: RawAxiosRequestConfig) {
-        return PlayerApiFp(this.configuration).getActivityForPlayer(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Get all paginated players
      * @param {PlayerApiGetAllPlayersWithPaginationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -22072,6 +36652,1052 @@ export class PlayerApi extends BaseAPI {
     }
 }
 
+
+
+/**
+ * PredictionMarketApi - axios parameter creator
+ * @export
+ */
+export const PredictionMarketApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLMSRHistory: async (slug: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'slug' is not null or undefined
+            assertParamExists('getLMSRHistory', 'slug', slug)
+            const localVarPath = `/prediction-market/market/{slug}/lmsr-history`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get prediction market leaderboard
+         * @param {GetLeaderboardTimeframeEnum} [timeframe] Timeframe filter for leaderboard
+         * @param {number} [limit] Number of entries to return (max 1000)
+         * @param {GetLeaderboardSortByEnum} [sortBy] Field to sort by
+         * @param {GetLeaderboardOrderEnum} [order] Sort order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLeaderboard: async (timeframe?: GetLeaderboardTimeframeEnum, limit?: number, sortBy?: GetLeaderboardSortByEnum, order?: GetLeaderboardOrderEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/prediction-market/leaderboard`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (timeframe !== undefined) {
+                localVarQueryParameter['timeframe'] = timeframe;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (sortBy !== undefined) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get latest 10 trades for a market
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketActivity: async (slug: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'slug' is not null or undefined
+            assertParamExists('getMarketActivity', 'slug', slug)
+            const localVarPath = `/prediction-market/market/{slug}/activity`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a list of prediction markets
+         * @param {GetMarketsStatusEnum} [status] Filter by market status
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarkets: async (status?: GetMarketsStatusEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/prediction-market/markets`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (status !== undefined) {
+                localVarQueryParameter['status'] = status;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get player history
+         * @param {string} id 
+         * @param {PlayerHistoryFilterDto} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerHistory: async (id: string, query?: PlayerHistoryFilterDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPlayerHistory', 'id', id)
+            const localVarPath = `/prediction-market/player/{id}/history`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get player positions
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerPositions: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPlayerPositions', 'id', id)
+            const localVarPath = `/prediction-market/player/{id}/positions`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get player statistics
+         * @param {string} id 
+         * @param {GetPlayerStatsTimeframeEnum} [timeframe] Timeframe filter for player stats
+         * @param {string} [dateStart] Start date for custom date range (ISO 8601 format)
+         * @param {string} [dateEnd] End date for custom date range (ISO 8601 format)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerStats: async (id: string, timeframe?: GetPlayerStatsTimeframeEnum, dateStart?: string, dateEnd?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPlayerStats', 'id', id)
+            const localVarPath = `/prediction-market/player/{id}/stats`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (timeframe !== undefined) {
+                localVarQueryParameter['timeframe'] = timeframe;
+            }
+
+            if (dateStart !== undefined) {
+                localVarQueryParameter['dateStart'] = dateStart;
+            }
+
+            if (dateEnd !== undefined) {
+                localVarQueryParameter['dateEnd'] = dateEnd;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {GetTopHoldersTypeEnum} type Either outcome or cild market
+         * @param {string} id ID of the type to get
+         * @param {boolean} isSettled Whether the market is settled
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopHolders: async (type: GetTopHoldersTypeEnum, id: string, isSettled: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'type' is not null or undefined
+            assertParamExists('getTopHolders', 'type', type)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTopHolders', 'id', id)
+            // verify required parameter 'isSettled' is not null or undefined
+            assertParamExists('getTopHolders', 'isSettled', isSettled)
+            const localVarPath = `/prediction-market/top-holders`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
+            }
+
+            if (isSettled !== undefined) {
+                localVarQueryParameter['isSettled'] = isSettled;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {string} marketId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopPayouts: async (marketId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'marketId' is not null or undefined
+            assertParamExists('getTopPayouts', 'marketId', marketId)
+            const localVarPath = `/prediction-market/market/{marketId}/top-payouts`
+                .replace(`{${"marketId"}}`, encodeURIComponent(String(marketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * PredictionMarketApi - functional programming interface
+ * @export
+ */
+export const PredictionMarketApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PredictionMarketApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLMSRHistory(slug: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetLMSRHistoryResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLMSRHistory(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getLMSRHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get prediction market leaderboard
+         * @param {GetLeaderboardTimeframeEnum} [timeframe] Timeframe filter for leaderboard
+         * @param {number} [limit] Number of entries to return (max 1000)
+         * @param {GetLeaderboardSortByEnum} [sortBy] Field to sort by
+         * @param {GetLeaderboardOrderEnum} [order] Sort order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getLeaderboard(timeframe?: GetLeaderboardTimeframeEnum, limit?: number, sortBy?: GetLeaderboardSortByEnum, order?: GetLeaderboardOrderEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetLeaderboardResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getLeaderboard(timeframe, limit, sortBy, order, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getLeaderboard']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get latest 10 trades for a market
+         * @param {string} slug 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarketActivity(slug: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TradeActivityResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarketActivity(slug, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getMarketActivity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get a list of prediction markets
+         * @param {GetMarketsStatusEnum} [status] Filter by market status
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMarkets(status?: GetMarketsStatusEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetMarketsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarkets(status, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getMarkets']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get player history
+         * @param {string} id 
+         * @param {PlayerHistoryFilterDto} [query] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerHistory(id: string, query?: PlayerHistoryFilterDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPlayerHistoryResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerHistory(id, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getPlayerHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get player positions
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerPositions(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetMyPositionsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerPositions(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getPlayerPositions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get player statistics
+         * @param {string} id 
+         * @param {GetPlayerStatsTimeframeEnum} [timeframe] Timeframe filter for player stats
+         * @param {string} [dateStart] Start date for custom date range (ISO 8601 format)
+         * @param {string} [dateEnd] End date for custom date range (ISO 8601 format)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerStats(id: string, timeframe?: GetPlayerStatsTimeframeEnum, dateStart?: string, dateEnd?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPlayerStatsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerStats(id, timeframe, dateStart, dateEnd, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getPlayerStats']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {GetTopHoldersTypeEnum} type Either outcome or cild market
+         * @param {string} id ID of the type to get
+         * @param {boolean} isSettled Whether the market is settled
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopHolders(type: GetTopHoldersTypeEnum, id: string, isSettled: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopHoldersResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopHolders(type, id, isSettled, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getTopHolders']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {string} marketId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopPayouts(marketId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetTopPayoutsResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopPayouts(marketId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getTopPayouts']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * PredictionMarketApi - factory interface
+ * @export
+ */
+export const PredictionMarketApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PredictionMarketApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+         * @param {PredictionMarketApiGetLMSRHistoryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLMSRHistory(requestParameters: PredictionMarketApiGetLMSRHistoryRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetLMSRHistoryResponseDto> {
+            return localVarFp.getLMSRHistory(requestParameters.slug, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get prediction market leaderboard
+         * @param {PredictionMarketApiGetLeaderboardRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLeaderboard(requestParameters: PredictionMarketApiGetLeaderboardRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<GetLeaderboardResponseDto> {
+            return localVarFp.getLeaderboard(requestParameters.timeframe, requestParameters.limit, requestParameters.sortBy, requestParameters.order, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get latest 10 trades for a market
+         * @param {PredictionMarketApiGetMarketActivityRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarketActivity(requestParameters: PredictionMarketApiGetMarketActivityRequest, options?: RawAxiosRequestConfig): AxiosPromise<TradeActivityResponseDto> {
+            return localVarFp.getMarketActivity(requestParameters.slug, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a list of prediction markets
+         * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMarkets(requestParameters: PredictionMarketApiGetMarketsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<GetMarketsResponse> {
+            return localVarFp.getMarkets(requestParameters.status, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get player history
+         * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerHistory(requestParameters: PredictionMarketApiGetPlayerHistoryRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPlayerHistoryResponseDto> {
+            return localVarFp.getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get player positions
+         * @param {PredictionMarketApiGetPlayerPositionsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerPositions(requestParameters: PredictionMarketApiGetPlayerPositionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetMyPositionsResponseDto> {
+            return localVarFp.getPlayerPositions(requestParameters.id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get player statistics
+         * @param {PredictionMarketApiGetPlayerStatsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerStats(requestParameters: PredictionMarketApiGetPlayerStatsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPlayerStatsResponseDto> {
+            return localVarFp.getPlayerStats(requestParameters.id, requestParameters.timeframe, requestParameters.dateStart, requestParameters.dateEnd, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get top 15 holders for an outcome or child market
+         * @param {PredictionMarketApiGetTopHoldersRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopHolders(requestParameters: PredictionMarketApiGetTopHoldersRequest, options?: RawAxiosRequestConfig): AxiosPromise<TopHoldersResponseDto> {
+            return localVarFp.getTopHolders(requestParameters.type, requestParameters.id, requestParameters.isSettled, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get top 5 outcomes by total payout for a market
+         * @param {PredictionMarketApiGetTopPayoutsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopPayouts(requestParameters: PredictionMarketApiGetTopPayoutsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetTopPayoutsResponseDto> {
+            return localVarFp.getTopPayouts(requestParameters.marketId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for getLMSRHistory operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetLMSRHistoryRequest
+ */
+export interface PredictionMarketApiGetLMSRHistoryRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetLMSRHistory
+     */
+    readonly slug: string
+}
+
+/**
+ * Request parameters for getLeaderboard operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetLeaderboardRequest
+ */
+export interface PredictionMarketApiGetLeaderboardRequest {
+    /**
+     * Timeframe filter for leaderboard
+     * @type {'all' | '30d' | '7d' | 'competition'}
+     * @memberof PredictionMarketApiGetLeaderboard
+     */
+    readonly timeframe?: GetLeaderboardTimeframeEnum
+
+    /**
+     * Number of entries to return (max 1000)
+     * @type {number}
+     * @memberof PredictionMarketApiGetLeaderboard
+     */
+    readonly limit?: number
+
+    /**
+     * Field to sort by
+     * @type {'totalPnL' | 'totalVolume' | 'roi' | 'bets'}
+     * @memberof PredictionMarketApiGetLeaderboard
+     */
+    readonly sortBy?: GetLeaderboardSortByEnum
+
+    /**
+     * Sort order
+     * @type {'asc' | 'desc'}
+     * @memberof PredictionMarketApiGetLeaderboard
+     */
+    readonly order?: GetLeaderboardOrderEnum
+}
+
+/**
+ * Request parameters for getMarketActivity operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetMarketActivityRequest
+ */
+export interface PredictionMarketApiGetMarketActivityRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetMarketActivity
+     */
+    readonly slug: string
+}
+
+/**
+ * Request parameters for getMarkets operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetMarketsRequest
+ */
+export interface PredictionMarketApiGetMarketsRequest {
+    /**
+     * Filter by market status
+     * @type {'draft' | 'open' | 'paused' | 'resolved' | 'settled' | 'voided' | 'closed' | 'all'}
+     * @memberof PredictionMarketApiGetMarkets
+     */
+    readonly status?: GetMarketsStatusEnum
+}
+
+/**
+ * Request parameters for getPlayerHistory operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetPlayerHistoryRequest
+ */
+export interface PredictionMarketApiGetPlayerHistoryRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerHistory
+     */
+    readonly id: string
+
+    /**
+     * 
+     * @type {PlayerHistoryFilterDto}
+     * @memberof PredictionMarketApiGetPlayerHistory
+     */
+    readonly query?: PlayerHistoryFilterDto
+}
+
+/**
+ * Request parameters for getPlayerPositions operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetPlayerPositionsRequest
+ */
+export interface PredictionMarketApiGetPlayerPositionsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerPositions
+     */
+    readonly id: string
+}
+
+/**
+ * Request parameters for getPlayerStats operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetPlayerStatsRequest
+ */
+export interface PredictionMarketApiGetPlayerStatsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerStats
+     */
+    readonly id: string
+
+    /**
+     * Timeframe filter for player stats
+     * @type {'all' | '30d' | '7d' | 'competition'}
+     * @memberof PredictionMarketApiGetPlayerStats
+     */
+    readonly timeframe?: GetPlayerStatsTimeframeEnum
+
+    /**
+     * Start date for custom date range (ISO 8601 format)
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerStats
+     */
+    readonly dateStart?: string
+
+    /**
+     * End date for custom date range (ISO 8601 format)
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerStats
+     */
+    readonly dateEnd?: string
+}
+
+/**
+ * Request parameters for getTopHolders operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetTopHoldersRequest
+ */
+export interface PredictionMarketApiGetTopHoldersRequest {
+    /**
+     * Either outcome or cild market
+     * @type {'outcome' | 'child_market'}
+     * @memberof PredictionMarketApiGetTopHolders
+     */
+    readonly type: GetTopHoldersTypeEnum
+
+    /**
+     * ID of the type to get
+     * @type {string}
+     * @memberof PredictionMarketApiGetTopHolders
+     */
+    readonly id: string
+
+    /**
+     * Whether the market is settled
+     * @type {boolean}
+     * @memberof PredictionMarketApiGetTopHolders
+     */
+    readonly isSettled: boolean
+}
+
+/**
+ * Request parameters for getTopPayouts operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetTopPayoutsRequest
+ */
+export interface PredictionMarketApiGetTopPayoutsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PredictionMarketApiGetTopPayouts
+     */
+    readonly marketId: string
+}
+
+/**
+ * PredictionMarketApi - object-oriented interface
+ * @export
+ * @class PredictionMarketApi
+ * @extends {BaseAPI}
+ */
+export class PredictionMarketApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get probability/liquidity history for a market (LMSR or Bonding Curve)
+     * @param {PredictionMarketApiGetLMSRHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getLMSRHistory(requestParameters: PredictionMarketApiGetLMSRHistoryRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getLMSRHistory(requestParameters.slug, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get prediction market leaderboard
+     * @param {PredictionMarketApiGetLeaderboardRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getLeaderboard(requestParameters: PredictionMarketApiGetLeaderboardRequest = {}, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getLeaderboard(requestParameters.timeframe, requestParameters.limit, requestParameters.sortBy, requestParameters.order, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get latest 10 trades for a market
+     * @param {PredictionMarketApiGetMarketActivityRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getMarketActivity(requestParameters: PredictionMarketApiGetMarketActivityRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getMarketActivity(requestParameters.slug, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a list of prediction markets
+     * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getMarkets(requestParameters: PredictionMarketApiGetMarketsRequest = {}, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getMarkets(requestParameters.status, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get player history
+     * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getPlayerHistory(requestParameters: PredictionMarketApiGetPlayerHistoryRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get player positions
+     * @param {PredictionMarketApiGetPlayerPositionsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getPlayerPositions(requestParameters: PredictionMarketApiGetPlayerPositionsRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getPlayerPositions(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get player statistics
+     * @param {PredictionMarketApiGetPlayerStatsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getPlayerStats(requestParameters: PredictionMarketApiGetPlayerStatsRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getPlayerStats(requestParameters.id, requestParameters.timeframe, requestParameters.dateStart, requestParameters.dateEnd, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get top 15 holders for an outcome or child market
+     * @param {PredictionMarketApiGetTopHoldersRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getTopHolders(requestParameters: PredictionMarketApiGetTopHoldersRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getTopHolders(requestParameters.type, requestParameters.id, requestParameters.isSettled, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get top 5 outcomes by total payout for a market
+     * @param {PredictionMarketApiGetTopPayoutsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    public getTopPayouts(requestParameters: PredictionMarketApiGetTopPayoutsRequest, options?: RawAxiosRequestConfig) {
+        return PredictionMarketApiFp(this.configuration).getTopPayouts(requestParameters.marketId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+/**
+ * @export
+ */
+export const GetLeaderboardTimeframeEnum = {
+    All: 'all',
+    _30d: '30d',
+    _7d: '7d',
+    Competition: 'competition'
+} as const;
+export type GetLeaderboardTimeframeEnum = typeof GetLeaderboardTimeframeEnum[keyof typeof GetLeaderboardTimeframeEnum];
+/**
+ * @export
+ */
+export const GetLeaderboardSortByEnum = {
+    TotalPnL: 'totalPnL',
+    TotalVolume: 'totalVolume',
+    Roi: 'roi',
+    Bets: 'bets'
+} as const;
+export type GetLeaderboardSortByEnum = typeof GetLeaderboardSortByEnum[keyof typeof GetLeaderboardSortByEnum];
+/**
+ * @export
+ */
+export const GetLeaderboardOrderEnum = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+export type GetLeaderboardOrderEnum = typeof GetLeaderboardOrderEnum[keyof typeof GetLeaderboardOrderEnum];
+/**
+ * @export
+ */
+export const GetMarketsStatusEnum = {
+    Draft: 'draft',
+    Open: 'open',
+    Paused: 'paused',
+    Resolved: 'resolved',
+    Settled: 'settled',
+    Voided: 'voided',
+    Closed: 'closed',
+    All: 'all'
+} as const;
+export type GetMarketsStatusEnum = typeof GetMarketsStatusEnum[keyof typeof GetMarketsStatusEnum];
+/**
+ * @export
+ */
+export const GetPlayerStatsTimeframeEnum = {
+    All: 'all',
+    _30d: '30d',
+    _7d: '7d',
+    Competition: 'competition'
+} as const;
+export type GetPlayerStatsTimeframeEnum = typeof GetPlayerStatsTimeframeEnum[keyof typeof GetPlayerStatsTimeframeEnum];
+/**
+ * @export
+ */
+export const GetTopHoldersTypeEnum = {
+    Outcome: 'outcome',
+    ChildMarket: 'child_market'
+} as const;
+export type GetTopHoldersTypeEnum = typeof GetTopHoldersTypeEnum[keyof typeof GetTopHoldersTypeEnum];
 
 
 /**
@@ -22260,17 +37886,16 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Get heros scores for a given tactic
-         * @param {string} tacticId 
-         * @param {GetHeroScoresQueryDTO} [query] 
+         * @summary Get the total gains of a player
+         * @param {string} playerId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getHeroScoresByTacticId: async (tacticId: string, query?: GetHeroScoresQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'tacticId' is not null or undefined
-            assertParamExists('getHeroScoresByTacticId', 'tacticId', tacticId)
-            const localVarPath = `/tactics/hero-scores/{tacticId}`
-                .replace(`{${"tacticId"}}`, encodeURIComponent(String(tacticId)));
+        getTotalGains: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getTotalGains', 'playerId', playerId)
+            const localVarPath = `/tactics/tickets/total-gains/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -22290,12 +37915,6 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
 
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
-            }
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -22309,16 +37928,16 @@ export const TacticsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Get the total gains of a player
-         * @param {string} playerId 
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {string} tacticId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTotalGains: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'playerId' is not null or undefined
-            assertParamExists('getTotalGains', 'playerId', playerId)
-            const localVarPath = `/tactics/tickets/total-gains/{playerId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+        simulateHeroScoresCsv: async (tacticId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tacticId' is not null or undefined
+            assertParamExists('simulateHeroScoresCsv', 'tacticId', tacticId)
+            const localVarPath = `/tactics/simulate-hero-scores-csv/{tacticId}`
+                .replace(`{${"tacticId"}}`, encodeURIComponent(String(tacticId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -22414,20 +38033,6 @@ export const TacticsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get heros scores for a given tactic
-         * @param {string} tacticId 
-         * @param {GetHeroScoresQueryDTO} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getHeroScoresByTacticId(tacticId: string, query?: GetHeroScoresQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTacticsHeroScoreResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroScoresByTacticId(tacticId, query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TacticsApi.getHeroScoresByTacticId']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Get the total gains of a player
          * @param {string} playerId 
          * @param {*} [options] Override http request option.
@@ -22437,6 +38042,19 @@ export const TacticsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTotalGains(playerId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TacticsApi.getTotalGains']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {string} tacticId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async simulateHeroScoresCsv(tacticId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.simulateHeroScoresCsv(tacticId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TacticsApi.simulateHeroScoresCsv']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -22491,16 +38109,6 @@ export const TacticsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Get heros scores for a given tactic
-         * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroScoresByTacticId(requestParameters: TacticsApiGetHeroScoresByTacticIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTacticsHeroScoreResult> {
-            return localVarFp.getHeroScoresByTacticId(requestParameters.tacticId, requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Get the total gains of a player
          * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -22508,6 +38116,16 @@ export const TacticsApiFactory = function (configuration?: Configuration, basePa
          */
         getTotalGains(requestParameters: TacticsApiGetTotalGainsRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetTotalTicketsGainsResponseDTO> {
             return localVarFp.getTotalGains(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Simulate hero scores and return CSV for a tactic
+         * @param {TacticsApiSimulateHeroScoresCsvRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        simulateHeroScoresCsv(requestParameters: TacticsApiSimulateHeroScoresCsvRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.simulateHeroScoresCsv(requestParameters.tacticId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -22576,27 +38194,6 @@ export interface TacticsApiGetByIdRequest {
 }
 
 /**
- * Request parameters for getHeroScoresByTacticId operation in TacticsApi.
- * @export
- * @interface TacticsApiGetHeroScoresByTacticIdRequest
- */
-export interface TacticsApiGetHeroScoresByTacticIdRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof TacticsApiGetHeroScoresByTacticId
-     */
-    readonly tacticId: string
-
-    /**
-     * 
-     * @type {GetHeroScoresQueryDTO}
-     * @memberof TacticsApiGetHeroScoresByTacticId
-     */
-    readonly query?: GetHeroScoresQueryDTO
-}
-
-/**
  * Request parameters for getTotalGains operation in TacticsApi.
  * @export
  * @interface TacticsApiGetTotalGainsRequest
@@ -22608,6 +38205,20 @@ export interface TacticsApiGetTotalGainsRequest {
      * @memberof TacticsApiGetTotalGains
      */
     readonly playerId: string
+}
+
+/**
+ * Request parameters for simulateHeroScoresCsv operation in TacticsApi.
+ * @export
+ * @interface TacticsApiSimulateHeroScoresCsvRequest
+ */
+export interface TacticsApiSimulateHeroScoresCsvRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof TacticsApiSimulateHeroScoresCsv
+     */
+    readonly tacticId: string
 }
 
 /**
@@ -22667,18 +38278,6 @@ export class TacticsApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get heros scores for a given tactic
-     * @param {TacticsApiGetHeroScoresByTacticIdRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TacticsApi
-     */
-    public getHeroScoresByTacticId(requestParameters: TacticsApiGetHeroScoresByTacticIdRequest, options?: RawAxiosRequestConfig) {
-        return TacticsApiFp(this.configuration).getHeroScoresByTacticId(requestParameters.tacticId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Get the total gains of a player
      * @param {TacticsApiGetTotalGainsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -22687,6 +38286,18 @@ export class TacticsApi extends BaseAPI {
      */
     public getTotalGains(requestParameters: TacticsApiGetTotalGainsRequest, options?: RawAxiosRequestConfig) {
         return TacticsApiFp(this.configuration).getTotalGains(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Simulate hero scores and return CSV for a tactic
+     * @param {TacticsApiSimulateHeroScoresCsvRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TacticsApi
+     */
+    public simulateHeroScoresCsv(requestParameters: TacticsApiSimulateHeroScoresCsvRequest, options?: RawAxiosRequestConfig) {
+        return TacticsApiFp(this.configuration).simulateHeroScoresCsv(requestParameters.tacticId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -22784,57 +38395,6 @@ export const TournamentsApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 
          * @param {string} tournamentNumber 
-         * @param {string} [startRank] 
-         * @param {string} [endRank] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroProgressOverTournament: async (tournamentNumber: string, startRank?: string, endRank?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'tournamentNumber' is not null or undefined
-            assertParamExists('getHeroProgressOverTournament', 'tournamentNumber', tournamentNumber)
-            const localVarPath = `/tournaments/hero-progress-over-tournament/{tournamentNumber}`
-                .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            if (startRank !== undefined) {
-                localVarQueryParameter['start_rank'] = startRank;
-            }
-
-            if (endRank !== undefined) {
-                localVarQueryParameter['end_rank'] = endRank;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} tournamentNumber 
          * @param {string} playerId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22847,52 +38407,6 @@ export const TournamentsApiAxiosParamCreator = function (configuration?: Configu
             const localVarPath = `/tournaments/historicalDecksAndWinnings/{tournamentNumber}/{playerId}`
                 .replace(`{${"tournamentNumber"}}`, encodeURIComponent(String(tournamentNumber)))
                 .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get player decks
-         * @param {string} playerId 
-         * @param {string} tournamentId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPlayerDecksByTournamentIdAndPlayerId: async (playerId: string, tournamentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'playerId' is not null or undefined
-            assertParamExists('getPlayerDecksByTournamentIdAndPlayerId', 'playerId', playerId)
-            // verify required parameter 'tournamentId' is not null or undefined
-            assertParamExists('getPlayerDecksByTournamentIdAndPlayerId', 'tournamentId', tournamentId)
-            const localVarPath = `/tournaments/player-decks/{playerId}/{tournamentId}`
-                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)))
-                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -23134,20 +38648,6 @@ export const TournamentsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} tournamentNumber 
-         * @param {string} [startRank] 
-         * @param {string} [endRank] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getHeroProgressOverTournament(tournamentNumber: string, startRank?: string, endRank?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetHeroProgressOverTournamentDTO>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroProgressOverTournament(tournamentNumber, startRank, endRank, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getHeroProgressOverTournament']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} tournamentNumber 
          * @param {string} playerId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23160,26 +38660,12 @@ export const TournamentsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get player decks
-         * @param {string} playerId 
-         * @param {string} tournamentId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPlayerDecksByTournamentIdAndPlayerId(playerId: string, tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TournamentPlayer>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerDecksByTournamentIdAndPlayerId(playerId, tournamentId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getPlayerDecksByTournamentIdAndPlayerId']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @param {string} tournamentId 
          * @param {GetAllPlayersDTO} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlayersInTournament(tournamentId: string, query?: GetAllPlayersDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTournamentPlayerResult>> {
+        async getPlayersInTournament(tournamentId: string, query?: GetAllPlayersDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TournamentPlayer>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayersInTournament(tournamentId, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TournamentsApi.getPlayersInTournament']?.[localVarOperationServerIndex]?.url;
@@ -23254,15 +38740,6 @@ export const TournamentsApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {TournamentsApiGetHeroProgressOverTournamentRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroProgressOverTournament(requestParameters: TournamentsApiGetHeroProgressOverTournamentRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetHeroProgressOverTournamentDTO> {
-            return localVarFp.getHeroProgressOverTournament(requestParameters.tournamentNumber, requestParameters.startRank, requestParameters.endRank, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23272,21 +38749,11 @@ export const TournamentsApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @summary Get player decks
-         * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPlayerDecksByTournamentIdAndPlayerId(requestParameters: TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TournamentPlayer>> {
-            return localVarFp.getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {TournamentsApiGetPlayersInTournamentRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayersInTournament(requestParameters: TournamentsApiGetPlayersInTournamentRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTournamentPlayerResult> {
+        getPlayersInTournament(requestParameters: TournamentsApiGetPlayersInTournamentRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TournamentPlayer>> {
             return localVarFp.getPlayersInTournament(requestParameters.tournamentId, requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
@@ -23350,34 +38817,6 @@ export interface TournamentsApiGetCurrentDecksAndWinningsRequest {
 }
 
 /**
- * Request parameters for getHeroProgressOverTournament operation in TournamentsApi.
- * @export
- * @interface TournamentsApiGetHeroProgressOverTournamentRequest
- */
-export interface TournamentsApiGetHeroProgressOverTournamentRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof TournamentsApiGetHeroProgressOverTournament
-     */
-    readonly tournamentNumber: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof TournamentsApiGetHeroProgressOverTournament
-     */
-    readonly startRank?: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof TournamentsApiGetHeroProgressOverTournament
-     */
-    readonly endRank?: string
-}
-
-/**
  * Request parameters for getHistoricalDecksAndWinnings operation in TournamentsApi.
  * @export
  * @interface TournamentsApiGetHistoricalDecksAndWinningsRequest
@@ -23396,27 +38835,6 @@ export interface TournamentsApiGetHistoricalDecksAndWinningsRequest {
      * @memberof TournamentsApiGetHistoricalDecksAndWinnings
      */
     readonly playerId: string
-}
-
-/**
- * Request parameters for getPlayerDecksByTournamentIdAndPlayerId operation in TournamentsApi.
- * @export
- * @interface TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest
- */
-export interface TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof TournamentsApiGetPlayerDecksByTournamentIdAndPlayerId
-     */
-    readonly playerId: string
-
-    /**
-     * 
-     * @type {string}
-     * @memberof TournamentsApiGetPlayerDecksByTournamentIdAndPlayerId
-     */
-    readonly tournamentId: string
 }
 
 /**
@@ -23514,17 +38932,6 @@ export class TournamentsApi extends BaseAPI {
 
     /**
      * 
-     * @param {TournamentsApiGetHeroProgressOverTournamentRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TournamentsApi
-     */
-    public getHeroProgressOverTournament(requestParameters: TournamentsApiGetHeroProgressOverTournamentRequest, options?: RawAxiosRequestConfig) {
-        return TournamentsApiFp(this.configuration).getHeroProgressOverTournament(requestParameters.tournamentNumber, requestParameters.startRank, requestParameters.endRank, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {TournamentsApiGetHistoricalDecksAndWinningsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23532,18 +38939,6 @@ export class TournamentsApi extends BaseAPI {
      */
     public getHistoricalDecksAndWinnings(requestParameters: TournamentsApiGetHistoricalDecksAndWinningsRequest, options?: RawAxiosRequestConfig) {
         return TournamentsApiFp(this.configuration).getHistoricalDecksAndWinnings(requestParameters.tournamentNumber, requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get player decks
-     * @param {TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TournamentsApi
-     */
-    public getPlayerDecksByTournamentIdAndPlayerId(requestParameters: TournamentsApiGetPlayerDecksByTournamentIdAndPlayerIdRequest, options?: RawAxiosRequestConfig) {
-        return TournamentsApiFp(this.configuration).getPlayerDecksByTournamentIdAndPlayerId(requestParameters.playerId, requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -23603,51 +38998,6 @@ export const VotingApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary Get all voting configurations
-         * @param {GetVoteConfigQueryDTO} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConfigs: async (query?: GetVoteConfigQueryDTO, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/vote/configs`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            if (query !== undefined) {
-                for (const [key, value] of Object.entries(query)) {
-                    localVarQueryParameter[key] = value;
-                }
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Query to get vote of the current user
          * @param {string} voteConfigId 
          * @param {*} [options] Override http request option.
@@ -23657,48 +39007,6 @@ export const VotingApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'voteConfigId' is not null or undefined
             assertParamExists('getMyVote', 'voteConfigId', voteConfigId)
             const localVarPath = `/vote/my-vote/{vote_config_id}`
-                .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get all vote by hero
-         * @param {string} voteConfigId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVotesByHero: async (voteConfigId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'voteConfigId' is not null or undefined
-            assertParamExists('getVotesByHero', 'voteConfigId', voteConfigId)
-            const localVarPath = `/vote/heros/{vote_config_id}`
                 .replace(`{${"vote_config_id"}}`, encodeURIComponent(String(voteConfigId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23742,19 +39050,6 @@ export const VotingApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get all voting configurations
-         * @param {GetVoteConfigQueryDTO} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getConfigs(query?: GetVoteConfigQueryDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedVoteConfigResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConfigs(query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VotingApi.getConfigs']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Query to get vote of the current user
          * @param {string} voteConfigId 
          * @param {*} [options] Override http request option.
@@ -23764,19 +39059,6 @@ export const VotingApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMyVote(voteConfigId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VotingApi.getMyVote']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Get all vote by hero
-         * @param {string} voteConfigId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getVotesByHero(voteConfigId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<HeroWithVotesCount>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getVotesByHero(voteConfigId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VotingApi.getVotesByHero']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -23791,16 +39073,6 @@ export const VotingApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @summary Get all voting configurations
-         * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConfigs(requestParameters: VotingApiGetConfigsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedVoteConfigResult> {
-            return localVarFp.getConfigs(requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Query to get vote of the current user
          * @param {VotingApiGetMyVoteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -23809,32 +39081,8 @@ export const VotingApiFactory = function (configuration?: Configuration, basePat
         getMyVote(requestParameters: VotingApiGetMyVoteRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Vote>> {
             return localVarFp.getMyVote(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
         },
-        /**
-         * 
-         * @summary Get all vote by hero
-         * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getVotesByHero(requestParameters: VotingApiGetVotesByHeroRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<HeroWithVotesCount>> {
-            return localVarFp.getVotesByHero(requestParameters.voteConfigId, options).then((request) => request(axios, basePath));
-        },
     };
 };
-
-/**
- * Request parameters for getConfigs operation in VotingApi.
- * @export
- * @interface VotingApiGetConfigsRequest
- */
-export interface VotingApiGetConfigsRequest {
-    /**
-     * 
-     * @type {GetVoteConfigQueryDTO}
-     * @memberof VotingApiGetConfigs
-     */
-    readonly query?: GetVoteConfigQueryDTO
-}
 
 /**
  * Request parameters for getMyVote operation in VotingApi.
@@ -23851,38 +39099,12 @@ export interface VotingApiGetMyVoteRequest {
 }
 
 /**
- * Request parameters for getVotesByHero operation in VotingApi.
- * @export
- * @interface VotingApiGetVotesByHeroRequest
- */
-export interface VotingApiGetVotesByHeroRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof VotingApiGetVotesByHero
-     */
-    readonly voteConfigId: string
-}
-
-/**
  * VotingApi - object-oriented interface
  * @export
  * @class VotingApi
  * @extends {BaseAPI}
  */
 export class VotingApi extends BaseAPI {
-    /**
-     * 
-     * @summary Get all voting configurations
-     * @param {VotingApiGetConfigsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VotingApi
-     */
-    public getConfigs(requestParameters: VotingApiGetConfigsRequest = {}, options?: RawAxiosRequestConfig) {
-        return VotingApiFp(this.configuration).getConfigs(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @summary Query to get vote of the current user
@@ -23894,18 +39116,6 @@ export class VotingApi extends BaseAPI {
     public getMyVote(requestParameters: VotingApiGetMyVoteRequest, options?: RawAxiosRequestConfig) {
         return VotingApiFp(this.configuration).getMyVote(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
     }
-
-    /**
-     * 
-     * @summary Get all vote by hero
-     * @param {VotingApiGetVotesByHeroRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VotingApi
-     */
-    public getVotesByHero(requestParameters: VotingApiGetVotesByHeroRequest, options?: RawAxiosRequestConfig) {
-        return VotingApiFp(this.configuration).getVotesByHero(requestParameters.voteConfigId, options).then((request) => request(this.axios, this.basePath));
-    }
 }
 
 
@@ -23915,9 +39125,12 @@ export type Null = null
 
 export class Client extends BaseAPI {
   public readonly card: CardApi;
+  public readonly common: CommonApi;
   public readonly hero: HeroApi;
+  public readonly kothKingOfTheHill: KothKingOfTheHillApi;
   public readonly marketplace: MarketplaceApi;
   public readonly player: PlayerApi;
+  public readonly predictionMarket: PredictionMarketApi;
   public readonly tactics: TacticsApi;
   public readonly tournaments: TournamentsApi;
   public readonly voting: VotingApi;
@@ -23928,9 +39141,12 @@ export class Client extends BaseAPI {
     super(config)
     this.config = config
     this.card = new CardApi(config);
+    this.common = new CommonApi(config);
     this.hero = new HeroApi(config);
+    this.kothKingOfTheHill = new KothKingOfTheHillApi(config);
     this.marketplace = new MarketplaceApi(config);
     this.player = new PlayerApi(config);
+    this.predictionMarket = new PredictionMarketApi(config);
     this.tactics = new TacticsApi(config);
     this.tournaments = new TournamentsApi(config);
     this.voting = new VotingApi(config);
@@ -23970,5 +39186,20 @@ export class Client extends BaseAPI {
     const newConfig = { ...this.config, accessToken: token }
     Client.instance = new Client(newConfig as Configuration)
     Object.assign(this, Client.instance)
+  }
+  
+   setAuthorizationHeader(authHeader: string) {
+    if (!this.config.baseOptions) {
+      this.config.baseOptions = {};
+    }
+    
+    this.config.baseOptions.headers = {
+      ...this.config.baseOptions.headers,
+      Authorization: authHeader
+    };
+
+    // Recreate instance with new config to ensure all API instances are updated
+    Client.instance = new Client(this.config as Configuration);
+    Object.assign(this, Client.instance);
   }
 }
