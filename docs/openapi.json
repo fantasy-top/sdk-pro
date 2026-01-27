@@ -2264,12 +2264,7 @@
     "contact": {}
   },
   "tags": [],
-  "servers": [
-    {
-      "url": "https://api-v2.fantasy.top",
-      "description": "Fantasy Top Pro API"
-    }
-  ],
+  "servers": [],
   "components": {
     "securitySchemes": {
       "apiKey": {
@@ -10738,7 +10733,7 @@
             "format": "date-time",
             "type": "string",
             "description": "The creation date",
-            "example": "2026-01-26T13:13:55.658Z"
+            "example": "2026-01-27T10:49:09.407Z"
           },
           "text": {
             "type": "string",
@@ -11232,7 +11227,7 @@
             "format": "date-time",
             "type": "string",
             "description": "The creation date",
-            "example": "2026-01-26T13:13:55.658Z"
+            "example": "2026-01-27T10:49:09.407Z"
           },
           "text": {
             "type": "string",
@@ -29661,6 +29656,28 @@
           "LOSS"
         ]
       },
+      "HistoryStatsDto": {
+        "type": "object",
+        "properties": {
+          "totalPnL": {
+            "type": "number",
+            "description": "Total P&L from all trades and settlements"
+          },
+          "totalVolume": {
+            "type": "number",
+            "description": "Total trading volume (sum of absolute values of all trades)"
+          },
+          "totalBets": {
+            "type": "number",
+            "description": "Total number of bets (trades)"
+          }
+        },
+        "required": [
+          "totalPnL",
+          "totalVolume",
+          "totalBets"
+        ]
+      },
       "GetPlayerHistoryResponseDto": {
         "type": "object",
         "properties": {
@@ -29675,12 +29692,16 @@
           },
           "counts": {
             "$ref": "#/components/schemas/ActionCountsDto"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/HistoryStatsDto"
           }
         },
         "required": [
           "history",
           "meta",
-          "counts"
+          "counts",
+          "stats"
         ]
       },
       "PredictionLeaderboardEntryDto": {

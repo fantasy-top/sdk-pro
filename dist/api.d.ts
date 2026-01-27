@@ -10102,6 +10102,12 @@ export interface GetPlayerHistoryResponseDto {
      * @memberof GetPlayerHistoryResponseDto
      */
     'counts': ActionCountsDto;
+    /**
+     *
+     * @type {HistoryStatsDto}
+     * @memberof GetPlayerHistoryResponseDto
+     */
+    'stats': HistoryStatsDto;
 }
 /**
  *
@@ -16387,6 +16393,31 @@ export interface HistoryOutcomeDto {
 /**
  *
  * @export
+ * @interface HistoryStatsDto
+ */
+export interface HistoryStatsDto {
+    /**
+     * Total P&L from all trades and settlements
+     * @type {number}
+     * @memberof HistoryStatsDto
+     */
+    'totalPnL': number;
+    /**
+     * Total trading volume (sum of absolute values of all trades)
+     * @type {number}
+     * @memberof HistoryStatsDto
+     */
+    'totalVolume': number;
+    /**
+     * Total number of bets (trades)
+     * @type {number}
+     * @memberof HistoryStatsDto
+     */
+    'totalBets': number;
+}
+/**
+ *
+ * @export
  * @interface HotOrNotInteractionBody
  */
 export interface HotOrNotInteractionBody {
@@ -17745,11 +17776,11 @@ export interface MarketChildDto {
      */
     'entities'?: Array<EntityDto>;
     /**
-     *
-     * @type {MarketChildDtoPreset}
+     * Preset configuration for this market
+     * @type {PresetDto}
      * @memberof MarketChildDto
      */
-    'preset': MarketChildDtoPreset | null;
+    'preset': PresetDto | null;
     /**
      * ID of the parent market
      * @type {string}
@@ -17757,11 +17788,11 @@ export interface MarketChildDto {
      */
     'parent_id': string | null;
     /**
-     *
-     * @type {MarketChildDtoWinningOutcome}
+     * ID of the winning outcome
+     * @type {OutcomeDto}
      * @memberof MarketChildDto
      */
-    'winning_outcome': MarketChildDtoWinningOutcome | null;
+    'winning_outcome': OutcomeDto | null;
     /**
      * The 2 outcomes with the smallest odds (including from child markets)
      * @type {Array<OutcomeDto>}
@@ -17803,140 +17834,6 @@ export declare const MarketChildDtoStatusEnum: {
     readonly Closed: "closed";
 };
 export type MarketChildDtoStatusEnum = typeof MarketChildDtoStatusEnum[keyof typeof MarketChildDtoStatusEnum];
-/**
- * Preset configuration for this market
- * @export
- * @interface MarketChildDtoPreset
- */
-export interface MarketChildDtoPreset {
-    /**
-     * Unique identifier for the preset
-     * @type {string}
-     * @memberof MarketChildDtoPreset
-     */
-    'id': string;
-    /**
-     * Label for the preset
-     * @type {string}
-     * @memberof MarketChildDtoPreset
-     */
-    'label': string;
-    /**
-     * Type of market
-     * @type {string}
-     * @memberof MarketChildDtoPreset
-     */
-    'curve_type': string;
-    /**
-     * Constant K value for the LMSR market
-     * @type {string}
-     * @memberof MarketChildDtoPreset
-     */
-    'k': string;
-    /**
-     * Additional curve parameters
-     * @type {object}
-     * @memberof MarketChildDtoPreset
-     */
-    'parameters': object;
-}
-/**
- * ID of the winning outcome
- * @export
- * @interface MarketChildDtoWinningOutcome
- */
-export interface MarketChildDtoWinningOutcome {
-    /**
-     * Unique identifier for the outcome
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'id': string;
-    /**
-     * The market ID this outcome belongs to
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'market_id': string;
-    /**
-     * Name of the outcome
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'name': string;
-    /**
-     * Display order of the outcome
-     * @type {number}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'order': number;
-    /**
-     * Creation timestamp
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'created_at': string;
-    /**
-     * Last update timestamp
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'updated_at': string;
-    /**
-     * Additional metadata
-     * @type {object}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'metadata': object;
-    /**
-     * Current state of the outcome (shares and investment)
-     * @type {OutcomeStateDto}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'outcome_state': OutcomeStateDto;
-    /**
-     * Odds multiplier for $1 investment in this outcome
-     * @type {number}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'odds': number;
-    /**
-     * Name of the child market
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'childMarketName': string | null;
-    /**
-     * Whether this outcome is from a child market
-     * @type {boolean}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'isFromChildMarket'?: boolean;
-    /**
-     * Title of the child market this outcome belongs to
-     * @type {string}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'childMarketTitle'?: string;
-    /**
-     * Entities directly linked to this outcome
-     * @type {Array<EntityDto>}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'entities'?: Array<EntityDto>;
-    /**
-     * Entity linked to the child market this outcome belongs to
-     * @type {EntityDto}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'childMarketEntity'?: EntityDto;
-    /**
-     * Entity linked to the parent market
-     * @type {EntityDto}
-     * @memberof MarketChildDtoWinningOutcome
-     */
-    'marketEntity'?: EntityDto;
-}
 /**
  *
  * @export
@@ -18076,11 +17973,11 @@ export interface MarketDto {
      */
     'entities'?: Array<EntityDto>;
     /**
-     *
-     * @type {MarketChildDtoPreset}
+     * Preset configuration for this market
+     * @type {PresetDto}
      * @memberof MarketDto
      */
-    'preset': MarketChildDtoPreset | null;
+    'preset': PresetDto | null;
     /**
      * ID of the parent market
      * @type {string}
@@ -18088,11 +17985,11 @@ export interface MarketDto {
      */
     'parent_id': string | null;
     /**
-     *
-     * @type {MarketChildDtoWinningOutcome}
+     * ID of the winning outcome
+     * @type {OutcomeDto}
      * @memberof MarketDto
      */
-    'winning_outcome': MarketChildDtoWinningOutcome | null;
+    'winning_outcome': OutcomeDto | null;
     /**
      * The 2 outcomes with the smallest odds (including from child markets)
      * @type {Array<OutcomeDto>}
@@ -18486,11 +18383,11 @@ export interface MarketPositionGroupDto {
      */
     'marketEntities'?: Array<string>;
     /**
-     *
-     * @type {MarketPositionGroupDtoPreset}
+     * The market preset (bonding curve configuration)
+     * @type {PresetDto}
      * @memberof MarketPositionGroupDto
      */
-    'preset'?: MarketPositionGroupDtoPreset | null;
+    'preset'?: PresetDto | null;
     /**
      * The market fee in basis points (e.g., 500 = 5%)
      * @type {number}
@@ -18509,43 +18406,6 @@ export interface MarketPositionGroupDto {
      * @memberof MarketPositionGroupDto
      */
     'outcomes'?: Array<OutcomeDto>;
-}
-/**
- * The market preset (bonding curve configuration)
- * @export
- * @interface MarketPositionGroupDtoPreset
- */
-export interface MarketPositionGroupDtoPreset {
-    /**
-     * Unique identifier for the preset
-     * @type {string}
-     * @memberof MarketPositionGroupDtoPreset
-     */
-    'id': string;
-    /**
-     * Label for the preset
-     * @type {string}
-     * @memberof MarketPositionGroupDtoPreset
-     */
-    'label': string;
-    /**
-     * Type of market
-     * @type {string}
-     * @memberof MarketPositionGroupDtoPreset
-     */
-    'curve_type': string;
-    /**
-     * Constant K value for the LMSR market
-     * @type {string}
-     * @memberof MarketPositionGroupDtoPreset
-     */
-    'k': string;
-    /**
-     * Additional curve parameters
-     * @type {object}
-     * @memberof MarketPositionGroupDtoPreset
-     */
-    'parameters': object;
 }
 /**
  *
@@ -25892,11 +25752,11 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      */
     'create_new_tactic': boolean;
     /**
-     *
-     * @type {TacticsConfigPayoutStructure}
+     * Payout structure details
+     * @type {PayoutStructure}
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
-    'payout_structure'?: TacticsConfigPayoutStructure | null;
+    'payout_structure'?: PayoutStructure | null;
     /**
      * Created at
      * @type {string}
@@ -27129,14 +26989,14 @@ export interface Tactics {
      */
     'roster': Array<TournamentFlags>;
     /**
-     *
+     * Config for the tactic
      * @type {TacticsConfig}
      * @memberof Tactics
      */
     'config'?: TacticsConfig | null;
 }
 /**
- * Config for the tactic
+ *
  * @export
  * @interface TacticsConfig
  */
@@ -27208,11 +27068,11 @@ export interface TacticsConfig {
      */
     'create_new_tactic': boolean;
     /**
-     *
-     * @type {TacticsConfigPayoutStructure}
+     * Payout structure details
+     * @type {PayoutStructure}
      * @memberof TacticsConfig
      */
-    'payout_structure'?: TacticsConfigPayoutStructure | null;
+    'payout_structure'?: PayoutStructure | null;
     /**
      * Created at
      * @type {string}
@@ -27304,109 +27164,6 @@ export interface TacticsConfigIncludeDTO {
      * @memberof TacticsConfigIncludeDTO
      */
     'payout_structure'?: boolean;
-}
-/**
- * Payout structure details
- * @export
- * @interface TacticsConfigPayoutStructure
- */
-export interface TacticsConfigPayoutStructure {
-    /**
-     * ID of the payout structure
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'id': string;
-    /**
-     * Entry amount
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'entry_price_tickets': number;
-    /**
-     * Maximum tickets
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'max_tickets': number;
-    /**
-     * Price pool
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool': number;
-    /**
-     * Type of the payout structure
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'type': string;
-    /**
-     * Payout details
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout': Array<PayoutObject>;
-    /**
-     * Creation date
-     * @type {string}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'created_at': string;
-    /**
-     * Payout details in fragments
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_fragments': Array<PayoutObject>;
-    /**
-     * Payout details in tickets
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_tickets': Array<PayoutObject>;
-    /**
-     * Payout details in fan points
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'payout_fan': Array<PayoutObject>;
-    /**
-     * Price pool in fragments
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_fragments': number;
-    /**
-     * Price pool in tickets
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_tickets': number;
-    /**
-     * Price pool in fan points
-     * @type {number}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'price_pool_fan': number;
-    /**
-     * Extra payouts for featured tactics
-     * @type {Array<PayoutObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'extra_payouts': Array<PayoutObject>;
-    /**
-     * Extra price pools for featured tactics
-     * @type {Array<PricePoolTypeObject>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'extra_price_pools': Array<PricePoolTypeObject>;
-    /**
-     * Payout details per hero
-     * @type {Array<HeroPayouts>}
-     * @memberof TacticsConfigPayoutStructure
-     */
-    'hero_payouts': Array<HeroPayouts>;
 }
 /**
  *
@@ -27609,17 +27366,17 @@ export interface TacticsEntry {
      */
     'updated_at': string;
     /**
-     *
-     * @type {TacticsEntryPlayers}
+     * Players linked to entry
+     * @type {Player}
      * @memberof TacticsEntry
      */
-    'players'?: TacticsEntryPlayers | null;
+    'players'?: Player | null;
     /**
-     *
-     * @type {TacticsEntryTickets}
+     * Tickets linked to entry
+     * @type {TacticsTicket}
      * @memberof TacticsEntry
      */
-    'tickets'?: TacticsEntryTickets | null;
+    'tickets'?: TacticsTicket | null;
     /**
      * Heroes concerned by heroX_id
      * @type {Array<Hero>}
@@ -27919,187 +27676,6 @@ export declare const TacticsEntryOrderByDTOUpdatedAtEnum: {
 };
 export type TacticsEntryOrderByDTOUpdatedAtEnum = typeof TacticsEntryOrderByDTOUpdatedAtEnum[keyof typeof TacticsEntryOrderByDTOUpdatedAtEnum];
 /**
- * Players linked to entry
- * @export
- * @interface TacticsEntryPlayers
- */
-export interface TacticsEntryPlayers {
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'handle': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'email': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'profile_picture': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'twitter_id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'google_id': string;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'fantasy_points': number;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'created_at': string;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'updated_at': string;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'fantasy_points_referrals': number;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'stars': number;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'league': number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'is_hero': boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'is_onboarding_done': boolean;
-    /**
-     * Gold as a Decimal value
-     * @type {object}
-     * @memberof TacticsEntryPlayers
-     */
-    'gold': object;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'tactics_referral_settings_id': string;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'following_count'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'post_count'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'like_count'?: number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'is_x_verified'?: boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'follower_count': number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'can_play_free_tactics': boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'fragments': number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TacticsEntryPlayers
-     */
-    'are_nft_approved': boolean;
-    /**
-     * WETH allowance as a Decimal value
-     * @type {object}
-     * @memberof TacticsEntryPlayers
-     */
-    'weth_allowance': object;
-    /**
-     *
-     * @type {string}
-     * @memberof TacticsEntryPlayers
-     */
-    'monad_address': string;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'xp'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof TacticsEntryPlayers
-     */
-    'xp_referrals'?: number;
-}
-/**
  *
  * @export
  * @interface TacticsEntrySelectDTO
@@ -28243,85 +27819,6 @@ export interface TacticsEntrySelectDTO {
      * @memberof TacticsEntrySelectDTO
      */
     'updated_at'?: boolean;
-}
-/**
- * Tickets linked to entry
- * @export
- * @interface TacticsEntryTickets
- */
-export interface TacticsEntryTickets {
-    /**
-     * Unique identifier for the ticket
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'id': string;
-    /**
-     * Identifier for the player
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'player_id': string;
-    /**
-     * Array of tactic configuration IDs
-     * @type {Array<string>}
-     * @memberof TacticsEntryTickets
-     */
-    'tactic_config_ids': Array<string>;
-    /**
-     * Transaction hash
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'tx_hash': string;
-    /**
-     * Indicates if the ticket is used
-     * @type {boolean}
-     * @memberof TacticsEntryTickets
-     */
-    'used': boolean;
-    /**
-     * Identifier for the payout structure
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'payout_structure_id': string;
-    /**
-     * Creation timestamp
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'created_at': string;
-    /**
-     * Last update timestamp
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'updated_at': string;
-    /**
-     * List of tickets rewards
-     * @type {Array<TacticsTicketRewards>}
-     * @memberof TacticsEntryTickets
-     */
-    'rewards': Array<TacticsTicketRewards>;
-    /**
-     * Tactics entry associated with the ticket
-     * @type {TacticsEntry}
-     * @memberof TacticsEntryTickets
-     */
-    'entry': TacticsEntry;
-    /**
-     * Id of the referrer player
-     * @type {string}
-     * @memberof TacticsEntryTickets
-     */
-    'referred_by_id': string;
-    /**
-     * Referrer of the ticket
-     * @type {Player}
-     * @memberof TacticsEntryTickets
-     */
-    'referrer': Player;
 }
 /**
  *
