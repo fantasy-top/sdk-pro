@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.operationServerMap = exports.RequiredError = exports.BaseAPI = exports.COLLECTION_FORMATS = exports.BASE_PATH = void 0;
 const axios_1 = __importDefault(require("axios"));
-exports.BASE_PATH = "http://localhost".replace(/\/+$/, "");
+exports.BASE_PATH = "https://api-v2.fantasy.top".replace(/\/+$/, "");
 /**
  *
  * @export
