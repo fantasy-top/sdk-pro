@@ -2264,7 +2264,12 @@
     "contact": {}
   },
   "tags": [],
-  "servers": [],
+  "servers": [
+    {
+      "url": "https://api-v2.fantasy.top",
+      "description": "Fantasy Top Pro API"
+    }
+  ],
   "components": {
     "securitySchemes": {
       "apiKey": {
