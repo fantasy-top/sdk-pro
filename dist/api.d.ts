@@ -2755,6 +2755,25 @@ export interface ClaimQuestResponse {
 /**
  *
  * @export
+ * @interface ClaimRewardResponseDTO
+ */
+export interface ClaimRewardResponseDTO {
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClaimRewardResponseDTO
+     */
+    'success': boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof ClaimRewardResponseDTO
+     */
+    'message': string;
+}
+/**
+ *
+ * @export
  * @interface ClaimRewardsDTO
  */
 export interface ClaimRewardsDTO {
@@ -25360,6 +25379,19 @@ export declare const StringFilterDTOModeEnum: {
     readonly Insensitive: "insensitive";
 };
 export type StringFilterDTOModeEnum = typeof StringFilterDTOModeEnum[keyof typeof StringFilterDTOModeEnum];
+/**
+ *
+ * @export
+ * @interface SuccessResponseDTO
+ */
+export interface SuccessResponseDTO {
+    /**
+     *
+     * @type {string}
+     * @memberof SuccessResponseDTO
+     */
+    'status': string;
+}
 /**
  *
  * @export

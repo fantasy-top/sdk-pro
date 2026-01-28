@@ -22743,6 +22743,18 @@
           "message"
         ]
       },
+      "SuccessResponseDTO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "FragmentClaimDTO": {
         "type": "object",
         "properties": {
@@ -24285,6 +24297,21 @@
           "tactics_rewards",
           "total_referred_players",
           "fantasy_points_referrals"
+        ]
+      },
+      "ClaimRewardResponseDTO": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "success",
+          "message"
         ]
       },
       "GetReferredPlayersResponse": {
