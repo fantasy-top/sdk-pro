@@ -16,10 +16,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MarketPnlDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HeroStatusDTOFuturStatusEnum = exports.HeroStatusDTOHeroStatusEnum = exports.HeroStatusDTOPlayerStatusEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTweetsWithFlagsDTOSortingEnum = exports.GetTweetsQueryDtoSortingEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCloutLeaderboardDTOOrderByEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateProjectUserModerationDTOStatusEnum = exports.CreateEntityDtoTypeEnum = exports.CreateChoiceDTOTypeRefEnum = exports.ChoiceTypeRefEnum = exports.ChestPrizeDTORewardTypeEnum = exports.BetDTOPayoutModelEnum = exports.AvailableDailyCloutDTOStatusEnum = exports.AddUserToProjectDTOPermissionEnum = exports.AddRemoveWhitelistResponseDTOMessageEnum = exports.AddRemoveWhitelistDTOActionEnum = exports.AccountDtoSourceEnum = void 0;
-exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.StreakRewardRewardTypeEnum = exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RemoveShouterDTOReasonEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.ModerationRecordDTOStatusEnum = void 0;
-exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetMarketsStatusEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CommonApi = exports.CommonApiFactory = exports.CommonApiFp = exports.CommonApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UsersFlagEnum = exports.UpdateProjectUserModerationDTOStatusEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TrendingHeroDTOTrendingReasonEnum = exports.TradeActivityDtoActionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = void 0;
-exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = void 0;
+exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PrivateTournamentDTOStatusEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.MarketPnlDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTournamentsQueryDTOOrderTypeEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateEntityDtoTypeEnum = exports.ChestPrizeDTORewardTypeEnum = exports.AccountDtoSourceEnum = void 0;
+exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TrendingHeroDTOTrendingReasonEnum = exports.TradeActivityDtoActionEnum = exports.TournamentReviewResponseDTODecisionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = void 0;
+exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.LobbiesApi = exports.LobbiesApiFactory = exports.LobbiesApiFp = exports.LobbiesApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -29,28 +28,6 @@ const base_1 = require("./base");
 exports.AccountDtoSourceEnum = {
     Database: 'database',
     XSearch: 'x_search'
-};
-exports.AddRemoveWhitelistDTOActionEnum = {
-    Add: 'ADD',
-    Remove: 'REMOVE'
-};
-exports.AddRemoveWhitelistResponseDTOMessageEnum = {
-    SomeUserIdsHaveNotBeenFound: 'Some user_ids have not been found',
-    WhitelistUpdatedSuccessfully: 'Whitelist updated successfully'
-};
-exports.AddUserToProjectDTOPermissionEnum = {
-    Admin: 'admin',
-    Member: 'member'
-};
-exports.AvailableDailyCloutDTOStatusEnum = {
-    Available: 'AVAILABLE',
-    Claimed: 'CLAIMED',
-    NoTweet: 'NO_TWEET'
-};
-exports.BetDTOPayoutModelEnum = {
-    WinnerTakesAllPayout: 'winner_takes_all_payout',
-    TopThreePayout: 'top_three_payout',
-    TopFivePayout: 'top_five_payout'
 };
 exports.ChestPrizeDTORewardTypeEnum = {
     CommonCard: 'common_card',
@@ -134,30 +111,11 @@ exports.ChestPrizeDTORewardTypeEnum = {
     EliteChest14: 'elite_chest_14',
     EliteChest15: 'elite_chest_15'
 };
-exports.ChoiceTypeRefEnum = {
-    Hero: 'hero',
-    Tweet: 'tweet',
-    Coin: 'coin'
-};
-exports.CreateChoiceDTOTypeRefEnum = {
-    Hero: 'hero',
-    Tweet: 'tweet',
-    Coin: 'coin'
-};
 exports.CreateEntityDtoTypeEnum = {
     Twitter: 'twitter',
     Event: 'event',
     League: 'league',
     Other: 'other'
-};
-exports.CreateProjectUserModerationDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
 };
 exports.EntityDtoTypeEnum = {
     Twitter: 'twitter',
@@ -200,11 +158,6 @@ exports.GetAndFilterActivityQueryDTOActivityTypeEnum = {
 exports.GetCardsForDeckBuilderDTOTournamentModeEnum = {
     Main: 'main',
     Private: 'private'
-};
-exports.GetCloutLeaderboardDTOOrderByEnum = {
-    FinalRank: 'final_rank',
-    TotalCloutReferral: 'total_clout_referral',
-    TotalCloutDailyClaim: 'total_clout_daily_claim'
 };
 exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = {
     Asc: 'asc',
@@ -303,13 +256,10 @@ exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = {
     In: 'IN',
     Out: 'OUT'
 };
-exports.GetTweetsQueryDtoSortingEnum = {
-    Banger: 'banger',
-    Latest: 'latest'
-};
-exports.GetTweetsWithFlagsDTOSortingEnum = {
-    Latest: 'latest',
-    Banger: 'banger'
+exports.GetTournamentsQueryDTOOrderTypeEnum = {
+    Register: 'register',
+    Live: 'live',
+    Closed: 'closed'
 };
 exports.HandlePushNotificationDtoTypeEnum = {
     TradeCreated: 'TRADE_CREATED',
@@ -322,21 +272,9 @@ exports.HandlePushNotificationDtoTypeEnum = {
     TournamentStarting: 'TOURNAMENT_STARTING',
     TournamentEnded: 'TOURNAMENT_ENDED',
     TacticsCreated: 'TACTICS_CREATED',
-    TacticsStarting: 'TACTICS_STARTING'
-};
-exports.HeroStatusDTOPlayerStatusEnum = {
-    Registered: 'REGISTERED',
-    NotRegistered: 'NOT_REGISTERED'
-};
-exports.HeroStatusDTOHeroStatusEnum = {
-    None: 'NONE',
-    Hero: 'HERO',
-    Tactic: 'TACTIC'
-};
-exports.HeroStatusDTOFuturStatusEnum = {
-    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
-    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
-    None: 'NONE'
+    TacticsStarting: 'TACTICS_STARTING',
+    LobbyDraftApproved: 'LOBBY_DRAFT_APPROVED',
+    LobbyDraftRejected: 'LOBBY_DRAFT_REJECTED'
 };
 exports.HeroWithStatsOrderByDTOCurrentRankEnum = {
     Asc: 'asc',
@@ -416,15 +354,6 @@ exports.MarketPnlDtoPhaseEnum = {
     Open: 'open',
     Running: 'running',
     Resolved: 'resolved'
-};
-exports.ModerationRecordDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
 };
 exports.PlayerHistoryFilterDtoActionEnum = {
     Buy: 'BUY',
@@ -637,6 +566,15 @@ exports.PlayerWeeklyQuestDTOQuestTypeEnum = {
     InventoryOnboarding: 'inventory_onboarding',
     FreeDeckOnboarding: 'free_deck_onboarding'
 };
+exports.PrivateTournamentDTOStatusEnum = {
+    Hidden: 'hidden',
+    DraftPending: 'draft_pending',
+    DraftRejected: 'draft_rejected',
+    DraftApproved: 'draft_approved',
+    AutocompleteProcessed: 'autocomplete_processed',
+    StatsProcessed: 'stats_processed',
+    RewardsProcessed: 'rewards_processed'
+};
 exports.ProgressionDTORewardTypeEnum = {
     CommonCard: 'common_card',
     RareCard: 'rare_card',
@@ -722,11 +660,6 @@ exports.ProgressionDTORewardTypeEnum = {
 exports.RegisterDeckDTOTournamentModeEnum = {
     Main: 'main',
     Private: 'private'
-};
-exports.RemoveShouterDTOReasonEnum = {
-    BusinessAccount: 'businessAccount',
-    BotAccount: 'botAccount',
-    AutomatedAccount: 'automatedAccount'
 };
 /**
  * All possible reward types
@@ -831,14 +764,6 @@ exports.SellOrdersFiltersDTOOrderByEnum = {
     PriceDesc: 'price_desc',
     RankAsc: 'rank_asc',
     RankDesc: 'rank_desc'
-};
-exports.StreakRewardRewardTypeEnum = {
-    Star: 'STAR',
-    Fan: 'FAN',
-    Gold: 'GOLD',
-    Pack: 'PACK',
-    Fragment: 'FRAGMENT',
-    StarBanner: 'star_banner'
 };
 exports.StringFilterDTOModeEnum = {
     Default: 'default',
@@ -1081,6 +1006,10 @@ exports.TournamentLeagueThresholdDTORewardTypeEnum = {
     EliteChest14: 'elite_chest_14',
     EliteChest15: 'elite_chest_15'
 };
+exports.TournamentReviewResponseDTODecisionEnum = {
+    Approved: 'approved',
+    Rejected: 'rejected'
+};
 exports.TradeActivityDtoActionEnum = {
     Buy: 'Buy',
     Sell: 'Sell'
@@ -1098,41 +1027,6 @@ exports.UpdateMarketStatusAdminDtoStatusEnum = {
     Resolved: 'resolved',
     Settled: 'settled',
     Voided: 'voided'
-};
-exports.UpdateProjectUserModerationDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
-};
-/**
- * All possible user flags
- * @export
- * @enum {string}
- */
-exports.UsersFlagEnum = {
-    HeroCircleExtended: 'HERO_CIRCLE_EXTENDED',
-    HeroCircle: 'HERO_CIRCLE',
-    SmartFollow: 'SMART_FOLLOW',
-    Clout: 'CLOUT',
-    Gattaca: 'GATTACA',
-    SuspiciousLow: 'SUSPICIOUS_LOW',
-    SuspiciousHigh: 'SUSPICIOUS_HIGH',
-    MonadHero: 'MONAD_HERO',
-    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
-    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
-    DisableFromHeroSelection: 'DISABLE_FROM_HERO_SELECTION',
-    FeedTemporary: 'FEED_TEMPORARY',
-    FeedOnly: 'FEED_ONLY',
-    TacticOnly: 'TACTIC_ONLY',
-    Hero: 'HERO',
-    Tactic: 'TACTIC',
-    None: 'NONE',
-    Registered: 'REGISTERED',
-    NotRegistered: 'NOT_REGISTERED'
 };
 exports.VoteConfigTypeEnum = {
     InTrending: 'HERO_IN_TRENDING',
@@ -1738,103 +1632,6 @@ class CardApi extends base_1.BaseAPI {
     }
 }
 exports.CardApi = CardApi;
-/**
- * CommonApi - axios parameter creator
- * @export
- */
-const CommonApiAxiosParamCreator = function (configuration) {
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBacklogs: async (options = {}) => {
-            const localVarPath = `/common/backlogs`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    };
-};
-exports.CommonApiAxiosParamCreator = CommonApiAxiosParamCreator;
-/**
- * CommonApi - functional programming interface
- * @export
- */
-const CommonApiFp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.CommonApiAxiosParamCreator)(configuration);
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getBacklogs(options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBacklogs(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['CommonApi.getBacklogs']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    };
-};
-exports.CommonApiFp = CommonApiFp;
-/**
- * CommonApi - factory interface
- * @export
- */
-const CommonApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.CommonApiFp)(configuration);
-    return {
-        /**
-         *
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBacklogs(options) {
-            return localVarFp.getBacklogs(options).then((request) => request(axios, basePath));
-        },
-    };
-};
-exports.CommonApiFactory = CommonApiFactory;
-/**
- * CommonApi - object-oriented interface
- * @export
- * @class CommonApi
- * @extends {BaseAPI}
- */
-class CommonApi extends base_1.BaseAPI {
-    /**
-     *
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CommonApi
-     */
-    getBacklogs(options) {
-        return (0, exports.CommonApiFp)(this.configuration).getBacklogs(options).then((request) => request(this.axios, this.basePath));
-    }
-}
-exports.CommonApi = CommonApi;
 /**
  * HeroApi - axios parameter creator
  * @export
@@ -2505,6 +2302,114 @@ class KothKingOfTheHillApi extends base_1.BaseAPI {
     }
 }
 exports.KothKingOfTheHillApi = KothKingOfTheHillApi;
+/**
+ * LobbiesApi - axios parameter creator
+ * @export
+ */
+const LobbiesApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get top participants for a lobby
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants: async (tournamentId, options = {}) => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            (0, common_1.assertParamExists)('getTopParticipants', 'tournamentId', tournamentId);
+            const localVarPath = `/lobbies/{tournamentId}/top-participants`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.LobbiesApiAxiosParamCreator = LobbiesApiAxiosParamCreator;
+/**
+ * LobbiesApi - functional programming interface
+ * @export
+ */
+const LobbiesApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.LobbiesApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get top participants for a lobby
+         * @param {string} tournamentId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopParticipants(tournamentId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['LobbiesApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.LobbiesApiFp = LobbiesApiFp;
+/**
+ * LobbiesApi - factory interface
+ * @export
+ */
+const LobbiesApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.LobbiesApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get top participants for a lobby
+         * @param {LobbiesApiGetTopParticipantsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants(requestParameters, options) {
+            return localVarFp.getTopParticipants(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.LobbiesApiFactory = LobbiesApiFactory;
+/**
+ * LobbiesApi - object-oriented interface
+ * @export
+ * @class LobbiesApi
+ * @extends {BaseAPI}
+ */
+class LobbiesApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get top participants for a lobby
+     * @param {LobbiesApiGetTopParticipantsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LobbiesApi
+     */
+    getTopParticipants(requestParameters, options) {
+        return (0, exports.LobbiesApiFp)(this.configuration).getTopParticipants(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.LobbiesApi = LobbiesApi;
 /**
  * MarketplaceApi - axios parameter creator
  * @export
@@ -3691,42 +3596,6 @@ const PredictionMarketApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get a list of prediction markets
-         * @param {GetMarketsStatusEnum} [status] Filter by market status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getMarkets: async (status, options = {}) => {
-            const localVarPath = `/prediction-market/markets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (status !== undefined) {
-                localVarQueryParameter['status'] = status;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get player history
          * @param {string} id
          * @param {PlayerHistoryFilterDto} [query]
@@ -3991,19 +3860,6 @@ const PredictionMarketApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get a list of prediction markets
-         * @param {GetMarketsStatusEnum} [status] Filter by market status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getMarkets(status, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarkets(status, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getMarkets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Get player history
          * @param {string} id
          * @param {PlayerHistoryFilterDto} [query]
@@ -4115,16 +3971,6 @@ const PredictionMarketApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get a list of prediction markets
-         * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getMarkets(requestParameters = {}, options) {
-            return localVarFp.getMarkets(requestParameters.status, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Get player history
          * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -4218,17 +4064,6 @@ class PredictionMarketApi extends base_1.BaseAPI {
     }
     /**
      *
-     * @summary Get a list of prediction markets
-     * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PredictionMarketApi
-     */
-    getMarkets(requestParameters = {}, options) {
-        return (0, exports.PredictionMarketApiFp)(this.configuration).getMarkets(requestParameters.status, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
      * @summary Get player history
      * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -4308,19 +4143,6 @@ exports.GetLeaderboardSortByEnum = {
 exports.GetLeaderboardOrderEnum = {
     Asc: 'asc',
     Desc: 'desc'
-};
-/**
- * @export
- */
-exports.GetMarketsStatusEnum = {
-    Draft: 'draft',
-    Open: 'open',
-    Paused: 'paused',
-    Resolved: 'resolved',
-    Settled: 'settled',
-    Voided: 'voided',
-    Closed: 'closed',
-    All: 'all'
 };
 /**
  * @export
@@ -5439,9 +5261,9 @@ class VotingApi extends base_1.BaseAPI {
 exports.VotingApi = VotingApi;
 class Client extends base_1.BaseAPI {
     card;
-    common;
     hero;
     kothKingOfTheHill;
+    lobbies;
     marketplace;
     player;
     predictionMarket;
@@ -5454,9 +5276,9 @@ class Client extends base_1.BaseAPI {
         super(config);
         this.config = config;
         this.card = new CardApi(config);
-        this.common = new CommonApi(config);
         this.hero = new HeroApi(config);
         this.kothKingOfTheHill = new KothKingOfTheHillApi(config);
+        this.lobbies = new LobbiesApi(config);
         this.marketplace = new MarketplaceApi(config);
         this.player = new PlayerApi(config);
         this.predictionMarket = new PredictionMarketApi(config);

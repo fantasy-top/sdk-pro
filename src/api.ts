@@ -206,66 +206,6 @@ export interface AddCoinToHeroDTO {
 /**
  * 
  * @export
- * @interface AddRemoveWhitelistDTO
- */
-export interface AddRemoveWhitelistDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof AddRemoveWhitelistDTO
-     */
-    'project_id': string;
-    /**
-     * Twitter IDs
-     * @type {Array<string>}
-     * @memberof AddRemoveWhitelistDTO
-     */
-    'twitter_ids': Array<string>;
-    /**
-     * Action
-     * @type {string}
-     * @memberof AddRemoveWhitelistDTO
-     */
-    'action': AddRemoveWhitelistDTOActionEnum;
-}
-
-export const AddRemoveWhitelistDTOActionEnum = {
-    Add: 'ADD',
-    Remove: 'REMOVE'
-} as const;
-
-export type AddRemoveWhitelistDTOActionEnum = typeof AddRemoveWhitelistDTOActionEnum[keyof typeof AddRemoveWhitelistDTOActionEnum];
-
-/**
- * 
- * @export
- * @interface AddRemoveWhitelistResponseDTO
- */
-export interface AddRemoveWhitelistResponseDTO {
-    /**
-     * Success message
-     * @type {string}
-     * @memberof AddRemoveWhitelistResponseDTO
-     */
-    'message': AddRemoveWhitelistResponseDTOMessageEnum;
-    /**
-     * User IDs that have not been found
-     * @type {Array<string>}
-     * @memberof AddRemoveWhitelistResponseDTO
-     */
-    'user_ids_not_exist_or_ban'?: Array<string>;
-}
-
-export const AddRemoveWhitelistResponseDTOMessageEnum = {
-    SomeUserIdsHaveNotBeenFound: 'Some user_ids have not been found',
-    WhitelistUpdatedSuccessfully: 'Whitelist updated successfully'
-} as const;
-
-export type AddRemoveWhitelistResponseDTOMessageEnum = typeof AddRemoveWhitelistResponseDTOMessageEnum[keyof typeof AddRemoveWhitelistResponseDTOMessageEnum];
-
-/**
- * 
- * @export
  * @interface AddSuperUserDTO
  */
 export interface AddSuperUserDTO {
@@ -275,67 +215,6 @@ export interface AddSuperUserDTO {
      * @memberof AddSuperUserDTO
      */
     'twitter_id': string;
-}
-/**
- * 
- * @export
- * @interface AddTickerDTO
- */
-export interface AddTickerDTO {
-    /**
-     * Twitter ID
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'twitter_id'?: string;
-    /**
-     * Twitter handle
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'twitter_handle'?: string;
-    /**
-     * Alternative user IDs
-     * @type {Array<string>}
-     * @memberof AddTickerDTO
-     */
-    'alt_user_ids'?: Array<string>;
-    /**
-     * Links related to the ticker
-     * @type {object}
-     * @memberof AddTickerDTO
-     */
-    'links'?: object;
-    /**
-     * Media URLs
-     * @type {Array<string>}
-     * @memberof AddTickerDTO
-     */
-    'media'?: Array<string>;
-    /**
-     * Ticker symbol
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'contract_address': string;
-    /**
-     * Name of the project
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'name': string;
-    /**
-     * Summary for the project
-     * @type {string}
-     * @memberof AddTickerDTO
-     */
-    'summary'?: string;
 }
 /**
  * 
@@ -350,52 +229,6 @@ export interface AddTrackedUsersDto {
      */
     'users': Array<UserFlagDto>;
 }
-/**
- * 
- * @export
- * @interface AddUserToCloutDTO
- */
-export interface AddUserToCloutDTO {
-    /**
-     * Twitter ID of the user to add to clout
-     * @type {string}
-     * @memberof AddUserToCloutDTO
-     */
-    'twitter_id': string;
-}
-/**
- * 
- * @export
- * @interface AddUserToProjectDTO
- */
-export interface AddUserToProjectDTO {
-    /**
-     * Project ID to add the user to
-     * @type {string}
-     * @memberof AddUserToProjectDTO
-     */
-    'project_id': string;
-    /**
-     * Player ID of the user to add
-     * @type {string}
-     * @memberof AddUserToProjectDTO
-     */
-    'player_id': string;
-    /**
-     * Permission level for the user
-     * @type {string}
-     * @memberof AddUserToProjectDTO
-     */
-    'permission': AddUserToProjectDTOPermissionEnum;
-}
-
-export const AddUserToProjectDTOPermissionEnum = {
-    Admin: 'admin',
-    Member: 'member'
-} as const;
-
-export type AddUserToProjectDTOPermissionEnum = typeof AddUserToProjectDTOPermissionEnum[keyof typeof AddUserToProjectDTOPermissionEnum];
-
 /**
  * 
  * @export
@@ -431,25 +264,6 @@ export interface AdminChestConfigDTO {
 /**
  * 
  * @export
- * @interface AdminForProjectsResponceDTO
- */
-export interface AdminForProjectsResponceDTO {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AdminForProjectsResponceDTO
-     */
-    'isSuperUser': boolean;
-    /**
-     * 
-     * @type {Array<AdminProjectItemDTO>}
-     * @memberof AdminForProjectsResponceDTO
-     */
-    'projects': Array<AdminProjectItemDTO>;
-}
-/**
- * 
- * @export
  * @interface AdminProgressionConfigDTO
  */
 export interface AdminProgressionConfigDTO {
@@ -459,166 +273,6 @@ export interface AdminProgressionConfigDTO {
      * @memberof AdminProgressionConfigDTO
      */
     'progressions': Array<ProgressionConfigDTO>;
-}
-/**
- * 
- * @export
- * @interface AdminProjectItemDTO
- */
-export interface AdminProjectItemDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof AdminProjectItemDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdminProjectItemDTO
-     */
-    'slug'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdminProjectItemDTO
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdminProjectItemDTO
-     */
-    'ticker'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdminProjectItemDTO
-     */
-    'contract_address'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AdminProjectItemDTO
-     */
-    'is_admin': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AdminProjectItemDTO
-     */
-    'is_member': boolean;
-}
-/**
- * 
- * @export
- * @interface AnswerQuestionDTO
- */
-export interface AnswerQuestionDTO {
-    /**
-     * The id of the question
-     * @type {string}
-     * @memberof AnswerQuestionDTO
-     */
-    'question_id': string;
-    /**
-     * The id of the choice
-     * @type {string}
-     * @memberof AnswerQuestionDTO
-     */
-    'choice_id': string;
-    /**
-     * Flag ID
-     * @type {string}
-     * @memberof AnswerQuestionDTO
-     */
-    'flag_id'?: string;
-}
-/**
- * 
- * @export
- * @interface AnswerQuestionResponseDTO
- */
-export interface AnswerQuestionResponseDTO {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AnswerQuestionResponseDTO
-     */
-    'is_correct': boolean;
-    /**
-     * 
-     * @type {GuessStreak}
-     * @memberof AnswerQuestionResponseDTO
-     */
-    'streak': GuessStreak;
-}
-/**
- * 
- * @export
- * @interface AntibottingTrackingRecordDTO
- */
-export interface AntibottingTrackingRecordDTO {
-    /**
-     * Tracking record ID
-     * @type {number}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'id': number;
-    /**
-     * Source system that created this record
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'source': string;
-    /**
-     * Action description
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'action': string;
-    /**
-     * Full tracking details JSON
-     * @type {object}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'details': object;
-    /**
-     * Admin user who triggered action
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'admin_user': string | null;
-    /**
-     * When this action was recorded
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'created_at': string;
-    /**
-     * Status before the action
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'status_from': string | null;
-    /**
-     * Status after the action
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'status_to': string | null;
-    /**
-     * Reason for the action
-     * @type {string}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'reason': string | null;
-    /**
-     * Number of views reduced (if applicable)
-     * @type {number}
-     * @memberof AntibottingTrackingRecordDTO
-     */
-    'views_reduced': number | null;
 }
 /**
  * 
@@ -695,40 +349,6 @@ export interface AuthRefresh {
      */
     'accessToken': string;
 }
-/**
- * 
- * @export
- * @interface AvailableDailyCloutDTO
- */
-export interface AvailableDailyCloutDTO {
-    /**
-     * The points to earn
-     * @type {number}
-     * @memberof AvailableDailyCloutDTO
-     */
-    'pointsToEarn': number;
-    /**
-     * The status of the daily quest
-     * @type {string}
-     * @memberof AvailableDailyCloutDTO
-     */
-    'status': AvailableDailyCloutDTOStatusEnum;
-    /**
-     * The date the daily quest was completed last time
-     * @type {string}
-     * @memberof AvailableDailyCloutDTO
-     */
-    'lastClaimed': string;
-}
-
-export const AvailableDailyCloutDTOStatusEnum = {
-    Available: 'AVAILABLE',
-    Claimed: 'CLAIMED',
-    NoTweet: 'NO_TWEET'
-} as const;
-
-export type AvailableDailyCloutDTOStatusEnum = typeof AvailableDailyCloutDTOStatusEnum[keyof typeof AvailableDailyCloutDTOStatusEnum];
-
 /**
  * 
  * @export
@@ -954,20 +574,11 @@ export interface BetDTO {
     'amount': number;
     /**
      * Tournament bet payout model
-     * @type {string}
+     * @type {number}
      * @memberof BetDTO
      */
-    'payoutModel': BetDTOPayoutModelEnum;
+    'payoutModel': number;
 }
-
-export const BetDTOPayoutModelEnum = {
-    WinnerTakesAllPayout: 'winner_takes_all_payout',
-    TopThreePayout: 'top_three_payout',
-    TopFivePayout: 'top_five_payout'
-} as const;
-
-export type BetDTOPayoutModelEnum = typeof BetDTOPayoutModelEnum[keyof typeof BetDTOPayoutModelEnum];
-
 /**
  * 
  * @export
@@ -1288,164 +899,6 @@ export interface BoolFilterDTO {
 /**
  * 
  * @export
- * @interface BoostUserPostsDTO
- */
-export interface BoostUserPostsDTO {
-    /**
-     * Twitter ID of the user
-     * @type {string}
-     * @memberof BoostUserPostsDTO
-     */
-    'user_id': string;
-    /**
-     * Project ID (UUID)
-     * @type {string}
-     * @memberof BoostUserPostsDTO
-     */
-    'project_id': string;
-    /**
-     * Start date for the boost period (ISO format)
-     * @type {string}
-     * @memberof BoostUserPostsDTO
-     */
-    'start_date': string;
-    /**
-     * End date for the boost period (ISO format)
-     * @type {string}
-     * @memberof BoostUserPostsDTO
-     */
-    'end_date': string;
-    /**
-     * Boost multiplier (0.1 to 3.0)
-     * @type {number}
-     * @memberof BoostUserPostsDTO
-     */
-    'boost_multiplier': number;
-}
-/**
- * 
- * @export
- * @interface BottedPostBySivDTO
- */
-export interface BottedPostBySivDTO {
-    /**
-     * Post ID
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'post_id': string;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'user_id': string;
-    /**
-     * User handle
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'user_handle': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'user_name': string;
-    /**
-     * User profile image URL
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'user_profile_image': string;
-    /**
-     * Total views count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'views_count': number;
-    /**
-     * Certified (legitimate) views count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'certified_views': number;
-    /**
-     * Botted (reduced) views count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'botted_views': number;
-    /**
-     * Certified likes count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'certified_likes': number;
-    /**
-     * Certified retweets count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'certified_retweets': number;
-    /**
-     * Reply count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'reply_count': number;
-    /**
-     * Quote count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'quote_count': number;
-    /**
-     * Retweet count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'retweet_count': number;
-    /**
-     * Favorite count
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'favorite_count': number;
-    /**
-     * Engagement score
-     * @type {number}
-     * @memberof BottedPostBySivDTO
-     */
-    'engagement_score': number | null;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'text': string;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof BottedPostBySivDTO
-     */
-    'created_at': string;
-    /**
-     * Complete chronological tracking history for this post
-     * @type {Array<AntibottingTrackingRecordDTO>}
-     * @memberof BottedPostBySivDTO
-     */
-    'tracking_history': Array<AntibottingTrackingRecordDTO>;
-    /**
-     * Detailed SIV calculation information if available
-     * @type {SivCalculationDetailsDTO}
-     * @memberof BottedPostBySivDTO
-     */
-    'siv_calculation_details'?: SivCalculationDetailsDTO;
-}
-/**
- * 
- * @export
  * @interface BurnCardsDTO
  */
 export interface BurnCardsDTO {
@@ -1455,74 +908,6 @@ export interface BurnCardsDTO {
      * @memberof BurnCardsDTO
      */
     'cardIds': Array<string>;
-}
-/**
- * 
- * @export
- * @interface BurnLeaderboardDto
- */
-export interface BurnLeaderboardDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof BurnLeaderboardDto
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BurnLeaderboardDto
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BurnLeaderboardDto
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BurnLeaderboardDto
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BurnLeaderboardDto
-     */
-    'player_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof BurnLeaderboardDto
-     */
-    'count': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof BurnLeaderboardDto
-     */
-    'rank': number;
-}
-/**
- * 
- * @export
- * @interface BurnLeaderboardResponseDto
- */
-export interface BurnLeaderboardResponseDto {
-    /**
-     * 
-     * @type {Array<BurnLeaderboardDto>}
-     * @memberof BurnLeaderboardResponseDto
-     */
-    'data': Array<BurnLeaderboardDto>;
-    /**
-     * 
-     * @type {MetaInfiniteQueryDto}
-     * @memberof BurnLeaderboardResponseDto
-     */
-    'meta': MetaInfiniteQueryDto;
 }
 /**
  * 
@@ -2544,83 +1929,6 @@ export interface ChildMarketResolutionDto {
 /**
  * 
  * @export
- * @interface Choice
- */
-export interface Choice {
-    /**
-     * 
-     * @type {string}
-     * @memberof Choice
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Choice
-     */
-    'typeRef'?: ChoiceTypeRefEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof Choice
-     */
-    'resourceId'?: string;
-    /**
-     * 
-     * @type {ChoiceMetadata}
-     * @memberof Choice
-     */
-    'metadata'?: ChoiceMetadata;
-    /**
-     * 
-     * @type {string}
-     * @memberof Choice
-     */
-    'updatedAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Choice
-     */
-    'createdAt': string;
-}
-
-export const ChoiceTypeRefEnum = {
-    Hero: 'hero',
-    Tweet: 'tweet',
-    Coin: 'coin'
-} as const;
-
-export type ChoiceTypeRefEnum = typeof ChoiceTypeRefEnum[keyof typeof ChoiceTypeRefEnum];
-
-/**
- * 
- * @export
- * @interface ChoiceMetadata
- */
-export interface ChoiceMetadata {
-    /**
-     * 
-     * @type {string}
-     * @memberof ChoiceMetadata
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChoiceMetadata
-     */
-    'photo'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChoiceMetadata
-     */
-    'description'?: string;
-}
-/**
- * 
- * @export
  * @interface ClaimDailyQuestResult
  */
 export interface ClaimDailyQuestResult {
@@ -2750,6 +2058,31 @@ export interface ClaimEloFarewellRewardsDTO {
 /**
  * 
  * @export
+ * @interface ClaimFragmentRewardResponseDTO
+ */
+export interface ClaimFragmentRewardResponseDTO {
+    /**
+     * Success message
+     * @type {string}
+     * @memberof ClaimFragmentRewardResponseDTO
+     */
+    'message': string;
+    /**
+     * Claimed rewards by type
+     * @type {{ [key: string]: number; }}
+     * @memberof ClaimFragmentRewardResponseDTO
+     */
+    'claimed': { [key: string]: number; };
+    /**
+     * ID of the processed reward
+     * @type {string}
+     * @memberof ClaimFragmentRewardResponseDTO
+     */
+    'processedReward': string;
+}
+/**
+ * 
+ * @export
  * @interface ClaimQuest
  */
 export interface ClaimQuest {
@@ -2841,115 +2174,6 @@ export interface ClaimTournamentRewardsDTO {
      * @memberof ClaimTournamentRewardsDTO
      */
     'claimed': object;
-}
-/**
- * 
- * @export
- * @interface CloutLeaderboardDTO
- */
-export interface CloutLeaderboardDTO {
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof CloutLeaderboardDTO
-     */
-    'hero_id': string;
-    /**
-     * Hero name
-     * @type {string}
-     * @memberof CloutLeaderboardDTO
-     */
-    'name': string;
-    /**
-     * Hero handle
-     * @type {string}
-     * @memberof CloutLeaderboardDTO
-     */
-    'handle': string;
-    /**
-     * Profile image URL
-     * @type {string}
-     * @memberof CloutLeaderboardDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Total clout score
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'total_clout': number;
-    /**
-     * Final rank
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'final_rank': number;
-    /**
-     * Total posts
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'total_posts': number;
-    /**
-     * Total views
-     * @type {string}
-     * @memberof CloutLeaderboardDTO
-     */
-    'total_views': string;
-    /**
-     * Smart follower count
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'smart_follower_count': number;
-    /**
-     * Follower count
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'follower_count': number;
-    /**
-     * Season
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'season': number;
-    /**
-     * Last clout distribution
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'last_clout_distribution': number;
-    /**
-     * Previous rank
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'previous_rank': number;
-    /**
-     * Percentage of total clout (mindshare)
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'mindshare_percentage': number;
-    /**
-     * Total clout referral
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'total_clout_referral': number;
-    /**
-     * Total clout daily claim
-     * @type {number}
-     * @memberof CloutLeaderboardDTO
-     */
-    'total_clout_daily_claim': number;
-    /**
-     * If the user is a player on core
-     * @type {boolean}
-     * @memberof CloutLeaderboardDTO
-     */
-    'is_player': boolean;
 }
 /**
  * 
@@ -3427,46 +2651,6 @@ export interface CreateBurnForFragmentsSellOrderDto {
 /**
  * 
  * @export
- * @interface CreateChoiceDTO
- */
-export interface CreateChoiceDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateChoiceDTO
-     */
-    'typeRef'?: CreateChoiceDTOTypeRefEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateChoiceDTO
-     */
-    'resourceId'?: string;
-    /**
-     * 
-     * @type {ChoiceMetadata}
-     * @memberof CreateChoiceDTO
-     */
-    'metadata'?: ChoiceMetadata;
-    /**
-     * Flags that the choice is related to
-     * @type {Array<string>}
-     * @memberof CreateChoiceDTO
-     */
-    'flag'?: Array<string>;
-}
-
-export const CreateChoiceDTOTypeRefEnum = {
-    Hero: 'hero',
-    Tweet: 'tweet',
-    Coin: 'coin'
-} as const;
-
-export type CreateChoiceDTOTypeRefEnum = typeof CreateChoiceDTOTypeRefEnum[keyof typeof CreateChoiceDTOTypeRefEnum];
-
-/**
- * 
- * @export
  * @interface CreateDeckResponseDTO
  */
 export interface CreateDeckResponseDTO {
@@ -3548,31 +2732,6 @@ export interface CreateEntityEdgeDto {
      * @memberof CreateEntityEdgeDto
      */
     'child_id': string;
-}
-/**
- * 
- * @export
- * @interface CreateFlagDTO
- */
-export interface CreateFlagDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateFlagDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateFlagDTO
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateFlagDTO
-     */
-    'description': string;
 }
 /**
  * 
@@ -3821,11 +2980,29 @@ export interface CreateOnboardingDeckDTO {
  */
 export interface CreatePrivateTournamentDTO {
     /**
+     * Whether the tournament is private
+     * @type {boolean}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'isPrivate'?: boolean;
+    /**
      * Tournament bet requirements
      * @type {BetDTO}
      * @memberof CreatePrivateTournamentDTO
      */
     'bet': BetDTO;
+    /**
+     * Tournament description
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'description': string;
+    /**
+     * Tournament color
+     * @type {string}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'color': string;
     /**
      * Tournament name
      * @type {string}
@@ -3845,202 +3022,31 @@ export interface CreatePrivateTournamentDTO {
      */
     'endDate': string;
     /**
-     * 
-     * @type {CreatePrivateTournamentDTOFlagsRaw}
+     * Tournament flags configuration
+     * @type {PrivateTournamentFlagsDTO}
      * @memberof CreatePrivateTournamentDTO
      */
-    'flagsRaw': CreatePrivateTournamentDTOFlagsRaw;
-}
-/**
- * Tournament flags configuration
- * @export
- * @interface CreatePrivateTournamentDTOFlagsRaw
- */
-export interface CreatePrivateTournamentDTOFlagsRaw {
+    'flagsRaw': PrivateTournamentFlagsDTO;
     /**
-     * Maximum common cards
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxCommon'?: number;
-    /**
-     * Maximum rare cards
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxRare'?: number;
-    /**
-     * Maximum epic cards
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxEpic'?: number;
-    /**
-     * Maximum legendary cards
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxLegendary'?: number;
-    /**
-     * Maximum stars
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxStars'?: number;
-    /**
-     * Maximum players
-     * @type {number}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'maxPlayers'?: number;
-    /**
-     * Payout model
-     * @type {string}
-     * @memberof CreatePrivateTournamentDTOFlagsRaw
-     */
-    'payoutModel'?: string;
-}
-/**
- * 
- * @export
- * @interface CreateProjectDTO
- */
-export interface CreateProjectDTO {
-    /**
-     * Owner twitter_id
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'user_id': string;
-    /**
-     * Alternative user IDs
-     * @type {Array<string>}
-     * @memberof CreateProjectDTO
-     */
-    'alt_user_ids'?: Array<string>;
-    /**
-     * Links
-     * @type {object}
-     * @memberof CreateProjectDTO
-     */
-    'links': object;
-    /**
-     * Media
-     * @type {Array<string>}
-     * @memberof CreateProjectDTO
-     */
-    'media': Array<string>;
-    /**
-     * Ticker
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'contract_address': string;
-    /**
-     * Slug
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'slug': string;
-    /**
-     * Prompt
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'prompt'?: string;
-    /**
-     * Is disabled
+     * Whether the tournament should start once it is filled
      * @type {boolean}
-     * @memberof CreateProjectDTO
+     * @memberof CreatePrivateTournamentDTO
      */
-    'is_disabled'?: boolean;
-    /**
-     * Name
-     * @type {string}
-     * @memberof CreateProjectDTO
-     */
-    'name': string;
-    /**
-     * Rules
-     * @type {ProjectRulesDTO}
-     * @memberof CreateProjectDTO
-     */
-    'rules'?: ProjectRulesDTO;
-    /**
-     * Flag names to search for
-     * @type {Array<string>}
-     * @memberof CreateProjectDTO
-     */
-    'flags': Array<string>;
+    'startOnceFilled': boolean;
 }
 /**
  * 
  * @export
- * @interface CreateProjectUserModerationDTO
+ * @interface CreatePrivateTournamentResponseDTO
  */
-export interface CreateProjectUserModerationDTO {
+export interface CreatePrivateTournamentResponseDTO {
     /**
-     * Project ID (UUID)
+     * Tournament ID
      * @type {string}
-     * @memberof CreateProjectUserModerationDTO
+     * @memberof CreatePrivateTournamentResponseDTO
      */
-    'project_id': string;
-    /**
-     * Twitter ID of the user
-     * @type {string}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'user_id': string;
-    /**
-     * Moderation status to apply
-     * @type {string}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'status': CreateProjectUserModerationDTOStatusEnum;
-    /**
-     * Multiplier or count depending on status (optional)
-     * @type {number}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'value'?: number;
-    /**
-     * Reason for the moderation action
-     * @type {string}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'reason'?: string;
-    /**
-     * Start date for the moderation
-     * @type {string}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'start_date'?: string;
-    /**
-     * End date for the moderation
-     * @type {string}
-     * @memberof CreateProjectUserModerationDTO
-     */
-    'end_date'?: string | null;
+    'tournamentId': string;
 }
-
-export const CreateProjectUserModerationDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
-} as const;
-
-export type CreateProjectUserModerationDTOStatusEnum = typeof CreateProjectUserModerationDTOStatusEnum[keyof typeof CreateProjectUserModerationDTOStatusEnum];
-
 /**
  * 
  * @export
@@ -4101,55 +3107,6 @@ export interface CreateQuestConfigDto {
      * @memberof CreateQuestConfigDto
      */
     'thresholds': Array<CreateThresholdDto>;
-}
-/**
- * 
- * @export
- * @interface CreateQuestionDTO
- */
-export interface CreateQuestionDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'choice_1_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'choice_2_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'flag_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'question'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateQuestionDTO
-     */
-    'subject_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateQuestionDTO
-     */
-    'weight'?: number;
 }
 /**
  * 
@@ -4755,92 +3712,6 @@ export interface CurrentRunningRewardsDTO {
 /**
  * 
  * @export
- * @interface CurrentSeasonDTOSerialized
- */
-export interface CurrentSeasonDTOSerialized {
-    /**
-     * Season ID
-     * @type {number}
-     * @memberof CurrentSeasonDTOSerialized
-     */
-    'id': number;
-    /**
-     * Season start date
-     * @type {string}
-     * @memberof CurrentSeasonDTOSerialized
-     */
-    'start_date': string;
-    /**
-     * Season end date
-     * @type {string}
-     * @memberof CurrentSeasonDTOSerialized
-     */
-    'end_date': string | null;
-}
-/**
- * 
- * @export
- * @interface CurrentSeasonHeroQuickOverviewDTO
- */
-export interface CurrentSeasonHeroQuickOverviewDTO {
-    /**
-     * The season number
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'season': number;
-    /**
-     * The total clout of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'total_clout': number;
-    /**
-     * The final rank of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'final_rank': number;
-    /**
-     * The previous rank of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'previous_rank': number;
-    /**
-     * The total posts of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'total_posts': number;
-    /**
-     * The total views of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'total_views': number;
-    /**
-     * The total clout referral of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'total_clout_referral': number;
-    /**
-     * The total clout daily claim of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'total_clout_daily_claim': number;
-    /**
-     * The last clout distribution of the hero in the current season
-     * @type {number}
-     * @memberof CurrentSeasonHeroQuickOverviewDTO
-     */
-    'last_clout_distribution': number;
-}
-/**
- * 
- * @export
  * @interface CurrentStatsDTO
  */
 export interface CurrentStatsDTO {
@@ -4888,60 +3759,29 @@ export interface CurrentStatsDTO {
  */
 export interface CursorDTO {
     /**
-     * Creation timestamp
+     * Start date for cursor (optional)
      * @type {string}
      * @memberof CursorDTO
      */
-    'created_at': string;
+    'start_date'?: string;
+    /**
+     * End date for cursor (optional)
+     * @type {string}
+     * @memberof CursorDTO
+     */
+    'end_date'?: string;
+    /**
+     * Started at date for cursor (optional)
+     * @type {string}
+     * @memberof CursorDTO
+     */
+    'started_at'?: string;
     /**
      * ID
      * @type {string}
      * @memberof CursorDTO
      */
     'id': string;
-}
-/**
- * 
- * @export
- * @interface DailyCloutDistributionDTO
- */
-export interface DailyCloutDistributionDTO {
-    /**
-     * Distribution date
-     * @type {string}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'date': string;
-    /**
-     * Clout points for the day
-     * @type {number}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'clout': number;
-    /**
-     * Rank for the day
-     * @type {number}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'rank': number;
-    /**
-     * Number of posts for the day
-     * @type {number}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'post_count': number;
-    /**
-     * Number of views for the day
-     * @type {number}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'view_count': number;
-    /**
-     * Smart follower count for the day
-     * @type {number}
-     * @memberof DailyCloutDistributionDTO
-     */
-    'smart_follower_count': number;
 }
 /**
  * 
@@ -5192,153 +4032,27 @@ export interface DeleteOrderResponseDto {
 /**
  * 
  * @export
- * @interface DisabledPostDTO
+ * @interface DistributionItemDTO
  */
-export interface DisabledPostDTO {
+export interface DistributionItemDTO {
     /**
-     * Post ID
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'post_id': string;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'user_id': string;
-    /**
-     * User handle
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'user_handle': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'user_name': string;
-    /**
-     * User profile image URL
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'user_profile_image': string;
-    /**
-     * Total views count
+     * Start rank for this distribution range
      * @type {number}
-     * @memberof DisabledPostDTO
+     * @memberof DistributionItemDTO
      */
-    'views_count': number;
+    'start': number;
     /**
-     * Number of views
+     * End rank for this distribution range
      * @type {number}
-     * @memberof DisabledPostDTO
+     * @memberof DistributionItemDTO
      */
-    'views': number;
+    'end': number;
     /**
-     * Number of likes
+     * Payout percentage for this rank range
      * @type {number}
-     * @memberof DisabledPostDTO
+     * @memberof DistributionItemDTO
      */
-    'likes': number;
-    /**
-     * Number of retweets
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'retweets': number;
-    /**
-     * Number of replies
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'replies': number;
-    /**
-     * Number of quotes
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'quotes': number;
-    /**
-     * Number of bookmarks
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'bookmarks': number;
-    /**
-     * Quote count
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'quote_count': number;
-    /**
-     * Favorite count
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'favorite_count': number;
-    /**
-     * Certified likes count
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'certified_likes': number;
-    /**
-     * Certified views count
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'certified_views': number;
-    /**
-     * Botted views count
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'botted_views': number;
-    /**
-     * Engagement score
-     * @type {number}
-     * @memberof DisabledPostDTO
-     */
-    'engagement_score': number | null;
-    /**
-     * Post type (Tweet, Quote, Reply)
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'type': string;
-    /**
-     * Conversation ID
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'conversation_id': string;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'text': string;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'created_at': string;
-    /**
-     * Antibotting interaction status
-     * @type {string}
-     * @memberof DisabledPostDTO
-     */
-    'antibotting_interaction_status': string;
-    /**
-     * Associated flags/tickers with sentiment and weight
-     * @type {object}
-     * @memberof DisabledPostDTO
-     */
-    'flags'?: object | null;
+    'payout': number;
 }
 /**
  * 
@@ -5426,61 +4140,6 @@ export interface EditDFSTacticEntryBodyDTO {
      * @memberof EditDFSTacticEntryBodyDTO
      */
     'hero_scores_ids': Array<string>;
-}
-/**
- * 
- * @export
- * @interface EmblemModelDTO
- */
-export interface EmblemModelDTO {
-    /**
-     * The ID of the emblem
-     * @type {number}
-     * @memberof EmblemModelDTO
-     */
-    'id': number;
-    /**
-     * The name of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'name': string;
-    /**
-     * The description of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'description': string;
-    /**
-     * The picture of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'picture': string;
-    /**
-     * The category of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'category': string;
-    /**
-     * The threshold needed to get the emblem
-     * @type {number}
-     * @memberof EmblemModelDTO
-     */
-    'threshold': number;
-    /**
-     * The created at of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'created_at': string;
-    /**
-     * The updated at of the emblem
-     * @type {string}
-     * @memberof EmblemModelDTO
-     */
-    'updated_at': string;
 }
 /**
  * 
@@ -5991,6 +4650,12 @@ export interface EventDto {
      */
     'description': string;
     /**
+     * Event date in ISO 8601 format
+     * @type {string}
+     * @memberof EventDto
+     */
+    'date'?: string;
+    /**
      * Keywords associated with this event
      * @type {Array<string>}
      * @memberof EventDto
@@ -6002,6 +4667,12 @@ export interface EventDto {
      * @memberof EventDto
      */
     'accounts'?: Array<AccountDto>;
+    /**
+     * Subject/category of the event (added when loaded from cache)
+     * @type {string}
+     * @memberof EventDto
+     */
+    'subject'?: string;
 }
 /**
  * 
@@ -6119,25 +4790,6 @@ export interface Flag {
      * @memberof Flag
      */
     'description': string;
-}
-/**
- * 
- * @export
- * @interface FlagDTO
- */
-export interface FlagDTO {
-    /**
-     * The flag name
-     * @type {string}
-     * @memberof FlagDTO
-     */
-    'flagName': string;
-    /**
-     * The admin user
-     * @type {string}
-     * @memberof FlagDTO
-     */
-    'admin_user': string;
 }
 /**
  * 
@@ -6782,31 +5434,6 @@ export interface GetActivityPlayerDto {
 /**
  * 
  * @export
- * @interface GetAdminFlagClassificationsDTO
- */
-export interface GetAdminFlagClassificationsDTO {
-    /**
-     * Number of classified flags
-     * @type {number}
-     * @memberof GetAdminFlagClassificationsDTO
-     */
-    'classified_flags': number;
-    /**
-     * Number of classified posts
-     * @type {number}
-     * @memberof GetAdminFlagClassificationsDTO
-     */
-    'classified_posts'?: number;
-    /**
-     * User info
-     * @type {UserInfoDTO}
-     * @memberof GetAdminFlagClassificationsDTO
-     */
-    'user': UserInfoDTO;
-}
-/**
- * 
- * @export
  * @interface GetAllPlayersDTO
  */
 export interface GetAllPlayersDTO {
@@ -6837,19 +5464,6 @@ export const GetAllPlayersDTOTournamentModeEnum = {
 
 export type GetAllPlayersDTOTournamentModeEnum = typeof GetAllPlayersDTOTournamentModeEnum[keyof typeof GetAllPlayersDTOTournamentModeEnum];
 
-/**
- * 
- * @export
- * @interface GetAllProjectsResponseDTO
- */
-export interface GetAllProjectsResponseDTO {
-    /**
-     * List of all enabled projects
-     * @type {Array<ProjectItemDTO>}
-     * @memberof GetAllProjectsResponseDTO
-     */
-    'projects': Array<ProjectItemDTO>;
-}
 /**
  * 
  * @export
@@ -7417,127 +6031,6 @@ export interface GetBidOrdersRarityBidDTO {
 /**
  * 
  * @export
- * @interface GetBottedPostByIdResponseDTO
- */
-export interface GetBottedPostByIdResponseDTO {
-    /**
-     * Post ID
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'post_id': string;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'user_id': string;
-    /**
-     * User handle
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'user_handle': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'user_name': string;
-    /**
-     * User profile image URL
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'user_profile_image': string;
-    /**
-     * Total views count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'views_count': number;
-    /**
-     * Certified (legitimate) views count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'certified_views': number;
-    /**
-     * Botted (reduced) views count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'botted_views': number;
-    /**
-     * Certified likes count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'certified_likes': number;
-    /**
-     * Certified retweets count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'certified_retweets': number;
-    /**
-     * Reply count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'reply_count': number;
-    /**
-     * Quote count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'quote_count': number;
-    /**
-     * Retweet count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'retweet_count': number;
-    /**
-     * Favorite count
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'favorite_count': number;
-    /**
-     * Engagement score
-     * @type {number}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'engagement_score': number | null;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'text': string;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'created_at': string;
-    /**
-     * Complete chronological tracking history for this post
-     * @type {Array<AntibottingTrackingRecordDTO>}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'tracking_history': Array<AntibottingTrackingRecordDTO>;
-    /**
-     * Detailed SIV calculation information if available
-     * @type {SivCalculationDetailsDTO}
-     * @memberof GetBottedPostByIdResponseDTO
-     */
-    'siv_calculation_details'?: SivCalculationDetailsDTO;
-}
-/**
- * 
- * @export
  * @interface GetBridgeDetailsResponseDTO
  */
 export interface GetBridgeDetailsResponseDTO {
@@ -7860,169 +6353,6 @@ export interface GetCardsForDeckBuilderFiltersDTO {
 /**
  * 
  * @export
- * @interface GetChoicesFormattedDTO
- */
-export interface GetChoicesFormattedDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetChoicesFormattedDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetChoicesFormattedDTO
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetChoicesFormattedDTO
-     */
-    'photo'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetChoicesFormattedDTO
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof GetChoicesFormattedDTO
-     */
-    'extra_data'?: object;
-}
-/**
- * 
- * @export
- * @interface GetCloutHeroInteractionResponse
- */
-export interface GetCloutHeroInteractionResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'quotes': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'retweets': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'total': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetCloutHeroInteractionResponse
-     */
-    'total_clout': number;
-}
-/**
- * 
- * @export
- * @interface GetCloutLeaderboardDTO
- */
-export interface GetCloutLeaderboardDTO {
-    /**
-     * Pagination parameters
-     * @type {PaginationDTO}
-     * @memberof GetCloutLeaderboardDTO
-     */
-    'pagination': PaginationDTO;
-    /**
-     * Search by hero name or handle
-     * @type {string}
-     * @memberof GetCloutLeaderboardDTO
-     */
-    'search'?: string;
-    /**
-     * Season number
-     * @type {number}
-     * @memberof GetCloutLeaderboardDTO
-     */
-    'season'?: number;
-    /**
-     * Order by
-     * @type {string}
-     * @memberof GetCloutLeaderboardDTO
-     */
-    'orderBy'?: GetCloutLeaderboardDTOOrderByEnum;
-}
-
-export const GetCloutLeaderboardDTOOrderByEnum = {
-    FinalRank: 'final_rank',
-    TotalCloutReferral: 'total_clout_referral',
-    TotalCloutDailyClaim: 'total_clout_daily_claim'
-} as const;
-
-export type GetCloutLeaderboardDTOOrderByEnum = typeof GetCloutLeaderboardDTOOrderByEnum[keyof typeof GetCloutLeaderboardDTOOrderByEnum];
-
-/**
- * 
- * @export
- * @interface GetCloutReferredPlayersResponse
- */
-export interface GetCloutReferredPlayersResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutReferredPlayersResponse
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutReferredPlayersResponse
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetCloutReferredPlayersResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetCloutReferredPlayersResponse
-     */
-    'last_distribution': number;
-}
-/**
- * 
- * @export
  * @interface GetCumulativeFloorPriceDTO
  */
 export interface GetCumulativeFloorPriceDTO {
@@ -8042,6 +6372,19 @@ export interface GetCumulativeFloorPriceDTO {
 /**
  * 
  * @export
+ * @interface GetDeckCountResponseDTO
+ */
+export interface GetDeckCountResponseDTO {
+    /**
+     * Number of decks in the tournament
+     * @type {number}
+     * @memberof GetDeckCountResponseDTO
+     */
+    'deckCount': number;
+}
+/**
+ * 
+ * @export
  * @interface GetDraftMarketsResponseDto
  */
 export interface GetDraftMarketsResponseDto {
@@ -8051,6 +6394,25 @@ export interface GetDraftMarketsResponseDto {
      * @memberof GetDraftMarketsResponseDto
      */
     'markets': Array<MarketDto>;
+}
+/**
+ * 
+ * @export
+ * @interface GetDraftTournamentsQueryDTO
+ */
+export interface GetDraftTournamentsQueryDTO {
+    /**
+     * Number of tournaments to return
+     * @type {number}
+     * @memberof GetDraftTournamentsQueryDTO
+     */
+    'limit': number;
+    /**
+     * Cursor for pagination
+     * @type {CursorDTO}
+     * @memberof GetDraftTournamentsQueryDTO
+     */
+    'cursor'?: CursorDTO;
 }
 /**
  * 
@@ -8119,93 +6481,6 @@ export interface GetEntriesHistoryResponseDTO {
      * @memberof GetEntriesHistoryResponseDTO
      */
     'tickets': EntryTicketsDTO;
-}
-/**
- * 
- * @export
- * @interface GetFantasyPlayerFromTwitterIdResponseDTO
- */
-export interface GetFantasyPlayerFromTwitterIdResponseDTO {
-    /**
-     * Player address (wallet ID)
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'player_address': string;
-    /**
-     * Twitter name
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'twitter_name': string;
-    /**
-     * Twitter handle/username
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'twitter_handle': string;
-    /**
-     * Twitter ID
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'twitter_id': string;
-    /**
-     * Profile picture URL
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'profile_picture': string | null;
-    /**
-     * Total fantasy points (base + referrals)
-     * @type {number}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'fantasy_points': number;
-    /**
-     * Account creation date
-     * @type {string}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'created_at': string;
-    /**
-     * Player portfolio value
-     * @type {number}
-     * @memberof GetFantasyPlayerFromTwitterIdResponseDTO
-     */
-    'portfolio_value': number;
-}
-/**
- * 
- * @export
- * @interface GetGroupedEmblemsResponseDTO
- */
-export interface GetGroupedEmblemsResponseDTO {
-    /**
-     * List of emblem categories with their emblems
-     * @type {Array<GroupedEmblemsDTO>}
-     * @memberof GetGroupedEmblemsResponseDTO
-     */
-    'data': Array<GroupedEmblemsDTO>;
-}
-/**
- * 
- * @export
- * @interface GetHasEnoughCloutActivityResponseDTO
- */
-export interface GetHasEnoughCloutActivityResponseDTO {
-    /**
-     * Whether the player has enough clout activity
-     * @type {boolean}
-     * @memberof GetHasEnoughCloutActivityResponseDTO
-     */
-    'has_enough_clout_activity': boolean;
-    /**
-     * Number of tweets the player has made in the last 30 days
-     * @type {number}
-     * @memberof GetHasEnoughCloutActivityResponseDTO
-     */
-    'nb_tweets_last_30days': number;
 }
 /**
  * 
@@ -8309,12 +6584,6 @@ export interface GetHeroByHandleOrAddressDTO {
      * @memberof GetHeroByHandleOrAddressDTO
      */
     'floor': Array<HandleUniqueSellOrdersDTO>;
-    /**
-     * Clout 7 days summary
-     * @type {string}
-     * @memberof GetHeroByHandleOrAddressDTO
-     */
-    'clout_7_days_summary': string;
 }
 /**
  * 
@@ -9026,32 +7295,6 @@ export interface GetIsAlreadyReferredDTO {
 /**
  * 
  * @export
- * @interface GetIsPlayerTrackedResponseDTO
- */
-export interface GetIsPlayerTrackedResponseDTO {
-    /**
-     * Whether the player is tracked
-     * @type {boolean}
-     * @memberof GetIsPlayerTrackedResponseDTO
-     */
-    'is_tracked': boolean;
-}
-/**
- * 
- * @export
- * @interface GetIsPlayerWaitingForTrackingResponseDTO
- */
-export interface GetIsPlayerWaitingForTrackingResponseDTO {
-    /**
-     * Whether the player is waiting for tracking
-     * @type {boolean}
-     * @memberof GetIsPlayerWaitingForTrackingResponseDTO
-     */
-    'is_waiting_for_tracking': boolean;
-}
-/**
- * 
- * @export
  * @interface GetLMSRHistoryResponseDto
  */
 export interface GetLMSRHistoryResponseDto {
@@ -9088,32 +7331,6 @@ export const GetLMSRHistoryResponseDtoMarketTypeEnum = {
 
 export type GetLMSRHistoryResponseDtoMarketTypeEnum = typeof GetLMSRHistoryResponseDtoMarketTypeEnum[keyof typeof GetLMSRHistoryResponseDtoMarketTypeEnum];
 
-/**
- * 
- * @export
- * @interface GetLastBottedPostsBySivResponseDTO
- */
-export interface GetLastBottedPostsBySivResponseDTO {
-    /**
-     * Posts that had views reduced by SIV with their complete tracking history
-     * @type {Array<BottedPostBySivDTO>}
-     * @memberof GetLastBottedPostsBySivResponseDTO
-     */
-    'posts': Array<BottedPostBySivDTO>;
-}
-/**
- * 
- * @export
- * @interface GetLastComputedDateForCloutDistributionResponseDTO
- */
-export interface GetLastComputedDateForCloutDistributionResponseDTO {
-    /**
-     * The last date when clout distribution was computed
-     * @type {string}
-     * @memberof GetLastComputedDateForCloutDistributionResponseDTO
-     */
-    'last_computed_date': string;
-}
 /**
  * 
  * @export
@@ -9450,128 +7667,6 @@ export interface GetNotValidatedEntriesResponse {
      * @memberof GetNotValidatedEntriesResponse
      */
     'validate_deck_before': string;
-}
-/**
- * 
- * @export
- * @interface GetOgTweetOfHeroDTO
- */
-export interface GetOgTweetOfHeroDTO {
-    /**
-     * The posts of the hero
-     * @type {GetOgTweetOfHeroPostsDTO}
-     * @memberof GetOgTweetOfHeroDTO
-     */
-    'posts': GetOgTweetOfHeroPostsDTO;
-}
-/**
- * 
- * @export
- * @interface GetOgTweetOfHeroPostsDTO
- */
-export interface GetOgTweetOfHeroPostsDTO {
-    /**
-     * The rest id of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'rest_id': string;
-    /**
-     * The user id of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'user_id': string;
-    /**
-     * The type of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'type': string;
-    /**
-     * The parent id of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'parent_id': string;
-    /**
-     * The conversation id of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'conversation_id': string;
-    /**
-     * The text of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'text': string;
-    /**
-     * Whether the post is quoted
-     * @type {boolean}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'is_quoted': boolean;
-    /**
-     * The favorite count of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'favorite_count': number;
-    /**
-     * The bookmark count of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'bookmark_count': number;
-    /**
-     * The quote count of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'quote_count': number;
-    /**
-     * The reply count of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'reply_count': number;
-    /**
-     * The retweet count of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'retweet_count': number;
-    /**
-     * The created at of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'created_at': string;
-    /**
-     * The handle of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'handle': string;
-    /**
-     * The certified views of the post
-     * @type {number}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'certified_views': number;
-    /**
-     * The updated at of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'updated_at': string;
-    /**
-     * The quote id of the post
-     * @type {string}
-     * @memberof GetOgTweetOfHeroPostsDTO
-     */
-    'quote_id': string;
 }
 /**
  * 
@@ -10237,249 +8332,6 @@ export interface GetPlayerStatsResponseDto {
 /**
  * 
  * @export
- * @interface GetPostTrackingDetailsResponseDTO
- */
-export interface GetPostTrackingDetailsResponseDTO {
-    /**
-     * Tracking history for the post
-     * @type {Array<object>}
-     * @memberof GetPostTrackingDetailsResponseDTO
-     */
-    'tracking_history': Array<object>;
-    /**
-     * SIV calculation details
-     * @type {object}
-     * @memberof GetPostTrackingDetailsResponseDTO
-     */
-    'siv_calculation_details': object | null;
-}
-/**
- * 
- * @export
- * @interface GetProjectDisabledPostsResponseDTO
- */
-export interface GetProjectDisabledPostsResponseDTO {
-    /**
-     * Posts marked as DISABLED_FOR_BOTTING for this project
-     * @type {Array<DisabledPostDTO>}
-     * @memberof GetProjectDisabledPostsResponseDTO
-     */
-    'posts': Array<DisabledPostDTO>;
-}
-/**
- * 
- * @export
- * @interface GetProjectModerationUsersResponseDTO
- */
-export interface GetProjectModerationUsersResponseDTO {
-    /**
-     * 
-     * @type {Array<ProjectModerationUserDTO>}
-     * @memberof GetProjectModerationUsersResponseDTO
-     */
-    'users': Array<ProjectModerationUserDTO>;
-}
-/**
- * 
- * @export
- * @interface GetProjectProfileBySlugResponseDTO
- */
-export interface GetProjectProfileBySlugResponseDTO {
-    /**
-     * Project by slug
-     * @type {ProjectProfileItemDTO}
-     * @memberof GetProjectProfileBySlugResponseDTO
-     */
-    'project': ProjectProfileItemDTO;
-}
-/**
- * 
- * @export
- * @interface GetProjectSettingsResponseDTO
- */
-export interface GetProjectSettingsResponseDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof GetProjectSettingsResponseDTO
-     */
-    'project_id': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof GetProjectSettingsResponseDTO
-     */
-    'name': string;
-    /**
-     * Project rules configuration
-     * @type {ProjectRulesDTO}
-     * @memberof GetProjectSettingsResponseDTO
-     */
-    'rules': ProjectRulesDTO;
-    /**
-     * Timestamp when project was last updated
-     * @type {string}
-     * @memberof GetProjectSettingsResponseDTO
-     */
-    'updated_at': string;
-}
-/**
- * 
- * @export
- * @interface GetProjectShoutFeedResponseDTO
- */
-export interface GetProjectShoutFeedResponseDTO {
-    /**
-     * Project tweets
-     * @type {Array<ProjectTweetResponseDTO>}
-     * @memberof GetProjectShoutFeedResponseDTO
-     */
-    'tweets': Array<ProjectTweetResponseDTO>;
-}
-/**
- * 
- * @export
- * @interface GetProjectStatsPrevPeriodDTO
- */
-export interface GetProjectStatsPrevPeriodDTO {
-    /**
-     * Number of posts in the previous period
-     * @type {number}
-     * @memberof GetProjectStatsPrevPeriodDTO
-     */
-    'posts': number;
-    /**
-     * Number of unique users in the previous period
-     * @type {number}
-     * @memberof GetProjectStatsPrevPeriodDTO
-     */
-    'users': number;
-    /**
-     * Total views in the previous period
-     * @type {number}
-     * @memberof GetProjectStatsPrevPeriodDTO
-     */
-    'views': number;
-}
-/**
- * 
- * @export
- * @interface GetProjectStatsResponseDTO
- */
-export interface GetProjectStatsResponseDTO {
-    /**
-     * Number of posts in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'number_posts_7d': number;
-    /**
-     * Variation percentage of posts in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'posts_variation_percentage_7d': number;
-    /**
-     * Number of unique users in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'unique_users_7d': number;
-    /**
-     * Variation percentage of unique users in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'users_variation_percentage_7d': number;
-    /**
-     * Total views in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'total_views_7d': number;
-    /**
-     * Variation percentage of total views in the last 7 days
-     * @type {number}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'views_variation_percentage_7d': number;
-    /**
-     * Previous period stats
-     * @type {GetProjectStatsPrevPeriodDTO}
-     * @memberof GetProjectStatsResponseDTO
-     */
-    'prev_period': GetProjectStatsPrevPeriodDTO;
-}
-/**
- * 
- * @export
- * @interface GetQuestionResponseDTO
- */
-export interface GetQuestionResponseDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'choice_1_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'choice_2_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'flag_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'question'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetQuestionResponseDTO
-     */
-    'subject_id'?: string;
-    /**
-     * 
-     * @type {GetChoicesFormattedDTO}
-     * @memberof GetQuestionResponseDTO
-     */
-    'choice_1': GetChoicesFormattedDTO;
-    /**
-     * 
-     * @type {GetChoicesFormattedDTO}
-     * @memberof GetQuestionResponseDTO
-     */
-    'choice_2': GetChoicesFormattedDTO;
-    /**
-     * 
-     * @type {GetChoicesFormattedDTO}
-     * @memberof GetQuestionResponseDTO
-     */
-    'subject'?: GetChoicesFormattedDTO;
-}
-/**
- * 
- * @export
  * @interface GetQuestionsResponse
  */
 export interface GetQuestionsResponse {
@@ -10938,92 +8790,6 @@ export interface GetSellOrdersDTO {
      * @memberof GetSellOrdersDTO
      */
     'created_at'?: string;
-}
-/**
- * 
- * @export
- * @interface GetShoutHeroInteractionResponse
- */
-export interface GetShoutHeroInteractionResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'quotes': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'retweets': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'replies': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'total': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetShoutHeroInteractionResponse
-     */
-    'total_clout': number;
-}
-/**
- * 
- * @export
- * @interface GetStreakRewardsResponseDTO
- */
-export interface GetStreakRewardsResponseDTO {
-    /**
-     * 
-     * @type {Array<GuessStreakReward>}
-     * @memberof GetStreakRewardsResponseDTO
-     */
-    'rewards': Array<GuessStreakReward>;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetStreakRewardsResponseDTO
-     */
-    'next_threshold': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetStreakRewardsResponseDTO
-     */
-    'last_threshold': number;
 }
 /**
  * 
@@ -11733,25 +9499,6 @@ export interface GetTopPayoutsResponseDto {
 /**
  * 
  * @export
- * @interface GetTopicsFlagsDTO
- */
-export interface GetTopicsFlagsDTO {
-    /**
-     * Pagination parameters
-     * @type {PaginationDTO}
-     * @memberof GetTopicsFlagsDTO
-     */
-    'pagination': PaginationDTO;
-    /**
-     * Search by topic name
-     * @type {string}
-     * @memberof GetTopicsFlagsDTO
-     */
-    'search'?: string;
-}
-/**
- * 
- * @export
  * @interface GetTotalMoneyDistributedDTO
  */
 export interface GetTotalMoneyDistributedDTO {
@@ -11798,6 +9545,37 @@ export interface GetTotalTicketsGainsResponseDTO {
      * @memberof GetTotalTicketsGainsResponseDTO
      */
     'reward_fan': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetTournamentDecksQueryDTO
+ */
+export interface GetTournamentDecksQueryDTO {
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof GetTournamentDecksQueryDTO
+     */
+    'tournamentId': string;
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof GetTournamentDecksQueryDTO
+     */
+    'playerId'?: string;
+    /**
+     * Number of decks to return
+     * @type {number}
+     * @memberof GetTournamentDecksQueryDTO
+     */
+    'limit'?: number;
+    /**
+     * Offset for pagination
+     * @type {number}
+     * @memberof GetTournamentDecksQueryDTO
+     */
+    'offset'?: number;
 }
 /**
  * 
@@ -11853,8 +9631,65 @@ export interface GetTournamentsQueryDTO {
      * @type {CursorDTO}
      * @memberof GetTournamentsQueryDTO
      */
-    'cursor': CursorDTO;
+    'cursor'?: CursorDTO;
+    /**
+     * Minimum start date - filters tournaments with start_date >= minStartDate
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'minStartDate'?: string;
+    /**
+     * Maximum end date - filters tournaments with end_date <= maxEndDate
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'maxEndDate'?: string;
+    /**
+     * Search term to filter tournaments by name or description
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'search'?: string;
+    /**
+     * Filter tournaments by live status
+     * @type {boolean}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'isLive'?: boolean;
+    /**
+     * Filter tournaments by history status
+     * @type {boolean}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'isHistory'?: boolean;
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'tournamentId'?: string;
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'playerId'?: string;
+    /**
+     * Ordering for tournament list
+     * @type {string}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'orderType'?: GetTournamentsQueryDTOOrderTypeEnum;
 }
+
+export const GetTournamentsQueryDTOOrderTypeEnum = {
+    Register: 'register',
+    Live: 'live',
+    Closed: 'closed'
+} as const;
+
+export type GetTournamentsQueryDTOOrderTypeEnum = typeof GetTournamentsQueryDTOOrderTypeEnum[keyof typeof GetTournamentsQueryDTOOrderTypeEnum];
+
 /**
  * 
  * @export
@@ -11867,37 +9702,6 @@ export interface GetTrackedUsersResponseDto {
      * @memberof GetTrackedUsersResponseDto
      */
     'users': Array<TrackedUserDto>;
-}
-/**
- * 
- * @export
- * @interface GetTrackingEstimatedTimeResponseDTO
- */
-export interface GetTrackingEstimatedTimeResponseDTO {
-    /**
-     * Number of people in the queue
-     * @type {number}
-     * @memberof GetTrackingEstimatedTimeResponseDTO
-     */
-    'people_in_queue': number;
-    /**
-     * Time to finish the queue in minutes
-     * @type {number}
-     * @memberof GetTrackingEstimatedTimeResponseDTO
-     */
-    'time_to_finish_queue_in_min': number;
-    /**
-     * When the tracking process started
-     * @type {string}
-     * @memberof GetTrackingEstimatedTimeResponseDTO
-     */
-    'started_at'?: string;
-    /**
-     * Estimated completion time
-     * @type {string}
-     * @memberof GetTrackingEstimatedTimeResponseDTO
-     */
-    'estimated_completion_at'?: string;
 }
 /**
  * 
@@ -11929,307 +9733,6 @@ export interface GetTransactionDTO {
      * @memberof GetTransactionDTO
      */
     'timestamp'?: string;
-}
-/**
- * 
- * @export
- * @interface GetTweetWithUserInfoResponseDTO
- */
-export interface GetTweetWithUserInfoResponseDTO {
-    /**
-     * The post id
-     * @type {string}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'post_id': string;
-    /**
-     * The number of views
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'views': number;
-    /**
-     * The number of likes
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'likes': number;
-    /**
-     * The number of retweets
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'retweets': number;
-    /**
-     * The number of quotes
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'quotes': number;
-    /**
-     * The number of replies
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'replies': number;
-    /**
-     * The number of bookmarks
-     * @type {number}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'bookmarks': number;
-    /**
-     * The creation date
-     * @type {string}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'created_at': string;
-    /**
-     * The text
-     * @type {string}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'text': string;
-    /**
-     * The flags
-     * @type {Array<FlagDTO>}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'flags'?: Array<FlagDTO>;
-    /**
-     * The quoted tweet, if the post is a quote
-     * @type {UserTweetPerTopicDTO}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'quoted'?: UserTweetPerTopicDTO;
-    /**
-     * The user info
-     * @type {UserInfoDTO}
-     * @memberof GetTweetWithUserInfoResponseDTO
-     */
-    'hero': UserInfoDTO;
-}
-/**
- * 
- * @export
- * @interface GetTweetsQueryDto
- */
-export interface GetTweetsQueryDto {
-    /**
-     * Sort tweets by popularity (banger) or recency (latest)
-     * @type {string}
-     * @memberof GetTweetsQueryDto
-     */
-    'sorting'?: GetTweetsQueryDtoSortingEnum;
-    /**
-     * Topic to filter tweets by
-     * @type {string}
-     * @memberof GetTweetsQueryDto
-     */
-    'topic': string;
-    /**
-     * Limit the number of tweets returned
-     * @type {number}
-     * @memberof GetTweetsQueryDto
-     */
-    'limit'?: number;
-}
-
-export const GetTweetsQueryDtoSortingEnum = {
-    Banger: 'banger',
-    Latest: 'latest'
-} as const;
-
-export type GetTweetsQueryDtoSortingEnum = typeof GetTweetsQueryDtoSortingEnum[keyof typeof GetTweetsQueryDtoSortingEnum];
-
-/**
- * 
- * @export
- * @interface GetTweetsWithFlagsDTO
- */
-export interface GetTweetsWithFlagsDTO {
-    /**
-     * Whether the tweets has been classified
-     * @type {boolean}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'classified'?: boolean;
-    /**
-     * The flags the tweet has
-     * @type {Array<string>}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'flags'?: Array<string>;
-    /**
-     * The flags the tweet does not have
-     * @type {Array<string>}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'flags_not'?: Array<string>;
-    /**
-     * The sorting of the tweets
-     * @type {string}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'sorting'?: GetTweetsWithFlagsDTOSortingEnum;
-    /**
-     * The admin user id
-     * @type {string}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'admin_user_id'?: string;
-    /**
-     * Filter by flags with weight zero
-     * @type {boolean}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'weightZero'?: boolean;
-    /**
-     * Pagination
-     * @type {PaginationDTO}
-     * @memberof GetTweetsWithFlagsDTO
-     */
-    'pagination': PaginationDTO;
-}
-
-export const GetTweetsWithFlagsDTOSortingEnum = {
-    Latest: 'latest',
-    Banger: 'banger'
-} as const;
-
-export type GetTweetsWithFlagsDTOSortingEnum = typeof GetTweetsWithFlagsDTOSortingEnum[keyof typeof GetTweetsWithFlagsDTOSortingEnum];
-
-/**
- * 
- * @export
- * @interface GetUserInnerCircleDTO
- */
-export interface GetUserInnerCircleDTO {
-    /**
-     * Handle of the hero
-     * @type {string}
-     * @memberof GetUserInnerCircleDTO
-     */
-    'handle': string;
-    /**
-     * URL of the profile image in HTTPS
-     * @type {string}
-     * @memberof GetUserInnerCircleDTO
-     */
-    'profile_image_url_https'?: string;
-    /**
-     * Inner circle of the hero
-     * @type {Array<HeroCircleDTO>}
-     * @memberof GetUserInnerCircleDTO
-     */
-    'inner_circle': Array<HeroCircleDTO>;
-}
-/**
- * 
- * @export
- * @interface GetUserMedianStatsResponseDTO
- */
-export interface GetUserMedianStatsResponseDTO {
-    /**
-     * Median certified views
-     * @type {number}
-     * @memberof GetUserMedianStatsResponseDTO
-     */
-    'median_certified_views': number | null;
-    /**
-     * Average certified views
-     * @type {number}
-     * @memberof GetUserMedianStatsResponseDTO
-     */
-    'avg_certified_views': number | null;
-    /**
-     * Average certified likes (not median)
-     * @type {number}
-     * @memberof GetUserMedianStatsResponseDTO
-     */
-    'avg_certified_likes': number | null;
-    /**
-     * Average certified retweets (not median)
-     * @type {number}
-     * @memberof GetUserMedianStatsResponseDTO
-     */
-    'avg_certified_retweets': number | null;
-    /**
-     * When the stats were computed
-     * @type {string}
-     * @memberof GetUserMedianStatsResponseDTO
-     */
-    'computed_at': string | null;
-}
-/**
- * 
- * @export
- * @interface GetUserProjectFeedResponseDTO
- */
-export interface GetUserProjectFeedResponseDTO {
-    /**
-     * User tweets for the specific project
-     * @type {Array<UserProjectFeedItemDTO>}
-     * @memberof GetUserProjectFeedResponseDTO
-     */
-    'tweets': Array<UserProjectFeedItemDTO>;
-}
-/**
- * 
- * @export
- * @interface GetUserRankingResponseDTO
- */
-export interface GetUserRankingResponseDTO {
-    /**
-     * User info
-     * @type {UserFullInfoDTO}
-     * @memberof GetUserRankingResponseDTO
-     */
-    'user_info': UserFullInfoDTO;
-    /**
-     * User ranking
-     * @type {UserRankingItemDTO}
-     * @memberof GetUserRankingResponseDTO
-     */
-    'user_ranking'?: UserRankingItemDTO;
-}
-/**
- * 
- * @export
- * @interface GetUserRankingsByDateRangeByProjectResponseDTO
- */
-export interface GetUserRankingsByDateRangeByProjectResponseDTO {
-    /**
-     * User info
-     * @type {UserFullInfoDTO}
-     * @memberof GetUserRankingsByDateRangeByProjectResponseDTO
-     */
-    'user_info': UserFullInfoDTO;
-    /**
-     * User rankings
-     * @type {UserRankingDateRangeItemDTO}
-     * @memberof GetUserRankingsByDateRangeByProjectResponseDTO
-     */
-    'user_ranking'?: UserRankingDateRangeItemDTO;
-}
-/**
- * 
- * @export
- * @interface GetUserRankingsByDateRangeResponseDTO
- */
-export interface GetUserRankingsByDateRangeResponseDTO {
-    /**
-     * User info
-     * @type {UserFullInfoDTO}
-     * @memberof GetUserRankingsByDateRangeResponseDTO
-     */
-    'user_info': UserFullInfoDTO;
-    /**
-     * User rankings
-     * @type {Array<UserRankingDateRangeItemDTO>}
-     * @memberof GetUserRankingsByDateRangeResponseDTO
-     */
-    'user_rankings': Array<UserRankingDateRangeItemDTO>;
 }
 /**
  * 
@@ -12266,82 +9769,6 @@ export interface GetUserRegisteredTournamentsDTO {
 /**
  * 
  * @export
- * @interface GetUserShoutFeedResponseDTO
- */
-export interface GetUserShoutFeedResponseDTO {
-    /**
-     * User information
-     * @type {UserInfoDTO}
-     * @memberof GetUserShoutFeedResponseDTO
-     */
-    'userInfo': UserInfoDTO;
-    /**
-     * User tweets/posts
-     * @type {Array<UserTweetResponseDTO>}
-     * @memberof GetUserShoutFeedResponseDTO
-     */
-    'userTweets': Array<UserTweetResponseDTO>;
-}
-/**
- * 
- * @export
- * @interface GetUserTweetPerTopicResponseDTO
- */
-export interface GetUserTweetPerTopicResponseDTO {
-    /**
-     * The user info
-     * @type {UserInfoDTO}
-     * @memberof GetUserTweetPerTopicResponseDTO
-     */
-    'userInfo': UserInfoDTO;
-    /**
-     * The user tweets
-     * @type {Array<UserTweetPerTopicDTO>}
-     * @memberof GetUserTweetPerTopicResponseDTO
-     */
-    'userTweets': Array<UserTweetPerTopicDTO>;
-}
-/**
- * 
- * @export
- * @interface GetUserWhitelistsResponseDTO
- */
-export interface GetUserWhitelistsResponseDTO {
-    /**
-     * Twitter ID
-     * @type {string}
-     * @memberof GetUserWhitelistsResponseDTO
-     */
-    'twitter_id': string;
-    /**
-     * List of projects the user is whitelisted for
-     * @type {Array<UserWhitelistProjectDTO>}
-     * @memberof GetUserWhitelistsResponseDTO
-     */
-    'whitelisted_projects': Array<UserWhitelistProjectDTO>;
-    /**
-     * Total count of whitelisted projects
-     * @type {number}
-     * @memberof GetUserWhitelistsResponseDTO
-     */
-    'total_count': number;
-}
-/**
- * 
- * @export
- * @interface GetUsersFullInfoBatchResponseDTO
- */
-export interface GetUsersFullInfoBatchResponseDTO {
-    /**
-     * Array of user full information including clout scores
-     * @type {Array<UserFullInfoDTO>}
-     * @memberof GetUsersFullInfoBatchResponseDTO
-     */
-    'users': Array<UserFullInfoDTO>;
-}
-/**
- * 
- * @export
  * @interface GetVoteConfigQueryDTO
  */
 export interface GetVoteConfigQueryDTO {
@@ -12361,297 +9788,28 @@ export interface GetVoteConfigQueryDTO {
 /**
  * 
  * @export
- * @interface GetWhitelistQueryDTO
+ * @interface GrantAccessByCodeDTO
  */
-export interface GetWhitelistQueryDTO {
+export interface GrantAccessByCodeDTO {
     /**
-     * The project id
+     * Invite code for the private tournament
      * @type {string}
-     * @memberof GetWhitelistQueryDTO
+     * @memberof GrantAccessByCodeDTO
      */
-    'project_id': string;
-    /**
-     * Pagination parameters
-     * @type {PaginationDTO}
-     * @memberof GetWhitelistQueryDTO
-     */
-    'pagination': PaginationDTO;
+    'code': string;
 }
 /**
  * 
  * @export
- * @interface GetWhitelistResponseDTO
+ * @interface GrantAccessByCodeResponseDTO
  */
-export interface GetWhitelistResponseDTO {
+export interface GrantAccessByCodeResponseDTO {
     /**
-     * The user handle
+     * Tournament ID
      * @type {string}
-     * @memberof GetWhitelistResponseDTO
+     * @memberof GrantAccessByCodeResponseDTO
      */
-    'handle': string;
-    /**
-     * The user name
-     * @type {string}
-     * @memberof GetWhitelistResponseDTO
-     */
-    'name': string;
-    /**
-     * The user followers count
-     * @type {number}
-     * @memberof GetWhitelistResponseDTO
-     */
-    'followers_count': number;
-    /**
-     * The user profile image url
-     * @type {string}
-     * @memberof GetWhitelistResponseDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * The user smart follow count
-     * @type {number}
-     * @memberof GetWhitelistResponseDTO
-     */
-    'smart_follow_count': number;
-    /**
-     * The user id
-     * @type {string}
-     * @memberof GetWhitelistResponseDTO
-     */
-    'user_id': string;
-}
-/**
- * 
- * @export
- * @interface GetZedUserDataResponseDTO
- */
-export interface GetZedUserDataResponseDTO {
-    /**
-     * User twitterID
-     * @type {string}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'user_id': string;
-    /**
-     * User clout score
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'clout_score': number;
-    /**
-     * User Zed holdings
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'zed_holdings': number;
-    /**
-     * User Zed holdings in USD
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'zed_holdings_usd': number;
-    /**
-     * User race pool balance
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'race_pool_balance': number;
-    /**
-     * User race pool balance in USD
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'race_pool_balance_usd': number;
-    /**
-     * User referral count
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'referral_count': number;
-    /**
-     * If the user is the whitelist
-     * @type {boolean}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'is_whitelisted': boolean;
-    /**
-     * User status
-     * @type {string}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'status': string;
-    /**
-     * User fourteen day average
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'fourteen_day_avg': number;
-    /**
-     * User fourteen day average in USD
-     * @type {number}
-     * @memberof GetZedUserDataResponseDTO
-     */
-    'fourteen_day_avg_usd': number;
-}
-/**
- * 
- * @export
- * @interface GroupedEmblemsDTO
- */
-export interface GroupedEmblemsDTO {
-    /**
-     * Category name
-     * @type {string}
-     * @memberof GroupedEmblemsDTO
-     */
-    'category': string;
-    /**
-     * List of emblems in this category
-     * @type {Array<EmblemModelDTO>}
-     * @memberof GroupedEmblemsDTO
-     */
-    'emblems': Array<EmblemModelDTO>;
-}
-/**
- * 
- * @export
- * @interface GuessFlag
- */
-export interface GuessFlag {
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessFlag
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessFlag
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessFlag
-     */
-    'description': string;
-}
-/**
- * 
- * @export
- * @interface GuessStreak
- */
-export interface GuessStreak {
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessStreak
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessStreak
-     */
-    'player_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuessStreak
-     */
-    'current_streak': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuessStreak
-     */
-    'longest_streak': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuessStreak
-     */
-    'total_guesses': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuessStreak
-     */
-    'total_answers': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GuessStreak
-     */
-    'play_since_reset': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessStreak
-     */
-    'last_reset': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessStreak
-     */
-    'unlock_at': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GuessStreak
-     */
-    'last_updated': string;
-}
-/**
- * 
- * @export
- * @interface GuessStreakReward
- */
-export interface GuessStreakReward {
-    /**
-     * The ID of the streak reward
-     * @type {string}
-     * @memberof GuessStreakReward
-     */
-    'id': string;
-    /**
-     * The threshold of the streak reward
-     * @type {number}
-     * @memberof GuessStreakReward
-     */
-    'threshold': number;
-    /**
-     * The type of the reward
-     * @type {string}
-     * @memberof GuessStreakReward
-     */
-    'reward_type': string;
-    /**
-     * The amount of the reward
-     * @type {number}
-     * @memberof GuessStreakReward
-     */
-    'reward_amount': number;
-    /**
-     * Whether the reward is for onboarding
-     * @type {boolean}
-     * @memberof GuessStreakReward
-     */
-    'is_onboarding': boolean;
-    /**
-     * The date the streak reward was created
-     * @type {string}
-     * @memberof GuessStreakReward
-     */
-    'created_at': string;
-    /**
-     * The date the streak reward was updated
-     * @type {string}
-     * @memberof GuessStreakReward
-     */
-    'updated_at': string;
+    'tournamentId': string;
 }
 /**
  * 
@@ -12753,7 +9911,9 @@ export const HandlePushNotificationDtoTypeEnum = {
     TournamentStarting: 'TOURNAMENT_STARTING',
     TournamentEnded: 'TOURNAMENT_ENDED',
     TacticsCreated: 'TACTICS_CREATED',
-    TacticsStarting: 'TACTICS_STARTING'
+    TacticsStarting: 'TACTICS_STARTING',
+    LobbyDraftApproved: 'LOBBY_DRAFT_APPROVED',
+    LobbyDraftRejected: 'LOBBY_DRAFT_REJECTED'
 } as const;
 
 export type HandlePushNotificationDtoTypeEnum = typeof HandlePushNotificationDtoTypeEnum[keyof typeof HandlePushNotificationDtoTypeEnum];
@@ -12763,7 +9923,7 @@ export type HandlePushNotificationDtoTypeEnum = typeof HandlePushNotificationDto
  * Event data object
  * @export
  */
-export type HandlePushNotificationDtoData = BidAcceptedData | RewardsAvailableData | TacticRewardsAvailableData | TacticsCreatedData | TacticsStartingData | TournamentEndedData | TournamentStartingData | TradeCreatedData;
+export type HandlePushNotificationDtoData = BidAcceptedData | LobbyDraftApprovedData | LobbyDraftRejectedData | RewardsAvailableData | TacticRewardsAvailableData | TacticsCreatedData | TacticsStartingData | TournamentEndedData | TournamentStartingData | TradeCreatedData;
 
 /**
  * 
@@ -13201,80 +10361,6 @@ export interface HeroAnalyticsPrevWeekLastWeekTweet {
 /**
  * 
  * @export
- * @interface HeroCircleDTO
- */
-export interface HeroCircleDTO {
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof HeroCircleDTO
-     */
-    'hero_id': string;
-    /**
-     * Circle Layer
-     * @type {number}
-     * @memberof HeroCircleDTO
-     */
-    'circle_layer': number;
-    /**
-     * Username
-     * @type {string}
-     * @memberof HeroCircleDTO
-     */
-    'username': string;
-    /**
-     * Profile URL
-     * @type {string}
-     * @memberof HeroCircleDTO
-     */
-    'profile_url': string;
-    /**
-     * Is Hero
-     * @type {boolean}
-     * @memberof HeroCircleDTO
-     */
-    'is_hero': boolean;
-    /**
-     * Is Player
-     * @type {boolean}
-     * @memberof HeroCircleDTO
-     */
-    'is_player': boolean;
-    /**
-     * Twitter ID
-     * @type {string}
-     * @memberof HeroCircleDTO
-     */
-    'twitter_id': string;
-}
-/**
- * 
- * @export
- * @interface HeroCloutDistributionDTO
- */
-export interface HeroCloutDistributionDTO {
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof HeroCloutDistributionDTO
-     */
-    'hero_id': string;
-    /**
-     * Season number
-     * @type {number}
-     * @memberof HeroCloutDistributionDTO
-     */
-    'season': number;
-    /**
-     * Daily clout distributions
-     * @type {Array<DailyCloutDistributionDTO>}
-     * @memberof HeroCloutDistributionDTO
-     */
-    'distributions': Array<DailyCloutDistributionDTO>;
-}
-/**
- * 
- * @export
  * @interface HeroCoinHistoryResponse
  */
 export interface HeroCoinHistoryResponse {
@@ -13370,25 +10456,6 @@ export interface HeroDetailsDTO {
      * @memberof HeroDetailsDTO
      */
     'name': string;
-}
-/**
- * 
- * @export
- * @interface HeroEmblemsDTO
- */
-export interface HeroEmblemsDTO {
-    /**
-     * The hero ID
-     * @type {string}
-     * @memberof HeroEmblemsDTO
-     */
-    'hero_id': string;
-    /**
-     * The emblems the hero has
-     * @type {Array<HeroQuickOverviewEmblemSeasonUserProgressDTO>}
-     * @memberof HeroEmblemsDTO
-     */
-    'user_progress': Array<HeroQuickOverviewEmblemSeasonUserProgressDTO>;
 }
 /**
  * 
@@ -13507,25 +10574,6 @@ export interface HeroInOutDTO {
      * @memberof HeroInOutDTO
      */
     'stars': number;
-}
-/**
- * 
- * @export
- * @interface HeroIsSybilDTO
- */
-export interface HeroIsSybilDTO {
-    /**
-     * The hero ID
-     * @type {string}
-     * @memberof HeroIsSybilDTO
-     */
-    'hero_id': string;
-    /**
-     * The hero is sybil or not
-     * @type {boolean}
-     * @memberof HeroIsSybilDTO
-     */
-    'is_sybil': boolean;
 }
 /**
  * 
@@ -13746,237 +10794,6 @@ export interface HeroPerformanceResponseDto {
      * @memberof HeroPerformanceResponseDto
      */
     'heroes': Array<HeroPerformanceDto>;
-}
-/**
- * 
- * @export
- * @interface HeroQuickOverviewDTO
- */
-export interface HeroQuickOverviewDTO {
-    /**
-     * The ID of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'hero_id': string;
-    /**
-     * The name of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'name': string;
-    /**
-     * The handle of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'handle': string;
-    /**
-     * The profile image URL of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * The profile banner URL of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'profile_banner_url': string;
-    /**
-     * The follower count of the hero
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'follower_count': number;
-    /**
-     * is the hero a sybil
-     * @type {boolean}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'is_sybil': boolean;
-    /**
-     * The smart follower count of the hero
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'smart_follower_count': number;
-    /**
-     * The total posts in the last 7 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'posts_count_7d': number;
-    /**
-     * The total posts in the last 30 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'posts_count_30d': number;
-    /**
-     * The total views in the last 7 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'views_count_7d': number;
-    /**
-     * The total views in the last 30 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'views_count_30d': number;
-    /**
-     * The average posts in the last 7 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'avg_posts_7d': number;
-    /**
-     * The average views per post in the last 7 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'avg_views_per_post_7d': number;
-    /**
-     * The average posts in the last 30 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'avg_posts_30d': number;
-    /**
-     * The average views per post in the last 30 days
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'avg_views_per_post_30d': number;
-    /**
-     * The joined CT of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'joined_ct': string;
-    /**
-     * The status of the hero
-     * @type {HeroStatusDTO}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'status': HeroStatusDTO;
-    /**
-     * The last pull 48h of the hero
-     * @type {string}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'last_pull_48h': string;
-    /**
-     * The current season
-     * @type {CurrentSeasonHeroQuickOverviewDTO}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'current_season': CurrentSeasonHeroQuickOverviewDTO;
-    /**
-     * The referral bonus of the hero
-     * @type {number}
-     * @memberof HeroQuickOverviewDTO
-     */
-    'referral_bonus': number;
-}
-/**
- * 
- * @export
- * @interface HeroQuickOverviewEmblemDTO
- */
-export interface HeroQuickOverviewEmblemDTO {
-    /**
-     * The ID of the emblem
-     * @type {number}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'id': number;
-    /**
-     * The name of the emblem
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'name': string;
-    /**
-     * The description of the emblem
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'description': string;
-    /**
-     * The picture of the emblem
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'picture': string;
-    /**
-     * The category of the emblem
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'category': string;
-    /**
-     * The threshold needed to get the emblem
-     * @type {number}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'threshold': number;
-    /**
-     * The date the emblem was awarded
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemDTO
-     */
-    'awarded_at': string;
-}
-/**
- * 
- * @export
- * @interface HeroQuickOverviewEmblemSeasonUserProgressDTO
- */
-export interface HeroQuickOverviewEmblemSeasonUserProgressDTO {
-    /**
-     * The user id of the user
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'user_id': string;
-    /**
-     * The category of the emblem
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'category': string;
-    /**
-     * Emblem awarded at
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'last_check': string;
-    /**
-     * The progress of the user
-     * @type {number}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'progress': number;
-    /**
-     * The current emblem id of the user
-     * @type {number}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'current_emblem_id': number;
-    /**
-     * The created at of the emblem user progress
-     * @type {string}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'created_at': string;
-    /**
-     * The emblems the hero has
-     * @type {Array<HeroQuickOverviewEmblemDTO>}
-     * @memberof HeroQuickOverviewEmblemSeasonUserProgressDTO
-     */
-    'emblems': Array<HeroQuickOverviewEmblemDTO>;
 }
 /**
  * 
@@ -14324,90 +11141,6 @@ export interface HeroStatsLastUpdateDTO {
      * @memberof HeroStatsLastUpdateDTO
      */
     'lastUpdate': string;
-}
-/**
- * 
- * @export
- * @interface HeroStatusDTO
- */
-export interface HeroStatusDTO {
-    /**
-     * The status of the hero
-     * @type {string}
-     * @memberof HeroStatusDTO
-     */
-    'player_status': HeroStatusDTOPlayerStatusEnum;
-    /**
-     * The status of the hero
-     * @type {string}
-     * @memberof HeroStatusDTO
-     */
-    'hero_status': HeroStatusDTOHeroStatusEnum;
-    /**
-     * The status of the hero
-     * @type {string}
-     * @memberof HeroStatusDTO
-     */
-    'futur_status': HeroStatusDTOFuturStatusEnum;
-}
-
-export const HeroStatusDTOPlayerStatusEnum = {
-    Registered: 'REGISTERED',
-    NotRegistered: 'NOT_REGISTERED'
-} as const;
-
-export type HeroStatusDTOPlayerStatusEnum = typeof HeroStatusDTOPlayerStatusEnum[keyof typeof HeroStatusDTOPlayerStatusEnum];
-export const HeroStatusDTOHeroStatusEnum = {
-    None: 'NONE',
-    Hero: 'HERO',
-    Tactic: 'TACTIC'
-} as const;
-
-export type HeroStatusDTOHeroStatusEnum = typeof HeroStatusDTOHeroStatusEnum[keyof typeof HeroStatusDTOHeroStatusEnum];
-export const HeroStatusDTOFuturStatusEnum = {
-    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
-    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
-    None: 'NONE'
-} as const;
-
-export type HeroStatusDTOFuturStatusEnum = typeof HeroStatusDTOFuturStatusEnum[keyof typeof HeroStatusDTOFuturStatusEnum];
-
-/**
- * 
- * @export
- * @interface HeroSummaryDTO
- */
-export interface HeroSummaryDTO {
-    /**
-     * Hero summary data
-     * @type {object}
-     * @memberof HeroSummaryDTO
-     */
-    'summary': object;
-    /**
-     * Word cloud data
-     * @type {object}
-     * @memberof HeroSummaryDTO
-     */
-    'word_cloud': object;
-    /**
-     * Spider web data
-     * @type {object}
-     * @memberof HeroSummaryDTO
-     */
-    'spider_web': object;
-    /**
-     * Mood data
-     * @type {object}
-     * @memberof HeroSummaryDTO
-     */
-    'mood': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof HeroSummaryDTO
-     */
-    'updated_at': string;
 }
 /**
  * 
@@ -16597,31 +13330,6 @@ export interface HotOrNotInteractionResponse {
 /**
  * 
  * @export
- * @interface HotOrNotNextRewardResponse
- */
-export interface HotOrNotNextRewardResponse {
-    /**
-     * Next threshold
-     * @type {number}
-     * @memberof HotOrNotNextRewardResponse
-     */
-    'next_threshold': number;
-    /**
-     * Last threshold
-     * @type {number}
-     * @memberof HotOrNotNextRewardResponse
-     */
-    'last_threshold': number;
-    /**
-     * Rewards
-     * @type {Array<StreakReward>}
-     * @memberof HotOrNotNextRewardResponse
-     */
-    'rewards': Array<StreakReward>;
-}
-/**
- * 
- * @export
  * @interface HotOrNotStreakResponse
  */
 export interface HotOrNotStreakResponse {
@@ -17085,25 +13793,6 @@ export interface LastRefreshDTO {
 /**
  * 
  * @export
- * @interface LeaderboardAccessRuleDTO
- */
-export interface LeaderboardAccessRuleDTO {
-    /**
-     * Leaderboard access rules
-     * @type {boolean}
-     * @memberof LeaderboardAccessRuleDTO
-     */
-    'whitelist': boolean;
-    /**
-     * Minimum clout score for leaderboard access
-     * @type {number}
-     * @memberof LeaderboardAccessRuleDTO
-     */
-    'min_clout_score'?: number;
-}
-/**
- * 
- * @export
  * @interface LeaderboardEntryDto
  */
 export interface LeaderboardEntryDto {
@@ -17280,25 +13969,6 @@ export interface LevelUpCardsDTO {
 /**
  * 
  * @export
- * @interface LinkFlagsToChoicesDTO
- */
-export interface LinkFlagsToChoicesDTO {
-    /**
-     * Choices that the flag is related to
-     * @type {Array<string>}
-     * @memberof LinkFlagsToChoicesDTO
-     */
-    'choice_ids': Array<string>;
-    /**
-     * Flags that the choice is related to
-     * @type {Array<string>}
-     * @memberof LinkFlagsToChoicesDTO
-     */
-    'flag_ids': Array<string>;
-}
-/**
- * 
- * @export
  * @interface LinkMarketEntityDto
  */
 export interface LinkMarketEntityDto {
@@ -17314,6 +13984,88 @@ export interface LinkMarketEntityDto {
      * @memberof LinkMarketEntityDto
      */
     'entity_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface LobbyDraftApprovedData
+ */
+export interface LobbyDraftApprovedData {
+    /**
+     * 
+     * @type {LobbyDraftApprovedDataNew}
+     * @memberof LobbyDraftApprovedData
+     */
+    'new': LobbyDraftApprovedDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface LobbyDraftApprovedDataNew
+ */
+export interface LobbyDraftApprovedDataNew {
+    /**
+     * Lobby ID
+     * @type {string}
+     * @memberof LobbyDraftApprovedDataNew
+     */
+    'id': string;
+    /**
+     * Lobby Name
+     * @type {string}
+     * @memberof LobbyDraftApprovedDataNew
+     */
+    'name': string;
+    /**
+     * Player ID to notify
+     * @type {string}
+     * @memberof LobbyDraftApprovedDataNew
+     */
+    'player_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface LobbyDraftRejectedData
+ */
+export interface LobbyDraftRejectedData {
+    /**
+     * 
+     * @type {LobbyDraftRejectedDataNew}
+     * @memberof LobbyDraftRejectedData
+     */
+    'new': LobbyDraftRejectedDataNew;
+}
+/**
+ * 
+ * @export
+ * @interface LobbyDraftRejectedDataNew
+ */
+export interface LobbyDraftRejectedDataNew {
+    /**
+     * Lobby ID
+     * @type {string}
+     * @memberof LobbyDraftRejectedDataNew
+     */
+    'id': string;
+    /**
+     * Lobby Name
+     * @type {string}
+     * @memberof LobbyDraftRejectedDataNew
+     */
+    'name': string;
+    /**
+     * Rejection reason
+     * @type {string}
+     * @memberof LobbyDraftRejectedDataNew
+     */
+    'reason': string;
+    /**
+     * Player ID to notify
+     * @type {string}
+     * @memberof LobbyDraftRejectedDataNew
+     */
+    'player_id': string;
 }
 /**
  * 
@@ -18766,148 +15518,6 @@ export interface MetaInfiniteQueryDto {
 /**
  * 
  * @export
- * @interface MindshareLeaderboardDataPoint
- */
-export interface MindshareLeaderboardDataPoint {
-    /**
-     * 
-     * @type {string}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'hero_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'avatar'?: string;
-    /**
-     * Percentage of total clout
-     * @type {number}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'value': number;
-    /**
-     * Trend direction (up/down)
-     * @type {string}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'trend': string;
-    /**
-     * Current clout score from leaderboard
-     * @type {number}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'current_clout': number;
-    /**
-     * Color value for treemap
-     * @type {number}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'colorValue': number;
-    /**
-     * Historical clout data for trend visualization
-     * @type {Array<number>}
-     * @memberof MindshareLeaderboardDataPoint
-     */
-    'trendData': Array<number>;
-}
-/**
- * 
- * @export
- * @interface MindshareLeaderboardResponseDTO
- */
-export interface MindshareLeaderboardResponseDTO {
-    /**
-     * 
-     * @type {Array<MindshareLeaderboardDataPoint>}
-     * @memberof MindshareLeaderboardResponseDTO
-     */
-    'data': Array<MindshareLeaderboardDataPoint>;
-}
-/**
- * 
- * @export
- * @interface ModerationRecordDTO
- */
-export interface ModerationRecordDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'status': ModerationRecordDTOStatusEnum;
-    /**
-     * 
-     * @type {number}
-     * @memberof ModerationRecordDTO
-     */
-    'value'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'reason'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'start_date': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'end_date'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'admin_user': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'created_at': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModerationRecordDTO
-     */
-    'updated_at': string;
-}
-
-export const ModerationRecordDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
-} as const;
-
-export type ModerationRecordDTOStatusEnum = typeof ModerationRecordDTOStatusEnum[keyof typeof ModerationRecordDTOStatusEnum];
-
-/**
- * 
- * @export
  * @interface MonadReward
  */
 export interface MonadReward {
@@ -18923,6 +15533,92 @@ export interface MonadReward {
      * @memberof MonadReward
      */
     'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface NearStartTournamentItemDTO
+ */
+export interface NearStartTournamentItemDTO {
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof NearStartTournamentItemDTO
+     */
+    'id': string;
+    /**
+     * Tournament start date
+     * @type {string}
+     * @memberof NearStartTournamentItemDTO
+     */
+    'start_date': string;
+    /**
+     * Tournament start once filled
+     * @type {boolean}
+     * @memberof NearStartTournamentItemDTO
+     */
+    'start_once_filled': boolean;
+    /**
+     * Tournament flags
+     * @type {FlagsDTO}
+     * @memberof NearStartTournamentItemDTO
+     */
+    'flags': FlagsDTO;
+    /**
+     * Tournament bet amount
+     * @type {number}
+     * @memberof NearStartTournamentItemDTO
+     */
+    'betAmount': number;
+}
+/**
+ * 
+ * @export
+ * @interface NearStartTournamentResponseDTO
+ */
+export interface NearStartTournamentResponseDTO {
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'id': string;
+    /**
+     * Tournament start date
+     * @type {string}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'start_date': string;
+    /**
+     * Tournament start once filled
+     * @type {boolean}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'start_once_filled': boolean;
+    /**
+     * Tournament max players
+     * @type {number}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'maxPlayers'?: number;
+    /**
+     * Tournament bet amount
+     * @type {number}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'betAmount': number;
+    /**
+     * Current deck count
+     * @type {number}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'deckCount': number;
+    /**
+     * Player ID
+     * @type {number}
+     * @memberof NearStartTournamentResponseDTO
+     */
+    'playerDeckCount': number;
 }
 /**
  * 
@@ -19481,25 +16177,6 @@ export interface PaginatedCardWithNumberResult {
 /**
  * 
  * @export
- * @interface PaginatedCloutLeaderboardDTOResult
- */
-export interface PaginatedCloutLeaderboardDTOResult {
-    /**
-     * Data items
-     * @type {Array<CloutLeaderboardDTO>}
-     * @memberof PaginatedCloutLeaderboardDTOResult
-     */
-    'data': Array<CloutLeaderboardDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedCloutLeaderboardDTOResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
  * @interface PaginatedEnrichedTweetResult
  */
 export interface PaginatedEnrichedTweetResult {
@@ -19570,44 +16247,6 @@ export interface PaginatedGetTacticsHeroesResponseResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedGetTacticsHeroesResponseResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
- * @interface PaginatedGetTweetWithUserInfoResponseDTOResult
- */
-export interface PaginatedGetTweetWithUserInfoResponseDTOResult {
-    /**
-     * Data items
-     * @type {Array<GetTweetWithUserInfoResponseDTO>}
-     * @memberof PaginatedGetTweetWithUserInfoResponseDTOResult
-     */
-    'data': Array<GetTweetWithUserInfoResponseDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedGetTweetWithUserInfoResponseDTOResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
- * @interface PaginatedGetWhitelistResponseDTOResult
- */
-export interface PaginatedGetWhitelistResponseDTOResult {
-    /**
-     * Data items
-     * @type {Array<GetWhitelistResponseDTO>}
-     * @memberof PaginatedGetWhitelistResponseDTOResult
-     */
-    'data': Array<GetWhitelistResponseDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedGetWhitelistResponseDTOResult
      */
     'meta': MetaDTO;
 }
@@ -19709,25 +16348,6 @@ export interface PaginatedReferralStatisticsResult {
 /**
  * 
  * @export
- * @interface PaginatedSearchCloutUsersResponseDTOResult
- */
-export interface PaginatedSearchCloutUsersResponseDTOResult {
-    /**
-     * Data items
-     * @type {Array<SearchCloutUsersResponseDTO>}
-     * @memberof PaginatedSearchCloutUsersResponseDTOResult
-     */
-    'data': Array<SearchCloutUsersResponseDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedSearchCloutUsersResponseDTOResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
  * @interface PaginatedSellOrderWithHighestBidResult
  */
 export interface PaginatedSellOrderWithHighestBidResult {
@@ -19741,25 +16361,6 @@ export interface PaginatedSellOrderWithHighestBidResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedSellOrderWithHighestBidResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
- * @interface PaginatedShoutLeaderboardItemDTOResult
- */
-export interface PaginatedShoutLeaderboardItemDTOResult {
-    /**
-     * Data items
-     * @type {Array<ShoutLeaderboardItemDTO>}
-     * @memberof PaginatedShoutLeaderboardItemDTOResult
-     */
-    'data': Array<ShoutLeaderboardItemDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedShoutLeaderboardItemDTOResult
      */
     'meta': MetaDTO;
 }
@@ -21757,6 +18358,12 @@ export interface PrivateTournamentDTO {
      */
     'id': string;
     /**
+     * Tournament color
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'color': string;
+    /**
      * Tournament start date
      * @type {string}
      * @memberof PrivateTournamentDTO
@@ -21787,6 +18394,18 @@ export interface PrivateTournamentDTO {
      */
     'maxPlayers': number;
     /**
+     * Tournament max fan points
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'maxFanPoints': number;
+    /**
+     * Tournament min fan points
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'minFanPoints': number;
+    /**
      * Tournament max rarities
      * @type {MaxRaritiesDTO}
      * @memberof PrivateTournamentDTO
@@ -21805,11 +18424,29 @@ export interface PrivateTournamentDTO {
      */
     'bannerUrl'?: string;
     /**
-     * ID of the player who created the tournament
+     * Tournament description
      * @type {string}
      * @memberof PrivateTournamentDTO
      */
-    'createdBy': string;
+    'description': string;
+    /**
+     * Tournament creator ID
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'creatorId': string;
+    /**
+     * Name of the player who created the tournament
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'creatorName': string;
+    /**
+     * Creator avatar URL
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'creatorAvatarUrl': string;
     /**
      * Tournament creation timestamp
      * @type {string}
@@ -21817,11 +18454,11 @@ export interface PrivateTournamentDTO {
      */
     'createdAt': string;
     /**
-     * Number of decks in the tournament
-     * @type {number}
+     * Tournament status
+     * @type {string}
      * @memberof PrivateTournamentDTO
      */
-    'deckCount': number;
+    'status': PrivateTournamentDTOStatusEnum;
     /**
      * Tournament flags
      * @type {FlagsDTO}
@@ -21829,11 +18466,158 @@ export interface PrivateTournamentDTO {
      */
     'flags': FlagsDTO;
     /**
-     * Rewards for the tournament
-     * @type {Array<TournamentRewards>}
+     * Tournament max decks per player
+     * @type {number}
      * @memberof PrivateTournamentDTO
      */
-    'rewards': Array<TournamentRewards>;
+    'maxDecksPerPlayer': number;
+    /**
+     * Rewards for the tournament
+     * @type {Array<PrivateTournamentRewardsDTO>}
+     * @memberof PrivateTournamentDTO
+     */
+    'rewards': Array<PrivateTournamentRewardsDTO>;
+    /**
+     * Tournament invite code
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'inviteCode': string;
+    /**
+     * Tournament is private
+     * @type {boolean}
+     * @memberof PrivateTournamentDTO
+     */
+    'isPrivate': boolean;
+    /**
+     * Tournament start once filled
+     * @type {boolean}
+     * @memberof PrivateTournamentDTO
+     */
+    'startOnceFilled': boolean;
+    /**
+     * Tournament start timestamp
+     * @type {string}
+     * @memberof PrivateTournamentDTO
+     */
+    'started_at': string | null;
+    /**
+     * Bonus amount from company subsidy (only for public lobbies)
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'bonusAmount'?: number;
+    /**
+     * Effective bonus percentage (0-20, 0 if exhausted)
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'bonusPercentage'?: number;
+    /**
+     * Total prize pool including bonus (prizePool + bonusAmount)
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'totalPrizePool'?: number;
+}
+
+export const PrivateTournamentDTOStatusEnum = {
+    Hidden: 'hidden',
+    DraftPending: 'draft_pending',
+    DraftRejected: 'draft_rejected',
+    DraftApproved: 'draft_approved',
+    AutocompleteProcessed: 'autocomplete_processed',
+    StatsProcessed: 'stats_processed',
+    RewardsProcessed: 'rewards_processed'
+} as const;
+
+export type PrivateTournamentDTOStatusEnum = typeof PrivateTournamentDTOStatusEnum[keyof typeof PrivateTournamentDTOStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface PrivateTournamentFlagsDTO
+ */
+export interface PrivateTournamentFlagsDTO {
+    /**
+     * Maximum common cards
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxCommon': number;
+    /**
+     * Maximum rare cards
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxRare': number;
+    /**
+     * Maximum epic cards
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxEpic': number;
+    /**
+     * Maximum legendary cards
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxLegendary': number;
+    /**
+     * Maximum stars
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxStars': number;
+    /**
+     * Maximum players
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxPlayers': number;
+    /**
+     * Maximum decks by player
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxDecksPerPlayer': number;
+    /**
+     * Minimum fan points
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'minFanPoints': number;
+    /**
+     * Maximum fan points
+     * @type {number}
+     * @memberof PrivateTournamentFlagsDTO
+     */
+    'maxFanPoints': number;
+}
+/**
+ * 
+ * @export
+ * @interface PrivateTournamentRewardsDTO
+ */
+export interface PrivateTournamentRewardsDTO {
+    /**
+     * Distribution details of the reward
+     * @type {Array<DistributionItemDTO>}
+     * @memberof PrivateTournamentRewardsDTO
+     */
+    'distribution': Array<DistributionItemDTO>;
+    /**
+     * Tournament ID associated with this reward
+     * @type {string}
+     * @memberof PrivateTournamentRewardsDTO
+     */
+    'tournament_id': string;
+    /**
+     * Type of reward
+     * @type {string}
+     * @memberof PrivateTournamentRewardsDTO
+     */
+    'type': string;
 }
 /**
  * 
@@ -22128,533 +18912,6 @@ export interface ProgressionRewardsDTO {
      * @memberof ProgressionRewardsDTO
      */
     'elite_league_unlock'?: number;
-}
-/**
- * 
- * @export
- * @interface ProjectAccessRightsResponseDTO
- */
-export interface ProjectAccessRightsResponseDTO {
-    /**
-     * Whether the user is a member of the project
-     * @type {boolean}
-     * @memberof ProjectAccessRightsResponseDTO
-     */
-    'is_member': boolean;
-    /**
-     * Whether the user is an admin of the project
-     * @type {boolean}
-     * @memberof ProjectAccessRightsResponseDTO
-     */
-    'is_admin': boolean;
-}
-/**
- * 
- * @export
- * @interface ProjectInfoDTO
- */
-export interface ProjectInfoDTO {
-    /**
-     * Project UUID
-     * @type {string}
-     * @memberof ProjectInfoDTO
-     */
-    'id': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof ProjectInfoDTO
-     */
-    'name': string;
-    /**
-     * Project ticker
-     * @type {string}
-     * @memberof ProjectInfoDTO
-     */
-    'ticker': string | null;
-    /**
-     * Project contract address
-     * @type {string}
-     * @memberof ProjectInfoDTO
-     */
-    'contract_address': string;
-    /**
-     * Whether project is disabled
-     * @type {boolean}
-     * @memberof ProjectInfoDTO
-     */
-    'is_disabled': boolean;
-}
-/**
- * 
- * @export
- * @interface ProjectItemDTO
- */
-export interface ProjectItemDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof ProjectItemDTO
-     */
-    'id': string;
-    /**
-     * Project ticker
-     * @type {string}
-     * @memberof ProjectItemDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address of the project
-     * @type {string}
-     * @memberof ProjectItemDTO
-     */
-    'contract_address': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof ProjectItemDTO
-     */
-    'name': string;
-    /**
-     * User Twitter ID associated with the project
-     * @type {string}
-     * @memberof ProjectItemDTO
-     */
-    'user_id'?: string;
-    /**
-     * Project media/image URLs
-     * @type {Array<string>}
-     * @memberof ProjectItemDTO
-     */
-    'media'?: Array<string>;
-    /**
-     * Project relations (parent projects)
-     * @type {Array<ProjectRelationDTO>}
-     * @memberof ProjectItemDTO
-     */
-    'relations'?: Array<ProjectRelationDTO>;
-}
-/**
- * 
- * @export
- * @interface ProjectMemberDTO
- */
-export interface ProjectMemberDTO {
-    /**
-     * The wallet address of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'wallet_address': string;
-    /**
-     * The ID of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'user_id': string;
-    /**
-     * The name of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'name': string;
-    /**
-     * The handle of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'handle': string;
-    /**
-     * The profile image URL of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * The project ID of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'project_id': string;
-    /**
-     * The permission of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'permission': string;
-    /**
-     * The created at timestamp of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'created_at': string;
-    /**
-     * The updated at timestamp of the member
-     * @type {string}
-     * @memberof ProjectMemberDTO
-     */
-    'updated_at': string;
-}
-/**
- * 
- * @export
- * @interface ProjectMembersResponseDTO
- */
-export interface ProjectMembersResponseDTO {
-    /**
-     * The list of members in the project
-     * @type {Array<ProjectMemberDTO>}
-     * @memberof ProjectMembersResponseDTO
-     */
-    'members': Array<ProjectMemberDTO>;
-}
-/**
- * 
- * @export
- * @interface ProjectModerationUserDTO
- */
-export interface ProjectModerationUserDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectModerationUserDTO
-     */
-    'user_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectModerationUserDTO
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectModerationUserDTO
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectModerationUserDTO
-     */
-    'profile_image_url_https'?: string | null;
-    /**
-     * 
-     * @type {ModerationRecordDTO}
-     * @memberof ProjectModerationUserDTO
-     */
-    'current_moderation'?: ModerationRecordDTO | null;
-    /**
-     * 
-     * @type {Array<ModerationRecordDTO>}
-     * @memberof ProjectModerationUserDTO
-     */
-    'moderation_history': Array<ModerationRecordDTO>;
-}
-/**
- * 
- * @export
- * @interface ProjectProfileItemDTO
- */
-export interface ProjectProfileItemDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'id': string;
-    /**
-     * Project ticker
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address of the project
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'contract_address': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'name': string;
-    /**
-     * Project prompt
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'prompt': string;
-    /**
-     * Project media/image URLs
-     * @type {Array<string>}
-     * @memberof ProjectProfileItemDTO
-     */
-    'media'?: Array<string>;
-    /**
-     * Project links
-     * @type {object}
-     * @memberof ProjectProfileItemDTO
-     */
-    'links': object;
-    /**
-     * User Twitter ID associated with the project
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'user_id'?: string;
-    /**
-     * Project handle
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'handle': string;
-    /**
-     * Project profile image url
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Project profile banner url
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'profile_banner_url': string;
-    /**
-     * Project\'s smart follower count
-     * @type {number}
-     * @memberof ProjectProfileItemDTO
-     */
-    'smart_follower_count': number;
-    /**
-     * Project follower count
-     * @type {number}
-     * @memberof ProjectProfileItemDTO
-     */
-    'follower_count': number;
-    /**
-     * X verified badge
-     * @type {string}
-     * @memberof ProjectProfileItemDTO
-     */
-    'badge': string;
-    /**
-     * Project total rewards current in the pool
-     * @type {number}
-     * @memberof ProjectProfileItemDTO
-     */
-    'total_rewards': number;
-    /**
-     * Project total distribution done
-     * @type {number}
-     * @memberof ProjectProfileItemDTO
-     */
-    'total_distrib': number;
-}
-/**
- * 
- * @export
- * @interface ProjectRelationDTO
- */
-export interface ProjectRelationDTO {
-    /**
-     * Parent project ID
-     * @type {string}
-     * @memberof ProjectRelationDTO
-     */
-    'parent_id': string;
-    /**
-     * Whether this is a deep link relation
-     * @type {boolean}
-     * @memberof ProjectRelationDTO
-     */
-    'is_deep_link': boolean;
-}
-/**
- * 
- * @export
- * @interface ProjectRelationshipResponseDTO
- */
-export interface ProjectRelationshipResponseDTO {
-    /**
-     * Whether the child project is a child of the parent project
-     * @type {boolean}
-     * @memberof ProjectRelationshipResponseDTO
-     */
-    'isChild': boolean;
-    /**
-     * Parent project information
-     * @type {ProjectInfoDTO}
-     * @memberof ProjectRelationshipResponseDTO
-     */
-    'parentProject': ProjectInfoDTO;
-    /**
-     * Child project information
-     * @type {ProjectInfoDTO}
-     * @memberof ProjectRelationshipResponseDTO
-     */
-    'childProject': ProjectInfoDTO;
-}
-/**
- * 
- * @export
- * @interface ProjectRulesDTO
- */
-export interface ProjectRulesDTO {
-    /**
-     * Sentiment rules for the project
-     * @type {SentimentRuleDTO}
-     * @memberof ProjectRulesDTO
-     */
-    'sentiment': SentimentRuleDTO;
-    /**
-     * Leaderboard access rules
-     * @type {LeaderboardAccessRuleDTO}
-     * @memberof ProjectRulesDTO
-     */
-    'leaderboard_access'?: LeaderboardAccessRuleDTO;
-    /**
-     * Maximum daily posts included in calculations
-     * @type {number}
-     * @memberof ProjectRulesDTO
-     */
-    'max_daily_post_included'?: number;
-    /**
-     * Points multiplier for the project
-     * @type {number}
-     * @memberof ProjectRulesDTO
-     */
-    'points_multiplier'?: number;
-    /**
-     * Exclude team members from the project
-     * @type {boolean}
-     * @memberof ProjectRulesDTO
-     */
-    'exclude_team_members'?: boolean;
-}
-/**
- * 
- * @export
- * @interface ProjectTweetResponseDTO
- */
-export interface ProjectTweetResponseDTO {
-    /**
-     * Post ID
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'post_id': string;
-    /**
-     * Number of views
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'views': number;
-    /**
-     * Number of likes
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'likes': number;
-    /**
-     * Number of retweets
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'retweets': number;
-    /**
-     * Number of quotes
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'quotes': number;
-    /**
-     * Number of replies
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'replies': number;
-    /**
-     * Number of bookmarks
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'bookmarks': number;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'created_at': string;
-    /**
-     * Post type (Tweet, Quote, etc.)
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'type': string;
-    /**
-     * Certified view count
-     * @type {number}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'certified_views': number;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'text': string;
-    /**
-     * Conversation ID
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'conversation_id': string;
-    /**
-     * Quoted tweet data
-     * @type {ProjectTweetResponseDTO}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'quoted'?: ProjectTweetResponseDTO;
-    /**
-     * Associated flags/tickers
-     * @type {Array<object>}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'flag': Array<object>;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'user_id': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'user_name': string;
-    /**
-     * User handle
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'user_handle': string;
-    /**
-     * User profile image URL
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'user_profile_image': string | null;
-    /**
-     * Sentiment of the post
-     * @type {string}
-     * @memberof ProjectTweetResponseDTO
-     */
-    'sentiment'?: string;
 }
 /**
  * 
@@ -23411,6 +19668,19 @@ export interface RegisterToTacticResponseDTO {
 /**
  * 
  * @export
+ * @interface RejectDraftDTO
+ */
+export interface RejectDraftDTO {
+    /**
+     * Rejection message
+     * @type {string}
+     * @memberof RejectDraftDTO
+     */
+    'message': string;
+}
+/**
+ * 
+ * @export
  * @interface RelayDeposit
  */
 export interface RelayDeposit {
@@ -23521,34 +19791,6 @@ export interface RemainingEntriesDto {
 /**
  * 
  * @export
- * @interface RemoveShouterDTO
- */
-export interface RemoveShouterDTO {
-    /**
-     * Twitter ID
-     * @type {string}
-     * @memberof RemoveShouterDTO
-     */
-    'twitter_id': string;
-    /**
-     * Reason for removal
-     * @type {string}
-     * @memberof RemoveShouterDTO
-     */
-    'reason': RemoveShouterDTOReasonEnum;
-}
-
-export const RemoveShouterDTOReasonEnum = {
-    BusinessAccount: 'businessAccount',
-    BotAccount: 'botAccount',
-    AutomatedAccount: 'automatedAccount'
-} as const;
-
-export type RemoveShouterDTOReasonEnum = typeof RemoveShouterDTOReasonEnum[keyof typeof RemoveShouterDTOReasonEnum];
-
-/**
- * 
- * @export
  * @interface RemoveSuperUserDTO
  */
 export interface RemoveSuperUserDTO {
@@ -23571,25 +19813,6 @@ export interface RemoveTrackedUsersDto {
      * @memberof RemoveTrackedUsersDto
      */
     'users': Array<UserFlagDto>;
-}
-/**
- * 
- * @export
- * @interface RemoveUserFromProjectDTO
- */
-export interface RemoveUserFromProjectDTO {
-    /**
-     * Project ID to remove the user from
-     * @type {string}
-     * @memberof RemoveUserFromProjectDTO
-     */
-    'project_id': string;
-    /**
-     * Player ID of the user to remove
-     * @type {string}
-     * @memberof RemoveUserFromProjectDTO
-     */
-    'player_id': string;
 }
 /**
  * 
@@ -24032,6 +20255,19 @@ export interface SaveDraftEntryDTO {
 /**
  * 
  * @export
+ * @interface SaveNearStartTournamentsDTO
+ */
+export interface SaveNearStartTournamentsDTO {
+    /**
+     * List of tournaments near start
+     * @type {Array<NearStartTournamentItemDTO>}
+     * @memberof SaveNearStartTournamentsDTO
+     */
+    'tournaments': Array<NearStartTournamentItemDTO>;
+}
+/**
+ * 
+ * @export
  * @interface ScoreHistory
  */
 export interface ScoreHistory {
@@ -24072,62 +20308,6 @@ export interface ScoreHistoryObject {
      * @memberof ScoreHistoryObject
      */
     'gliding_7d': Array<ScoreHistory>;
-}
-/**
- * 
- * @export
- * @interface SearchCloutUsersQueryDTO
- */
-export interface SearchCloutUsersQueryDTO {
-    /**
-     * The query to search for
-     * @type {string}
-     * @memberof SearchCloutUsersQueryDTO
-     */
-    'search': string;
-    /**
-     * Pagination parameters
-     * @type {PaginationDTO}
-     * @memberof SearchCloutUsersQueryDTO
-     */
-    'pagination': PaginationDTO;
-}
-/**
- * 
- * @export
- * @interface SearchCloutUsersResponseDTO
- */
-export interface SearchCloutUsersResponseDTO {
-    /**
-     * Twitter id of the player 
-     * @type {string}
-     * @memberof SearchCloutUsersResponseDTO
-     */
-    'id': string;
-    /**
-     * Name of the player
-     * @type {string}
-     * @memberof SearchCloutUsersResponseDTO
-     */
-    'name': string;
-    /**
-     * Handle of the player
-     * @type {string}
-     * @memberof SearchCloutUsersResponseDTO
-     */
-    'handle': string;
-    /**
-     * Profile image of the player
-     * @type {string}
-     * @memberof SearchCloutUsersResponseDTO
-     */
-    'profile_picture': string;
-    /**
-     * Follower count of the player
-     * @type {number}
-     * @memberof SearchCloutUsersResponseDTO
-     */
-    'follower_count': number;
 }
 /**
  * 
@@ -24228,136 +20408,6 @@ export interface SearchHeroAndPlayerResponsePlayerResponseDto {
      * @memberof SearchHeroAndPlayerResponsePlayerResponseDto
      */
     'profile_picture': string;
-}
-/**
- * 
- * @export
- * @interface SearchProjectItemDTO
- */
-export interface SearchProjectItemDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'id': string;
-    /**
-     * Project slug
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'slug': string;
-    /**
-     * Project ticker
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address of the project
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'contract_address': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'name': string;
-    /**
-     * Project media/image URLs
-     * @type {Array<string>}
-     * @memberof SearchProjectItemDTO
-     */
-    'media'?: Array<string>;
-    /**
-     * Project user ID
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'user_id': string;
-    /**
-     * Project handle
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'handle': string;
-    /**
-     * Project profile image URL
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Project profile banner URL
-     * @type {string}
-     * @memberof SearchProjectItemDTO
-     */
-    'profile_banner_url': string;
-}
-/**
- * 
- * @export
- * @interface SearchProjectsResponseDTO
- */
-export interface SearchProjectsResponseDTO {
-    /**
-     * 
-     * @type {Array<SearchProjectItemDTO>}
-     * @memberof SearchProjectsResponseDTO
-     */
-    'projects': Array<SearchProjectItemDTO>;
-}
-/**
- * 
- * @export
- * @interface SearchUserDTO
- */
-export interface SearchUserDTO {
-    /**
-     * Twitter user ID
-     * @type {string}
-     * @memberof SearchUserDTO
-     */
-    'id': string;
-    /**
-     * Twitter user ID
-     * @type {string}
-     * @memberof SearchUserDTO
-     */
-    'twitter_id': string;
-    /**
-     * Display name
-     * @type {string}
-     * @memberof SearchUserDTO
-     */
-    'name': string | null;
-    /**
-     * Handle (username)
-     * @type {string}
-     * @memberof SearchUserDTO
-     */
-    'handle': string | null;
-    /**
-     * Profile image URL
-     * @type {string}
-     * @memberof SearchUserDTO
-     */
-    'profile_image_url_https': string | null;
-}
-/**
- * 
- * @export
- * @interface SearchUsersResponseDTO
- */
-export interface SearchUsersResponseDTO {
-    /**
-     * Matched users from users table
-     * @type {Array<SearchUserDTO>}
-     * @memberof SearchUsersResponseDTO
-     */
-    'users': Array<SearchUserDTO>;
 }
 /**
  * 
@@ -25011,471 +21061,6 @@ export interface SendTemplateResponseDTO {
 /**
  * 
  * @export
- * @interface SentimentRuleDTO
- */
-export interface SentimentRuleDTO {
-    /**
-     * Sentiment rules for the project
-     * @type {Array<string>}
-     * @memberof SentimentRuleDTO
-     */
-    'included': Array<string>;
-}
-/**
- * 
- * @export
- * @interface ShoutLeaderboardItemDTO
- */
-export interface ShoutLeaderboardItemDTO {
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'twitter_id': string;
-    /**
-     * Hero name
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'name': string;
-    /**
-     * Hero handle
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'handle': string;
-    /**
-     * Profile image URL
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'profile_image_url_https'?: string;
-    /**
-     * Total points score
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'total_point': number;
-    /**
-     * Final rank
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'final_rank': number;
-    /**
-     * Total posts
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'total_posts': number;
-    /**
-     * Total views
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'total_views'?: string;
-    /**
-     * Followers count
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'followers_count': number;
-    /**
-     * Smart follower count
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'smart_follower_count'?: number;
-    /**
-     * Percentage of total points (mindshare)
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'mindshare_percentage': number;
-    /**
-     * Total clout score
-     * @type {number}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'total_clout_score'?: number;
-    /**
-     * Calculated at
-     * @type {string}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'calculated_at': string;
-    /**
-     * Is hero
-     * @type {boolean}
-     * @memberof ShoutLeaderboardItemDTO
-     */
-    'isHero': boolean;
-}
-/**
- * 
- * @export
- * @interface SivCalculationDetailsDTO
- */
-export interface SivCalculationDetailsDTO {
-    /**
-     * User median certified views used as baseline
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'user_median_views': number;
-    /**
-     * Bonus views calculated from interactions
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'interaction_bonus': number;
-    /**
-     * Calculated legitimate views (median + bonus)
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'calculated_legit_views': number;
-    /**
-     * Final allowed views after processing
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'final_allowed_views': number;
-    /**
-     * Views before SIV processing
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'previous_certified_views': number;
-    /**
-     * Views after SIV processing
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'new_certified_views': number;
-    /**
-     * Botted views before SIV processing
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'previous_botted_views': number;
-    /**
-     * Botted views after SIV processing
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'new_botted_views': number;
-    /**
-     * Actual number of views reduced by SIV
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'actual_views_reduced': number;
-    /**
-     * Theoretical views that could have been subtracted
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'theoretical_views_to_subtract': number;
-    /**
-     * Whether the post was already within calculated limits
-     * @type {boolean}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'was_already_within_limits': boolean;
-    /**
-     * Whether the post was completely nuked (views set to 0)
-     * @type {boolean}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'was_nuked': boolean;
-    /**
-     * Reason for nuking the post if applicable
-     * @type {string}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'nuke_reason'?: string;
-    /**
-     * Percentage of original views that were deemed botted
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'botting_percentage': number;
-    /**
-     * View multipliers used for different interaction types
-     * @type {object}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'view_multipliers': object;
-    /**
-     * Number of interactions that contributed to bonus views
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'total_interactions_processed': number;
-    /**
-     * Number of unique interactors whose averages were used
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'unique_interactors_count': number;
-    /**
-     * Timestamp when the calculation was performed
-     * @type {string}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'processing_timestamp': string;
-    /**
-     * Certified interactions count used for nuke decision (if nuked)
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'certified_interactions_for_nuke'?: number;
-    /**
-     * Certified interaction percentage used for nuke decision (if nuked)
-     * @type {number}
-     * @memberof SivCalculationDetailsDTO
-     */
-    'certified_interaction_percentage'?: number;
-}
-/**
- * 
- * @export
- * @interface SmartFollowerDTO
- */
-export interface SmartFollowerDTO {
-    /**
-     * User ID of the follower
-     * @type {string}
-     * @memberof SmartFollowerDTO
-     */
-    'id': string;
-    /**
-     * Handle of the follower
-     * @type {string}
-     * @memberof SmartFollowerDTO
-     */
-    'handle': string;
-    /**
-     * Name of the follower
-     * @type {string}
-     * @memberof SmartFollowerDTO
-     */
-    'name': string;
-    /**
-     * Profile image URL of the follower
-     * @type {string}
-     * @memberof SmartFollowerDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Whether the follower is a player
-     * @type {boolean}
-     * @memberof SmartFollowerDTO
-     */
-    'is_player': boolean;
-    /**
-     * Number of followers the follower has
-     * @type {number}
-     * @memberof SmartFollowerDTO
-     */
-    'followers_count': number;
-}
-/**
- * 
- * @export
- * @interface SmartFollowerResponseDTO
- */
-export interface SmartFollowerResponseDTO {
-    /**
-     * List of smart followers
-     * @type {Array<SmartFollowerDTO>}
-     * @memberof SmartFollowerResponseDTO
-     */
-    'followers': Array<SmartFollowerDTO>;
-    /**
-     * Total number of followers
-     * @type {number}
-     * @memberof SmartFollowerResponseDTO
-     */
-    'total_followers': number;
-}
-/**
- * 
- * @export
- * @interface SponsoredTournamentCloutBoostResponseDTO
- */
-export interface SponsoredTournamentCloutBoostResponseDTO {
-    /**
-     * Whether the user has Twitter connected
-     * @type {boolean}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'has_twitter_connected': boolean;
-    /**
-     * Twitter ID if connected
-     * @type {string}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'twitter_id'?: string;
-    /**
-     * Whether user is in project whitelist (signed up users)
-     * @type {boolean}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'is_project_user': boolean;
-    /**
-     * User rank in project leaderboard during tournament period
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'leaderboard_rank'?: number;
-    /**
-     * Total boost multiplier applied
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'boost_multiplier': number;
-    /**
-     * 
-     * @type {SponsoredTournamentCloutBoostResponseDTOBoostBreakdown}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'boost_breakdown': SponsoredTournamentCloutBoostResponseDTOBoostBreakdown;
-    /**
-     * Human readable description of boost eligibility
-     * @type {string}
-     * @memberof SponsoredTournamentCloutBoostResponseDTO
-     */
-    'boost_description': string;
-}
-/**
- * Breakdown of boost sources
- * @export
- * @interface SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
- */
-export interface SponsoredTournamentCloutBoostResponseDTOBoostBreakdown {
-    /**
-     * Base multiplier
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
-     */
-    'base'?: number;
-    /**
-     * Project user bonus
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
-     */
-    'project_user'?: number;
-    /**
-     * Top 300 bonus
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
-     */
-    'leaderboard_top_300'?: number;
-    /**
-     * Top 50 bonus
-     * @type {number}
-     * @memberof SponsoredTournamentCloutBoostResponseDTOBoostBreakdown
-     */
-    'leaderboard_top_50'?: number;
-}
-/**
- * 
- * @export
- * @interface StreakLeaderboardDto
- */
-export interface StreakLeaderboardDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof StreakLeaderboardDto
-     */
-    'longest_streak': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StreakLeaderboardDto
-     */
-    'total_answers': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StreakLeaderboardDto
-     */
-    'total_guesses': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StreakLeaderboardDto
-     */
-    'rank': number;
-}
-/**
- * 
- * @export
- * @interface StreakReward
- */
-export interface StreakReward {
-    /**
-     * Id of the streak reward
-     * @type {string}
-     * @memberof StreakReward
-     */
-    'id': string;
-    /**
-     * Threshold of the streak reward
-     * @type {number}
-     * @memberof StreakReward
-     */
-    'threshold': number;
-    /**
-     * Type of the reward
-     * @type {string}
-     * @memberof StreakReward
-     */
-    'reward_type': StreakRewardRewardTypeEnum;
-    /**
-     * Amount of the reward
-     * @type {number}
-     * @memberof StreakReward
-     */
-    'reward_amount': number;
-    /**
-     * Whether the reward is for onboarding
-     * @type {boolean}
-     * @memberof StreakReward
-     */
-    'is_onboarding': boolean;
-    /**
-     * Created at
-     * @type {string}
-     * @memberof StreakReward
-     */
-    'created_at': string;
-    /**
-     * Updated at
-     * @type {string}
-     * @memberof StreakReward
-     */
-    'updated_at': string;
-}
-
-export const StreakRewardRewardTypeEnum = {
-    Star: 'STAR',
-    Fan: 'FAN',
-    Gold: 'GOLD',
-    Pack: 'PACK',
-    Fragment: 'FRAGMENT',
-    StarBanner: 'star_banner'
-} as const;
-
-export type StreakRewardRewardTypeEnum = typeof StreakRewardRewardTypeEnum[keyof typeof StreakRewardRewardTypeEnum];
-
-/**
- * 
- * @export
  * @interface StringFilterDTO
  */
 export interface StringFilterDTO {
@@ -26042,12 +21627,6 @@ export interface SummaryOfTacticIdTacticDTOConfigDTO {
      * @memberof SummaryOfTacticIdTacticDTOConfigDTO
      */
     'is_dfs': boolean;
-    /**
-     * Clout project id
-     * @type {string}
-     * @memberof SummaryOfTacticIdTacticDTOConfigDTO
-     */
-    'clout_project_id': string;
 }
 /**
  * 
@@ -27358,12 +22937,6 @@ export interface TacticsConfig {
      * @memberof TacticsConfig
      */
     'is_dfs': boolean;
-    /**
-     * Clout project id
-     * @type {string}
-     * @memberof TacticsConfig
-     */
-    'clout_project_id': string;
 }
 /**
  * 
@@ -29627,25 +25200,6 @@ export interface TopTweetDTO {
 /**
  * 
  * @export
- * @interface TopicsFlagsResponseDTO
- */
-export interface TopicsFlagsResponseDTO {
-    /**
-     * List of topic flags
-     * @type {Array<string>}
-     * @memberof TopicsFlagsResponseDTO
-     */
-    'topicsFlags': Array<string>;
-    /**
-     * Pagination metadata
-     * @type {object}
-     * @memberof TopicsFlagsResponseDTO
-     */
-    'meta': object;
-}
-/**
- * 
- * @export
  * @interface Tournament
  */
 export interface Tournament {
@@ -29817,6 +25371,99 @@ export interface Tournament {
      * @memberof Tournament
      */
     'current_rewards': Array<CurrentRunningRewardsDTO>;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentDeckDTO
+ */
+export interface TournamentDeckDTO {
+    /**
+     * Player information
+     * @type {TournamentDeckPlayerDTO}
+     * @memberof TournamentDeckDTO
+     */
+    'player': TournamentDeckPlayerDTO;
+    /**
+     * Heroes in the deck
+     * @type {Array<TournamentDeckHeroDTO>}
+     * @memberof TournamentDeckDTO
+     */
+    'heroes': Array<TournamentDeckHeroDTO>;
+    /**
+     * Deck score
+     * @type {number}
+     * @memberof TournamentDeckDTO
+     */
+    'score': number;
+    /**
+     * Deck rank
+     * @type {number}
+     * @memberof TournamentDeckDTO
+     */
+    'rank': number;
+    /**
+     * How much this deck will receive from the total prize pool
+     * @type {number}
+     * @memberof TournamentDeckDTO
+     */
+    'rewards': number;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentDeckHeroDTO
+ */
+export interface TournamentDeckHeroDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'id': string;
+    /**
+     * Hero stars
+     * @type {number}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'stars'?: number;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'handle'?: string;
+    /**
+     * Hero rarity
+     * @type {string}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'rarity': string;
+}
+/**
+ * 
+ * @export
+ * @interface TournamentDeckPlayerDTO
+ */
+export interface TournamentDeckPlayerDTO {
+    /**
+     * Player profile picture URL
+     * @type {string}
+     * @memberof TournamentDeckPlayerDTO
+     */
+    'profilePicture'?: string;
+    /**
+     * Player name
+     * @type {string}
+     * @memberof TournamentDeckPlayerDTO
+     */
+    'name': string;
+    /**
+     * Player handle
+     * @type {string}
+     * @memberof TournamentDeckPlayerDTO
+     */
+    'handle': string;
 }
 /**
  * 
@@ -30295,6 +25942,57 @@ export interface TournamentPlayerHistories {
      */
     'stars': number;
 }
+/**
+ * 
+ * @export
+ * @interface TournamentReviewResponseDTO
+ */
+export interface TournamentReviewResponseDTO {
+    /**
+     * Decision of the review
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'decision': TournamentReviewResponseDTODecisionEnum;
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'tournamentId': string;
+    /**
+     * Moderator name
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'moderatorName': string;
+    /**
+     * Moderator ID
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'moderatorId': string;
+    /**
+     * Moderator avatar URL
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'moderatorAvatarUrl': string | null;
+    /**
+     * Review message
+     * @type {string}
+     * @memberof TournamentReviewResponseDTO
+     */
+    'message': string | null;
+}
+
+export const TournamentReviewResponseDTODecisionEnum = {
+    Approved: 'approved',
+    Rejected: 'rejected'
+} as const;
+
+export type TournamentReviewResponseDTODecisionEnum = typeof TournamentReviewResponseDTODecisionEnum[keyof typeof TournamentReviewResponseDTODecisionEnum];
+
 /**
  * 
  * @export
@@ -30846,80 +26544,6 @@ export interface TradesDTO {
 /**
  * 
  * @export
- * @interface TreeMapDataPoint
- */
-export interface TreeMapDataPoint {
-    /**
-     * 
-     * @type {string}
-     * @memberof TreeMapDataPoint
-     */
-    'hero_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TreeMapDataPoint
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TreeMapDataPoint
-     */
-    'value': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TreeMapDataPoint
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TreeMapDataPoint
-     */
-    'colorValue': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TreeMapDataPoint
-     */
-    'trend': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TreeMapDataPoint
-     */
-    'avatar'?: string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof TreeMapDataPoint
-     */
-    'trendData': Array<number>;
-    /**
-     * Current clout score from leaderboard
-     * @type {number}
-     * @memberof TreeMapDataPoint
-     */
-    'current_clout': number;
-}
-/**
- * 
- * @export
- * @interface TreeMapResponseDTO
- */
-export interface TreeMapResponseDTO {
-    /**
-     * 
-     * @type {Array<TreeMapDataPoint>}
-     * @memberof TreeMapResponseDTO
-     */
-    'data': Array<TreeMapDataPoint>;
-}
-/**
- * 
- * @export
  * @interface TrendDiscoveryResponseDto
  */
 export interface TrendDiscoveryResponseDto {
@@ -31207,6 +26831,25 @@ export interface UnclaimedKothRewardDTO {
      * Reward amount
      * @type {number}
      * @memberof UnclaimedKothRewardDTO
+     */
+    'amount': number;
+}
+/**
+ * 
+ * @export
+ * @interface UnclaimedPrivateTournamentRewardDTO
+ */
+export interface UnclaimedPrivateTournamentRewardDTO {
+    /**
+     * Reward identifier
+     * @type {string}
+     * @memberof UnclaimedPrivateTournamentRewardDTO
+     */
+    'id': string;
+    /**
+     * Reward amount
+     * @type {number}
+     * @memberof UnclaimedPrivateTournamentRewardDTO
      */
     'amount': number;
 }
@@ -31541,56 +27184,6 @@ export interface UpdateMarketStatusResponseDto {
 /**
  * 
  * @export
- * @interface UpdateProjectUserModerationDTO
- */
-export interface UpdateProjectUserModerationDTO {
-    /**
-     * Moderation status to apply
-     * @type {string}
-     * @memberof UpdateProjectUserModerationDTO
-     */
-    'status'?: UpdateProjectUserModerationDTOStatusEnum;
-    /**
-     * Multiplier or count depending on status (optional)
-     * @type {number}
-     * @memberof UpdateProjectUserModerationDTO
-     */
-    'value'?: number;
-    /**
-     * Reason for the moderation action
-     * @type {string}
-     * @memberof UpdateProjectUserModerationDTO
-     */
-    'reason'?: string;
-    /**
-     * Start date for the moderation
-     * @type {string}
-     * @memberof UpdateProjectUserModerationDTO
-     */
-    'start_date'?: string;
-    /**
-     * End date for the moderation
-     * @type {string}
-     * @memberof UpdateProjectUserModerationDTO
-     */
-    'end_date'?: string | null;
-}
-
-export const UpdateProjectUserModerationDTOStatusEnum = {
-    Suspicious: 'SUSPICIOUS',
-    Nerfed: 'NERFED',
-    Boosted: 'BOOSTED',
-    Jailed: 'JAILED',
-    Banned: 'BANNED',
-    Excluded: 'EXCLUDED',
-    TeamMember: 'TEAM_MEMBER'
-} as const;
-
-export type UpdateProjectUserModerationDTOStatusEnum = typeof UpdateProjectUserModerationDTOStatusEnum[keyof typeof UpdateProjectUserModerationDTOStatusEnum];
-
-/**
- * 
- * @export
  * @interface UpdateRelayDepositDto
  */
 export interface UpdateRelayDepositDto {
@@ -31659,55 +27252,6 @@ export interface UpdateTemplateDto {
 /**
  * 
  * @export
- * @interface UpdateTweetFlagsDTO
- */
-export interface UpdateTweetFlagsDTO {
-    /**
-     * The project ID to update flags for
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'project_id': string;
-    /**
-     * The post id to update flags for
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'post_id': string;
-    /**
-     * The player handle to update flags for
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'handle': string;
-    /**
-     * The player twitter id to update flags for
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'twitter_id': string;
-    /**
-     * The weight to set for the post
-     * @type {number}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'weight': number;
-    /**
-     * The admin user who updated the flag
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'admin_user': string;
-    /**
-     * The created_at_of_post for partition efficiency
-     * @type {string}
-     * @memberof UpdateTweetFlagsDTO
-     */
-    'created_at_of_post': string;
-}
-/**
- * 
- * @export
  * @interface UserFlagDto
  */
 export interface UserFlagDto {
@@ -31724,624 +27268,6 @@ export interface UserFlagDto {
      */
     'flag': string;
 }
-/**
- * 
- * @export
- * @interface UserFullInfoDTO
- */
-export interface UserFullInfoDTO {
-    /**
-     * Twitter user ID
-     * @type {string}
-     * @memberof UserFullInfoDTO
-     */
-    'twitter_id': string;
-    /**
-     * Twitter handle (username)
-     * @type {string}
-     * @memberof UserFullInfoDTO
-     */
-    'handle': string;
-    /**
-     * Display name
-     * @type {string}
-     * @memberof UserFullInfoDTO
-     */
-    'name': string;
-    /**
-     * Number of followers
-     * @type {number}
-     * @memberof UserFullInfoDTO
-     */
-    'followers_count': number;
-    /**
-     * Profile image URL
-     * @type {string}
-     * @memberof UserFullInfoDTO
-     */
-    'profile_image_url_https': string;
-    /**
-     * Smart follower count.
-     * @type {number}
-     * @memberof UserFullInfoDTO
-     */
-    'smart_follower_count': number | null;
-    /**
-     * Total clout score across all seasons
-     * @type {number}
-     * @memberof UserFullInfoDTO
-     */
-    'total_clout_score': number;
-}
-/**
- * 
- * @export
- * @interface UserInfoDTO
- */
-export interface UserInfoDTO {
-    /**
-     * The id
-     * @type {string}
-     * @memberof UserInfoDTO
-     */
-    'id': string;
-    /**
-     * The name
-     * @type {string}
-     * @memberof UserInfoDTO
-     */
-    'name': string;
-    /**
-     * The handle
-     * @type {string}
-     * @memberof UserInfoDTO
-     */
-    'handle': string;
-    /**
-     * The profile image url
-     * @type {string}
-     * @memberof UserInfoDTO
-     */
-    'profile_image_url_https': string;
-}
-/**
- * 
- * @export
- * @interface UserProjectFeedItemDTO
- */
-export interface UserProjectFeedItemDTO {
-    /**
-     * Post ID
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'post_id': string;
-    /**
-     * Number of views
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'views': number;
-    /**
-     * Number of likes
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'likes': number;
-    /**
-     * Number of retweets
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'retweets': number;
-    /**
-     * Number of quotes
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'quotes': number;
-    /**
-     * Number of replies
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'replies': number;
-    /**
-     * Number of bookmarks
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'bookmarks': number;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'created_at': string;
-    /**
-     * Post type (Tweet, Quote, Reply)
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'type': string;
-    /**
-     * Certified views count
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'certified_views': number;
-    /**
-     * Botted views count
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'botted_views': number;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'text': string;
-    /**
-     * Conversation ID
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'conversation_id': string;
-    /**
-     * Admin user
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'admin_user': string;
-    /**
-     * Quoted post data
-     * @type {object}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'quoted'?: object | null;
-    /**
-     * Associated flags/tickers with IDs for efficient updates
-     * @type {Array<object>}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'flags': Array<object>;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'user_id': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'user_name': string;
-    /**
-     * User handle
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'user_handle': string;
-    /**
-     * User profile image URL
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'user_profile_image': string | null;
-    /**
-     * Sentiment of the post
-     * @type {string}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'sentiment'?: string;
-    /**
-     * Engagement score from posts table
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'engagement_score'?: number | null;
-    /**
-     * Score/points from post flag distribution
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'score'?: number | null;
-    /**
-     * Weight of the post
-     * @type {number}
-     * @memberof UserProjectFeedItemDTO
-     */
-    'weight'?: number | null;
-}
-/**
- * 
- * @export
- * @interface UserRankingDateRangeItemDTO
- */
-export interface UserRankingDateRangeItemDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'project_id': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'contract_address': string;
-    /**
-     * Slug
-     * @type {string}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'slug': string;
-    /**
-     * Name
-     * @type {string}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'name': string;
-    /**
-     * Total points score
-     * @type {number}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'total_point': number;
-    /**
-     * Final rank
-     * @type {number}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'final_rank': number;
-    /**
-     * Total posts
-     * @type {number}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'total_posts': number;
-    /**
-     * Percentage of total points (mindshare)
-     * @type {number}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'mindshare_percentage': number;
-    /**
-     * Total participants
-     * @type {number}
-     * @memberof UserRankingDateRangeItemDTO
-     */
-    'total_participants': number;
-}
-/**
- * 
- * @export
- * @interface UserRankingItemDTO
- */
-export interface UserRankingItemDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof UserRankingItemDTO
-     */
-    'project_id': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof UserRankingItemDTO
-     */
-    'contract_address': string;
-    /**
-     * Slug
-     * @type {string}
-     * @memberof UserRankingItemDTO
-     */
-    'slug': string;
-    /**
-     * Name
-     * @type {string}
-     * @memberof UserRankingItemDTO
-     */
-    'name': string;
-    /**
-     * Total points score
-     * @type {number}
-     * @memberof UserRankingItemDTO
-     */
-    'total_point': number;
-    /**
-     * Final rank
-     * @type {number}
-     * @memberof UserRankingItemDTO
-     */
-    'final_rank': number;
-    /**
-     * Total posts
-     * @type {number}
-     * @memberof UserRankingItemDTO
-     */
-    'total_posts': number;
-    /**
-     * Percentage of total points (mindshare)
-     * @type {number}
-     * @memberof UserRankingItemDTO
-     */
-    'mindshare_percentage': number;
-    /**
-     * Total participants
-     * @type {number}
-     * @memberof UserRankingItemDTO
-     */
-    'total_participants': number;
-}
-/**
- * 
- * @export
- * @interface UserTweetPerTopicDTO
- */
-export interface UserTweetPerTopicDTO {
-    /**
-     * The post id
-     * @type {string}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'post_id': string;
-    /**
-     * The number of views
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'views': number;
-    /**
-     * The number of likes
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'likes': number;
-    /**
-     * The number of retweets
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'retweets': number;
-    /**
-     * The number of quotes
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'quotes': number;
-    /**
-     * The number of replies
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'replies': number;
-    /**
-     * The number of bookmarks
-     * @type {number}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'bookmarks': number;
-    /**
-     * The creation date
-     * @type {string}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'created_at': string;
-    /**
-     * The text
-     * @type {string}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'text': string;
-    /**
-     * The flags
-     * @type {Array<FlagDTO>}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'flags'?: Array<FlagDTO>;
-    /**
-     * The quoted tweet, if the post is a quote
-     * @type {UserTweetPerTopicDTO}
-     * @memberof UserTweetPerTopicDTO
-     */
-    'quoted'?: UserTweetPerTopicDTO;
-}
-/**
- * 
- * @export
- * @interface UserTweetResponseDTO
- */
-export interface UserTweetResponseDTO {
-    /**
-     * Post ID
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'post_id': string;
-    /**
-     * Number of views
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'views': number;
-    /**
-     * Number of likes
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'likes': number;
-    /**
-     * Number of retweets
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'retweets': number;
-    /**
-     * Number of quotes
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'quotes': number;
-    /**
-     * Number of replies
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'replies': number;
-    /**
-     * Number of bookmarks
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'bookmarks': number;
-    /**
-     * Post creation date
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'created_at': string;
-    /**
-     * Post type (Tweet, Quote, etc.)
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'type': string;
-    /**
-     * Certified view count
-     * @type {number}
-     * @memberof UserTweetResponseDTO
-     */
-    'certified_views': number;
-    /**
-     * Post text content
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'text': string;
-    /**
-     * Conversation ID
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'conversation_id': string;
-    /**
-     * Quoted tweet data
-     * @type {ProjectTweetResponseDTO}
-     * @memberof UserTweetResponseDTO
-     */
-    'quoted'?: ProjectTweetResponseDTO;
-    /**
-     * Sentiment
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'sentiment'?: string;
-    /**
-     * User ID
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'user_id': string;
-    /**
-     * User name
-     * @type {string}
-     * @memberof UserTweetResponseDTO
-     */
-    'user_name': string;
-}
-/**
- * 
- * @export
- * @interface UserWhitelistProjectDTO
- */
-export interface UserWhitelistProjectDTO {
-    /**
-     * Project ID
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'project_id': string;
-    /**
-     * Project name
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'name': string;
-    /**
-     * Project slug
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'slug': string;
-    /**
-     * Project ticker symbol
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'ticker': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'contract_address': string;
-    /**
-     * Whitelist status
-     * @type {string}
-     * @memberof UserWhitelistProjectDTO
-     */
-    'status': string;
-}
-/**
- * All possible user flags
- * @export
- * @enum {string}
- */
-
-export const UsersFlagEnum = {
-    HeroCircleExtended: 'HERO_CIRCLE_EXTENDED',
-    HeroCircle: 'HERO_CIRCLE',
-    SmartFollow: 'SMART_FOLLOW',
-    Clout: 'CLOUT',
-    Gattaca: 'GATTACA',
-    SuspiciousLow: 'SUSPICIOUS_LOW',
-    SuspiciousHigh: 'SUSPICIOUS_HIGH',
-    MonadHero: 'MONAD_HERO',
-    UpcomingHeroClout: 'UPCOMING_HERO_CLOUT',
-    UpcomingHeroTacticClout: 'UPCOMING_HERO_TACTIC_CLOUT',
-    DisableFromHeroSelection: 'DISABLE_FROM_HERO_SELECTION',
-    FeedTemporary: 'FEED_TEMPORARY',
-    FeedOnly: 'FEED_ONLY',
-    TacticOnly: 'TACTIC_ONLY',
-    Hero: 'HERO',
-    Tactic: 'TACTIC',
-    None: 'NONE',
-    Registered: 'REGISTERED',
-    NotRegistered: 'NOT_REGISTERED'
-} as const;
-
-export type UsersFlagEnum = typeof UsersFlagEnum[keyof typeof UsersFlagEnum];
-
-
-/**
- * 
- * @export
- * @interface UsersFlagEnumSchema
- */
-export interface UsersFlagEnumSchema {
-    /**
-     * 
-     * @type {UsersFlagEnum}
-     * @memberof UsersFlagEnumSchema
-     */
-    'value': UsersFlagEnum;
-}
-
-
 /**
  * 
  * @export
@@ -32893,80 +27819,6 @@ export interface WordRecommendation {
      * @memberof WordRecommendation
      */
     'reasoning': string;
-}
-/**
- * 
- * @export
- * @interface XGamesLeaderboardDto
- */
-export interface XGamesLeaderboardDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof XGamesLeaderboardDto
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof XGamesLeaderboardDto
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof XGamesLeaderboardDto
-     */
-    'handle': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof XGamesLeaderboardDto
-     */
-    'profile_picture': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof XGamesLeaderboardDto
-     */
-    'player_id': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof XGamesLeaderboardDto
-     */
-    'overall_rank': number;
-    /**
-     * 
-     * @type {StreakLeaderboardDto}
-     * @memberof XGamesLeaderboardDto
-     */
-    'guess_favorite': StreakLeaderboardDto;
-    /**
-     * 
-     * @type {StreakLeaderboardDto}
-     * @memberof XGamesLeaderboardDto
-     */
-    'hot_or_not': StreakLeaderboardDto;
-}
-/**
- * 
- * @export
- * @interface XGamesLeaderboardResponseDto
- */
-export interface XGamesLeaderboardResponseDto {
-    /**
-     * 
-     * @type {Array<XGamesLeaderboardDto>}
-     * @memberof XGamesLeaderboardResponseDto
-     */
-    'data': Array<XGamesLeaderboardDto>;
-    /**
-     * 
-     * @type {MetaInfiniteQueryDto}
-     * @memberof XGamesLeaderboardResponseDto
-     */
-    'meta': MetaInfiniteQueryDto;
 }
 
 /**
@@ -33765,111 +28617,6 @@ export class CardApi extends BaseAPI {
      */
     public getIndividualCardsByPlayerId(requestParameters: CardApiGetIndividualCardsByPlayerIdRequest, options?: RawAxiosRequestConfig) {
         return CardApiFp(this.configuration).getIndividualCardsByPlayerId(requestParameters.playerId, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * CommonApi - axios parameter creator
- * @export
- */
-export const CommonApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBacklogs: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/common/backlogs`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * CommonApi - functional programming interface
- * @export
- */
-export const CommonApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = CommonApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getBacklogs(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BacklogResponseDTO>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBacklogs(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CommonApi.getBacklogs']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * CommonApi - factory interface
- * @export
- */
-export const CommonApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = CommonApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBacklogs(options?: RawAxiosRequestConfig): AxiosPromise<BacklogResponseDTO> {
-            return localVarFp.getBacklogs(options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * CommonApi - object-oriented interface
- * @export
- * @class CommonApi
- * @extends {BaseAPI}
- */
-export class CommonApi extends BaseAPI {
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CommonApi
-     */
-    public getBacklogs(options?: RawAxiosRequestConfig) {
-        return CommonApiFp(this.configuration).getBacklogs(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -34749,6 +29496,136 @@ export class KothKingOfTheHillApi extends BaseAPI {
      */
     public getTopParticipants(requestParameters: KothKingOfTheHillApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig) {
         return KothKingOfTheHillApiFp(this.configuration).getTopParticipants(requestParameters.kothId, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * LobbiesApi - axios parameter creator
+ * @export
+ */
+export const LobbiesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get top participants for a lobby
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants: async (tournamentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tournamentId' is not null or undefined
+            assertParamExists('getTopParticipants', 'tournamentId', tournamentId)
+            const localVarPath = `/lobbies/{tournamentId}/top-participants`
+                .replace(`{${"tournamentId"}}`, encodeURIComponent(String(tournamentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * LobbiesApi - functional programming interface
+ * @export
+ */
+export const LobbiesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = LobbiesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get top participants for a lobby
+         * @param {string} tournamentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTopParticipants(tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['LobbiesApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * LobbiesApi - factory interface
+ * @export
+ */
+export const LobbiesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = LobbiesApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get top participants for a lobby
+         * @param {LobbiesApiGetTopParticipantsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTopParticipants(requestParameters: LobbiesApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TopKothParticipantDTO>> {
+            return localVarFp.getTopParticipants(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for getTopParticipants operation in LobbiesApi.
+ * @export
+ * @interface LobbiesApiGetTopParticipantsRequest
+ */
+export interface LobbiesApiGetTopParticipantsRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof LobbiesApiGetTopParticipants
+     */
+    readonly tournamentId: string
+}
+
+/**
+ * LobbiesApi - object-oriented interface
+ * @export
+ * @class LobbiesApi
+ * @extends {BaseAPI}
+ */
+export class LobbiesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get top participants for a lobby
+     * @param {LobbiesApiGetTopParticipantsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LobbiesApi
+     */
+    public getTopParticipants(requestParameters: LobbiesApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig) {
+        return LobbiesApiFp(this.configuration).getTopParticipants(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -36333,49 +31210,6 @@ export const PredictionMarketApiAxiosParamCreator = function (configuration?: Co
         },
         /**
          * 
-         * @summary Get a list of prediction markets
-         * @param {GetMarketsStatusEnum} [status] Filter by market status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getMarkets: async (status?: GetMarketsStatusEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/prediction-market/markets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { 
-                method: 'GET', 
-                ...baseOptions, 
-                ...options,
-                withCredentials: configuration?.withCredentials 
-            };
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            if (status !== undefined) {
-                localVarQueryParameter['status'] = status;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Get player history
          * @param {string} id 
          * @param {PlayerHistoryFilterDto} [query] 
@@ -36677,19 +31511,6 @@ export const PredictionMarketApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get a list of prediction markets
-         * @param {GetMarketsStatusEnum} [status] Filter by market status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getMarkets(status?: GetMarketsStatusEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetMarketsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getMarkets(status, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PredictionMarketApi.getMarkets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Get player history
          * @param {string} id 
          * @param {PlayerHistoryFilterDto} [query] 
@@ -36798,16 +31619,6 @@ export const PredictionMarketApiFactory = function (configuration?: Configuratio
          */
         getMarketActivity(requestParameters: PredictionMarketApiGetMarketActivityRequest, options?: RawAxiosRequestConfig): AxiosPromise<TradeActivityResponseDto> {
             return localVarFp.getMarketActivity(requestParameters.slug, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get a list of prediction markets
-         * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getMarkets(requestParameters: PredictionMarketApiGetMarketsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<GetMarketsResponse> {
-            return localVarFp.getMarkets(requestParameters.status, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -36923,20 +31734,6 @@ export interface PredictionMarketApiGetMarketActivityRequest {
      * @memberof PredictionMarketApiGetMarketActivity
      */
     readonly slug: string
-}
-
-/**
- * Request parameters for getMarkets operation in PredictionMarketApi.
- * @export
- * @interface PredictionMarketApiGetMarketsRequest
- */
-export interface PredictionMarketApiGetMarketsRequest {
-    /**
-     * Filter by market status
-     * @type {'draft' | 'open' | 'paused' | 'resolved' | 'settled' | 'voided' | 'closed' | 'all'}
-     * @memberof PredictionMarketApiGetMarkets
-     */
-    readonly status?: GetMarketsStatusEnum
 }
 
 /**
@@ -37096,18 +31893,6 @@ export class PredictionMarketApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get a list of prediction markets
-     * @param {PredictionMarketApiGetMarketsRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PredictionMarketApi
-     */
-    public getMarkets(requestParameters: PredictionMarketApiGetMarketsRequest = {}, options?: RawAxiosRequestConfig) {
-        return PredictionMarketApiFp(this.configuration).getMarkets(requestParameters.status, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Get player history
      * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -37195,20 +31980,6 @@ export const GetLeaderboardOrderEnum = {
     Desc: 'desc'
 } as const;
 export type GetLeaderboardOrderEnum = typeof GetLeaderboardOrderEnum[keyof typeof GetLeaderboardOrderEnum];
-/**
- * @export
- */
-export const GetMarketsStatusEnum = {
-    Draft: 'draft',
-    Open: 'open',
-    Paused: 'paused',
-    Resolved: 'resolved',
-    Settled: 'settled',
-    Voided: 'voided',
-    Closed: 'closed',
-    All: 'all'
-} as const;
-export type GetMarketsStatusEnum = typeof GetMarketsStatusEnum[keyof typeof GetMarketsStatusEnum];
 /**
  * @export
  */
@@ -38654,9 +33425,9 @@ export type Null = null
 
 export class Client extends BaseAPI {
   public readonly card: CardApi;
-  public readonly common: CommonApi;
   public readonly hero: HeroApi;
   public readonly kothKingOfTheHill: KothKingOfTheHillApi;
+  public readonly lobbies: LobbiesApi;
   public readonly marketplace: MarketplaceApi;
   public readonly player: PlayerApi;
   public readonly predictionMarket: PredictionMarketApi;
@@ -38670,9 +33441,9 @@ export class Client extends BaseAPI {
     super(config)
     this.config = config
     this.card = new CardApi(config);
-    this.common = new CommonApi(config);
     this.hero = new HeroApi(config);
     this.kothKingOfTheHill = new KothKingOfTheHillApi(config);
+    this.lobbies = new LobbiesApi(config);
     this.marketplace = new MarketplaceApi(config);
     this.player = new PlayerApi(config);
     this.predictionMarket = new PredictionMarketApi(config);
