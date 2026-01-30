@@ -29511,10 +29511,12 @@ export const LobbiesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get top participants for a lobby
          * @param {string} tournamentId 
+         * @param {number} [limit] Number of participants to return
+         * @param {number} [offset] Offset for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopParticipants: async (tournamentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getTopParticipants: async (tournamentId: string, limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'tournamentId' is not null or undefined
             assertParamExists('getTopParticipants', 'tournamentId', tournamentId)
             const localVarPath = `/lobbies/{tournamentId}/top-participants`
@@ -29537,6 +29539,14 @@ export const LobbiesApiAxiosParamCreator = function (configuration?: Configurati
 
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
 
 
     
@@ -29563,11 +29573,13 @@ export const LobbiesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get top participants for a lobby
          * @param {string} tournamentId 
+         * @param {number} [limit] Number of participants to return
+         * @param {number} [offset] Offset for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopParticipants(tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, options);
+        async getTopParticipants(tournamentId: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LobbiesApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -29590,7 +29602,7 @@ export const LobbiesApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         getTopParticipants(requestParameters: LobbiesApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<TopKothParticipantDTO>> {
-            return localVarFp.getTopParticipants(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+            return localVarFp.getTopParticipants(requestParameters.tournamentId, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -29607,6 +29619,20 @@ export interface LobbiesApiGetTopParticipantsRequest {
      * @memberof LobbiesApiGetTopParticipants
      */
     readonly tournamentId: string
+
+    /**
+     * Number of participants to return
+     * @type {number}
+     * @memberof LobbiesApiGetTopParticipants
+     */
+    readonly limit?: number
+
+    /**
+     * Offset for pagination
+     * @type {number}
+     * @memberof LobbiesApiGetTopParticipants
+     */
+    readonly offset?: number
 }
 
 /**
@@ -29625,7 +29651,7 @@ export class LobbiesApi extends BaseAPI {
      * @memberof LobbiesApi
      */
     public getTopParticipants(requestParameters: LobbiesApiGetTopParticipantsRequest, options?: RawAxiosRequestConfig) {
-        return LobbiesApiFp(this.configuration).getTopParticipants(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+        return LobbiesApiFp(this.configuration).getTopParticipants(requestParameters.tournamentId, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

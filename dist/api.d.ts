@@ -28464,10 +28464,12 @@ export declare const LobbiesApiAxiosParamCreator: (configuration?: Configuration
      *
      * @summary Get top participants for a lobby
      * @param {string} tournamentId
+     * @param {number} [limit] Number of participants to return
+     * @param {number} [offset] Offset for pagination
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTopParticipants: (tournamentId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getTopParticipants: (tournamentId: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LobbiesApi - functional programming interface
@@ -28478,10 +28480,12 @@ export declare const LobbiesApiFp: (configuration?: Configuration) => {
      *
      * @summary Get top participants for a lobby
      * @param {string} tournamentId
+     * @param {number} [limit] Number of participants to return
+     * @param {number} [offset] Offset for pagination
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTopParticipants(tournamentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>>;
+    getTopParticipants(tournamentId: string, limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopKothParticipantDTO>>>;
 };
 /**
  * LobbiesApi - factory interface
@@ -28509,6 +28513,18 @@ export interface LobbiesApiGetTopParticipantsRequest {
      * @memberof LobbiesApiGetTopParticipants
      */
     readonly tournamentId: string;
+    /**
+     * Number of participants to return
+     * @type {number}
+     * @memberof LobbiesApiGetTopParticipants
+     */
+    readonly limit?: number;
+    /**
+     * Offset for pagination
+     * @type {number}
+     * @memberof LobbiesApiGetTopParticipants
+     */
+    readonly offset?: number;
 }
 /**
  * LobbiesApi - object-oriented interface

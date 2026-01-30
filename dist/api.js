@@ -2312,10 +2312,12 @@ const LobbiesApiAxiosParamCreator = function (configuration) {
          *
          * @summary Get top participants for a lobby
          * @param {string} tournamentId
+         * @param {number} [limit] Number of participants to return
+         * @param {number} [offset] Offset for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopParticipants: async (tournamentId, options = {}) => {
+        getTopParticipants: async (tournamentId, limit, offset, options = {}) => {
             // verify required parameter 'tournamentId' is not null or undefined
             (0, common_1.assertParamExists)('getTopParticipants', 'tournamentId', tournamentId);
             const localVarPath = `/lobbies/{tournamentId}/top-participants`
@@ -2336,6 +2338,12 @@ const LobbiesApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication apiKey required
             await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
@@ -2358,11 +2366,13 @@ const LobbiesApiFp = function (configuration) {
          *
          * @summary Get top participants for a lobby
          * @param {string} tournamentId
+         * @param {number} [limit] Number of participants to return
+         * @param {number} [offset] Offset for pagination
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopParticipants(tournamentId, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, options);
+        async getTopParticipants(tournamentId, limit, offset, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopParticipants(tournamentId, limit, offset, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['LobbiesApi.getTopParticipants']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2385,7 +2395,7 @@ const LobbiesApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         getTopParticipants(requestParameters, options) {
-            return localVarFp.getTopParticipants(requestParameters.tournamentId, options).then((request) => request(axios, basePath));
+            return localVarFp.getTopParticipants(requestParameters.tournamentId, requestParameters.limit, requestParameters.offset, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2406,7 +2416,7 @@ class LobbiesApi extends base_1.BaseAPI {
      * @memberof LobbiesApi
      */
     getTopParticipants(requestParameters, options) {
-        return (0, exports.LobbiesApiFp)(this.configuration).getTopParticipants(requestParameters.tournamentId, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.LobbiesApiFp)(this.configuration).getTopParticipants(requestParameters.tournamentId, requestParameters.limit, requestParameters.offset, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.LobbiesApi = LobbiesApi;
