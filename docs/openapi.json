@@ -23496,6 +23496,74 @@
           "limit"
         ]
       },
+      "LobbiesDashboardTimeframeDTO": {
+        "type": "object",
+        "properties": {
+          "1d": {
+            "type": "number",
+            "description": "Last 24 hours",
+            "example": 5
+          },
+          "30d": {
+            "type": "number",
+            "description": "Last 30 days",
+            "example": 42
+          },
+          "total": {
+            "type": "number",
+            "description": "All time total",
+            "example": 120
+          }
+        },
+        "required": [
+          "1d",
+          "30d",
+          "total"
+        ]
+      },
+      "LobbiesDashboardResponseDTO": {
+        "type": "object",
+        "properties": {
+          "totalLobbies": {
+            "description": "Lobbies created (all statuses) per timeframe",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LobbiesDashboardTimeframeDTO"
+              }
+            ]
+          },
+          "totalDecks": {
+            "description": "Decks registered per timeframe",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LobbiesDashboardTimeframeDTO"
+              }
+            ]
+          },
+          "totalFragments": {
+            "description": "Fragments spent on deck registrations per timeframe",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LobbiesDashboardTimeframeDTO"
+              }
+            ]
+          },
+          "uniquePlayers": {
+            "description": "Unique players who registered decks per timeframe",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LobbiesDashboardTimeframeDTO"
+              }
+            ]
+          }
+        },
+        "required": [
+          "totalLobbies",
+          "totalDecks",
+          "totalFragments",
+          "uniquePlayers"
+        ]
+      },
       "NearStartTournamentResponseDTO": {
         "type": "object",
         "properties": {
@@ -23797,6 +23865,11 @@
       "TournamentDeckPlayerDTO": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Player ID",
+            "example": "0x1234567890abcdef1234567890abcdef12345678"
+          },
           "profilePicture": {
             "type": "string",
             "description": "Player profile picture URL",
@@ -23814,6 +23887,7 @@
           }
         },
         "required": [
+          "id",
           "name",
           "handle"
         ]
@@ -23836,6 +23910,16 @@
             "description": "Hero handle",
             "example": "@juansnow"
           },
+          "score": {
+            "type": "string",
+            "description": "Hero score",
+            "example": "100.0"
+          },
+          "rank": {
+            "type": "number",
+            "description": "Hero rank",
+            "example": 1
+          },
           "rarity": {
             "type": "string",
             "description": "Hero rarity",
@@ -23844,6 +23928,7 @@
         },
         "required": [
           "id",
+          "score",
           "rarity"
         ]
       },
@@ -23887,6 +23972,72 @@
           "score",
           "rank",
           "rewards"
+        ]
+      },
+      "GetHeroesLeaderboardQueryDTO": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Number of participants to return",
+            "example": 3,
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "number",
+            "description": "Offset for pagination",
+            "example": 0,
+            "minimum": 0
+          },
+          "tournamentId": {
+            "type": "string",
+            "description": "Tournament ID"
+          },
+          "search": {
+            "type": "string",
+            "description": "Search term to filter heroes by name or handle",
+            "example": "hero name"
+          }
+        },
+        "required": [
+          "tournamentId"
+        ]
+      },
+      "HeroLeaderboardResponseDTO": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "number",
+            "description": "Hero rank in the lobby",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Hero display name",
+            "example": "Juan Snow"
+          },
+          "picture": {
+            "type": "string",
+            "description": "Hero profile picture URL",
+            "example": "https://example.com/avatar.png"
+          },
+          "score": {
+            "type": "string",
+            "description": "Hero fantasy score in the lobby",
+            "example": "1234.56"
+          },
+          "stars": {
+            "type": "number",
+            "description": "Hero stars",
+            "example": 5
+          }
+        },
+        "required": [
+          "rank",
+          "name",
+          "score",
+          "stars"
         ]
       },
       "ClaimFragmentRewardResponseDTO": {

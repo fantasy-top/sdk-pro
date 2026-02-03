@@ -6894,6 +6894,37 @@ export type GetHeroScoresQueryOrderByDTOTweetCountEnum = typeof GetHeroScoresQue
 /**
  *
  * @export
+ * @interface GetHeroesLeaderboardQueryDTO
+ */
+export interface GetHeroesLeaderboardQueryDTO {
+    /**
+     * Number of participants to return
+     * @type {number}
+     * @memberof GetHeroesLeaderboardQueryDTO
+     */
+    'limit'?: number;
+    /**
+     * Offset for pagination
+     * @type {number}
+     * @memberof GetHeroesLeaderboardQueryDTO
+     */
+    'offset'?: number;
+    /**
+     * Tournament ID
+     * @type {string}
+     * @memberof GetHeroesLeaderboardQueryDTO
+     */
+    'tournamentId': string;
+    /**
+     * Search term to filter heroes by name or handle
+     * @type {string}
+     * @memberof GetHeroesLeaderboardQueryDTO
+     */
+    'search'?: string;
+}
+/**
+ *
+ * @export
  * @interface GetHeroesWithStatsDTO
  */
 export interface GetHeroesWithStatsDTO {
@@ -10553,6 +10584,43 @@ export interface HeroLeaderboardDTO {
 /**
  *
  * @export
+ * @interface HeroLeaderboardResponseDTO
+ */
+export interface HeroLeaderboardResponseDTO {
+    /**
+     * Hero rank in the lobby
+     * @type {number}
+     * @memberof HeroLeaderboardResponseDTO
+     */
+    'rank': number;
+    /**
+     * Hero display name
+     * @type {string}
+     * @memberof HeroLeaderboardResponseDTO
+     */
+    'name': string;
+    /**
+     * Hero profile picture URL
+     * @type {string}
+     * @memberof HeroLeaderboardResponseDTO
+     */
+    'picture'?: string;
+    /**
+     * Hero fantasy score in the lobby
+     * @type {string}
+     * @memberof HeroLeaderboardResponseDTO
+     */
+    'score': string;
+    /**
+     * Hero stars
+     * @type {number}
+     * @memberof HeroLeaderboardResponseDTO
+     */
+    'stars': number;
+}
+/**
+ *
+ * @export
  * @interface HeroPayouts
  */
 export interface HeroPayouts {
@@ -13899,6 +13967,62 @@ export interface LinkMarketEntityDto {
      * @memberof LinkMarketEntityDto
      */
     'entity_id': string;
+}
+/**
+ *
+ * @export
+ * @interface LobbiesDashboardResponseDTO
+ */
+export interface LobbiesDashboardResponseDTO {
+    /**
+     * Lobbies created (all statuses) per timeframe
+     * @type {LobbiesDashboardTimeframeDTO}
+     * @memberof LobbiesDashboardResponseDTO
+     */
+    'totalLobbies': LobbiesDashboardTimeframeDTO;
+    /**
+     * Decks registered per timeframe
+     * @type {LobbiesDashboardTimeframeDTO}
+     * @memberof LobbiesDashboardResponseDTO
+     */
+    'totalDecks': LobbiesDashboardTimeframeDTO;
+    /**
+     * Fragments spent on deck registrations per timeframe
+     * @type {LobbiesDashboardTimeframeDTO}
+     * @memberof LobbiesDashboardResponseDTO
+     */
+    'totalFragments': LobbiesDashboardTimeframeDTO;
+    /**
+     * Unique players who registered decks per timeframe
+     * @type {LobbiesDashboardTimeframeDTO}
+     * @memberof LobbiesDashboardResponseDTO
+     */
+    'uniquePlayers': LobbiesDashboardTimeframeDTO;
+}
+/**
+ *
+ * @export
+ * @interface LobbiesDashboardTimeframeDTO
+ */
+export interface LobbiesDashboardTimeframeDTO {
+    /**
+     * Last 24 hours
+     * @type {number}
+     * @memberof LobbiesDashboardTimeframeDTO
+     */
+    '1d': number;
+    /**
+     * Last 30 days
+     * @type {number}
+     * @memberof LobbiesDashboardTimeframeDTO
+     */
+    '30d': number;
+    /**
+     * All time total
+     * @type {number}
+     * @memberof LobbiesDashboardTimeframeDTO
+     */
+    'total': number;
 }
 /**
  *
@@ -25241,6 +25365,18 @@ export interface TournamentDeckHeroDTO {
      */
     'handle'?: string;
     /**
+     * Hero score
+     * @type {string}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'score': string;
+    /**
+     * Hero rank
+     * @type {number}
+     * @memberof TournamentDeckHeroDTO
+     */
+    'rank'?: number;
+    /**
      * Hero rarity
      * @type {string}
      * @memberof TournamentDeckHeroDTO
@@ -25253,6 +25389,12 @@ export interface TournamentDeckHeroDTO {
  * @interface TournamentDeckPlayerDTO
  */
 export interface TournamentDeckPlayerDTO {
+    /**
+     * Player ID
+     * @type {string}
+     * @memberof TournamentDeckPlayerDTO
+     */
+    'id': string;
     /**
      * Player profile picture URL
      * @type {string}
