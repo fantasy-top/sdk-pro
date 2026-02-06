@@ -6279,6 +6279,12 @@ export interface GetCardsForDeckBuilderDTO {
      * @memberof GetCardsForDeckBuilderDTO
      */
     'tournamentMode'?: GetCardsForDeckBuilderDTOTournamentModeEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof GetCardsForDeckBuilderDTO
+     */
+    'tournamentId'?: string;
 }
 export declare const GetCardsForDeckBuilderDTOTournamentModeEnum: {
     readonly Main: "main";

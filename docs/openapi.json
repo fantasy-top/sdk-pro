@@ -6809,6 +6809,9 @@
               "main",
               "private"
             ]
+          },
+          "tournamentId": {
+            "type": "string"
           }
         }
       },
