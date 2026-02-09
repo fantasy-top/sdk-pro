@@ -1548,43 +1548,6 @@ export interface CardWithoutHeroes {
 /**
  * 
  * @export
- * @interface CheckMonadUserResponseDto
- */
-export interface CheckMonadUserResponseDto {
-    /**
-     * Whether the user exists in the Monad database
-     * @type {boolean}
-     * @memberof CheckMonadUserResponseDto
-     */
-    'exists': boolean;
-    /**
-     * Player address if found in Monad database
-     * @type {string}
-     * @memberof CheckMonadUserResponseDto
-     */
-    'monadAddress'?: string;
-    /**
-     * Status of Monad rewards: not-eligible, claimed, error
-     * @type {string}
-     * @memberof CheckMonadUserResponseDto
-     */
-    'rewardStatus'?: string;
-    /**
-     * Rewards given to the Monad user
-     * @type {Array<MonadReward>}
-     * @memberof CheckMonadUserResponseDto
-     */
-    'rewards'?: Array<MonadReward>;
-    /**
-     * Error message if rewards could not be claimed
-     * @type {string}
-     * @memberof CheckMonadUserResponseDto
-     */
-    'errorMessage'?: string;
-}
-/**
- * 
- * @export
  * @interface ChestConfigDTO
  */
 export interface ChestConfigDTO {
@@ -15692,25 +15655,6 @@ export interface MetaInfiniteQueryDto {
      * @memberof MetaInfiniteQueryDto
      */
     'limit': number;
-}
-/**
- * 
- * @export
- * @interface MonadReward
- */
-export interface MonadReward {
-    /**
-     * Type of reward
-     * @type {string}
-     * @memberof MonadReward
-     */
-    'type': string;
-    /**
-     * Amount of reward
-     * @type {number}
-     * @memberof MonadReward
-     */
-    'amount': number;
 }
 /**
  * 

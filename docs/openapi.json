@@ -2693,60 +2693,6 @@
           "cards_nb"
         ]
       },
-      "MonadReward": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Type of reward",
-            "example": "FAN"
-          },
-          "amount": {
-            "type": "number",
-            "description": "Amount of reward",
-            "example": 1000
-          }
-        },
-        "required": [
-          "type",
-          "amount"
-        ]
-      },
-      "CheckMonadUserResponseDto": {
-        "type": "object",
-        "properties": {
-          "exists": {
-            "type": "boolean",
-            "description": "Whether the user exists in the Monad database",
-            "example": true
-          },
-          "monadAddress": {
-            "type": "string",
-            "description": "Player address if found in Monad database",
-            "example": "0x1234567890abcdef..."
-          },
-          "rewardStatus": {
-            "type": "string",
-            "description": "Status of Monad rewards: not-eligible, claimed, error",
-            "example": "claimed"
-          },
-          "rewards": {
-            "description": "Rewards given to the Monad user",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MonadReward"
-            }
-          },
-          "errorMessage": {
-            "type": "string",
-            "description": "Error message if rewards could not be claimed",
-            "example": "Rewards already claimed"
-          }
-        },
-        "required": [
-          "exists"
-        ]
-      },
       "AddSuperUserDTO": {
         "type": "object",
         "properties": {
