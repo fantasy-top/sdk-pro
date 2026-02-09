@@ -3782,6 +3782,12 @@ export interface CursorDTO {
      * @memberof CursorDTO
      */
     'id': string;
+    /**
+     * Slots remaining for cursor (used with filling soon filter pagination)
+     * @type {number}
+     * @memberof CursorDTO
+     */
+    'slots_remaining'?: number;
 }
 /**
  * 
@@ -9717,6 +9723,48 @@ export interface GetTournamentsQueryDTO {
      * @memberof GetTournamentsQueryDTO
      */
     'orderType'?: GetTournamentsQueryDTOOrderTypeEnum;
+    /**
+     * Minimum entry cost
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'minEntryCost'?: number;
+    /**
+     * Maximum entry cost
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'maxEntryCost'?: number;
+    /**
+     * Minimum prize pool
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'minPrizePool'?: number;
+    /**
+     * Maximum prize pool
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'maxPrizePool'?: number;
+    /**
+     * Minimum fan points
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'minFanPoints'?: number;
+    /**
+     * Maximum fan points
+     * @type {number}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'maxFanPoints'?: number;
+    /**
+     * Filter tournaments by filling soon status
+     * @type {boolean}
+     * @memberof GetTournamentsQueryDTO
+     */
+    'isFillingSoon'?: boolean;
 }
 
 export const GetTournamentsQueryDTOOrderTypeEnum = {
@@ -18606,6 +18654,12 @@ export interface PrivateTournamentDTO {
      * @memberof PrivateTournamentDTO
      */
     'startOnceFilled': boolean;
+    /**
+     * Slots remaining until filled (only when using filling soon filter)
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'slotsRemaining'?: number;
     /**
      * Tournament start timestamp
      * @type {string}

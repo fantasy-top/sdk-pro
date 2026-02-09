@@ -22919,6 +22919,11 @@
             "type": "string",
             "description": "ID",
             "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "slots_remaining": {
+            "type": "number",
+            "description": "Slots remaining for cursor (used with filling soon filter pagination)",
+            "example": 5
           }
         },
         "required": [
@@ -22983,6 +22988,35 @@
               "live",
               "closed"
             ]
+          },
+          "minEntryCost": {
+            "type": "number",
+            "description": "Minimum entry cost"
+          },
+          "maxEntryCost": {
+            "type": "number",
+            "description": "Maximum entry cost"
+          },
+          "minPrizePool": {
+            "type": "number",
+            "description": "Minimum prize pool"
+          },
+          "maxPrizePool": {
+            "type": "number",
+            "description": "Maximum prize pool"
+          },
+          "minFanPoints": {
+            "type": "number",
+            "description": "Minimum fan points"
+          },
+          "maxFanPoints": {
+            "type": "number",
+            "description": "Maximum fan points"
+          },
+          "isFillingSoon": {
+            "type": "boolean",
+            "description": "Filter tournaments by filling soon status",
+            "example": true
           }
         },
         "required": [
@@ -23302,6 +23336,11 @@
             "type": "boolean",
             "description": "Tournament start once filled",
             "example": true
+          },
+          "slotsRemaining": {
+            "type": "number",
+            "description": "Slots remaining until filled (only when using filling soon filter)",
+            "example": 5
           },
           "started_at": {
             "type": "string",
