@@ -163,37 +163,6 @@ export interface ActivityMetaDTO {
 /**
  *
  * @export
- * @interface AddCoinToHeroDTO
- */
-export interface AddCoinToHeroDTO {
-    /**
-     * Hero ID
-     * @type {string}
-     * @memberof AddCoinToHeroDTO
-     */
-    'heroId': string;
-    /**
-     * Contract address
-     * @type {string}
-     * @memberof AddCoinToHeroDTO
-     */
-    'contract_address': string;
-    /**
-     * Network name (full or short)
-     * @type {string}
-     * @memberof AddCoinToHeroDTO
-     */
-    'network_name': string;
-    /**
-     * Force overwrite existing coin
-     * @type {boolean}
-     * @memberof AddCoinToHeroDTO
-     */
-    'force'?: boolean;
-}
-/**
- *
- * @export
  * @interface AddSuperUserDTO
  */
 export interface AddSuperUserDTO {
@@ -28133,14 +28102,6 @@ export declare const HeroApiAxiosParamCreator: (configuration?: Configuration) =
     getHeroTransactions: (query?: GetTransactionDTO, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get heroes by name or handle
-     * @param {string} search
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getHeroesByHandleOrName: (search: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
      * @summary Get heroes by IDs
      * @param {Array<string>} ids
      * @param {*} [options] Override http request option.
@@ -28198,14 +28159,6 @@ export declare const HeroApiFp: (configuration?: Configuration) => {
     getHeroTransactions(query?: GetTransactionDTO, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedTradesDTOResult>>;
     /**
      *
-     * @summary Get heroes by name or handle
-     * @param {string} search
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getHeroesByHandleOrName(search: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Hero>>>;
-    /**
-     *
      * @summary Get heroes by IDs
      * @param {Array<string>} ids
      * @param {*} [options] Override http request option.
@@ -28258,14 +28211,6 @@ export declare const HeroApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     getHeroTransactions(requestParameters?: HeroApiGetHeroTransactionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedTradesDTOResult>;
-    /**
-     *
-     * @summary Get heroes by name or handle
-     * @param {HeroApiGetHeroesByHandleOrNameRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getHeroesByHandleOrName(requestParameters: HeroApiGetHeroesByHandleOrNameRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Hero>>;
     /**
      *
      * @summary Get heroes by IDs
@@ -28359,19 +28304,6 @@ export interface HeroApiGetHeroTransactionsRequest {
     readonly query?: GetTransactionDTO;
 }
 /**
- * Request parameters for getHeroesByHandleOrName operation in HeroApi.
- * @export
- * @interface HeroApiGetHeroesByHandleOrNameRequest
- */
-export interface HeroApiGetHeroesByHandleOrNameRequest {
-    /**
-     *
-     * @type {string}
-     * @memberof HeroApiGetHeroesByHandleOrName
-     */
-    readonly search: string;
-}
-/**
  * Request parameters for getHeroesByIds operation in HeroApi.
  * @export
  * @interface HeroApiGetHeroesByIdsRequest
@@ -28436,15 +28368,6 @@ export declare class HeroApi extends BaseAPI {
      * @memberof HeroApi
      */
     getHeroTransactions(requestParameters?: HeroApiGetHeroTransactionsRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PaginatedTradesDTOResult, any, {}>>;
-    /**
-     *
-     * @summary Get heroes by name or handle
-     * @param {HeroApiGetHeroesByHandleOrNameRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HeroApi
-     */
-    getHeroesByHandleOrName(requestParameters: HeroApiGetHeroesByHandleOrNameRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<Hero[], any, {}>>;
     /**
      *
      * @summary Get heroes by IDs

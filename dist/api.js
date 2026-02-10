@@ -1837,44 +1837,6 @@ const HeroApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Get heroes by name or handle
-         * @param {string} search
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroesByHandleOrName: async (search, options = {}) => {
-            // verify required parameter 'search' is not null or undefined
-            (0, common_1.assertParamExists)('getHeroesByHandleOrName', 'search', search);
-            const localVarPath = `/hero/search/name`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = {
-                method: 'GET',
-                ...baseOptions,
-                ...options,
-                withCredentials: configuration?.withCredentials
-            };
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         *
          * @summary Get heroes by IDs
          * @param {Array<string>} ids
          * @param {*} [options] Override http request option.
@@ -1991,19 +1953,6 @@ const HeroApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get heroes by name or handle
-         * @param {string} search
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getHeroesByHandleOrName(search, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getHeroesByHandleOrName(search, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = base_1.operationServerMap['HeroApi.getHeroesByHandleOrName']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         *
          * @summary Get heroes by IDs
          * @param {Array<string>} ids
          * @param {*} [options] Override http request option.
@@ -2074,16 +2023,6 @@ const HeroApiFactory = function (configuration, basePath, axios) {
          */
         getHeroTransactions(requestParameters = {}, options) {
             return localVarFp.getHeroTransactions(requestParameters.query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Get heroes by name or handle
-         * @param {HeroApiGetHeroesByHandleOrNameRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getHeroesByHandleOrName(requestParameters, options) {
-            return localVarFp.getHeroesByHandleOrName(requestParameters.search, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -2159,17 +2098,6 @@ class HeroApi extends base_1.BaseAPI {
      */
     getHeroTransactions(requestParameters = {}, options) {
         return (0, exports.HeroApiFp)(this.configuration).getHeroTransactions(requestParameters.query, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get heroes by name or handle
-     * @param {HeroApiGetHeroesByHandleOrNameRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof HeroApi
-     */
-    getHeroesByHandleOrName(requestParameters, options) {
-        return (0, exports.HeroApiFp)(this.configuration).getHeroesByHandleOrName(requestParameters.search, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

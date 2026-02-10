@@ -372,45 +372,6 @@
         ]
       }
     },
-    "/hero/search/name": {
-      "get": {
-        "operationId": "getHeroesByHandleOrName",
-        "summary": "Get heroes by name or handle",
-        "parameters": [
-          {
-            "name": "search",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Found heroes",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hero"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Hero"
-        ],
-        "security": [
-          {
-            "apiKey": []
-          }
-        ]
-      }
-    },
     "/hero/all": {
       "get": {
         "operationId": "getAllHeroes",
@@ -8156,25 +8117,19 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique identifier for the tournament history entry",
-            "example": "123e4567-e89b-12d3-a456-426614174000"
+            "description": "Unique identifier for the tournament history entry"
           },
           "current_rank": {
             "type": "number",
-            "description": "Current rank of the hero",
-            "example": 1
+            "description": "Current rank of the hero"
           },
           "views": {
-            "format": "int64",
-            "type": "integer",
-            "description": "Number of views for the hero",
-            "example": "1000"
+            "type": "number",
+            "description": "Number of views for the hero"
           },
           "created_at": {
-            "format": "date-time",
             "type": "string",
-            "description": "Creation timestamp",
-            "example": "2024-07-01T13:34:57.306Z"
+            "description": "Creation timestamp"
           }
         },
         "required": [
@@ -8496,36 +8451,6 @@
           "currentStats",
           "tournamentStats",
           "tacticStats"
-        ]
-      },
-      "addCoinToHeroDTO": {
-        "type": "object",
-        "properties": {
-          "heroId": {
-            "type": "string",
-            "description": "Hero ID",
-            "example": "1084397942319054850"
-          },
-          "contract_address": {
-            "type": "string",
-            "description": "Contract address",
-            "example": "acatzTjUeHDT3SoufN6NMxGUmBFtoqFHnFwusdw8kYX"
-          },
-          "network_name": {
-            "type": "string",
-            "description": "Network name (full or short)",
-            "example": "Solana"
-          },
-          "force": {
-            "type": "boolean",
-            "description": "Force overwrite existing coin",
-            "example": false
-          }
-        },
-        "required": [
-          "heroId",
-          "contract_address",
-          "network_name"
         ]
       },
       "GetHeroHoldersDTO": {
