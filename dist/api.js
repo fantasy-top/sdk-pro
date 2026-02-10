@@ -1639,10 +1639,11 @@ const HeroApiAxiosParamCreator = function (configuration) {
          * @param {boolean} orderByStarsChange
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
+         * @param {string} [search] Filter heroes by name or handle
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes: async (orderByStarsChange, limit, page, options = {}) => {
+        getAllHeroes: async (orderByStarsChange, limit, page, search, options = {}) => {
             // verify required parameter 'orderByStarsChange' is not null or undefined
             (0, common_1.assertParamExists)('getAllHeroes', 'orderByStarsChange', orderByStarsChange);
             const localVarPath = `/hero/all`;
@@ -1670,6 +1671,9 @@ const HeroApiAxiosParamCreator = function (configuration) {
             }
             if (orderByStarsChange !== undefined) {
                 localVarQueryParameter['order_by_stars_change'] = orderByStarsChange;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1923,11 +1927,12 @@ const HeroApiFp = function (configuration) {
          * @param {boolean} orderByStarsChange
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
+         * @param {string} [search] Filter heroes by name or handle
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllHeroes(orderByStarsChange, limit, page, options) {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, options);
+        async getAllHeroes(orderByStarsChange, limit, page, search, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, search, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['HeroApi.getAllHeroes']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2028,7 +2033,7 @@ const HeroApiFactory = function (configuration, basePath, axios) {
          * @throws {RequiredError}
          */
         getAllHeroes(requestParameters, options) {
-            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, requestParameters.search, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -2109,7 +2114,7 @@ class HeroApi extends base_1.BaseAPI {
      * @memberof HeroApi
      */
     getAllHeroes(requestParameters, options) {
-        return (0, exports.HeroApiFp)(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+        return (0, exports.HeroApiFp)(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, requestParameters.search, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

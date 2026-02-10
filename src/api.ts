@@ -464,6 +464,37 @@ export interface BangerWordDiscoveryResponseDto {
 /**
  * 
  * @export
+ * @interface BannedHeroDTO
+ */
+export interface BannedHeroDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'heroId': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'handle': string;
+    /**
+     * Hero avatar URL
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'avatarUrl': string | null;
+}
+/**
+ * 
+ * @export
  * @interface Banner
  */
 export interface Banner {
@@ -2996,6 +3027,18 @@ export interface CreatePrivateTournamentDTO {
      * @memberof CreatePrivateTournamentDTO
      */
     'startOnceFilled': boolean;
+    /**
+     * Number of cards required for each deck
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'numberOfCards': number;
+    /**
+     * Hero IDs that are banned from deck creation
+     * @type {Array<string>}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'bannedHeroesIds'?: Array<string>;
 }
 /**
  * 
@@ -6302,6 +6345,12 @@ export type GetCardsForDeckBuilderDTOTournamentModeEnum = typeof GetCardsForDeck
 export interface GetCardsForDeckBuilderFiltersDTO {
     /**
      * 
+     * @type {GetCardsForDeckBuilderFiltersDTOHeroId}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'hero_id': GetCardsForDeckBuilderFiltersDTOHeroId;
+    /**
+     * 
      * @type {GetPlayerCardsWhereDTOName}
      * @memberof GetCardsForDeckBuilderFiltersDTO
      */
@@ -6324,6 +6373,19 @@ export interface GetCardsForDeckBuilderFiltersDTO {
      * @memberof GetCardsForDeckBuilderFiltersDTO
      */
     'stars': GetPlayerCardsWhereDTORarity;
+}
+/**
+ * 
+ * @export
+ * @interface GetCardsForDeckBuilderFiltersDTOHeroId
+ */
+export interface GetCardsForDeckBuilderFiltersDTOHeroId {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetCardsForDeckBuilderFiltersDTOHeroId
+     */
+    'notIn'?: Array<string>;
 }
 /**
  * 
@@ -18599,6 +18661,12 @@ export interface PrivateTournamentDTO {
      */
     'startOnceFilled': boolean;
     /**
+     * Number of cards required for each deck
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'numberOfCards': number;
+    /**
      * Slots remaining until filled (only when using filling soon filter)
      * @type {number}
      * @memberof PrivateTournamentDTO
@@ -18628,6 +18696,12 @@ export interface PrivateTournamentDTO {
      * @memberof PrivateTournamentDTO
      */
     'totalPrizePool'?: number;
+    /**
+     * Banned heroes (id, name, handle, avatarUrl)
+     * @type {Array<BannedHeroDTO>}
+     * @memberof PrivateTournamentDTO
+     */
+    'bannedHeroes': Array<BannedHeroDTO>;
 }
 
 export const PrivateTournamentDTOStatusEnum = {
@@ -28637,10 +28711,11 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {boolean} orderByStarsChange 
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
+         * @param {string} [search] Filter heroes by name or handle
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllHeroes: async (orderByStarsChange: boolean, limit?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllHeroes: async (orderByStarsChange: boolean, limit?: number, page?: number, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'orderByStarsChange' is not null or undefined
             assertParamExists('getAllHeroes', 'orderByStarsChange', orderByStarsChange)
             const localVarPath = `/hero/all`;
@@ -28673,6 +28748,10 @@ export const HeroApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (orderByStarsChange !== undefined) {
                 localVarQueryParameter['order_by_stars_change'] = orderByStarsChange;
+            }
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
             }
 
 
@@ -28972,11 +29051,12 @@ export const HeroApiFp = function(configuration?: Configuration) {
          * @param {boolean} orderByStarsChange 
          * @param {number} [limit] Limit the number of heroes returned
          * @param {number} [page] Page number for pagination
+         * @param {string} [search] Filter heroes by name or handle
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllHeroes(orderByStarsChange: boolean, limit?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, options);
+        async getAllHeroes(orderByStarsChange: boolean, limit?: number, page?: number, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllHeroes(orderByStarsChange, limit, page, search, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HeroApi.getAllHeroes']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -29077,7 +29157,7 @@ export const HeroApiFactory = function (configuration?: Configuration, basePath?
          * @throws {RequiredError}
          */
         getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedHeroResult> {
-            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(axios, basePath));
+            return localVarFp.getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, requestParameters.search, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -29168,6 +29248,13 @@ export interface HeroApiGetAllHeroesRequest {
      * @memberof HeroApiGetAllHeroes
      */
     readonly page?: number
+
+    /**
+     * Filter heroes by name or handle
+     * @type {string}
+     * @memberof HeroApiGetAllHeroes
+     */
+    readonly search?: string
 }
 
 /**
@@ -29270,7 +29357,7 @@ export class HeroApi extends BaseAPI {
      * @memberof HeroApi
      */
     public getAllHeroes(requestParameters: HeroApiGetAllHeroesRequest, options?: RawAxiosRequestConfig) {
-        return HeroApiFp(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+        return HeroApiFp(this.configuration).getAllHeroes(requestParameters.orderByStarsChange, requestParameters.limit, requestParameters.page, requestParameters.search, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

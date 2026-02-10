@@ -441,6 +441,15 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Filter heroes by name or handle",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6554,6 +6563,19 @@
       "GetCardsForDeckBuilderFiltersDTO": {
         "type": "object",
         "properties": {
+          "hero_id": {
+            "type": "object",
+            "properties": {
+              "notIn": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "selfRequired": false,
+            "x-nestjs_zod-self-required": false
+          },
           "name": {
             "type": "object",
             "properties": {
@@ -6726,6 +6748,7 @@
           }
         },
         "required": [
+          "hero_id",
           "name",
           "handle",
           "rarity",
@@ -23120,6 +23143,38 @@
           "type"
         ]
       },
+      "BannedHeroDTO": {
+        "type": "object",
+        "properties": {
+          "heroId": {
+            "type": "string",
+            "description": "Hero ID",
+            "example": "123456789"
+          },
+          "name": {
+            "type": "string",
+            "description": "Hero name",
+            "example": "Hero Name"
+          },
+          "handle": {
+            "type": "string",
+            "description": "Hero handle",
+            "example": "herohandle"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "description": "Hero avatar URL",
+            "example": "https://example.com/avatar.jpg",
+            "nullable": true
+          }
+        },
+        "required": [
+          "heroId",
+          "name",
+          "handle",
+          "avatarUrl"
+        ]
+      },
       "PrivateTournamentDTO": {
         "type": "object",
         "properties": {
@@ -23283,6 +23338,11 @@
             "description": "Tournament start once filled",
             "example": true
           },
+          "numberOfCards": {
+            "type": "number",
+            "description": "Number of cards required for each deck",
+            "example": 5
+          },
           "slotsRemaining": {
             "type": "number",
             "description": "Slots remaining until filled (only when using filling soon filter)",
@@ -23308,6 +23368,14 @@
             "type": "number",
             "description": "Total prize pool including bonus (prizePool + bonusAmount)",
             "example": 1200
+          },
+          "bannedHeroes": {
+            "description": "Banned heroes (id, name, handle, avatarUrl)",
+            "example": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BannedHeroDTO"
+            }
           }
         },
         "required": [
@@ -23334,7 +23402,9 @@
           "inviteCode",
           "isPrivate",
           "startOnceFilled",
-          "started_at"
+          "numberOfCards",
+          "started_at",
+          "bannedHeroes"
         ]
       },
       "GetDraftTournamentsQueryDTO": {
@@ -23594,6 +23664,25 @@
             "description": "Whether the tournament should start once it is filled",
             "example": true,
             "default": true
+          },
+          "numberOfCards": {
+            "type": "number",
+            "description": "Number of cards required for each deck",
+            "example": 5,
+            "minimum": 1,
+            "maximum": 5,
+            "default": 5
+          },
+          "bannedHeroesIds": {
+            "description": "Hero IDs that are banned from deck creation",
+            "example": [
+              "hero-id-1",
+              "hero-id-2"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -23604,7 +23693,8 @@
           "startDate",
           "endDate",
           "flagsRaw",
-          "startOnceFilled"
+          "startOnceFilled",
+          "numberOfCards"
         ]
       },
       "CreatePrivateTournamentResponseDTO": {

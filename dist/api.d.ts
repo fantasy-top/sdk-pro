@@ -452,6 +452,37 @@ export interface BangerWordDiscoveryResponseDto {
 /**
  *
  * @export
+ * @interface BannedHeroDTO
+ */
+export interface BannedHeroDTO {
+    /**
+     * Hero ID
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'heroId': string;
+    /**
+     * Hero name
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'name': string;
+    /**
+     * Hero handle
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'handle': string;
+    /**
+     * Hero avatar URL
+     * @type {string}
+     * @memberof BannedHeroDTO
+     */
+    'avatarUrl': string | null;
+}
+/**
+ *
+ * @export
  * @interface Banner
  */
 export interface Banner {
@@ -2980,6 +3011,18 @@ export interface CreatePrivateTournamentDTO {
      * @memberof CreatePrivateTournamentDTO
      */
     'startOnceFilled': boolean;
+    /**
+     * Number of cards required for each deck
+     * @type {number}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'numberOfCards': number;
+    /**
+     * Hero IDs that are banned from deck creation
+     * @type {Array<string>}
+     * @memberof CreatePrivateTournamentDTO
+     */
+    'bannedHeroesIds'?: Array<string>;
 }
 /**
  *
@@ -6268,6 +6311,12 @@ export type GetCardsForDeckBuilderDTOTournamentModeEnum = typeof GetCardsForDeck
 export interface GetCardsForDeckBuilderFiltersDTO {
     /**
      *
+     * @type {GetCardsForDeckBuilderFiltersDTOHeroId}
+     * @memberof GetCardsForDeckBuilderFiltersDTO
+     */
+    'hero_id': GetCardsForDeckBuilderFiltersDTOHeroId;
+    /**
+     *
      * @type {GetPlayerCardsWhereDTOName}
      * @memberof GetCardsForDeckBuilderFiltersDTO
      */
@@ -6290,6 +6339,19 @@ export interface GetCardsForDeckBuilderFiltersDTO {
      * @memberof GetCardsForDeckBuilderFiltersDTO
      */
     'stars': GetPlayerCardsWhereDTORarity;
+}
+/**
+ *
+ * @export
+ * @interface GetCardsForDeckBuilderFiltersDTOHeroId
+ */
+export interface GetCardsForDeckBuilderFiltersDTOHeroId {
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof GetCardsForDeckBuilderFiltersDTOHeroId
+     */
+    'notIn'?: Array<string>;
 }
 /**
  *
@@ -18483,6 +18545,12 @@ export interface PrivateTournamentDTO {
      */
     'startOnceFilled': boolean;
     /**
+     * Number of cards required for each deck
+     * @type {number}
+     * @memberof PrivateTournamentDTO
+     */
+    'numberOfCards': number;
+    /**
      * Slots remaining until filled (only when using filling soon filter)
      * @type {number}
      * @memberof PrivateTournamentDTO
@@ -18512,6 +18580,12 @@ export interface PrivateTournamentDTO {
      * @memberof PrivateTournamentDTO
      */
     'totalPrizePool'?: number;
+    /**
+     * Banned heroes (id, name, handle, avatarUrl)
+     * @type {Array<BannedHeroDTO>}
+     * @memberof PrivateTournamentDTO
+     */
+    'bannedHeroes': Array<BannedHeroDTO>;
 }
 export declare const PrivateTournamentDTOStatusEnum: {
     readonly Hidden: "hidden";
@@ -28020,10 +28094,11 @@ export declare const HeroApiAxiosParamCreator: (configuration?: Configuration) =
      * @param {boolean} orderByStarsChange
      * @param {number} [limit] Limit the number of heroes returned
      * @param {number} [page] Page number for pagination
+     * @param {string} [search] Filter heroes by name or handle
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllHeroes: (orderByStarsChange: boolean, limit?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getAllHeroes: (orderByStarsChange: boolean, limit?: number, page?: number, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get hero by handle
@@ -28084,10 +28159,11 @@ export declare const HeroApiFp: (configuration?: Configuration) => {
      * @param {boolean} orderByStarsChange
      * @param {number} [limit] Limit the number of heroes returned
      * @param {number} [page] Page number for pagination
+     * @param {string} [search] Filter heroes by name or handle
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllHeroes(orderByStarsChange: boolean, limit?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>>;
+    getAllHeroes(orderByStarsChange: boolean, limit?: number, page?: number, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedHeroResult>>;
     /**
      *
      * @summary Get hero by handle
@@ -28223,6 +28299,12 @@ export interface HeroApiGetAllHeroesRequest {
      * @memberof HeroApiGetAllHeroes
      */
     readonly page?: number;
+    /**
+     * Filter heroes by name or handle
+     * @type {string}
+     * @memberof HeroApiGetAllHeroes
+     */
+    readonly search?: string;
 }
 /**
  * Request parameters for getHeroByHandle operation in HeroApi.
