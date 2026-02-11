@@ -4125,157 +4125,6 @@ export interface EditDFSTacticEntryBodyDTO {
 /**
  * 
  * @export
- * @interface EnrichedTweet
- */
-export interface EnrichedTweet {
-    /**
-     * Unique identifier for the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'post_id': string;
-    /**
-     * ID of the hero who posted the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'hero_id': string;
-    /**
-     * Hero
-     * @type {TweetHero}
-     * @memberof EnrichedTweet
-     */
-    'hero': TweetHero;
-    /**
-     * Twitter handle of the hero
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'handle': string;
-    /**
-     * Text for the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'text': string;
-    /**
-     * Number of views for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'views': number;
-    /**
-     * Number of likes for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'likes': number;
-    /**
-     * Number of retweets for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'retweets': number;
-    /**
-     * Number of quotes for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'quotes': number;
-    /**
-     * Number of bookmarks for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'bookmarks': number;
-    /**
-     * Number of replies for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'replies': number;
-    /**
-     * Last update timestamp of the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'updated_at': string;
-    /**
-     * Creation timestamp of the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'created_at': string;
-    /**
-     * Type of the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'type': string;
-    /**
-     * Number of certified views for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'certified_views': number;
-    /**
-     * Number of certified likes for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'certified_likes': number;
-    /**
-     * Number of certified retweets for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'certified_retweets': number;
-    /**
-     * Cred score for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'cred_score': number;
-    /**
-     * Quality interaction score for the tweet, used for x game
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'quality_interaction': number;
-    /**
-     * Deletion timestamp of the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'deleted_at'?: string;
-    /**
-     * Conversation ID of the tweet
-     * @type {string}
-     * @memberof EnrichedTweet
-     */
-    'conversation_id': string;
-    /**
-     * Fire score for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'fire_score': number;
-    /**
-     * Health score for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'health_score': number;
-    /**
-     * Impact score for the tweet
-     * @type {number}
-     * @memberof EnrichedTweet
-     */
-    'impact_score': number;
-}
-/**
- * 
- * @export
  * @interface EntityDto
  */
 export interface EntityDto {
@@ -6590,49 +6439,6 @@ export interface GetHeroByHandleOrAddressDTO {
      * @memberof GetHeroByHandleOrAddressDTO
      */
     'floor': Array<HandleUniqueSellOrdersDTO>;
-}
-/**
- * 
- * @export
- * @interface GetHeroFeedDTO
- */
-export interface GetHeroFeedDTO {
-    /**
-     * Pagination arguments
-     * @type {PaginationDTO}
-     * @memberof GetHeroFeedDTO
-     */
-    'pagination'?: PaginationDTO;
-    /**
-     * Heroes IDs to include
-     * @type {Array<string>}
-     * @memberof GetHeroFeedDTO
-     */
-    'heroesIds'?: Array<string>;
-    /**
-     * Start date for the feed
-     * @type {string}
-     * @memberof GetHeroFeedDTO
-     */
-    'startDate'?: string;
-    /**
-     * End date for the feed
-     * @type {string}
-     * @memberof GetHeroFeedDTO
-     */
-    'endDate'?: string;
-    /**
-     * Whether to return banger tweets
-     * @type {boolean}
-     * @memberof GetHeroFeedDTO
-     */
-    'banger'?: boolean;
-    /**
-     * Whether to show only hero tweets
-     * @type {boolean}
-     * @memberof GetHeroFeedDTO
-     */
-    'heroesOnly'?: boolean;
 }
 /**
  * 
@@ -16324,25 +16130,6 @@ export interface PaginatedCardWithNumberResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedCardWithNumberResult
-     */
-    'meta': MetaDTO;
-}
-/**
- * 
- * @export
- * @interface PaginatedEnrichedTweetResult
- */
-export interface PaginatedEnrichedTweetResult {
-    /**
-     * Data items
-     * @type {Array<EnrichedTweet>}
-     * @memberof PaginatedEnrichedTweetResult
-     */
-    'data': Array<EnrichedTweet>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedEnrichedTweetResult
      */
     'meta': MetaDTO;
 }
@@ -26784,31 +26571,6 @@ export interface TweetCountResponseDTO {
      * @memberof TweetCountResponseDTO
      */
     'top_tweets': Array<TopTweetDTO>;
-}
-/**
- * 
- * @export
- * @interface TweetHero
- */
-export interface TweetHero {
-    /**
-     * Handle of the hero
-     * @type {string}
-     * @memberof TweetHero
-     */
-    'handle': string;
-    /**
-     * Name of the hero
-     * @type {string}
-     * @memberof TweetHero
-     */
-    'name': string;
-    /**
-     * URL of the profile image in HTTPS
-     * @type {string}
-     * @memberof TweetHero
-     */
-    'profile_image_url_https'?: string;
 }
 /**
  * 
