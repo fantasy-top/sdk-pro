@@ -2923,6 +2923,92 @@ export interface CreateOnboardingDeckDTO {
 /**
  *
  * @export
+ * @interface CreateParlayDto
+ */
+export interface CreateParlayDto {
+    /**
+     * List of legs in the parlay
+     * @type {Array<ParlayLegDto>}
+     * @memberof CreateParlayDto
+     */
+    'legs': Array<ParlayLegDto>;
+    /**
+     * Total investment in fragments
+     * @type {number}
+     * @memberof CreateParlayDto
+     */
+    'total_invested': number;
+    /**
+     * Optional parlay configuration ID
+     * @type {string}
+     * @memberof CreateParlayDto
+     */
+    'parlay_config_id'?: string;
+}
+/**
+ *
+ * @export
+ * @interface CreateParlayResponseDto
+ */
+export interface CreateParlayResponseDto {
+    /**
+     * The ID of the created parlay
+     * @type {string}
+     * @memberof CreateParlayResponseDto
+     */
+    'id': string;
+    /**
+     * The total fragments invested
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'total_invested': number;
+    /**
+     * The total fragments invested after fee
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'total_invested_after_fee': number;
+    /**
+     * The total fee
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'fee': number;
+    /**
+     * The total calculated odds for the parlay
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'total_odds': number;
+    /**
+     * The number of legs in the parlay
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'number_of_bets': number;
+    /**
+     * The boost percentage applied to the parlay (e.g., 1 for 1%)
+     * @type {number}
+     * @memberof CreateParlayResponseDto
+     */
+    'boost': number;
+    /**
+     * The creation date of the parlay
+     * @type {string}
+     * @memberof CreateParlayResponseDto
+     */
+    'created_at': string;
+    /**
+     * The legs in the parlay
+     * @type {Array<ParlayLegResponseDto>}
+     * @memberof CreateParlayResponseDto
+     */
+    'legs': Array<ParlayLegResponseDto>;
+}
+/**
+ *
+ * @export
  * @interface CreatePrivateTournamentDTO
  */
 export interface CreatePrivateTournamentDTO {
@@ -7464,6 +7550,92 @@ export interface GetNotValidatedEntriesResponse {
      * @memberof GetNotValidatedEntriesResponse
      */
     'validate_deck_before': string;
+}
+/**
+ *
+ * @export
+ * @interface GetParlayHistoryQueryDto
+ */
+export interface GetParlayHistoryQueryDto {
+    /**
+     * Page number
+     * @type {number}
+     * @memberof GetParlayHistoryQueryDto
+     */
+    'page'?: number;
+    /**
+     * Number of items per page
+     * @type {number}
+     * @memberof GetParlayHistoryQueryDto
+     */
+    'limit'?: number;
+    /**
+     * Filter by parlay result
+     * @type {string}
+     * @memberof GetParlayHistoryQueryDto
+     */
+    'result'?: GetParlayHistoryQueryDtoResultEnum;
+    /**
+     * Filter by parlay status
+     * @type {string}
+     * @memberof GetParlayHistoryQueryDto
+     */
+    'status'?: GetParlayHistoryQueryDtoStatusEnum;
+    /**
+     *
+     * @type {PlayerHistoryFilterDtoDate}
+     * @memberof GetParlayHistoryQueryDto
+     */
+    'date': PlayerHistoryFilterDtoDate;
+}
+export declare const GetParlayHistoryQueryDtoResultEnum: {
+    readonly Won: "won";
+    readonly Lost: "lost";
+    readonly Voided: "voided";
+};
+export type GetParlayHistoryQueryDtoResultEnum = typeof GetParlayHistoryQueryDtoResultEnum[keyof typeof GetParlayHistoryQueryDtoResultEnum];
+export declare const GetParlayHistoryQueryDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Settled: "settled";
+};
+export type GetParlayHistoryQueryDtoStatusEnum = typeof GetParlayHistoryQueryDtoStatusEnum[keyof typeof GetParlayHistoryQueryDtoStatusEnum];
+/**
+ *
+ * @export
+ * @interface GetParlayHistoryResponseDto
+ */
+export interface GetParlayHistoryResponseDto {
+    /**
+     * List of parlay history items
+     * @type {Array<ParlayHistoryDto>}
+     * @memberof GetParlayHistoryResponseDto
+     */
+    'parlays': Array<ParlayHistoryDto>;
+    /**
+     * Pagination metadata
+     * @type {PaginationMetaDto}
+     * @memberof GetParlayHistoryResponseDto
+     */
+    'meta': PaginationMetaDto;
+    /**
+     * Parlay statistics
+     * @type {ParlayStatsDto}
+     * @memberof GetParlayHistoryResponseDto
+     */
+    'stats': ParlayStatsDto;
+}
+/**
+ *
+ * @export
+ * @interface GetParlayPositionsResponseDto
+ */
+export interface GetParlayPositionsResponseDto {
+    /**
+     * List of active parlays
+     * @type {Array<ParlayPositionDto>}
+     * @memberof GetParlayPositionsResponseDto
+     */
+    'parlays': Array<ParlayPositionDto>;
 }
 /**
  *
@@ -13268,7 +13440,7 @@ export interface HouseOverallPnlDto {
      */
     'totalPayout': number;
     /**
-     * House PNL without fees (totalCollected - totalPayout) - includes all trading activity from all players
+     * LMSR house PNL without fees (totalCollected - totalPayout) - includes all trading activity from all players
      * @type {number}
      * @memberof HouseOverallPnlDto
      */
@@ -13279,6 +13451,42 @@ export interface HouseOverallPnlDto {
      * @memberof HouseOverallPnlDto
      */
     'seederPnl': number;
+    /**
+     * Total amount invested in settled parlays
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayTotalInvested': number;
+    /**
+     * Total amount invested after fees in settled parlays
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayTotalInvestedAfterFee': number;
+    /**
+     * Total payout to players for settled parlays
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayTotalPayout': number;
+    /**
+     * Total parlay fees collected
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayFeeCollected': number;
+    /**
+     * Parlay PNL without fees (parlayTotalInvestedAfterFee - parlayTotalPayout)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayPnlWithoutFees': number;
+    /**
+     * Parlay PNL with fees (parlayPnlWithoutFees + parlayFeeCollected)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayPnlWithFees': number;
     /**
      * Total PNL without fees (pnlWithoutFees + seederPnl)
      * @type {number}
@@ -13298,7 +13506,7 @@ export interface HouseOverallPnlDto {
      */
     'feeCollected': number;
     /**
-     * House PNL with fees (pnlWithoutFees + feeCollected) - includes all trading activity from all players
+     * LMSR house PNL with fees (pnlWithoutFees + feeCollected) - includes all trading activity from all players
      * @type {number}
      * @memberof HouseOverallPnlDto
      */
@@ -13359,13 +13567,13 @@ export interface HousePnlDto {
      */
     'feeCollected': number;
     /**
-     * Combined PNL with fees (LMSR, resolved markets only) - includes all trading activity from all players
+     * LMSR house PNL with fees (resolved markets only) - includes all trading activity from all players
      * @type {number}
      * @memberof HousePnlDto
      */
     'pnlWithFees': number;
     /**
-     * Combined PNL without fees (LMSR only, resolved markets only) - includes all trading activity from all players
+     * LMSR house PNL without fees (resolved markets only) - includes all trading activity from all players
      * @type {number}
      * @memberof HousePnlDto
      */
@@ -13376,6 +13584,42 @@ export interface HousePnlDto {
      * @memberof HousePnlDto
      */
     'seederPnl': number;
+    /**
+     * Total amount invested in settled parlays for date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayTotalInvested': number;
+    /**
+     * Total amount invested after fees in settled parlays for date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayTotalInvestedAfterFee': number;
+    /**
+     * Total payout to players for settled parlays in date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayTotalPayout': number;
+    /**
+     * Total parlay fees collected for date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayFeeCollected': number;
+    /**
+     * Parlay PNL without fees (parlayTotalInvestedAfterFee - parlayTotalPayout) for date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayPnlWithoutFees': number;
+    /**
+     * Parlay PNL with fees (parlayPnlWithoutFees + parlayFeeCollected) for date range
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayPnlWithFees': number;
     /**
      * Total PNL without fees (pnlWithoutFees + seederPnl)
      * @type {number}
@@ -16361,6 +16605,454 @@ export interface PaginationMetaDto {
 /**
  *
  * @export
+ * @interface ParlayConfigDto
+ */
+export interface ParlayConfigDto {
+    /**
+     *
+     * @type {string}
+     * @memberof ParlayConfigDto
+     */
+    'id': string;
+    /**
+     *
+     * @type {number}
+     * @memberof ParlayConfigDto
+     */
+    'max_leg_number'?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof ParlayConfigDto
+     */
+    'max_odd'?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof ParlayConfigDto
+     */
+    'max_payout'?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof ParlayConfigDto
+     */
+    'min_volume'?: number | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ParlayConfigDto
+     */
+    'active': boolean;
+    /**
+     *
+     * @type {object}
+     * @memberof ParlayConfigDto
+     */
+    'bonus'?: object;
+}
+/**
+ *
+ * @export
+ * @interface ParlayHistoryDto
+ */
+export interface ParlayHistoryDto {
+    /**
+     * The parlay ID
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'id': string;
+    /**
+     * The player ID
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'playerId': string;
+    /**
+     * Total invested amount in fragments
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'totalInvested': number;
+    /**
+     * Total invested after fee
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'totalInvestedAfterFee': number;
+    /**
+     * Fee amount
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'fee': number;
+    /**
+     * Total combined odds
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'totalOdds': number;
+    /**
+     * Number of legs in the parlay
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'numberOfBets': number;
+    /**
+     * Boost percentage applied
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'boost': number;
+    /**
+     * Parlay status
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'status': ParlayHistoryDtoStatusEnum;
+    /**
+     * Parlay result
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'result': ParlayHistoryDtoResultEnum;
+    /**
+     * Payout amount (only for won parlays)
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'payout'?: number;
+    /**
+     * Profit/Loss amount
+     * @type {number}
+     * @memberof ParlayHistoryDto
+     */
+    'pnl': number;
+    /**
+     * When the parlay was created
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'createdAt': string;
+    /**
+     * When the parlay was settled
+     * @type {string}
+     * @memberof ParlayHistoryDto
+     */
+    'settledAt': string;
+    /**
+     * The parlay legs
+     * @type {Array<ParlayHistoryLegDto>}
+     * @memberof ParlayHistoryDto
+     */
+    'legs': Array<ParlayHistoryLegDto>;
+}
+export declare const ParlayHistoryDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Settled: "settled";
+};
+export type ParlayHistoryDtoStatusEnum = typeof ParlayHistoryDtoStatusEnum[keyof typeof ParlayHistoryDtoStatusEnum];
+export declare const ParlayHistoryDtoResultEnum: {
+    readonly Won: "won";
+    readonly Lost: "lost";
+    readonly Voided: "voided";
+};
+export type ParlayHistoryDtoResultEnum = typeof ParlayHistoryDtoResultEnum[keyof typeof ParlayHistoryDtoResultEnum];
+/**
+ *
+ * @export
+ * @interface ParlayHistoryLegDto
+ */
+export interface ParlayHistoryLegDto {
+    /**
+     * The market ID
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'marketId': string;
+    /**
+     * The market title
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'marketTitle': string;
+    /**
+     * The parent market title
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'parentMarketTitle': string;
+    /**
+     * The market slug
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'marketSlug': string;
+    /**
+     * The market metadata
+     * @type {object}
+     * @memberof ParlayHistoryLegDto
+     */
+    'marketMetadata'?: object;
+    /**
+     * The outcome ID
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'outcomeId': string;
+    /**
+     * The outcome name
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'outcomeName': string;
+    /**
+     * The outcome image URL
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'outcomeImage'?: string;
+    /**
+     * The odd at execution time
+     * @type {number}
+     * @memberof ParlayHistoryLegDto
+     */
+    'oddAtExecution': number;
+    /**
+     * Total invested amount in fragments
+     * @type {number}
+     * @memberof ParlayHistoryLegDto
+     */
+    'totalInvested': number;
+    /**
+     * Total invested after fee
+     * @type {number}
+     * @memberof ParlayHistoryLegDto
+     */
+    'totalInvestedAfterFee': number;
+    /**
+     * Fee amount
+     * @type {number}
+     * @memberof ParlayHistoryLegDto
+     */
+    'fee': number;
+    /**
+     * Leg status
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'status': ParlayHistoryLegDtoStatusEnum;
+    /**
+     * Leg result
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'result': ParlayHistoryLegDtoResultEnum;
+    /**
+     * When the leg was closed
+     * @type {string}
+     * @memberof ParlayHistoryLegDto
+     */
+    'closedAt': string;
+}
+export declare const ParlayHistoryLegDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Closed: "closed";
+};
+export type ParlayHistoryLegDtoStatusEnum = typeof ParlayHistoryLegDtoStatusEnum[keyof typeof ParlayHistoryLegDtoStatusEnum];
+export declare const ParlayHistoryLegDtoResultEnum: {
+    readonly Won: "won";
+    readonly Lost: "lost";
+    readonly Voided: "voided";
+};
+export type ParlayHistoryLegDtoResultEnum = typeof ParlayHistoryLegDtoResultEnum[keyof typeof ParlayHistoryLegDtoResultEnum];
+/**
+ *
+ * @export
+ * @interface ParlayLegDto
+ */
+export interface ParlayLegDto {
+    /**
+     * The ID of the market
+     * @type {string}
+     * @memberof ParlayLegDto
+     */
+    'market_id': string;
+    /**
+     * The ID of the outcome
+     * @type {string}
+     * @memberof ParlayLegDto
+     */
+    'outcome_id': string;
+    /**
+     * The odd at execution
+     * @type {number}
+     * @memberof ParlayLegDto
+     */
+    'odd_at_execution': number;
+}
+/**
+ *
+ * @export
+ * @interface ParlayLegResponseDto
+ */
+export interface ParlayLegResponseDto {
+    /**
+     * The ID of the outcome
+     * @type {string}
+     * @memberof ParlayLegResponseDto
+     */
+    'outcome_id': string;
+    /**
+     * The ID of the market
+     * @type {string}
+     * @memberof ParlayLegResponseDto
+     */
+    'market_id': string;
+    /**
+     * The odd at execution
+     * @type {number}
+     * @memberof ParlayLegResponseDto
+     */
+    'odd_at_execution': number;
+    /**
+     * The total fragments invested in this leg
+     * @type {number}
+     * @memberof ParlayLegResponseDto
+     */
+    'total_invested': number;
+    /**
+     * The total fragments invested in this leg after fee
+     * @type {number}
+     * @memberof ParlayLegResponseDto
+     */
+    'total_invested_after_fee': number;
+    /**
+     * The fee for this leg
+     * @type {number}
+     * @memberof ParlayLegResponseDto
+     */
+    'fee': number;
+}
+/**
+ *
+ * @export
+ * @interface ParlayPositionDto
+ */
+export interface ParlayPositionDto {
+    /**
+     * The parlay ID
+     * @type {string}
+     * @memberof ParlayPositionDto
+     */
+    'id': string;
+    /**
+     * The player ID
+     * @type {string}
+     * @memberof ParlayPositionDto
+     */
+    'playerId': string;
+    /**
+     * Total invested amount in fragments
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'totalInvested': number;
+    /**
+     * Total invested after fee
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'totalInvestedAfterFee': number;
+    /**
+     * Fee amount
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'fee': number;
+    /**
+     * Total combined odds
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'totalOdds': number;
+    /**
+     * Number of legs in the parlay
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'numberOfBets': number;
+    /**
+     * Boost percentage applied
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'boost': number;
+    /**
+     * Potential payout if parlay wins
+     * @type {number}
+     * @memberof ParlayPositionDto
+     */
+    'potentialPayout': number;
+    /**
+     * Parlay status
+     * @type {string}
+     * @memberof ParlayPositionDto
+     */
+    'status': ParlayPositionDtoStatusEnum;
+    /**
+     * When the parlay was created
+     * @type {string}
+     * @memberof ParlayPositionDto
+     */
+    'createdAt': string;
+    /**
+     * The parlay legs
+     * @type {Array<ParlayLegDto>}
+     * @memberof ParlayPositionDto
+     */
+    'legs': Array<ParlayLegDto>;
+}
+export declare const ParlayPositionDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Settled: "settled";
+};
+export type ParlayPositionDtoStatusEnum = typeof ParlayPositionDtoStatusEnum[keyof typeof ParlayPositionDtoStatusEnum];
+/**
+ *
+ * @export
+ * @interface ParlayStatsDto
+ */
+export interface ParlayStatsDto {
+    /**
+     * Total number of parlays
+     * @type {number}
+     * @memberof ParlayStatsDto
+     */
+    'totalParlays': number;
+    /**
+     * Number of won parlays
+     * @type {number}
+     * @memberof ParlayStatsDto
+     */
+    'totalWon': number;
+    /**
+     * Number of lost parlays
+     * @type {number}
+     * @memberof ParlayStatsDto
+     */
+    'totalLost': number;
+    /**
+     * Total P&L from all parlays
+     * @type {number}
+     * @memberof ParlayStatsDto
+     */
+    'totalPnL': number;
+}
+/**
+ *
+ * @export
  * @interface PayoutObject
  */
 export interface PayoutObject {
@@ -17668,19 +18360,19 @@ export interface PlayerSearchHistoryResponseDto {
  */
 export interface PlayerStatsDto {
     /**
-     * Total amount invested in all positions (open + settled) (fragments)
+     * Total amount invested in all positions and parlays (open + settled) (fragments)
      * @type {number}
      * @memberof PlayerStatsDto
      */
     'totalInvested': number;
     /**
-     * Total amount currently invested in open positions (fragments)
+     * Total amount currently invested in open positions and pending parlays (fragments)
      * @type {number}
      * @memberof PlayerStatsDto
      */
     'currentlyInvested': number;
     /**
-     * Total realized PnL from settled positions (fragments)
+     * Total realized PnL from settled positions and parlays (fragments)
      * @type {number}
      * @memberof PlayerStatsDto
      */
@@ -17704,7 +18396,7 @@ export interface PlayerStatsDto {
      */
     'lossCount': number;
     /**
-     * Total number of trades/bets
+     * Total number of trades and parlays
      * @type {number}
      * @memberof PlayerStatsDto
      */
@@ -19153,6 +19845,111 @@ export interface QuestionTweet {
      * @memberof QuestionTweet
      */
     'created_at': string;
+}
+/**
+ *
+ * @export
+ * @interface QuoteOddsDto
+ */
+export interface QuoteOddsDto {
+    /**
+     * List of bets/legs to quote
+     * @type {Array<QuoteOddsItemDto>}
+     * @memberof QuoteOddsDto
+     */
+    'items': Array<QuoteOddsItemDto>;
+}
+/**
+ *
+ * @export
+ * @interface QuoteOddsItemDto
+ */
+export interface QuoteOddsItemDto {
+    /**
+     * The ID of the market
+     * @type {string}
+     * @memberof QuoteOddsItemDto
+     */
+    'market_id': string;
+    /**
+     * The ID of the outcome
+     * @type {string}
+     * @memberof QuoteOddsItemDto
+     */
+    'outcome_id': string;
+    /**
+     * Amount invested for this bet/leg
+     * @type {number}
+     * @memberof QuoteOddsItemDto
+     */
+    'amount_invested': number;
+    /**
+     * Quote mode for this item
+     * @type {string}
+     * @memberof QuoteOddsItemDto
+     */
+    'mode': QuoteOddsItemDtoModeEnum;
+}
+export declare const QuoteOddsItemDtoModeEnum: {
+    readonly Single: "single";
+    readonly Parlay: "parlay";
+};
+export type QuoteOddsItemDtoModeEnum = typeof QuoteOddsItemDtoModeEnum[keyof typeof QuoteOddsItemDtoModeEnum];
+/**
+ *
+ * @export
+ * @interface QuoteOddsResponseDto
+ */
+export interface QuoteOddsResponseDto {
+    /**
+     * Quoted odds for all provided bets/legs
+     * @type {Array<QuoteOddsResponseItemDto>}
+     * @memberof QuoteOddsResponseDto
+     */
+    'items': Array<QuoteOddsResponseItemDto>;
+}
+/**
+ *
+ * @export
+ * @interface QuoteOddsResponseItemDto
+ */
+export interface QuoteOddsResponseItemDto {
+    /**
+     * The ID of the market
+     * @type {string}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'market_id': string;
+    /**
+     * The ID of the outcome
+     * @type {string}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'outcome_id': string;
+    /**
+     * Amount invested for this bet/leg
+     * @type {number}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'amount_invested': number;
+    /**
+     * Quoted odd for this bet/leg
+     * @type {number}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'odd': number;
+    /**
+     * Expected shares for this amount at quote time
+     * @type {number}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'expected_shares': number;
+    /**
+     * Minimum shares expected with slippage protection
+     * @type {number}
+     * @memberof QuoteOddsResponseItemDto
+     */
+    'min_shares_expected': number;
 }
 /**
  *
@@ -29084,6 +29881,14 @@ export declare const PredictionMarketApiAxiosParamCreator: (configuration?: Conf
     getMarketActivity: (slug: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get player active parlays
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerActiveParlays: (id: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get player history
      * @param {string} id
      * @param {PlayerHistoryFilterDto} [query]
@@ -29091,6 +29896,15 @@ export declare const PredictionMarketApiAxiosParamCreator: (configuration?: Conf
      * @throws {RequiredError}
      */
     getPlayerHistory: (id: string, query?: PlayerHistoryFilterDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get player parlay history
+     * @param {string} id
+     * @param {GetParlayHistoryQueryDto} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerParlayHistory: (id: string, query?: GetParlayHistoryQueryDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get player positions
@@ -29163,6 +29977,14 @@ export declare const PredictionMarketApiFp: (configuration?: Configuration) => {
     getMarketActivity(slug: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TradeActivityResponseDto>>;
     /**
      *
+     * @summary Get player active parlays
+     * @param {string} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerActiveParlays(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetParlayPositionsResponseDto>>;
+    /**
+     *
      * @summary Get player history
      * @param {string} id
      * @param {PlayerHistoryFilterDto} [query]
@@ -29170,6 +29992,15 @@ export declare const PredictionMarketApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getPlayerHistory(id: string, query?: PlayerHistoryFilterDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPlayerHistoryResponseDto>>;
+    /**
+     *
+     * @summary Get player parlay history
+     * @param {string} id
+     * @param {GetParlayHistoryQueryDto} [query]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerParlayHistory(id: string, query?: GetParlayHistoryQueryDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetParlayHistoryResponseDto>>;
     /**
      *
      * @summary Get player positions
@@ -29239,12 +30070,28 @@ export declare const PredictionMarketApiFactory: (configuration?: Configuration,
     getMarketActivity(requestParameters: PredictionMarketApiGetMarketActivityRequest, options?: RawAxiosRequestConfig): AxiosPromise<TradeActivityResponseDto>;
     /**
      *
+     * @summary Get player active parlays
+     * @param {PredictionMarketApiGetPlayerActiveParlaysRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerActiveParlays(requestParameters: PredictionMarketApiGetPlayerActiveParlaysRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetParlayPositionsResponseDto>;
+    /**
+     *
      * @summary Get player history
      * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getPlayerHistory(requestParameters: PredictionMarketApiGetPlayerHistoryRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetPlayerHistoryResponseDto>;
+    /**
+     *
+     * @summary Get player parlay history
+     * @param {PredictionMarketApiGetPlayerParlayHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerParlayHistory(requestParameters: PredictionMarketApiGetPlayerParlayHistoryRequest, options?: RawAxiosRequestConfig): AxiosPromise<GetParlayHistoryResponseDto>;
     /**
      *
      * @summary Get player positions
@@ -29336,6 +30183,19 @@ export interface PredictionMarketApiGetMarketActivityRequest {
     readonly slug: string;
 }
 /**
+ * Request parameters for getPlayerActiveParlays operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetPlayerActiveParlaysRequest
+ */
+export interface PredictionMarketApiGetPlayerActiveParlaysRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerActiveParlays
+     */
+    readonly id: string;
+}
+/**
  * Request parameters for getPlayerHistory operation in PredictionMarketApi.
  * @export
  * @interface PredictionMarketApiGetPlayerHistoryRequest
@@ -29353,6 +30213,25 @@ export interface PredictionMarketApiGetPlayerHistoryRequest {
      * @memberof PredictionMarketApiGetPlayerHistory
      */
     readonly query?: PlayerHistoryFilterDto;
+}
+/**
+ * Request parameters for getPlayerParlayHistory operation in PredictionMarketApi.
+ * @export
+ * @interface PredictionMarketApiGetPlayerParlayHistoryRequest
+ */
+export interface PredictionMarketApiGetPlayerParlayHistoryRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof PredictionMarketApiGetPlayerParlayHistory
+     */
+    readonly id: string;
+    /**
+     *
+     * @type {GetParlayHistoryQueryDto}
+     * @memberof PredictionMarketApiGetPlayerParlayHistory
+     */
+    readonly query?: GetParlayHistoryQueryDto;
 }
 /**
  * Request parameters for getPlayerPositions operation in PredictionMarketApi.
@@ -29472,6 +30351,15 @@ export declare class PredictionMarketApi extends BaseAPI {
     getMarketActivity(requestParameters: PredictionMarketApiGetMarketActivityRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<TradeActivityResponseDto, any, {}>>;
     /**
      *
+     * @summary Get player active parlays
+     * @param {PredictionMarketApiGetPlayerActiveParlaysRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerActiveParlays(requestParameters: PredictionMarketApiGetPlayerActiveParlaysRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<GetParlayPositionsResponseDto, any, {}>>;
+    /**
+     *
      * @summary Get player history
      * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -29479,6 +30367,15 @@ export declare class PredictionMarketApi extends BaseAPI {
      * @memberof PredictionMarketApi
      */
     getPlayerHistory(requestParameters: PredictionMarketApiGetPlayerHistoryRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<GetPlayerHistoryResponseDto, any, {}>>;
+    /**
+     *
+     * @summary Get player parlay history
+     * @param {PredictionMarketApiGetPlayerParlayHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerParlayHistory(requestParameters: PredictionMarketApiGetPlayerParlayHistoryRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<GetParlayHistoryResponseDto, any, {}>>;
     /**
      *
      * @summary Get player positions

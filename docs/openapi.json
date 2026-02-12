@@ -2073,6 +2073,86 @@
         ]
       }
     },
+    "/prediction-market/player/{id}/parlays/active": {
+      "get": {
+        "operationId": "getPlayerActiveParlays",
+        "summary": "Get player active parlays",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player active parlays",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetParlayPositionsResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Prediction Market"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/prediction-market/player/{id}/parlays/history": {
+      "get": {
+        "operationId": "getPlayerParlayHistory",
+        "summary": "Get player parlay history",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetParlayHistoryQueryDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player parlay history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetParlayHistoryResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Prediction Market"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/prediction-market/leaderboard": {
       "get": {
         "operationId": "getLeaderboard",
@@ -24634,6 +24714,311 @@
           "created_at"
         ]
       },
+      "ParlayLegDto": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string",
+            "description": "The ID of the market",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "outcome_id": {
+            "type": "string",
+            "description": "The ID of the outcome",
+            "example": "123e4567-e89b-12d3-a456-426614174001"
+          },
+          "odd_at_execution": {
+            "type": "number",
+            "description": "The odd at execution",
+            "example": 1.5
+          }
+        },
+        "required": [
+          "market_id",
+          "outcome_id",
+          "odd_at_execution"
+        ]
+      },
+      "CreateParlayDto": {
+        "type": "object",
+        "properties": {
+          "legs": {
+            "description": "List of legs in the parlay",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayLegDto"
+            }
+          },
+          "total_invested": {
+            "type": "number",
+            "description": "Total investment in fragments",
+            "example": 100
+          },
+          "parlay_config_id": {
+            "type": "string",
+            "description": "Optional parlay configuration ID",
+            "example": "123e4567-e89b-12d3-a456-426614174002"
+          }
+        },
+        "required": [
+          "legs",
+          "total_invested"
+        ]
+      },
+      "ParlayLegResponseDto": {
+        "type": "object",
+        "properties": {
+          "outcome_id": {
+            "type": "string",
+            "description": "The ID of the outcome",
+            "example": "123e4567-e89b-12d3-a456-426614174001"
+          },
+          "market_id": {
+            "type": "string",
+            "description": "The ID of the market",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "odd_at_execution": {
+            "type": "number",
+            "description": "The odd at execution",
+            "example": 1.5
+          },
+          "total_invested": {
+            "type": "number",
+            "description": "The total fragments invested in this leg",
+            "example": 100
+          },
+          "total_invested_after_fee": {
+            "type": "number",
+            "description": "The total fragments invested in this leg after fee",
+            "example": 95
+          },
+          "fee": {
+            "type": "number",
+            "description": "The fee for this leg",
+            "example": 5
+          }
+        },
+        "required": [
+          "outcome_id",
+          "market_id",
+          "odd_at_execution",
+          "total_invested",
+          "total_invested_after_fee",
+          "fee"
+        ]
+      },
+      "CreateParlayResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the created parlay",
+            "example": "123e4567-e89b-12d3-a456-426614174003"
+          },
+          "total_invested": {
+            "type": "number",
+            "description": "The total fragments invested",
+            "example": 100
+          },
+          "total_invested_after_fee": {
+            "type": "number",
+            "description": "The total fragments invested after fee",
+            "example": 95
+          },
+          "fee": {
+            "type": "number",
+            "description": "The total fee",
+            "example": 5
+          },
+          "total_odds": {
+            "type": "number",
+            "description": "The total calculated odds for the parlay",
+            "example": 2.25
+          },
+          "number_of_bets": {
+            "type": "number",
+            "description": "The number of legs in the parlay",
+            "example": 2
+          },
+          "boost": {
+            "type": "number",
+            "description": "The boost percentage applied to the parlay (e.g., 1 for 1%)",
+            "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The creation date of the parlay",
+            "example": "2021-01-01T00:00:00Z"
+          },
+          "legs": {
+            "description": "The legs in the parlay",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayLegResponseDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "total_invested",
+          "total_invested_after_fee",
+          "fee",
+          "total_odds",
+          "number_of_bets",
+          "boost",
+          "created_at",
+          "legs"
+        ]
+      },
+      "QuoteOddsItemDto": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string",
+            "description": "The ID of the market",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "outcome_id": {
+            "type": "string",
+            "description": "The ID of the outcome",
+            "example": "123e4567-e89b-12d3-a456-426614174001"
+          },
+          "amount_invested": {
+            "type": "number",
+            "description": "Amount invested for this bet/leg",
+            "example": 100
+          },
+          "mode": {
+            "type": "string",
+            "description": "Quote mode for this item",
+            "enum": [
+              "single",
+              "parlay"
+            ],
+            "example": "single"
+          }
+        },
+        "required": [
+          "market_id",
+          "outcome_id",
+          "amount_invested",
+          "mode"
+        ]
+      },
+      "QuoteOddsDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "description": "List of bets/legs to quote",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuoteOddsItemDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "QuoteOddsResponseItemDto": {
+        "type": "object",
+        "properties": {
+          "market_id": {
+            "type": "string",
+            "description": "The ID of the market",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "outcome_id": {
+            "type": "string",
+            "description": "The ID of the outcome",
+            "example": "123e4567-e89b-12d3-a456-426614174001"
+          },
+          "amount_invested": {
+            "type": "number",
+            "description": "Amount invested for this bet/leg",
+            "example": 100
+          },
+          "odd": {
+            "type": "number",
+            "description": "Quoted odd for this bet/leg",
+            "example": 1.87
+          },
+          "expected_shares": {
+            "type": "number",
+            "description": "Expected shares for this amount at quote time",
+            "example": 10.21
+          },
+          "min_shares_expected": {
+            "type": "number",
+            "description": "Minimum shares expected with slippage protection",
+            "example": 9.7
+          }
+        },
+        "required": [
+          "market_id",
+          "outcome_id",
+          "amount_invested",
+          "odd",
+          "expected_shares",
+          "min_shares_expected"
+        ]
+      },
+      "QuoteOddsResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "description": "Quoted odds for all provided bets/legs",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuoteOddsResponseItemDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "ParlayConfigDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174002"
+          },
+          "max_leg_number": {
+            "type": "number",
+            "nullable": true,
+            "example": 10
+          },
+          "max_odd": {
+            "type": "number",
+            "nullable": true,
+            "example": 1000
+          },
+          "max_payout": {
+            "type": "number",
+            "nullable": true,
+            "example": 1000000
+          },
+          "min_volume": {
+            "type": "number",
+            "nullable": true,
+            "example": 1000
+          },
+          "active": {
+            "type": "boolean",
+            "example": true
+          },
+          "bonus": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "active"
+        ]
+      },
       "MarketPositionDto": {
         "type": "object",
         "properties": {
@@ -25109,17 +25494,17 @@
         "properties": {
           "totalInvested": {
             "type": "number",
-            "description": "Total amount invested in all positions (open + settled) (fragments)",
+            "description": "Total amount invested in all positions and parlays (open + settled) (fragments)",
             "example": 1000
           },
           "currentlyInvested": {
             "type": "number",
-            "description": "Total amount currently invested in open positions (fragments)",
+            "description": "Total amount currently invested in open positions and pending parlays (fragments)",
             "example": 500
           },
           "totalPnL": {
             "type": "number",
-            "description": "Total realized PnL from settled positions (fragments)",
+            "description": "Total realized PnL from settled positions and parlays (fragments)",
             "example": 500
           },
           "pendingPnL": {
@@ -25139,7 +25524,7 @@
           },
           "totalBetCount": {
             "type": "number",
-            "description": "Total number of trades/bets",
+            "description": "Total number of trades and parlays",
             "example": 20
           },
           "totalVolume": {
@@ -25792,6 +26177,473 @@
           "history",
           "meta",
           "counts",
+          "stats"
+        ]
+      },
+      "ParlayPositionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The parlay ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "The player ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "totalInvested": {
+            "type": "number",
+            "description": "Total invested amount in fragments",
+            "example": 100
+          },
+          "totalInvestedAfterFee": {
+            "type": "number",
+            "description": "Total invested after fee",
+            "example": 95
+          },
+          "fee": {
+            "type": "number",
+            "description": "Fee amount",
+            "example": 5
+          },
+          "totalOdds": {
+            "type": "number",
+            "description": "Total combined odds",
+            "example": 36.02
+          },
+          "numberOfBets": {
+            "type": "number",
+            "description": "Number of legs in the parlay",
+            "example": 3
+          },
+          "boost": {
+            "type": "number",
+            "description": "Boost percentage applied",
+            "example": 5
+          },
+          "potentialPayout": {
+            "type": "number",
+            "description": "Potential payout if parlay wins",
+            "example": 3421.9
+          },
+          "status": {
+            "type": "string",
+            "description": "Parlay status",
+            "enum": [
+              "pending",
+              "settled"
+            ],
+            "example": "pending"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "When the parlay was created"
+          },
+          "legs": {
+            "description": "The parlay legs",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayLegDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "playerId",
+          "totalInvested",
+          "totalInvestedAfterFee",
+          "fee",
+          "totalOdds",
+          "numberOfBets",
+          "boost",
+          "potentialPayout",
+          "status",
+          "createdAt",
+          "legs"
+        ]
+      },
+      "GetParlayPositionsResponseDto": {
+        "type": "object",
+        "properties": {
+          "parlays": {
+            "description": "List of active parlays",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayPositionDto"
+            }
+          }
+        },
+        "required": [
+          "parlays"
+        ]
+      },
+      "GetParlayHistoryQueryDto": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "default": 1,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "description": "Page number"
+          },
+          "limit": {
+            "default": 50,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Number of items per page"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "won",
+              "lost",
+              "voided"
+            ],
+            "description": "Filter by parlay result"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "settled"
+            ],
+            "description": "Filter by parlay status"
+          },
+          "date": {
+            "type": "object",
+            "properties": {
+              "equals": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "not": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "lt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "lte": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "gt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "gte": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "in": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                }
+              },
+              "notIn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                }
+              },
+              "isNull": {
+                "type": "boolean"
+              },
+              "isNotNull": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false,
+            "selfRequired": false,
+            "x-nestjs_zod-self-required": false
+          }
+        },
+        "required": [
+          "date"
+        ]
+      },
+      "ParlayHistoryLegDto": {
+        "type": "object",
+        "properties": {
+          "marketId": {
+            "type": "string",
+            "description": "The market ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "marketTitle": {
+            "type": "string",
+            "description": "The market title",
+            "example": "Will BTC reach $100k by EOY?"
+          },
+          "parentMarketTitle": {
+            "type": "string",
+            "description": "The parent market title",
+            "example": "Will BTC reach $100k by EOY?"
+          },
+          "marketSlug": {
+            "type": "string",
+            "description": "The market slug",
+            "example": "btc-100k-eoy"
+          },
+          "marketMetadata": {
+            "type": "object",
+            "description": "The market metadata"
+          },
+          "outcomeId": {
+            "type": "string",
+            "description": "The outcome ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "outcomeName": {
+            "type": "string",
+            "description": "The outcome name",
+            "example": "Yes"
+          },
+          "outcomeImage": {
+            "type": "string",
+            "description": "The outcome image URL"
+          },
+          "oddAtExecution": {
+            "type": "number",
+            "description": "The odd at execution time",
+            "example": 2.5
+          },
+          "totalInvested": {
+            "type": "number",
+            "description": "Total invested amount in fragments",
+            "example": 100
+          },
+          "totalInvestedAfterFee": {
+            "type": "number",
+            "description": "Total invested after fee",
+            "example": 95
+          },
+          "fee": {
+            "type": "number",
+            "description": "Fee amount",
+            "example": 5
+          },
+          "status": {
+            "type": "string",
+            "description": "Leg status",
+            "enum": [
+              "pending",
+              "closed"
+            ],
+            "example": "closed"
+          },
+          "result": {
+            "type": "string",
+            "description": "Leg result",
+            "enum": [
+              "won",
+              "lost",
+              "voided"
+            ],
+            "example": "won"
+          },
+          "closedAt": {
+            "type": "string",
+            "description": "When the leg was closed"
+          }
+        },
+        "required": [
+          "marketId",
+          "marketTitle",
+          "parentMarketTitle",
+          "marketSlug",
+          "outcomeId",
+          "outcomeName",
+          "oddAtExecution",
+          "totalInvested",
+          "totalInvestedAfterFee",
+          "fee",
+          "status",
+          "result",
+          "closedAt"
+        ]
+      },
+      "ParlayHistoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The parlay ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "playerId": {
+            "type": "string",
+            "description": "The player ID",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "totalInvested": {
+            "type": "number",
+            "description": "Total invested amount in fragments",
+            "example": 100
+          },
+          "totalInvestedAfterFee": {
+            "type": "number",
+            "description": "Total invested after fee",
+            "example": 95
+          },
+          "fee": {
+            "type": "number",
+            "description": "Fee amount",
+            "example": 5
+          },
+          "totalOdds": {
+            "type": "number",
+            "description": "Total combined odds",
+            "example": 36.02
+          },
+          "numberOfBets": {
+            "type": "number",
+            "description": "Number of legs in the parlay",
+            "example": 3
+          },
+          "boost": {
+            "type": "number",
+            "description": "Boost percentage applied",
+            "example": 5
+          },
+          "status": {
+            "type": "string",
+            "description": "Parlay status",
+            "enum": [
+              "pending",
+              "settled"
+            ],
+            "example": "settled"
+          },
+          "result": {
+            "type": "string",
+            "description": "Parlay result",
+            "enum": [
+              "won",
+              "lost",
+              "voided"
+            ],
+            "example": "won"
+          },
+          "payout": {
+            "type": "number",
+            "description": "Payout amount (only for won parlays)"
+          },
+          "pnl": {
+            "type": "number",
+            "description": "Profit/Loss amount",
+            "example": 3321.9
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "When the parlay was created"
+          },
+          "settledAt": {
+            "type": "string",
+            "description": "When the parlay was settled"
+          },
+          "legs": {
+            "description": "The parlay legs",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayHistoryLegDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "playerId",
+          "totalInvested",
+          "totalInvestedAfterFee",
+          "fee",
+          "totalOdds",
+          "numberOfBets",
+          "boost",
+          "status",
+          "result",
+          "pnl",
+          "createdAt",
+          "settledAt",
+          "legs"
+        ]
+      },
+      "ParlayStatsDto": {
+        "type": "object",
+        "properties": {
+          "totalParlays": {
+            "type": "number",
+            "description": "Total number of parlays",
+            "example": 45
+          },
+          "totalWon": {
+            "type": "number",
+            "description": "Number of won parlays",
+            "example": 12
+          },
+          "totalLost": {
+            "type": "number",
+            "description": "Number of lost parlays",
+            "example": 33
+          },
+          "totalPnL": {
+            "type": "number",
+            "description": "Total P&L from all parlays",
+            "example": -1500.5
+          }
+        },
+        "required": [
+          "totalParlays",
+          "totalWon",
+          "totalLost",
+          "totalPnL"
+        ]
+      },
+      "GetParlayHistoryResponseDto": {
+        "type": "object",
+        "properties": {
+          "parlays": {
+            "description": "List of parlay history items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParlayHistoryDto"
+            }
+          },
+          "meta": {
+            "description": "Pagination metadata",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaginationMetaDto"
+              }
+            ]
+          },
+          "stats": {
+            "description": "Parlay statistics",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ParlayStatsDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "parlays",
+          "meta",
           "stats"
         ]
       },
@@ -27966,13 +28818,43 @@
           },
           "pnlWithoutFees": {
             "type": "number",
-            "description": "House PNL without fees (totalCollected - totalPayout) - includes all trading activity from all players",
+            "description": "LMSR house PNL without fees (totalCollected - totalPayout) - includes all trading activity from all players",
             "example": 15000.25
           },
           "seederPnl": {
             "type": "number",
             "description": "Market seeder PNL from position_settlements",
             "example": -2000.5
+          },
+          "parlayTotalInvested": {
+            "type": "number",
+            "description": "Total amount invested in settled parlays",
+            "example": 5000.75
+          },
+          "parlayTotalInvestedAfterFee": {
+            "type": "number",
+            "description": "Total amount invested after fees in settled parlays",
+            "example": 4750.75
+          },
+          "parlayTotalPayout": {
+            "type": "number",
+            "description": "Total payout to players for settled parlays",
+            "example": 4200.25
+          },
+          "parlayFeeCollected": {
+            "type": "number",
+            "description": "Total parlay fees collected",
+            "example": 250
+          },
+          "parlayPnlWithoutFees": {
+            "type": "number",
+            "description": "Parlay PNL without fees (parlayTotalInvestedAfterFee - parlayTotalPayout)",
+            "example": 550.5
+          },
+          "parlayPnlWithFees": {
+            "type": "number",
+            "description": "Parlay PNL with fees (parlayPnlWithoutFees + parlayFeeCollected)",
+            "example": 800.5
           },
           "totalPnlWithoutFees": {
             "type": "number",
@@ -27991,7 +28873,7 @@
           },
           "pnlWithFees": {
             "type": "number",
-            "description": "House PNL with fees (pnlWithoutFees + feeCollected) - includes all trading activity from all players",
+            "description": "LMSR house PNL with fees (pnlWithoutFees + feeCollected) - includes all trading activity from all players",
             "example": 25000.2875
           },
           "totalPnlWithFees": {
@@ -28018,6 +28900,12 @@
           "totalPayout",
           "pnlWithoutFees",
           "seederPnl",
+          "parlayTotalInvested",
+          "parlayTotalInvestedAfterFee",
+          "parlayTotalPayout",
+          "parlayFeeCollected",
+          "parlayPnlWithoutFees",
+          "parlayPnlWithFees",
           "totalPnlWithoutFees",
           "totalVolume",
           "feeCollected",
@@ -28057,18 +28945,48 @@
           },
           "pnlWithFees": {
             "type": "number",
-            "description": "Combined PNL with fees (LMSR, resolved markets only) - includes all trading activity from all players",
+            "description": "LMSR house PNL with fees (resolved markets only) - includes all trading activity from all players",
             "example": 12000.75
           },
           "pnlWithoutFees": {
             "type": "number",
-            "description": "Combined PNL without fees (LMSR only, resolved markets only) - includes all trading activity from all players",
+            "description": "LMSR house PNL without fees (resolved markets only) - includes all trading activity from all players",
             "example": 4500.725
           },
           "seederPnl": {
             "type": "number",
             "description": "Market seeder PNL from position_settlements for resolved markets in date range",
             "example": -500.25
+          },
+          "parlayTotalInvested": {
+            "type": "number",
+            "description": "Total amount invested in settled parlays for date range",
+            "example": 1200.5
+          },
+          "parlayTotalInvestedAfterFee": {
+            "type": "number",
+            "description": "Total amount invested after fees in settled parlays for date range",
+            "example": 1140.5
+          },
+          "parlayTotalPayout": {
+            "type": "number",
+            "description": "Total payout to players for settled parlays in date range",
+            "example": 900.25
+          },
+          "parlayFeeCollected": {
+            "type": "number",
+            "description": "Total parlay fees collected for date range",
+            "example": 60
+          },
+          "parlayPnlWithoutFees": {
+            "type": "number",
+            "description": "Parlay PNL without fees (parlayTotalInvestedAfterFee - parlayTotalPayout) for date range",
+            "example": 240.25
+          },
+          "parlayPnlWithFees": {
+            "type": "number",
+            "description": "Parlay PNL with fees (parlayPnlWithoutFees + parlayFeeCollected) for date range",
+            "example": 300.25
           },
           "totalPnlWithoutFees": {
             "type": "number",
@@ -28110,6 +29028,12 @@
           "pnlWithFees",
           "pnlWithoutFees",
           "seederPnl",
+          "parlayTotalInvested",
+          "parlayTotalInvestedAfterFee",
+          "parlayTotalPayout",
+          "parlayFeeCollected",
+          "parlayPnlWithoutFees",
+          "parlayPnlWithFees",
           "totalPnlWithoutFees",
           "totalPnlWithFees",
           "theoreticalMaxLoss",

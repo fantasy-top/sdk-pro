@@ -16,9 +16,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PrivateTournamentDTOStatusEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.MarketPnlDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTournamentsQueryDTOOrderTypeEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateEntityDtoTypeEnum = exports.ChestPrizeDTORewardTypeEnum = exports.AccountDtoSourceEnum = void 0;
-exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TradeActivityDtoActionEnum = exports.TournamentReviewResponseDTODecisionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = void 0;
-exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.LobbiesApi = exports.LobbiesApiFactory = exports.LobbiesApiFp = exports.LobbiesApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = void 0;
+exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.ParlayPositionDtoStatusEnum = exports.ParlayHistoryLegDtoResultEnum = exports.ParlayHistoryLegDtoStatusEnum = exports.ParlayHistoryDtoResultEnum = exports.ParlayHistoryDtoStatusEnum = exports.MarketPnlDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTournamentsQueryDTOOrderTypeEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetParlayHistoryQueryDtoStatusEnum = exports.GetParlayHistoryQueryDtoResultEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateEntityDtoTypeEnum = exports.ChestPrizeDTORewardTypeEnum = exports.AccountDtoSourceEnum = void 0;
+exports.TradeActivityDtoActionEnum = exports.TournamentReviewResponseDTODecisionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.QuoteOddsItemDtoModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PrivateTournamentDTOStatusEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = void 0;
+exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.LobbiesApi = exports.LobbiesApiFactory = exports.LobbiesApiFp = exports.LobbiesApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -182,6 +182,15 @@ exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = {
 exports.GetLMSRHistoryResponseDtoMarketTypeEnum = {
     Single: 'single',
     ParentWithSubmarkets: 'parent_with_submarkets'
+};
+exports.GetParlayHistoryQueryDtoResultEnum = {
+    Won: 'won',
+    Lost: 'lost',
+    Voided: 'voided'
+};
+exports.GetParlayHistoryQueryDtoStatusEnum = {
+    Pending: 'pending',
+    Settled: 'settled'
 };
 exports.GetPlayerAllCardsDTOOrderByEnum = {
     CardsScore: 'cards_score',
@@ -354,6 +363,28 @@ exports.MarketPnlDtoPhaseEnum = {
     Open: 'open',
     Running: 'running',
     Resolved: 'resolved'
+};
+exports.ParlayHistoryDtoStatusEnum = {
+    Pending: 'pending',
+    Settled: 'settled'
+};
+exports.ParlayHistoryDtoResultEnum = {
+    Won: 'won',
+    Lost: 'lost',
+    Voided: 'voided'
+};
+exports.ParlayHistoryLegDtoStatusEnum = {
+    Pending: 'pending',
+    Closed: 'closed'
+};
+exports.ParlayHistoryLegDtoResultEnum = {
+    Won: 'won',
+    Lost: 'lost',
+    Voided: 'voided'
+};
+exports.ParlayPositionDtoStatusEnum = {
+    Pending: 'pending',
+    Settled: 'settled'
 };
 exports.PlayerHistoryFilterDtoActionEnum = {
     Buy: 'BUY',
@@ -656,6 +687,10 @@ exports.ProgressionDTORewardTypeEnum = {
     EliteChest13: 'elite_chest_13',
     EliteChest14: 'elite_chest_14',
     EliteChest15: 'elite_chest_15'
+};
+exports.QuoteOddsItemDtoModeEnum = {
+    Single: 'single',
+    Parlay: 'parlay'
 };
 exports.RegisterDeckDTOTournamentModeEnum = {
     Main: 'main',
@@ -3534,6 +3569,42 @@ const PredictionMarketApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Get player active parlays
+         * @param {string} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerActiveParlays: async (id, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerActiveParlays', 'id', id);
+            const localVarPath = `/prediction-market/player/{id}/parlays/active`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Get player history
          * @param {string} id
          * @param {PlayerHistoryFilterDto} [query]
@@ -3544,6 +3615,48 @@ const PredictionMarketApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'id' is not null or undefined
             (0, common_1.assertParamExists)('getPlayerHistory', 'id', id);
             const localVarPath = `/prediction-market/player/{id}/history`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            if (query !== undefined) {
+                for (const [key, value] of Object.entries(query)) {
+                    localVarQueryParameter[key] = value;
+                }
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Get player parlay history
+         * @param {string} id
+         * @param {GetParlayHistoryQueryDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerParlayHistory: async (id, query, options = {}) => {
+            // verify required parameter 'id' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerParlayHistory', 'id', id);
+            const localVarPath = `/prediction-market/player/{id}/parlays/history`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -3798,6 +3911,19 @@ const PredictionMarketApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get player active parlays
+         * @param {string} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerActiveParlays(id, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerActiveParlays(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerActiveParlays']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Get player history
          * @param {string} id
          * @param {PlayerHistoryFilterDto} [query]
@@ -3808,6 +3934,20 @@ const PredictionMarketApiFp = function (configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerHistory(id, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Get player parlay history
+         * @param {string} id
+         * @param {GetParlayHistoryQueryDto} [query]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerParlayHistory(id, query, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerParlayHistory(id, query, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['PredictionMarketApi.getPlayerParlayHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -3909,6 +4049,16 @@ const PredictionMarketApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get player active parlays
+         * @param {PredictionMarketApiGetPlayerActiveParlaysRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerActiveParlays(requestParameters, options) {
+            return localVarFp.getPlayerActiveParlays(requestParameters.id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get player history
          * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -3916,6 +4066,16 @@ const PredictionMarketApiFactory = function (configuration, basePath, axios) {
          */
         getPlayerHistory(requestParameters, options) {
             return localVarFp.getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Get player parlay history
+         * @param {PredictionMarketApiGetPlayerParlayHistoryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerParlayHistory(requestParameters, options) {
+            return localVarFp.getPlayerParlayHistory(requestParameters.id, requestParameters.query, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -4002,6 +4162,17 @@ class PredictionMarketApi extends base_1.BaseAPI {
     }
     /**
      *
+     * @summary Get player active parlays
+     * @param {PredictionMarketApiGetPlayerActiveParlaysRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerActiveParlays(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerActiveParlays(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Get player history
      * @param {PredictionMarketApiGetPlayerHistoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -4010,6 +4181,17 @@ class PredictionMarketApi extends base_1.BaseAPI {
      */
     getPlayerHistory(requestParameters, options) {
         return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerHistory(requestParameters.id, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Get player parlay history
+     * @param {PredictionMarketApiGetPlayerParlayHistoryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PredictionMarketApi
+     */
+    getPlayerParlayHistory(requestParameters, options) {
+        return (0, exports.PredictionMarketApiFp)(this.configuration).getPlayerParlayHistory(requestParameters.id, requestParameters.query, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
