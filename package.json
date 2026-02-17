@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-top/sdk-pro",
-  "version": "1.15.6",
+  "version": "1.15.7",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -28639,6 +28639,11 @@
             "type": "string",
             "description": "Resolve date (ISO string)",
             "example": "2024-01-22T00:00:00Z"
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "Whether the market should be featured",
+            "example": true
           }
         },
         "required": [

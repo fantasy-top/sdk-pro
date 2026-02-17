@@ -27543,6 +27543,12 @@ export interface UpdateMarketDto {
      * @memberof UpdateMarketDto
      */
     'resolve_at'?: string;
+    /**
+     * Whether the market should be featured
+     * @type {boolean}
+     * @memberof UpdateMarketDto
+     */
+    'featured'?: boolean;
 }
 /**
  *
