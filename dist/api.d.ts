@@ -13452,6 +13452,30 @@ export interface HouseOverallPnlDto {
      */
     'seederPnl': number;
     /**
+     * Total number of placed parlays (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayPlacedCount': number;
+    /**
+     * Total unique players who placed parlays (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayUniquePlayers': number;
+    /**
+     * Total amount placed in parlays (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayTotalPlaced': number;
+    /**
+     * Maximum possible house net loss if all placed parlays win (sum(maxPayout - totalInvested))
+     * @type {number}
+     * @memberof HouseOverallPnlDto
+     */
+    'parlayMaxLossIfAllWon': number;
+    /**
      * Total amount invested in settled parlays
      * @type {number}
      * @memberof HouseOverallPnlDto
@@ -13584,6 +13608,30 @@ export interface HousePnlDto {
      * @memberof HousePnlDto
      */
     'seederPnl': number;
+    /**
+     * Total number of placed parlays in date range by created_at (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayPlacedCount': number;
+    /**
+     * Total unique players who placed parlays in date range by created_at (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayUniquePlayers': number;
+    /**
+     * Total amount placed in parlays in date range by created_at (all statuses: pending + settled)
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayTotalPlaced': number;
+    /**
+     * Maximum possible house net loss if all placed parlays in date range by created_at win
+     * @type {number}
+     * @memberof HousePnlDto
+     */
+    'parlayMaxLossIfAllWon': number;
     /**
      * Total amount invested in settled parlays for date range
      * @type {number}

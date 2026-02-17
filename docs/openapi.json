@@ -28826,6 +28826,26 @@
             "description": "Market seeder PNL from position_settlements",
             "example": -2000.5
           },
+          "parlayPlacedCount": {
+            "type": "number",
+            "description": "Total number of placed parlays (all statuses: pending + settled)",
+            "example": 321
+          },
+          "parlayUniquePlayers": {
+            "type": "number",
+            "description": "Total unique players who placed parlays (all statuses: pending + settled)",
+            "example": 145
+          },
+          "parlayTotalPlaced": {
+            "type": "number",
+            "description": "Total amount placed in parlays (all statuses: pending + settled)",
+            "example": 5000.75
+          },
+          "parlayMaxLossIfAllWon": {
+            "type": "number",
+            "description": "Maximum possible house net loss if all placed parlays win (sum(maxPayout - totalInvested))",
+            "example": 8200.5
+          },
           "parlayTotalInvested": {
             "type": "number",
             "description": "Total amount invested in settled parlays",
@@ -28900,6 +28920,10 @@
           "totalPayout",
           "pnlWithoutFees",
           "seederPnl",
+          "parlayPlacedCount",
+          "parlayUniquePlayers",
+          "parlayTotalPlaced",
+          "parlayMaxLossIfAllWon",
           "parlayTotalInvested",
           "parlayTotalInvestedAfterFee",
           "parlayTotalPayout",
@@ -28957,6 +28981,26 @@
             "type": "number",
             "description": "Market seeder PNL from position_settlements for resolved markets in date range",
             "example": -500.25
+          },
+          "parlayPlacedCount": {
+            "type": "number",
+            "description": "Total number of placed parlays in date range by created_at (all statuses: pending + settled)",
+            "example": 42
+          },
+          "parlayUniquePlayers": {
+            "type": "number",
+            "description": "Total unique players who placed parlays in date range by created_at (all statuses: pending + settled)",
+            "example": 28
+          },
+          "parlayTotalPlaced": {
+            "type": "number",
+            "description": "Total amount placed in parlays in date range by created_at (all statuses: pending + settled)",
+            "example": 1200.5
+          },
+          "parlayMaxLossIfAllWon": {
+            "type": "number",
+            "description": "Maximum possible house net loss if all placed parlays in date range by created_at win",
+            "example": 1900.75
           },
           "parlayTotalInvested": {
             "type": "number",
@@ -29028,6 +29072,10 @@
           "pnlWithFees",
           "pnlWithoutFees",
           "seederPnl",
+          "parlayPlacedCount",
+          "parlayUniquePlayers",
+          "parlayTotalPlaced",
+          "parlayMaxLossIfAllWon",
           "parlayTotalInvested",
           "parlayTotalInvestedAfterFee",
           "parlayTotalPayout",
