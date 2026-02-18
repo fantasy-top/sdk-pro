@@ -14117,6 +14117,31 @@ export interface LinkMarketEntityDto {
 /**
  *
  * @export
+ * @interface LobbiesDashboardDailyDeckDataChartDTO
+ */
+export interface LobbiesDashboardDailyDeckDataChartDTO {
+    /**
+     * UTC day in YYYY-MM-DD format
+     * @type {string}
+     * @memberof LobbiesDashboardDailyDeckDataChartDTO
+     */
+    'date': string;
+    /**
+     * Total inscriptions for the day
+     * @type {number}
+     * @memberof LobbiesDashboardDailyDeckDataChartDTO
+     */
+    'decks': number;
+    /**
+     * Total fragments spent on inscriptions for the day
+     * @type {number}
+     * @memberof LobbiesDashboardDailyDeckDataChartDTO
+     */
+    'fragments': number;
+}
+/**
+ *
+ * @export
  * @interface LobbiesDashboardResponseDTO
  */
 export interface LobbiesDashboardResponseDTO {
@@ -14144,6 +14169,12 @@ export interface LobbiesDashboardResponseDTO {
      * @memberof LobbiesDashboardResponseDTO
      */
     'uniquePlayers': LobbiesDashboardTimeframeDTO;
+    /**
+     * Daily inscriptions and fragments spent for charting
+     * @type {Array<LobbiesDashboardDailyDeckDataChartDTO>}
+     * @memberof LobbiesDashboardResponseDTO
+     */
+    'dailyDeckDataChart': Array<LobbiesDashboardDailyDeckDataChartDTO>;
 }
 /**
  *

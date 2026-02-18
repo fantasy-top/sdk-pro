@@ -23218,6 +23218,31 @@
           "total"
         ]
       },
+      "LobbiesDashboardDailyDeckDataChartDTO": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "UTC day in YYYY-MM-DD format",
+            "example": "2026-02-15"
+          },
+          "decks": {
+            "type": "number",
+            "description": "Total inscriptions for the day",
+            "example": 120
+          },
+          "fragments": {
+            "type": "number",
+            "description": "Total fragments spent on inscriptions for the day",
+            "example": 3400
+          }
+        },
+        "required": [
+          "date",
+          "decks",
+          "fragments"
+        ]
+      },
       "LobbiesDashboardResponseDTO": {
         "type": "object",
         "properties": {
@@ -23252,13 +23277,21 @@
                 "$ref": "#/components/schemas/LobbiesDashboardTimeframeDTO"
               }
             ]
+          },
+          "dailyDeckDataChart": {
+            "description": "Daily inscriptions and fragments spent for charting",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LobbiesDashboardDailyDeckDataChartDTO"
+            }
           }
         },
         "required": [
           "totalLobbies",
           "totalDecks",
           "totalFragments",
-          "uniquePlayers"
+          "uniquePlayers",
+          "dailyDeckDataChart"
         ]
       },
       "NearStartTournamentResponseDTO": {
