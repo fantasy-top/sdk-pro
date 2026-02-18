@@ -4688,6 +4688,98 @@ export interface Flag {
 /**
  *
  * @export
+ * @interface FlaggedPostDTO
+ */
+export interface FlaggedPostDTO {
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'hero_handle': string;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'hero_profile_picture': string;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'post_id': string;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'url': string;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'status': string;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'post_created_at': string;
+    /**
+     *
+     * @type {number}
+     * @memberof FlaggedPostDTO
+     */
+    'views': number;
+    /**
+     *
+     * @type {number}
+     * @memberof FlaggedPostDTO
+     */
+    'botted_views': number;
+    /**
+     *
+     * @type {number}
+     * @memberof FlaggedPostDTO
+     */
+    'certified_views': number;
+    /**
+     *
+     * @type {number}
+     * @memberof FlaggedPostDTO
+     */
+    'certified_likes': number;
+    /**
+     *
+     * @type {number}
+     * @memberof FlaggedPostDTO
+     */
+    'manual_views_adjustment': number;
+    /**
+     *
+     * @type {string}
+     * @memberof FlaggedPostDTO
+     */
+    'date_manual_views_adjustment': string;
+}
+/**
+ *
+ * @export
+ * @interface FlaggedPostsResponseDTO
+ */
+export interface FlaggedPostsResponseDTO {
+    /**
+     *
+     * @type {Array<FlaggedPostDTO>}
+     * @memberof FlaggedPostsResponseDTO
+     */
+    'items': Array<FlaggedPostDTO>;
+}
+/**
+ *
+ * @export
  * @interface FlagsDTO
  */
 export interface FlagsDTO {
@@ -27529,6 +27621,62 @@ export interface UpdateLotteryConfigDto {
 /**
  *
  * @export
+ * @interface UpdateManualViewsAdjustmentDTO
+ */
+export interface UpdateManualViewsAdjustmentDTO {
+    /**
+     * Post rest_id to update
+     * @type {string}
+     * @memberof UpdateManualViewsAdjustmentDTO
+     */
+    'post_id': string;
+    /**
+     * Post created_at to identify the exact post record
+     * @type {string}
+     * @memberof UpdateManualViewsAdjustmentDTO
+     */
+    'created_at': string;
+    /**
+     * Manual adjustment to be added over (views_count - botted_views)
+     * @type {number}
+     * @memberof UpdateManualViewsAdjustmentDTO
+     */
+    'manual_views_adjustment': number;
+}
+/**
+ *
+ * @export
+ * @interface UpdateManualViewsAdjustmentResponseDTO
+ */
+export interface UpdateManualViewsAdjustmentResponseDTO {
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateManualViewsAdjustmentResponseDTO
+     */
+    'post_id': string;
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateManualViewsAdjustmentResponseDTO
+     */
+    'certified_views': number;
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateManualViewsAdjustmentResponseDTO
+     */
+    'manual_views_adjustment': number;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateManualViewsAdjustmentResponseDTO
+     */
+    'date_manual_views_adjustment': string;
+}
+/**
+ *
+ * @export
  * @interface UpdateMarketDto
  */
 export interface UpdateMarketDto {
@@ -27871,6 +28019,37 @@ export interface VerifySellOrdersDTO {
      * @memberof VerifySellOrdersDTO
      */
     'sellOrders': Array<SellOrderDTO>;
+}
+/**
+ *
+ * @export
+ * @interface ViewGrowthRatePointDTO
+ */
+export interface ViewGrowthRatePointDTO {
+    /**
+     * Post ID
+     * @type {string}
+     * @memberof ViewGrowthRatePointDTO
+     */
+    'post_id': string;
+    /**
+     * Snapshot timestamp
+     * @type {string}
+     * @memberof ViewGrowthRatePointDTO
+     */
+    'created_at': string;
+    /**
+     * Total views at snapshot time
+     * @type {number}
+     * @memberof ViewGrowthRatePointDTO
+     */
+    'views': number | null;
+    /**
+     * Subtracted (botted) views at snapshot time
+     * @type {number}
+     * @memberof ViewGrowthRatePointDTO
+     */
+    'subtracted_views': number | null;
 }
 /**
  *

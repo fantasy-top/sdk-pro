@@ -10897,6 +10897,172 @@
           "value"
         ]
       },
+      "ViewGrowthRatePointDTO": {
+        "type": "object",
+        "properties": {
+          "post_id": {
+            "type": "string",
+            "description": "Post ID",
+            "example": "1234567890"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Snapshot timestamp",
+            "example": "2026-02-17T10:00:00.000Z"
+          },
+          "views": {
+            "type": "number",
+            "description": "Total views at snapshot time",
+            "example": 15000,
+            "nullable": true
+          },
+          "subtracted_views": {
+            "type": "number",
+            "description": "Subtracted (botted) views at snapshot time",
+            "example": 500,
+            "nullable": true
+          }
+        },
+        "required": [
+          "post_id",
+          "created_at",
+          "views",
+          "subtracted_views"
+        ]
+      },
+      "FlaggedPostDTO": {
+        "type": "object",
+        "properties": {
+          "hero_handle": {
+            "type": "string",
+            "example": "ansem"
+          },
+          "hero_profile_picture": {
+            "type": "string",
+            "example": "https://pbs.twimg.com/profile_images/...jpg"
+          },
+          "post_id": {
+            "type": "string",
+            "example": "1234567890"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://twitter.com/..."
+          },
+          "status": {
+            "type": "string",
+            "example": "waitingForReview"
+          },
+          "post_created_at": {
+            "type": "string",
+            "example": "2026-02-17T10:00:00.000Z"
+          },
+          "views": {
+            "type": "number",
+            "example": 120000
+          },
+          "botted_views": {
+            "type": "number",
+            "example": 5000
+          },
+          "certified_views": {
+            "type": "number",
+            "example": 115000
+          },
+          "certified_likes": {
+            "type": "number",
+            "example": 2300
+          },
+          "manual_views_adjustment": {
+            "type": "number",
+            "example": 500
+          },
+          "date_manual_views_adjustment": {
+            "type": "string",
+            "example": "2026-02-17T10:00:00.000Z"
+          }
+        },
+        "required": [
+          "hero_handle",
+          "hero_profile_picture",
+          "post_id",
+          "url",
+          "status",
+          "post_created_at",
+          "views",
+          "botted_views",
+          "certified_views",
+          "certified_likes",
+          "manual_views_adjustment",
+          "date_manual_views_adjustment"
+        ]
+      },
+      "FlaggedPostsResponseDTO": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FlaggedPostDTO"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "UpdateManualViewsAdjustmentDTO": {
+        "type": "object",
+        "properties": {
+          "post_id": {
+            "type": "string",
+            "description": "Post rest_id to update",
+            "example": "1895137434875797554"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Post created_at to identify the exact post record",
+            "example": "2026-02-17T18:00:00.000Z"
+          },
+          "manual_views_adjustment": {
+            "type": "number",
+            "description": "Manual adjustment to be added over (views_count - botted_views)",
+            "example": 500
+          }
+        },
+        "required": [
+          "post_id",
+          "created_at",
+          "manual_views_adjustment"
+        ]
+      },
+      "UpdateManualViewsAdjustmentResponseDTO": {
+        "type": "object",
+        "properties": {
+          "post_id": {
+            "type": "string",
+            "example": "1895137434875797554"
+          },
+          "certified_views": {
+            "type": "number",
+            "example": 99500
+          },
+          "manual_views_adjustment": {
+            "type": "number",
+            "example": 500
+          },
+          "date_manual_views_adjustment": {
+            "type": "string",
+            "example": "2026-02-17T18:00:00.000Z"
+          }
+        },
+        "required": [
+          "post_id",
+          "certified_views",
+          "manual_views_adjustment",
+          "date_manual_views_adjustment"
+        ]
+      },
       "CreateThresholdDto": {
         "type": "object",
         "properties": {
