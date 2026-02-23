@@ -28952,6 +28952,31 @@
           "totalRefunded"
         ]
       },
+      "ManualPaymentDto": {
+        "type": "object",
+        "properties": {
+          "player_id": {
+            "type": "string",
+            "description": "ID of the player to credit",
+            "example": "0x1234567890abcdef"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount of fragments to transfer (must be a positive integer)",
+            "example": 1000
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason for the manual payment (used as audit source tag)",
+            "example": "parlay-settlement-correction"
+          }
+        },
+        "required": [
+          "player_id",
+          "amount",
+          "reason"
+        ]
+      },
       "GetPendingResolutionMarketsResponseDto": {
         "type": "object",
         "properties": {

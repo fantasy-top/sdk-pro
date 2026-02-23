@@ -14841,6 +14841,31 @@ export interface MaintenanceConfigRequest {
 /**
  *
  * @export
+ * @interface ManualPaymentDto
+ */
+export interface ManualPaymentDto {
+    /**
+     * ID of the player to credit
+     * @type {string}
+     * @memberof ManualPaymentDto
+     */
+    'player_id': string;
+    /**
+     * Amount of fragments to transfer (must be a positive integer)
+     * @type {number}
+     * @memberof ManualPaymentDto
+     */
+    'amount': number;
+    /**
+     * Reason for the manual payment (used as audit source tag)
+     * @type {string}
+     * @memberof ManualPaymentDto
+     */
+    'reason': string;
+}
+/**
+ *
+ * @export
  * @interface MarketChildDto
  */
 export interface MarketChildDto {
