@@ -14991,6 +14991,12 @@ export interface MarketChildDto {
      */
     'status': MarketChildDtoStatusEnum;
     /**
+     * Current market phase computed from timestamps and status for list rendering
+     * @type {string}
+     * @memberof MarketChildDto
+     */
+    'phase'?: MarketChildDtoPhaseEnum;
+    /**
      * Whether initial liquidity has been seeded
      * @type {boolean}
      * @memberof MarketChildDto
@@ -15135,6 +15141,13 @@ export const MarketChildDtoStatusEnum = {
 } as const;
 
 export type MarketChildDtoStatusEnum = typeof MarketChildDtoStatusEnum[keyof typeof MarketChildDtoStatusEnum];
+export const MarketChildDtoPhaseEnum = {
+    Open: 'open',
+    Running: 'running',
+    Resolved: 'resolved'
+} as const;
+
+export type MarketChildDtoPhaseEnum = typeof MarketChildDtoPhaseEnum[keyof typeof MarketChildDtoPhaseEnum];
 
 /**
  * 
@@ -15190,6 +15203,12 @@ export interface MarketDto {
      * @memberof MarketDto
      */
     'status': MarketDtoStatusEnum;
+    /**
+     * Current market phase computed from timestamps and status for list rendering
+     * @type {string}
+     * @memberof MarketDto
+     */
+    'phase'?: MarketDtoPhaseEnum;
     /**
      * Whether initial liquidity has been seeded
      * @type {boolean}
@@ -15341,6 +15360,13 @@ export const MarketDtoStatusEnum = {
 } as const;
 
 export type MarketDtoStatusEnum = typeof MarketDtoStatusEnum[keyof typeof MarketDtoStatusEnum];
+export const MarketDtoPhaseEnum = {
+    Open: 'open',
+    Running: 'running',
+    Resolved: 'resolved'
+} as const;
+
+export type MarketDtoPhaseEnum = typeof MarketDtoPhaseEnum[keyof typeof MarketDtoPhaseEnum];
 
 /**
  * 

@@ -24424,6 +24424,16 @@
               "closed"
             ]
           },
+          "phase": {
+            "type": "string",
+            "description": "Current market phase computed from timestamps and status for list rendering",
+            "example": "running",
+            "enum": [
+              "open",
+              "running",
+              "resolved"
+            ]
+          },
           "is_seeded": {
             "type": "boolean",
             "description": "Whether initial liquidity has been seeded",
@@ -24637,6 +24647,16 @@
               "settled",
               "voided",
               "closed"
+            ]
+          },
+          "phase": {
+            "type": "string",
+            "description": "Current market phase computed from timestamps and status for list rendering",
+            "example": "running",
+            "enum": [
+              "open",
+              "running",
+              "resolved"
             ]
           },
           "is_seeded": {
