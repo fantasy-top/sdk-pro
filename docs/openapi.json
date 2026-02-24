@@ -28768,6 +28768,194 @@
           "childSettledCounts"
         ]
       },
+      "SettleParlayAdminDto": {
+        "type": "object",
+        "properties": {
+          "shouldPayout": {
+            "type": "boolean",
+            "description": "Whether to process fragment payout while settling this parlay. If false, the parlay is settled without payment.",
+            "example": true,
+            "default": false
+          }
+        }
+      },
+      "SettleParlayResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Whether the settlement request was successful",
+            "example": true
+          },
+          "parlayId": {
+            "type": "string",
+            "description": "ID of the parlay",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "settledNow": {
+            "type": "boolean",
+            "description": "Whether the parlay was settled by this request (false means it was already settled)",
+            "example": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the parlay",
+            "enum": [
+              "pending",
+              "settled"
+            ],
+            "example": "settled"
+          },
+          "result": {
+            "type": "string",
+            "description": "Settlement result for the parlay",
+            "enum": [
+              "won",
+              "lost",
+              "voided"
+            ],
+            "nullable": true,
+            "example": "won"
+          },
+          "payoutAmount": {
+            "type": "number",
+            "description": "Payout amount processed by this request",
+            "example": 240
+          },
+          "settledAt": {
+            "type": "string",
+            "description": "ISO timestamp when the parlay was settled",
+            "example": "2026-02-23T12:00:00.000Z"
+          }
+        },
+        "required": [
+          "success",
+          "parlayId",
+          "settledNow",
+          "status",
+          "result",
+          "payoutAmount"
+        ]
+      },
+      "SettleParlaysBulkAdminDto": {
+        "type": "object",
+        "properties": {
+          "excludeParlayId": {
+            "type": "string",
+            "description": "Parlay ID to exclude from bulk settlement",
+            "example": "e85b2149-ca6d-4559-86af-7f8e79ebeabc"
+          },
+          "shouldPayout": {
+            "type": "boolean",
+            "description": "Whether to process fragment payouts while settling parlays. If false, parlays are settled without payment.",
+            "example": true,
+            "default": false
+          }
+        },
+        "required": [
+          "excludeParlayId"
+        ]
+      },
+      "SettleParlaysBulkFailureDto": {
+        "type": "object",
+        "properties": {
+          "parlayId": {
+            "type": "string",
+            "description": "Parlay ID that failed to settle",
+            "example": "9f25ef90-fbe2-49d8-9ed5-bde96e3a605a"
+          },
+          "message": {
+            "type": "string",
+            "description": "Failure reason for this parlay",
+            "example": "Parlay 9f25ef90-fbe2-49d8-9ed5-bde96e3a605a cannot be settled because market market-1 is open"
+          }
+        },
+        "required": [
+          "parlayId",
+          "message"
+        ]
+      },
+      "SettleParlaysBulkResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Whether the bulk settlement request was accepted",
+            "example": true
+          },
+          "excludeParlayId": {
+            "type": "string",
+            "description": "Parlay ID excluded from bulk settlement",
+            "example": "e85b2149-ca6d-4559-86af-7f8e79ebeabc"
+          },
+          "shouldPayout": {
+            "type": "boolean",
+            "description": "Whether payouts were processed for successfully settled parlays",
+            "example": true
+          },
+          "totalPendingCandidates": {
+            "type": "number",
+            "description": "Total number of pending candidate parlays found",
+            "example": 125
+          },
+          "processedCount": {
+            "type": "number",
+            "description": "Total number of candidates processed",
+            "example": 125
+          },
+          "settledCount": {
+            "type": "number",
+            "description": "Number of parlays settled in this bulk run",
+            "example": 120
+          },
+          "alreadySettledCount": {
+            "type": "number",
+            "description": "Number of parlays that were already settled",
+            "example": 0
+          },
+          "failedCount": {
+            "type": "number",
+            "description": "Number of parlays that failed to settle",
+            "example": 5
+          },
+          "totalPayoutProcessed": {
+            "type": "number",
+            "description": "Total payout amount processed across successfully settled parlays",
+            "example": 42000
+          },
+          "failures": {
+            "description": "Per-parlay failures encountered during bulk run",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SettleParlaysBulkFailureDto"
+            }
+          },
+          "startedAt": {
+            "type": "string",
+            "description": "ISO timestamp when the bulk run started",
+            "example": "2026-02-23T12:00:00.000Z"
+          },
+          "finishedAt": {
+            "type": "string",
+            "description": "ISO timestamp when the bulk run finished",
+            "example": "2026-02-23T12:00:03.000Z"
+          }
+        },
+        "required": [
+          "success",
+          "excludeParlayId",
+          "shouldPayout",
+          "totalPendingCandidates",
+          "processedCount",
+          "settledCount",
+          "alreadySettledCount",
+          "failedCount",
+          "totalPayoutProcessed",
+          "failures",
+          "startedAt",
+          "finishedAt"
+        ]
+      },
       "UpdateMarketStatusAdminDto": {
         "type": "object",
         "properties": {

@@ -21882,6 +21882,196 @@ export interface SendTemplateResponseDTO {
 /**
  *
  * @export
+ * @interface SettleParlayAdminDto
+ */
+export interface SettleParlayAdminDto {
+    /**
+     * Whether to process fragment payout while settling this parlay. If false, the parlay is settled without payment.
+     * @type {boolean}
+     * @memberof SettleParlayAdminDto
+     */
+    'shouldPayout'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface SettleParlayResponseDto
+ */
+export interface SettleParlayResponseDto {
+    /**
+     * Whether the settlement request was successful
+     * @type {boolean}
+     * @memberof SettleParlayResponseDto
+     */
+    'success': boolean;
+    /**
+     * ID of the parlay
+     * @type {string}
+     * @memberof SettleParlayResponseDto
+     */
+    'parlayId': string;
+    /**
+     * Whether the parlay was settled by this request (false means it was already settled)
+     * @type {boolean}
+     * @memberof SettleParlayResponseDto
+     */
+    'settledNow': boolean;
+    /**
+     * Current status of the parlay
+     * @type {string}
+     * @memberof SettleParlayResponseDto
+     */
+    'status': SettleParlayResponseDtoStatusEnum;
+    /**
+     * Settlement result for the parlay
+     * @type {string}
+     * @memberof SettleParlayResponseDto
+     */
+    'result': SettleParlayResponseDtoResultEnum | null;
+    /**
+     * Payout amount processed by this request
+     * @type {number}
+     * @memberof SettleParlayResponseDto
+     */
+    'payoutAmount': number;
+    /**
+     * ISO timestamp when the parlay was settled
+     * @type {string}
+     * @memberof SettleParlayResponseDto
+     */
+    'settledAt'?: string;
+}
+export declare const SettleParlayResponseDtoStatusEnum: {
+    readonly Pending: "pending";
+    readonly Settled: "settled";
+};
+export type SettleParlayResponseDtoStatusEnum = typeof SettleParlayResponseDtoStatusEnum[keyof typeof SettleParlayResponseDtoStatusEnum];
+export declare const SettleParlayResponseDtoResultEnum: {
+    readonly Won: "won";
+    readonly Lost: "lost";
+    readonly Voided: "voided";
+};
+export type SettleParlayResponseDtoResultEnum = typeof SettleParlayResponseDtoResultEnum[keyof typeof SettleParlayResponseDtoResultEnum];
+/**
+ *
+ * @export
+ * @interface SettleParlaysBulkAdminDto
+ */
+export interface SettleParlaysBulkAdminDto {
+    /**
+     * Parlay ID to exclude from bulk settlement
+     * @type {string}
+     * @memberof SettleParlaysBulkAdminDto
+     */
+    'excludeParlayId': string;
+    /**
+     * Whether to process fragment payouts while settling parlays. If false, parlays are settled without payment.
+     * @type {boolean}
+     * @memberof SettleParlaysBulkAdminDto
+     */
+    'shouldPayout'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface SettleParlaysBulkFailureDto
+ */
+export interface SettleParlaysBulkFailureDto {
+    /**
+     * Parlay ID that failed to settle
+     * @type {string}
+     * @memberof SettleParlaysBulkFailureDto
+     */
+    'parlayId': string;
+    /**
+     * Failure reason for this parlay
+     * @type {string}
+     * @memberof SettleParlaysBulkFailureDto
+     */
+    'message': string;
+}
+/**
+ *
+ * @export
+ * @interface SettleParlaysBulkResponseDto
+ */
+export interface SettleParlaysBulkResponseDto {
+    /**
+     * Whether the bulk settlement request was accepted
+     * @type {boolean}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'success': boolean;
+    /**
+     * Parlay ID excluded from bulk settlement
+     * @type {string}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'excludeParlayId': string;
+    /**
+     * Whether payouts were processed for successfully settled parlays
+     * @type {boolean}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'shouldPayout': boolean;
+    /**
+     * Total number of pending candidate parlays found
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'totalPendingCandidates': number;
+    /**
+     * Total number of candidates processed
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'processedCount': number;
+    /**
+     * Number of parlays settled in this bulk run
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'settledCount': number;
+    /**
+     * Number of parlays that were already settled
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'alreadySettledCount': number;
+    /**
+     * Number of parlays that failed to settle
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'failedCount': number;
+    /**
+     * Total payout amount processed across successfully settled parlays
+     * @type {number}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'totalPayoutProcessed': number;
+    /**
+     * Per-parlay failures encountered during bulk run
+     * @type {Array<SettleParlaysBulkFailureDto>}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'failures': Array<SettleParlaysBulkFailureDto>;
+    /**
+     * ISO timestamp when the bulk run started
+     * @type {string}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'startedAt': string;
+    /**
+     * ISO timestamp when the bulk run finished
+     * @type {string}
+     * @memberof SettleParlaysBulkResponseDto
+     */
+    'finishedAt': string;
+}
+/**
+ *
+ * @export
  * @interface StringFilterDTO
  */
 export interface StringFilterDTO {
