@@ -12116,6 +12116,215 @@
           "hero_choices"
         ]
       },
+      "HeroCoinHistoryResponse": {
+        "type": "object",
+        "properties": {
+          "change_24": {
+            "type": "string"
+          },
+          "market_cap": {
+            "type": "string"
+          }
+        }
+      },
+      "HeroCoinResponse": {
+        "type": "object",
+        "properties": {
+          "imageLargeUrl": {
+            "type": "string"
+          },
+          "coin_histories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeroCoinHistoryResponse"
+            }
+          }
+        },
+        "required": [
+          "imageLargeUrl"
+        ]
+      },
+      "HeroWithTacticScoresHeroWithImagePrefix": {
+        "type": "object",
+        "properties": {
+          "tactic_image_prefix": {
+            "type": "string",
+            "description": "Tactic image prefix",
+            "example": "argent"
+          },
+          "coin": {
+            "$ref": "#/components/schemas/HeroCoinResponse"
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeroFlag"
+            }
+          }
+        },
+        "required": [
+          "tactic_image_prefix",
+          "coin",
+          "flags"
+        ]
+      },
+      "HeroWithTacticScores": {
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": "string",
+            "description": "Handle of the hero",
+            "example": "hero_handle"
+          },
+          "current_rank": {
+            "type": "number",
+            "description": "Current rank of the hero",
+            "example": 300
+          },
+          "fantasy_score": {
+            "description": "Fantasy score of the hero",
+            "example": "100.00",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/i"
+              }
+            ]
+          },
+          "followers_count": {
+            "type": "number",
+            "description": "Number of followers the hero has",
+            "example": 5000
+          },
+          "stars": {
+            "type": "number",
+            "description": "Number of stars the hero has",
+            "example": 6
+          },
+          "oneDayScore": {
+            "$ref": "#/components/schemas/i"
+          },
+          "oneDayRank": {
+            "type": "number"
+          },
+          "sevenDaysAverageScore": {
+            "$ref": "#/components/schemas/i"
+          },
+          "thirtyDaysAverageScore": {
+            "$ref": "#/components/schemas/i"
+          },
+          "hero": {
+            "$ref": "#/components/schemas/HeroWithTacticScoresHeroWithImagePrefix"
+          }
+        },
+        "required": [
+          "handle",
+          "current_rank",
+          "fantasy_score",
+          "stars",
+          "oneDayScore",
+          "oneDayRank",
+          "sevenDaysAverageScore",
+          "thirtyDaysAverageScore",
+          "hero"
+        ]
+      },
+      "TacticsHeroChoiceResponse": {
+        "type": "object",
+        "properties": {
+          "hero_id": {
+            "type": "string",
+            "description": "Hero score ID",
+            "example": "hero-score-id"
+          },
+          "hero_score": {
+            "type": "TacticsHeroScore",
+            "description": "Hero score linked to hero choice"
+          },
+          "hero": {
+            "$ref": "#/components/schemas/HeroWithTacticScores"
+          }
+        },
+        "required": [
+          "hero_id",
+          "hero_score",
+          "hero"
+        ]
+      },
+      "GetTacticsChoicesByIdResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the entry",
+            "example": "some-unique-id"
+          },
+          "tactic_id": {
+            "type": "string",
+            "description": "Tactic ID",
+            "example": "some-tactic-id"
+          },
+          "hero1_id": {
+            "type": "string",
+            "description": "Hero 1 ID",
+            "example": "hero1-id",
+            "nullable": true
+          },
+          "hero2_id": {
+            "type": "string",
+            "description": "Hero 2 ID",
+            "example": "hero2-id",
+            "nullable": true
+          },
+          "hero3_id": {
+            "type": "string",
+            "description": "Hero 3 ID",
+            "example": "hero3-id",
+            "nullable": true
+          },
+          "hero4_id": {
+            "type": "string",
+            "description": "Hero 4 ID",
+            "example": "hero4-id",
+            "nullable": true
+          },
+          "hero5_id": {
+            "type": "string",
+            "description": "Hero 5 ID",
+            "example": "hero5-id",
+            "nullable": true
+          },
+          "validate_deck_before": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Validate deck before",
+            "example": "2024-05-27T00:00:00.000Z"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Created at",
+            "example": "2024-05-27T00:00:00.000Z"
+          },
+          "hero_choices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TacticsHeroChoiceResponse"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "tactic_id",
+          "hero1_id",
+          "hero2_id",
+          "hero3_id",
+          "hero4_id",
+          "hero5_id",
+          "validate_deck_before",
+          "created_at",
+          "hero_choices"
+        ]
+      },
       "TacticsWhereDTO": {
         "type": "object",
         "properties": {
@@ -12472,30 +12681,6 @@
           "eth_price",
           "config",
           "tactics_entries"
-        ]
-      },
-      "PaginatedTacticsEntryResult": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "description": "Data items",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TacticsEntry"
-            }
-          },
-          "meta": {
-            "description": "Pagination metadata",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MetaDTO"
-              }
-            ]
-          }
-        },
-        "required": [
-          "data",
-          "meta"
         ]
       },
       "TacticsConfigIncludeDTO": {
@@ -13478,262 +13663,6 @@
           "updated_at",
           "tactics",
           "tickets"
-        ]
-      },
-      "GetTacticHistoryResponseDTO": {
-        "type": "object",
-        "properties": {
-          "tactic": {
-            "$ref": "#/components/schemas/Tactics"
-          },
-          "top_rank": {
-            "type": "number"
-          },
-          "total_entries": {
-            "type": "number"
-          },
-          "total_gains": {
-            "$ref": "#/components/schemas/GetTotalTicketsGainsResponseDTO"
-          }
-        },
-        "required": [
-          "tactic",
-          "top_rank",
-          "total_entries",
-          "total_gains"
-        ]
-      },
-      "PaginatedGetTacticHistoryResponseDTOResult": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "description": "Data items",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GetTacticHistoryResponseDTO"
-            }
-          },
-          "meta": {
-            "description": "Pagination metadata",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MetaDTO"
-              }
-            ]
-          }
-        },
-        "required": [
-          "data",
-          "meta"
-        ]
-      },
-      "HeroCoinHistoryResponse": {
-        "type": "object",
-        "properties": {
-          "change_24": {
-            "type": "string"
-          },
-          "market_cap": {
-            "type": "string"
-          }
-        }
-      },
-      "HeroCoinResponse": {
-        "type": "object",
-        "properties": {
-          "imageLargeUrl": {
-            "type": "string"
-          },
-          "coin_histories": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HeroCoinHistoryResponse"
-            }
-          }
-        },
-        "required": [
-          "imageLargeUrl"
-        ]
-      },
-      "HeroWithTacticScoresHeroWithImagePrefix": {
-        "type": "object",
-        "properties": {
-          "tactic_image_prefix": {
-            "type": "string",
-            "description": "Tactic image prefix",
-            "example": "argent"
-          },
-          "coin": {
-            "$ref": "#/components/schemas/HeroCoinResponse"
-          },
-          "flags": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HeroFlag"
-            }
-          }
-        },
-        "required": [
-          "tactic_image_prefix",
-          "coin",
-          "flags"
-        ]
-      },
-      "HeroWithTacticScores": {
-        "type": "object",
-        "properties": {
-          "handle": {
-            "type": "string",
-            "description": "Handle of the hero",
-            "example": "hero_handle"
-          },
-          "current_rank": {
-            "type": "number",
-            "description": "Current rank of the hero",
-            "example": 300
-          },
-          "fantasy_score": {
-            "description": "Fantasy score of the hero",
-            "example": "100.00",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/i"
-              }
-            ]
-          },
-          "followers_count": {
-            "type": "number",
-            "description": "Number of followers the hero has",
-            "example": 5000
-          },
-          "stars": {
-            "type": "number",
-            "description": "Number of stars the hero has",
-            "example": 6
-          },
-          "oneDayScore": {
-            "$ref": "#/components/schemas/i"
-          },
-          "oneDayRank": {
-            "type": "number"
-          },
-          "sevenDaysAverageScore": {
-            "$ref": "#/components/schemas/i"
-          },
-          "thirtyDaysAverageScore": {
-            "$ref": "#/components/schemas/i"
-          },
-          "hero": {
-            "$ref": "#/components/schemas/HeroWithTacticScoresHeroWithImagePrefix"
-          }
-        },
-        "required": [
-          "handle",
-          "current_rank",
-          "fantasy_score",
-          "stars",
-          "oneDayScore",
-          "oneDayRank",
-          "sevenDaysAverageScore",
-          "thirtyDaysAverageScore",
-          "hero"
-        ]
-      },
-      "TacticsHeroChoiceResponse": {
-        "type": "object",
-        "properties": {
-          "hero_id": {
-            "type": "string",
-            "description": "Hero score ID",
-            "example": "hero-score-id"
-          },
-          "hero_score": {
-            "type": "TacticsHeroScore",
-            "description": "Hero score linked to hero choice"
-          },
-          "hero": {
-            "$ref": "#/components/schemas/HeroWithTacticScores"
-          }
-        },
-        "required": [
-          "hero_id",
-          "hero_score",
-          "hero"
-        ]
-      },
-      "GetTacticsChoicesByIdResponse": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the entry",
-            "example": "some-unique-id"
-          },
-          "tactic_id": {
-            "type": "string",
-            "description": "Tactic ID",
-            "example": "some-tactic-id"
-          },
-          "hero1_id": {
-            "type": "string",
-            "description": "Hero 1 ID",
-            "example": "hero1-id",
-            "nullable": true
-          },
-          "hero2_id": {
-            "type": "string",
-            "description": "Hero 2 ID",
-            "example": "hero2-id",
-            "nullable": true
-          },
-          "hero3_id": {
-            "type": "string",
-            "description": "Hero 3 ID",
-            "example": "hero3-id",
-            "nullable": true
-          },
-          "hero4_id": {
-            "type": "string",
-            "description": "Hero 4 ID",
-            "example": "hero4-id",
-            "nullable": true
-          },
-          "hero5_id": {
-            "type": "string",
-            "description": "Hero 5 ID",
-            "example": "hero5-id",
-            "nullable": true
-          },
-          "validate_deck_before": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Validate deck before",
-            "example": "2024-05-27T00:00:00.000Z"
-          },
-          "created_at": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Created at",
-            "example": "2024-05-27T00:00:00.000Z"
-          },
-          "hero_choices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TacticsHeroChoiceResponse"
-            }
-          }
-        },
-        "required": [
-          "id",
-          "tactic_id",
-          "hero1_id",
-          "hero2_id",
-          "hero3_id",
-          "hero4_id",
-          "hero5_id",
-          "validate_deck_before",
-          "created_at",
-          "hero_choices"
         ]
       },
       "TicketsNewRewardsEntryDTO": {

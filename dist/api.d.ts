@@ -8892,37 +8892,6 @@ export interface GetTacticByIdQueryDTO {
 /**
  *
  * @export
- * @interface GetTacticHistoryResponseDTO
- */
-export interface GetTacticHistoryResponseDTO {
-    /**
-     *
-     * @type {Tactics}
-     * @memberof GetTacticHistoryResponseDTO
-     */
-    'tactic': Tactics;
-    /**
-     *
-     * @type {number}
-     * @memberof GetTacticHistoryResponseDTO
-     */
-    'top_rank': number;
-    /**
-     *
-     * @type {number}
-     * @memberof GetTacticHistoryResponseDTO
-     */
-    'total_entries': number;
-    /**
-     *
-     * @type {GetTotalTicketsGainsResponseDTO}
-     * @memberof GetTacticHistoryResponseDTO
-     */
-    'total_gains': GetTotalTicketsGainsResponseDTO;
-}
-/**
- *
- * @export
  * @interface GetTacticsChoicesByIdResponse
  */
 export interface GetTacticsChoicesByIdResponse {
@@ -16516,25 +16485,6 @@ export interface PaginatedGetReferredPlayersResponseResult {
 /**
  *
  * @export
- * @interface PaginatedGetTacticHistoryResponseDTOResult
- */
-export interface PaginatedGetTacticHistoryResponseDTOResult {
-    /**
-     * Data items
-     * @type {Array<GetTacticHistoryResponseDTO>}
-     * @memberof PaginatedGetTacticHistoryResponseDTOResult
-     */
-    'data': Array<GetTacticHistoryResponseDTO>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedGetTacticHistoryResponseDTOResult
-     */
-    'meta': MetaDTO;
-}
-/**
- *
- * @export
  * @interface PaginatedGetTacticsHeroesResponseResult
  */
 export interface PaginatedGetTacticsHeroesResponseResult {
@@ -16681,25 +16631,6 @@ export interface PaginatedTacticsConfigResult {
      * Pagination metadata
      * @type {MetaDTO}
      * @memberof PaginatedTacticsConfigResult
-     */
-    'meta': MetaDTO;
-}
-/**
- *
- * @export
- * @interface PaginatedTacticsEntryResult
- */
-export interface PaginatedTacticsEntryResult {
-    /**
-     * Data items
-     * @type {Array<TacticsEntry>}
-     * @memberof PaginatedTacticsEntryResult
-     */
-    'data': Array<TacticsEntry>;
-    /**
-     * Pagination metadata
-     * @type {MetaDTO}
-     * @memberof PaginatedTacticsEntryResult
      */
     'meta': MetaDTO;
 }
