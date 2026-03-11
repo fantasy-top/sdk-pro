@@ -18,8 +18,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlayerRewardDTOQuestTypeEnum = exports.PlayerRewardDTORewardTypeEnum = exports.PlayerRewardDTORewardOriginEnum = exports.PlayerHistoryFilterDtoActionEnum = exports.ParlayPositionDtoStatusEnum = exports.ParlayHistoryLegDtoResultEnum = exports.ParlayHistoryLegDtoStatusEnum = exports.ParlayHistoryDtoResultEnum = exports.ParlayHistoryDtoStatusEnum = exports.MarketPnlDtoPhaseEnum = exports.MarketDtoPhaseEnum = exports.MarketDtoStatusEnum = exports.MarketChildDtoPhaseEnum = exports.MarketChildDtoStatusEnum = exports.LotteryResponseDtoStatusEnum = exports.LotteryEntryEntryTypeEnum = exports.LotteryStatusEnum = exports.LeaderboardEntryDtoStatusEnum = exports.JackpotStatsDtoStatusEnum = exports.HistoryItemDtoActionEnum = exports.HistoryItemDtoTypeEnum = exports.HeroWithStatsOrderByDTOFantasyScoreEnum = exports.HeroWithStatsOrderByDTOTweetCountEnum = exports.HeroWithStatsOrderByDTOViewsEnum = exports.HeroWithStatsOrderByDTOPreviousRankEnum = exports.HeroWithStatsOrderByDTOCurrentRankEnum = exports.HandlePushNotificationDtoTypeEnum = exports.GetTournamentsQueryDTOOrderTypeEnum = exports.GetTacticsTxsHistoriesResponseDTOTypeEnum = exports.GetTacticsOptionsDTODistinctEnum = exports.GetTacticsEntriesOptionsDTODistinctEnum = exports.GetPlayerCardsFiltersWhereDTOOrderByEnum = exports.GetPlayerAllCardsDTOOrderByEnum = exports.GetParlayHistoryQueryDtoStatusEnum = exports.GetParlayHistoryQueryDtoResultEnum = exports.GetLMSRHistoryResponseDtoMarketTypeEnum = exports.GetHeroScoresQueryOrderByDTOTweetCountEnum = exports.GetHeroScoresQueryOrderByDTOStarsEnum = exports.GetHeroScoresQueryOrderByDTOMindshareBoostEnum = exports.GetHeroScoresQueryOrderByDTOFantasyScoreEnum = exports.GetHeroScoresQueryHeroesOrderByDTOFollowersCountEnum = exports.GetCardsForDeckBuilderDTOTournamentModeEnum = exports.GetAndFilterActivityQueryDTOActivityTypeEnum = exports.GetAllPlayersDTOTournamentModeEnum = exports.GetActivityDtoTypeEnum = exports.EntityResponseDtoTypeEnum = exports.EntityDtoTypeEnum = exports.CreateEntityDtoTypeEnum = exports.ChestPrizeDTORewardTypeEnum = exports.AccountDtoSourceEnum = void 0;
 exports.TierDtoTierEnum = exports.TacticsOrderByDTOUpdatedAtEnum = exports.TacticsOrderByDTOCreatedAtEnum = exports.TacticsOrderByDTOVisibleEnum = exports.TacticsOrderByDTORegistrationOpennedEnum = exports.TacticsOrderByDTOIsRewardsProcessedEnum = exports.TacticsOrderByDTOEthPriceEnum = exports.TacticsOrderByDTOWalletAddressEnum = exports.TacticsOrderByDTOCumulatedWethEnum = exports.TacticsOrderByDTOIsProcessedEnum = exports.TacticsOrderByDTOEndDateEnum = exports.TacticsOrderByDTOStartDateEnum = exports.TacticsOrderByDTOTacticConfigIdEnum = exports.TacticsOrderByDTOIdEnum = exports.TacticsEntryOrderByDTOUpdatedAtEnum = exports.TacticsEntryOrderByDTOCreatedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedAtEnum = exports.TacticsEntryOrderByDTOAutocompletedEnum = exports.TacticsEntryOrderByDTOPreviousRankEnum = exports.TacticsEntryOrderByDTOTicketIdEnum = exports.TacticsEntryOrderByDTOHero5StarsEnum = exports.TacticsEntryOrderByDTOHero4StarsEnum = exports.TacticsEntryOrderByDTOHero3StarsEnum = exports.TacticsEntryOrderByDTOHero2StarsEnum = exports.TacticsEntryOrderByDTOHero1StarsEnum = exports.TacticsEntryOrderByDTOValidateDeckBeforeEnum = exports.TacticsEntryOrderByDTORewardsEnum = exports.TacticsEntryOrderByDTOScoreEnum = exports.TacticsEntryOrderByDTORankEnum = exports.TacticsEntryOrderByDTOHero5IdEnum = exports.TacticsEntryOrderByDTOHero4IdEnum = exports.TacticsEntryOrderByDTOHero3IdEnum = exports.TacticsEntryOrderByDTOHero2IdEnum = exports.TacticsEntryOrderByDTOHero1IdEnum = exports.TacticsEntryOrderByDTOPlayerIdEnum = exports.TacticsEntryOrderByDTOTacticIdEnum = exports.TacticsEntryOrderByDTOIdEnum = exports.StringFilterDTOModeEnum = exports.SettleParlayResponseDtoResultEnum = exports.SettleParlayResponseDtoStatusEnum = exports.SellOrdersFiltersDTOOrderByEnum = exports.RouletteRewardDTORewardTypeEnum = exports.RewardTypeEnum = exports.RegisterDeckDTOTournamentModeEnum = exports.QuoteOddsItemDtoModeEnum = exports.ProgressionDTORewardTypeEnum = exports.PrivateTournamentDTOStatusEnum = exports.PlayerWeeklyQuestDTOQuestTypeEnum = exports.PlayerWeeklyQuestDTORewardTypeEnum = exports.PlayerWeeklyQuestDTOPeriodEnum = void 0;
-exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.LobbiesApi = exports.LobbiesApiFactory = exports.LobbiesApiFp = exports.LobbiesApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TradeActivityDtoActionEnum = exports.TournamentReviewResponseDTODecisionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = void 0;
-exports.Client = exports.VotingApi = void 0;
+exports.TournamentsApiFactory = exports.TournamentsApiFp = exports.TournamentsApiAxiosParamCreator = exports.TacticsApi = exports.TacticsApiFactory = exports.TacticsApiFp = exports.TacticsApiAxiosParamCreator = exports.RewardsApi = exports.RewardsApiFactory = exports.RewardsApiFp = exports.RewardsApiAxiosParamCreator = exports.GetTopHoldersTypeEnum = exports.GetPlayerStatsTimeframeEnum = exports.GetLeaderboardOrderEnum = exports.GetLeaderboardSortByEnum = exports.GetLeaderboardTimeframeEnum = exports.PredictionMarketApi = exports.PredictionMarketApiFactory = exports.PredictionMarketApiFp = exports.PredictionMarketApiAxiosParamCreator = exports.PlayerApi = exports.PlayerApiFactory = exports.PlayerApiFp = exports.PlayerApiAxiosParamCreator = exports.MarketplaceApi = exports.MarketplaceApiFactory = exports.MarketplaceApiFp = exports.MarketplaceApiAxiosParamCreator = exports.LobbiesApi = exports.LobbiesApiFactory = exports.LobbiesApiFp = exports.LobbiesApiAxiosParamCreator = exports.KothKingOfTheHillApi = exports.KothKingOfTheHillApiFactory = exports.KothKingOfTheHillApiFp = exports.KothKingOfTheHillApiAxiosParamCreator = exports.HeroApi = exports.HeroApiFactory = exports.HeroApiFp = exports.HeroApiAxiosParamCreator = exports.CardApi = exports.CardApiFactory = exports.CardApiFp = exports.CardApiAxiosParamCreator = exports.VoteConfigTypeEnum = exports.UpdateMarketStatusAdminDtoStatusEnum = exports.TradeActivityDtoActionEnum = exports.TournamentReviewResponseDTODecisionEnum = exports.TournamentLeagueThresholdDTORewardTypeEnum = exports.TopHoldersResponseDtoTypeEnum = void 0;
+exports.Client = exports.VotingApi = exports.VotingApiFactory = exports.VotingApiFp = exports.VotingApiAxiosParamCreator = exports.TournamentsApi = void 0;
 const axios_1 = __importDefault(require("axios"));
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -4301,6 +4301,114 @@ exports.GetTopHoldersTypeEnum = {
     ChildMarket: 'child_market'
 };
 /**
+ * RewardsApi - axios parameter creator
+ * @export
+ */
+const RewardsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerRewardsSummary: async (playerId, options = {}) => {
+            // verify required parameter 'playerId' is not null or undefined
+            (0, common_1.assertParamExists)('getPlayerRewardsSummary', 'playerId', playerId);
+            const localVarPath = `/rewards/player-rewards-summary/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = {
+                method: 'GET',
+                ...baseOptions,
+                ...options,
+                withCredentials: configuration?.withCredentials
+            };
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            await (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "x-api-key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.RewardsApiAxiosParamCreator = RewardsApiAxiosParamCreator;
+/**
+ * RewardsApi - functional programming interface
+ * @export
+ */
+const RewardsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.RewardsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {string} playerId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerRewardsSummary(playerId, options) {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerRewardsSummary(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = base_1.operationServerMap['RewardsApi.getPlayerRewardsSummary']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+exports.RewardsApiFp = RewardsApiFp;
+/**
+ * RewardsApi - factory interface
+ * @export
+ */
+const RewardsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.RewardsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerRewardsSummary(requestParameters, options) {
+            return localVarFp.getPlayerRewardsSummary(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.RewardsApiFactory = RewardsApiFactory;
+/**
+ * RewardsApi - object-oriented interface
+ * @export
+ * @class RewardsApi
+ * @extends {BaseAPI}
+ */
+class RewardsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RewardsApi
+     */
+    getPlayerRewardsSummary(requestParameters, options) {
+        return (0, exports.RewardsApiFp)(this.configuration).getPlayerRewardsSummary(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.RewardsApi = RewardsApi;
+/**
  * TacticsApi - axios parameter creator
  * @export
  */
@@ -5407,6 +5515,7 @@ class Client extends base_1.BaseAPI {
     marketplace;
     player;
     predictionMarket;
+    rewards;
     tactics;
     tournaments;
     voting;
@@ -5422,6 +5531,7 @@ class Client extends base_1.BaseAPI {
         this.marketplace = new MarketplaceApi(config);
         this.player = new PlayerApi(config);
         this.predictionMarket = new PredictionMarketApi(config);
+        this.rewards = new RewardsApi(config);
         this.tactics = new TacticsApi(config);
         this.tournaments = new TournamentsApi(config);
         this.voting = new VotingApi(config);

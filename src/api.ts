@@ -9910,6 +9910,31 @@ export interface GetVoteConfigQueryDTO {
 /**
  * 
  * @export
+ * @interface GoldPeriodDTO
+ */
+export interface GoldPeriodDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'amount': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'blast_token_estimated': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'dollar_value_estimated': number;
+}
+/**
+ * 
+ * @export
  * @interface GrantAccessByCodeDTO
  */
 export interface GrantAccessByCodeDTO {
@@ -18606,6 +18631,31 @@ export interface PlayerRewardsResponseDto {
      * @memberof PlayerRewardsResponseDto
      */
     'otherRewards': Array<FragmentPackReward>;
+}
+/**
+ * 
+ * @export
+ * @interface PlayerRewardsSummaryDTO
+ */
+export interface PlayerRewardsSummaryDTO {
+    /**
+     * 
+     * @type {number}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'eth_total': number;
+    /**
+     * 
+     * @type {GoldPeriodDTO}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'gold_before_june25': GoldPeriodDTO;
+    /**
+     * 
+     * @type {GoldPeriodDTO}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'gold_after_june25': GoldPeriodDTO;
 }
 /**
  * 
@@ -33206,6 +33256,136 @@ export type GetTopHoldersTypeEnum = typeof GetTopHoldersTypeEnum[keyof typeof Ge
 
 
 /**
+ * RewardsApi - axios parameter creator
+ * @export
+ */
+export const RewardsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerRewardsSummary: async (playerId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'playerId' is not null or undefined
+            assertParamExists('getPlayerRewardsSummary', 'playerId', playerId)
+            const localVarPath = `/rewards/player-rewards-summary/{playerId}`
+                .replace(`{${"playerId"}}`, encodeURIComponent(String(playerId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { 
+                method: 'GET', 
+                ...baseOptions, 
+                ...options,
+                withCredentials: configuration?.withCredentials 
+            };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * RewardsApi - functional programming interface
+ * @export
+ */
+export const RewardsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = RewardsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {string} playerId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlayerRewardsSummary(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlayerRewardsSummaryDTO>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlayerRewardsSummary(playerId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RewardsApi.getPlayerRewardsSummary']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * RewardsApi - factory interface
+ * @export
+ */
+export const RewardsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = RewardsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get total ETH and GOLD rewards received by a player
+         * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlayerRewardsSummary(requestParameters: RewardsApiGetPlayerRewardsSummaryRequest, options?: RawAxiosRequestConfig): AxiosPromise<PlayerRewardsSummaryDTO> {
+            return localVarFp.getPlayerRewardsSummary(requestParameters.playerId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for getPlayerRewardsSummary operation in RewardsApi.
+ * @export
+ * @interface RewardsApiGetPlayerRewardsSummaryRequest
+ */
+export interface RewardsApiGetPlayerRewardsSummaryRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RewardsApiGetPlayerRewardsSummary
+     */
+    readonly playerId: string
+}
+
+/**
+ * RewardsApi - object-oriented interface
+ * @export
+ * @class RewardsApi
+ * @extends {BaseAPI}
+ */
+export class RewardsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RewardsApi
+     */
+    public getPlayerRewardsSummary(requestParameters: RewardsApiGetPlayerRewardsSummaryRequest, options?: RawAxiosRequestConfig) {
+        return RewardsApiFp(this.configuration).getPlayerRewardsSummary(requestParameters.playerId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * TacticsApi - axios parameter creator
  * @export
  */
@@ -34636,6 +34816,7 @@ export class Client extends BaseAPI {
   public readonly marketplace: MarketplaceApi;
   public readonly player: PlayerApi;
   public readonly predictionMarket: PredictionMarketApi;
+  public readonly rewards: RewardsApi;
   public readonly tactics: TacticsApi;
   public readonly tournaments: TournamentsApi;
   public readonly voting: VotingApi;
@@ -34652,6 +34833,7 @@ export class Client extends BaseAPI {
     this.marketplace = new MarketplaceApi(config);
     this.player = new PlayerApi(config);
     this.predictionMarket = new PredictionMarketApi(config);
+    this.rewards = new RewardsApi(config);
     this.tactics = new TacticsApi(config);
     this.tournaments = new TournamentsApi(config);
     this.voting = new VotingApi(config);

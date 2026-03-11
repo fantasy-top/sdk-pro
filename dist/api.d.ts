@@ -9842,6 +9842,31 @@ export interface GetVoteConfigQueryDTO {
 /**
  *
  * @export
+ * @interface GoldPeriodDTO
+ */
+export interface GoldPeriodDTO {
+    /**
+     *
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'amount': number;
+    /**
+     *
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'blast_token_estimated': number;
+    /**
+     *
+     * @type {number}
+     * @memberof GoldPeriodDTO
+     */
+    'dollar_value_estimated': number;
+}
+/**
+ *
+ * @export
  * @interface GrantAccessByCodeDTO
  */
 export interface GrantAccessByCodeDTO {
@@ -18478,6 +18503,31 @@ export interface PlayerRewardsResponseDto {
      * @memberof PlayerRewardsResponseDto
      */
     'otherRewards': Array<FragmentPackReward>;
+}
+/**
+ *
+ * @export
+ * @interface PlayerRewardsSummaryDTO
+ */
+export interface PlayerRewardsSummaryDTO {
+    /**
+     *
+     * @type {number}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'eth_total': number;
+    /**
+     *
+     * @type {GoldPeriodDTO}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'gold_before_june25': GoldPeriodDTO;
+    /**
+     *
+     * @type {GoldPeriodDTO}
+     * @memberof PlayerRewardsSummaryDTO
+     */
+    'gold_after_june25': GoldPeriodDTO;
 }
 /**
  *
@@ -30894,6 +30944,78 @@ export declare const GetTopHoldersTypeEnum: {
 };
 export type GetTopHoldersTypeEnum = typeof GetTopHoldersTypeEnum[keyof typeof GetTopHoldersTypeEnum];
 /**
+ * RewardsApi - axios parameter creator
+ * @export
+ */
+export declare const RewardsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerRewardsSummary: (playerId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * RewardsApi - functional programming interface
+ * @export
+ */
+export declare const RewardsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {string} playerId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerRewardsSummary(playerId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlayerRewardsSummaryDTO>>;
+};
+/**
+ * RewardsApi - factory interface
+ * @export
+ */
+export declare const RewardsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPlayerRewardsSummary(requestParameters: RewardsApiGetPlayerRewardsSummaryRequest, options?: RawAxiosRequestConfig): AxiosPromise<PlayerRewardsSummaryDTO>;
+};
+/**
+ * Request parameters for getPlayerRewardsSummary operation in RewardsApi.
+ * @export
+ * @interface RewardsApiGetPlayerRewardsSummaryRequest
+ */
+export interface RewardsApiGetPlayerRewardsSummaryRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof RewardsApiGetPlayerRewardsSummary
+     */
+    readonly playerId: string;
+}
+/**
+ * RewardsApi - object-oriented interface
+ * @export
+ * @class RewardsApi
+ * @extends {BaseAPI}
+ */
+export declare class RewardsApi extends BaseAPI {
+    /**
+     *
+     * @summary Get total ETH and GOLD rewards received by a player
+     * @param {RewardsApiGetPlayerRewardsSummaryRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RewardsApi
+     */
+    getPlayerRewardsSummary(requestParameters: RewardsApiGetPlayerRewardsSummaryRequest, options?: RawAxiosRequestConfig): Promise<globalAxios.AxiosResponse<PlayerRewardsSummaryDTO, any, {}>>;
+}
+/**
  * TacticsApi - axios parameter creator
  * @export
  */
@@ -31632,6 +31754,7 @@ export declare class Client extends BaseAPI {
     readonly marketplace: MarketplaceApi;
     readonly player: PlayerApi;
     readonly predictionMarket: PredictionMarketApi;
+    readonly rewards: RewardsApi;
     readonly tactics: TacticsApi;
     readonly tournaments: TournamentsApi;
     readonly voting: VotingApi;

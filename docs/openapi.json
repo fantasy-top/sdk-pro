@@ -1401,6 +1401,42 @@
         ]
       }
     },
+    "/rewards/player-rewards-summary/{playerId}": {
+      "get": {
+        "operationId": "getPlayerRewardsSummary",
+        "summary": "Get total ETH and GOLD rewards received by a player",
+        "parameters": [
+          {
+            "name": "playerId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerRewardsSummaryDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rewards"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/marketplace/sell-orders": {
       "get": {
         "operationId": "getMarketplaceData",
@@ -18523,6 +18559,44 @@
           "amount",
           "canClaim",
           "source"
+        ]
+      },
+      "GoldPeriodDTO": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "blast_token_estimated": {
+            "type": "number"
+          },
+          "dollar_value_estimated": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "amount",
+          "blast_token_estimated",
+          "dollar_value_estimated"
+        ]
+      },
+      "PlayerRewardsSummaryDTO": {
+        "type": "object",
+        "properties": {
+          "eth_total": {
+            "type": "number"
+          },
+          "gold_before_june25": {
+            "$ref": "#/components/schemas/GoldPeriodDTO"
+          },
+          "gold_after_june25": {
+            "$ref": "#/components/schemas/GoldPeriodDTO"
+          }
+        },
+        "required": [
+          "eth_total",
+          "gold_before_june25",
+          "gold_after_june25"
         ]
       },
       "MarketplaceFiltersDTO": {
